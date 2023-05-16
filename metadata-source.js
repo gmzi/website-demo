@@ -8,7 +8,7 @@ export const local = {
     "author_name": "artist author name field",
     "title": "website title",
     "description": "website description",
-    "og_image_url": "./og-images/image.png",
+    "og_image_url": "/og-images/image.png",
     "social": [
         {
             "name": "instagram",

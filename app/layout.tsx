@@ -23,7 +23,7 @@ export const metadata: Metadata = {
       url: BASE_URL,
       images: [
         {
-          url: ogImgUrlValue, 
+          url: `${BASE_URL}${ogImgUrlValue}`, 
         }
       ],
       siteName: local?.site_name,
