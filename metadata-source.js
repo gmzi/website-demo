@@ -8,7 +8,7 @@ export const local = {
     "author_name": "artist author name field",
     "title": "website title",
     "description": "website description",
-    "og_image_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1648494033/rem-logo2_n0rybw.png",
+    "og_image_url": "./og-images/image.png",
     "social": [
         {
             "name": "instagram",
