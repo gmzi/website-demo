@@ -35,7 +35,6 @@ export const metadata: Metadata = {
     referrer: 'origin-when-cross-origin',
     keywords: local?.keywords,
     authors: [{ name: local?.author_name, url: BASE_URL}],
-    colorScheme: 'dark',
     creator: 'gmzi',
     publisher: 'gmzi',
     formatDetection: {
@@ -65,6 +64,7 @@ export const metadata: Metadata = {
         url: '',
       },
     },
+    // colorScheme: 'dark',
     themeColor: [
       { media: '(prefers-color-scheme: light)', color: 'ghostwhite' },
       { media: '(prefers-color-scheme: dark)', color: 'black' },
@@ -106,7 +106,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body 
+      // className={inter.className}
+      >
+        {children}
+      </body>
     </html>
   )
 }

@@ -9,8 +9,3 @@ export interface remoteMetadata {
     contact_url?: string,
     keywords?: string[]
   }
-
-export interface Props {
-    params: { id: string };
-    searchParams: { [key: string]: string | string[] | undefined };
-}
