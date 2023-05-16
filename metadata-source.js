@@ -1,4 +1,4 @@
-{
+export const local = {
     "_id": {
         "$oid": "6462ae2d37f54ca0836ee6ee"
     },
