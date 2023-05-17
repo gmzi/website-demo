@@ -116,6 +116,8 @@ export async function generateMetadata(){
   const twitterUrl = local?.social?.find(platf => platf.name === "twitter")?.url|| "//twitter";
   const twitterHandle = getLetterAfterSlash(twitterUrl)
 
+  const image_url = `${BASE_URL}/images/og-image-artist.png`
+
   return {
     title: local?.title,
     description: local?.description,
@@ -127,7 +129,7 @@ export async function generateMetadata(){
       url: BASE_URL,
       images: [
         {
-          url: `${BASE_URL}/og-images/og-image-artist.png`, 
+          url: image_url, 
         }
       ],
       siteName: local?.site_name,
@@ -182,7 +184,7 @@ export async function generateMetadata(){
       siteId: '',
       creator: twitterHandle,
       creatorId: '',
-      images: [ogImgUrlValue],
+      images: [image_url],
     },
     verification: {
       google: 'google',
