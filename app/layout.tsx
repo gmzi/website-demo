@@ -116,26 +116,35 @@ export async function generateMetadata(){
   const twitterUrl = local?.social?.find(platf => platf.name === "twitter")?.url|| "//twitter";
   const twitterHandle = getLetterAfterSlash(twitterUrl)
 
-  const image_url = `${BASE_URL}/images/og-image-artist.png`
-
   return {
     title: local?.title,
     description: local?.description,
 
-    // FIX OPENGERAPH, THEN KEEP GOING, YOU'RE DOING GOOD HAVE SOME FAITH4
+    metadataBase: new URL(`${BASE_URL}`),
+
+    alternates: {
+      canonical: '/',
+      languages: {
+        'en-US': '/',
+        // TODO:
+        // 'es-ES': `/es`,
+      }
+    },
+
     openGraph: {
       title: local?.title,
       description: local?.description,
       url: BASE_URL,
       images: [
         {
-          url: image_url, 
+          url: '/api/og', 
         }
       ],
       siteName: local?.site_name,
       locale: 'en-US', 
       type: 'website'
     },
+
     generator: 'Next.js',
     applicationName: local?.site_name,
     referrer: 'origin-when-cross-origin',
@@ -143,11 +152,13 @@ export async function generateMetadata(){
     authors: [{ name: local?.author_name, url: BASE_URL}],
     creator: 'gmzi',
     publisher: 'gmzi',
+
     formatDetection: {
       email: false,
       address: false,
       telephone: false,
     },
+
     robots: {
       index: false,
       follow: true,
@@ -161,6 +172,7 @@ export async function generateMetadata(){
         'max-snippet': -1,
       },
     },
+
     icons: {
       icon: './favicon.ico',
       shortcut: '',
@@ -170,11 +182,13 @@ export async function generateMetadata(){
         url: '',
       },
     },
+
     // colorScheme: 'dark',
     themeColor: [
       { media: '(prefers-color-scheme: light)', color: 'ghostwhite' },
       { media: '(prefers-color-scheme: dark)', color: 'black' },
     ],
+
     // TODO
     // manifest: '../public/manifest.json',
     twitter: {
@@ -184,8 +198,9 @@ export async function generateMetadata(){
       siteId: '',
       creator: twitterHandle,
       creatorId: '',
-      images: [image_url],
+      images: ['/api/og'],
     },
+
     verification: {
       google: 'google',
       yandex: 'yandex',
@@ -194,14 +209,7 @@ export async function generateMetadata(){
         me: ['', ''],
       },
     },
-    alternates: {
-      canonical: BASE_URL,
-      languages: {
-        'en-US': BASE_URL,
-        // TODO:
-        // 'es-ES': `${BASE_URL}/es`,
-      }
-    },
+
     category: local?.keywords?.[0] || "arts"
   }
 }
