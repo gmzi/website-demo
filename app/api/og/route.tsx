@@ -1,10 +1,3 @@
-// import { NextResponse } from 'next/server';
- 
-// export async function GET() {
- 
-//   return NextResponse.json({ message: "hello" });
-// }
-
 import { ImageResponse } from '@vercel/og';
  
 export const runtime = "edge"
@@ -19,7 +12,7 @@ export function GET() {
           display: 'flex',
           flexDirection: 'column',
           textAlign: 'center',
-          alignItems: 'center',
+          alignItems: 'center', 
           justifyContent: 'center',
           background: 'white',
           border: "1px solid gray", 

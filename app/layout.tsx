@@ -111,7 +111,7 @@ export async function generateMetadata(){
 
   const local = await getMetadata()
   
-  const ogImgUrlValue: string | URL = local?.og_image_url!
+  // const ogImgUrlValue: string | URL = local?.og_image_url!
 
   const twitterUrl = local?.social?.find(platf => platf.name === "twitter")?.url|| "//twitter";
   const twitterHandle = getLetterAfterSlash(twitterUrl)

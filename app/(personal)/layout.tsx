@@ -1,3 +1,4 @@
+import { Menubar } from '@/components/global/Menubar'
 import { Navbar } from '../../components/global/Navbar'
 import { Footer } from '@/components/global/Footer'
 import { Logo } from '@/components/global/Logo'
@@ -15,11 +16,11 @@ export default async function IndexRoute({
   const logoItems = {title: "artis name", subtitle: "artist description" }
   const socialItems = [{name: "facebook", url: "www.google.com"}, {name: "twitter", url: "www.google.com"}]
 
+  // THEME PROVIDER DOCS: https://github.com/pacocoursey/next-themes
   return (
     <div>
-      <Logo logoItems={logoItems}/>
-      <Social socialItems={socialItems}/>
-      <Navbar navbarItems={navbarItems} />
+      <h1>COLOR THEME PROVIDER GOES HERE?</h1>
+      <Menubar/>
       <div>{children}</div>
       <Footer/>
     </div>
