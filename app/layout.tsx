@@ -14,6 +14,7 @@ const ogImgUrlValue: string | URL = local?.og_image_url!
 const twitterUrl = local?.social?.find(platf => platf.name === "twitter")?.url|| "//twitter";
 const twitterHandle = getLetterAfterSlash(twitterUrl)
 
+// APPROACH 1: export metadata object:
 // export const metadata: Metadata = {
 //   title: local?.title,
 //     description: local?.description,
@@ -99,39 +100,17 @@ const twitterHandle = getLetterAfterSlash(twitterUrl)
 //     category: local?.keywords?.[0] || "arts"
 //   }
 
-export default function RootLayout({
-  children
-}: {
-  children: React.ReactNode
-}) {
-  return (
-    <html lang="en">
-      <body 
-      // className={inter.className}
-      >
-        {children}
-      </body>
-    </html>
-  )
-}
+// export async function generateMetadata(){
+//   return {
+//       title: "my title",
+//       description: "my description"
+//   }
+// }
 
-/*
-TODO: Implement metadata retrieval from database, when I get the reason of the build error in this function:
+export async function generateMetadata(){
 
-type Props = {
-  params: { id: string };
-  searchParams: { [key: string]: string | string[] | undefined };
-};
-
-export async function generateMetadata(
-  { params, searchParams }: Props,
-  parent?: ResolvingMetadata,
-): Promise<Metadata>{
-  const id = params.id 
   const local = await getMetadata()
-
-  const previousImages = (await parent)?.openGraph?.images || [];
-
+  
   const ogImgUrlValue: string | URL = local?.og_image_url!
 
   const twitterUrl = local?.social?.find(platf => platf.name === "twitter")?.url|| "//twitter";
@@ -148,20 +127,18 @@ export async function generateMetadata(
       url: BASE_URL,
       images: [
         {
-          url: ogImgUrlValue, 
+          url: `${BASE_URL}/og-images/og-image-artist.png`, 
         }
       ],
       siteName: local?.site_name,
       locale: 'en-US', 
       type: 'website'
     },
-
     generator: 'Next.js',
     applicationName: local?.site_name,
     referrer: 'origin-when-cross-origin',
     keywords: local?.keywords,
     authors: [{ name: local?.author_name, url: BASE_URL}],
-    colorScheme: 'dark',
     creator: 'gmzi',
     publisher: 'gmzi',
     formatDetection: {
@@ -191,6 +168,7 @@ export async function generateMetadata(
         url: '',
       },
     },
+    // colorScheme: 'dark',
     themeColor: [
       { media: '(prefers-color-scheme: light)', color: 'ghostwhite' },
       { media: '(prefers-color-scheme: dark)', color: 'black' },
@@ -225,4 +203,19 @@ export async function generateMetadata(
     category: local?.keywords?.[0] || "arts"
   }
 }
-*/
+
+export default function RootLayout({
+  children
+}: {
+  children: React.ReactNode
+}) {
+  return (
+    <html lang="en">
+      <body 
+      // className={inter.className}
+      >
+        {children}
+      </body>
+    </html>
+  )
+}
