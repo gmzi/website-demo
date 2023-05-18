@@ -4,6 +4,7 @@ import { Inter } from 'next/font/google'
 import { getMetadata } from '@/lib/getMetadata'
 import { getLetterAfterSlash } from '@/lib/getLetterAfterSlash'
 import {local} from '../metadata-source.js'
+import { Analytics } from '@vercel/analytics/react';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -226,6 +227,7 @@ export default function RootLayout({
       >
         <main>
           {children}
+          <Analytics />
         </main>
       </body>
     </html>
