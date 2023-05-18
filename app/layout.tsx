@@ -130,10 +130,8 @@ export default function RootLayout({
       <body 
       // className={inter.className}
       >
-        <main>
-          {children}
-          {/* <Analytics/> */}
-        </main>
+        {children}
+        {/* <Analytics/> */}
       </body>
     </html>
   )

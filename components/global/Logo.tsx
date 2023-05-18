@@ -11,8 +11,8 @@ export function Logo({logoItems}: LogoProps) {
             <span>{logoItems?.author_name}</span>
           </span>
           <span className={'descriptionLine'}>
-          <span>{logoItems?.description}</span>
-        </span>
+            <span>{logoItems?.description}</span>
+          </span>
       </div>
     )
   }

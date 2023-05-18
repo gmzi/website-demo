@@ -19,8 +19,6 @@ export function Navbar({navbarData}: NavbarProps) {
             <Logo logoItems={{author_name: author_name!, description: description!}}/>
         </div>
         <p>---------------------------------------------------------------</p>
-        <p>---------------------------------------------------------------</p>
-        <p>---------------------------------------------------------------</p>
         <div>
             <Social data={data}/>
         </div>
