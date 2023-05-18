@@ -1,18 +1,19 @@
-import { SocialItems } from "@/types";
+import { SocialData } from "@/types";
 import Link from "next/link";
+import { ReactNode } from "react";
 
-interface SocialProps {
-    socialItems: SocialItems
+type SocialProps = {
+    data: SocialData[]
 }
 
-export function Social({socialItems}: SocialProps){
-    console.log('bith', socialItems)
+export function Social({data}: SocialProps){
     return (
-        <div>
-            {socialItems.map((item) => {
-                <div>{item.name}</div>
-                <div>{item.url}</div>
-            })}
-        </div>
+        <ul>
+            {data.map((item, index) => (
+                <li key={index}>
+                    <a href={item.url}>{item.name}</a>
+                </li>
+            ))}
+        </ul>
     )
 }

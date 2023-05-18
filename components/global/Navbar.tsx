@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { Logo } from './Logo'
 import { Social } from './Social'
-import { NavbarData, RemoteMetadata } from '@/types'
+import { NavbarData, SocialData } from '@/types'
 
 interface NavbarProps {
   navbarData: NavbarData
@@ -9,7 +9,9 @@ interface NavbarProps {
 
 export function Navbar({navbarData}: NavbarProps) {
 
-  const {author_name, description, social} = navbarData
+  const {author_name, description } = navbarData
+
+  const data:SocialData[] = navbarData.social!
 
   return (
     <div>
@@ -20,14 +22,14 @@ export function Navbar({navbarData}: NavbarProps) {
         <p>---------------------------------------------------------------</p>
         <p>---------------------------------------------------------------</p>
         <div>
-            <Social socialItems={social!}/>
+            <Social data={data}/>
         </div>
         <div>
             <ul>
-              <li>nav bio</li>
-              <li>nav archives</li>
-              <li>nav timeline</li>
-              <li>nav podcasts</li>
+              <li>bio</li>
+              <li>archives</li>
+              <li>timeline</li>
+              <li>podcasts</li>
             </ul>
         </div>
     </div>

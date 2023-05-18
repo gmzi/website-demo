@@ -17,17 +17,12 @@ export interface NavbarData {
   social?: Array<{name: string, url: string}>
 }
 
-  export interface NavbarItem {
-  slug?: string
-  title?: string
-}
-
 export interface LogoItems {
   author_name: string
   description: string
 }
 
-export interface SocialItems {
-  name: string
-  url: string | URL
+export interface SocialData {
+  name: string;
+  url: string;
 }
