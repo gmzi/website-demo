@@ -1,14 +1,18 @@
-import { socialItems } from "@/types";
+import { SocialItems } from "@/types";
 import Link from "next/link";
 
 interface SocialProps {
-    socialItems: socialItems[]
+    socialItems: SocialItems
 }
 
 export function Social({socialItems}: SocialProps){
+    console.log('bith', socialItems)
     return (
         <div>
-            <p>map through social items, return Link with icon and url </p>
+            {socialItems.map((item) => {
+                <div>{item.name}</div>
+                <div>{item.url}</div>
+            })}
         </div>
     )
 }

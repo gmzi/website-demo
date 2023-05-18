@@ -1,25 +1,29 @@
-import { Menubar } from '@/components/global/Menubar'
 import { Navbar } from '../../components/global/Navbar'
 import { Footer } from '@/components/global/Footer'
 import { Logo } from '@/components/global/Logo'
 import { Social } from '@/components/global/Social'
-
+import { getMetadata } from '@/lib/getMetadata'
+import { NavbarData } from '@/types'
 
 export default async function IndexRoute({
   children,
 }: {
   children: React.ReactNode
 }) {
+  
+  const remote = await getMetadata() || {
+    author_name: '', 
+    description: '',
+    social: []
+  }
 
-//   replace this stuff with data fech:
-  const navbarItems = [{title: "item 1", slug: "#item1"},{title: "item 2", slug: "#item2"}]
-  const logoItems = {title: "artis name", subtitle: "artist description" }
-  const socialItems = [{name: "facebook", url: "www.google.com"}, {name: "twitter", url: "www.google.com"}]
+  const {author_name, title, description, social} = remote
 
-  // THEME PROVIDER DOCS: https://github.com/pacocoursey/next-themes
+  const data = {author_name, title, description, social}
+
   return (
     <div>
-      <Menubar/>
+      <Navbar navbarData={data}/>
       <div>{children}</div>
       <Footer/>
     </div>

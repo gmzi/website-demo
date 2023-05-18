@@ -1,4 +1,4 @@
-export interface remoteMetadata {
+export interface RemoteMetadata {
     title?: string,
     description?: string,
     language?: string,
@@ -8,19 +8,26 @@ export interface remoteMetadata {
     social?: Array<{name: string, url: string}>
     contact_url?: string,
     keywords?: string[]
-  }
+    }
 
-  export interface navbarItem {
+export interface NavbarData {
+  author_name?: string, 
+  title?: string,
+  description?: string,
+  social?: Array<{name: string, url: string}>
+}
+
+  export interface NavbarItem {
   slug?: string
   title?: string
 }
 
-export interface logoItems {
-  title: string
-  subtitle: string
+export interface LogoItems {
+  author_name: string
+  description: string
 }
 
-export interface socialItems {
+export interface SocialItems {
   name: string
   url: string | URL
 }

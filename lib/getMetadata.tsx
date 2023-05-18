@@ -1,6 +1,6 @@
 import {MongoClient, ServerApiVersion} from 'mongodb'
 import {connectToDatabase} from './mongodb-config'
-import { remoteMetadata } from '@/types';
+import { RemoteMetadata } from '@/types';
 
 const MONGODB_COLLECTION = process.env.MONGODB_COLLECTION;
 const MONGODB_URI = process.env.MONGODB_URI
@@ -15,7 +15,7 @@ export async function getMetadata(){
             .collection(MONGODB_COLLECTION)
             .findOne(query)
 
-        const data: remoteMetadata = {...res}
+        const data: RemoteMetadata = {...res}
 
         return data
 
