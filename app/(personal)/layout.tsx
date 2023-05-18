@@ -19,7 +19,6 @@ export default async function IndexRoute({
   // THEME PROVIDER DOCS: https://github.com/pacocoursey/next-themes
   return (
     <div>
-      <h1>COLOR THEME PROVIDER GOES HERE?</h1>
       <Menubar/>
       <div>{children}</div>
       <Footer/>
