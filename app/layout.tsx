@@ -220,7 +220,8 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
+    // <html lang="en" className='text-black bg-white dark:text-white dark:bg-[#111010]'>
+    <html lang="en" className='text-[#2f2f2f] bg-[#f8f8ff] dark:text-[#eaeaeae6] dark:bg-[#303032]'>
       <body 
       // className={inter.className}
       >
