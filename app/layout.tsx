@@ -120,6 +120,8 @@ export async function generateMetadata(){
   }
 }
 
+const prodEnv = process.env.NODE_ENV === "production" ? true : `${process.env.NODE_ENV}`;
+
 export default function RootLayout({
   children
 }: {
@@ -130,8 +132,9 @@ export default function RootLayout({
       <body 
       // className={inter.className}
       >
+        <h1>THIS IS ENV: {prodEnv}</h1>
         {children}
-        {/* <Analytics/> */}
+        {prodEnv && <Analytics/>}
       </body>
     </html>
   )

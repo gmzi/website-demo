@@ -4,19 +4,19 @@ export const local = {
     },
     "metadata": true,
     "language": "ES",
-    "site_name": "artist website name",
-    "author_name": "artist author name field",
-    "title": "website title",
-    "description": "website description",
-    "og_image_url": "/og-images/image.png",
+    "site_name": "John Doe's world",
+    "author_name": "John Doe",
+    "title": "John Doe",
+    "description": "fisher, gentleman, mechanic, king, slave",
+    "og_image_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1648494033/rem-logo2_n0rybw.png",
     "social": [
         {
             "name": "instagram",
-            "url": "www.instagram.com"
+            "url": "https://www.instagram.com/"
         },
         {
             "name": "facebook",
-            "url": "www.facebook.com"
+            "url": "https://www.facebook.com"
         },
         {
             "name": "twitter",
@@ -30,3 +30,4 @@ export const local = {
         "key3"
     ]
 }
+

@@ -1,6 +1,4 @@
 import { SocialData } from "@/types";
-import Link from "next/link";
-import { ReactNode } from "react";
 import {
     FacebookIcon,
     InstagramIcon,
@@ -14,12 +12,6 @@ type SocialProps = {
 
 
 export function Social({data}: SocialProps){
-    
-    const icons = {
-        "instagram": <InstagramIcon/>,
-        "facebook": <FacebookIcon/>,
-        "twitter": <TwitterIcon/>
-    }
 
     return (
         <ul>
@@ -34,10 +26,6 @@ export function Social({data}: SocialProps){
                     }</a>
                 </li>
             ))}
-            {/* <InstagramIcon/>
-            <FacebookIcon/>
-            <TwitterIcon/>
-            <YoutubeIcon/> */}
         </ul>
     )
 }
