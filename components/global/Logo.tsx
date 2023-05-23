@@ -10,9 +10,9 @@ export function Logo({logoItems}: LogoProps) {
           <span className={'logoTitle'}>
             <span>{logoItems?.author_name}</span>
           </span>
-          <span className={'descriptionLine'}>
+          {/* <span className={'descriptionLine'}>
             <span>{logoItems?.description}</span>
-          </span>
+          </span> */}
       </div>
     )
   }

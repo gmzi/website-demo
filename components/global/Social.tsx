@@ -14,7 +14,7 @@ type SocialProps = {
 export function Social({data}: SocialProps){
 
     return (
-        <ul>
+        <ul className={'socialContainer'}>
             {data.map((item, index) => (
                 <li key={index}>
                     <a href={item.url} rel="noopener noreferrer" target="_blank">{

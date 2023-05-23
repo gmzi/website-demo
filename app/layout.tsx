@@ -5,7 +5,7 @@ import { getMetadata } from '@/lib/getMetadata'
 import { getLetterAfterSlash } from '@/lib/getLetterAfterSlash'
 import { Analytics } from '@vercel/analytics/react';
 
-const inter = Inter({ subsets: ['latin'] })
+// const inter = Inter({ subsets: ['latin'] })
 
 const BASE_URL = process.env.BASE_URL;
 
@@ -120,7 +120,7 @@ export async function generateMetadata(){
   }
 }
 
-const prodEnv = process.env.NODE_ENV === "production" ? true : `${process.env.NODE_ENV}`;
+const prodEnv = process.env.NODE_ENV === "production" ? true : false;
 
 export default function RootLayout({
   children
@@ -128,11 +128,10 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className='text-[#2f2f2f] bg-[#f8f8ff] dark:text-[#eaeaeae6] dark:bg-[#303032]'>
+    <html lang="en">
       <body 
       // className={inter.className}
       >
-        <h1>THIS IS ENV: {prodEnv}</h1>
         {children}
         {prodEnv && <Analytics/>}
       </body>

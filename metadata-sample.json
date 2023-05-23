@@ -1,4 +1,4 @@
-export const local = {
+{
     "_id": {
         "$oid": "6462ae2d37f54ca0836ee6ee"
     },
@@ -21,6 +21,10 @@ export const local = {
         {
             "name": "twitter",
             "url": "https://twitter.com/spiritusliteram"
+        },
+        {
+            "name": "youtube",
+            "url": "https://www.youtube.com"
         }
     ],
     "contact_url": "www.google.com",
@@ -30,4 +34,3 @@ export const local = {
         "key3"
     ]
 }
-

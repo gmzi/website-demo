@@ -14,22 +14,17 @@ export function Navbar({navbarData}: NavbarProps) {
   const data:SocialData[] = navbarData.social!
 
   return (
-    <div>
+    <div className={'navbarContainer'}>
         <div>
             <Logo logoItems={{author_name: author_name!, description: description!}}/>
-        </div>
-        <p>---------------------------------------------------------------</p>
-        <div>
             <Social data={data}/>
         </div>
-        <div>
-            <ul>
-              <li>bio</li>
-              <li>archives</li>
-              <li>timeline</li>
-              <li>podcasts</li>
-            </ul>
-        </div>
+        <ul className={'navigationLinksList'}>
+          <li>bio</li>
+          <li>archives</li>
+          <li>timeline</li>
+          <li>podcasts</li>
+        </ul>
     </div>
   )
 }
