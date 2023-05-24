@@ -1,6 +1,5 @@
 import Link from 'next/link'
 import { Logo } from './Logo'
-import { Social } from './Social'
 import { NavbarData, SocialData } from '@/types'
 
 interface NavbarProps {
@@ -17,7 +16,6 @@ export function Navbar({navbarData}: NavbarProps) {
     <div className={'navbarContainer'}>
         <div>
             <Logo logoItems={{author_name: author_name!, description: description!}}/>
-            <Social data={data}/>
         </div>
         <ul className={'navigationLinksList'}>
           <li>bio</li>

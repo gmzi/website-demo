@@ -1,7 +1,6 @@
 import { Navbar } from '../../components/global/Navbar'
 import { Footer } from '@/components/global/Footer'
 import { Logo } from '@/components/global/Logo'
-import { Social } from '@/components/global/Social'
 import { getMetadata } from '@/lib/getMetadata'
 import { NavbarData } from '@/types'
 
