@@ -1,9 +1,6 @@
 import './MenuItem.scss'
-// import 'remixicon/fonts/remixicon.css'
-// import 'remixicon/fonts/remixicon.symbol.svg'
-import {bold as Bold} from '@/components/shared/icons'
 
-export default ({
+const MenuItem = ({
   icon, title, action, isActive = null,
 }) => (
   <button
@@ -14,3 +11,5 @@ export default ({
     {icon}
   </button>
 )
+
+export default MenuItem;

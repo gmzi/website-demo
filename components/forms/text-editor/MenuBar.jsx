@@ -3,7 +3,7 @@ import React, { Fragment } from 'react'
 import MenuItem from './MenuItem'
 import {icons} from './icons'
 
-export default ({ editor }) => {
+const MenuBar = ({ editor }) => {
   const items = [
     {
       icon: icons.bold,
@@ -133,3 +133,5 @@ export default ({ editor }) => {
     </div>
   )
 }
+
+export default MenuBar;

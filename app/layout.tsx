@@ -4,6 +4,7 @@ import { Inter } from 'next/font/google'
 import { getMetadata } from '@/lib/getMetadata'
 import { getLetterAfterSlash } from '@/lib/getLetterAfterSlash'
 import { Analytics } from '@vercel/analytics/react';
+import {metadata} from '../metadata'
 
 // const inter = Inter({ subsets: ['latin'] })
 
@@ -17,7 +18,11 @@ const BASE_URL = process.env.BASE_URL;
 // }
 export async function generateMetadata(){
 
-  const remote = await getMetadata()
+  // const remote = await getMetadata()
+
+  // LOCAL METADATA , REMOVE THIS AND UNCOMMENT ABOVE TO GET METADATA FROM DB
+  const remote = metadata;
+
 
   const twitterUrl = remote?.social?.find(platf => platf.name === "twitter")?.url|| "//twitter";
   const twitterHandle = getLetterAfterSlash(twitterUrl)
@@ -133,7 +138,8 @@ export default function RootLayout({
       // className={inter.className}
       >
         {children}
-        {prodEnv && <Analytics/>}
+        {/* UNCOMMENT BELOW TO ENABLE ANALYTICS */}
+        {/* {prodEnv && <Analytics/>} */}
       </body>
     </html>
   )
