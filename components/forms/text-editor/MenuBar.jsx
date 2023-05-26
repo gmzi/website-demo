@@ -22,7 +22,7 @@ const MenuBar = ({ editor }) => {
         }
         className={editor.isActive('bold') ? 'is-active' : ''}
       >
-        bold
+        {icons.bold2}
       </button>
       <button
         onClick={() => editor.chain().focus().toggleItalic().run()}
@@ -35,7 +35,7 @@ const MenuBar = ({ editor }) => {
         }
         className={editor.isActive('italic') ? 'is-active' : ''}
       >
-        italic
+        {icons.italic2}
       </button>
       <button
         onClick={() => editor.chain().focus().toggleStrike().run()}
@@ -48,7 +48,7 @@ const MenuBar = ({ editor }) => {
         }
         className={editor.isActive('strike') ? 'is-active' : ''}
       >
-        strike
+        {icons.strikethrough2}
       </button>
       <button
         onClick={() => editor.chain().focus().toggleCode().run()}

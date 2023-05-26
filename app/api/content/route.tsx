@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { isNamespaceExportDeclaration } from 'typescript';
+import { updateDocument } from '@/lib/updateDocument';
 
 const DATA_API_KEY = process.env.DATA_API_KEY
 
@@ -13,8 +14,7 @@ export async function GET(){
     }
 }
 
-
-export async function POST(req:Request, res: Response) {
+export async function PATCH(req:Request, res: Response) {
     // AUTHENTICATION:
     // TODO implement getServerSession() as auth method, and get rid of api keys,
     // follow this example: /Users/x4/projects/website-taxonomy/app/api/posts/route.ts
@@ -23,23 +23,15 @@ export async function POST(req:Request, res: Response) {
         return NextResponse.json({message: 'unauthorized'}, {status: 401})
     }
 
-    const data = req.body
+    const data = await req.json()
 
-    console.log('this is the data:', data)
+    const update = await updateDocument("about", data)
 
-    // DB request:
-    const headers: HeadersInit = {
-      'Content-Type': 'application/json',
-      'API-Key': "123",
+    if (update){
+        // REVALIDATION GOES HERE
+        return NextResponse.json({message: 'success'}, {status: 200});
+    } else {
+        return NextResponse.json({message: "update DB failed"}, {status: 500})
     }
-
-    // const res = await fetch('https://data.mongodb-api.com/...', {
-    //   method: 'POST',
-    //   headers,
-    //   body: JSON.stringify({ time: new Date().toISOString() }),
-    // });
   
-    // const data = await res.json();
-  
-    return NextResponse.json({message: 'hello'});
 }

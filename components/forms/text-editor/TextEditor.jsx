@@ -11,7 +11,7 @@ import StarterKit from '@tiptap/starter-kit'
 import MenuBar from './MenuBar'
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL
-const DATA_API_KEY = process.env.DATA_API_KEY
+const DATA_API_KEY = process.env.NEXT_PUBLIC_DATA_API_KEY
 
 
 const TextEditor = () => {
@@ -52,19 +52,20 @@ const TextEditor = () => {
   }
 
   const handleSave = async() => {
-    const document = {
+
+    const content = {
       image_url: "https://upload.wikimedia.org/wikipedia/commons/c/cc/Natalia_Lafourcade_2018_Gran_Rex_37_%28Cropped%29.jpg",
-      html_content: cleanHtmlContent
+      content_html: cleanHtmlContent
     }
 
     const saved = await fetch(`${BASE_URL}/content`, {
-      method: 'POST',
+      method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `API-Key ${DATA_API_KEY}`
+        'API-Key': DATA_API_KEY
       }, 
       referrerPolicy: 'no-referrer',
-      body: JSON.stringify(document)
+      body: JSON.stringify(content)
     })
 
     // const saved = await saveToDB(document)

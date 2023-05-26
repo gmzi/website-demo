@@ -1,4 +1,3 @@
-import {saveToDB} from '../../../lib/saveToDB'
 
 interface EditorProps {
     children?: React.ReactNode
