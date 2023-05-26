@@ -11,6 +11,9 @@ import { EditorContent, useEditor } from '@tiptap/react'
 import StarterKit from '@tiptap/starter-kit'
 import MenuBar from './MenuBar'
 
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL
+const DATA_API_KEY = process.env.DATA_API_KEY
+
 
 const TextEditor = () => {
   const [cleanHtmlContent, setCleanHtmlContent] = useState('');
@@ -44,6 +47,17 @@ const TextEditor = () => {
       image_url: "https://upload.wikimedia.org/wikipedia/commons/c/cc/Natalia_Lafourcade_2018_Gran_Rex_37_%28Cropped%29.jpg",
       html_content: cleanHtmlContent
     }
+
+    const saved = await fetch(`${BASE_URL}/content`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `API-Key ${DATA_API_KEY}`
+      }, 
+      referrerPolicy: 'no-referrer',
+      body: JSON.stringify(document)
+    })
+
     // const saved = await saveToDB(document)
     // if (!saved){
     //   console.log('ups')
