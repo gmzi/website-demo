@@ -3,10 +3,9 @@
 import './styles.scss'
 import sanitizeHtml from 'sanitize-html'
 import { useState } from 'react'
-// import CharacterCount from '@tiptap/extension-character-count'
-// import Highlight from '@tiptap/extension-highlight'
-// import TaskItem from '@tiptap/extension-task-item'
-// import TaskList from '@tiptap/extension-task-list'
+import { Color } from '@tiptap/extension-color'
+import ListItem from '@tiptap/extension-list-item'
+import TextStyle from '@tiptap/extension-text-style'
 import { EditorContent, useEditor } from '@tiptap/react'
 import StarterKit from '@tiptap/starter-kit'
 import MenuBar from './MenuBar'
@@ -21,8 +20,18 @@ const TextEditor = () => {
 
   const editor = useEditor({
     extensions: [
+      Color.configure({ types: [TextStyle.name, ListItem.name] }),
+      TextStyle.configure({ types: [ListItem.name] }),
       StarterKit.configure({
         history: false,
+        bulletList: {
+          keepMarks: true,
+          keepAttributes: false, // TODO : Making this as `false` becase marks are not preserved when I try to preserve attrs, awaiting a bit of help
+        },
+        orderedList: {
+          keepMarks: true,
+          keepAttributes: false, // TODO : Making this as `false` becase marks are not preserved when I try to preserve attrs, awaiting a bit of help
+        },
       }),
       // Highlight,
       // TaskList,
