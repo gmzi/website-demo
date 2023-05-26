@@ -1,3 +1,15 @@
+/* IDEAS to debug this:
+ 1. Investigate the error if there's any quick fix. 
+ 2. Investigate if there's an specific package for next.js we can use.
+ 3. If no workarounds, build a dedicated route on /blog-reflexion repo, and send images there
+ to be uploaded. It would be some kind of image handler, not ideal but functional, 
+
+ -----------------------------------
+ DON'T SWEAT IT, JUST MAKE IT WORK
+ -----------------------------------
+ */
+ 
+
 import { v2 as cloudinary} from 'cloudinary'
 import { NextResponse } from 'next/server';
 import busboy from 'busboy';
@@ -13,11 +25,11 @@ cloudinary.config({
     api_secret: CLOUDINARY_API_SECRET
 });
 
-// export const config = {
-//     api: {
-//         bodyParser: false
-//     }
-// }
+export const config = {
+    api: {
+        bodyParser: false
+    }
+}
 
 export async function POST(req, res){
     try {
