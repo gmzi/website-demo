@@ -4,6 +4,14 @@ import { useState } from "react";
 import { data, text } from '../../lib/data';
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
+const isProduction = process.env.NODE_ENV === 'production';
+let IMAGE_UPLOAD_URL = '';
+
+if (isProduction){
+    IMAGE_UPLOAD_URL = process.env.NEXT_PUBLIC_UPLOAD_IMAGE_URL;
+} else {
+    IMAGE_UPLOAD_URL = 'http://localhost:3001'
+}
 
 export default function ImageUpload() {
     const [file, setFile] = useState()
@@ -45,9 +53,17 @@ export default function ImageUpload() {
 
         const formData = new FormData();
 
-        formData.append("file", file);
+        const folder = "website-fer/about"
 
-        const upload = await fetch(`${BASE_URL}/images`, {
+        formData.append("file", file);
+        formData.append("folder", folder)
+
+        // const upload = await fetch(`${IMAGE_UPLOAD_URL}`, {
+        //     method: 'POST',
+        //     body: formData
+        // })
+
+        const upload = await fetch(`${BASE_URL}/image`, {
             method: 'POST',
             body: formData
         })
@@ -57,6 +73,8 @@ export default function ImageUpload() {
             return;
         }
         const data = await upload.json();
+        console.log(data)
+        return;
         const imageLink = data.metadata.secure_url
         setStatus(null)
         setData(imageLink)
