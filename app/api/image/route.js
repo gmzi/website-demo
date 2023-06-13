@@ -1,5 +1,4 @@
 import { NextRequest, NextResponse } from 'next/server'
-import {v2 as cloudinary} from 'cloudinary'
 
 const UPLOAD_IMAGE_URL = process.env.UPLOAD_IMAGE_URL
 
