@@ -33,5 +33,4 @@ export async function PATCH(req:Request, res: Response) {
     } else {
         return NextResponse.json({message: "update DB failed"}, {status: 500})
     }
-  
 }
