@@ -10,7 +10,8 @@ export function HomePage({image_url, content_html}: Data){
         <main>
             <section>
                 <img src={image_url} style={{width: '20%', height: 'auto'}}/>
-                {parse(content_html)}
+                {/* {parse(content_html)} */}
+                <p>Hello</p>
             </section>
         </main>
     )
