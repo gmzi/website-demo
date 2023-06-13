@@ -8,6 +8,8 @@ interface Data {
 
 export function HomePage({image_url, content_html}: Data){   
 
+    const text = parse(content_html)
+
     return (
         <main>
             <section>
@@ -20,8 +22,7 @@ export function HomePage({image_url, content_html}: Data){
                     style={{width: '20%', height: 'auto'}}
                     alt="Picture of the author"
                 />
-                {/* {parse(content_html)} */}
-                <p>Hello</p>
+                {text}
             </section>
         </main>
     )
