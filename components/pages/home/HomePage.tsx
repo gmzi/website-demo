@@ -7,6 +7,7 @@ interface Data {
 }
 
 export function HomePage({image_url, content_html}: Data){   
+
     return (
         <main>
             <section>
