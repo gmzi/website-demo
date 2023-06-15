@@ -28,8 +28,7 @@
     "react-dom": "18.2.0",
     "sanitize-html": "^2.10.0",
     "sass": "^1.62.1",
-    "typescript": "5.0.4",
-    "vm2": "^3.9.19"
+    "typescript": "5.0.4"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.14",
