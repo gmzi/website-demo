@@ -19,7 +19,6 @@
     "@types/react-dom": "18.2.4",
     "@vercel/analytics": "^1.0.1",
     "@vercel/og": "^0.5.4",
-    "cloudinary": "^1.37.1",
     "eslint": "8.40.0",
     "eslint-config-next": "13.4.2",
     "html-react-parser": "^3.0.16",
@@ -29,7 +28,8 @@
     "react-dom": "18.2.0",
     "sanitize-html": "^2.10.0",
     "sass": "^1.62.1",
-    "typescript": "5.0.4"
+    "typescript": "5.0.4",
+    "vm2": "^3.9.19"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.14",

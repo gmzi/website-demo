@@ -4,14 +4,6 @@ import { useState } from "react";
 import { data, text } from '../../lib/data';
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
-const isProduction = process.env.NODE_ENV === 'production';
-let IMAGE_UPLOAD_URL = '';
-
-if (isProduction){
-    IMAGE_UPLOAD_URL = process.env.NEXT_PUBLIC_UPLOAD_IMAGE_URL;
-} else {
-    IMAGE_UPLOAD_URL = 'http://localhost:3001'
-}
 
 export default function ImageUpload() {
     const [file, setFile] = useState()
@@ -52,16 +44,12 @@ export default function ImageUpload() {
         // setStatus({alert: "messageAlert", message: "uploading..."})
 
         const formData = new FormData();
-
         const folder = "website-fer/about"
+        const documentName = "about"
 
         formData.append("file", file);
         formData.append("folder", folder)
-
-        // const upload = await fetch(`${IMAGE_UPLOAD_URL}`, {
-        //     method: 'POST',
-        //     body: formData
-        // })
+        formData.append("documentName", documentName)
 
         const upload = await fetch(`${BASE_URL}/image`, {
             method: 'POST',
@@ -69,13 +57,11 @@ export default function ImageUpload() {
         })
 
         if (!upload.ok){
-            console.log('upload failed')
+            console.log(upload)
             return;
         }
         const data = await upload.json();
-        console.log(data)
-        return;
-        const imageLink = data.metadata.secure_url
+        const imageLink = data.image_url
         setStatus(null)
         setData(imageLink)
         setFile(null)

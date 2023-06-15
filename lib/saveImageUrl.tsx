@@ -1,9 +1,8 @@
 import { connectToDatabase } from "./mongodb-config";
 
 const MONGODB_COLLECTION = process.env.MONGODB_COLLECTION;
-const MONGODB_URI = process.env.MONGODB_URI
 
-export async function updateDocument(document, content){
+export async function saveImageUrl(document:string, image_url: string){
     try {
         const {db} = await connectToDatabase()
 
@@ -11,8 +10,7 @@ export async function updateDocument(document, content){
 
         const updateDocument = {
             $set: {
-                image_url: content.image_url,
-                content_html: content.content_html
+                image_url: image_url,
             }
         }
 
@@ -21,7 +19,7 @@ export async function updateDocument(document, content){
             .updateOne(filter, updateDocument)
 
         if (update){
-            return true;
+            return update;
         } else {
             const error = new Error('failed saving document')
             throw error
