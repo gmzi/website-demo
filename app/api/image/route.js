@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import {saveImageUrl} from '../../../lib/saveImageUrl'
+import { revalidatePath } from 'next/cache'
 
 let IMAGE_UPLOAD_URL;
 const isProduction = process.env.NODE_ENV === 'production'
@@ -44,6 +45,9 @@ export async function POST(
           return NextResponse.json({message: "DB failed to save image URL"}, {status: 500})
         }
 
+        // revalidation goes here
+        const path = '/';
+        revalidatePath(path)
         return NextResponse.json({ image_url: image_url }, {status: 200})
     } catch (e){
         console.log(e)
