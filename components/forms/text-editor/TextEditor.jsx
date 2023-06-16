@@ -54,11 +54,10 @@ const TextEditor = () => {
   const handleSave = async() => {
 
     const content = {
-      image_url: "https://upload.wikimedia.org/wikipedia/commons/c/cc/Natalia_Lafourcade_2018_Gran_Rex_37_%28Cropped%29.jpg",
       content_html: cleanHtmlContent
     }
 
-    const saved = await fetch(`${BASE_URL}/content`, {
+    const saved = await fetch(`${BASE_URL}/text`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',

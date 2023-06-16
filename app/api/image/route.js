@@ -2,13 +2,13 @@ import { NextRequest, NextResponse } from 'next/server'
 import {saveImageUrl} from '../../../lib/saveImageUrl'
 import { revalidatePath } from 'next/cache'
 
-let IMAGE_UPLOAD_URL;
-const isProduction = process.env.NODE_ENV === 'production'
-if (isProduction){
-    IMAGE_UPLOAD_URL = process.env.IMAGE_UPLOAD_URL
-} else {
-    IMAGE_UPLOAD_URL = 'http://localhost:3001/api/upload'
-}
+let IMAGE_UPLOAD_URL = process.env.IMAGE_UPLOAD_URL;
+// const isProduction = process.env.NODE_ENV === 'production'
+// if (isProduction){
+//     IMAGE_UPLOAD_URL = process.env.IMAGE_UPLOAD_URL
+// } else {
+//     IMAGE_UPLOAD_URL = 'http://localhost:3001/api/upload'
+// }
 
 
 export async function POST(

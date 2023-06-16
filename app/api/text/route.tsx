@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
-import { isNamespaceExportDeclaration } from 'typescript';
-import { updateDocument } from '@/lib/updateDocument';
+import { updateText } from '../../../lib/updateText'
+import { revalidatePath } from 'next/cache'
 
 const DATA_API_KEY = process.env.DATA_API_KEY
 
@@ -15,6 +15,7 @@ export async function GET(){
 }
 
 export async function PATCH(req:Request, res: Response) {
+    try {
     // AUTHENTICATION:
     // TODO implement getServerSession() as auth method, and get rid of api keys,
     // follow this example: /Users/x4/projects/website-taxonomy/app/api/posts/route.ts
@@ -25,12 +26,17 @@ export async function PATCH(req:Request, res: Response) {
 
     const data = await req.json()
 
-    const update = await updateDocument("about", data)
+    const update = await updateText("about", data)
 
-    if (update){
-        // REVALIDATION GOES HERE
-        return NextResponse.json({message: 'success'}, {status: 200});
-    } else {
-        return NextResponse.json({message: "update DB failed"}, {status: 500})
+    if (!update) {
+        return NextResponse.json({message: 'text update failed on DB'}, {status: 500})
+    }
+
+    const path = '/';
+    revalidatePath(path)
+    return NextResponse.json({message: 'success'}, {status: 200});
+    } catch(e) {
+        console.log(e)
+        return NextResponse.json({message: 'error on api/text'}, {status: 500});
     }
 }

@@ -28,6 +28,7 @@
     "react-dom": "18.2.0",
     "sanitize-html": "^2.10.0",
     "sass": "^1.62.1",
+    "sharp": "^0.32.1",
     "typescript": "5.0.4"
   },
   "devDependencies": {
