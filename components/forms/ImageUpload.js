@@ -51,10 +51,26 @@ export default function ImageUpload() {
         formData.append("folder", folder)
         formData.append("documentName", documentName)
 
-        const upload = await fetch(`${BASE_URL}/image`, {
+        // const upload = await fetch(`${BASE_URL}/image`, {
+        //     method: 'POST',
+        //     body: formData
+        // })
+
+        // -----------------------------------------
+
+        const upload = await fetch(`${BASE_URL}/upload`, {
             method: 'POST',
             body: formData
         })
+
+        const wowData = await upload.json()
+
+        console.log(wowData)
+
+        return;
+
+
+        // -----------------------------------------
 
         if (!upload.ok){
             console.log(upload)

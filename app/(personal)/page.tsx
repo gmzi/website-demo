@@ -6,7 +6,6 @@ export default async function IndexRoute() {
 
     return (
         <div>
-            <h1>Hello</h1>
             <HomePage image_url={data.image_url} content_html={data.content_html}/>
         </div>
     )
