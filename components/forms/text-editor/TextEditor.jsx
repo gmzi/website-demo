@@ -57,7 +57,7 @@ const TextEditor = () => {
       content_html: cleanHtmlContent
     }
 
-    const saved = await fetch(`${BASE_URL}/text`, {
+    const saved = await fetch(`${BASE_URL}/serve/text`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',

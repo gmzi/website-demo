@@ -48,7 +48,7 @@ export async function generateMetadata(){
       url: BASE_URL,
       images: [
         {
-          url: '/api/og', 
+          url: '/serve/og', 
         }
       ],
       siteName: remote?.site_name,
@@ -109,7 +109,7 @@ export async function generateMetadata(){
       siteId: '',
       creator: twitterHandle,
       creatorId: '',
-      images: ['/api/og'],
+      images: ['/serve/og'],
     },
 
     verification: {
