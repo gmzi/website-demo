@@ -33,7 +33,7 @@ export async function POST(
         })
 
         if (upload.status !== 200){
-          return NextResponse.json({ error: 'upload failed' }, {status: 500})
+          return NextResponse.json({ error: 'upload failed' }, {status: upload.status})
         }
 
         const uploadedImage = await upload.json()
