@@ -87,24 +87,27 @@ export default async function handler(req, res){
 
         const metadata = await uploadToCloudinary(req)
 
-        if (!Object.keys(metadata).length) {
-           res.status(500).json({message: "failed to upload image"})
-        } 
+        res.status(200).json({metadata})
 
-        const imageUrl = metadata.secure_url;
-        const documentName = metadata.documentName;
 
-        const saveImageUrlInDB = await saveImageUrl(documentName, imageUrl)
+        // if (!Object.keys(metadata).length) {
+        //    res.status(500).json({message: "failed to upload image"})
+        // } 
 
-        if (!saveImageUrlInDB.acknowledged){
-            res.status(500).json({message: "DB failed to save image URL"})
-        }
+        // const imageUrl = metadata.secure_url;
+        // const documentName = metadata.documentName;
 
-        // REVALIDATION GOES HERE
-        const revalidateHome = await fetch(`${BASE_URL}/api/revalidate-home?secret=${REVALIDATE_TOKEN}`)
+        // const saveImageUrlInDB = await saveImageUrl(documentName, imageUrl)
 
-        res.status(200).json({message: "img uploaded and saved to DB, page revalidated"})
-        
+        // if (!saveImageUrlInDB.acknowledged){
+        //     res.status(500).json({message: "DB failed to save image URL"})
+        // }
+
+        // // REVALIDATION GOES HERE
+        // const revalidateHome = await fetch(`${BASE_URL}/api/revalidate-home?secret=${REVALIDATE_TOKEN}`)
+
+        // res.status(200).json({message: "img uploaded and saved to DB, page revalidated"})
+
     } catch(e){
         res.status(500).json({error: e.message})
     }
