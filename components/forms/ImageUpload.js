@@ -51,7 +51,7 @@ export default function ImageUpload() {
         formData.append("folder", folder)
         formData.append("documentName", documentName)
 
-        const upload = await fetch(`${BASE_URL}/image`, {
+        const upload = await fetch(`${BASE_URL}/serve/image`, {
             method: 'POST',
             body: formData
         })

@@ -5,7 +5,6 @@
 
 import { v2 as cloudinary} from 'cloudinary'
 import busboy from 'busboy';
-import { saveImageUrl } from '../../lib/saveImageUrl';
 
 const CLOUDINARY_CLOUD_NAME= process.env.CLOUDINARY_CLOUD_NAME;
 const CLOUDINARY_API_KEY= process.env.CLOUDINARY_API_KEY;
@@ -88,25 +87,6 @@ export default async function handler(req, res){
         const metadata = await uploadToCloudinary(req)
 
         res.status(200).json({metadata})
-
-
-        // if (!Object.keys(metadata).length) {
-        //    res.status(500).json({message: "failed to upload image"})
-        // } 
-
-        // const imageUrl = metadata.secure_url;
-        // const documentName = metadata.documentName;
-
-        // const saveImageUrlInDB = await saveImageUrl(documentName, imageUrl)
-
-        // if (!saveImageUrlInDB.acknowledged){
-        //     res.status(500).json({message: "DB failed to save image URL"})
-        // }
-
-        // // REVALIDATION GOES HERE
-        // const revalidateHome = await fetch(`${BASE_URL}/api/revalidate-home?secret=${REVALIDATE_TOKEN}`)
-
-        // res.status(200).json({message: "img uploaded and saved to DB, page revalidated"})
 
     } catch(e){
         res.status(500).json({error: e.message})

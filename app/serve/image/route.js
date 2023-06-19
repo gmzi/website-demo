@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import {saveImageUrl} from '../../../lib/saveImageUrl'
 import { revalidatePath } from 'next/cache'
 
-let IMAGE_UPLOAD_URL = process.env.IMAGE_UPLOAD_URL;
+const IMAGE_UPLOADER_URL = process.env.IMAGE_UPLOADER_URL;
 const BASE_URL = process.env.BASE_URL;
 // const isProduction = process.env.NODE_ENV === 'production'
 // if (isProduction){
@@ -20,6 +20,7 @@ export async function POST(
         if (req.method !== 'POST') {
             return NextResponse.json({ error: 'Method Not Allowed' }, {status: 405})
         }
+
         // Receive formData from client
         const data = await req.formData();
         const storageFolder = data.get("folder");
@@ -27,12 +28,22 @@ export async function POST(
         // Append folder field, might seem redundant but it's needed for uploader:
         data.append("folder", storageFolder)
 
-        const upload = await fetch(`${BASE_URL}/api/upload-image`, {
+
+        /*
+        USING A REMOTE IMAGE UPLOADER REPO, IF FETCH ISSUES ARE SOLVED, REPLACE FETCH
+        ROUTE FOR THIS ONE BELOW, ALREADY WRITTEN IN THIS /PAGES/API/IMAGE/UPLOAD
+        */
+        // const upload = await fetch(`http://localhost:3000/api/image/upload `, {
+        //   method: 'POST',
+        //   body: data
+        // })
+        const upload = await fetch(`${IMAGE_UPLOADER_URL}`, {
           method: 'POST',
           body: data
         })
 
         if (upload.status !== 200){
+          console.log(upload)
           return NextResponse.json({ error: 'upload failed' }, {status: upload.status})
         }
 
