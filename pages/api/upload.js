@@ -100,19 +100,12 @@ export default async function handler(req, res){
             res.status(500).json({message: "DB failed to save image URL"})
         }
 
-        console.log('revalidate token:', REVALIDATE_TOKEN)
-        console.log('fetch url:', `${BASE_URL}/api/revalidate-home?secret=${REVALIDATE_TOKEN}`)
-
         // REVALIDATION GOES HERE
         const revalidateHome = await fetch(`${BASE_URL}/api/revalidate-home?secret=${REVALIDATE_TOKEN}`)
 
+        res.status(200).json({message: "img uploaded and saved to DB, page revalidated"})
         
-        console.log(revalidateHome)
-
-        res.status(200)
-
     } catch(e){
-        console.log(e)
         res.status(500).json({error: e.message})
     }
 }
