@@ -48,7 +48,9 @@ export default function ImageUpload() {
         })
 
         if (!upload.ok){
+            console.log('theres an error in upload')
             console.log(upload)
+            console.log(upload.json())
             return;
         }
         const image = await upload.json();
