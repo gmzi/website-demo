@@ -31,14 +31,10 @@ async function uploadToCloudinary(req){
         bb.on('file', (fieldname, file, filename, encoding, mimetype) => {
             const chunks = [];
             let storageFolder = '';
-            let documentName = '';
 
             bb.on('field', (fieldname, value) => {
                 if (fieldname === 'folder'){
                     storageFolder = value;
-                }
-                if (fieldname === 'documentName'){
-                    documentName = value;
                 }
             });
             file.on('data', (chunk) => {
@@ -67,8 +63,7 @@ async function uploadToCloudinary(req){
                     created_at: image.created_at, 
                     tags: image.tags,
                     bytes: image.bytes,
-                    secure_url: image.secure_url,
-                    documentName: documentName
+                    secure_url: image.secure_url
                 }
                 resolve(metadata)
             })
