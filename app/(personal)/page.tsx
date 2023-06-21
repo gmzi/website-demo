@@ -1,5 +1,4 @@
 import type { Metadata } from "next"
-import { HomePage } from "@/components/pages/home/HomePage"
 import Image from 'next/image'
 import { getData } from "@/lib/getData"
 import parse from 'html-react-parser'
@@ -10,6 +9,7 @@ export const metadata: Metadata = {
 }
 
 export default async function AboutPage() {
+    
     const data = await getData("about");
     const text = parse(data?.content_html) || '';
     const imageUrl = data?.image_url || '';
