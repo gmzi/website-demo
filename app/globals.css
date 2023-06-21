@@ -134,3 +134,8 @@ main {
 .sectionAbout p {
   margin: 1em 0em;
 }
+
+.active {
+  color: red;
+  text-decoration: underline 1px solid green;
+}

@@ -1,37 +1,70 @@
-import { Logo } from './Logo'
-import { getMetadata } from '@/lib/getMetadata'
+'use client'
 
-interface NavbarProps {
-  author_name: string;
-  title: string;
-  description: string;
-  social: string[];
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+
+
+const navItems = {
+  '/bio': {
+    name: 'bio',
+  },
+  '/courses': {
+    name: 'courses',
+  },
+  '/shows': {
+    name: 'shows',
+  },
+  '/podcast': {
+    name: 'podcast',
+  },
+  '/tours': {
+    name: 'tours',
+  },
+  '/press': {
+    name: 'press',
+  },
+  '/contact': {
+    name: 'contact',
+  },
+};
+
+function Logo() {
+  return (
+    <Link aria-label="John Done" href="/">
+      <div className={'logoContainer'}>
+        <span className={'logoTitle'}>
+            <span>John Done</span>
+        </span>
+      </div>
+    </Link>
+  )
 }
 
-export async function Navbar(props: NavbarProps) {
+export async function Navbar() {
 
-  const remote = await getMetadata() || {
-    author_name: '', 
-    title: '',
-    description: '',
-    social: []
-  }
-
-  const {author_name, title, description, social} = remote;
+  let pathname = usePathname() || '/';
 
   return (
     <div className={'navbarContainer'}>
-        <div>
-            <Logo logoItems={{author_name: author_name!, description: description!}}/>
+        <div> 
+            <Logo/>
         </div>
         <ul className={'navigationLinksList'}>
-          <li>bio</li>
-          <li>courses</li>
-          <li>shows</li>
-          <li>podcast</li>
-          <li>tours</li>
-          <li>press</li>
-          <li>contact</li>
+          {Object.entries(navItems).map(([path, {name}]) => {
+            const isActive = path === pathname;
+            return (
+              <Link
+                key={path}
+                href={path}
+              >
+                {isActive ? (
+                  <li className={'active'}>{name}</li>
+                ) : (
+                <li>{name}</li>
+                )}
+              </Link>
+            )
+          })}
         </ul>
     </div>
   )
