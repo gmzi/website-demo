@@ -1,5 +1,6 @@
 import parse from 'html-react-parser'
 import Image from 'next/image'
+import { getData } from '@/lib/getData';
 
 interface Data {
     image_url: string;

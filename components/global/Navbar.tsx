@@ -1,16 +1,23 @@
-import Link from 'next/link'
 import { Logo } from './Logo'
-import { NavbarData, SocialData } from '@/types'
+import { getMetadata } from '@/lib/getMetadata'
 
 interface NavbarProps {
-  navbarData: NavbarData
+  author_name: string;
+  title: string;
+  description: string;
+  social: string[];
 }
 
-export function Navbar({navbarData}: NavbarProps) {
+export async function Navbar(props: NavbarProps) {
 
-  const {author_name, description } = navbarData
+  const remote = await getMetadata() || {
+    author_name: '', 
+    title: '',
+    description: '',
+    social: []
+  }
 
-  const data:SocialData[] = navbarData.social!
+  const {author_name, title, description, social} = remote;
 
   return (
     <div className={'navbarContainer'}>

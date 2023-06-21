@@ -5,6 +5,8 @@ import { getMetadata } from '@/lib/getMetadata'
 import { getLetterAfterSlash } from '@/lib/getLetterAfterSlash'
 import { Analytics } from '@vercel/analytics/react';
 import {metadata} from '../metadata'
+import { Navbar } from '@/components/global/Navbar'
+import { Footer } from '@/components/global/Footer'
 
 // const inter = Inter({ subsets: ['latin'] })
 
@@ -22,7 +24,6 @@ export async function generateMetadata(){
 
   // LOCAL METADATA , REMOVE THIS AND UNCOMMENT ABOVE TO GET METADATA FROM DB
   const remote = metadata;
-
 
   const twitterUrl = remote?.social?.find(platf => platf.name === "twitter")?.url|| "//twitter";
   const twitterHandle = getLetterAfterSlash(twitterUrl)
