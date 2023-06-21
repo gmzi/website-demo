@@ -14,8 +14,9 @@ const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL
 const DATA_API_KEY = process.env.NEXT_PUBLIC_DATA_API_KEY
 
 
-const TextEditor = () => {
-  const [cleanHtmlContent, setCleanHtmlContent] = useState('');
+const TextEditor = ({contentHtml}) => {
+
+  const [cleanHtmlContent, setCleanHtmlContent] = useState(contentHtml);
   const [copied, setCopied] = useState(false)
 
   const editor = useEditor({
@@ -37,6 +38,7 @@ const TextEditor = () => {
       // TaskList,
       // TaskItem,
     ],
+    content: cleanHtmlContent,
     onTransaction: () => {
       const html = editor?.getHTML();
       const cleanHtml = sanitizeHtml(html)
