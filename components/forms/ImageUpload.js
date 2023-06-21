@@ -6,11 +6,11 @@ import Image from "next/image";
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
-export default function ImageUpload() {
-    
+export default function ImageUpload({imageUrl}) {
+
     const [file, setFile] = useState()
     const [caption, setCaption] = useState("")
-    const [data, setData] = useState()
+    const [data, setData] = useState(imageUrl)
     const [imageID, setImageID] = useState()
     const [status, setStatus] = useState();
 
