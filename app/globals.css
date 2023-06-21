@@ -51,6 +51,10 @@
     padding: .5em 1em;
 }
 
+main {
+  padding: .5em 1em;
+}
+
 .socialContainer {
     display: flex;
     align-items: center;
@@ -124,4 +128,9 @@
 /* ---------------------------------------- */
 /* ---------------------------------------- */
 
-  
+.imgContainer {
+  padding-bottom: .5em;
+}
+.sectionAbout p {
+  margin: 1em 0em;
+}

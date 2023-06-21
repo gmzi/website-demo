@@ -11,23 +11,32 @@ export async function HomePage(){
 
     const data = await getData("about")
 
-    const text = parse(data.content_html) || '';
+    const text = parse(data?.content_html) || '';
 
-    const imageUrl = data.image_url || '';
+    const imageUrl = data?.image_url || '';
 
     return (
-        <main>
-            <section>
-                <Image
-                    src={imageUrl}
-                    width={0}
-                    height={0}
-                    sizes="100vw"
-                    style={{width: '40%', height: 'auto'}}
-                    alt="Picture of the author"
-                />
+        <section className='sectionAbout'>
+            <h1>Bio</h1>
+            <div>
+                <div className='imgContainer'>
+                    <Image
+                        src={imageUrl}
+                        width={0}
+                        height={0}
+                        sizes="100vw"
+                        style={{
+                            width: '30%', 
+                            height: 'auto', 
+                            borderRadius: '5px', 
+                            float: 'left',
+                            marginRight: '1em',
+                        }}
+                        alt="Picture of the author"
+                    />
+                </div>
                 {text}
-            </section>
-        </main>
+            </div>
+        </section>
     )
 }
