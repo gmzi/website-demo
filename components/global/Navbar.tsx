@@ -19,9 +19,12 @@ export function Navbar({navbarData}: NavbarProps) {
         </div>
         <ul className={'navigationLinksList'}>
           <li>bio</li>
-          <li>archives</li>
-          <li>timeline</li>
-          <li>podcasts</li>
+          <li>courses</li>
+          <li>shows</li>
+          <li>podcast</li>
+          <li>tours</li>
+          <li>press</li>
+          <li>contact</li>
         </ul>
     </div>
   )

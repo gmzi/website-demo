@@ -10,6 +10,7 @@
     --primary-background: #f8f8ff;
     --color-hover: underline 3px solid #0000ffc9;
     --color-bg-hover: rgba(175, 184, 194, 0.535);
+    --color-border-bottom: 1px solid rgba(217, 217, 233, 0.438);
 }
 
 /* Color for dark theme */
@@ -19,6 +20,7 @@
         --primary-background: #303032;
         --color-bg-hover: rgba(79, 83, 89, 0.535);
         --color-hover: underline 3px solid #B798FF;
+        --color-border-bottom: 1px solid rgba(178, 178, 192, 0.124);
     }
 }
 
@@ -41,11 +43,12 @@
 
 
 .navbarContainer {
-    border: 1px solid red;
+    border-bottom: var(--color-border-bottom);
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+    padding: .5em 1em;
 }
 
 .socialContainer {
@@ -64,7 +67,7 @@
 
 .navigationLinksList li,
 .socialContainer li {
-    margin: 0em 1em;
+    margin-right: .5em;
     list-style: none;
 }
 /* ---------------------------------------- */
@@ -72,7 +75,6 @@
 /* LOGO */
 .logoContainer { 
     border-radius: 3px;
-    padding: .8rem .2rem;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
