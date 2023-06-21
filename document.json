@@ -1,0 +1,10 @@
+{
+    "_id": {
+        "$oid": "647104b69e481ba6474e78bb"
+    },
+    "name": "bio",
+    "content_html": "<p>heres Bio document, in prod!!!!</p>",
+    "image_1_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1687379968/website-fer/about/zngp5hpy0hox2ngsoknn.jpg",
+    "image_2_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1687379968/website-fer/about/zngp5hpy0hox2ngsoknn.jpg",
+    "image_3_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1687379968/website-fer/about/zngp5hpy0hox2ngsoknn.jpg"
+}

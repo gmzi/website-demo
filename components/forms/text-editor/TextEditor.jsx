@@ -13,7 +13,7 @@ import MenuBar from './MenuBar'
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL
 const DATA_API_KEY = process.env.NEXT_PUBLIC_DATA_API_KEY
 
-
+// ADD STRING PROP: DOCUMENT, AND PASS THAT IN API CALL SO THE ROUTE KNOWS WHERE TO SAVE A DOCUMENT
 const TextEditor = ({contentHtml}) => {
 
   const [cleanHtmlContent, setCleanHtmlContent] = useState(contentHtml);

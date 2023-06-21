@@ -4,7 +4,7 @@ import { getData } from "@/lib/getData"
 import parse from 'html-react-parser'
 
 export const metadata: Metadata = {
-    title: 'About',
+    title: 'Home',
     description: 'dramaturgo, director, docente y actor',
 }
 
@@ -16,7 +16,7 @@ export default async function AboutPage() {
 
     return (
         <section className='sectionAbout'>
-            <h1>Bio</h1>
+            <h1>Hi, I&apos;m John</h1>
             <div>
                 <div className='imgContainer'>
                     <Image

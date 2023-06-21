@@ -6,6 +6,7 @@ import Image from "next/image";
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
+// ADD TWO STRING PROPS: DOCUMENT AND FOLDER
 export default function ImageUpload({imageUrl}) {
 
     const [file, setFile] = useState()

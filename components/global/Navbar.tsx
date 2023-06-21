@@ -62,6 +62,7 @@ export async function Navbar() {
                 ) : (
                 <li>{name}</li>
                 )}
+                {/* <li>{name}</li> */}
               </Link>
             )
           })}
