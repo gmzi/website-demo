@@ -7,15 +7,19 @@ interface Data {
     content_html: string;
 }
 
-export function HomePage({image_url, content_html}: Data){   
+export async function HomePage(){  
 
-    const text = parse(content_html)
+    const data = await getData("about")
+
+    const text = parse(data.content_html) || '';
+
+    const imageUrl = data.image_url || '';
 
     return (
         <main>
             <section>
                 <Image
-                    src={image_url}
+                    src={imageUrl}
                     width={0}
                     height={0}
                     sizes="100vw"
