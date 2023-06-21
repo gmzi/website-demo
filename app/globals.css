@@ -55,13 +55,13 @@ main {
   padding: .5em 1em;
 }
 
-.socialContainer {
+.social {
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.socialContainer svg {
+.social svg {
     color: var(--primary-color);
 }
 
@@ -70,7 +70,7 @@ main {
 }
 
 .navigationLinksList li,
-.socialContainer li {
+.social li {
     margin-right: .5em;
     list-style: none;
 }

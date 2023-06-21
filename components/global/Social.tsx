@@ -21,8 +21,7 @@ const Social = async function Social(){
       const socialData:SocialData[] = localData.social!
 
     return (
-        <ul className={'socialContainer'}>
-            <h4>Find me on:</h4>
+        <ul className={'social'}>
             {socialData.map((item, index) => (
                 <li key={index}>
                     <a href={item.url} rel="noopener noreferrer" target="_blank">{
