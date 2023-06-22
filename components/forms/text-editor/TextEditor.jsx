@@ -58,8 +58,9 @@ const TextEditor = ({contentHtml, document, section}) => {
     const content = {
       content_html: cleanHtmlContent,
       document: document,
-      section: section
     }
+
+    // a saving status would go here
 
     const saved = await fetch(`${BASE_URL}/server/text`, {
       method: 'PATCH',
@@ -71,18 +72,36 @@ const TextEditor = ({contentHtml, document, section}) => {
       body: JSON.stringify(content)
     })
 
-    const isSaved = await saved.json()
+    if (!saved.ok){
+      console.log('failed saving new text:')
+      console.log(saved)
+      return;
+    }
 
-    console.log(isSaved)
+    // a revalidating status would go here
+
+    // CALLING REVALIDATION FROM CLIENT BECAUSE OF THIS ISSUE WITH FETCH REQUESTS
+    // FROM /APP/SERVER/REVALIDATE: https://github.com/nodejs/undici/issues/1248
+
+
+    let personalPath = `/(personal)/${section}`;
+    if (section === '/'){
+      personalPath = '/';
+    }
+    const revalidatePersonal = await fetch(`${BASE_URL}/server/revalidate?path=${personalPath}`)
 
     const editorPath = '/(editor)/editor/[index]';
-
     const revalidateEditor = await fetch(`${BASE_URL}/server/revalidate?path=${editorPath}`)
-    
-    const isEditorRevalidated = await revalidateEditor.json()
 
-    console.log(isEditorRevalidated)
-    
+    if (!revalidatePersonal.ok || !revalidateEditor.ok){
+      console.log('revalidation didnt go well:')
+      console.log(revalidatePersonal)
+      console.log(revalidateEditor)
+      return;
+    }
+
+    // a 'success' status would go here
+
     return;
   }
 

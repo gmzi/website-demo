@@ -7,14 +7,15 @@ import { getData } from '@/lib/getData'
 
   
 export default async function EditorPage() {
-  const data = await getData("about")
-  const imageUrl = data.image_url
-  const contentHtml = data.content_html;
+  // const data = await getData("about")
+  // const imageUrl = data.image_url
+  // const contentHtml = data.content_html;
   
   return (
     <div>
-      <TextEditor contentHtml={contentHtml}/>
-      <ImageUpload imageUrl={imageUrl}/>
+      {/* <TextEditor contentHtml={contentHtml}/>
+      <ImageUpload imageUrl={imageUrl}/> */}
+      <p>a Dashboard would go here</p>
     </div>
   )
 }

@@ -29,7 +29,6 @@ export async function PATCH(req:Request, res: Response) {
     const data = await req.json()
 
     const document = data.document
-    const section = data.section
 
     const indexes = Object.entries(navItems).map(([path, {name}]) => name)
     const matchesIndex = indexes.find((index) => index === document);
@@ -44,12 +43,6 @@ export async function PATCH(req:Request, res: Response) {
         console.log(update)
         return NextResponse.json({error: 'text update failed on DB'}, {status: 500})
     }
-
-    // const editorPath = `/(editor)/editor/[index]`
-    // revalidatePath(editorPath)
-
-    const personalSection = `/(personal)/${section}`;
-    revalidatePath(personalSection)
 
     return NextResponse.json({message: 'success'}, {status: 200});
     } catch(e) {

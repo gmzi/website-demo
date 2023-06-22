@@ -6,6 +6,7 @@ import ImageUpload from '../../../../components/forms/ImageUpload'
 import { getData } from '@/lib/getData'
 import { notFound } from 'next/navigation';
 import { navItems } from '@/lib/navItems';
+import About from '@/components/editors/About';
 import Bio from '@/components/editors/Bio'
 import Courses from '@/components/editors/Courses'
 
@@ -26,6 +27,8 @@ export default async function EditorPage({ params }: { params: { index: string }
     notFound();
   }
   
+  {/* @ts-expect-error Server Component */}
+  if (index === 'about') return <About/>
   {/* @ts-expect-error Server Component */}
   if (index === 'bio') return <Bio/>
   {/* @ts-expect-error Server Component */}
