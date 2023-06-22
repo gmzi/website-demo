@@ -44,11 +44,11 @@ export async function PATCH(req:Request, res: Response) {
         return NextResponse.json({error: 'text update failed on DB'}, {status: 500})
     }
 
-    const clientSection = `/${section}`;
-    revalidatePath(clientSection)
+    const personalSection = `/(personal)/${section}/page`;
+    revalidatePath(personalSection)
 
-    // const editorSection = `editor/${section}`
-    // revalidatePath(editorSection)
+    const editorSection = `(editor)/editor/[index]/page`
+    revalidatePath(editorSection)
     
     return NextResponse.json({message: 'success, revalidated?'}, {status: 200});
     } catch(e) {

@@ -19,7 +19,6 @@ function Logo() {
 export async function Navbar() {
 
   let pathname = usePathname() || '/';
-  console.log(pathname)
 
   return (
     <div className={'navbarContainer'}>
