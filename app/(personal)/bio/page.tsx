@@ -11,7 +11,6 @@ export const metadata: Metadata = {
 export default async function BioPage() {
     
     const data = await getData("bio");
-    // this section should have: image_1_url, image_2_url, image_3_url, content_html.
 
     const text = parse(data?.content_html) || '';
     const image1Url = data?.image_1_url || '';

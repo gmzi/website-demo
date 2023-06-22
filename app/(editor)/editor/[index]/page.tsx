@@ -1,5 +1,5 @@
 // example path:
-// http://localhost:3000/editor/my-slug
+// http://localhost:3000/editor/bio
 
 import TextEditor from '../../../../components/forms/text-editor/TextEditor'
 import ImageUpload from '../../../../components/forms/ImageUpload'
