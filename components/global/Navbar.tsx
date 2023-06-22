@@ -2,31 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-
-
-const navItems = {
-  '/bio': {
-    name: 'bio',
-  },
-  '/courses': {
-    name: 'courses',
-  },
-  '/shows': {
-    name: 'shows',
-  },
-  '/podcast': {
-    name: 'podcast',
-  },
-  '/tours': {
-    name: 'tours',
-  },
-  '/press': {
-    name: 'press',
-  },
-  '/contact': {
-    name: 'contact',
-  },
-};
+import { navItems } from '@/lib/navItems';
 
 function Logo() {
   return (
@@ -43,6 +19,7 @@ function Logo() {
 export async function Navbar() {
 
   let pathname = usePathname() || '/';
+  console.log(pathname)
 
   return (
     <div className={'navbarContainer'}>

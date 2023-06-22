@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import { updateText } from '../../../lib/updateText'
 import { revalidatePath } from 'next/cache'
+import { navItems } from '@/lib/navItems';
 
 const DATA_API_KEY = process.env.DATA_API_KEY
 
@@ -26,15 +27,30 @@ export async function PATCH(req:Request, res: Response) {
 
     const data = await req.json()
 
-    const update = await updateText("about", data)
+    const document = data.document
+    const section = data.section
 
-    if (!update) {
-        return NextResponse.json({message: 'text update failed on DB'}, {status: 500})
+    const indexes = Object.entries(navItems).map(([path, {name}]) => name)
+    const matchesIndex = indexes.find((index) => index === document);
+
+    if (!matchesIndex){
+        return NextResponse.json({error: 'document does not match section'}, {status: 500})
     }
 
-    const path = '/';
-    revalidatePath(path)
-    return NextResponse.json({message: 'success'}, {status: 200});
+    const update = await updateText(document, data)
+
+    if (!update) {
+        console.log(update)
+        return NextResponse.json({error: 'text update failed on DB'}, {status: 500})
+    }
+
+    const clientSection = `/${section}`;
+    revalidatePath(clientSection)
+
+    // const editorSection = `editor/${section}`
+    // revalidatePath(editorSection)
+    
+    return NextResponse.json({message: 'success, revalidated?'}, {status: 200});
     } catch(e) {
         console.log(e)
         return NextResponse.json({message: 'error on api/text'}, {status: 500});

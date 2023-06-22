@@ -36,6 +36,34 @@ export default async function BioPage() {
                         }}
                         alt="Picture of the author"
                     />
+                    <Image
+                        src={image2Url}
+                        width={0}
+                        height={0}
+                        sizes="100vw"
+                        style={{
+                            width: '30%', 
+                            height: 'auto', 
+                            borderRadius: '5px', 
+                            float: 'left',
+                            marginRight: '1em',
+                        }}
+                        alt="Picture of the author"
+                    />
+                    <Image
+                        src={image3Url}
+                        width={0}
+                        height={0}
+                        sizes="100vw"
+                        style={{
+                            width: '30%', 
+                            height: 'auto', 
+                            borderRadius: '5px', 
+                            float: 'left',
+                            marginRight: '1em',
+                        }}
+                        alt="Picture of the author"
+                    />
                 </div>
                 {text}
             </div>

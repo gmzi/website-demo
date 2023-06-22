@@ -14,7 +14,7 @@ const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL
 const DATA_API_KEY = process.env.NEXT_PUBLIC_DATA_API_KEY
 
 // ADD STRING PROP: DOCUMENT, AND PASS THAT IN API CALL SO THE ROUTE KNOWS WHERE TO SAVE A DOCUMENT
-const TextEditor = ({contentHtml}) => {
+const TextEditor = ({contentHtml, document, section}) => {
 
   const [cleanHtmlContent, setCleanHtmlContent] = useState(contentHtml);
   const [copied, setCopied] = useState(false)
@@ -56,7 +56,9 @@ const TextEditor = ({contentHtml}) => {
   const handleSave = async() => {
 
     const content = {
-      content_html: cleanHtmlContent
+      content_html: cleanHtmlContent,
+      document: document,
+      section: section
     }
 
     const saved = await fetch(`${BASE_URL}/server/text`, {
@@ -68,11 +70,8 @@ const TextEditor = ({contentHtml}) => {
       referrerPolicy: 'no-referrer',
       body: JSON.stringify(content)
     })
-
-    // const saved = await saveToDB(document)
-    // if (!saved){
-    //   console.log('ups')
-    // }
+    const isSaved = await saved.json()
+    console.log(isSaved)
     return;
   }
 
