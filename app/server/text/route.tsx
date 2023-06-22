@@ -4,6 +4,7 @@ import { revalidatePath } from 'next/cache'
 import { navItems } from '@/lib/navItems';
 
 const DATA_API_KEY = process.env.DATA_API_KEY
+const BASE_URL = process.env.BASE_URL;
 
 export async function GET(){
     try{ 
@@ -44,13 +45,13 @@ export async function PATCH(req:Request, res: Response) {
         return NextResponse.json({error: 'text update failed on DB'}, {status: 500})
     }
 
-    const personalSection = `/(personal)/${section}/page`;
+    // const editorPath = `/(editor)/editor/[index]`
+    // revalidatePath(editorPath)
+
+    const personalSection = `/(personal)/${section}`;
     revalidatePath(personalSection)
 
-    const editorSection = `(editor)/editor/[index]/page`
-    revalidatePath(editorSection)
-    
-    return NextResponse.json({message: 'success, revalidated?'}, {status: 200});
+    return NextResponse.json({message: 'success'}, {status: 200});
     } catch(e) {
         console.log(e)
         return NextResponse.json({message: 'error on api/text'}, {status: 500});

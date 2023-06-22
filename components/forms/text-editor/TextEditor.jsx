@@ -70,8 +70,19 @@ const TextEditor = ({contentHtml, document, section}) => {
       referrerPolicy: 'no-referrer',
       body: JSON.stringify(content)
     })
+
     const isSaved = await saved.json()
+
     console.log(isSaved)
+
+    const editorPath = '/(editor)/editor/[index]';
+
+    const revalidateEditor = await fetch(`${BASE_URL}/server/revalidate?path=${editorPath}`)
+    
+    const isEditorRevalidated = await revalidateEditor.json()
+
+    console.log(isEditorRevalidated)
+    
     return;
   }
 
