@@ -85,9 +85,11 @@ const TextEditor = ({contentHtml, document, section}) => {
 
 
     let personalPath = `/(personal)/${section}`;
+
     if (section === '/'){
       personalPath = '/';
     }
+
     const revalidatePersonal = await fetch(`${BASE_URL}/server/revalidate?path=${personalPath}`)
 
     const editorPath = '/(editor)/editor/[index]';
@@ -101,6 +103,8 @@ const TextEditor = ({contentHtml, document, section}) => {
     }
 
     // a 'success' status would go here
+    console.log('reval personal:', revalidatePersonal)
+    console.log('reval editor:', revalidateEditor)
 
     return;
   }
