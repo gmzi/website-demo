@@ -168,7 +168,16 @@ export default function ImageUpload({imageUrl, document, folder, entry, section}
         }
 
         console.log('image url emptied on DB: ')
-        console.log(updateDB)
+
+        // revalidation goes here:
+        const editorRevalidation = await revalidateEditorPage(BASE_URL);
+        const personalRevalidation = await revalidatePersonalPage(section, BASE_URL);
+
+        console.log('Image uploader revalidated editor:', editorRevalidation)
+        console.log('Image uploader revalidated personal:', personalRevalidation)
+
+        console.log('editor revalidated')
+        console.log('personal revalidated')
 
         setData(null)
         setFile(null)
@@ -195,22 +204,24 @@ export default function ImageUpload({imageUrl, document, folder, entry, section}
     return (
         <>
             {status ? <p>{status}</p> : null}
-            {data && 
+
             <div className={"uploadContainer"}>
-                <Image
-                    src={data}
-                    width={0}
-                    height={0}
-                    sizes="100vw"
-                    style={{width: '40%', height: 'auto'}}
-                    alt="uploaded image"
-                />
+                {data ? (
+                    <Image
+                        src={data}
+                        width={0}
+                        height={0}
+                        sizes="100vw"
+                        style={{width: '40%', height: 'auto'}}
+                        alt="uploaded image"
+                    />
+                ): <p>no image</p>}
                 <div>
                     <button onClick={handleSaveImageUrl}>save to server</button>
                     <button onClick={handleDeleteImage}>delete</button>
                 </div>
             </div>  
-            }
+            
             <div className={"uploadContainer"}>
                 <h4>{text.uploadForm.addImages}</h4>
                 <form className={"uploadForm"} id="myForm" method="POST" encType="multipart/form-data" onSubmit={handleSubmit}>
