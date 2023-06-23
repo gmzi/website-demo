@@ -15,7 +15,7 @@ export default function ImageUpload({imageUrl, document, folder, entry, section}
     const [file, setFile] = useState()
     const [caption, setCaption] = useState("")
     const [data, setData] = useState(imageUrl)
-    const [imageID, setImageID] = useState()
+    const [imageID, setImageID] = useState(imageUrl.match(`${IMAGE_MAIN_FOLDER}.+`)[0])
     const [status, setStatus] = useState();
 
     const handleFileChange = async (e) => {
@@ -37,6 +37,7 @@ export default function ImageUpload({imageUrl, document, folder, entry, section}
             console.log('file oversized, max file size 4mb')
             return;
         }
+
         setStatus("loading...")
 
         // setStatus({alert: "messageAlert", message: "uploading..."})
@@ -61,6 +62,7 @@ export default function ImageUpload({imageUrl, document, folder, entry, section}
             return;
         }
         const image = await upload.json();
+
         const imageUrl = image.metadata.secure_url;
         const imageID = image.metadata.public_id;
         setData(imageUrl)

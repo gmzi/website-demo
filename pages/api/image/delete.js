@@ -6,6 +6,8 @@ const CLOUDINARY_CLOUD_NAME= process.env.CLOUDINARY_CLOUD_NAME;
 const CLOUDINARY_API_KEY= process.env.CLOUDINARY_API_KEY;
 const CLOUDINARY_API_SECRET= process.env.CLOUDINARY_API_SECRET;
 
+const IMAGE_MAIN_FOLDER=process.env.IMAGE_MAIN_FOLDER;
+
 cloudinary.config({
     cloud_name: CLOUDINARY_CLOUD_NAME,
     api_key: CLOUDINARY_API_KEY,
@@ -27,17 +29,21 @@ export default async function handler(req, res) {
 
         const {imageID} = data;
 
-        // const image = 'blog-reflexion/logos/nloo0aq1hbpl9fhlnpx0';
+        const imagePublicID = imageID.replace(/\..+$/, '');
 
-        const deleted = await cloudinary.uploader.destroy(imageID);
+        const trashDestination = `${IMAGE_MAIN_FOLDER}/trash/${imagePublicID.replace(`${IMAGE_MAIN_FOLDER}/`, "")}`;
+        // example from : 'website-fer/about/i4ey8istvgaphyohjupc';
+        // example to : 'website-fer/trash/about/i4ey8istvgaphyohjupc'
 
-        res.status(200).json({message: deleted})
+        const moveToTrash = await cloudinary.uploader.rename(imagePublicID, trashDestination)
+
+        if (!moveToTrash.asset_id){
+            res.status(404).json({message: "failed to trash image"})
+        }
+        res.status(200).json({message: 'image moved to trash'})
     } catch(e){
+        console.log(e)
         res.status(500).json({error: e.message})
-    }
-
-    // TO DELETE, GRAB public_id FROM IMAGE OBJECT
-
-    
+    }    
 }
 
