@@ -13,15 +13,12 @@ const IMAGE_MAIN_FOLDER = process.env.NEXT_PUBLIC_IMAGE_MAIN_FOLDER;
 // ADD TWO STRING PROPS: DOCUMENT AND FOLDER
 export default function ImageUpload({imageUrl, document, folder, entry, section}) {
 
-    const [file, setFile] = useState()
     const [data, setData] = useState(imageUrl)
     const [status, setStatus] = useState();
 
     const handleFileChange = async (e) => {
         e.preventDefault();
         const file = e.target.files[0];
-
-        setFile(file)
 
         if (!file){
             // setStatus({ alert: "default", message: `${text.uploadForm.fileMissing}`})
@@ -63,7 +60,6 @@ export default function ImageUpload({imageUrl, document, folder, entry, section}
         const imageUrl = image.metadata.secure_url;
         setData(imageUrl)
         setStatus(null)
-        setFile(null)
     }
 
     const handleSaveImageUrl = async (e) => {
@@ -104,7 +100,6 @@ export default function ImageUpload({imageUrl, document, folder, entry, section}
         console.log('image is saved to DB')
 
         setStatus(null)
-        setFile(null)
 
     }
 
@@ -163,7 +158,6 @@ export default function ImageUpload({imageUrl, document, folder, entry, section}
         console.log('personal revalidated')
 
         setData(null)
-        setFile(null)
     }
 
     const handleOK = () => {
