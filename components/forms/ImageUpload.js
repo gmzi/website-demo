@@ -5,7 +5,6 @@ import { data, text } from '../../lib/data';
 import Image from "next/image";
 import { revalidateEditorPage } from "@/lib/revalidateEditorPage";
 import { revalidatePersonalPage } from "@/lib/revalidatePersonalPage";
-import {fetchDbToUpdate} from '@/lib/fetchDBtoUpdate'
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 const IMAGE_MAIN_FOLDER = process.env.NEXT_PUBLIC_IMAGE_MAIN_FOLDER;
@@ -160,14 +159,22 @@ export default function ImageUpload({imageUrl, document, folder, entry, section}
             entryName: entry
         }
 
-        const updateDB = await fetchDbToUpdate(BASE_URL, dataToUpdate)
+        // const updateDB = await fetchDbToUpdate(BASE_URL, dataToUpdate)
+        const updateDB = await fetch(`${BASE_URL}/server/image`, {
+            method: 'POST', 
+            headers: {
+                'Content-Type': 'application/json'
+            }, 
+            body: JSON.stringify(dataToUpdate)
+        })
 
         if(!updateDB){
             console.log('failed tu update DB')
             console.log(updateDB)
+            return;
         }
 
-        console.log('image url emptied on DB: ')
+        console.log('image url updated to empty')
 
         // revalidation goes here:
         const editorRevalidation = await revalidateEditorPage(BASE_URL);
