@@ -1,3 +1,9 @@
+
+/* ------------------------------------------------
+    THIS ROUTE IS DEPRECATED
+    
+--------------------------------------------------*/
+
 // example path:
 // http://localhost:3000/editor/bio
 
@@ -27,11 +33,20 @@ export default async function EditorPage({ params }: { params: { index: string }
     notFound();
   }
   
-  {/* @ts-expect-error Server Component */}
-  if (index === 'about') return <About/>
-  {/* @ts-expect-error Server Component */}
-  if (index === 'bio') return <Bio/>
-  {/* @ts-expect-error Server Component */}
-  if (index === 'courses') return <Courses/>
+  // {/* @ts-expect-error Server Component */}
+  // if (index === 'about') return <About/>
+  // {/* @ts-expect-error Server Component */}
+  // if (index === 'bio') return <Bio/>
+  // {/* @ts-expect-error Server Component */}
+  // if (index === 'courses') return <Courses/>
+
+  return (
+    <>
+      <p>this route is deprectated </p>
+      <p>/(editor)/editor/[index]/page</p>
+    </>
+    
+  )
+
 }
   
