@@ -5,7 +5,8 @@ import { getData } from "@/lib/getData";
 export default async function About(){
     const data = await getData("about");
     const documentName = "about";
-    const sectionName = "/"
+    const sectionName = "/";
+    const folderName = "about";
 
     const imageUrl = data.image_url;
     const contentHtml = data.content_html;
@@ -13,7 +14,7 @@ export default async function About(){
     return (
         <div>
             <TextEditor contentHtml={contentHtml} document={documentName} section={sectionName}/>
-            <ImageUpload imageUrl={imageUrl}/>
+            <ImageUpload imageUrl={imageUrl} document={documentName} folder={folderName} entry={'image_url'} section={sectionName}/>
         </div>
     )
 }

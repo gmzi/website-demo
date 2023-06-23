@@ -8,6 +8,7 @@ export default async function Bio() {
     const data = await getData("bio")
     const documentName = "bio"
     const sectionName = "bio"
+    const folderName="bio"
 
     const contentHtml = data.content_html;
     const image1Url = data?.image_1_url || '';
@@ -18,9 +19,9 @@ export default async function Bio() {
         <div>
             <h1>tis is component editor Bio!!</h1>
             <TextEditor contentHtml={contentHtml} document={documentName} section={sectionName}/>
-            <ImageUpload imageUrl={image1Url}/>
-            <ImageUpload imageUrl={image2Url}/>
-            <ImageUpload imageUrl={image3Url}/>
+            <ImageUpload imageUrl={image1Url} document={documentName} folder={folderName} entry={'image_1_url'} section={sectionName}/>
+            <ImageUpload imageUrl={image2Url} document={documentName} folder={folderName} entry={'image_2_url'} section={sectionName}/>
+            <ImageUpload imageUrl={image3Url} document={documentName} folder={folderName} entry={'image_3_url'} section={sectionName}/>
         </div>
     )
   }

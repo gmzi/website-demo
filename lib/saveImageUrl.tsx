@@ -2,15 +2,16 @@ import { connectToDatabase } from "./mongodb-config";
 
 const MONGODB_COLLECTION = process.env.MONGODB_COLLECTION;
 
-export async function saveImageUrl(document:string, image_url: string){
+export async function saveImageUrl(document:string, entry: string, image_url: string){
     try {
         const {db} = await connectToDatabase()
 
         const filter = {"name": document}
 
+
         const updateDocument = {
             $set: {
-                image_url: image_url,
+                [entry]: image_url,
             }
         }
 
@@ -18,12 +19,11 @@ export async function saveImageUrl(document:string, image_url: string){
             .collection(MONGODB_COLLECTION)
             .updateOne(filter, updateDocument)
 
-        if (update){
-            return update;
-        } else {
-            const error = new Error('failed saving document')
-            throw error
+        if (!update.modifiedCount){
+            return false
         }
+
+        return true;
 
     } catch(e) {
         console.log(e)

@@ -3,11 +3,14 @@
 import { useState } from "react";
 import { data, text } from '../../lib/data';
 import Image from "next/image";
+import { revalidateEditorPage } from "@/lib/revalidateEditorPage";
+import { revalidatePersonalPage } from "@/lib/revalidatePersonalPage";
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
+const IMAGE_MAIN_FOLDER = process.env.IMAGE_MAIN_FOLDER;
 
 // ADD TWO STRING PROPS: DOCUMENT AND FOLDER
-export default function ImageUpload({imageUrl}) {
+export default function ImageUpload({imageUrl, document, folder, entry, section}) {
 
     const [file, setFile] = useState()
     const [caption, setCaption] = useState("")
@@ -39,9 +42,14 @@ export default function ImageUpload({imageUrl}) {
         // setStatus({alert: "messageAlert", message: "uploading..."})
 
         const formData = new FormData();
-        const folder = "website-fer/about"
+
+        // CHECK IF FOLDER PASSING THROUGH IS WORKING WELL, HERE AND ON /PAGES/API/IMAGE/UPLOAD. I
+        // JUST CREATED 'BIO' FOLDER, MAYBE IT WAS JUST THAT, TRY UPLOADING A COUPLE OF IMAGES AND CHECK
+        // FI THEY-RE SAVED TO CLOUDINARY.
+
+        const folderName = `${IMAGE_MAIN_FOLDER}/${folder}`
         formData.append("file", file);
-        formData.append("folder", folder)
+        formData.append("folder", folderName)
 
         // UPLOAD IMAGE:
         const upload = await fetch(`${BASE_URL}/api/image/upload`, {
@@ -95,10 +103,11 @@ export default function ImageUpload({imageUrl}) {
 
         const dataToSave = {
             imageUrl: data,
-            documentName: "about"
+            documentName: document,
+            entryName: entry
         }
 
-        // SAVE IMAGE URL TO DATABASE:
+        // SAVE IMAGE URL TO DATABASE, for this I need passed from parent: document, imageUrl, object_key(image_X_url)
         const saveData = await fetch(`${BASE_URL}/server/image`, {
             method: 'POST',
             headers: {
@@ -106,8 +115,20 @@ export default function ImageUpload({imageUrl}) {
             },
             body: JSON.stringify(dataToSave)
         })
+
+        if (!saveData.ok){
+            console.log('image is uploaded, but failed to save on DB')
+            console.log(saveData)
+            return;
+        }
+
+        // revalidation goes here:
+        const editorRevalidation = await revalidateEditorPage(BASE_URL);
+        const personalRevalidation = await revalidatePersonalPage(section, BASE_URL);
+
         setStatus(null)
         setFile(null)
+        console.log('image is saved to DB')
     }
 
     const handleDeleteImage = async(e) => {

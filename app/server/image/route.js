@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server'
 import {saveImageUrl} from '../../../lib/saveImageUrl'
 import { revalidatePath } from 'next/cache'
+import {revalidatePersonalPage} from '@/lib/revalidatePersonalPage'
+import {revalidateEditorPage} from '@/lib/revalidateEditorPage'
 
 const IMAGE_UPLOADER_URL = process.env.IMAGE_UPLOADER_URL;
 const BASE_URL = process.env.BASE_URL;
@@ -33,16 +35,14 @@ export async function POST(
           return NextResponse.json({error: 'req body is incomplete'}, {status: 500});
         }
 
-        const {imageUrl, documentName} = data;
+        const {documentName, entryName, imageUrl} = data;
 
-        const saveImageInDB = await saveImageUrl(documentName, imageUrl)
+        const saveImageInDB = await saveImageUrl(documentName, entryName, imageUrl)
 
-        if (!saveImageInDB.acknowledged){
+        if (!saveImageInDB){
+          console.log('image failed to save')
           return NextResponse.json({message: "DB failed to save image URL"}, {status: 500})
         }
-        // revalidation goes here
-        const path = '/';
-        revalidatePath(path)
 
         return NextResponse.json({status: 200})
     } catch (e){
