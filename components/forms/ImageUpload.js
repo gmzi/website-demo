@@ -7,7 +7,7 @@ import { revalidateEditorPage } from "@/lib/revalidateEditorPage";
 import { revalidatePersonalPage } from "@/lib/revalidatePersonalPage";
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
-const IMAGE_MAIN_FOLDER = process.env.IMAGE_MAIN_FOLDER;
+const IMAGE_MAIN_FOLDER = process.env.NEXT_PUBLIC_IMAGE_MAIN_FOLDER;
 
 // ADD TWO STRING PROPS: DOCUMENT AND FOLDER
 export default function ImageUpload({imageUrl, document, folder, entry, section}) {
@@ -43,11 +43,8 @@ export default function ImageUpload({imageUrl, document, folder, entry, section}
 
         const formData = new FormData();
 
-        // CHECK IF FOLDER PASSING THROUGH IS WORKING WELL, HERE AND ON /PAGES/API/IMAGE/UPLOAD. I
-        // JUST CREATED 'BIO' FOLDER, MAYBE IT WAS JUST THAT, TRY UPLOADING A COUPLE OF IMAGES AND CHECK
-        // FI THEY-RE SAVED TO CLOUDINARY.
-
         const folderName = `${IMAGE_MAIN_FOLDER}/${folder}`
+
         formData.append("file", file);
         formData.append("folder", folderName)
 
