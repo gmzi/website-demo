@@ -123,8 +123,12 @@ export default function ImageUpload({imageUrl, document, folder, entry, section}
         const editorRevalidation = await revalidateEditorPage(BASE_URL);
         const personalRevalidation = await revalidatePersonalPage(section, BASE_URL);
 
+        console.log('Image uploader revalidated editor:', editorRevalidation)
+        console.log('Image uploader revalidated personal:', personalRevalidation)
+
         setStatus(null)
         setFile(null)
+
         console.log('image is saved to DB')
     }
 

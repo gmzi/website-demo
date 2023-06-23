@@ -9,6 +9,8 @@ import TextStyle from '@tiptap/extension-text-style'
 import { EditorContent, useEditor } from '@tiptap/react'
 import StarterKit from '@tiptap/starter-kit'
 import MenuBar from './MenuBar'
+import { revalidateEditorPage } from '@/lib/revalidateEditorPage'
+import { revalidatePersonalPage } from '@/lib/revalidatePersonalPage'
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL
 const DATA_API_KEY = process.env.NEXT_PUBLIC_DATA_API_KEY
@@ -78,34 +80,14 @@ const TextEditor = ({contentHtml, document, section}) => {
       return;
     }
 
-    // a revalidating status would go here
+    // revalidation goes here:
+    const editorRevalidation = await revalidateEditorPage(BASE_URL);
+    const personalRevalidation = await revalidatePersonalPage(section, BASE_URL);
 
-    // CALLING REVALIDATION FROM CLIENT BECAUSE OF THIS ISSUE WITH FETCH REQUESTS
-    // FROM /APP/SERVER/REVALIDATE: https://github.com/nodejs/undici/issues/1248
-
-
-    let personalPath = `/(personal)/${section}`;
-
-    if (section === '/'){
-      personalPath = '/';
-    }
-
-    const revalidatePersonal = await fetch(`${BASE_URL}/server/revalidate?path=${personalPath}`)
-
-    // const editorPath = '/(editor)/editor/[index]';
-    const editorPath = '/(editor)/editor';
-    const revalidateEditor = await fetch(`${BASE_URL}/server/revalidate?path=${editorPath}`)
-
-    if (!revalidatePersonal.ok || !revalidateEditor.ok){
-      console.log('revalidation didnt go well:')
-      console.log(revalidatePersonal)
-      console.log(revalidateEditor)
-      return;
-    }
+    console.log('Text editor revalidated editor:', editorRevalidation)
+    console.log('Text editor revalidated personal:', personalRevalidation)
 
     // a 'success' status would go here
-    console.log('reval personal:', revalidatePersonal)
-    console.log('reval editor:', revalidateEditor)
 
     return;
   }
