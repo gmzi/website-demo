@@ -92,7 +92,9 @@ const TextEditor = ({contentHtml, document, section}) => {
 
     const revalidatePersonal = await fetch(`${BASE_URL}/server/revalidate?path=${personalPath}`)
 
-    const editorPath = '/(editor)/editor/[index]';
+    // const editorPath = '/(editor)/editor/[index]';
+    // app/(editor)/editor/page.tsx
+    const editorPath = '/(editor)/editor';
     const revalidateEditor = await fetch(`${BASE_URL}/server/revalidate?path=${editorPath}`)
 
     if (!revalidatePersonal.ok || !revalidateEditor.ok){
