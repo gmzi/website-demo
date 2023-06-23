@@ -5,6 +5,7 @@ import { data, text } from '../../lib/data';
 import Image from "next/image";
 import { revalidateEditorPage } from "@/lib/revalidateEditorPage";
 import { revalidatePersonalPage } from "@/lib/revalidatePersonalPage";
+import { EmptyImageIcon } from "../shared/icons";
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 const IMAGE_MAIN_FOLDER = process.env.NEXT_PUBLIC_IMAGE_MAIN_FOLDER;
@@ -13,7 +14,6 @@ const IMAGE_MAIN_FOLDER = process.env.NEXT_PUBLIC_IMAGE_MAIN_FOLDER;
 export default function ImageUpload({imageUrl, document, folder, entry, section}) {
 
     const [file, setFile] = useState()
-    const [caption, setCaption] = useState("")
     const [data, setData] = useState(imageUrl)
     const [status, setStatus] = useState();
 
@@ -38,8 +38,6 @@ export default function ImageUpload({imageUrl, document, folder, entry, section}
         }
 
         setStatus("loading...")
-
-        // setStatus({alert: "messageAlert", message: "uploading..."})
 
         const formData = new FormData();
 
@@ -68,27 +66,6 @@ export default function ImageUpload({imageUrl, document, folder, entry, section}
         setFile(null)
     }
 
-    const handleCaptionChange = (e) => {
-        e.preventDefault()
-        const caption = e.target.value;
-        setCaption(caption)
-    }
-
-    const handleSubmit = async (e) => {
-        e.preventDefault()
-        if (!file){
-            console.log('no image file attached')
-            // setStatus({ alert: "default", message: `${text.uploadForm.fileMissing}`})
-            return;
-        }
-        // const upload = await fetch(`${BASE_URL}/server/image`, {
-        //     method: 'POST',
-        //     body: formData
-        // })
-        setStatus(null)
-        setFile(null)
-    }
-
     const handleSaveImageUrl = async (e) => {
         e. preventDefault();
 
@@ -103,7 +80,7 @@ export default function ImageUpload({imageUrl, document, folder, entry, section}
             entryName: entry
         }
 
-        // SAVE IMAGE URL TO DATABASE, for this I need passed from parent: document, imageUrl, object_key(image_X_url)
+        // SAVE IMAGE URL TO DATABASE:
         const saveData = await fetch(`${BASE_URL}/server/image`, {
             method: 'POST',
             headers: {
@@ -118,17 +95,17 @@ export default function ImageUpload({imageUrl, document, folder, entry, section}
             return;
         }
 
-        // revalidation goes here:
+        // REVALIDATE PAGE:
         const editorRevalidation = await revalidateEditorPage(BASE_URL);
         const personalRevalidation = await revalidatePersonalPage(section, BASE_URL);
 
         console.log('Image uploader revalidated editor:', editorRevalidation)
         console.log('Image uploader revalidated personal:', personalRevalidation)
+        console.log('image is saved to DB')
 
         setStatus(null)
         setFile(null)
 
-        console.log('image is saved to DB')
     }
 
     const handleDeleteImage = async(e) => {
@@ -159,7 +136,6 @@ export default function ImageUpload({imageUrl, document, folder, entry, section}
             entryName: entry
         }
 
-        // const updateDB = await fetchDbToUpdate(BASE_URL, dataToUpdate)
         const updateDB = await fetch(`${BASE_URL}/server/image`, {
             method: 'POST', 
             headers: {
@@ -174,7 +150,7 @@ export default function ImageUpload({imageUrl, document, folder, entry, section}
             return;
         }
 
-        console.log('image url updated to empty')
+        console.log('image url updated on DB')
 
         // revalidation goes here:
         const editorRevalidation = await revalidateEditorPage(BASE_URL);
@@ -219,37 +195,19 @@ export default function ImageUpload({imageUrl, document, folder, entry, section}
                         width={0}
                         height={0}
                         sizes="100vw"
-                        style={{width: '40%', height: 'auto'}}
+                        style={{width: '20%', height: 'auto'}}
                         alt="uploaded image"
                     />
-                ): <p>no image</p>}
+                ): <span><EmptyImageIcon/></span>}
                 <div>
-                    <button onClick={handleSaveImageUrl}>save to server</button>
-                    <button onClick={handleDeleteImage}>delete</button>
+                    <form className="uploadForm" id="myForm" method="POST" encType="multipart/form-data">
+                        <label htmlFor="image1" style={{display: 'none'}}>choose image file:</label>
+                        <input type="file" id="image1" name="file" onChange={handleFileChange} accept="image/png, image/jpeg"/>
+                        <button onClick={handleSaveImageUrl}>save to server</button>
+                        <button onClick={handleDeleteImage}>delete</button>
+                    </form>
                 </div>
             </div>  
-            
-            <div className={"uploadContainer"}>
-                <h4>{text.uploadForm.addImages}</h4>
-                <form className={"uploadForm"} id="myForm" method="POST" encType="multipart/form-data" onSubmit={handleSubmit}>
-                    <div>
-                        <label htmlFor="image1">Image:</label>
-                        <input type="file" id="image1" name="file" onChange={handleFileChange} accept="image/png, image/jpeg"/>
-                    </div>
-                    <div>
-                        <label htmlFor="caption">Caption:</label>
-                        <input type="text" name="caption" id="caption" placeholder='(optional)' value={caption} onChange={handleCaptionChange}/>
-                    </div>
-                    <span className={"submitContainer"}>
-                        {file ? (
-
-                            <input className={"submitInput"} type="submit" value="GENERATE LINK"/>
-                        ): (
-                            <input disabled className={"submitInput-disabled"} type="submit" value="GENERATE LINK"/>
-                        )}
-                    </span>
-                </form> 
-            </div>
         </>
     )
 }
