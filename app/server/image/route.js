@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import {saveImageUrl} from '../../../lib/saveImageUrl'
+import {updateImageUrl} from '../../../lib/updateImageUrl'
 import { revalidatePath } from 'next/cache'
 import {revalidatePersonalPage} from '@/lib/revalidatePersonalPage'
 import {revalidateEditorPage} from '@/lib/revalidateEditorPage'
@@ -37,7 +37,7 @@ export async function POST(
 
         const {documentName, entryName, imageUrl} = data;
 
-        const saveImageInDB = await saveImageUrl(documentName, entryName, imageUrl)
+        const saveImageInDB = await updateImageUrl(documentName, entryName, imageUrl)
 
         if (!saveImageInDB){
           console.log('image failed to save')

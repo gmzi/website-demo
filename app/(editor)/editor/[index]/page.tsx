@@ -43,7 +43,7 @@ export default async function EditorPage({ params }: { params: { index: string }
   return (
     <>
       <p>this route is deprectated </p>
-      <p>/(editor)/editor/[index]/page</p>
+      {/* <p>/(editor)/editor/[index]/page</p> */}
     </>
     
   )

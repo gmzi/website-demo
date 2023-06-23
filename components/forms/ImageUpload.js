@@ -5,6 +5,7 @@ import { data, text } from '../../lib/data';
 import Image from "next/image";
 import { revalidateEditorPage } from "@/lib/revalidateEditorPage";
 import { revalidatePersonalPage } from "@/lib/revalidatePersonalPage";
+import {fetchDbToUpdate} from '@/lib/fetchDBtoUpdate'
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 const IMAGE_MAIN_FOLDER = process.env.NEXT_PUBLIC_IMAGE_MAIN_FOLDER;
@@ -15,7 +16,6 @@ export default function ImageUpload({imageUrl, document, folder, entry, section}
     const [file, setFile] = useState()
     const [caption, setCaption] = useState("")
     const [data, setData] = useState(imageUrl)
-    const [imageID, setImageID] = useState(imageUrl.match(`${IMAGE_MAIN_FOLDER}.+`)[0])
     const [status, setStatus] = useState();
 
     const handleFileChange = async (e) => {
@@ -64,9 +64,7 @@ export default function ImageUpload({imageUrl, document, folder, entry, section}
         const image = await upload.json();
 
         const imageUrl = image.metadata.secure_url;
-        const imageID = image.metadata.public_id;
         setData(imageUrl)
-        setImageID(imageID)
         setStatus(null)
         setFile(null)
     }
@@ -138,7 +136,7 @@ export default function ImageUpload({imageUrl, document, folder, entry, section}
         e.preventDefault();
 
         const dataToDelete = {
-            imageID: imageID
+            imageUrl: data
         }
 
         // DELETE IMAGE FROM CLOUDINARY:
@@ -152,10 +150,27 @@ export default function ImageUpload({imageUrl, document, folder, entry, section}
 
         if (!deleteImage.ok){
             console.log('deletion failed')
+            return;
         }
 
+        // UPDATE IMAGE_URL to empty value on DB:
+        const dataToUpdate = {
+            imageUrl: '',
+            documentName: document,
+            entryName: entry
+        }
+
+        const updateDB = await fetchDbToUpdate(BASE_URL, dataToUpdate)
+
+        if(!updateDB){
+            console.log('failed tu update DB')
+            console.log(updateDB)
+        }
+
+        console.log('image url emptied on DB: ')
+        console.log(updateDB)
+
         setData(null)
-        setImageID(null)
         setFile(null)
     }
 

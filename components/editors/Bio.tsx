@@ -11,6 +11,7 @@ export default async function Bio() {
     const folderName="bio"
 
     const contentHtml = data.content_html;
+
     const image1Url = data?.image_1_url || '';
     const image2Url = data?.image_2_url || '';
     const image3Url = data?.image_3_url || '';

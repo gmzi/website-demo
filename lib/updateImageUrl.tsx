@@ -2,7 +2,7 @@ import { connectToDatabase } from "./mongodb-config";
 
 const MONGODB_COLLECTION = process.env.MONGODB_COLLECTION;
 
-export async function saveImageUrl(document:string, entry: string, image_url: string){
+export async function updateImageUrl(document:string, entry: string, image_url: string){
     try {
         const {db} = await connectToDatabase()
 

@@ -2,6 +2,8 @@ import TextEditor from "../forms/text-editor/TextEditor";
 import ImageUpload from "../forms/ImageUpload";
 import { getData } from "@/lib/getData";
 
+const IMAGE_MAIN_FOLDER = process.env.IMAGE_MAIN_FOLDER;
+
 export default async function About(){
     const data = await getData("about");
     const documentName = "about";

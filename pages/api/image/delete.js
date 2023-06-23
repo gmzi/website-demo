@@ -27,7 +27,9 @@ export default async function handler(req, res) {
             res.status(500).json({error: "failed deleting image"})
         }
 
-        const {imageID} = data;
+        const {imageUrl} = data;
+
+        const imageID = imageUrl.match(`${IMAGE_MAIN_FOLDER}.+`)[0]
 
         const imagePublicID = imageID.replace(/\..+$/, '');
 
