@@ -15,6 +15,17 @@ interface Goals {
     FAQ: string;
 }
 
+interface OnlineAdd {
+    description: string;
+    logistics: string;
+}
+
+interface Testimonial {
+    content: string;
+    author: string;
+}
+
+
 export const metadata: Metadata = {
     title: 'Cursos',
     description: 'cursos',
@@ -31,6 +42,8 @@ export default async function CoursesPage() {
     const availableCourses = data?.available_courses || [];
     const goals: Goals = data?.goals || [];
     const FAQ = parse(goals.FAQ) || "";
+    const onlineAdd = data?.online || {};
+    const testimonials  = data?.testimonials || [];
 
 
 
@@ -65,6 +78,24 @@ export default async function CoursesPage() {
                 </div>
                 <div>
                     {FAQ}
+                </div>
+            </div>
+            <div>
+                <h1>ONLINE</h1>
+                {onlineAdd.description}
+                {onlineAdd.logistics}
+            </div>
+            <div>
+                <h2>Testimonios</h2>
+                <div>
+                    {testimonials.map((testimonial: Testimonial, i: IntegerType) => (
+                        <div key={`card-${i}`}>
+                            <div>
+                                <h3>{testimonial.author}</h3>
+                                <p>{testimonial.content}</p>
+                            </div>
+                        </div>
+                    ))}
                 </div>
             </div>
             
