@@ -11,6 +11,10 @@
     --color-hover: underline 3px solid #0000ffc9;
     --color-bg-hover: rgba(175, 184, 194, 0.535);
     --color-border-bottom: 1px solid rgba(217, 217, 233, 0.438);
+    --color-purple: #958DF1;
+    --color-background-box: #68adcf5b;
+    --color-background-card: #84d0c05b;
+    --color-background-courseCard: #4390d05b;
 }
 
 /* Color for dark theme */
@@ -21,6 +25,10 @@
         --color-bg-hover: rgba(79, 83, 89, 0.535);
         --color-hover: underline 3px solid #B798FF;
         --color-border-bottom: 1px solid rgba(178, 178, 192, 0.124);
+        --color-purple: #958DF1;
+        --color-background-box: #68adcf30;
+        --color-background-card: #84d0c023;
+        --color-background-courseCard: #84d0c05b;
     }
 }
 
@@ -36,7 +44,7 @@
     background-color: var(--primary-background);
     max-width: 100vw;
     overflow-x: hidden;
-    margin: 0em 1em;
+    margin: .5em 1em;
     /* font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
       Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif; */
   }
@@ -122,13 +130,17 @@ main {
     font-size: .7em;
    }
   
-   @media (max-width: 600px){
+   @media (max-width: 960px){
     .navbarContainer {
         flex-direction: column;
         align-items: flex-start;
     }
     .descriptionLine {
       max-width: 17em;
+    }
+    .testimonialCards-container, 
+    .courseCards-container {
+      flex-direction: column;
     }
   }
 /* ---------------------------------------- */
@@ -145,3 +157,103 @@ main {
 .sectionBio div {
   margin: 2em 0em;
 }
+
+/* ---------------------------------------- */
+/* ---------------------------------------- */
+/* COURSES */
+
+.coursesHero {
+  text-align: center;
+  margin: 1em;
+}
+
+.sectionCourses h2 {
+  margin: 1em 0em .1em 0em;
+}
+
+.description {
+  text-align: left;
+  font-size: small;
+}
+
+.courseCards-container {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.courseCard {
+  background-color: var(--color-background-courseCard);
+  margin: .2em;
+  padding: 2em;
+  border-radius: 5px;
+  font-weight: bold;
+  text-align: center;
+}
+
+ol {
+  margin: .1em;
+  padding: .5em;
+  text-align: center;
+}
+
+ol li {
+  list-style: none;
+}
+
+ol li div {
+  margin: .3em;
+  font-weight: bold;
+  display: inline;
+}
+
+.faq, 
+.online {
+  border-radius: 5px;
+  margin: 1em 0em;
+  padding: 1em;
+}
+
+.faq {
+  border: 1px solid black;
+}
+
+.faq span {
+  color: var(--color-purple);
+}
+
+.online {
+  background-color: var(--color-background-box);
+}
+
+.testimonialCards-container {
+  display: flex;
+  align-items: flex-start;
+}
+
+.testimonialCard {
+  border-radius: 5px;
+  margin: 1em;
+  padding: 1em;
+  background-color: var(--color-background-card);
+}
+
+.btnContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.btn-whatsapp {
+  background-color: #25d366;
+  color: white;
+  padding: 1em;
+  border: none;
+  border-radius: 5px;
+  text-align: center;
+  cursor: pointer;
+}
+
+
+
+
+

@@ -18,12 +18,18 @@ export default async function Courses() {
     const image3Url = data?.image_3_url || '';
 
     const goals = data?.goals || []
+    const FAQ = data?.FAQ || [];
+    const onlineDescription = data?.online.description || "";
+    const onlineLogistics = data?.online.logistics || "";
     
     return (
         <div>
             <h1>tis is component editor Courses!!</h1>
             <label>faq editor:</label>
-            <TextEditorEntry contentHtml={goals.FAQ} document={documentName} entry={'goals.FAQ'} section={sectionName}/>
+            <TextEditorEntry contentHtml={FAQ} document={documentName} entry={'FAQ'} section={sectionName}/>
+            <label>online add editor:</label>
+            <TextEditorEntry contentHtml={onlineDescription} document={documentName} entry={'online.description'} section={sectionName}/>
+            <TextEditorEntry contentHtml={onlineLogistics} document={documentName} entry={'online.logistics'} section={sectionName}/>
             <label>Content html editor:</label>
             <TextEditor contentHtml={contentHtml} document={documentName} section={sectionName}/>
             <ImageUpload imageUrl={image1Url} document={documentName} folder={folderName} entry={'image_1_url'} section={sectionName}/>
