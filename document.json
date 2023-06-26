@@ -2,9 +2,32 @@
     "_id": {
         "$oid": "647104b69e481ba6474e78bb"
     },
-    "name": "bio",
+    "name": "courses",
     "content_html": "<p>heres Bio document, in prod!!!!</p>",
     "image_1_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1687379968/website-fer/about/zngp5hpy0hox2ngsoknn.jpg",
     "image_2_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1687379968/website-fer/about/zngp5hpy0hox2ngsoknn.jpg",
-    "image_3_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1687379968/website-fer/about/zngp5hpy0hox2ngsoknn.jpg"
+    "image_3_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1687379968/website-fer/about/zngp5hpy0hox2ngsoknn.jpg",
+    "available_courses": [
+        {"name": "De la imagen a la obra", "description": "this is a course description"},
+        {"name": "Del clásico a la obra propia", "description": "this is a course description"},
+        {"name": "Escritura recreativa", "description": "this is a course description"}
+    ], 
+    "goals": {
+        "illustration": ["Que escribas tu propia obra desde cero", "Identificar cuáles son las herramientas que ya tenés y cuáles necesitás incorporar para dinamizar tu dramaturgia", "Desarrollar y reconocer tu modo de escribir"],
+        "FAQ": "fill"
+    },  
+    "description": "this is courses description.", 
+    "reviews": [{"content": "Fernando Ferrer logra con La Fiesta del viejo, una lectura contemporánea y sensible de Rey Lear. Pero lo más curioso y destacable es que no se trata (como suele ocurrir con las adaptaciones de clásicos) de una simplificación, sino del ahondamiento en lo más esencial de la obra de Shakespeare. Su dramaturgia fluye relajada permitiendo que la poesía y la violencia del original se manifiesten de manera tan frondosa como brutal", "author": "Javier Daulte"}],
+    "online": {"description":"Desde hace ya un tiempo doy cursos online que me dio la posibilidad de llevar el taller a cualquier rincón del mundo con las mismas satisfacciones y resultados obtenidos en las prácticas presenciales. Destaco en esos casos la enriquecedora experiencia de compartir relatos y vivencias con personas de distintos países. Cada uno con su idiosincrasia, cultura y visión particular pero con el denominador común de transitar el camino de la dramaturgia.", 
+               "logistics": "Las clases ON LINE las damos por Zoom, una plataforma gratuita y muy confiable que nos permite realizar videoconferencias con varias personas a la vez y que nos brinda todo lo necesario para llevar adelante el encuentro de la mejor manera. También las podremos realizar por Skype, en caso que estén más familiarizados con esa aplicación. Clases individuales: Duración, 1 hora. Clases grupales (Hasta 6 personas): 2 horas de duración. "
+            },
+    "testimonials": [
+        {"content": "El curso de dramaturgia me ayuda a escribir cada escena como si la estuviera viviendo y me puedo meter en la piel de los personajes. Siento que escribo pura acción  y que a través de ella aparecen las metáforas", "author": "Gabriela Alfie"},
+        {"content": "Siendo mi primera experiencia en un taller de dramaturgia, encontrè de la mano de Fernando un espacio donde poder desarrollar mi creatividad, dejando a un lado la critica y aprendiendo a confiar", "author": "Paola Rigatuso"},
+        {"content": "Encuentro en el espacio compartido con Fernando; momentos plenos de aprendizaje continuo; apertura personal; en un ameno ambiente donde se deja libre la imaginación para soñar...", "author": "Adrián Pérez Campos "},
+        {"content": "El curso me parece realmente buenísimo, la escucha atenta y respetuosa de lo que se ha escrito, permite un intercambio que en lo particular generó que mi escritura cobre vuelo...", "author": "Zulema Borona"},
+        {"content": "En mi proceso creativo personal fue fundamental poder compartir con alguien como Fer, su mirada me devolvió mucha claridad sobre el material, sus puntos fuertes y sus debilidades...", "author": "Ana Romans"}
+    ]
+
+        
 }
