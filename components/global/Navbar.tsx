@@ -28,19 +28,21 @@ export async function Navbar() {
         <ul className={'navigationLinksList'}>
           {Object.entries(navItems).map(([path, {name}]) => {
             const isActive = path === pathname;
-            return (
-              <Link
-                key={path}
-                href={path}
-              >
-                {isActive ? (
-                  <li className={'active'}>{name}</li>
-                ) : (
-                <li>{name}</li>
-                )}
-                {/* <li>{name}</li> */}
-              </Link>
-            )
+            if (path !== '/') {
+              return (
+                <Link
+                  key={path}
+                  href={path}
+                >
+                  {isActive ? (
+                    <li className={'active'}>{name}</li>
+                  ) : (
+                  <li>{name}</li>
+                  )}
+                  {/* <li>{name}</li> */}
+                </Link>
+              )
+            }
           })}
         </ul>
     </div>
