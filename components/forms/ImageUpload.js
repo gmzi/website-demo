@@ -196,7 +196,7 @@ export default function ImageUpload({imageUrl, document, folder, entry, section}
                 <div>
                     <form className="uploadForm" id="myForm" method="POST" encType="multipart/form-data">
                         <label htmlFor="image1" style={{display: 'none'}}>choose image file:</label>
-                        <input type="file" id="image1" name="file" onChange={handleFileChange} accept="image/png, image/jpeg"/>
+                        <input type="file" id="image1" name="file" onChange={handleFileChange} accept="image/*"/>
                         <button onClick={handleSaveImageUrl}>save to server</button>
                         <button onClick={handleDeleteImage}>delete</button>
                     </form>

@@ -1,6 +1,6 @@
 import './globals.css'
 import { Metadata, ResolvingMetadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Space_Mono } from 'next/font/google'
 import { getMetadata } from '@/lib/getMetadata'
 import { getLetterAfterSlash } from '@/lib/getLetterAfterSlash'
 import { Analytics } from '@vercel/analytics/react';
@@ -9,6 +9,13 @@ import { Navbar } from '@/components/global/Navbar'
 import { Footer } from '@/components/global/Footer'
 
 // const inter = Inter({ subsets: ['latin'] })
+
+const space_mono = Space_Mono({
+  weight: ['400', '700'],
+  style: ['normal', 'italic'],
+  subsets: ['latin'],
+  display: 'swap'
+})
 
 const BASE_URL = process.env.BASE_URL;
 
@@ -134,7 +141,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className={space_mono.className}>
       <body 
       // className={inter.className}
       >
