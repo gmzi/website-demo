@@ -17,7 +17,7 @@ export default async function Courses() {
     const image2Url = data?.image_2_url || '';
     const image3Url = data?.image_3_url || '';
 
-    const goals = data.goals;
+    const goals = data?.goals || []
     
     return (
         <div>

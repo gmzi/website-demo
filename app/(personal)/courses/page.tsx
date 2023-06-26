@@ -28,9 +28,9 @@ export default async function CoursesPage() {
     const image1Url = data?.image_1_url || '';
     const image2Url = data?.image_2_url || '';
     const image3Url = data?.image_3_url || '';
-    const availableCourses = data?.available_courses;
-    const goals: Goals = data.goals;
-    const FAQ = parse(goals.FAQ)
+    const availableCourses = data?.available_courses || [];
+    const goals: Goals = data?.goals || [];
+    const FAQ = parse(goals.FAQ) || "";
 
 
 
