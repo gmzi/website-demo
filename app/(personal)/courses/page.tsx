@@ -146,6 +146,7 @@ export default async function CoursesPage() {
                         <div className="btnContainer">
                             <p>podés consultarme por whatsapp cliqueando acá:</p>
                             {contactBtn}
+                            <p>o por email cliqueando <a href="mailto:name@email.com">acá</a></p>
                             <p>o en cualquiera de mis redes sociales acá abajo:</p>
                         </div>
                 </div>
