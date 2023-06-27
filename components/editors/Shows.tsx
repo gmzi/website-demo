@@ -4,6 +4,7 @@ import { getData } from "@/lib/getData";
 import TextEditor from "../forms/text-editor/TextEditor";
 import TextEditorEntry from "../forms/text-editor/TextEditorEntry";
 import InputEditor from "../forms/text-editor/InputEditor";
+import InputEditorString from '../forms/text-editor/InputEditorString';
 import TextEditorIndex from '../forms/text-editor/InputEditor';
 import ImageUpload from "../forms/ImageUpload";
 import document from '@/document.json'
@@ -45,7 +46,19 @@ export default async function Shows() {
                     ))}
                     <h2>Sinopsis</h2>
                     <TextEditorEntry contentHtml={show.sinopsis} document={documentName} entry={`content.${index}.sinopsis`} section={sectionName}/>
-                    <h2>Equipo creativo</h2>
+                    <h2>Ficha Técnica</h2>
+                    <h3>Cast</h3>
+                    {show.castAndCreative.cast.map(({name}, castIndex) => (
+                        <div key={`cast-${name}`}>
+                            <InputEditor contentText={name} document={documentName} entry={`content.${index}.castAndCreative.cast.${castIndex}.name`} section={sectionName}/>
+                        </div>
+                    ))}
+                    <h4>Agregar intérprete:</h4>
+                    <InputEditor contentText={'escribe el nombre del intérprete aquí'} document={documentName} entry={`content.${index}.castAndCreative.cast.${show.castAndCreative.cast.length}.name`} section={sectionName}/>
+                    <InputEditor contentText={'escibre el rol'} document={documentName} entry={`content.${index}.castAndCreative.cast.${show.castAndCreative.cast.length}.role`} section={sectionName}/>
+                    <h4>Agregar múltiples intérprets</h4>
+                    <p>escribe los nombres separados por comas</p>
+                    <InputEditorString contentString={'escribe los nombres separados por comas'} document={documentName} entry={`content.${index}.castAndCreative.cast`} section={sectionName}/>
 
                 </div>
             ))}

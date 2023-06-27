@@ -82,12 +82,59 @@ const InputEditor = ({contentText, document, entry, section}) => {
     return;
   }
 
+  const handleDelete = async() => {
+
+    const entryLessName = entry.replace(/\.name$/, "")
+    console.log(entryLessName)
+
+    const indexOfItem = entryLessName.split(".cast.")[1]; 
+    const entryOfItem = entryLessName.replace(`/\.${indexOfItem}$/`, '');
+
+    const content = {
+      document: document,
+      entry: entryOfItem,
+      index: indexOfItem
+    }
+
+    console.log(content)
+
+    return;
+
+    const removed = await fetch(`${BASE_URL}/server/text/remove`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        'API-Key': DATA_API_KEY
+      }, 
+      referrerPolicy: 'no-referrer',
+      body: JSON.stringify(content)
+    })
+
+    if (!removed.ok){
+      console.log('failed saving new text:')
+      console.log(removed)
+      return;
+    }
+
+    // revalidation goes here:
+    const editorRevalidation = await revalidateEditorPage(BASE_URL);
+    const personalRevalidation = await revalidatePersonalPage(section, BASE_URL);
+
+    console.log('Input editor revalidated editor after removing object:', editorRevalidation)
+    console.log('Input editor revalidated personal after removing object:', personalRevalidation)
+
+    // a 'success' status would go here
+
+    return;
+  }
+
   return (
     <div>
       <div className="input-editorContainer">
         {/* {editor && <MenuBar editor={editor} />} */}
         <EditorContent className="input__editor__content" editor={editor} />
         <button onClick={handleSave}>save to server</button>
+        <button onClick={handleDelete}>delete</button>
       </div>
     </div>
   )
