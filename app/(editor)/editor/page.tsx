@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import About from "@/components/editors/About";
 import Bio from "@/components/editors/Bio";
 import Courses from "@/components/editors/Courses";
+import Shows from "@/components/editors/Shows";
 
 export default async function EditorMainPage() {
 
@@ -23,6 +24,8 @@ export default async function EditorMainPage() {
       <h2>COURSES</h2>
       {/* @ts-expect-error Server Component */}
       <Courses/>
+      {/* @ts-expect-error Server Component */}
+      <Shows/>
     </>
   )
 }

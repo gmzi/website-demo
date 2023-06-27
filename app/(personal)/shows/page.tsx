@@ -2,14 +2,11 @@ import type { Metadata } from "next"
 import Image from 'next/image'
 import { getData } from "@/lib/getData"
 import parse from 'html-react-parser'
-import { availableParallelism, type } from "os"
-import { IntegerType } from "mongodb"
-import {Goals} from "@/components/shared/icons"
 import document from "@/document.json"
 
 const isProd = process.env.NODE_ENV === 'production';
 
-interface Show {
+export interface Show {
     title: string;
     content_html: string;
     image_1_url: string;
@@ -48,34 +45,32 @@ export const metadata: Metadata = {
 }
 
 export default async function ShowsPage() {
-
-    let data;
-
-    if (isProd){
-        data = await getData("shows");
-    } else {
-        data = document.shows;
-    }
+    // let data;
+    // if (isProd){
+    //     data = await getData("shows");
+    // } else {
+    //     data = document.shows;
+    // }
     
-    // const data = await getData("courses"); 
+    const data = await getData("shows"); 
 
     const image1Url = data?.image_1_url || '';
     const image2Url = data?.image_2_url || '';
     const image3Url = data?.image_3_url || '';
-    const shows = data || [];
+    const shows = data.content || [];
 
     return (
         <section className='sectionShows'>
             <h1>Espectáculos</h1>
             {shows.map((show: Show, i: number) => (
-                <div className='showCard' key={`${show.title}`}>
+                <div className='showCard' key={`card-${show.title}`}>
                     <Image
                         src={show.image_1_url}
                         width={0}
                         height={0}
                         sizes="100vw"
                         style={{
-                            width: '100%',
+                            width: '60%',
                             height: 'auto',
                             borderRadius: '5px',
                             marginBottom: '.5em'
@@ -85,23 +80,23 @@ export default async function ShowsPage() {
                     <h2>{show.title}</h2>
                     <div>
                         {show.seasons.map((season) => (
-                            <p>{season.year}: {season.theater}</p>
+                            <p key={`season-${season.year}-${season.theater}`}>{season.year}: {season.theater}</p>
                         ))}
                     </div>
-                    <p>{show.sinopsis}</p>
+                    <p key={`sinopsis-${show.title}`}>{show.sinopsis}</p>
                     <div>
                         <h5>Cast and crew</h5>
-                        <ul>
+                        <ul key={`ul-cast-${show.title}`}>
                             <h6>Cast</h6>
                             {show.castAndCreative.cast.map(({name, role}) => (
-                            <li>
+                            <li key={`li-${name}-${role}`}>
                                 <span>{name}: </span>
                                 <span>{role}</span>
                             </li>
                             ))}
                             <h6>Equipo creativo</h6>
                             {show.castAndCreative.creative.map(({name, role}) => (
-                                <li>
+                                <li key={`li-${name}-${role}`}>
                                     <span>{role}: </span>
                                     <span>{name}</span>
                                 </li>

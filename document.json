@@ -65,59 +65,112 @@
             "whatsapp": "12345678911"
         }
     },
-    "shows": [
-        {
-            "title": "Show 1 Title",
-            "content_html": "this is the text at the top of the section",
-            "image_1_url":"https://res.cloudinary.com/imagesgmzi/image/upload/v1687379968/website-fer/about/zngp5hpy0hox2ngsoknn.jpg",
-            "image_2_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1687379968/website-fer/about/zngp5hpy0hox2ngsoknn.jpg",
-            "image_3_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1687379968/website-fer/about/zngp5hpy0hox2ngsoknn.jpg",
-            "seasons": [{"year": 2023, "theater": "Espacion Callejon"}, {"year": 2022, "theater": "El camarin"}],
-            "theatre": "el camarín",
-            "sinopsis": "this is a sinopsis.",
-            "castAndCreative": {
-                "cast": [
-                    {
-                        "name": "john Doe",
-                        "role": "Erico"
-                    },
-                    {
-                        "name": "Margot Smith",
-                        "role": "Hannah"
-                    }
-                ],
-                "creative": [
-                    {
-                        "name": "Tom Wilson",
-                        "role": "director"
-                    },
-                    {
-                        "name": "Mieke Ploeg",
-                        "role": "costume designer"
-                    }, 
-                    {
-                        "name": "Jessie Kelsey",
-                        "role": "lighting designer"
-                    }
-                ],
-                "musicians": [
-                    {
-                        "name": "Sam Tim King",
-                        "instrument": "cello"
-                    },
-                    {
-                        "name": "Scott Wies",
-                        "instrument": "piano"
-                    }
-                ],
-                "dancers": [
-                    {
-                        "name": "Sam Smith",
-                        "role": "the swan"
-                    }
-                ]   
+    "shows": {
+        "content": [
+            {
+                "title": "Show 1",
+                "content_html": "this is the text at the top of the section",
+                "image_1_url":"https://res.cloudinary.com/imagesgmzi/image/upload/v1687379968/website-fer/about/zngp5hpy0hox2ngsoknn.jpg",
+                "image_2_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1687379968/website-fer/about/zngp5hpy0hox2ngsoknn.jpg",
+                "image_3_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1687379968/website-fer/about/zngp5hpy0hox2ngsoknn.jpg",
+                "seasons": [{"year": 2023, "theater": "Espacion Callejon"}, {"year": 2022, "theater": "El camarin"}],
+                "theatre": "el camarín",
+                "sinopsis": "this is a sinopsis.",
+                "castAndCreative": {
+                    "cast": [
+                        {
+                            "name": "john Doe",
+                            "role": "Erico"
+                        },
+                        {
+                            "name": "Margot Smith",
+                            "role": "Hannah"
+                        }
+                    ],
+                    "creative": [
+                        {
+                            "name": "Tom Wilson",
+                            "role": "director"
+                        },
+                        {
+                            "name": "Mieke Ploeg",
+                            "role": "costume designer"
+                        }, 
+                        {
+                            "name": "Jessie Kelsey",
+                            "role": "lighting designer"
+                        }
+                    ],
+                    "musicians": [
+                        {
+                            "name": "Sam Tim King",
+                            "instrument": "cello"
+                        },
+                        {
+                            "name": "Scott Wies",
+                            "instrument": "piano"
+                        }
+                    ],
+                    "dancers": [
+                        {
+                            "name": "Sam Smith",
+                            "role": "the swan"
+                        }
+                    ]   
+                }
+            },
+            {
+                "title": "Show 2",
+                "content_html": "this is the text at the top of the section",
+                "image_1_url":"https://res.cloudinary.com/imagesgmzi/image/upload/v1687379968/website-fer/about/zngp5hpy0hox2ngsoknn.jpg",
+                "image_2_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1687379968/website-fer/about/zngp5hpy0hox2ngsoknn.jpg",
+                "image_3_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1687379968/website-fer/about/zngp5hpy0hox2ngsoknn.jpg",
+                "seasons": [{"year": 2023, "theater": "Espacion Callejon"}, {"year": 2022, "theater": "El camarin"}],
+                "theatre": "el camarín",
+                "sinopsis": "this is a sinopsis.",
+                "castAndCreative": {
+                    "cast": [
+                        {
+                            "name": "john Doe",
+                            "role": "Erico"
+                        },
+                        {
+                            "name": "Margot Smith",
+                            "role": "Hannah"
+                        }
+                    ],
+                    "creative": [
+                        {
+                            "name": "Tom Wilson",
+                            "role": "director"
+                        },
+                        {
+                            "name": "Mieke Ploeg",
+                            "role": "costume designer"
+                        }, 
+                        {
+                            "name": "Jessie Kelsey",
+                            "role": "lighting designer"
+                        }
+                    ],
+                    "musicians": [
+                        {
+                            "name": "Sam Tim King",
+                            "instrument": "cello"
+                        },
+                        {
+                            "name": "Scott Wies",
+                            "instrument": "piano"
+                        }
+                    ],
+                    "dancers": [
+                        {
+                            "name": "Sam Smith",
+                            "role": "the swan"
+                        }
+                    ]   
+                }
             }
-        }
-
-    ]
+        ]
+    }
 }
