@@ -254,8 +254,9 @@ ol li div {
 }
 
 .seasonsInput {
-  display: inline;
-  border: 1px solid red;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: row;
 }
 
 

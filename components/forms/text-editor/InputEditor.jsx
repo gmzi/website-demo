@@ -84,12 +84,10 @@ const InputEditor = ({contentText, document, entry, section}) => {
 
   return (
     <div>
-      <div className="editor">
+      <div className="input-editorContainer">
         {/* {editor && <MenuBar editor={editor} />} */}
-        <EditorContent className="editor__content" editor={editor} />
-      </div>
-      <div style={{padding: '3rem'}}>
-          <button onClick={handleSave}>save to server</button>
+        <EditorContent className="input__editor__content" editor={editor} />
+        <button onClick={handleSave}>save to server</button>
       </div>
     </div>
   )
