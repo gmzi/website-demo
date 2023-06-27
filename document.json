@@ -1,5 +1,5 @@
 {
-    "courses" : {
+    "courses": {
         "_id": {
             "$oid": "6499b3771043d804594a4c29"
         },
@@ -66,14 +66,31 @@
         }
     },
     "shows": {
+        "_id": {
+            "$oid": "649b09c568815c955b54b17e"
+        },
+        "name": "shows",
         "content": [
             {
-                "title": "Show 1",
+                "title": "Mamita!!!!! Show 1",
                 "content_html": "this is the text at the top of the section",
-                "image_1_url":"https://res.cloudinary.com/imagesgmzi/image/upload/v1687379968/website-fer/about/zngp5hpy0hox2ngsoknn.jpg",
+                "image_1_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1687379968/website-fer/about/zngp5hpy0hox2ngsoknn.jpg",
                 "image_2_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1687379968/website-fer/about/zngp5hpy0hox2ngsoknn.jpg",
                 "image_3_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1687379968/website-fer/about/zngp5hpy0hox2ngsoknn.jpg",
-                "seasons": [{"year": 2023, "theater": "Espacion Callejon"}, {"year": 2022, "theater": "El camarin"}],
+                "seasons": [
+                    {
+                        "year": {
+                            "$numberInt": "2023"
+                        },
+                        "theater": "Espacion Callejon"
+                    },
+                    {
+                        "year": {
+                            "$numberInt": "2022"
+                        },
+                        "theater": "El camarin"
+                    }
+                ],
                 "theatre": "el camarín",
                 "sinopsis": "this is a sinopsis.",
                 "castAndCreative": {
@@ -95,7 +112,7 @@
                         {
                             "name": "Mieke Ploeg",
                             "role": "costume designer"
-                        }, 
+                        },
                         {
                             "name": "Jessie Kelsey",
                             "role": "lighting designer"
@@ -116,16 +133,29 @@
                             "name": "Sam Smith",
                             "role": "the swan"
                         }
-                    ]   
+                    ]
                 }
             },
             {
-                "title": "Show 2",
+                "title": "Querida!!!!",
                 "content_html": "this is the text at the top of the section",
-                "image_1_url":"https://res.cloudinary.com/imagesgmzi/image/upload/v1687379968/website-fer/about/zngp5hpy0hox2ngsoknn.jpg",
+                "image_1_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1687379968/website-fer/about/zngp5hpy0hox2ngsoknn.jpg",
                 "image_2_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1687379968/website-fer/about/zngp5hpy0hox2ngsoknn.jpg",
                 "image_3_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1687379968/website-fer/about/zngp5hpy0hox2ngsoknn.jpg",
-                "seasons": [{"year": 2023, "theater": "Espacion Callejon"}, {"year": 2022, "theater": "El camarin"}],
+                "seasons": [
+                    {
+                        "year": {
+                            "$numberInt": "2023"
+                        },
+                        "theater": "Espacion Callejon"
+                    },
+                    {
+                        "year": {
+                            "$numberInt": "2022"
+                        },
+                        "theater": "El camarin"
+                    }
+                ],
                 "theatre": "el camarín",
                 "sinopsis": "this is a sinopsis.",
                 "castAndCreative": {
@@ -147,7 +177,7 @@
                         {
                             "name": "Mieke Ploeg",
                             "role": "costume designer"
-                        }, 
+                        },
                         {
                             "name": "Jessie Kelsey",
                             "role": "lighting designer"
@@ -168,7 +198,7 @@
                             "name": "Sam Smith",
                             "role": "the swan"
                         }
-                    ]   
+                    ]
                 }
             }
         ]
