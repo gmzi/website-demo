@@ -31,10 +31,22 @@ export default async function Shows() {
             {shows.map((show: Show, index: number) => (
                 <div className='editor-showCard' key={`show-${show.title}`}>
                     <h2>{show.title} - edit </h2>
-                    <ImageUpload imageUrl={show.image_1_url} document={documentName} folder={folderName} entry={`${documentName}.content[${index}].image_1_url`} section={sectionName}/>
+                    <ImageUpload imageUrl={show.image_1_url} document={documentName} folder={folderName} entry={`content.${index}.image_1_url`} section={sectionName}/>
                     <h2>title</h2>
-                    {/* <TextEditorEntry contentHtml={show.title} document={documentName} entry={`content.${index}.title`} section={sectionName}/> */}
                     <InputEditor contentText={show.title} document={documentName} entry={`content.${index}.title`} section={sectionName}/>
+                    <h2>temporadas</h2>
+                    {show.seasons.map((season, seasonIndex)=> (
+                        <div className="seasonsInput" key={`season-${season.theater}`}>
+                            <label>año:</label>
+                            <InputEditor contentText={`${season.year}`} document={documentName} entry={`content.${index}.seasons.${seasonIndex}.year`} section={sectionName}/>
+                            <label>sala:</label>
+                            <InputEditor contentText={`${season.theater}`} document={documentName} entry={`content.${index}.seasons.${seasonIndex}.year`} section={sectionName}/>
+                        </div>
+                    ))}
+                    <h2>Sinopsis</h2>
+                    <TextEditorEntry contentHtml={show.sinopsis} document={documentName} entry={`content.${index}.sinopsis`} section={sectionName}/>
+                    <h2>Equipo creativo</h2>
+
                 </div>
             ))}
         </div>

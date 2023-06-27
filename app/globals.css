@@ -253,6 +253,11 @@ ol li div {
   cursor: pointer;
 }
 
+.seasonsInput {
+  display: inline;
+  border: 1px solid red;
+}
+
 
 
 
