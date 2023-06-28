@@ -12,9 +12,12 @@ import document from '@/document.json'
 import type { Show } from "@/app/(personal)/shows/page";
 import { revalidateEditorPage } from "@/lib/revalidateEditorPage";
 import { revalidatePersonalPage } from "@/lib/revalidatePersonalPage";
+import Image from "next/image";
+import { EmptyImageIcon } from "../shared/icons";
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL
 const DATA_API_KEY = process.env.NEXT_PUBLIC_DATA_API_KEY || '';
+const IMAGE_MAIN_FOLDER = process.env.NEXT_PUBLIC_IMAGE_MAIN_FOLDER || '';
 
 interface Season {
     year: string;
@@ -181,44 +184,96 @@ const AddShow: React.FC<FormComponentProps> = ({ document, entry, section }) => 
         }
     }
 
-    const handleWholeCast =() => {
+    const handleWholeCast = () => {
         const contentString = formData.wholeCast.trim();
         const namesAndRolesArray = contentString.split(",")
 
-        const addNamesAndRoles = namesAndRolesArray.forEach(element=>{
+        const addNamesAndRoles = namesAndRolesArray.forEach(element => {
             const nameAndRole = element.split(":");
             const name = nameAndRole[0]?.trim() || 'default';
             const role = nameAndRole[1]?.trim() || 'default';
             setFormData((prevState) => ({
-                ...prevState, 
+                ...prevState,
                 castAndCreative: {
                     ...prevState.castAndCreative,
-                    cast: [{name: name, role: role}, ...prevState.castAndCreative.cast,]
+                    cast: [{ name: name, role: role }, ...prevState.castAndCreative.cast,]
                 },
                 wholeCast: ""
             }));
             return;
-        })   
+        })
     }
 
-    const handleWholeCreativeTeam =() => {
+    const handleWholeCreativeTeam = () => {
         const contentString = formData.wholeCreativeTeam.trim();
         const namesAndRolesArray = contentString.split(",")
 
-        const addNamesAndRoles = namesAndRolesArray.forEach(element=>{
+        const addNamesAndRoles = namesAndRolesArray.forEach(element => {
             const nameAndRole = element.split(":");
             const name = nameAndRole[0]?.trim() || 'default';
             const role = nameAndRole[1]?.trim() || 'default';
             setFormData((prevState) => ({
-                ...prevState, 
+                ...prevState,
                 castAndCreative: {
                     ...prevState.castAndCreative,
-                    creative: [{name: name, role: role}, ...prevState.castAndCreative.creative]
+                    creative: [{ name: name, role: role }, ...prevState.castAndCreative.creative]
                 },
                 wholeCreativeTeam: ""
             }));
             return;
-        })   
+        })
+    }
+
+    const handleImageUpload = async (e: ChangeEvent<HTMLInputElement>) => {
+        e.preventDefault();
+
+        const file = e.target.files?.[0];
+
+        if (!file) {
+            // setStatus({ alert: "default", message: `${text.uploadForm.fileMissing}`})
+            console.log('file missing')
+            return;
+        }
+
+        const fileSizeInMB = file.size / (1024 * 1024);
+
+        if (fileSizeInMB > 3.99) {
+            // setStatus({alert: "default", message: `${text.uploadForm.fileOversize}`})
+            console.log('file oversized, max file size 4mb')
+            return;
+        }
+
+        const formData = new FormData();
+
+        const folderName = `${IMAGE_MAIN_FOLDER}/shows`
+
+        formData.append("file", file);
+        formData.append("folder", folderName)
+
+        // UPLOAD IMAGE:
+        const upload = await fetch(`${BASE_URL}/api/image/upload`, {
+            method: 'POST',
+            body: formData
+        })
+
+        if (!upload.ok) {
+            console.log('theres an error in upload')
+            console.log(upload)
+            console.log(upload.json())
+            return;
+        }
+        const image = await upload.json();
+
+        const imageUrl = image.metadata.secure_url;
+
+        const {name} = e.target;
+        const value = imageUrl
+
+        // const { name, value } = e.target;
+        setFormData((prevState) => ({
+            ...prevState,
+            [name]: value
+        }))
     }
 
     return (
@@ -254,13 +309,30 @@ const AddShow: React.FC<FormComponentProps> = ({ document, entry, section }) => 
                 />
             </label>
             <br />
+            {formData.image_1_url.length ? (
+                    <Image
+                        src={formData.image_1_url}
+                        width={0}
+                        height={0}
+                        sizes="100vw"
+                        style={{width: '20%', height: 'auto'}}
+                        alt="uploaded image"
+                    />
+                ): <span><EmptyImageIcon/></span>}
             <label>
                 Image 1 URL:
-                <input
+                {/* <input
                     type="text"
                     name="image_1_url"
                     value={formData.image_1_url}
                     onChange={handleInputChange}
+                /> */}
+                <input
+                    type="file"
+                    name="image_1_url"
+                    value=''
+                    onChange={handleImageUpload}
+                    accept="image/*"
                 />
             </label>
             <br />
@@ -353,7 +425,7 @@ const AddShow: React.FC<FormComponentProps> = ({ document, entry, section }) => 
                     name="wholeCast"
                     value={formData.wholeCast}
                     onChange={handleInputChange}
-                    style={{padding: '1em', width: '60%'}}
+                    style={{ padding: '1em', width: '60%' }}
                 />
             </label>
             <button
@@ -402,7 +474,7 @@ const AddShow: React.FC<FormComponentProps> = ({ document, entry, section }) => 
                 Add Cast Member
             </button>
             <br />
-            
+
             <h2>Creative Team</h2>
             <label>
                 add whole team
@@ -411,7 +483,7 @@ const AddShow: React.FC<FormComponentProps> = ({ document, entry, section }) => 
                     name="wholeCreativeTeam"
                     value={formData.wholeCreativeTeam}
                     onChange={handleInputChange}
-                    style={{padding: '1em', width: '60%'}}
+                    style={{ padding: '1em', width: '60%' }}
                 />
             </label>
             <button
