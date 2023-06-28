@@ -253,8 +253,9 @@ ol li div {
   cursor: pointer;
 }
 
-.seasonsInput {
-  border: 1px solid black;
+.pairInput {
+  border: 2px solid black;
+  padding: .2em;
   display: flex;
   flex-direction: row;
 }

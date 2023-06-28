@@ -19,12 +19,9 @@ export async function PATCH(req:Request, res: Response) {
 
     const data = await req.json()
 
-    const {document, entry, index} = data;
+    const {document, entry, keyName, valueName} = data;
 
-    console.log(data)
-    return;
-
-    const update = await pullFromArrayDB(document, entry, content)
+    const update = await pullFromArrayDB(document, entry, keyName, valueName)
 
     if (!update) {
         console.log(update)

@@ -37,7 +37,7 @@ export default async function Shows() {
                     <InputEditor contentText={show.title} document={documentName} entry={`content.${index}.title`} section={sectionName}/>
                     <h2>temporadas</h2>
                     {show.seasons.map((season, seasonIndex)=> (
-                        <div className="seasonsInput" key={`season-${season.theater}`}>
+                        <div className="pairInput" key={`season-${season.theater}`}>
                             <label>año:</label>
                             <InputEditor contentText={`${season.year}`} document={documentName} entry={`content.${index}.seasons.${seasonIndex}.year`} section={sectionName}/>
                             <label>sala:</label>
@@ -48,18 +48,20 @@ export default async function Shows() {
                     <TextEditorEntry contentHtml={show.sinopsis} document={documentName} entry={`content.${index}.sinopsis`} section={sectionName}/>
                     <h2>Ficha Técnica</h2>
                     <h3>Cast</h3>
-                    {show.castAndCreative.cast.map(({name}, castIndex) => (
-                        <div key={`cast-${name}`}>
+                    {show.castAndCreative.cast.map(({name, role}, castIndex) => (
+                        <div className="pairInput" key={`cast-${name}`}>
+                            <label>nombre:</label>
                             <InputEditor contentText={name} document={documentName} entry={`content.${index}.castAndCreative.cast.${castIndex}.name`} section={sectionName}/>
+                            <label>rol:</label>
+                            <InputEditor contentText={role} document={documentName} entry={`content.${index}.castAndCreative.cast.${castIndex}.role`} section={sectionName}/>
                         </div>
                     ))}
                     <h4>Agregar intérprete:</h4>
-                    <InputEditor contentText={'escribe el nombre del intérprete aquí'} document={documentName} entry={`content.${index}.castAndCreative.cast.${show.castAndCreative.cast.length}.name`} section={sectionName}/>
-                    <InputEditor contentText={'escibre el rol'} document={documentName} entry={`content.${index}.castAndCreative.cast.${show.castAndCreative.cast.length}.role`} section={sectionName}/>
+                    <InputEditor contentText={'nombre'} document={documentName} entry={`content.${index}.castAndCreative.cast.${show.castAndCreative.cast.length}.name`} section={sectionName}/>
+                    <InputEditor contentText={'rol'} document={documentName} entry={`content.${index}.castAndCreative.cast.${show.castAndCreative.cast.length}.role`} section={sectionName}/>
                     <h4>Agregar múltiples intérprets</h4>
                     <p>escribe los nombres separados por comas</p>
                     <InputEditorString contentString={'escribe los nombres separados por comas'} document={documentName} entry={`content.${index}.castAndCreative.cast`} section={sectionName}/>
-
                 </div>
             ))}
         </div>

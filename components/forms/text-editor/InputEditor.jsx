@@ -2,7 +2,7 @@
 // https://github.com/ueberdosis/tiptap/blob/main/demos/src/Examples/CollaborativeEditing/React/index.jsx
 import './styles.scss'
 import sanitizeHtml from 'sanitize-html'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Color } from '@tiptap/extension-color'
 import ListItem from '@tiptap/extension-list-item'
 import TextStyle from '@tiptap/extension-text-style'
@@ -19,6 +19,10 @@ const DATA_API_KEY = process.env.NEXT_PUBLIC_DATA_API_KEY
 const InputEditor = ({contentText, document, entry, section}) => {
 
   const [cleanTextContent, setCleanTextContent] = useState(contentText)
+
+  useEffect(() => {
+    setCleanTextContent(contentText)
+  }, [cleanTextContent, contentText])
 
   const editor = useEditor({
     extensions: [
@@ -84,21 +88,20 @@ const InputEditor = ({contentText, document, entry, section}) => {
 
   const handleDelete = async() => {
 
-    const entryLessName = entry.replace(/\.name$/, "")
-    console.log(entryLessName)
+    const keyName = entry.match(/[^.]+$/)[0];
+    const valueName = cleanTextContent;
 
-    const indexOfItem = entryLessName.split(".cast.")[1]; 
-    const entryOfItem = entryLessName.replace(`/\.${indexOfItem}$/`, '');
+    const split = entry.split(".");
+    const result = split.slice(0, -2);
+    const arrayName = result.join(".");
+
 
     const content = {
       document: document,
-      entry: entryOfItem,
-      index: indexOfItem
+      entry: arrayName,
+      keyName: keyName,
+      valueName: valueName
     }
-
-    console.log(content)
-
-    return;
 
     const removed = await fetch(`${BASE_URL}/server/text/remove`, {
       method: 'PATCH',
@@ -111,7 +114,7 @@ const InputEditor = ({contentText, document, entry, section}) => {
     })
 
     if (!removed.ok){
-      console.log('failed saving new text:')
+      console.log('failed removing entry:')
       console.log(removed)
       return;
     }
