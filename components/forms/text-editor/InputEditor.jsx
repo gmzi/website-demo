@@ -22,7 +22,7 @@ const InputEditor = ({contentText, document, entry, section}) => {
 
   useEffect(() => {
     setCleanTextContent(contentText)
-  }, [cleanTextContent, contentText])
+  }, [contentText, cleanTextContent])
 
   const editor = useEditor({
     extensions: [

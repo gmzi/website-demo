@@ -56,12 +56,21 @@ export default async function Shows() {
                             <InputEditor contentText={role} document={documentName} entry={`content.${index}.castAndCreative.cast.${castIndex}.role`} section={sectionName}/>
                         </div>
                     ))}
-                    <h4>Agregar intérprete:</h4>
-                    <InputEditor contentText={'nombre'} document={documentName} entry={`content.${index}.castAndCreative.cast.${show.castAndCreative.cast.length}.name`} section={sectionName}/>
-                    <InputEditor contentText={'rol'} document={documentName} entry={`content.${index}.castAndCreative.cast.${show.castAndCreative.cast.length}.role`} section={sectionName}/>
-                    <h4>Agregar múltiples intérprets</h4>
-                    <p>escribe los nombres separados por comas</p>
-                    <InputEditorString contentString={'escribe los nombres separados por comas'} document={documentName} entry={`content.${index}.castAndCreative.cast`} section={sectionName}/>
+                    <h4>Agregar cast</h4>
+                    <p>Nombre Apellido : rol, Nombre Apellido : rol</p>
+                    <InputEditorString contentString={''} document={documentName} entry={`content.${index}.castAndCreative.cast`} section={sectionName}/>
+                    <h3>Equipo Creativo</h3>
+                    {show.castAndCreative.creative.map(({role, name}, creativeIndex) => (
+                        <div className="pairInput" key={`creative-${name}`}>
+                            <label>nombre:</label>
+                            <InputEditor contentText={name} document={documentName} entry={`content.${index}.castAndCreative.creative.${creativeIndex}.name`} section={sectionName}/>
+                            <label>rol:</label>
+                            <InputEditor contentText={role} document={documentName} entry={`content.${index}.castAndCreative.creative.${creativeIndex}.role`} section={sectionName}/>
+                        </div>
+                    ))}
+                    <h4>Agregar equipo creativo</h4>
+                    <p>Nombre Apellido : rol, Nombre Apellido : rol</p>
+                    <InputEditorString contentString={''} document={documentName} entry={`content.${index}.castAndCreative.creative`} section={sectionName}/>
                 </div>
             ))}
         </div>

@@ -52,8 +52,8 @@ const InputEditorString = ({contentString, document, entry, section}) => {
 
     const arraySaved = namesAndRolesArray.forEach(async element => {
       const nameAndRole = element.split(':')
-      const name = nameAndRole[0].trim();
-      const role = nameAndRole[1]?.trim() || '';
+      const name = nameAndRole[0].trim() || 'default';
+      const role = nameAndRole[1]?.trim() || 'default';
       const content = {
         document: document, 
         entry: entry,
@@ -92,7 +92,7 @@ const InputEditorString = ({contentString, document, entry, section}) => {
 
   return (
     <div>
-      <div className="input-editorContainer">
+      <div className="input-editorContainer" style={{border: '1px solid red'}}>
         {/* {editor && <MenuBar editor={editor} />} */}
         <EditorContent className="input__editor__content" editor={editor} />
         <button onClick={handleSave}>save to server</button>
