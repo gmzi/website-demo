@@ -8,6 +8,7 @@ const isProd = process.env.NODE_ENV === 'production';
 
 export interface Show {
     title: string;
+    opening_date: string;
     content_html: string;
     image_1_url: string;
     image_2_url: string;
@@ -54,7 +55,7 @@ export default async function ShowsPage() {
     
     const data = await getData("shows"); 
 
-    const shows = data.content || [];
+    const shows = [...data.content].reverse() || [];
 
     return (
         <section className='sectionShows'>
@@ -75,6 +76,7 @@ export default async function ShowsPage() {
                         alt={`show ${show.title} poster image`}
                     />
                     <h2>{show.title}</h2>
+                    <h3>Fecha de estreno: {show.opening_date}</h3>
                     <div>
                         {show.seasons.map((season) => (
                             <p key={`season-${season.year}-${season.theater}`}>{season.year}: {season.theater}</p>

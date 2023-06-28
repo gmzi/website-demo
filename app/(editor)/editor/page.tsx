@@ -11,6 +11,8 @@ export default async function EditorMainPage() {
     <>
       <h2>HOME</h2>
       {/* @ts-expect-error Server Component */}
+      <Shows/>
+      {/* @ts-expect-error Server Component */}
       <About/>
       <br></br>
       <hr></hr>
@@ -24,8 +26,6 @@ export default async function EditorMainPage() {
       <h2>COURSES</h2>
       {/* @ts-expect-error Server Component */}
       <Courses/>
-      {/* @ts-expect-error Server Component */}
-      <Shows/>
     </>
   )
 }

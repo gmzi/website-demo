@@ -1,6 +1,8 @@
 // http://localhost:3000/editor
 
 import { getData } from "@/lib/getData";
+import { getAndSortData } from "@/lib/getAndSortData";
+import AddShow from "../forms/AddShow";
 import TextEditor from "../forms/text-editor/TextEditor";
 import TextEditorEntry from "../forms/text-editor/TextEditorEntry";
 import InputEditor from "../forms/text-editor/InputEditor";
@@ -19,16 +21,18 @@ export default async function Shows() {
     // } else {
     //     data = document.shows;
     // }
+
     const data = await getData("shows")
     const documentName = "shows"
     const sectionName = "shows"
     const folderName="shows"
 
-    const shows = data.content || [];
+    const shows = [...data.content].reverse() || [];
     
     return (
         <div>
             <h1>Shows Editor!!!</h1>
+            <AddShow document={documentName} entry={'content'} section={sectionName}/>
             {shows.map((show: Show, index: number) => (
                 <div className='editor-showCard' key={`show-${show.title}`}>
                     <h2>{show.title} - edit </h2>
