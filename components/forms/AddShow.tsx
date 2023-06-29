@@ -2,7 +2,7 @@
 
 import { useState, ChangeEvent, FormEvent } from "react";
 import { getData } from "@/lib/getData";
-import TextEditor from "../forms/text-editor/TextEditor";
+import TextEditor2 from "../forms/text-editor/TextEditor2";
 import TextEditorEntry from "../forms/text-editor/TextEditorEntry";
 import InputEditor from "../forms/text-editor/InputEditor";
 import InputEditorString from '../forms/text-editor/InputEditorString';
@@ -14,6 +14,13 @@ import { revalidateEditorPage } from "@/lib/revalidateEditorPage";
 import { revalidatePersonalPage } from "@/lib/revalidatePersonalPage";
 import Image from "next/image";
 import { EmptyImageIcon } from "../shared/icons";
+import sanitizeHtml from 'sanitize-html'
+import { Color } from '@tiptap/extension-color'
+import ListItem from '@tiptap/extension-list-item'
+import TextStyle from '@tiptap/extension-text-style'
+import { EditorContent, useEditor } from '@tiptap/react'
+import StarterKit from '@tiptap/starter-kit'
+import MenuBar from '@/components/forms/text-editor/MenuBar'
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL
 const DATA_API_KEY = process.env.NEXT_PUBLIC_DATA_API_KEY || '';
@@ -97,6 +104,36 @@ const AddShow: React.FC<FormComponentProps> = ({ document, entry, section }) => 
         wholeCast: "",
         wholeCreativeTeam: ""
     });
+
+    const editor = useEditor({
+        extensions: [
+            // Color.configure({ types: [TextStyle.name, ListItem.name] }),
+            // TextStyle.configure({ types: [ListItem.name] }),
+            StarterKit.configure({
+                history: false,
+                bulletList: {
+                    keepMarks: true,
+                    keepAttributes: false,
+                },
+                orderedList: {
+                    keepMarks: true,
+                    keepAttributes: false,
+                },
+            }),
+        ],
+        content: formData.sinopsis,
+        onTransaction({ editor, transaction }) {
+            const html = editor?.getHTML();
+            const cleanHtml = sanitizeHtml(html)
+            const name = "sinopsis";
+            const value = cleanHtml
+            setFormData((prevState) => ({
+                ...prevState,
+                [name]: value
+            }))
+            return
+        },
+    })
 
     const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
@@ -266,7 +303,7 @@ const AddShow: React.FC<FormComponentProps> = ({ document, entry, section }) => 
 
         const imageUrl = image.metadata.secure_url;
 
-        const {name} = e.target;
+        const { name } = e.target;
         const value = imageUrl
 
         // const { name, value } = e.target;
@@ -310,15 +347,15 @@ const AddShow: React.FC<FormComponentProps> = ({ document, entry, section }) => 
             </label>
             <br />
             {formData.image_1_url.length ? (
-                    <Image
-                        src={formData.image_1_url}
-                        width={0}
-                        height={0}
-                        sizes="100vw"
-                        style={{width: '20%', height: 'auto'}}
-                        alt="uploaded image"
-                    />
-                ): <span><EmptyImageIcon/></span>}
+                <Image
+                    src={formData.image_1_url}
+                    width={0}
+                    height={0}
+                    sizes="100vw"
+                    style={{ width: '20%', height: 'auto' }}
+                    alt="uploaded image"
+                />
+            ) : <span><EmptyImageIcon /></span>}
             <label>
                 Image 1 URL:
                 {/* <input
@@ -368,12 +405,16 @@ const AddShow: React.FC<FormComponentProps> = ({ document, entry, section }) => 
             <br />
             <label>
                 Sinopsis:
-                <input
+                {/* <input
                     type="text"
                     name="sinopsis"
                     value={formData.sinopsis}
                     onChange={handleInputChange}
-                />
+                /> */}
+                <div className="editor">
+                    {/* <MenuBar editor={editor}/> */}
+                    <EditorContent className="editor__content" editor={editor} />
+                </div>
             </label>
             <br />
             <label>Seasons:</label>
