@@ -2,7 +2,6 @@
 // https://github.com/ueberdosis/tiptap/blob/main/demos/src/Examples/CollaborativeEditing/React/index.jsx
 import './styles.scss'
 import sanitizeHtml from 'sanitize-html'
-import { useState } from 'react'
 import { Color } from '@tiptap/extension-color'
 import ListItem from '@tiptap/extension-list-item'
 import TextStyle from '@tiptap/extension-text-style'
@@ -29,16 +28,13 @@ const TextEditor2 = ({ value }) => {
                 history: false,
                 bulletList: {
                     keepMarks: true,
-                    keepAttributes: false, // TODO : Making this as `false` becase marks are not preserved when I try to preserve attrs, awaiting a bit of help
+                    keepAttributes: false, 
                 },
                 orderedList: {
                     keepMarks: true,
-                    keepAttributes: false, // TODO : Making this as `false` becase marks are not preserved when I try to preserve attrs, awaiting a bit of help
+                    keepAttributes: false, 
                 },
             }),
-            // Highlight,
-            // TaskList,
-            // TaskItem,
         ],
         content: value,
         onTransaction: () => {

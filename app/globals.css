@@ -260,6 +260,14 @@ ol li div {
   flex-direction: row;
 }
 
+/* ---------------------------------- */
+/* EDITOR */
+/* ---------------------------------- */
+.editor-showCard {
+  border: 3px solid gold;
+  margin: 1em;
+}
+
 
 /* ---------------------------------- */
 /* AI GENERATED */

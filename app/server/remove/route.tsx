@@ -1,0 +1,34 @@
+// ./server/remove
+
+// ./server/text/field
+
+import { NextResponse } from "next/server";
+import {updateTextIndex} from '@/lib/updateTextIndex';
+import { updateTextField } from "@/lib/updateTextField";
+import { pushToArrayDB } from "@/lib/pushToArrayDB";
+import {pullFromArrayDB} from '@/lib/pullFromArrayDB';
+import { revalidatePath } from "next/cache";
+
+const DATA_API_KEY = process.env.DATA_API_KEY
+const BASE_URL = process.env.BASE_URL;
+
+export async function POST(req:Request, res: Response) {
+    try {
+    
+    const data = await req.json()
+
+    const {document, entry, keyName, valueName} = data;
+
+    const update = await pullFromArrayDB(document, entry, keyName, valueName)
+
+    if (!update) {
+        console.log(update)
+        return NextResponse.json({error: 'text update failed on DB'}, {status: 500})
+    }
+
+    return NextResponse.json({message: 'success'}, {status: 200});
+    } catch(e) {
+        console.log(e)
+        return NextResponse.json({message: 'error on api/text'}, {status: 500});
+    }
+}

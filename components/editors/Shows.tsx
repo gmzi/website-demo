@@ -9,6 +9,7 @@ import InputEditor from "../forms/text-editor/InputEditor";
 import InputEditorString from '../forms/text-editor/InputEditorString';
 import TextEditorIndex from '../forms/text-editor/InputEditor';
 import ImageUpload from "../forms/ImageUpload";
+import ButtonDelete from "../shared/ButtonDelete";
 import document from '@/document.json'
 import type { Show } from "@/app/(personal)/shows/page";
 
@@ -75,21 +76,15 @@ export default async function Shows() {
                     <h4>Agregar equipo creativo</h4>
                     <p>Nombre Apellido : rol, Nombre Apellido : rol</p>
                     <InputEditorString contentString={''} document={documentName} entry={`content.${index}.castAndCreative.creative`} section={sectionName}/>
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <div>
+                        <ButtonDelete text={"DELETE SHOW"} document={documentName} entry={`content`} keyName={"title"} valueName={show.title} section={sectionName} />
+                    </div>
                 </div>
             ))}
         </div>
-        // <div>
-        //     <h1>tis is component editor Courses!!</h1>
-        //     <label>faq editor:</label>
-        //     <TextEditorEntry contentHtml={FAQ} document={documentName} entry={'FAQ'} section={sectionName}/>
-        //     <label>online add editor:</label>
-        //     <TextEditorEntry contentHtml={onlineDescription} document={documentName} entry={'online.description'} section={sectionName}/>
-        //     <TextEditorEntry contentHtml={onlineLogistics} document={documentName} entry={'online.logistics'} section={sectionName}/>
-        //     <label>Content html editor:</label>
-        //     <TextEditor contentHtml={contentHtml} document={documentName} section={sectionName}/>
-        //     <ImageUpload imageUrl={image1Url} document={documentName} folder={folderName} entry={'image_1_url'} section={sectionName}/>
-        //     <ImageUpload imageUrl={image2Url} document={documentName} folder={folderName} entry={'image_2_url'} section={sectionName}/>
-        //     <ImageUpload imageUrl={image3Url} document={documentName} folder={folderName} entry={'image_3_url'} section={sectionName}/>
-        // </div>
     )
   }
