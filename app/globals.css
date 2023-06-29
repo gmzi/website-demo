@@ -316,3 +316,75 @@ ol li div {
   font-weight: bold;
   color: #222;
 }
+
+/* ------------------------------------ */
+/* SHOW CARD */
+
+.show-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 16px;
+  margin-bottom: 16px;
+  max-width: 400px;
+}
+
+.show-card__image img {
+  width: 100%;
+  max-height: 200px;
+  object-fit: cover;
+  border-radius: 4px;
+  margin-bottom: 16px;
+}
+
+.show-card__title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.show-card__date {
+  font-size: 14px;
+  color: #888;
+  margin-bottom: 8px;
+}
+
+.show-card__sinopsis {
+  font-size: 16px;
+  margin-bottom: 16px;
+}
+
+.show-card__section-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.show-card__cast,
+.show-card__creative,
+.show-card__musicians,
+.show-card__dancers {
+  margin-bottom: 16px;
+}
+
+.show-card__cast ul,
+.show-card__creative ul,
+.show-card__musicians ul,
+.show-card__dancers ul {
+  padding-left: 20px;
+}
+
+.show-card__cast li,
+.show-card__creative li,
+.show-card__musicians li,
+.show-card__dancers li {
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+
+.show-card__description {
+  font-size: 16px;
+}

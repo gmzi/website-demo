@@ -61,22 +61,3 @@ const ButtonDelete: React.FC<ButtonParams> = ({text, document, entry, keyName, v
 };
 
 export default ButtonDelete;
-
-
-
-// 'use client'
-
-// interface ButtonParams {
-//     document: string;
-//     entry: string;
-//     index: number
-// }
-
-// const ButtonDelete = async function ButtonDelete({document, entry, index : {ButtonParams}}){
-        
-//     return (
-//         <button>DELETE SHOW</button>
-//     )
-// }
-
-// export default ButtonDelete as unknown as () => JSX.Element;
