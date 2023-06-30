@@ -79,6 +79,7 @@ export default async function CoursesPage() {
             <h1>Cursos</h1>
                 <div className="coursesHero">
                     <Image
+                        alt="Picture of the author"
                         src={image1Url}
                         width={0}
                         height={0}
@@ -89,7 +90,6 @@ export default async function CoursesPage() {
                             borderRadius: '5px',
                             marginBottom: '.5em'
                         }}
-                        alt="Picture of the author"
                     />
                     <div className='description'>
                         {texto(data)}

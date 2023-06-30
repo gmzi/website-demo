@@ -39,21 +39,21 @@ const ShowCard: React.FC<ShowCardProps> = ({ show }) => {
     return (
         <div className="show-card">
             <div className="show-card__image">
-                <img src={image_1_url} alt={title} />
-                {/* <Image
+                {/* <img src={image_1_url} alt={title} /> */}
+                <Image
                     src={image_1_url}
                     alt={title}
                     width={0}
                     height={0}
                     sizes="100vw"
                     style={{
-                        width: '60%',
+                        width: '100%',
                         height: 'auto',
                         borderRadius: '5px',
                         marginBottom: '.5em'
                     }}
                     
-                /> */}
+                />
             </div>
             <div className="show-card__content">
                 <h2 className="show-card__title">{title}</h2>

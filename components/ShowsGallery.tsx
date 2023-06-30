@@ -5,7 +5,6 @@ import parse from 'html-react-parser'
 import document from "@/document.json"
 import ShowCard from "@/components/ShowCard"
 import ShowDisplay from '@/components/ShowDisplay'
-import ShowsGallery from "@/components/ShowsGallery"
 
 const isProd = process.env.NODE_ENV === 'production';
 
@@ -42,36 +41,20 @@ export interface Show {
     }
 }
 
-
-export const metadata: Metadata = {
-    title: 'Espectaculos',
-    description: 'espectaculos escritos y/o dirigidos por John Doe',
+interface Shows {
+    shows: Show[]
 }
 
-export default async function ShowsPage() {
-    // let data;
-    // if (isProd){
-    //     data = await getData("shows");
-    // } else {
-    //     data = document.shows;
-    // }
-
-    const data = await getData("shows");
-
-    const shows = [...data.content].reverse() || [];
+const ShowsGallery: React.FC<Shows> = ({shows}) => {
 
     return (
         <section>
             <h1>Espectáculos</h1>
-            <ShowsGallery shows={shows}/>
+            {shows.map((show: Show, index: number) => (
+                <ShowDisplay key={`show-${show.title}-${index}`} show={show}/>
+            ))}
         </section>
     )
 }
 
-/*
-
-{shows.map((show, index) => (
-                // <ShowCard key={`show-${show.title}-${index}`} show={show} />
-                <ShowDisplay key={`show-${show.title}-${index}`} show={show}/>
-            ))}
-*/
+export default ShowsGallery;

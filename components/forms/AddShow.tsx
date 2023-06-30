@@ -53,6 +53,7 @@ interface Dancer {
 
 interface FormData {
     title: string;
+    slug: string;
     opening_date: string;
     content_html: string;
     image_1_url: string;
@@ -77,16 +78,13 @@ interface FormComponentProps {
     section: string;
 }
 
-interface WholeCast {
-    data: string;
-}
-
 
 
 const AddShow: React.FC<FormComponentProps> = ({ document, entry, section }) => {
 
     const [formData, setFormData] = useState<FormData>({
         title: "My tit",
+        slug: "",
         opening_date: "2023-01-12",
         content_html: "my content",
         image_1_url: "https://res.cloudinary.com/imagesgmzi/image/upload/v1687897400/website-fer/shows/oi0mlaebaor351cqlbzd.webp",
@@ -183,11 +181,14 @@ const AddShow: React.FC<FormComponentProps> = ({ document, entry, section }) => 
     const handleSubmit = async (e: FormEvent) => {
         e.preventDefault();
 
+        formData.slug = formData.title.trim().replace(/\s/g, "-").toLowerCase();
+
         const data = {
             document: document,
             entry: entry,
             content: formData
         }
+
         try {
             const saved = await fetch(`${BASE_URL}/server/create`, {
                 method: 'POST',
