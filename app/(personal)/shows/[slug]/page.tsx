@@ -65,13 +65,21 @@ export default async function ShowRoute({params}: {params: {slug: string}}) {
     
     const {slug} = params;
 
-    const fixedSlug = slug.replace(/%20/g, "-");
+    const fixedSlug = slug.replace(/%20/g, "-").toLowerCase();
 
     const show = shows.find((show: Show) => show.slug === fixedSlug);
 
 
     if (!show){
-        notFound();
+        console.log('slug:', slug)
+        console.log('fixedSlug:', fixedSlug)
+        return (
+            <div>
+                <p>Thats not found</p>
+                <p>slug: {slug}</p>
+                <p>fixedSlug: {fixedSlug}</p>
+            </div>
+        )
     }
 
     return (
