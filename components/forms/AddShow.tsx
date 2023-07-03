@@ -183,9 +183,6 @@ const AddShow: React.FC<FormComponentProps> = ({ document, entry, section }) => 
 
         formData.slug = formData.title.trim().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/\s/g, "-").toLowerCase();
 
-        console.log(formData.slug)
-        return;
-
         const data = {
             document: document,
             entry: entry,
