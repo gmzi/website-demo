@@ -83,19 +83,19 @@ interface FormComponentProps {
 const AddShow: React.FC<FormComponentProps> = ({ document, entry, section }) => {
 
     const [formData, setFormData] = useState<FormData>({
-        title: "My tit",
+        title: "",
         slug: "",
-        opening_date: "2023-01-12",
-        content_html: "my content",
-        image_1_url: "https://res.cloudinary.com/imagesgmzi/image/upload/v1687897400/website-fer/shows/oi0mlaebaor351cqlbzd.webp",
+        opening_date: "",
+        content_html: "",
+        image_1_url: "",
         image_2_url: "",
         image_3_url: "",
-        seasons: [{ year: '2021', theater: "el camarin" }],
-        theatre: "a theatre",
-        sinopsis: "a sinopsis",
+        seasons: [{ year: '', theater: "" }],
+        theatre: "",
+        sinopsis: "",
         castAndCreative: {
-            cast: [{ name: "john doe", role: "the pianist" }, { name: "mix max", role: "the cellist" }],
-            creative: [{ name: "trimti", role: "director" }, { name: "siux", role: "lighting designer" }],
+            cast: [{ name: "", role: "" }, { name: "", role: "" }],
+            creative: [{ name: "", role: "" }, { name: "", role: "" }],
             musicians: [],
             dancers: []
         },
@@ -234,7 +234,7 @@ const AddShow: React.FC<FormComponentProps> = ({ document, entry, section }) => 
                 ...prevState,
                 castAndCreative: {
                     ...prevState.castAndCreative,
-                    cast: [{ name: name, role: role }, ...prevState.castAndCreative.cast,]
+                    cast: [...prevState.castAndCreative.cast, { name: name, role: role }]
                 },
                 wholeCast: ""
             }));
@@ -254,7 +254,7 @@ const AddShow: React.FC<FormComponentProps> = ({ document, entry, section }) => 
                 ...prevState,
                 castAndCreative: {
                     ...prevState.castAndCreative,
-                    creative: [{ name: name, role: role }, ...prevState.castAndCreative.creative]
+                    creative: [...prevState.castAndCreative.creative, { name: name, role: role }]
                 },
                 wholeCreativeTeam: ""
             }));
