@@ -73,6 +73,7 @@
         "content": [
             {
                 "title": "Mamita!!!!! Show 1",
+                "slug": "mamita!!!!!-show-1",
                 "opening_date": "2023-01-12",
                 "content_html": "this is the text at the top of the section",
                 "image_1_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1687379968/website-fer/about/zngp5hpy0hox2ngsoknn.jpg",
@@ -139,6 +140,7 @@
             },
             {
                 "title": "Querida!!!!",
+                "slug": "querida!!!!",
                 "content_html": "this is the text at the top of the section",
                 "image_1_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1687379968/website-fer/about/zngp5hpy0hox2ngsoknn.jpg",
                 "image_2_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1687379968/website-fer/about/zngp5hpy0hox2ngsoknn.jpg",

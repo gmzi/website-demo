@@ -8,6 +8,7 @@ import Image from 'next/image'
 import { getData } from "@/lib/getData"
 import parse from 'html-react-parser'
 import document from "@/document.json"
+import { getRemoteOrLocalData } from "@/lib/getRemoteOrLocalData";
 
 const isProd = process.env.NODE_ENV === 'production';
 
@@ -46,7 +47,8 @@ export interface Show {
 }
 
 export async function generateStaticParams() {
-    const data = await getData("shows")
+    // const data = await getData("shows")
+    const data = await getRemoteOrLocalData("shows");
     const shows = data.content
     return shows.map((show: Show) => ({
         slug: show.slug,
@@ -59,7 +61,8 @@ export async function generateStaticParams() {
 
 export default async function ShowRoute({params}: {params: {slug: string}}) {
 
-    const data = await getData("shows");
+    // const data = await getData("shows");
+    const data = await getRemoteOrLocalData("shows");
 
     const shows = data.content;
     

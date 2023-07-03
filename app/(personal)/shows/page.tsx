@@ -6,6 +6,7 @@ import document from "@/document.json"
 import ShowCard from "@/components/ShowCard"
 import ShowDisplay from '@/components/ShowDisplay'
 import ShowsGallery from "@/components/ShowsGallery"
+import {getRemoteOrLocalData} from '@/lib/getRemoteOrLocalData';
 
 const isProd = process.env.NODE_ENV === 'production';
 
@@ -56,12 +57,14 @@ export default async function ShowsPage() {
     //     data = document.shows;
     // }
 
-    const data = await getData("shows");
+    const data = await getRemoteOrLocalData("shows");
+
+    // const data = await getData("shows");
 
     const shows = [...data.content].reverse() || [];
 
     return (
-        <section>
+        <section className="sectionShows">
             <h1>Espectáculos</h1>
             <ShowsGallery shows={shows}/>
         </section>

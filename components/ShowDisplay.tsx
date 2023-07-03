@@ -32,21 +32,20 @@ interface ShowCardProps {
     show: Show;
 }
 
-const ShowCard: React.FC<ShowCardProps> = ({ show }) => {
+const ShowDisplay: React.FC<ShowCardProps> = ({ show }) => {
     const { title, opening_date, content_html, image_1_url, sinopsis, theatre, castAndCreative } = show;
     const { cast, creative, musicians, dancers } = castAndCreative;
 
 
     return (
-        <a href={`/shows/${title}`}>
-            <div className="show-card">
-                <div className="show-card__heading">
-                    <h2 className="show-card__title">{title}</h2>
-                    <p className="show-card__date">{opening_date}</p>
+        <a className="display-card" href={`/shows/${title}`}>
+            <div className="display-show-card">
+                <div className="display-show-card__content">
+                    <h2 className="display-show-card__title">{title}</h2>
+                    <p className="display-show-card__theatre">{theatre}</p>
+                    <p className="display-show-card__date">{opening_date}</p>
                 </div>
-                <div className="show-card__image">
-                    {/* <img src={image_1_url} alt={title} /> */}
-
+                <div className="display-show-card__image">
                     <Image
                         src={image_1_url}
                         alt={title}
@@ -67,4 +66,4 @@ const ShowCard: React.FC<ShowCardProps> = ({ show }) => {
     );
 };
 
-export default ShowCard;
+export default ShowDisplay;
