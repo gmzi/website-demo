@@ -94,8 +94,8 @@ const AddShow: React.FC<FormComponentProps> = ({ document, entry, section }) => 
         theatre: "",
         sinopsis: "",
         castAndCreative: {
-            cast: [{ name: "", role: "" }, { name: "", role: "" }],
-            creative: [{ name: "", role: "" }, { name: "", role: "" }],
+            cast: [],
+            creative: [],
             musicians: [],
             dancers: []
         },
@@ -181,7 +181,10 @@ const AddShow: React.FC<FormComponentProps> = ({ document, entry, section }) => 
     const handleSubmit = async (e: FormEvent) => {
         e.preventDefault();
 
-        formData.slug = formData.title.trim().replace(/\s/g, "-").toLowerCase();
+        formData.slug = formData.title.trim().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/\s/g, "-").toLowerCase();
+
+        console.log(formData.slug)
+        return;
 
         const data = {
             document: document,
