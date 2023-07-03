@@ -33,7 +33,10 @@ export default async function Shows() {
     return (
         <div>
             <h1>Shows Editor!!!</h1>
+            <h2>Add a show</h2>
             <AddShow document={documentName} entry={'content'} section={sectionName}/>
+
+            <h2>Edit shows</h2>
             {shows.map((show: Show, index: number) => (
                 <div className='editor-showCard' key={`show-${show.title}`}>
                     <h2>{show.title} - edit </h2>

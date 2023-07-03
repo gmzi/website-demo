@@ -57,9 +57,9 @@ export default async function ShowsPage() {
     //     data = document.shows;
     // }
 
-    const data = await getRemoteOrLocalData("shows");
+    // const data = await getRemoteOrLocalData("shows");
 
-    // const data = await getData("shows");
+    const data = await getData("shows");
 
     const shows = [...data.content].reverse() || [];
 

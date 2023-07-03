@@ -3,6 +3,7 @@ import parse from 'html-react-parser'
 
 interface Show {
     title: string;
+    slug: string;
     opening_date: string;
     content_html: string;
     image_1_url: string;
@@ -33,12 +34,12 @@ interface ShowCardProps {
 }
 
 const ShowDisplay: React.FC<ShowCardProps> = ({ show }) => {
-    const { title, opening_date, content_html, image_1_url, sinopsis, theatre, castAndCreative } = show;
+    const { title, slug, opening_date, content_html, image_1_url, sinopsis, theatre, castAndCreative } = show;
     const { cast, creative, musicians, dancers } = castAndCreative;
 
 
     return (
-        <a className="display-card" href={`/shows/${title}`}>
+        <a className="display-card" href={`/shows/${slug}`}>
             <div className="display-show-card">
                 <div className="display-show-card__content">
                     <h2 className="display-show-card__title">{title}</h2>

@@ -10,6 +10,7 @@ const isProd = process.env.NODE_ENV === 'production';
 
 export interface Show {
     title: string;
+    slug: string;
     opening_date: string;
     content_html: string;
     image_1_url: string;

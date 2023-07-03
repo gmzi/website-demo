@@ -47,8 +47,8 @@ export interface Show {
 }
 
 export async function generateStaticParams() {
-    // const data = await getData("shows")
-    const data = await getRemoteOrLocalData("shows");
+    // const data = await getRemoteOrLocalData("shows");
+    const data = await getData("shows")
     const shows = data.content
     return shows.map((show: Show) => ({
         slug: show.slug,
@@ -61,8 +61,8 @@ export async function generateStaticParams() {
 
 export default async function ShowRoute({params}: {params: {slug: string}}) {
 
-    // const data = await getData("shows");
-    const data = await getRemoteOrLocalData("shows");
+    const data = await getData("shows");
+    // const data = await getRemoteOrLocalData("shows");
 
     const shows = data.content;
     
