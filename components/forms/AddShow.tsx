@@ -52,6 +52,7 @@ interface Dancer {
 }
 
 interface FormData {
+    showID: string;
     title: string;
     slug: string;
     opening_date: string;
@@ -78,11 +79,20 @@ interface FormComponentProps {
     section: string;
 }
 
+const createAlphaNumericString = (length: number) => {
+    const characters = "abcdefghijklmnopqrstuvwxyz0123456789";
+    let result = "";
+    for (let i = 0; i < length; i++) {
+      result += characters[Math.floor(Math.random() * characters.length)];
+    }
+    return result;
+  };
 
 
 const AddShow: React.FC<FormComponentProps> = ({ document, entry, section }) => {
 
     const [formData, setFormData] = useState<FormData>({
+        showID: "",
         title: "",
         slug: "",
         opening_date: "",
@@ -180,6 +190,8 @@ const AddShow: React.FC<FormComponentProps> = ({ document, entry, section }) => 
 
     const handleSubmit = async (e: FormEvent) => {
         e.preventDefault();
+
+        formData.showID = createAlphaNumericString(20);
 
         formData.slug = formData.title.trim().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/\s/g, "-").toLowerCase();
 

@@ -3,8 +3,10 @@
 import { NextResponse } from "next/server";
 import {updateTextIndex} from '@/lib/updateTextIndex';
 import { updateTextField } from "@/lib/updateTextField";
-import {updateArrayItem} from "@/lib/updateArrayItem"
+import { pushToArrayDB } from "@/lib/pushToArrayDB";
 import { revalidatePath } from "next/cache";
+import { updateArrayItem } from "@/lib/updateArrayItem";
+import {updateShow} from "@/lib/updateShow"
 
 const DATA_API_KEY = process.env.DATA_API_KEY
 const BASE_URL = process.env.BASE_URL;
@@ -20,7 +22,7 @@ export async function PATCH(req:Request, res: Response) {
 
     const {document, entry, content} = data;
 
-    const update = await updateArrayItem(document, entry, content)
+    const update = await updateShow(document, 'content.showID', data.content.showID, content)
 
     if (!update) {
         console.log(update)

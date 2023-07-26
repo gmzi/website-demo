@@ -11,14 +11,16 @@ import {getRemoteOrLocalData} from '@/lib/getRemoteOrLocalData';
 const isProd = process.env.NODE_ENV === 'production';
 
 export interface Show {
+    showID: string;
     title: string;
+    slug: string;
     opening_date: string;
     content_html: string;
     image_1_url: string;
     image_2_url: string;
     image_3_url: string;
     seasons: {
-        year: number;
+        year: string;
         theater: string;
     }[];
     theatre: string;
@@ -41,6 +43,8 @@ export interface Show {
             role: string;
         }[];
     }
+    wholeCast: string;
+    wholeCreativeTeam:  string;
 }
 
 

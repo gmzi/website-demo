@@ -52,6 +52,7 @@ interface Dancer {
 }
 
 interface FormData {
+    showID: string;
     title: string;
     slug: string;
     opening_date: string;
@@ -85,24 +86,20 @@ interface FormComponentProps {
 const EditShow: React.FC<FormComponentProps> = ({ document, entry, section, show }) => {
 
     const [formData, setFormData] = useState<FormData>({
+        showID: show.showID,
         title: show.title,
         slug: show.slug,
-        opening_date: "",
-        content_html: "",
-        image_1_url: "",
-        image_2_url: "",
-        image_3_url: "",
-        seasons: [{ year: '', theater: "" }],
-        theatre: "",
-        sinopsis: "",
-        castAndCreative: {
-            cast: [],
-            creative: [],
-            musicians: [],
-            dancers: []
-        },
-        wholeCast: "",
-        wholeCreativeTeam: ""
+        opening_date: show.opening_date,
+        content_html: show.content_html,
+        image_1_url: show.image_1_url,
+        image_2_url: show.image_2_url,
+        image_3_url: show.image_3_url,
+        seasons: show.seasons,
+        theatre: show.theatre,
+        sinopsis: show.sinopsis,
+        castAndCreative: show.castAndCreative,
+        wholeCast: show.wholeCast,
+        wholeCreativeTeam: show.wholeCreativeTeam
     });
 
     const editor = useEditor({
@@ -192,8 +189,8 @@ const EditShow: React.FC<FormComponentProps> = ({ document, entry, section, show
         }
 
         try {
-            const saved = await fetch(`${BASE_URL}/server/create`, {
-                method: 'POST',
+            const saved = await fetch(`${BASE_URL}/server/edit`, {
+                method: 'PATCH',
                 headers: {
                     'Content-Type': 'application/json',
                     'API-Key': DATA_API_KEY
@@ -318,7 +315,7 @@ const EditShow: React.FC<FormComponentProps> = ({ document, entry, section, show
 
     return (
         <form onSubmit={handleSubmit} style={{ border: '1px solid blue' }}>
-            <h2>Add a show</h2>
+            <h2>EDIT SHOW</h2>
             <label>
                 Title:
                 <input
@@ -658,7 +655,7 @@ const EditShow: React.FC<FormComponentProps> = ({ document, entry, section, show
                 Add Dancer
             </button>
             <br />
-            <button type="submit">Submit</button>
+            <button type="submit">Save Changes</button>
         </form>
     )
 }

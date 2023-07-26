@@ -13,6 +13,7 @@ import { getRemoteOrLocalData } from "@/lib/getRemoteOrLocalData";
 const isProd = process.env.NODE_ENV === 'production';
 
 export interface Show {
+    showID: string;
     title: string;
     slug: string;
     opening_date: string;
@@ -21,7 +22,7 @@ export interface Show {
     image_2_url: string;
     image_3_url: string;
     seasons: {
-        year: number;
+        year: string;
         theater: string;
     }[];
     theatre: string;
@@ -44,6 +45,8 @@ export interface Show {
             role: string;
         }[];
     }
+    wholeCast: string;
+    wholeCreativeTeam: string;
 }
 
 export async function generateStaticParams() {
@@ -88,7 +91,6 @@ export default async function ShowRoute({params}: {params: {slug: string}}) {
     return (
         <section>
             <ShowCard show={show}/>
-
             <br />
             <hr/>
             <ShowsGallery shows={shows}/>
