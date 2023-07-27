@@ -2,12 +2,12 @@
 
 import { useState, ChangeEvent, FormEvent } from "react";
 import { getData } from "@/lib/getData";
-import TextEditor2 from "../forms/text-editor/TextEditor2";
-import TextEditorEntry from "../forms/text-editor/TextEditorEntry";
-import InputEditor from "../forms/text-editor/InputEditor";
-import InputEditorString from '../forms/text-editor/InputEditorString';
-import TextEditorIndex from '../forms/text-editor/InputEditor';
-import ImageUpload from "../forms/ImageUpload";
+import TextEditor2 from "./text-editor/TextEditor2";
+import TextEditorEntry from "./text-editor/TextEditorEntry";
+import InputEditor from "./text-editor/InputEditor";
+import InputEditorString from './text-editor/InputEditorString';
+import TextEditorIndex from './text-editor/InputEditor';
+import ImageUpload from "./ImageUpload";
 import document from '@/document.json'
 import type { Show } from "@/app/(personal)/shows/page";
 import { revalidateEditorPage } from "@/lib/revalidateEditorPage";
@@ -89,7 +89,7 @@ const createAlphaNumericString = (length: number) => {
   };
 
 
-const AddShow: React.FC<FormComponentProps> = ({ document, entry, section }) => {
+const CreateShow: React.FC<FormComponentProps> = ({ document, entry, section }) => {
 
     const [formData, setFormData] = useState<FormData>({
         showID: "",
@@ -673,4 +673,4 @@ const AddShow: React.FC<FormComponentProps> = ({ document, entry, section }) => 
     )
 }
 
-export default AddShow;
+export default CreateShow;

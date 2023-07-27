@@ -2,7 +2,7 @@
 
 import { getData } from "@/lib/getData";
 import { getAndSortData } from "@/lib/getAndSortData";
-import AddShow from "../forms/AddShow";
+import CreateShow from "../forms/CreateShow";
 import EditShow from "../forms/EditShow";
 import TextEditor from "../forms/text-editor/TextEditor";
 import TextEditorEntry from "../forms/text-editor/TextEditorEntry";
@@ -36,7 +36,7 @@ export default async function Shows() {
         <div>
             <h1>Shows Editor!!!</h1>
             <h2>Add a show</h2>
-            <AddShow document={documentName} entry={'content'} section={sectionName}/>
+            <CreateShow document={documentName} entry={'content'} section={sectionName}/>
 
             <h2>Edit shows</h2>
             {shows.map((show: Show, index: number) => (
