@@ -3,12 +3,17 @@ import About from "@/components/editors/About";
 import Bio from "@/components/editors/Bio";
 import Courses from "@/components/editors/Courses";
 import Shows from "@/components/editors/Shows";
+import { currentUser } from "@clerk/nextjs";
+import type {User} from '@clerk/nextjs/api';
+import {UserButton} from "@clerk/nextjs";
 
 export default async function EditorMainPage() {
 
-  
+  const user: User | null = await currentUser();
+
   return (
     <>
+      <UserButton afterSignOutUrl="/"/>
       <h2>HOME</h2>
       {/* @ts-expect-error Server Component */}
       <Shows/>
