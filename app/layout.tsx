@@ -4,7 +4,7 @@ import { Space_Mono } from 'next/font/google'
 import { getMetadata } from '@/lib/getMetadata'
 import { getLetterAfterSlash } from '@/lib/getLetterAfterSlash'
 import { Analytics } from '@vercel/analytics/react';
-import {metadata} from '../metadata'
+import { metadata } from '../metadata'
 import { Navbar } from '@/components/global/Navbar'
 import { Footer } from '@/components/global/Footer'
 
@@ -25,14 +25,14 @@ const BASE_URL = process.env.BASE_URL;
 // export const metadata: Metadata = {
 //    title: local.title
 // }
-export async function generateMetadata(){
+export async function generateMetadata() {
 
   // const remote = await getMetadata()
 
   // LOCAL METADATA , REMOVE THIS AND UNCOMMENT ABOVE TO GET METADATA FROM DB
   const remote = metadata;
 
-  const twitterUrl = remote?.social?.find(platf => platf.name === "twitter")?.url|| "//twitter";
+  const twitterUrl = remote?.social?.find(platf => platf.name === "twitter")?.url || "//twitter";
   const twitterHandle = getLetterAfterSlash(twitterUrl)
 
   return {
@@ -56,11 +56,11 @@ export async function generateMetadata(){
       url: BASE_URL,
       images: [
         {
-          url: '/server/og', 
+          url: '/server/og',
         }
       ],
       siteName: remote?.site_name,
-      locale: 'en-US', 
+      locale: 'en-US',
       type: 'website'
     },
 
@@ -68,7 +68,7 @@ export async function generateMetadata(){
     applicationName: remote?.site_name,
     referrer: 'origin-when-cross-origin',
     keywords: remote?.keywords,
-    authors: [{ name: remote?.author_name, url: BASE_URL}],
+    authors: [{ name: remote?.author_name, url: BASE_URL }],
     creator: 'gmzi',
     publisher: 'gmzi',
 
@@ -142,7 +142,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={space_mono.className}>
-      <body 
+      <body
       // className={inter.className}
       >
         {children}
