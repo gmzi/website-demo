@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@clerk/nextjs": "^4.23.2",
     "@tiptap/extension-color": "^2.0.3",
     "@tiptap/extension-text-style": "^2.0.3",
     "@tiptap/pm": "^2.0.3",
