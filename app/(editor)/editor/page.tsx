@@ -1,4 +1,4 @@
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import About from "@/components/editors/About";
 import Bio from "@/components/editors/Bio";
 import Courses from "@/components/editors/Courses";
@@ -8,19 +8,20 @@ import type {User} from '@clerk/nextjs/api';
 import {UserButton} from "@clerk/nextjs";
 import {auth} from '@clerk/nextjs';
 
-// const AUTHORIZED_USER_ID = process.env.AUTHORIZED_USER_ID;
+const AUTHORIZED_USER_ID = process.env.AUTHORIZED_USER_ID;
 
 export default async function EditorMainPage() {
 
-  // const user: User | null = await currentUser();
-  // const {userId} : {userId: string | null} = auth();
+  const user: User | null = await currentUser();
+  const {userId} : {userId: string | null} = auth();
 
-  // console.log('-USERID---------------------------------')
-  // console.log(user?.id)
+  if (user?.id !== AUTHORIZED_USER_ID){
+    return redirect('/editor/unauthorized')
+  }
 
   return (
     <>
-      <UserButton afterSignOutUrl="/"/>
+      <UserButton afterSignOutUrl="/editor"/>
       <h2>HOME</h2>
       {/* @ts-expect-error Server Component */}
       <Shows/>
