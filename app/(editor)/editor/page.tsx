@@ -6,10 +6,17 @@ import Shows from "@/components/editors/Shows";
 import { currentUser } from "@clerk/nextjs";
 import type {User} from '@clerk/nextjs/api';
 import {UserButton} from "@clerk/nextjs";
+import {auth} from '@clerk/nextjs';
+
+// const AUTHORIZED_USER_ID = process.env.AUTHORIZED_USER_ID;
 
 export default async function EditorMainPage() {
 
-  const user: User | null = await currentUser();
+  // const user: User | null = await currentUser();
+  // const {userId} : {userId: string | null} = auth();
+
+  // console.log('-USERID---------------------------------')
+  // console.log(user?.id)
 
   return (
     <>
