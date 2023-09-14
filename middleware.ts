@@ -1,4 +1,4 @@
-import { authMiddleware, redirectToSignIn } from "@clerk/nextjs";
+import { authMiddleware, ClerkLoaded, redirectToSignIn, RedirectToUserProfile } from "@clerk/nextjs";
 import { navItems } from "./lib/navItems";
 import {redirect} from 'next/navigation';
 
@@ -12,12 +12,16 @@ export default authMiddleware({
     // if (auth.userId !== AUTHORIZED_USER_ID) {redirect somewhere} else {redirect to editor}
     // filter for unauthorized users goes here. Try to redirect them to sign in page
     // DOCS: https://clerk.com/docs/references/nextjs/auth-middleware#using-after-auth-for-fine-grained-control
-    // UPDATE: moved the authorized user comparison to editor page, in order to redirect from next router.
 
-    if (!auth.userId || auth.userId !== AUTHORIZED_USER_ID){
-      console.log(req.url)
-      console.log(auth.userId)
-      // return redirectToSignIn({returnBackUrl: req.url})
+    // https://clerk.com/docs/account-portal/custom-redirects?utm_source=www.google.com&utm_medium=referral&utm_campaign=none
+
+    // if (auth.userId !== AUTHORIZED_USER_ID){
+    //   console.log(req.url)
+    //   console.log(auth.userId)
+    //   return redirectToSignIn({returnBackUrl: req.url})
+    // }
+
+    if (!auth.userId){
       return redirectToSignIn({returnBackUrl: req.url})
     }
     
