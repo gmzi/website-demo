@@ -5,12 +5,18 @@ import Courses from "@/components/editors/Courses";
 import Shows from "@/components/editors/Shows";
 import { currentUser } from "@clerk/nextjs";
 import type {User} from '@clerk/nextjs/api';
-import {UserButton, SignOutButton} from "@clerk/nextjs";
+import {SignIn, UserButton, SignOutButton} from "@clerk/nextjs";
 import {auth} from '@clerk/nextjs';
 
 const AUTHORIZED_USER_ID = process.env.AUTHORIZED_USER_ID;
 
 export default async function EditorMainPage() {
+
+  // THIS EXPERIMMENT WORKS IN LOCAL, BUT NOT IN VERCEL SITE. I would guess this is because the default
+  // redirects point to //localhost. Maybe we need to manually setup redirects to /website-fer.vercel.app in 
+  // order to make it work. 
+  // DRAFT QUESTIONS FOR CLERK ENGINEER AND KEEP
+  // MOVING WITH THE EDITOR STYLING AND DATABASE INTERACTION. 
 
   const user: User | null = await currentUser();
   // const {userId} : {userId: string | null} = auth();
