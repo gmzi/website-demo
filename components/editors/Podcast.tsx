@@ -11,8 +11,6 @@ export default async function Podcast(){
     const spotify_url = data.spotify_url;
     const apple_url = data.apple_url;
 
-    console.log(data)
-
     return (
         <div>
             <h2>Podcast</h2>
