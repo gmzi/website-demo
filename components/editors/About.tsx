@@ -15,6 +15,7 @@ export default async function About(){
 
     return (
         <div>
+            <h2>About</h2>
             <TextEditor contentHtml={contentHtml} document={documentName} section={sectionName}/>
             <ImageUpload imageUrl={imageUrl} document={documentName} folder={folderName} entry={'image_url'} section={sectionName}/>
         </div>

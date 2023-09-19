@@ -24,7 +24,7 @@ export default async function Courses() {
     
     return (
         <div>
-            <h1>tis is component editor Courses!!</h1>
+            <h2>Courses</h2>
             <label>faq editor:</label>
             <TextEditorEntry contentHtml={FAQ} document={documentName} entry={'FAQ'} section={sectionName}/>
             <label>online add editor:</label>

@@ -34,7 +34,7 @@ export default async function Shows() {
     
     return (
         <div>
-            <h1>Shows Editor!!!</h1>
+            <h1>Shows</h1>
             <h2>Add a show</h2>
             <CreateShow document={documentName} entry={'content'} section={sectionName}/>
 
