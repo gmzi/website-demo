@@ -1,4 +1,7 @@
-import { ImageResponse } from '@vercel/og';
+import type { NextRequest } from 'next/server';
+// import { ImageResponse } from '@vercel/og';
+// fix build error caused by above import replacing it with this import:
+import { ImageResponse } from 'next/server';
  
 export const runtime = "edge"
  
