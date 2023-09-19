@@ -373,9 +373,9 @@ ol li div {
   background-color: #25d36535;
 }
 
-.show-card__section-title {
+/* .show-card__section-title {
 
-}
+} */
 
 .show-card__cast,
 .show-card__creative,
@@ -384,11 +384,11 @@ ol li div {
   margin: 1em 0em;
 }
 
-.show-card__cast ul,
+/* .show-card__cast ul,
 .show-card__creative ul,
 .show-card__musicians ul,
 .show-card__dancers ul {
-}
+} */
 
 .show-card__cast li,
 .show-card__creative li,
@@ -397,8 +397,8 @@ ol li div {
   list-style: none;
 }
 
-.show-card__description {
-}
+/* .show-card__description {
+} */
 
 
 

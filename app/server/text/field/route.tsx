@@ -8,6 +8,7 @@ const DATA_API_KEY = process.env.DATA_API_KEY
 const BASE_URL = process.env.BASE_URL;
 
 export async function PATCH(req:Request, res: Response) {
+    return NextResponse.json({ message: "hello, how you doing?" });
     try {
     const key = req.headers.get('API-Key')
     if (key !== DATA_API_KEY){
