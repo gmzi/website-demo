@@ -4,6 +4,7 @@ import Bio from "@/components/editors/Bio";
 import Courses from "@/components/editors/Courses";
 import Shows from "@/components/editors/Shows";
 import Podcast from "@/components/editors/Podcast";
+import Tours from "@/components/editors/Tours";
 import { currentUser } from "@clerk/nextjs";
 import type { User } from '@clerk/nextjs/api';
 import { SignIn, UserButton, SignOutButton } from "@clerk/nextjs";
@@ -48,6 +49,8 @@ export default async function EditorMainPage() {
         <Courses />
         {/* @ts-expect-error Server Component */}
         <Podcast/>
+        {/* @ts-expect-error Server Component */}
+        <Tours/>
       </div>
     </>
   )

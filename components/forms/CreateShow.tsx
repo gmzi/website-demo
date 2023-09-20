@@ -21,6 +21,7 @@ import TextStyle from '@tiptap/extension-text-style'
 import { EditorContent, useEditor } from '@tiptap/react'
 import StarterKit from '@tiptap/starter-kit'
 import MenuBar from '@/components/forms/text-editor/MenuBar'
+import uploadToCloudinary from '@/lib/uploadToCloudinary'
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL
 const DATA_API_KEY = process.env.NEXT_PUBLIC_DATA_API_KEY || '';
@@ -73,7 +74,7 @@ interface FormData {
     wholeCreativeTeam: string;
 }
 
-interface FormComponentProps {
+export interface FormComponentProps {
     document: string;
     entry: string;
     section: string;
@@ -293,28 +294,32 @@ const CreateShow: React.FC<FormComponentProps> = ({ document, entry, section }) 
             return;
         }
 
-        const formData = new FormData();
+        // ABSTRACtiNG ALL THIS WITH THE BRAND NEW FUNCTION:
 
-        const folderName = `${IMAGE_MAIN_FOLDER}/shows`
+        // const formData = new FormData();
 
-        formData.append("file", file);
-        formData.append("folder", folderName)
+        // const folderName = `${IMAGE_MAIN_FOLDER}/shows`
 
-        // UPLOAD IMAGE:
-        const upload = await fetch(`${BASE_URL}/api/image/upload`, {
-            method: 'POST',
-            body: formData
-        })
+        // formData.append("file", file);
+        // formData.append("folder", folderName)
 
-        if (!upload.ok) {
-            console.log('theres an error in upload')
-            console.log(upload)
-            console.log(upload.json())
-            return;
-        }
-        const image = await upload.json();
+        // // UPLOAD IMAGE:
+        // const upload = await fetch(`${BASE_URL}/api/image/upload`, {
+        //     method: 'POST',
+        //     body: formData
+        // })
 
-        const imageUrl = image.metadata.secure_url;
+        // if (!upload.ok) {
+        //     console.log('theres an error in upload')
+        //     console.log(upload)
+        //     console.log(upload.json())
+        //     return;
+        // }
+        // const image = await upload.json();
+
+        // const imageUrl = image.metadata.secure_url;
+
+        const imageUrl = await uploadToCloudinary(file, 'shows')
 
         const { name } = e.target;
         const value = imageUrl
