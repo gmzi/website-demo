@@ -10,6 +10,7 @@ import { EditorContent, useEditor } from '@tiptap/react'
 import StarterKit from '@tiptap/starter-kit'
 import type { FormComponentProps } from "./CreateShow";
 import uploadToCloudinary from '@/lib/uploadToCloudinary'
+import saveFormDataToDB from "@/lib/saveFormDataToDB";
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL
 const DATA_API_KEY = process.env.NEXT_PUBLIC_DATA_API_KEY || '';
@@ -47,14 +48,31 @@ const CreateTour: React.FC<FormComponentProps> = ({ document, entry, section }) 
 
     const handleSubmit = async (e: FormEvent) => {
         e.preventDefault();
-        console.log(formData)
+
+        const data = {
+            document: document,
+            entry: entry,
+            content: formData
+        }
+        const savedToDB = await saveFormDataToDB(data);
+        // if right, revalidate from here, else return error;
+        if (!savedToDB) {
+            console.log('error trying to save')
+        }
+
+        const editorRevalidation = await revalidateEditorPage(BASE_URL);
+        const personalRevalidation = await revalidatePersonalPage(section, BASE_URL);
+
+        console.log(`Tour creator revalidated editor`, editorRevalidation)
+        console.log(`Tour creator revalidated ${section}`, personalRevalidation)
+
         return;
     }
 
     const handleImageUpload = async (e: ChangeEvent<HTMLInputElement>) => {
         e.preventDefault();
         const file = e.target.files?.[0];
-        if (!file){
+        if (!file) {
             console.log('image missing');
             return;
         }
@@ -69,7 +87,7 @@ const CreateTour: React.FC<FormComponentProps> = ({ document, entry, section }) 
 
         const imageUrl = await uploadToCloudinary(file, "tours");
 
-        const {name} = e.target;
+        const { name } = e.target;
         const value = imageUrl;
 
         setFormData((prevState) => ({

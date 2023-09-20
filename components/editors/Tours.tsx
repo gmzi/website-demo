@@ -15,7 +15,7 @@ export default async function Tours(){
         <div>
             <h1>Giras</h1>
             <h2>Agregar una gira</h2>
-            <CreateTour document={documentName} entry={"tours"} section={sectionName}/>
+            <CreateTour document={documentName} entry={"content"} section={sectionName}/>
         </div>
     )
 }

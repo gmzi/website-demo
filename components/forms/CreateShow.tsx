@@ -22,6 +22,7 @@ import { EditorContent, useEditor } from '@tiptap/react'
 import StarterKit from '@tiptap/starter-kit'
 import MenuBar from '@/components/forms/text-editor/MenuBar'
 import uploadToCloudinary from '@/lib/uploadToCloudinary'
+import saveFormDataToDB from "@/lib/saveFormDataToDB";
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL
 const DATA_API_KEY = process.env.NEXT_PUBLIC_DATA_API_KEY || '';
@@ -202,22 +203,28 @@ const CreateShow: React.FC<FormComponentProps> = ({ document, entry, section }) 
             content: formData
         }
 
-        try {
-            const saved = await fetch(`${BASE_URL}/server/create`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'API-Key': DATA_API_KEY
-                },
-                referrerPolicy: 'no-referrer',
-                body: JSON.stringify(data)
-            });
+        // try {
+        //     const saved = await fetch(`${BASE_URL}/server/create`, {
+        //         method: 'POST',
+        //         headers: {
+        //             'Content-Type': 'application/json',
+        //             'API-Key': DATA_API_KEY
+        //         },
+        //         referrerPolicy: 'no-referrer',
+        //         body: JSON.stringify(data)
+        //     });
 
-            if (!saved.ok) {
-                console.log('Failed to save new show:');
-                console.log(saved);
+        //     if (!saved.ok) {
+        //         console.log('Failed to save new show:');
+        //         console.log(saved);
+        //         return;
+        //     }
+            const saved = await saveFormDataToDB(data);
+            if (!saved){ 
+                console.log('ups something went wrong trying to save to DB')
                 return;
             }
+
             console.log('show saved successfully!');
             // revalidation goes here:
             const editorRevalidation = await revalidateEditorPage(BASE_URL);
@@ -229,10 +236,10 @@ const CreateShow: React.FC<FormComponentProps> = ({ document, entry, section }) 
             // a 'success' status would go here
 
             return;
-        } catch (error) {
-            console.log('An error occurred while saving a show:');
-            console.log(error);
-        }
+        // } catch (error) {
+        //     console.log('An error occurred while saving a show:');
+        //     console.log(error);
+        // }
     }
 
     const handleWholeCast = () => {
