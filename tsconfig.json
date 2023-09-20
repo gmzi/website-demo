@@ -21,7 +21,9 @@
     ],
     "paths": {
       "@/*": ["./*"]
-    }
+    },
+    // this is to avoid a problem using a Set in /personal/tours/page.tsx
+    "downlevelIteration": true,
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/(editor)/editor/page.js"],
   "exclude": ["node_modules"]
