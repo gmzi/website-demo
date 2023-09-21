@@ -63,6 +63,8 @@ const CreateTour: React.FC<FormComponentProps> = ({ document, entry, section }) 
         const editorRevalidation = await revalidateEditorPage(BASE_URL);
         const personalRevalidation = await revalidatePersonalPage(section, BASE_URL);
 
+        console.log(personalRevalidation);
+
         console.log(`Tour creator revalidated editor`, editorRevalidation)
         console.log(`Tour creator revalidated ${section}`, personalRevalidation)
 

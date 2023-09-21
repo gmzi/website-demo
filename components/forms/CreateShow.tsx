@@ -203,27 +203,28 @@ const CreateShow: React.FC<FormComponentProps> = ({ document, entry, section }) 
             content: formData
         }
 
-        // try {
-        //     const saved = await fetch(`${BASE_URL}/server/create`, {
-        //         method: 'POST',
-        //         headers: {
-        //             'Content-Type': 'application/json',
-        //             'API-Key': DATA_API_KEY
-        //         },
-        //         referrerPolicy: 'no-referrer',
-        //         body: JSON.stringify(data)
-        //     });
+        try {
+            const saved = await fetch(`${BASE_URL}/server/create`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'API-Key': DATA_API_KEY
+                },
+                referrerPolicy: 'no-referrer',
+                body: JSON.stringify(data)
+            });
 
-        //     if (!saved.ok) {
-        //         console.log('Failed to save new show:');
-        //         console.log(saved);
-        //         return;
-        //     }
-            const saved = await saveFormDataToDB(data);
-            if (!saved){ 
-                console.log('ups something went wrong trying to save to DB')
+            if (!saved.ok) {
+                console.log('Failed to save new show:');
+                console.log(saved);
                 return;
             }
+
+            // const saved = await saveFormDataToDB(data);
+            // if (!saved.ok){ 
+            //     console.log('ups something went wrong trying to save to DB')
+            //     return;
+            // }
 
             console.log('show saved successfully!');
             // revalidation goes here:
@@ -236,10 +237,10 @@ const CreateShow: React.FC<FormComponentProps> = ({ document, entry, section }) 
             // a 'success' status would go here
 
             return;
-        // } catch (error) {
-        //     console.log('An error occurred while saving a show:');
-        //     console.log(error);
-        // }
+        } catch (error) {
+            console.log('An error occurred while saving a show:');
+            console.log(error);
+        }
     }
 
     const handleWholeCast = () => {
