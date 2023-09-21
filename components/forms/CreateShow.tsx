@@ -23,6 +23,7 @@ import StarterKit from '@tiptap/starter-kit'
 import MenuBar from '@/components/forms/text-editor/MenuBar'
 import uploadToCloudinary from '@/lib/uploadToCloudinary'
 import saveFormDataToDB from "@/lib/saveFormDataToDB";
+import createSlug from '@/lib/createSlug';
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL
 const DATA_API_KEY = process.env.NEXT_PUBLIC_DATA_API_KEY || '';
@@ -195,7 +196,7 @@ const CreateShow: React.FC<FormComponentProps> = ({ document, entry, section }) 
 
         formData.showID = createAlphaNumericString(20);
 
-        formData.slug = formData.title.trim().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/\s/g, "-").toLowerCase();
+        formData.slug = createSlug(formData.title);
 
         const data = {
             document: document,
