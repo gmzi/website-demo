@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, ChangeEvent, FormEvent } from "react";
+import { useRouter } from 'next/navigation'
 import { getData } from "@/lib/getData";
 import TextEditor2 from "./text-editor/TextEditor2";
 import TextEditorEntry from "./text-editor/TextEditorEntry";
@@ -86,13 +87,15 @@ const createAlphaNumericString = (length: number) => {
     const characters = "abcdefghijklmnopqrstuvwxyz0123456789";
     let result = "";
     for (let i = 0; i < length; i++) {
-      result += characters[Math.floor(Math.random() * characters.length)];
+        result += characters[Math.floor(Math.random() * characters.length)];
     }
     return result;
-  };
+};
 
 
 const CreateShow: React.FC<FormComponentProps> = ({ document, entry, section }) => {
+
+    const router = useRouter();
 
     const [formData, setFormData] = useState<FormData>({
         showID: "",
@@ -221,23 +224,26 @@ const CreateShow: React.FC<FormComponentProps> = ({ document, entry, section }) 
         //         return;
         //     }
 
-            const saved = await saveFormDataToDB(data);
-            if (!saved){ 
-                console.log('ups something went wrong trying to save to DB')
-                return;
-            }
-
-            console.log('show saved successfully!');
-            // revalidation goes here:
-            const editorRevalidation = await revalidateEditorPage(BASE_URL);
-            const personalRevalidation = await revalidatePersonalPage(section, BASE_URL);
-
-            console.log(`Show creator revalidated editor`, editorRevalidation)
-            console.log(`Show creator revalidated ${section}`, personalRevalidation)
-
-            // a 'success' status would go here
-
+        const saved = await saveFormDataToDB(data);
+        if (!saved) {
+            console.log('ups something went wrong trying to save to DB')
             return;
+        }
+
+        console.log('show saved successfully!');
+
+        // revalidation goes here:
+        const editorRevalidation = await revalidateEditorPage(BASE_URL);
+        const personalRevalidation = await revalidatePersonalPage(section, BASE_URL);
+
+        console.log(`Show creator revalidated editor`, editorRevalidation)
+        console.log(`Show creator revalidated ${section}`, personalRevalidation)
+
+        // a 'success' status would go here
+
+        router.refresh()
+
+        return;
         // } catch (error) {
         //     console.log('An error occurred while saving a show:');
         //     console.log(error);
