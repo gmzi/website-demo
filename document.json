@@ -351,23 +351,32 @@
         "written_press": [
             {
                 "veredict": "Muy buena",
-                "quote": "Bello Ritual escénico de domingo al mediodía. Imperdible reescritura del clásico King Lear.",
+                "quote": "Bello Ritual escénico de domingo al mediodía. \nImperdible reescritura del clásico King Lear.",
                 "media_organization": "La Nación",
                 "journalist": "Jazmín Carbonell",
                 "date": "2020-05-01",
                 "article_url": "www.google.com",
                 "show": "La fiesta del viejo"
+            },
+            {
+                "veredict": "",
+                "quote": "Espíritus en la fábrica es la reunión de tres compañías teatrales dispuestas a construir el drama e inventar una estructura que nos sumerja palabra por palabra, acción por acción, al rito teatral.",
+                "media_organization": "Experiencia Konex #34",
+                "journalist": "",
+                "date": "",
+                "article_url": "",
+                "show": "La Payanca"
             }
         ],
         "video_press": [
             {
                 "show": "La fiesta del viejo",
-                "video_url": "https://www.youtube.com/watch?v=73wnMHftomo",
+                "video_url": "https://www.youtube.com/embed/73wnMHftomo",
                 "title": "Entrevista por Jorge Dubatti",
                 "description": "Con Dubatti en la Escuela de Espectadores. PT 1",
                 "source_organization": "La Tv Pública"
             }
         ], 
-        "hero_image_url": "www.google.com"
+        "hero_image_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1695412355/website-fer/press/press_hero_u9jdi6.jpg"
     }
 }
