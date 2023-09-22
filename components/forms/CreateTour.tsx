@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, ChangeEvent, FormEvent } from "react";
+import { useRouter } from 'next/navigation';
 import { revalidateEditorPage } from "@/lib/revalidateEditorPage";
 import { revalidatePersonalPage } from "@/lib/revalidatePersonalPage";
 import Image from "next/image";
@@ -27,6 +28,8 @@ interface FormData {
 }
 
 const CreateTour: React.FC<FormComponentProps> = ({ document, entry, section }) => {
+
+    const router = useRouter();
 
     const [formData, setFormData] = useState<FormData>({
         show_title: "",
@@ -58,15 +61,19 @@ const CreateTour: React.FC<FormComponentProps> = ({ document, entry, section }) 
         // if right, revalidate from here, else return error;
         if (!savedToDB) {
             console.log('error trying to save')
+            return;
         }
 
+        console.log('tour created successfully');
+
+        // revalidation goes here:
         const editorRevalidation = await revalidateEditorPage(BASE_URL);
         const personalRevalidation = await revalidatePersonalPage(section, BASE_URL);
 
-        console.log(personalRevalidation);
-
         console.log(`Tour creator revalidated editor`, editorRevalidation)
         console.log(`Tour creator revalidated ${section}`, personalRevalidation)
+
+        router.refresh()
 
         return;
     }
