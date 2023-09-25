@@ -1,4 +1,4 @@
-// ./server/text/field
+// ./server/create
 
 import { NextResponse } from "next/server";
 import {updateTextIndex} from '@/lib/updateTextIndex';

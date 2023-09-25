@@ -1,6 +1,8 @@
 import { getData } from "@/lib/getData";
 import type { WrittenPressArticle } from "@/app/(personal)/press/page";
 import type { VideoPressArticle } from "@/app/(personal)/press/page";
+import CreatePressVideo from "../forms/press/CreatePressVideo";
+import {CreatePressArticle} from "../forms/press/CreatePressArticle"
 
 export default async function Press() {
     const data = await getData("press");
@@ -16,8 +18,8 @@ export default async function Press() {
         <div>
             <h1>Prensa</h1>
             <h2>Agregar un artículo</h2>
-            {/* <CreatePressArticle document={documentName} entry={"written_press"} section={sectionName} */}
-            {/* <CreatePressVideo document={documentName} entry={"video_press"} section={sectionName} */}
+            <CreatePressArticle/>
+            <CreatePressVideo document={documentName} entry={"video_press"} section={sectionName} />
         </div>
 
     )
