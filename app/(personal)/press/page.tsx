@@ -26,26 +26,6 @@ export const metadata: Metadata = {
     description: 'articulos de prensa'
 }
 
-function extractYouTubeEmbedURL(url: string): string | null {
-    // Define a regular expression to match the video ID
-    const regex = /\/([^/]+)$/;
-  
-    // Use the regular expression to extract the video ID
-    const match = url.match(regex);
-  
-    // Check if a match is found
-    if (match) {
-      // Extract the video ID from the match
-      const extractedID = match[1];
-  
-      // Construct the embed URL and return it
-      return `https://www.youtube.com/embed/${extractedID}`;
-    } else {
-      // Return null if no match is found
-      return null;
-    }
-  }
-
 export default async function PressPage() {
 
     const data = await getData('press');
