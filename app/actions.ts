@@ -1,11 +1,13 @@
 import { revalidatePath } from 'next/cache'
 import { sql } from '@vercel/postgres'
 import { z } from 'zod'
+
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 const DATA_API_KEY = process.env.NEXT_PUBLIC_DATA_API_KEY || '';
 
 
 export async function addPressArticle(prevState: any, formData: FormData) {
+
     const schema = z.object({
         veredict: z.string(),
         quote: z.string(), 
