@@ -22,7 +22,6 @@ export default async function Press() {
     return (
         <div>
             <h1>Prensa</h1>
-            <h2>Agregar un artículo</h2>
             <CreatePressArticle/>
             <CreatePressVideo document={documentName} entry={"video_press"} section={sectionName} />
         </div>

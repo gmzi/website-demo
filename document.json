@@ -356,7 +356,8 @@
                 "journalist": "Jazmín Carbonell",
                 "date": "2020-05-01",
                 "article_url": "www.google.com",
-                "show": "La fiesta del viejo"
+                "show": "La fiesta del viejo",
+                "id": "fdsfds"
             },
             {
                 "veredict": "",
@@ -365,7 +366,8 @@
                 "journalist": "",
                 "date": "",
                 "article_url": "",
-                "show": "La Payanca"
+                "show": "La Payanca",
+                "id": "fdsfdswww"
             }
         ],
         "video_press": [

@@ -25,6 +25,7 @@ import MenuBar from '@/components/forms/text-editor/MenuBar'
 import uploadToCloudinary from '@/lib/uploadToCloudinary'
 import saveFormDataToDB from "@/lib/saveFormDataToDB";
 import createSlug from '@/lib/createSlug';
+import createAlphaNumericString from '@/lib/createAlphanumericString'
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL
 const DATA_API_KEY = process.env.NEXT_PUBLIC_DATA_API_KEY || '';
@@ -83,14 +84,14 @@ export interface FormComponentProps {
     section: string;
 }
 
-const createAlphaNumericString = (length: number) => {
-    const characters = "abcdefghijklmnopqrstuvwxyz0123456789";
-    let result = "";
-    for (let i = 0; i < length; i++) {
-        result += characters[Math.floor(Math.random() * characters.length)];
-    }
-    return result;
-};
+// const createAlphaNumericString = (length: number) => {
+//     const characters = "abcdefghijklmnopqrstuvwxyz0123456789";
+//     let result = "";
+//     for (let i = 0; i < length; i++) {
+//         result += characters[Math.floor(Math.random() * characters.length)];
+//     }
+//     return result;
+// };
 
 
 const CreateShow: React.FC<FormComponentProps> = ({ document, entry, section }) => {
@@ -197,6 +198,7 @@ const CreateShow: React.FC<FormComponentProps> = ({ document, entry, section }) 
     const handleSubmit = async (e: FormEvent) => {
         e.preventDefault();
 
+        // formData.showID = createAlphaNumericString(20);
         formData.showID = createAlphaNumericString(20);
 
         formData.slug = createSlug(formData.title);

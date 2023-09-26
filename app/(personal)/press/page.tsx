@@ -11,6 +11,7 @@ export interface WrittenPressArticle {
     date: string;
     article_url: string;
     show: string;
+    id: string;
 }
 
 export interface VideoPressArticle {

@@ -1,6 +1,7 @@
 import { revalidatePath } from 'next/cache'
 import { sql } from '@vercel/postgres'
 import { z } from 'zod'
+import createAlphaNumericString from '@/lib/createAlphanumericString';
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 const DATA_API_KEY = process.env.NEXT_PUBLIC_DATA_API_KEY || '';
@@ -17,6 +18,7 @@ export async function addPressArticle(prevState: any, formData: FormData) {
         article_url: z.string(), 
         image_url: z.string(),
         show: z.string(),
+        id: z.string()
       })
 
       const inputData = schema.parse({
@@ -27,7 +29,8 @@ export async function addPressArticle(prevState: any, formData: FormData) {
         date: formData.get('date'),
         article_url: formData.get('article_url'),
         image_url: formData.get('image_url'),
-        show: formData.get('show')
+        show: formData.get('show'),
+        id: createAlphaNumericString(20)
       })
 
       const data = {

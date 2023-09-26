@@ -31,6 +31,7 @@ export function CreatePressArticle() {
 
   return (
     <form action={formAction} id="myForm">
+      <h2>Agregar artículo de prensa</h2>
       <label htmlFor="veredict">Veredict:</label>
       <input type="text" id="veredict" name="veredict"/>
       <label htmlFor="quote">Cita:</label>
