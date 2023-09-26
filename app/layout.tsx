@@ -7,6 +7,7 @@ import { Analytics } from '@vercel/analytics/react';
 import { metadata } from '../metadata'
 import { Navbar } from '@/components/global/Navbar'
 import { Footer } from '@/components/global/Footer'
+import { ClerkProvider } from '@clerk/nextjs';
 
 // const inter = Inter({ subsets: ['latin'] })
 
@@ -145,9 +146,11 @@ export default function RootLayout({
       <body
       // className={inter.className}
       >
-        {children}
-        {/* UNCOMMENT BELOW TO ENABLE ANALYTICS */}
-        {/* {prodEnv && <Analytics/>} */}
+        <ClerkProvider allowedRedirectOrigins={[`${BASE_URL}/editor`]}>
+          {children}
+          {/* UNCOMMENT BELOW TO ENABLE ANALYTICS */}
+          {/* {prodEnv && <Analytics/>} */}
+        </ClerkProvider>
       </body>
     </html>
   )

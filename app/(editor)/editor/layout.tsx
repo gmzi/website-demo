@@ -1,5 +1,3 @@
-import { ClerkProvider } from '@clerk/nextjs';
-
 const BASE_URL = process.env.BASE_URL;
 
 interface EditorProps {
@@ -9,11 +7,10 @@ interface EditorProps {
 export default async function EditorLayout({ children }: EditorProps) {
 
   return (
-    <ClerkProvider allowedRedirectOrigins={[`${BASE_URL}/editor`]}>
-      <div className="container mx-auto grid items-start gap-10 py-8">
-        {children}
-      </div>
-    </ClerkProvider>
+    <div className="container mx-auto grid items-start gap-10 py-8">
+      <p>clerk provider not here anymore</p>
+      {children}
+    </div>
   )
 }
 
