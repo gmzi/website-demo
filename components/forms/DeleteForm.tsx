@@ -5,6 +5,11 @@ import { experimental_useFormState as useFormState } from 'react-dom'
 import { experimental_useFormStatus as useFormStatus } from 'react-dom'
 import type { WrittenPressArticle } from '@/app/(personal)/press/page'
 import { deletePressArticle } from '@/app/actions'
+import { revalidatePath } from 'next/cache'
+import { revalidateEditorPage } from '@/lib/revalidateEditorPage'
+import { useRouter } from 'next/navigation'
+
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
 interface DeletionFormProps {
     document: string;
@@ -29,6 +34,11 @@ function DeleteButton() {
 
 export function DeleteForm({document, entry, section, item}: DeletionFormProps) {
   const [state, formAction] = useFormState(deletePressArticle, initialState)
+  const router = useRouter();
+
+  if (state?.message === 'Deleted item' ){
+    router.refresh();
+  }
 
 
   return (

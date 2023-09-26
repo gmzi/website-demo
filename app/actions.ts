@@ -7,6 +7,20 @@ const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 const DATA_API_KEY = process.env.NEXT_PUBLIC_DATA_API_KEY || '';
 
 
+const clearCachesByServerAction = async (path?: string) => {
+  try {
+    if (path) {
+      revalidatePath(path)
+    }
+    else {
+      revalidatePath('/')
+      revalidatePath('/[lang]')
+    }
+  } catch (error) {
+    console.error('clearCachesByServerAction=> ', error)
+  }
+}
+
 export async function addPressArticle(prevState: any, formData: FormData) {
 
   const schema = z.object({
@@ -58,7 +72,7 @@ export async function addPressArticle(prevState: any, formData: FormData) {
     // revalidatePath('/press')
     // console shows this error: "Error: Invariant: static generation store missing in revalidateTag _N_T_/press"
 
-    return { message: `article added` }
+    return { message: `article added. refresh to see the changes` }
 
   } catch (e) {
     console.log(e)
@@ -82,12 +96,7 @@ export async function deletePressArticle(prevState: any, formData: FormData) {
     keyName: "id",
     valueName: inputData.id,
   }
-
   try {
-    // await sql`
-    //   DELETE FROM todos
-    //   WHERE id = ${data.id};
-    // `
     const deleted = await fetch(`${BASE_URL}/server/remove`, {
       method: 'POST',
       headers: {
@@ -99,9 +108,11 @@ export async function deletePressArticle(prevState: any, formData: FormData) {
 
     console.log(deleted)
 
-    // revalidatePath('/')
+    // revalidatePath('/(editor)/editor/', 'page');
+
     return { message: `Deleted item` }
   } catch (e) {
-    return { message: 'Failed to delete todo' }
+    console.error(e);
+    return { message: 'Failed to delete item' }
   }
 }

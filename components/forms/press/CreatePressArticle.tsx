@@ -24,6 +24,7 @@ export function CreatePressArticle() {
 
   // until we figure out how to reset form input after successfull data savign, bare with this:
   if (state?.message === 'article added'){
+    
     const form = document.getElementById("myForm");
     // @ts-ignore
     form.reset()
