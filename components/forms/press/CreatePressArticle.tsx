@@ -22,8 +22,15 @@ function SubmitButton() {
 export function CreatePressArticle() {
   const [state, formAction] = useFormState(addPressArticle, initialState)
 
+  // until we figure out how to reset form input after successfull data savign, bare with this:
+  if (state?.message === 'article added'){
+    const form = document.getElementById("myForm");
+    // @ts-ignore
+    form.reset()
+  }
+
   return (
-    <form action={formAction}>
+    <form action={formAction} id="myForm">
       <label htmlFor="veredict">Veredict:</label>
       <input type="text" id="veredict" name="veredict"/>
       <label htmlFor="quote">Cita:</label>

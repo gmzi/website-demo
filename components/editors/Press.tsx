@@ -3,12 +3,14 @@ import type { WrittenPressArticle } from "@/app/(personal)/press/page";
 import type { VideoPressArticle } from "@/app/(personal)/press/page";
 import CreatePressVideo from "../forms/press/CreatePressVideo";
 import {CreatePressArticle} from "../forms/press/CreatePressArticle"
+import document from '../../document.json';
 
 export const runtime = 'edge'
 export const preferredRegion = 'home'
 
 export default async function Press() {
     const data = await getData("press");
+    // const data = document.press;
 
     const documentName = "press";
     const sectionName = "press";
