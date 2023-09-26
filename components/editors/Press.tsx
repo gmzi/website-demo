@@ -4,6 +4,9 @@ import type { VideoPressArticle } from "@/app/(personal)/press/page";
 import CreatePressVideo from "../forms/press/CreatePressVideo";
 import {CreatePressArticle} from "../forms/press/CreatePressArticle"
 
+export const runtime = 'edge'
+export const preferredRegion = 'home'
+
 export default async function Press() {
     const data = await getData("press");
 

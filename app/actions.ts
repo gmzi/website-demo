@@ -50,7 +50,7 @@ export async function addPressArticle(prevState: any, formData: FormData) {
 
         console.log(saved)
 
-        revalidatePath('/press')
+        // revalidatePath('/press')
 
         return { message: `article added` }
 
