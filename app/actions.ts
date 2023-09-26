@@ -50,7 +50,10 @@ export async function addPressArticle(prevState: any, formData: FormData) {
 
         console.log(saved)
 
+        // for some weird reason, revalidation is happening, both in local build and in prod, 
+        // without calling the function. When calling:
         // revalidatePath('/press')
+        // console shows this error: "Error: Invariant: static generation store missing in revalidateTag _N_T_/press"
 
         return { message: `article added` }
 

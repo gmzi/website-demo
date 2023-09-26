@@ -8,7 +8,6 @@ export default async function EditorLayout({ children }: EditorProps) {
 
   return (
     <div className="container mx-auto grid items-start gap-10 py-8">
-      <p>clerk provider not here anymore</p>
       {children}
     </div>
   )

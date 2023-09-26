@@ -17,8 +17,6 @@ export default async function EditorMainPage() {
 
   // const user: User | null = await currentUser();
   const {orgRole} = auth();
-
-  console.log(orgRole);
   // const {userId} : {userId: string | null} = auth();
 
   if (orgRole !== 'admin') {
