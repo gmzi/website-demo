@@ -4,7 +4,7 @@
 import { experimental_useFormState as useFormState } from 'react-dom'
 import { experimental_useFormStatus as useFormStatus } from 'react-dom'
 import type { WrittenPressArticle } from '@/app/(personal)/press/page'
-import { deleteTodo } from '@/app/actions'
+import { deletePressArticle } from '@/app/actions'
 
 interface DeletionFormProps {
     document: string;
@@ -28,7 +28,7 @@ function DeleteButton() {
 }
 
 export function DeleteForm({document, entry, section, item}: DeletionFormProps) {
-  const [state, formAction] = useFormState(deleteTodo, initialState)
+  const [state, formAction] = useFormState(deletePressArticle, initialState)
 
 
   return (
