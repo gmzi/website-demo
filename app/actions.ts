@@ -128,9 +128,6 @@ export async function editPressArticle(prevState: any, formData: FormData) {
       body: JSON.stringify(data)
     });
 
-    console.log(await updated.json())
-
-
     revalidatePath('/(editor)/editor', 'page');
 
     return { message: `Item updated!!!` }

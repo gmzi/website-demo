@@ -22,11 +22,6 @@ export async function PATCH(req:Request, res: Response) {
 
     const {document, entry, itemLocator, newContent} = data;
 
-    console.log('document:', document)
-    console.log('entry:', entry)
-    console.log('itemLocator:', itemLocator)
-    console.log('newContent:', newContent)
-
     const update = await updateItem(document, entry, itemLocator, newContent);
 
     if (!update) {
