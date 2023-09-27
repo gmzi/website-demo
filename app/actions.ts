@@ -149,3 +149,32 @@ export async function editPressArticle(prevState: any, formData: FormData) {
     return { message: 'Failed to update item' }
   }
 }
+
+export async function uploadImageToCloudinary(prevState: any, formData: FormData){
+  const MAX_FILE_SIZE = 1024 * 1024 * 4
+  const ACCEPTED_IMAGE_MIME_TYPES = [
+    "image/jpeg",
+    "image/jpg",
+    "image/png",
+    "image/webp",
+  ];
+  const schema = z.object({
+    image: z
+      .any()
+      .refine((files) => {
+        return files?.[0]?.size <= MAX_FILE_SIZE;
+      }, 'Max image size is 4MB.')
+      .refine(
+        (files) => ACCEPTED_IMAGE_MIME_TYPES.includes(files?.[0]?.type),
+        "Only .jpg, .jpeg, .png, and .webp formats are supported"
+      )
+  })
+
+  const inputData = schema.parse({
+    image: formData.get('image'),
+  })
+
+  console.log('inputData:', inputData)
+
+  return {message: 'hello'}
+}

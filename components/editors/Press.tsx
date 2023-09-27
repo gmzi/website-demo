@@ -30,8 +30,6 @@ export default async function Press() {
                     <div>{article.veredict}</div>
                     <Delete document={documentName} entry={`written_press`} section={sectionName} item={article}/>
                     <Edit document={documentName} entry={`written_press`} section={sectionName} item={article}/>
-                    {/* <EditShow document={documentName} entry={`content`} section={sectionName} show={show} />
-                    <ButtonDelete text={"DELETE SHOW"} document={documentName} entry={`content`} keyName={"title"} valueName={show.title} section={sectionName} /> */}
                 </div>
             ))}
 

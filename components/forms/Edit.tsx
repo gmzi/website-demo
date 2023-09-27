@@ -39,7 +39,6 @@ export function Edit({document, entry, section, item}: DeletionFormProps) {
 
       <label htmlFor="veredict">Veredict:</label>
       <input type="text" id="veredict" name="veredict" defaultValue={item.veredict}/>
-
       <label htmlFor="quote">Cita:</label>
       <input type="text" id="quote" name="quote" defaultValue={item.quote}/>
       <label htmlFor="media_organization">Medio:</label>
