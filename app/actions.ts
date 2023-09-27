@@ -56,7 +56,7 @@ export async function addPressArticle(prevState: any, formData: FormData) {
     revalidatePath('/(editor)/editor', 'page');
 
     return { message: `article added` }
-    
+
   } catch (e) {
     console.log(e)
     return { message: 'failed to save press article' }
@@ -89,11 +89,10 @@ export async function deletePressArticle(prevState: any, formData: FormData) {
       body: JSON.stringify(data)
     });
 
-    console.log(deleted)
+    revalidatePath('/(editor)/editor', 'page');
 
-    // revalidatePath('/(editor)/editor/', 'page');
+    return { message: `Item deleted` }
 
-    return { message: `Deleted item` }
   } catch (e) {
     console.error(e);
     return { message: 'Failed to delete item' }
