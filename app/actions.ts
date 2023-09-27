@@ -103,12 +103,24 @@ export async function editPressArticle(prevState: any, formData: FormData) {
 
   const schema = z.object({
     id: z.string(),
-    veredict: z.string()
+    veredict: z.string(),
+    quote: z.string(),
+    media_organization: z.string(),
+    journalist: z.string(),
+    date: z.string(),
+    article_url: z.string(),
+    show: z.string()
   })
 
   const inputData = schema.parse({
     id: formData.get('id'),
-    veredict: formData.get('veredict')
+    veredict: formData.get('veredict'),
+    quote: formData.get('quote'),
+    media_organization: formData.get('media_organization'),
+    journalist: formData.get('journalist'),
+    date: formData.get('journalist'),
+    article_url: formData.get('article_url'),
+    show: formData.get('show')
   })
 
   const data = {

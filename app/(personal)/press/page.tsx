@@ -10,6 +10,7 @@ export interface WrittenPressArticle {
     journalist: string;
     date: string;
     article_url: string;
+    image_url: string;
     show: string;
     id: string;
 }

@@ -39,6 +39,21 @@ export function Edit({document, entry, section, item}: DeletionFormProps) {
 
       <label htmlFor="veredict">Veredict:</label>
       <input type="text" id="veredict" name="veredict" defaultValue={item.veredict}/>
+
+      <label htmlFor="quote">Cita:</label>
+      <input type="text" id="quote" name="quote" defaultValue={item.quote}/>
+      <label htmlFor="media_organization">Medio:</label>
+      <input type="text" id="media_organization" name="media_organization" defaultValue={item.media_organization}/>
+      <label htmlFor="journalist">Autor de la nota:</label>
+      <input type="text" id="journalist" name="journalist" defaultValue={item.journalist}/>
+      <label htmlFor="date">Fecha:</label>
+      <input type="text" id="date" name="date" defaultValue={item.date}/>
+      <label htmlFor="article_url">Link al articulo:</label>
+      <input type="text" id="article_url" name="article_url" defaultValue={item.article_url}/>
+      <label htmlFor="image_url">Link a imagen:</label>
+      <input type="text" id="image_url" name="image_url"defaultValue={item.image_url}/>
+      <label htmlFor="show">Espectaculo:</label>
+      <input type="text" id="show" name="show"defaultValue={item.show}/>
       <EditButton />
       <p aria-live="polite" className="sr-only" role="status">
         {state?.message}
