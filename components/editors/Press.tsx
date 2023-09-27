@@ -4,21 +4,22 @@ import type { VideoPressArticle } from "@/app/(personal)/press/page";
 import CreatePressVideo from "../forms/press/CreatePressVideo";
 import {CreatePressArticle} from "../forms/press/CreatePressArticle"
 import document from '../../document.json';
-import { DeleteForm } from "../forms/DeleteForm";
+import { Delete } from "../forms/Delete";
+import { Edit } from "../forms/Edit";
 
 export const runtime = 'edge'
 export const preferredRegion = 'home'
 
 export default async function Press() {
-    const data = await getData("press");
-    // const data = document.press;
+    // const data = await getData("press");
+    const data = document.press;
 
     const documentName = "press";
     const sectionName = "press";
     const folderName = "press";
 
-    const written_articles = [...data.written_press] || [];
-    const video_articles = [...data.video_press] || [];
+    const written_articles = [...data?.written_press] || [];
+    const video_articles = [...data?.video_press] || [];
 
     return (
         <div>
@@ -27,7 +28,8 @@ export default async function Press() {
             {written_articles.map((article: WrittenPressArticle, index: number) => (
                 <div key={`written-article-${article.id}`}>
                     <div>{article.veredict}</div>
-                    <DeleteForm document={documentName} entry={`written_press`} section={sectionName} item={article}/>
+                    <Delete document={documentName} entry={`written_press`} section={sectionName} item={article}/>
+                    <Edit document={documentName} entry={`written_press`} section={sectionName} item={article}/>
                     {/* <EditShow document={documentName} entry={`content`} section={sectionName} show={show} />
                     <ButtonDelete text={"DELETE SHOW"} document={documentName} entry={`content`} keyName={"title"} valueName={show.title} section={sectionName} /> */}
                 </div>

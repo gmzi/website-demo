@@ -98,3 +98,45 @@ export async function deletePressArticle(prevState: any, formData: FormData) {
     return { message: 'Failed to delete item' }
   }
 }
+
+export async function editPressArticle(prevState: any, formData: FormData) {
+
+  const schema = z.object({
+    id: z.string(),
+    veredict: z.string()
+  })
+
+  const inputData = schema.parse({
+    id: formData.get('id'),
+    veredict: formData.get('veredict')
+  })
+
+  const data = {
+    document: "press",
+    entry: "written_press",
+    itemLocator: "written_press.id",
+    newContent: inputData,
+  }
+  try {
+    const updated = await fetch(`${BASE_URL}/server/edit/item`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        'API-Key': DATA_API_KEY
+      },
+      referrerPolicy: 'no-referrer',
+      body: JSON.stringify(data)
+    });
+
+    console.log(await updated.json())
+
+
+    revalidatePath('/(editor)/editor', 'page');
+
+    return { message: `Item updated!!!` }
+
+  } catch (e) {
+    console.error(e);
+    return { message: 'Failed to update item' }
+  }
+}
