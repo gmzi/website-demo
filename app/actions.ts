@@ -1,3 +1,5 @@
+'use server'
+
 import { revalidatePath } from 'next/cache'
 import { sql } from '@vercel/postgres'
 import { z } from 'zod'
@@ -6,20 +8,6 @@ import createAlphaNumericString from '@/lib/createAlphanumericString';
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 const DATA_API_KEY = process.env.NEXT_PUBLIC_DATA_API_KEY || '';
 
-
-const clearCachesByServerAction = async (path?: string) => {
-  try {
-    if (path) {
-      revalidatePath(path)
-    }
-    else {
-      revalidatePath('/')
-      revalidatePath('/[lang]')
-    }
-  } catch (error) {
-    console.error('clearCachesByServerAction=> ', error)
-  }
-}
 
 export async function addPressArticle(prevState: any, formData: FormData) {
 
@@ -65,15 +53,10 @@ export async function addPressArticle(prevState: any, formData: FormData) {
       body: JSON.stringify(data)
     });
 
-    console.log(saved)
+    revalidatePath('/(editor)/editor', 'page');
 
-    // for some weird reason, revalidation is happening, both in local build and in prod, 
-    // without calling the function. When calling:
-    // revalidatePath('/press')
-    // console shows this error: "Error: Invariant: static generation store missing in revalidateTag _N_T_/press"
-
-    return { message: `article added. refresh to see the changes` }
-
+    return { message: `article added` }
+    
   } catch (e) {
     console.log(e)
     return { message: 'failed to save press article' }

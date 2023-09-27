@@ -19,6 +19,7 @@ interface ButtonParams {
 const ButtonDelete: React.FC<ButtonParams> = ({text, document, entry, keyName, valueName, section }) => {
 
   const handleDelete = async () => {
+    
     const data = {
         document: document,
         entry: entry,
