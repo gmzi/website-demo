@@ -28,6 +28,7 @@ export function CreatePressArticle() {
     const form = document.getElementById("myForm");
     // @ts-ignore
     form.reset()
+    // state.message = null;
   }
 
   return (
