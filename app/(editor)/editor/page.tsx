@@ -47,18 +47,18 @@ export default async function EditorMainPage() {
       <div className="editor-sections-wrapper">
         {/* @ts-expect-error Server Component */}
         <Press/>
-        {/* @ts-expect-error Server Component */}
-        <Shows />
-        {/* @ts-expect-error Server Component */}
+
+        {/* <Shows />
+
         <About />
-        {/* @ts-expect-error Server Component */}
+
         <Bio />
-        {/* @ts-expect-error Server Component */}
+
         <Courses />
-        {/* @ts-expect-error Server Component */}
+
         <Podcast/>
-        {/* @ts-expect-error Server Component */}
-        <Tours/>
+
+        <Tours/> */}
       </div>
     </>
   )
