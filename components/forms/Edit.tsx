@@ -34,7 +34,7 @@ export function Edit({document, entry, section, item}: DeletionFormProps) {
 
   return (
     <form action={formAction}>
-        <h2>EDIT ME</h2>
+        <h2>EDITAR</h2>
       <input type="hidden" name="id" value={item.id} />
 
       <label htmlFor="veredict">Veredict:</label>

@@ -3,7 +3,6 @@
 // @ts-expect-error
 import { experimental_useFormState as useFormState } from 'react-dom'
 import { experimental_useFormStatus as useFormStatus } from 'react-dom'
-import { uploadImageToCloudinary } from '@/app/actions';
 import { FormEvent, useState } from 'react';
 import Image from 'next/image';
 
@@ -26,12 +25,11 @@ export function ImageForm() {
 
     return (
         <>
-            <h1>Cachito</h1>
-            <label htmlFor="image">Image:</label>
+            <label htmlFor="image">Adjuntar imagen:</label>
             <input
                 type="file"
-                id="image"
-                name="image"
+                id="image_file"
+                name="image_file"
                 accept="image/*"
                 onChange={handleImageChange}
             />

@@ -4,16 +4,20 @@ import { revalidatePath } from 'next/cache'
 import { sql } from '@vercel/postgres'
 import { z } from 'zod'
 import createAlphaNumericString from '@/lib/createAlphanumericString';
-import {uploadToCloudinary} from './cloudinary';
+import { uploadToCloudinary } from './cloudinary';
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 const DATA_API_KEY = process.env.NEXT_PUBLIC_DATA_API_KEY || '';
 const IMAGE_MAIN_FOLDER = process.env.NEXT_PUBLIC_IMAGE_MAIN_FOLDER || '';
 
-const CLOUDINARY_UPLOAD_PRESET=process.env.CLOUDINARY_UPLOAD_PRESET;
-
-
 export async function addPressArticle(prevState: any, formData: FormData) {
+  const MAX_FILE_SIZE = 1024 * 1024 * 4
+  const ACCEPTED_IMAGE_MIME_TYPES = [
+    "image/jpeg",
+    "image/jpg",
+    "image/png",
+    "image/webp",
+  ];
 
   const schema = z.object({
     veredict: z.string(),
@@ -22,9 +26,19 @@ export async function addPressArticle(prevState: any, formData: FormData) {
     journalist: z.string(),
     date: z.string(),
     article_url: z.string(),
-    image_url: z.string(),
     show: z.string(),
-    id: z.string()
+    id: z.string(),
+    image_file: z
+      .any()
+      .refine((file) => {
+        return file?.size <= MAX_FILE_SIZE;
+      }, 'Max image size is 4MB.')
+      .refine(
+        (file) => ACCEPTED_IMAGE_MIME_TYPES.includes(file?.type),
+        "Only .jpg, .jpeg, .png, and .webp formats are supported"
+      ),
+    // just for type declaration, will be filled after uploadingToCloud:
+    image_url: z.string()
   })
 
   const inputData = schema.parse({
@@ -34,22 +48,22 @@ export async function addPressArticle(prevState: any, formData: FormData) {
     journalist: formData.get('journalist'),
     date: formData.get('date'),
     article_url: formData.get('article_url'),
-    image_url: formData.get('image_url'),
     show: formData.get('show'),
-    id: createAlphaNumericString(20)
+    id: createAlphaNumericString(20),
+    image_file: formData.get('image_file'),
+    // just for type declaration, will be added after uploadingToCloud
+    image_url: ""
   })
 
-  const imageFile = formData.get('image');
   const folderName = `${IMAGE_MAIN_FOLDER}/press`
 
-  const imageHostingMetadata = await uploadToCloudinary(imageFile, folderName);
+  const imageHostingMetadata = await uploadToCloudinary(inputData.image_file, folderName);
 
   const image_url = imageHostingMetadata.secure_url;
-
-  console.log(image_url);
-
-
-  return {message: "hi"};
+  // remove image file from inputData
+  delete inputData.image_file;
+  // add image url to inputData
+  inputData.image_url = image_url;
 
   const data = {
     document: "press",
@@ -164,33 +178,4 @@ export async function editPressArticle(prevState: any, formData: FormData) {
     console.error(e);
     return { message: 'Failed to update item' }
   }
-}
-
-export async function uploadImageToCloudinary(prevState: any, formData: FormData){
-  const MAX_FILE_SIZE = 1024 * 1024 * 4
-  const ACCEPTED_IMAGE_MIME_TYPES = [
-    "image/jpeg",
-    "image/jpg",
-    "image/png",
-    "image/webp",
-  ];
-  const schema = z.object({
-    image: z
-      .any()
-      .refine((files) => {
-        return files?.[0]?.size <= MAX_FILE_SIZE;
-      }, 'Max image size is 4MB.')
-      .refine(
-        (files) => ACCEPTED_IMAGE_MIME_TYPES.includes(files?.[0]?.type),
-        "Only .jpg, .jpeg, .png, and .webp formats are supported"
-      )
-  })
-
-  const inputData = schema.parse({
-    image: formData.get('image'),
-  })
-
-  console.log('inputData:', inputData)
-
-  return {message: 'hello'}
 }

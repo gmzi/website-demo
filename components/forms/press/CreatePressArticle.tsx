@@ -47,8 +47,6 @@ export function CreatePressArticle() {
       <input type="text" id="date" name="date" />
       <label htmlFor="article_url">Link al articulo:</label>
       <input type="text" id="article_url" name="article_url" />
-      <label htmlFor="image_url">Link a imagen:</label>
-      <input type="text" id="image_url" name="image_url" />
       <label htmlFor="show">Espectaculo:</label>
       <input type="text" id="show" name="show" />
       <ImageForm/>
