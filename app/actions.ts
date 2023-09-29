@@ -4,10 +4,13 @@ import { revalidatePath } from 'next/cache'
 import { sql } from '@vercel/postgres'
 import { z } from 'zod'
 import createAlphaNumericString from '@/lib/createAlphanumericString';
+import {uploadToCloudinary} from './cloudinary';
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 const DATA_API_KEY = process.env.NEXT_PUBLIC_DATA_API_KEY || '';
 const IMAGE_MAIN_FOLDER = process.env.NEXT_PUBLIC_IMAGE_MAIN_FOLDER || '';
+
+const CLOUDINARY_UPLOAD_PRESET=process.env.CLOUDINARY_UPLOAD_PRESET;
 
 
 export async function addPressArticle(prevState: any, formData: FormData) {
@@ -35,6 +38,18 @@ export async function addPressArticle(prevState: any, formData: FormData) {
     show: formData.get('show'),
     id: createAlphaNumericString(20)
   })
+
+  const imageFile = formData.get('image');
+  const folderName = `${IMAGE_MAIN_FOLDER}/press`
+
+  const imageHostingMetadata = await uploadToCloudinary(imageFile, folderName);
+
+  const image_url = imageHostingMetadata.secure_url;
+
+  console.log(image_url);
+
+
+  return {message: "hi"};
 
   const data = {
     document: "press",
@@ -178,36 +193,4 @@ export async function uploadImageToCloudinary(prevState: any, formData: FormData
   console.log('inputData:', inputData)
 
   return {message: 'hello'}
-}
-
-export async function uploadToCloudinary(file: File, folder: string): Promise<string> {
-  return new Promise(async (resolve, reject) => {
-      const formData = new FormData();
-      const folderName = `${IMAGE_MAIN_FOLDER}/${folder}`;
-
-      formData.append("file", file);
-      formData.append("folder", folderName);
-
-      try {
-          // Upload image:
-          const upload = await fetch(`${BASE_URL}/api/image/upload`, {
-              method: 'POST',
-              body: formData
-          })
-
-          if (!upload.ok) {
-              console.log('There is an error in cloudinary upload');
-              console.log(upload);
-              console.log(await upload.json());
-              reject(new Error('Image upload failed'));
-          } else {
-              const image = await upload.json();
-              const imageUrl = image.metadata.secure_url;
-              resolve(imageUrl);
-          }
-      } catch (e) {
-          console.error('An error occurred during the upload:', e);
-          reject(e);
-      }
-  })
 }

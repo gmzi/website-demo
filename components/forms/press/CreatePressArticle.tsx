@@ -15,13 +15,22 @@ function SubmitButton() {
 
   return (
     <button type="submit" aria-disabled={pending}>
-      Add
+      Create
     </button>
   )
 }
 
 export function CreatePressArticle() {
   const [state, formAction] = useFormState(addPressArticle, initialState)
+
+  // until we figure out how to reset form input after successfull data savign, bare with this:
+  if (state?.message === 'article added'){
+    
+    const form = document.getElementById("myForm");
+    // @ts-ignore
+    form.reset()
+    // state.message = null;
+  }
 
   return (
     <form action={formAction} id="myForm">
