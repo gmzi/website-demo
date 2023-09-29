@@ -5,6 +5,7 @@ import { experimental_useFormState as useFormState } from 'react-dom'
 import { experimental_useFormStatus as useFormStatus } from 'react-dom'
 import type { WrittenPressArticle } from '@/app/(personal)/press/page'
 import { editPressArticle } from '@/app/actions'
+import { ImageEdit } from './ImageEdit'
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
@@ -49,10 +50,9 @@ export function Edit({document, entry, section, item}: DeletionFormProps) {
       <input type="text" id="date" name="date" defaultValue={item.date}/>
       <label htmlFor="article_url">Link al articulo:</label>
       <input type="text" id="article_url" name="article_url" defaultValue={item.article_url}/>
-      <label htmlFor="image_url">Link a imagen:</label>
-      <input type="text" id="image_url" name="image_url"defaultValue={item.image_url}/>
       <label htmlFor="show">Espectaculo:</label>
       <input type="text" id="show" name="show"defaultValue={item.show}/>
+      <ImageEdit imageUrl={item.image_url}/>
       <EditButton />
       <p aria-live="polite" className="sr-only" role="status">
         {state?.message}

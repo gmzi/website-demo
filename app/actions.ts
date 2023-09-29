@@ -1,77 +1,78 @@
 'use server'
 
 import { revalidatePath } from 'next/cache'
-import { sql } from '@vercel/postgres'
 import { z } from 'zod'
 import createAlphaNumericString from '@/lib/createAlphanumericString';
 import { uploadToCloudinary } from './cloudinary';
+import { moveToTrash } from './cloudinary';
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 const DATA_API_KEY = process.env.NEXT_PUBLIC_DATA_API_KEY || '';
 const IMAGE_MAIN_FOLDER = process.env.NEXT_PUBLIC_IMAGE_MAIN_FOLDER || '';
 
+const MAX_FILE_SIZE = 1024 * 1024 * 4
+const ACCEPTED_IMAGE_MIME_TYPES = [
+  "image/jpeg",
+  "image/jpg",
+  "image/png",
+  "image/webp",
+];
+
+const pressArticleSchema = z.object({
+  id: z.string(),
+  veredict: z.string(),
+  quote: z.string(),
+  media_organization: z.string(),
+  journalist: z.string(),
+  date: z.string(),
+  article_url: z.string(),
+  show: z.string(),
+  image_file: z
+    .any()
+    .refine((file) => {
+      return file?.size <= MAX_FILE_SIZE;
+    }, 'Max image size is 4MB.')
+    .refine(
+      (file) => {
+        return ACCEPTED_IMAGE_MIME_TYPES.includes(file?.type)
+      },
+      // "Only .jpg, .jpeg, .png, and .webp formats are supported"
+      { message: 'failed to save press article' }
+    ),
+  image_url: z.string()
+})
+
 export async function addPressArticle(prevState: any, formData: FormData) {
-  const MAX_FILE_SIZE = 1024 * 1024 * 4
-  const ACCEPTED_IMAGE_MIME_TYPES = [
-    "image/jpeg",
-    "image/jpg",
-    "image/png",
-    "image/webp",
-  ];
-
-  const schema = z.object({
-    veredict: z.string(),
-    quote: z.string(),
-    media_organization: z.string(),
-    journalist: z.string(),
-    date: z.string(),
-    article_url: z.string(),
-    show: z.string(),
-    id: z.string(),
-    image_file: z
-      .any()
-      .refine((file) => {
-        return file?.size <= MAX_FILE_SIZE;
-      }, 'Max image size is 4MB.')
-      .refine(
-        (file) => ACCEPTED_IMAGE_MIME_TYPES.includes(file?.type),
-        "Only .jpg, .jpeg, .png, and .webp formats are supported"
-      ),
-    // just for type declaration, will be filled after uploadingToCloud:
-    image_url: z.string()
-  })
-
-  const inputData = schema.parse({
-    veredict: formData.get('veredict'),
-    quote: formData.get('quote'),
-    media_organization: formData.get('media_organization'),
-    journalist: formData.get('journalist'),
-    date: formData.get('date'),
-    article_url: formData.get('article_url'),
-    show: formData.get('show'),
-    id: createAlphaNumericString(20),
-    image_file: formData.get('image_file'),
-    // just for type declaration, will be added after uploadingToCloud
-    image_url: ""
-  })
-
-  const folderName = `${IMAGE_MAIN_FOLDER}/press`
-
-  const imageHostingMetadata = await uploadToCloudinary(inputData.image_file, folderName);
-
-  const image_url = imageHostingMetadata.secure_url;
-  // remove image file from inputData
-  delete inputData.image_file;
-  // add image url to inputData
-  inputData.image_url = image_url;
-
-  const data = {
-    document: "press",
-    entry: "written_press",
-    content: inputData
-  }
-
   try {
+    const inputData = pressArticleSchema.parse({
+      id: createAlphaNumericString(20),
+      veredict: formData.get('veredict'),
+      quote: formData.get('quote'),
+      media_organization: formData.get('media_organization'),
+      journalist: formData.get('journalist'),
+      date: formData.get('date'),
+      article_url: formData.get('article_url'),
+      show: formData.get('show'),
+      image_file: formData.get('image_file'),
+      // just for type declaration, will be added after uploadingToCloud
+      image_url: ""
+    })
+
+    const folderName = `${IMAGE_MAIN_FOLDER}/press`
+
+    const imageHostingMetadata = await uploadToCloudinary(inputData.image_file, folderName);
+
+    const image_url = imageHostingMetadata.secure_url;
+    // remove image file from inputData
+    delete inputData.image_file;
+    // add image url to inputData
+    inputData.image_url = image_url;
+
+    const data = {
+      document: "press",
+      entry: "written_press",
+      content: inputData
+    }
 
     const saved = await fetch(`${BASE_URL}/server/create`, {
       method: 'POST',
@@ -89,7 +90,93 @@ export async function addPressArticle(prevState: any, formData: FormData) {
 
   } catch (e) {
     console.log(e)
-    return { message: 'failed to save press article' }
+    return { message: `${e}` }
+  }
+}
+
+export async function editPressArticle(prevState: any, formData: FormData) {
+  try {
+
+    const newImageFile = formData.get("new_image_file") as File;
+    const isNewImage = newImageFile?.size > 0;
+
+    let inputData;
+
+    if (isNewImage) {
+      inputData = pressArticleSchema.parse({
+        id: formData.get('id'),
+        veredict: formData.get('veredict'),
+        quote: formData.get('quote'),
+        media_organization: formData.get('media_organization'),
+        journalist: formData.get('journalist'),
+        date: formData.get('date'),
+        article_url: formData.get('article_url'),
+        show: formData.get('show'),
+        image_file: newImageFile,
+        image_url: formData.get('image_url')
+      })
+
+      const oldImageUrl = inputData.image_url;
+      // save new image to Cloudinary:
+      const folderName = `${IMAGE_MAIN_FOLDER}/press`
+      const newImageHostingMetadata = await uploadToCloudinary(inputData.image_file, folderName);
+      const newImageUrl = newImageHostingMetadata.secure_url;
+      delete inputData.image_file;
+      inputData.image_url = newImageUrl;
+      //move old image to trash:
+      const trashOldImage = await moveToTrash(oldImageUrl);
+
+    } else {
+      const pressArticleSchemaNoImage = z.object({
+        id: z.string(),
+        veredict: z.string(),
+        quote: z.string(),
+        media_organization: z.string(),
+        journalist: z.string(),
+        date: z.string(),
+        article_url: z.string(),
+        show: z.string(),
+        image_url: z.string()
+      })
+
+      inputData = pressArticleSchemaNoImage.parse({
+        id: formData.get('id'),
+        veredict: formData.get('veredict'),
+        quote: formData.get('quote'),
+        media_organization: formData.get('media_organization'),
+        journalist: formData.get('journalist'),
+        date: formData.get('date'),
+        article_url: formData.get('article_url'),
+        show: formData.get('show'),
+        image_url: formData.get('image_url')
+        // continue deleting old, uploading uploading new.
+      })
+    }
+
+    const data = {
+      document: "press",
+      entry: "written_press",
+      itemLocator: "written_press.id",
+      newContent: inputData,
+    }
+
+    const updated = await fetch(`${BASE_URL}/server/edit/item`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        'API-Key': DATA_API_KEY
+      },
+      referrerPolicy: 'no-referrer',
+      body: JSON.stringify(data)
+    });
+
+    revalidatePath('/(editor)/editor', 'page');
+
+    return { message: `Item updated!!!` }
+
+  } catch (e) {
+    console.error(e);
+    return { message: 'Failed to update item', error: `${e}` }
   }
 }
 
@@ -126,56 +213,5 @@ export async function deletePressArticle(prevState: any, formData: FormData) {
   } catch (e) {
     console.error(e);
     return { message: 'Failed to delete item' }
-  }
-}
-
-export async function editPressArticle(prevState: any, formData: FormData) {
-
-  const schema = z.object({
-    id: z.string(),
-    veredict: z.string(),
-    quote: z.string(),
-    media_organization: z.string(),
-    journalist: z.string(),
-    date: z.string(),
-    article_url: z.string(),
-    show: z.string()
-  })
-
-  const inputData = schema.parse({
-    id: formData.get('id'),
-    veredict: formData.get('veredict'),
-    quote: formData.get('quote'),
-    media_organization: formData.get('media_organization'),
-    journalist: formData.get('journalist'),
-    date: formData.get('journalist'),
-    article_url: formData.get('article_url'),
-    show: formData.get('show')
-  })
-
-  const data = {
-    document: "press",
-    entry: "written_press",
-    itemLocator: "written_press.id",
-    newContent: inputData,
-  }
-  try {
-    const updated = await fetch(`${BASE_URL}/server/edit/item`, {
-      method: 'PATCH',
-      headers: {
-        'Content-Type': 'application/json',
-        'API-Key': DATA_API_KEY
-      },
-      referrerPolicy: 'no-referrer',
-      body: JSON.stringify(data)
-    });
-
-    revalidatePath('/(editor)/editor', 'page');
-
-    return { message: `Item updated!!!` }
-
-  } catch (e) {
-    console.error(e);
-    return { message: 'Failed to update item' }
   }
 }
