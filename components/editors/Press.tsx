@@ -28,7 +28,7 @@ export default async function Press() {
             {written_articles.map((article: WrittenPressArticle, index: number) => (
                 <div key={`written-article-${article.id}`}>
                     <div>{article.veredict}</div>
-                    <Delete document={documentName} entry={`written_press`} section={sectionName} item={article}/>
+                    <Delete document={documentName} entry={`written_press`} section={sectionName} id={article.id}/>
                     <Edit document={documentName} entry={`written_press`} section={sectionName} item={article}/>
                 </div>
             ))}

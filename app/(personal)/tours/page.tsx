@@ -3,6 +3,7 @@ import { getData } from "@/lib/getData"
 import Image from "next/image";
 
 export interface Tour {
+    id: string;
     show_title: string;
     year: string;
     title_or_place: string;

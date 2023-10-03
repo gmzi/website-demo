@@ -215,6 +215,45 @@ export async function deletePressArticle(prevState: any, formData: FormData) {
     return { message: `${e}` }
   }
 }
+export async function deleteItem(prevState: any, formData: FormData) {
+
+  const schema = z.object({
+    id: z.string(),
+    document: z.string(),
+    entry: z.string(),
+  })
+
+  const inputData = schema.parse({
+    id: formData.get('id'),
+    document: formData.get('document'),
+    entry: formData.get('entry'),
+  })
+
+  const data = {
+    document: inputData.document,
+    entry: inputData.entry,
+    keyName: "id",
+    valueName: inputData.id,
+  }
+  try {
+    const deleted = await fetch(`${BASE_URL}/server/remove`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      referrerPolicy: 'no-referrer',
+      body: JSON.stringify(data)
+    });
+
+    revalidatePath('/(editor)/editor', 'page');
+
+    return { message: `Item deleted` }
+
+  } catch (e) {
+    console.error(e);
+    return { message: `${e}` }
+  }
+}
 
 const tourSchema = z.object({
   id: z.string(),
