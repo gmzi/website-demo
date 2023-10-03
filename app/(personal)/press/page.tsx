@@ -2,26 +2,8 @@ import type { Metadata } from "next";
 import { getData } from "@/lib/getData";
 import Image from "next/image";
 import Link from "next/link";
-
-export interface WrittenPressArticle {
-    veredict: string;
-    quote: string;
-    media_organization: string;
-    journalist: string;
-    date: string;
-    article_url: string;
-    image_url: string;
-    show: string;
-    id: string;
-}
-
-export interface VideoPressArticle {
-    show: string;
-    video_url: string;
-    title: string;
-    description: string;
-    source_organization: string;
-}
+import type { WrittenPressArticle } from "@/types";
+import type { VideoPressArticle } from "@/types";
 
 export const metadata: Metadata = {
     title: 'Prensa',

@@ -3,7 +3,8 @@ import type { Tour } from "@/app/(personal)/tours/page";
 // import CreateTour from "../forms/CreateTour";
 import {CreateTour} from "../forms/CreateTour";
 import { Delete } from "../forms/Delete";
-import { Edit } from "../forms/Edit";
+import { EditTour } from "../forms/EditTour";
+
 
 export default async function Tours(){
     const data = await getData("tours");
@@ -22,7 +23,8 @@ export default async function Tours(){
             {tours.map((tour: Tour, index: number) => (
                 <div key={`tour-${tour.id}`}>
                     <div>{tour.title_or_place}</div>
-
+                    <Delete document={documentName} entry={`content`} section={sectionName} id={tour.id}/>
+                    <EditTour tour={tour}/>
                 </div>
             ))}
         </div>

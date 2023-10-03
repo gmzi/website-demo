@@ -3,7 +3,7 @@
 // @ts-expect-error
 import { experimental_useFormState as useFormState } from 'react-dom'
 import { experimental_useFormStatus as useFormStatus } from 'react-dom'
-import type { WrittenPressArticle } from '@/app/(personal)/press/page'
+import type { WrittenPressArticle } from '@/types'
 import { editPressArticle } from '@/app/actions'
 import { ImageEdit } from './ImageEdit'
 

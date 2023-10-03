@@ -10,6 +10,25 @@ const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 const DATA_API_KEY = process.env.NEXT_PUBLIC_DATA_API_KEY || '';
 const IMAGE_MAIN_FOLDER = process.env.NEXT_PUBLIC_IMAGE_MAIN_FOLDER || '';
 
+// @ts-ignore
+async function handleNewImage(inputData, folder) {
+  try {
+      const oldImageUrl = inputData.image_url;
+      // save new image to Cloudinary:
+      const folderName = `${IMAGE_MAIN_FOLDER}/${folder}`
+      const newImageHostingMetadata = await uploadToCloudinary(inputData.image_file, folderName);
+      const newImageUrl = newImageHostingMetadata.secure_url;
+      delete inputData.image_file;
+      inputData.image_url = newImageUrl;
+      //move old image to trash:
+      const trashOldImage = await moveToTrash(oldImageUrl);
+      return inputData;
+  } catch (e) {
+      console.log(e)
+      return { message: `${e}` }
+  }
+}
+
 const MAX_FILE_SIZE = 1024 * 1024 * 4
 const ACCEPTED_IMAGE_MIME_TYPES = [
   "image/jpeg",
@@ -116,15 +135,17 @@ export async function editPressArticle(prevState: any, formData: FormData) {
         image_url: formData.get('image_url')
       })
 
-      const oldImageUrl = inputData.image_url;
-      // save new image to Cloudinary:
-      const folderName = `${IMAGE_MAIN_FOLDER}/press`
-      const newImageHostingMetadata = await uploadToCloudinary(inputData.image_file, folderName);
-      const newImageUrl = newImageHostingMetadata.secure_url;
-      delete inputData.image_file;
-      inputData.image_url = newImageUrl;
-      //move old image to trash:
-      const trashOldImage = await moveToTrash(oldImageUrl);
+      // const oldImageUrl = inputData.image_url;
+      // // save new image to Cloudinary:
+      // const folderName = `${IMAGE_MAIN_FOLDER}/press`
+      // const newImageHostingMetadata = await uploadToCloudinary(inputData.image_file, folderName);
+      // const newImageUrl = newImageHostingMetadata.secure_url;
+      // delete inputData.image_file;
+      // inputData.image_url = newImageUrl;
+      // //move old image to trash:
+      // const trashOldImage = await moveToTrash(oldImageUrl);
+
+      inputData = await handleNewImage(inputData, 'press')
 
     } else {
       const pressArticleSchemaNoImage = z.object({
@@ -180,41 +201,42 @@ export async function editPressArticle(prevState: any, formData: FormData) {
   }
 }
 
-export async function deletePressArticle(prevState: any, formData: FormData) {
+// export async function deletePressArticle(prevState: any, formData: FormData) {
 
-  const schema = z.object({
-    id: z.string(),
-  })
+//   const schema = z.object({
+//     id: z.string(),
+//   })
 
-  const inputData = schema.parse({
-    id: formData.get('id')
-  })
+//   const inputData = schema.parse({
+//     id: formData.get('id')
+//   })
 
-  const data = {
-    document: "press",
-    entry: "written_press",
-    keyName: "id",
-    valueName: inputData.id,
-  }
-  try {
-    const deleted = await fetch(`${BASE_URL}/server/remove`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      referrerPolicy: 'no-referrer',
-      body: JSON.stringify(data)
-    });
+//   const data = {
+//     document: "press",
+//     entry: "written_press",
+//     keyName: "id",
+//     valueName: inputData.id,
+//   }
+//   try {
+//     const deleted = await fetch(`${BASE_URL}/server/remove`, {
+//       method: 'POST',
+//       headers: {
+//         'Content-Type': 'application/json',
+//       },
+//       referrerPolicy: 'no-referrer',
+//       body: JSON.stringify(data)
+//     });
 
-    revalidatePath('/(editor)/editor', 'page');
+//     revalidatePath('/(editor)/editor', 'page');
 
-    return { message: `Item deleted` }
+//     return { message: `Item deleted` }
 
-  } catch (e) {
-    console.error(e);
-    return { message: `${e}` }
-  }
-}
+//   } catch (e) {
+//     console.error(e);
+//     return { message: `${e}` }
+//   }
+// }
+
 export async function deleteItem(prevState: any, formData: FormData) {
 
   const schema = z.object({
@@ -326,3 +348,89 @@ export async function createTour(prevState: any, formData: FormData) {
     return { message: `${e}` }
   }
 }
+
+  export async function editTour(prevState: any, formData: FormData) {
+    try {
+
+      const newImageFile = formData.get("new_image_file") as File;
+      const isNewImage = newImageFile?.size > 0;
+
+      let inputData;
+
+      if (isNewImage) {
+        inputData = tourSchema.parse({
+          id: formData.get('id'),
+          show_title: formData.get('show_title'),
+          year: formData.get('year'),
+          title_or_place: formData.get('title_or_place'),
+          city: formData.get('city'),
+          country: formData.get('country'),
+          press_url: formData.get('press_url'),
+          image_file: newImageFile,
+          image_url: formData.get('image_url')
+        })
+
+        // const oldImageUrl = inputData.image_url;
+        // // save new image to Cloudinary:
+        // const folderName = `${IMAGE_MAIN_FOLDER}/press`
+        // const newImageHostingMetadata = await uploadToCloudinary(inputData.image_file, folderName);
+        // const newImageUrl = newImageHostingMetadata.secure_url;
+        // delete inputData.image_file;
+        // inputData.image_url = newImageUrl;
+        // //move old image to trash:
+        // const trashOldImage = await moveToTrash(oldImageUrl);
+
+        inputData = await handleNewImage(inputData, 'tours');
+
+      } else {
+        const tourSchemaNoImage = z.object({
+          id: z.string(),
+          show_title: z.string(),
+          year: z.string(),
+          title_or_place: z.string(),
+          city: z.string(),
+          country: z.string(),
+          press_url: z.string(),
+          image_url: z.string()
+        })
+
+        inputData = tourSchemaNoImage.parse({
+          id: formData.get('id'),
+          show_title: formData.get('show_title'),
+          year: formData.get('year'),
+          title_or_place: formData.get('title_or_place'),
+          city: formData.get('city'),
+          country: formData.get('country'),
+          press_url: formData.get('press_url'),
+          image_url: formData.get('image_url')
+          // continue deleting old, uploading uploading new.
+        })
+      }
+
+      const data = {
+        document: "tours",
+        entry: "content",
+        itemLocator: "content.id",
+        newContent: inputData,
+      }
+
+      const updated = await fetch(`${BASE_URL}/server/edit/item`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+          'API-Key': DATA_API_KEY
+        },
+        referrerPolicy: 'no-referrer',
+        body: JSON.stringify(data)
+      });
+
+      revalidatePath('/(editor)/editor', 'page');
+
+      return { message: `Item updated!!!` }
+
+    } catch (e) {
+      console.error(e);
+      return { message: `${e}` }
+    }
+  }
+

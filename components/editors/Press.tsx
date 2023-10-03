@@ -1,6 +1,6 @@
 import { getData } from "@/lib/getData";
-import type { WrittenPressArticle } from "@/app/(personal)/press/page";
-import type { VideoPressArticle } from "@/app/(personal)/press/page";
+import type { WrittenPressArticle } from "@/types";
+import type { VideoPressArticle } from "@/types";
 import CreatePressVideo from "../forms/press/CreatePressVideo";
 import {CreatePressArticle} from "../forms/press/CreatePressArticle"
 import document from '../../document.json';

@@ -4,7 +4,7 @@
 import { experimental_useFormState as useFormState } from 'react-dom'
 import { experimental_useFormStatus as useFormStatus } from 'react-dom'
 import type { WrittenPressArticle } from '@/app/(personal)/press/page'
-import { deleteItem, deletePressArticle } from '@/app/actions'
+import { deleteItem } from '@/app/actions'
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
