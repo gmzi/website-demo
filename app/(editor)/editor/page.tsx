@@ -46,6 +46,8 @@ export default async function EditorMainPage() {
       <SignOutButton />
       <div className="editor-sections-wrapper">
         {/* @ts-expect-error Server Component */}
+        <About/>
+        {/* @ts-expect-error Server Component */}
         <Tours/>
         {/* @ts-expect-error Server Component */}
         <Press/>
