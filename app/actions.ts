@@ -42,7 +42,7 @@ const pressArticleSchema = z.object({
   image_url: z.string()
 })
 
-export async function addPressArticle(prevState: any, formData: FormData) {
+export async function createPressArticle(prevState: any, formData: FormData) {
   try {
     const inputData = pressArticleSchema.parse({
       id: createAlphaNumericString(20),
@@ -176,7 +176,7 @@ export async function editPressArticle(prevState: any, formData: FormData) {
 
   } catch (e) {
     console.error(e);
-    return { message: 'Failed to update item', error: `${e}` }
+    return { message: `${e}` }
   }
 }
 
@@ -212,6 +212,78 @@ export async function deletePressArticle(prevState: any, formData: FormData) {
 
   } catch (e) {
     console.error(e);
-    return { message: 'Failed to delete item' }
+    return { message: `${e}` }
+  }
+}
+
+const tourSchema = z.object({
+  id: z.string(),
+  show_title: z.string(),
+  year: z.string(),
+  title_or_place: z.string(),
+  city: z.string(),
+  country: z.string(),
+  press_url: z.string(),
+  image_file: z
+    .any()
+    .refine((file) => {
+      return file?.size <= MAX_FILE_SIZE;
+    }, 'Max image size is 4MB.')
+    .refine(
+      (file) => {
+        return ACCEPTED_IMAGE_MIME_TYPES.includes(file?.type)
+      }, "Only .jpg, .jpeg, .png, and .webp formats are supported"
+    ),
+  image_url: z.string()
+})
+
+export async function createTour(prevState: any, formData: FormData) {
+  try {
+    const inputData = tourSchema.parse({
+      id: createAlphaNumericString(20),
+      show_title: formData.get('show_title'),
+      year: formData.get('year'),
+      title_or_place: formData.get('title_or_place'),
+      city: formData.get('city'),
+      country: formData.get('country'),
+      press_url: formData.get('press_url'),
+      image_file: formData.get('image_file'),
+      // just for type declaration, will be added after uploadingToCloud
+      image_url: ""
+    })
+
+    const folderName = `${IMAGE_MAIN_FOLDER}/tours`
+
+    const imageHostingMetadata = await uploadToCloudinary(inputData.image_file, folderName);
+
+    const image_url = imageHostingMetadata.secure_url;
+    // remove image file from inputData
+    delete inputData.image_file;
+    // add image url to inputData
+    inputData.image_url = image_url;
+
+    const data = {
+      document: "tours",
+      entry: "content",
+      content: inputData
+    }
+
+    const saved = await fetch(`${BASE_URL}/server/create`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'API-Key': DATA_API_KEY
+      },
+      referrerPolicy: 'no-referrer',
+      body: JSON.stringify(data)
+    });
+
+    revalidatePath('/(editor)/editor', 'page');
+
+    return { message: `tour has been created created` }
+
+  } catch (e) {
+    console.log(e)
+    return { message: `${e}` }
   }
 }

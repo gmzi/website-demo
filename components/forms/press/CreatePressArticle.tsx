@@ -3,7 +3,7 @@
 // @ts-expect-error
 import { experimental_useFormState as useFormState } from 'react-dom'
 import { experimental_useFormStatus as useFormStatus } from 'react-dom'
-import { addPressArticle } from '@/app/actions';
+import { createPressArticle } from '@/app/actions';
 import { ImageForm } from '../ImageForm';
 
 const initialState = {
@@ -21,7 +21,7 @@ function SubmitButton() {
 }
 
 export function CreatePressArticle() {
-  const [state, formAction] = useFormState(addPressArticle, initialState)
+  const [state, formAction] = useFormState(createPressArticle, initialState)
 
   // until we figure out how to reset form input after successfull data savign, bare with this:
   if (state?.message === 'article added'){
