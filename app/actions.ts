@@ -13,19 +13,19 @@ const IMAGE_MAIN_FOLDER = process.env.NEXT_PUBLIC_IMAGE_MAIN_FOLDER || '';
 // @ts-ignore
 async function handleNewImage(inputData, folder) {
   try {
-      const oldImageUrl = inputData.image_url;
-      // save new image to Cloudinary:
-      const folderName = `${IMAGE_MAIN_FOLDER}/${folder}`
-      const newImageHostingMetadata = await uploadToCloudinary(inputData.image_file, folderName);
-      const newImageUrl = newImageHostingMetadata.secure_url;
-      delete inputData.image_file;
-      inputData.image_url = newImageUrl;
-      //move old image to trash:
-      const trashOldImage = await moveToTrash(oldImageUrl);
-      return inputData;
+    const oldImageUrl = inputData.image_url;
+    // save new image to Cloudinary:
+    const folderName = `${IMAGE_MAIN_FOLDER}/${folder}`
+    const newImageHostingMetadata = await uploadToCloudinary(inputData.image_file, folderName);
+    const newImageUrl = newImageHostingMetadata.secure_url;
+    delete inputData.image_file;
+    inputData.image_url = newImageUrl;
+    //move old image to trash:
+    const trashOldImage = await moveToTrash(oldImageUrl);
+    return inputData;
   } catch (e) {
-      console.log(e)
-      return { message: `${e}` }
+    console.log(e)
+    return { message: `${e}` }
   }
 }
 
@@ -349,88 +349,112 @@ export async function createTour(prevState: any, formData: FormData) {
   }
 }
 
-  export async function editTour(prevState: any, formData: FormData) {
-    try {
+export async function editTour(prevState: any, formData: FormData) {
+  try {
 
-      const newImageFile = formData.get("new_image_file") as File;
-      const isNewImage = newImageFile?.size > 0;
+    const newImageFile = formData.get("new_image_file") as File;
+    const isNewImage = newImageFile?.size > 0;
 
-      let inputData;
+    let inputData;
 
-      if (isNewImage) {
-        inputData = tourSchema.parse({
-          id: formData.get('id'),
-          show_title: formData.get('show_title'),
-          year: formData.get('year'),
-          title_or_place: formData.get('title_or_place'),
-          city: formData.get('city'),
-          country: formData.get('country'),
-          press_url: formData.get('press_url'),
-          image_file: newImageFile,
-          image_url: formData.get('image_url')
-        })
+    if (isNewImage) {
+      inputData = tourSchema.parse({
+        id: formData.get('id'),
+        show_title: formData.get('show_title'),
+        year: formData.get('year'),
+        title_or_place: formData.get('title_or_place'),
+        city: formData.get('city'),
+        country: formData.get('country'),
+        press_url: formData.get('press_url'),
+        image_file: newImageFile,
+        image_url: formData.get('image_url')
+      })
 
-        // const oldImageUrl = inputData.image_url;
-        // // save new image to Cloudinary:
-        // const folderName = `${IMAGE_MAIN_FOLDER}/press`
-        // const newImageHostingMetadata = await uploadToCloudinary(inputData.image_file, folderName);
-        // const newImageUrl = newImageHostingMetadata.secure_url;
-        // delete inputData.image_file;
-        // inputData.image_url = newImageUrl;
-        // //move old image to trash:
-        // const trashOldImage = await moveToTrash(oldImageUrl);
+      // const oldImageUrl = inputData.image_url;
+      // // save new image to Cloudinary:
+      // const folderName = `${IMAGE_MAIN_FOLDER}/press`
+      // const newImageHostingMetadata = await uploadToCloudinary(inputData.image_file, folderName);
+      // const newImageUrl = newImageHostingMetadata.secure_url;
+      // delete inputData.image_file;
+      // inputData.image_url = newImageUrl;
+      // //move old image to trash:
+      // const trashOldImage = await moveToTrash(oldImageUrl);
 
-        inputData = await handleNewImage(inputData, 'tours');
+      inputData = await handleNewImage(inputData, 'tours');
 
-      } else {
-        const tourSchemaNoImage = z.object({
-          id: z.string(),
-          show_title: z.string(),
-          year: z.string(),
-          title_or_place: z.string(),
-          city: z.string(),
-          country: z.string(),
-          press_url: z.string(),
-          image_url: z.string()
-        })
+    } else {
+      const tourSchemaNoImage = z.object({
+        id: z.string(),
+        show_title: z.string(),
+        year: z.string(),
+        title_or_place: z.string(),
+        city: z.string(),
+        country: z.string(),
+        press_url: z.string(),
+        image_url: z.string()
+      })
 
-        inputData = tourSchemaNoImage.parse({
-          id: formData.get('id'),
-          show_title: formData.get('show_title'),
-          year: formData.get('year'),
-          title_or_place: formData.get('title_or_place'),
-          city: formData.get('city'),
-          country: formData.get('country'),
-          press_url: formData.get('press_url'),
-          image_url: formData.get('image_url')
-          // continue deleting old, uploading uploading new.
-        })
-      }
-
-      const data = {
-        document: "tours",
-        entry: "content",
-        itemLocator: "content.id",
-        newContent: inputData,
-      }
-
-      const updated = await fetch(`${BASE_URL}/server/edit/item`, {
-        method: 'PATCH',
-        headers: {
-          'Content-Type': 'application/json',
-          'API-Key': DATA_API_KEY
-        },
-        referrerPolicy: 'no-referrer',
-        body: JSON.stringify(data)
-      });
-
-      revalidatePath('/(editor)/editor', 'page');
-
-      return { message: `Item updated!!!` }
-
-    } catch (e) {
-      console.error(e);
-      return { message: `${e}` }
+      inputData = tourSchemaNoImage.parse({
+        id: formData.get('id'),
+        show_title: formData.get('show_title'),
+        year: formData.get('year'),
+        title_or_place: formData.get('title_or_place'),
+        city: formData.get('city'),
+        country: formData.get('country'),
+        press_url: formData.get('press_url'),
+        image_url: formData.get('image_url')
+        // continue deleting old, uploading uploading new.
+      })
     }
-  }
 
+    const data = {
+      document: "tours",
+      entry: "content",
+      itemLocator: "content.id",
+      newContent: inputData,
+    }
+
+    const updated = await fetch(`${BASE_URL}/server/edit/item`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        'API-Key': DATA_API_KEY
+      },
+      referrerPolicy: 'no-referrer',
+      body: JSON.stringify(data)
+    });
+
+    revalidatePath('/(editor)/editor', 'page');
+
+    return { message: `Item updated!!!` }
+
+  } catch (e) {
+    console.error(e);
+    return { message: `${e}` }
+  }
+}
+
+export async function saveHtmlContent(contentHtml: string, document: string) {
+  try {
+    const content = {
+      content_html: contentHtml,
+      document: document
+    }
+    const saved = await fetch(`${BASE_URL}/server/text`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        'API-Key': DATA_API_KEY
+      },
+      referrerPolicy: 'no-referrer',
+      body: JSON.stringify(content)
+    })
+    revalidatePath('/(editor)/editor', 'page');
+
+    return { message: `Content saved` }
+    
+  } catch (e) {
+    console.log(e);
+    return { message: `${e}` }
+  }
+}
