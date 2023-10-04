@@ -7,7 +7,7 @@ import { FormEvent, useState } from 'react';
 import Image from 'next/image';
 
 
-export function ImageEdit({ imageUrl }: { imageUrl: string }) {
+export function ImageEdit({imageUrl }: { imageUrl: string }) {
     const [imageFile, setImageFile] = useState(null);
     const [previewImageUrl, setPreviewImageUrl] = useState(imageUrl)
 

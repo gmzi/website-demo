@@ -62,3 +62,10 @@ export interface About {
   contentHtml: string;
   imageUrl: string;
 }
+
+export interface Bio {
+  contentHtml: string;
+  image1Url: string;
+  image2url: string;
+  image3Url: string;
+}

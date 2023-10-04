@@ -529,3 +529,10 @@ export async function editAbout(prevState: any, formData: FormData) {
     return { message: `${e}` }
   }
 }
+
+export async function editBio(prevState: any, formData: FormData){
+  console.log('hi');
+  const files = formData.get('new_image_file') as File;
+  console.log(files);
+  return {message: 'hi'};
+}
