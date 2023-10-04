@@ -458,3 +458,74 @@ export async function saveHtmlContent(contentHtml: string, document: string) {
     return { message: `${e}` }
   }
 }
+
+
+export async function editAbout(prevState: any, formData: FormData) {
+
+  const aboutSchema = z.object({
+    contentHtml: z.string(),
+    image_file: z
+      .any()
+      .refine((file) => {
+        return file?.size <= MAX_FILE_SIZE;
+      }, 'Max image size is 4MB.')
+      .refine(
+        (file) => {
+          return ACCEPTED_IMAGE_MIME_TYPES.includes(file?.type)
+        }, "Only .jpg, .jpeg, .png, and .webp formats are supported"
+      ),
+    image_url: z.string()
+  })
+
+  try {
+    const newImageFile = formData.get("new_image_file") as File;
+    const isNewImage = newImageFile?.size > 0;
+
+    let inputData;
+
+    if (isNewImage) {
+      inputData = aboutSchema.parse({
+        contentHtml: formData.get('editor_content'),
+        image_file: newImageFile,
+        image_url: formData.get('image_url')
+      })
+
+      inputData = await handleNewImage(inputData, 'about');
+
+    } else {
+      const aboutSchemaNoImage = z.object({
+        contentHtml: z.string(),
+        image_url: z.string()
+      })
+
+      inputData = aboutSchemaNoImage.parse({
+        contentHtml: formData.get('editor_content'),
+        image_url: formData.get('image_url')
+      })
+    }
+
+    const data = {
+      document: "about",
+      content_html: inputData.contentHtml,
+      image_url: inputData.image_url
+    }
+
+    const updated = await fetch(`${BASE_URL}/server/about`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        'API-Key': DATA_API_KEY
+      },
+      referrerPolicy: 'no-referrer',
+      body: JSON.stringify(data)
+    });
+
+    revalidatePath('/(editor)/editor', 'page');
+
+    return { message: `About has been updated!!!` }
+
+  } catch (e) {
+    console.error(e);
+    return { message: `${e}` }
+  }
+}

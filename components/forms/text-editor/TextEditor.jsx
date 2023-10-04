@@ -60,9 +60,9 @@ const TextEditor = ({ contentHtml, document, section }) => {
   }
 
   return (
-    <div className="editor">
+    <div id="editor_div" className="editor">
       {editor && <MenuBar editor={editor} />}
-      <EditorContent className="editor__content" editor={editor} />
+      <EditorContent id="editor_content" className="editor__content" editor={editor} />
       <button onClick={handleSave}>save changes </button>
       <p aria-live="polite" className="sr-only" role="status">
         {contentSaved.message}

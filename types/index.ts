@@ -57,3 +57,8 @@ export interface SocialData {
 name: string;
 url: string;
 }
+
+export interface About {
+  contentHtml: string;
+  imageUrl: string;
+}
