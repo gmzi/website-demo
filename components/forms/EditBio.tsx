@@ -6,14 +6,13 @@ import { experimental_useFormStatus as useFormStatus } from 'react-dom'
 import type { Bio  } from '@/types'
 import { editBio } from '@/app/actions'
 import { ImageEdit } from './ImageEdit'
+import { ImagesEdit } from './ImageEdit'
 import { RichText } from './text-editor/RichText'
 
 
 interface BioProps {
     contentHtml: string;
-    image1Url: string;
-    image2Url: string;
-    image3Url: string;
+    imageUrls: string[];
 }
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
@@ -33,16 +32,14 @@ function EditButton() {
     )
 }
 
-export function EditBio({ contentHtml, image1Url, image2Url, image3Url }: BioProps) {
+export function EditBio({ contentHtml, imageUrls }: BioProps) {
     const [state, formAction] = useFormState(editBio, initialState)
 
     return (
         <form action={formAction}>
             <h2>EDITAR Bio</h2>
             <RichText contentHtml={contentHtml} />
-            <ImageEdit imageUrl={image1Url} />
-            <ImageEdit imageUrl={image2Url} />
-            <ImageEdit imageUrl={image3Url} />
+            <ImagesEdit imageUrls={imageUrls} />
             <EditButton />
             <p aria-live="polite" className="sr-only" role="status">
                 {state?.message}

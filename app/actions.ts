@@ -452,7 +452,7 @@ export async function saveHtmlContent(contentHtml: string, document: string) {
     revalidatePath('/(editor)/editor', 'page');
 
     return { message: `Content saved` }
-    
+
   } catch (e) {
     console.log(e);
     return { message: `${e}` }
@@ -530,9 +530,118 @@ export async function editAbout(prevState: any, formData: FormData) {
   }
 }
 
-export async function editBio(prevState: any, formData: FormData){
-  console.log('hi');
-  const files = formData.get('new_image_file') as File;
-  console.log(files);
-  return {message: 'hi'};
+export async function editBio(prevState: any, formData: FormData) {
+  try {
+
+    const newImageFile0 = formData.get('new_image_file_0') as File;
+    const newImageFile1 = formData.get('new_image_file_1') as File;
+    const newImageFile2 = formData.get('new_image_file_2') as File;
+
+
+    const bioSchema = z.object({
+      contentHtml: z.string(),
+      image_file_0: newImageFile0.size > 0
+        ? z
+          .any()
+          .refine((file) => {
+            return file?.size <= MAX_FILE_SIZE;
+          }, 'Max image size is 4MB.')
+          .refine(
+            (file) => {
+              return ACCEPTED_IMAGE_MIME_TYPES.includes(file?.type)
+            }, "Only .jpg, .jpeg, .png, and .webp formats are supported"
+          )
+        : z.undefined(),
+      image_file_1: newImageFile1.size > 0
+        ? z
+          .any()
+          .refine((file) => {
+            return file?.size <= MAX_FILE_SIZE;
+          }, 'Max image size is 4MB.')
+          .refine(
+            (file) => {
+              return ACCEPTED_IMAGE_MIME_TYPES.includes(file?.type)
+            }, "Only .jpg, .jpeg, .png, and .webp formats are supported"
+          )
+        : z.undefined(),
+      image_file_2: newImageFile2.size > 0
+        ? z
+          .any()
+          .refine((file) => {
+            return file?.size <= MAX_FILE_SIZE;
+          }, 'Max image size is 4MB.')
+          .refine(
+            (file) => {
+              return ACCEPTED_IMAGE_MIME_TYPES.includes(file?.type)
+            }, "Only .jpg, .jpeg, .png, and .webp formats are supported"
+          )
+        : z.undefined(),
+      image_url_0: z.string(),
+      image_url_1: z.string(),
+      image_url_2: z.string(),
+    })
+
+    const inputData: {
+      [key: string]: string | File | undefined;
+    } = bioSchema.parse({
+      contentHtml: formData.get('editor_content'),
+      image_file_0: newImageFile0.size > 0 ? (formData.get('new_image_file_0') as File) : undefined,
+      image_file_1: newImageFile1.size > 0 ? (formData.get('new_image_file_1') as File) : undefined,
+      image_file_2: newImageFile2.size > 0 ? (formData.get('new_image_file_2') as File) : undefined,
+      image_url_0: formData.get('image_url_0'),
+      image_url_1: formData.get('image_url_1'),
+      image_url_2: formData.get('image_url_2')
+    })
+
+    // store image  files only:
+    const imageFiles: {
+      [key: string]: string | File | undefined;
+    } = {};
+
+    // loop over inputData and store image files only:
+    for (const key in inputData) {
+      if (key.includes('image_file_')) {
+        imageFiles[key] = inputData[key];
+      }
+    }
+
+    // upload image files to Cloudinary:
+    for (const key in imageFiles) {
+      const imageFile = imageFiles[key];
+      if (imageFile) {
+        const idx = key.split('image_file_')[1];
+        const imageMetadata = await uploadToCloudinary(imageFile, 'bio');
+        // store image url in inputData:
+        inputData[`image_url_${idx}`] = imageMetadata.secure_url;
+    }
+  }
+
+    // mind that images in DB are numbered starting from 1, and the above function uses index positions, just
+    // translate when assigning values
+    const data = {
+      document: "bio",
+      content_html: inputData.contentHtml,
+      image_1_url: inputData.image_url_0,
+      image_2_url: inputData.image_url_1,
+      image_3_url: inputData.image_url_2
+    }
+
+    const updated = await fetch(`${BASE_URL}/server/bio`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        'API-Key': DATA_API_KEY
+      },
+      referrerPolicy: 'no-referrer',
+      body: JSON.stringify(data)
+    });
+
+    revalidatePath('/(editor)/editor', 'page');
+
+    return { message: `Bio has been updated!!!` }
+
+  } catch (e) {
+    console.error(e);
+    return { message: `${e}` }
+  }
 }

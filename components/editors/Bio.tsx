@@ -16,6 +16,10 @@ export default async function Bio() {
     const image1Url = data?.image_1_url || '';
     const image2Url = data?.image_2_url || '';
     const image3Url = data?.image_3_url || '';
+
+    const imageURLS = [image1Url, image2Url, image3Url];
+    // continue on the passing cycle to ImagesEdit, remember to rename `ImageEdit` 
+    // component to `ImageInput`, and fix all imports. 
     
     return (
         <div>
@@ -24,7 +28,7 @@ export default async function Bio() {
             <ImageUpload imageUrl={image1Url} document={documentName} folder={folderName} entry={'image_1_url'} section={sectionName}/>
             <ImageUpload imageUrl={image2Url} document={documentName} folder={folderName} entry={'image_2_url'} section={sectionName}/>
             <ImageUpload imageUrl={image3Url} document={documentName} folder={folderName} entry={'image_3_url'} section={sectionName}/> */}
-            <EditBio contentHtml={contentHtml} image1Url={image1Url} image2Url={image2Url} image3Url={image3Url}/>
+            <EditBio contentHtml={contentHtml} imageUrls={imageURLS}/>
         </div>
     )
   }
