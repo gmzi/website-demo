@@ -37,7 +37,7 @@ async function handleNewImage(inputData, folder) {
   }
 }
 
-async function parseImageInput(formData: FormData) {
+function parseImageInput(formData: FormData) {
   const newImageFile = formData.get('new_image_file') as File;
 
   const imagesSchema = z.object({
@@ -65,6 +65,21 @@ async function parseImageInput(formData: FormData) {
 
   return inputData;
 }
+
+function parseRichTextInput(formData: FormData){
+  const htmlSchema = z.object({
+    contentHtml: z.string()
+  })
+
+  const inputData: {
+    [key: string]: string | File | undefined;
+  } = htmlSchema.parse({
+    contentHtml: formData.get('editor_content')
+  })
+  return inputData;
+}
+
+
 
 // handles multiple image inputs, saves them to cloudinary if there's 
 // new files, or returns old image_urls if not.
@@ -766,11 +781,12 @@ export async function editBio(prevState: any, formData: FormData) {
 
 export async function editCoursesHeroImage(prevState: any, formData: FormData) {
   try {
-    let inputData = await parseImageInput(formData);
+    let inputData = parseImageInput(formData);
 
     if (inputData.image_file) {
       inputData = await handleNewImage(inputData, 'courses');
       const imageUrl = inputData.image_url;
+
       const data = {
         document: "courses",
         entry: "image_1_url",
@@ -793,6 +809,35 @@ export async function editCoursesHeroImage(prevState: any, formData: FormData) {
     }
     return { message: `No courses main image image file uploaded`} 
   } catch (e) {
+    console.error(e);
+    return { message: `${e}` }
+  }
+}
+
+export async function editHeroText(prevState: any, formData: FormData) {
+  try {
+    const inputData = parseRichTextInput(formData);
+
+    const data = {
+      document: "courses",
+      entry: "content_html",
+      content: inputData.contentHtml
+    }
+
+    const updated = await fetch(`${BASE_URL}/server/courses`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        'API-Key': DATA_API_KEY
+      },
+      referrerPolicy: 'no-referrer',
+      body: JSON.stringify(data)
+    });
+
+    revalidatePath('/(editor)/editor', 'page');
+
+    return { message: `Hero text has been updated!!!` }
+  } catch(e){
     console.error(e);
     return { message: `${e}` }
   }

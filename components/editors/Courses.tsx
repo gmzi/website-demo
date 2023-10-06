@@ -4,7 +4,8 @@ import { getData } from "@/lib/getData";
 import TextEditor from "../forms/text-editor/TextEditor";
 import TextEditorEntry from "../forms/text-editor/TextEditorEntry";
 import ImageUpload from "../forms/ImageUpload";
-import { EditHeroImage } from "../forms/EditCourses";
+import { EditHeroImage, EditHeroText } from "../forms/EditCourses";
+import { Edit } from "../forms/Edit";
 
 export default async function Courses() {
     const data = await getData("courses")
@@ -27,6 +28,7 @@ export default async function Courses() {
         <div>
             <h2>Courses</h2>
             <EditHeroImage imageUrl={image1Url}/>
+            <EditHeroText contentHtml={contentHtml}/>
 
             {/* <label>faq editor:</label>
             <TextEditorEntry contentHtml={FAQ} document={documentName} entry={'FAQ'} section={sectionName}/>

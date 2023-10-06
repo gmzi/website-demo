@@ -4,7 +4,7 @@
 import { experimental_useFormState as useFormState } from 'react-dom'
 import { experimental_useFormStatus as useFormStatus } from 'react-dom'
 import type { About } from '@/types'
-import { editAbout, editCoursesHeroImage } from '@/app/actions'
+import { editCoursesHeroImage, editHeroText } from '@/app/actions'
 import { ImageEdit } from './ImageEdit'
 import { ImagesEdit } from './ImageEdit'
 import { RichText } from './text-editor/RichText'
@@ -13,6 +13,10 @@ import type {Course, Goals, OnlineAdd, Testimonial, Data} from '@/types'
 
 interface ImageProp {
     imageUrl: string;
+}
+
+interface TextProp {
+    contentHtml: string;
 }
 
 interface CoursesProps {
@@ -53,14 +57,13 @@ export function EditHeroImage({imageUrl}: ImageProp){
 
 }
 
-export function EditHeroText({ contentHtml, imageUrl }: CoursesProps) {
-    const [state, formAction] = useFormState(editAbout, initialState)
+export function EditHeroText({ contentHtml}: TextProp) {
+    const [state, formAction] = useFormState(editHeroText, initialState)
 
     return (
         <form action={formAction}>
-            <h2>EDITAR Bio</h2>
+            <h2>Editar texto principal</h2>
             <RichText contentHtml={contentHtml} />
-            <ImageEdit imageUrl={imageUrl} />
             <EditButton />
             <p aria-live="polite" className="sr-only" role="status">
                 {state?.message}

@@ -45,7 +45,7 @@ export function ImageEdit({ imageUrl }: { imageUrl: string }) {
                     height={0}
                     sizes="100vw"
                     style={{
-                        width: '100%',
+                        width: '30%',
                         height: 'auto',
                         borderRadius: '5px',
                         marginBottom: '.5em'
