@@ -15,6 +15,8 @@ Website's author logs in -> chooses a section to edit -> performs CRUD operation
 - Save image url and text content to MongoDB.
 - Return success/error message to the user. 
 
+![graphic](https://www.tldraw.com/s/v2_c_DjX3w5J4jvD--NdxxiT5x?viewport=-492%2C28%2C2215%2C1457&page=page%3AfPRc6lCUrX0zwp2LhXN7A)
+
 ## Usage
 
 1. Set up your MongoDB account. 
@@ -22,3 +24,4 @@ Website's author logs in -> chooses a section to edit -> performs CRUD operation
 3. Clone repo. 
 4. Create `.env.local` file, copy variables from `.env.example`.
 4. `npm run dev` for local dev server
+

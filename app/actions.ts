@@ -10,6 +10,14 @@ const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 const DATA_API_KEY = process.env.NEXT_PUBLIC_DATA_API_KEY || '';
 const IMAGE_MAIN_FOLDER = process.env.NEXT_PUBLIC_IMAGE_MAIN_FOLDER || '';
 
+const MAX_FILE_SIZE = 1024 * 1024 * 4
+const ACCEPTED_IMAGE_MIME_TYPES = [
+  "image/jpeg",
+  "image/jpg",
+  "image/png",
+  "image/webp",
+];
+
 // @ts-ignore
 async function handleNewImage(inputData, folder) {
   try {
@@ -29,13 +37,122 @@ async function handleNewImage(inputData, folder) {
   }
 }
 
-const MAX_FILE_SIZE = 1024 * 1024 * 4
-const ACCEPTED_IMAGE_MIME_TYPES = [
-  "image/jpeg",
-  "image/jpg",
-  "image/png",
-  "image/webp",
-];
+async function parseImageInput(formData: FormData) {
+  const newImageFile = formData.get('new_image_file') as File;
+
+  const imagesSchema = z.object({
+    image_file: newImageFile.size > 0
+      ? z
+        .any()
+        .refine((file) => {
+          return file?.size <= MAX_FILE_SIZE;
+        }, 'Max image size is 4MB.')
+        .refine(
+          (file) => {
+            return ACCEPTED_IMAGE_MIME_TYPES.includes(file?.type)
+          }, "Only .jpg, .jpeg, .png, and .webp formats are supported"
+        )
+      : z.undefined(),
+    image_url: z.string()
+  })
+
+  const inputData: {
+    [key: string]: string | File | undefined;
+  } = imagesSchema.parse({
+    image_file: newImageFile.size > 0 ? (formData.get('new_image_file') as File) : undefined,
+    image_url: formData.get('image_url')
+  })
+
+  return inputData;
+}
+
+// handles multiple image inputs, saves them to cloudinary if there's 
+// new files, or returns old image_urls if not.
+async function handleImagesInput(formData: FormData) {
+  const newImageFile0 = formData.get('new_image_file_0') as File;
+  const newImageFile1 = formData.get('new_image_file_1') as File;
+  const newImageFile2 = formData.get('new_image_file_2') as File;
+
+  const imagesSchema = z.object({
+    image_file_0: newImageFile0.size > 0
+      ? z
+        .any()
+        .refine((file) => {
+          return file?.size <= MAX_FILE_SIZE;
+        }, 'Max image size is 4MB.')
+        .refine(
+          (file) => {
+            return ACCEPTED_IMAGE_MIME_TYPES.includes(file?.type)
+          }, "Only .jpg, .jpeg, .png, and .webp formats are supported"
+        )
+      : z.undefined(),
+    image_file_1: newImageFile1.size > 0
+      ? z
+        .any()
+        .refine((file) => {
+          return file?.size <= MAX_FILE_SIZE;
+        }, 'Max image size is 4MB.')
+        .refine(
+          (file) => {
+            return ACCEPTED_IMAGE_MIME_TYPES.includes(file?.type)
+          }, "Only .jpg, .jpeg, .png, and .webp formats are supported"
+        )
+      : z.undefined(),
+    image_file_2: newImageFile2.size > 0
+      ? z
+        .any()
+        .refine((file) => {
+          return file?.size <= MAX_FILE_SIZE;
+        }, 'Max image size is 4MB.')
+        .refine(
+          (file) => {
+            return ACCEPTED_IMAGE_MIME_TYPES.includes(file?.type)
+          }, "Only .jpg, .jpeg, .png, and .webp formats are supported"
+        )
+      : z.undefined(),
+    image_url_0: z.string(),
+    image_url_1: z.string(),
+    image_url_2: z.string(),
+  })
+
+  const inputData: {
+    [key: string]: string | File | undefined;
+  } = imagesSchema.parse({
+    image_file_0: newImageFile0.size > 0 ? (formData.get('new_image_file_0') as File) : undefined,
+    image_file_1: newImageFile1.size > 0 ? (formData.get('new_image_file_1') as File) : undefined,
+    image_file_2: newImageFile2.size > 0 ? (formData.get('new_image_file_2') as File) : undefined,
+    image_url_0: formData.get('image_url_0'),
+    image_url_1: formData.get('image_url_1'),
+    image_url_2: formData.get('image_url_2')
+  })
+
+  // store image  files only:
+  const imageFiles: {
+    [key: string]: string | File | undefined;
+  } = {};
+
+  // loop over inputData and store image files only:
+  for (const key in inputData) {
+    if (key.includes('image_file_')) {
+      imageFiles[key] = inputData[key];
+    }
+  }
+
+  // upload image files to Cloudinary:
+  for (const key in imageFiles) {
+    const imageFile = imageFiles[key];
+    if (imageFile) {
+      const idx = key.split('image_file_')[1];
+      const imageMetadata = await uploadToCloudinary(imageFile, 'bio');
+      // store image url in inputData:
+      // deletion of old image would go here: await moveToTrash(oldImageUrl);
+      const oldImageUrl = inputData[`image_url_${idx}`];
+      const deleteOldImage = await moveToTrash(oldImageUrl);
+      inputData[`image_url_${idx}`] = imageMetadata.secure_url;
+    }
+  }
+  return inputData;
+}
 
 const pressArticleSchema = z.object({
   id: z.string(),
@@ -612,9 +729,10 @@ export async function editBio(prevState: any, formData: FormData) {
         const idx = key.split('image_file_')[1];
         const imageMetadata = await uploadToCloudinary(imageFile, 'bio');
         // store image url in inputData:
+        // deletion of old image would go here: await moveToTrash(oldImageUrl);
         inputData[`image_url_${idx}`] = imageMetadata.secure_url;
+      }
     }
-  }
 
     // mind that images in DB are numbered starting from 1, and the above function uses index positions, just
     // translate when assigning values
@@ -645,3 +763,38 @@ export async function editBio(prevState: any, formData: FormData) {
     return { message: `${e}` }
   }
 }
+
+export async function editCoursesHeroImage(prevState: any, formData: FormData) {
+  try {
+    let inputData = await parseImageInput(formData);
+
+    if (inputData.image_file) {
+      inputData = await handleNewImage(inputData, 'courses');
+      const imageUrl = inputData.image_url;
+      const data = {
+        document: "courses",
+        entry: "image_1_url",
+        content: imageUrl
+      }
+
+      const updated = await fetch(`${BASE_URL}/server/courses`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+          'API-Key': DATA_API_KEY
+        },
+        referrerPolicy: 'no-referrer',
+        body: JSON.stringify(data)
+      });
+
+      revalidatePath('/(editor)/editor', 'page');
+
+      return { message: `Courses main image has been updated!!!` }
+    }
+    return { message: `No courses main image image file uploaded`} 
+  } catch (e) {
+    console.error(e);
+    return { message: `${e}` }
+  }
+}
+

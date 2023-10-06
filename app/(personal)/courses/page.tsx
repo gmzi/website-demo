@@ -4,34 +4,11 @@ import { getData } from "@/lib/getData"
 import parse from 'html-react-parser'
 import { availableParallelism, type } from "os"
 import { IntegerType } from "mongodb"
-import {Goals} from "@/components/shared/icons"
+import {GoalsIcon} from "@/components/shared/icons"
 import document from "@/document.json"
+import type {Course, Goals, OnlineAdd, Testimonial, Data} from '@/types'
 
 const isProd = process.env.NODE_ENV === 'production';
-
-interface Course {
-    name: string;
-    description: string;
-}
-
-interface Goals {
-    illustration: string[];
-    FAQ: string;
-}
-
-interface OnlineAdd {
-    description: string;
-    logistics: string;
-}
-
-interface Testimonial {
-    content: string;
-    author: string;
-}
-
-interface Data {
-    content_html: string;
-}
 
 
 export const metadata: Metadata = {
@@ -41,15 +18,14 @@ export const metadata: Metadata = {
 
 export default async function CoursesPage() {
 
-    let data;
-
-    if (isProd){
-        data = await getData("courses");
-    } else {
-        data = document.courses;
-    }
+    // let data;
+    // if (isProd){
+    //     data = await getData("courses");
+    // } else {
+    //     data = document.courses;
+    // }
     
-    // const data = await getData("courses");
+    const data = await getData("courses");
 
     const texto = (data: Data) => {
         if (data.content_html){
@@ -111,7 +87,7 @@ export default async function CoursesPage() {
                         <h2>Objetivos</h2>
                         {goals.map((goal: string, i: number) => (
                         <li key={`illustration-${i}`}>
-                            <div><Goals/></div>
+                            <div><GoalsIcon/></div>
                             {goal}
                         </li>
                         ))}

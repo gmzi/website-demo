@@ -4,6 +4,7 @@ import { getData } from "@/lib/getData";
 import TextEditor from "../forms/text-editor/TextEditor";
 import TextEditorEntry from "../forms/text-editor/TextEditorEntry";
 import ImageUpload from "../forms/ImageUpload";
+import { EditHeroImage } from "../forms/EditCourses";
 
 export default async function Courses() {
     const data = await getData("courses")
@@ -25,7 +26,9 @@ export default async function Courses() {
     return (
         <div>
             <h2>Courses</h2>
-            <label>faq editor:</label>
+            <EditHeroImage imageUrl={image1Url}/>
+
+            {/* <label>faq editor:</label>
             <TextEditorEntry contentHtml={FAQ} document={documentName} entry={'FAQ'} section={sectionName}/>
             <label>online add editor:</label>
             <TextEditorEntry contentHtml={onlineDescription} document={documentName} entry={'online.description'} section={sectionName}/>
@@ -34,7 +37,7 @@ export default async function Courses() {
             <TextEditor contentHtml={contentHtml} document={documentName} section={sectionName}/>
             <ImageUpload imageUrl={image1Url} document={documentName} folder={folderName} entry={'image_1_url'} section={sectionName}/>
             <ImageUpload imageUrl={image2Url} document={documentName} folder={folderName} entry={'image_2_url'} section={sectionName}/>
-            <ImageUpload imageUrl={image3Url} document={documentName} folder={folderName} entry={'image_3_url'} section={sectionName}/>
+            <ImageUpload imageUrl={image3Url} document={documentName} folder={folderName} entry={'image_3_url'} section={sectionName}/> */}
         </div>
     )
   }

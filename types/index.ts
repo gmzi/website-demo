@@ -69,3 +69,27 @@ export interface Bio {
   image2url: string;
   image3Url: string;
 }
+
+export interface Course {
+  name: string;
+  description: string;
+}
+
+export interface Goals {
+  illustration: string[];
+  FAQ: string;
+}
+
+export interface OnlineAdd {
+  description: string;
+  logistics: string;
+}
+
+export interface Testimonial {
+  content: string;
+  author: string;
+}
+
+export interface Data {
+  content_html: string;
+}
