@@ -14,6 +14,7 @@ import parse from 'html-react-parser'
 import HTMLReactParser from 'html-react-parser'
 import { useState } from 'react'
 import Link from 'next/link'
+import { Delete } from './Delete'
 
 
 interface ImageProp {
@@ -30,8 +31,10 @@ interface CourseProps {
     handleCancel: () => void;
 }
 
-interface ReviewsProps {
+interface ReviewProps {
+    index: number;
     reviews: Review[];
+    handleCancel: () => void;
 }
 
 interface CoursesProps {
@@ -114,6 +117,7 @@ export function AvailableCourses({ courses }: CoursesProps) {
             <h3>{course.name}</h3>
             {parse(course.description)}
             <button onClick={handleClick} tabIndex={i}>Editar</button>
+            <Delete document="courses" entry="available_courses" section="courses" id={course.id} />
         </div>
     ));
 
@@ -187,6 +191,7 @@ export function CourseReviews({ reviews }: ReviewsProps) {
                 <cite>{review.author}</cite>
             </blockquote>
             <button onClick={handleClick} tabIndex={i}>Editar</button>
+            <Delete document="courses" entry="reviews" section="reviews" id={review.id} />
         </div>
     ));
 
@@ -198,19 +203,22 @@ export function CourseReviews({ reviews }: ReviewsProps) {
     )
 }
 
-export function EditCourseReview({ reviews, index, handleCancel }) {
+export function EditCourseReview({ reviews, index, handleCancel }: ReviewProps) {
     const [state, formAction] = useFormState(editCourseReview, initialState)
 
     const review = reviews[index]
 
     return (
         <form action={formAction}>
+            <input type="hidden" name="id" value={review.id} />
+
             <h2>Editar reseña</h2>
             <label htmlFor="editor_content">Texto de la reseña:</label>
             <RichText contentHtml={review.content} />
             <label htmlFor="reviewAuthor">Autor de la reseña:</label>
             <input type="text" id="reviewAuthor" name="reviewAuthor" defaultValue={review.author} />
             <EditButton />
+            <button onClick={handleCancel}>Cancelar</button>
             <p aria-live="polite" className="sr-only" role="status">
                 {state?.message}
             </p>

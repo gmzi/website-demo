@@ -971,19 +971,18 @@ export async function createCourseReview(prevState: any, formData: FormData) {
 
 export async function editCourseReview(prevState: any, formData: FormData) {
   try {
-    return {message: 'hi'}
-    const courseDescription = parseRichTextInput(formData);
+    const reviewText = parseRichTextInput(formData);
 
-    const courseSchema = z.object({
+    const courseReviewSchema = z.object({
       id: z.string(),
-      name: z.string(),
-      description: z.string(),  
+      content: z.string(),
+      author: z.string(),  
     })
 
-    const inputData = courseSchema.parse({
+    const inputData = courseReviewSchema.parse({
       id: formData.get("id"),
-      name: formData.get("review_name"),
-      description:  courseDescription.contentHtml
+      content: reviewText.contentHtml,
+      author: formData.get("reviewAuthor"),
     })
 
     const data = {
@@ -1003,8 +1002,9 @@ export async function editCourseReview(prevState: any, formData: FormData) {
       body: JSON.stringify(data)
     });
 
-    revalidatePath('/(editor)/editor', 'page'); 
-    return { message: `a course review has been updated!!!` }
+    revalidatePath('/(editor)/editor', 'page');
+
+    return { message: `Review has been updated!!!` }
   } catch(e){
     console.error(e);
     return { message: `${e}` }
