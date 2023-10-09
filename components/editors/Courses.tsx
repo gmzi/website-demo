@@ -4,7 +4,7 @@ import { getData } from "@/lib/getData";
 import TextEditor from "../forms/text-editor/TextEditor";
 import TextEditorEntry from "../forms/text-editor/TextEditorEntry";
 import ImageUpload from "../forms/ImageUpload";
-import { EditHeroImage, EditHeroText } from "../forms/EditCourses";
+import { HeroImage, HeroText, AvailableCourses } from "../forms/EditCourses";
 import { Edit } from "../forms/Edit";
 
 export default async function Courses() {
@@ -23,23 +23,28 @@ export default async function Courses() {
     const FAQ = data?.FAQ || [];
     const onlineDescription = data?.online.description || "";
     const onlineLogistics = data?.online.logistics || "";
+
+    const availableCourses = data?.available_courses || [];
     
     return (
         <div>
             <h2>Courses</h2>
-            <EditHeroImage imageUrl={image1Url}/>
-            <EditHeroText contentHtml={contentHtml}/>
-
-            {/* <label>faq editor:</label>
-            <TextEditorEntry contentHtml={FAQ} document={documentName} entry={'FAQ'} section={sectionName}/>
-            <label>online add editor:</label>
-            <TextEditorEntry contentHtml={onlineDescription} document={documentName} entry={'online.description'} section={sectionName}/>
-            <TextEditorEntry contentHtml={onlineLogistics} document={documentName} entry={'online.logistics'} section={sectionName}/>
-            <label>Content html editor:</label>
-            <TextEditor contentHtml={contentHtml} document={documentName} section={sectionName}/>
-            <ImageUpload imageUrl={image1Url} document={documentName} folder={folderName} entry={'image_1_url'} section={sectionName}/>
-            <ImageUpload imageUrl={image2Url} document={documentName} folder={folderName} entry={'image_2_url'} section={sectionName}/>
-            <ImageUpload imageUrl={image3Url} document={documentName} folder={folderName} entry={'image_3_url'} section={sectionName}/> */}
+            <HeroImage imageUrl={image1Url}/>
+            <HeroText contentHtml={contentHtml}/>
+            <AvailableCourses courses={availableCourses}/>
         </div>
     )
   }
+
+/* 
+<label>faq editor:</label>
+<TextEditorEntry contentHtml={FAQ} document={documentName} entry={'FAQ'} section={sectionName}/>
+<label>online add editor:</label>
+<TextEditorEntry contentHtml={onlineDescription} document={documentName} entry={'online.description'} section={sectionName}/>
+<TextEditorEntry contentHtml={onlineLogistics} document={documentName} entry={'online.logistics'} section={sectionName}/>
+<label>Content html editor:</label>
+<TextEditor contentHtml={contentHtml} document={documentName} section={sectionName}/>
+<ImageUpload imageUrl={image1Url} document={documentName} folder={folderName} entry={'image_1_url'} section={sectionName}/>
+<ImageUpload imageUrl={image2Url} document={documentName} folder={folderName} entry={'image_2_url'} section={sectionName}/>
+<ImageUpload imageUrl={image3Url} document={documentName} folder={folderName} entry={'image_3_url'} section={sectionName}/> 
+*/
