@@ -22,18 +22,12 @@ interface TextProp {
     contentHtml: string;
 }
 
-interface Course {
-    id: string;
-    name: string;
-    description: string;
+interface CourseProps {
+    index: number
+    courses: Course[];
+    handleCancel: () => void;
 }
 
-interface CourseProps {
-    id: string;
-    name: string;
-    description: string;
-    // courses: Course[];
-}
 interface CoursesProps {
     courses: Course[];
 }
@@ -87,11 +81,11 @@ export function HeroText({ contentHtml }: TextProp) {
 }
 
 export function AvailableCourses({ courses }: CoursesProps) {
-    const [openEditor, setOpenEditor] = useState(false)
+    const [openEditor, setOpenEditor] = useState<number | false>(false);
 
-    function handleClick(e) {
+    function handleClick(e: React.MouseEvent<HTMLButtonElement>) {
         e.preventDefault();
-        setOpenEditor(e.target.id)
+        setOpenEditor(e.currentTarget.tabIndex)
     }
 
     function handleCancel() {
@@ -102,7 +96,7 @@ export function AvailableCourses({ courses }: CoursesProps) {
             <div key={`course-${course.name}`}>
                 <h3>{course.name}</h3>
                 {parse(course.description)}
-                <button onClick={handleClick} id={i}>Editar</button>
+                <button onClick={handleClick} tabIndex={i}>Editar</button>
             </div>
     ));
 
@@ -110,7 +104,7 @@ export function AvailableCourses({ courses }: CoursesProps) {
         <div>
             {/* <CreateCourse/> */}
             <h2>Cursos disponibles:</h2>
-            {openEditor ? <EditAvailableCourse courses={courses} index={openEditor} handleCancel={handleCancel} /> : coursesList}
+            {openEditor !== false ? <EditAvailableCourse courses={courses} index={openEditor} handleCancel={handleCancel} /> : coursesList}
             <h2>Crear un nuevo curso</h2>
             {/* <CreateCourse/>  */}
         </div>
