@@ -76,6 +76,12 @@ export interface Course {
   description: string;
 }
 
+export interface Review{
+  id: string;
+  content: string;
+  author: string;
+}
+
 export interface Goals {
   illustration: string[];
   FAQ: string;

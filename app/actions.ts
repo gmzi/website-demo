@@ -927,3 +927,130 @@ export async function createCourse(prevState: any, formData: FormData) {
     return { message: `${e}` }
   }
 }
+
+export async function createCourseReview(prevState: any, formData: FormData) {
+  try {
+    const reviewText = parseRichTextInput(formData);
+
+    const courseReviewSchema = z.object({
+      id: z.string(),
+      content: z.string(),
+      author: z.string(),  
+    })
+
+    const inputData = courseReviewSchema.parse({
+      id: createAlphaNumericString(20),
+      content: reviewText.contentHtml,
+      author: formData.get("reviewAuthor"),
+    })
+
+    const data = {
+      document: "courses",
+      entry: "reviews",
+      content: inputData
+    }
+
+    const saved = await fetch(`${BASE_URL}/server/create`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'API-Key': DATA_API_KEY
+      },
+      referrerPolicy: 'no-referrer',
+      body: JSON.stringify(data)
+    });
+
+    revalidatePath('/(editor)/editor', 'page');
+
+    return { message: `a course review has been created created` }
+  } catch(e) {
+    console.error(e);
+    return { message: `${e}` }
+  }
+}
+
+export async function editCourseReview(prevState: any, formData: FormData) {
+  try {
+    return {message: 'hi'}
+    const courseDescription = parseRichTextInput(formData);
+
+    const courseSchema = z.object({
+      id: z.string(),
+      name: z.string(),
+      description: z.string(),  
+    })
+
+    const inputData = courseSchema.parse({
+      id: formData.get("id"),
+      name: formData.get("review_name"),
+      description:  courseDescription.contentHtml
+    })
+
+    const data = {
+      document: "courses",
+      entry: "reviews",
+      itemLocator: "reviews.id",
+      newContent: inputData,
+    }
+
+    const updated = await fetch(`${BASE_URL}/server/edit/item`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        'API-Key': DATA_API_KEY
+      },
+      referrerPolicy: 'no-referrer',
+      body: JSON.stringify(data)
+    });
+
+    revalidatePath('/(editor)/editor', 'page'); 
+    return { message: `a course review has been updated!!!` }
+  } catch(e){
+    console.error(e);
+    return { message: `${e}` }
+  }
+}
+
+export async function createSection(prevState: any, formData: FormData) {
+  // REUSE FUNCTIONALITY FROM ARRAY MODIFICATION IN MONGODB
+  try {
+
+    console.log(formData)
+
+    return {message: 'hi'}
+    const sectionSchema = z.object({
+      id: z.string(),
+      name: z.string(),
+      description: z.string(),  
+    })
+
+    const inputData = sectionSchema.parse({
+      id: createAlphaNumericString(20),
+      name: formData.get("section_name"),
+      description:  formData.get("section_description")
+    })
+
+    const data = {
+      document: "courses",
+      entry: "sections",
+      content: inputData
+    }
+
+    const saved = fetch(`${BASE_URL}/server/create`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'API-Key': DATA_API_KEY
+      },
+      referrerPolicy: 'no-referrer',
+      body: JSON.stringify(data)
+    });
+
+    revalidatePath('/(editor)/editor', 'page');
+    return { message: `a section has been created created` }
+
+  } catch(e){
+    console.error(e);
+    return { message: `${e}` } 
+  }
+}

@@ -260,6 +260,15 @@ ol li div {
   flex-direction: row;
 }
 
+.reviews blockquote {
+  border: 1px solid black;
+  padding: 3em;
+}
+
+.reviews cite {
+  display: block;
+}
+
 /* ---------------------------------- */
 /* EDITOR */
 /* ---------------------------------- */

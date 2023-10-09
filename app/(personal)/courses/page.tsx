@@ -44,6 +44,7 @@ export default async function CoursesPage() {
     const onlineAdd = parse(data?.online.description) || "";
     const testimonials  = data?.testimonials || [];
     const contactWhatsapp = data?.contact.whatsapp || {};
+    const reviews = data?.reviews || [];
 
     const contactBtn = <form action={`https://wa.me/${contactWhatsapp}`}><button className="btn-whatsapp" type="submit">contactame por whatsapp</button></form>
 
@@ -97,6 +98,14 @@ export default async function CoursesPage() {
                 <div className="faq">
                     <h2>Preguntas frecuentes</h2>
                     {FAQ}
+                </div>
+                <div className="reviews">
+                    {reviews.map((review: {content: string, author: string}, i: number) => (
+                        <blockquote>
+                        {parse(review.content)}
+                        <cite>{review.author}</cite>
+                    </blockquote>
+                    ))}
                 </div>
                 </div>
                 <div className="btnContainer">
