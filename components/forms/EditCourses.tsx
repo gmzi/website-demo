@@ -4,7 +4,7 @@
 import { experimental_useFormState as useFormState } from 'react-dom'
 import { experimental_useFormStatus as useFormStatus } from 'react-dom'
 import type { About } from '@/types'
-import { editCoursesHeroImage, editHeroText, editAvailableCourse } from '@/app/actions'
+import { editCoursesHeroImage, editHeroText, editAvailableCourse, createCourse } from '@/app/actions'
 import { ImageEdit } from './ImageEdit'
 import { ImagesEdit } from './ImageEdit'
 import { RichText } from './text-editor/RichText'
@@ -88,6 +88,7 @@ export function AvailableCourses({ courses }: CoursesProps) {
         setOpenEditor(e.currentTarget.tabIndex)
     }
 
+
     function handleCancel() {
         setOpenEditor(false)
     }
@@ -102,11 +103,8 @@ export function AvailableCourses({ courses }: CoursesProps) {
 
     return (
         <div>
-            {/* <CreateCourse/> */}
             <h2>Cursos disponibles:</h2>
             {openEditor !== false ? <EditAvailableCourse courses={courses} index={openEditor} handleCancel={handleCancel} /> : coursesList}
-            <h2>Crear un nuevo curso</h2>
-            {/* <CreateCourse/>  */}
         </div>
     )
 }
@@ -127,6 +125,24 @@ export function EditAvailableCourse({ courses, index, handleCancel }: CourseProp
             <RichText contentHtml={course.description} />
             <EditButton />
             <button onClick={handleCancel}>Cancelar</button>
+            <p aria-live="polite" className="sr-only" role="status">
+                {state?.message}
+            </p>
+        </form>
+    )
+}
+
+export function CreateCourse() {
+    const [state, formAction] = useFormState(createCourse, initialState)
+
+    return (
+        <form action={formAction}>
+            <h2>Crear nuevo curso</h2>
+            <label htmlFor="course_name">Nombre del curso:</label>
+            <input type="text" id="course_name" name="course_name"/>
+            <label htmlFor="editor_content">Descripcion del curso:</label>
+            <RichText contentHtml="" />
+            <EditButton />
             <p aria-live="polite" className="sr-only" role="status">
                 {state?.message}
             </p>

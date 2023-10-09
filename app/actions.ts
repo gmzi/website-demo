@@ -859,7 +859,7 @@ export async function editAvailableCourse(prevState: any, formData: FormData) {
       name: formData.get("course_name"),
       description:  courseDescription.contentHtml
     })
-    
+
     const data = {
       document: "courses",
       entry: "available_courses",
@@ -886,3 +886,44 @@ export async function editAvailableCourse(prevState: any, formData: FormData) {
   }
 }
 
+
+export async function createCourse(prevState: any, formData: FormData) {
+  try {
+    const courseDescription = parseRichTextInput(formData);
+
+    const courseSchema = z.object({
+      id: z.string(),
+      name: z.string(),
+      description: z.string(),  
+    })
+
+    const inputData = courseSchema.parse({
+      id: createAlphaNumericString(20),
+      name: formData.get("course_name"),
+      description:  courseDescription.contentHtml
+    })
+
+    const data = {
+      document: "courses",
+      entry: "available_courses",
+      content: inputData
+    }
+
+    const saved = await fetch(`${BASE_URL}/server/create`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'API-Key': DATA_API_KEY
+      },
+      referrerPolicy: 'no-referrer',
+      body: JSON.stringify(data)
+    });
+
+    revalidatePath('/(editor)/editor', 'page');
+
+    return { message: `a course has been created created` }
+  } catch(e) {
+    console.error(e);
+    return { message: `${e}` }
+  }
+}

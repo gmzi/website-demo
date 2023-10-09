@@ -4,7 +4,7 @@ import { getData } from "@/lib/getData";
 import TextEditor from "../forms/text-editor/TextEditor";
 import TextEditorEntry from "../forms/text-editor/TextEditorEntry";
 import ImageUpload from "../forms/ImageUpload";
-import { HeroImage, HeroText, AvailableCourses } from "../forms/EditCourses";
+import { HeroImage, HeroText, AvailableCourses, CreateCourse } from "../forms/EditCourses";
 import { Edit } from "../forms/Edit";
 
 export default async function Courses() {
@@ -32,6 +32,7 @@ export default async function Courses() {
             <HeroImage imageUrl={image1Url}/>
             <HeroText contentHtml={contentHtml}/>
             <AvailableCourses courses={availableCourses}/>
+            <CreateCourse/>
         </div>
     )
   }
