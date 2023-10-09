@@ -119,9 +119,9 @@ export default async function CoursesPage() {
                     <h2>Testimonios</h2>
                     <div className="testimonialCards-container">
                         {testimonials.map((testimonial: Testimonial, i: IntegerType) => (
-                            <div className="testimonialCard" key={`card-${i}`}>
+                            <div key={`testimonial-card-${i}`} className="testimonialCard">
                                 <h3>{testimonial.author}</h3>
-                                <p>{testimonial.content}</p>
+                                {parse(testimonial.content)}
                             </div>
                         ))}
                     </div>

@@ -4,7 +4,7 @@
 import { experimental_useFormState as useFormState } from 'react-dom'
 import { experimental_useFormStatus as useFormStatus } from 'react-dom'
 import type { About } from '@/types'
-import { editCoursesHeroImage, editHeroText, editAvailableCourse, createCourse, createSection, createCourseReview, editCourseReview } from '@/app/actions'
+import { editCoursesHeroImage, editHeroText, editAvailableCourse, createCourse, createSection, createCourseReview, editCourseReview, editTestimonial, createTestimonial } from '@/app/actions'
 import { ImageEdit } from './ImageEdit'
 import { ImageForm } from './ImageForm'
 import { ImagesEdit } from './ImageEdit'
@@ -37,8 +37,22 @@ interface ReviewProps {
     handleCancel: () => void;
 }
 
+interface TestimonialProps {
+    index: number;
+    testimonials: Testimonial[];
+    handleCancel: () => void;
+}
+
 interface CoursesProps {
     courses: Course[];
+}
+
+interface ReviewsProps {
+    reviews: Review[];
+}
+
+interface TestimonialsProps {
+    testimonials: Testimonial[];
 }
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
@@ -50,13 +64,13 @@ const initialState = {
 
 function SubmitButton() {
     const { pending } = useFormStatus()
-  
+
     return (
-      <button type="submit" aria-disabled={pending}>
-        Create
-      </button>
+        <button type="submit" aria-disabled={pending}>
+            Create
+        </button>
     )
-  }
+}
 
 function EditButton() {
     const { pending } = useFormStatus()
@@ -162,8 +176,7 @@ export function CreateCourse() {
             <input type="text" id="course_name" name="course_name" />
             <label htmlFor="editor_content">Descripcion del curso:</label>
             <RichText contentHtml="" />
-            {/* <EditButton /> */}
-            <SubmitButton/>
+            <SubmitButton />
             <p aria-live="polite" className="sr-only" role="status">
                 {state?.message}
             </p>
@@ -233,18 +246,92 @@ export function CreateCourseReview() {
         <form action={formAction}>
             <h2>Agregar reseña</h2>
             <label htmlFor="editor_content">Texto de la reseña:</label>
-            <RichText contentHtml=""/>
+            <RichText contentHtml="" />
             <label htmlFor="reviewAuthor">Autor de la reseña:</label>
-            <input type="text" id="reviewAuthor" name="reviewAuthor"/>
-            <SubmitButton/>
+            <input type="text" id="reviewAuthor" name="reviewAuthor" />
+            <SubmitButton />
             <p aria-live="polite" className="sr-only" role="status">
                 {state?.message}
             </p>
         </form>
     )
-
 }
 
+export function Testimonials({ testimonials }: TestimonialsProps) {
+    const [openEditor, setOpenEditor] = useState<number | false>(false);
+
+    function handleClick(e: React.MouseEvent<HTMLButtonElement>) {
+        e.preventDefault();
+        setOpenEditor(e.currentTarget.tabIndex)
+    }
+
+
+    function handleCancel() {
+        setOpenEditor(false)
+    }
+
+    const testimonialsList =
+        <div className="testimonialCards-container">
+            {testimonials.map((testimonial: Testimonial, i: number) => (
+                <div key={`card-${i}`} className="testimonialCard">
+                    <h3>{testimonial.author}</h3>
+                    <p>{testimonial.content}</p>
+                    <button key={`btn-testimonials-${i}`} onClick={handleClick} tabIndex={i}>Editar</button>
+                    <Delete document="courses" entry="testimonials" section="courses" id={testimonial.id} />
+                </div>
+            ))}
+        </div>
+
+    return (
+        <div>
+            <h2>Testimonios:</h2>
+            {openEditor !== false ? <EditTestimonial testimonials={testimonials} index={openEditor} handleCancel={handleCancel} /> : testimonialsList}
+        </div>
+    )
+}
+
+export function EditTestimonial({ testimonials, index, handleCancel }: TestimonialProps) {
+    const [state, formAction] = useFormState(editTestimonial, initialState)
+
+    const testimonial = testimonials[index]
+
+    return (
+        <form action={formAction}>
+            <input type="hidden" name="id" value={testimonial.id} />
+
+            <h2>Editar testimonio</h2>
+            <div className="testimonialCard">
+                <label htmlFor="editor_content">Texto del testimonio:</label>
+                <RichText contentHtml={testimonial.content} />
+                <label htmlFor="testimonialAuthor">Autor del testimonio:</label>
+                <input type="text" id="testimonialAuthor" name="testimonialAuthor" defaultValue={testimonial.author} />
+            </div>
+            <EditButton />
+            <button onClick={handleCancel}>Cancelar</button>
+            <p aria-live="polite" className="sr-only" role="status">
+                {state?.message}
+            </p>
+        </form>
+    )
+}
+
+export function CreateTestimonial() {
+    const [state, formAction] = useFormState(createTestimonial, initialState)
+
+    return (
+        <form action={formAction}>
+            <h2>Agregar testimonio</h2>
+            <label htmlFor="editor_content">Texto del testimonio:</label>
+            <RichText contentHtml="" />
+            <label htmlFor="testimonialAuthor">Autor del testimonio:</label>
+            <input type="text" id="testimonialAuthor" name="testimonialAuthor" />
+            <SubmitButton />
+            <p aria-live="polite" className="sr-only" role="status">
+                {state?.message}
+            </p>
+        </form>
+    )
+}
 
 export function CreateSection() {
     // a section has: a title, an image, a contentHtml

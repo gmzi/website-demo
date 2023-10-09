@@ -1011,6 +1011,88 @@ export async function editCourseReview(prevState: any, formData: FormData) {
   }
 }
 
+export async function createTestimonial(prevState: any, formData: FormData) {
+  try {
+    const testimonialText = parseRichTextInput(formData);
+
+    const testimonialSchema = z.object({
+      id: z.string(),
+      content: z.string(),
+      author: z.string(),  
+    })
+
+    const inputData = testimonialSchema.parse({
+      id: createAlphaNumericString(20),
+      content: testimonialText.contentHtml,
+      author: formData.get("testimonialAuthor"),
+    })
+
+    const data = {
+      document: "courses",
+      entry: "testimonials",
+      content: inputData
+    }
+
+    const saved = await fetch(`${BASE_URL}/server/create`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'API-Key': DATA_API_KEY
+      },
+      referrerPolicy: 'no-referrer',
+      body: JSON.stringify(data)
+    });
+
+    revalidatePath('/(editor)/editor', 'page');
+
+    return { message: `a testimonial has been created created` }
+  }
+  catch(e) {
+    console.error(e);
+    return { message: `${e}` }
+  }
+}
+
+export async function editTestimonial(prevState: any, formData: FormData) {
+  try {
+    const testimonialText = parseRichTextInput(formData);
+
+    const testimonialSchema = z.object({
+      id: z.string(),
+      content: z.string(),
+      author: z.string(),  
+    })
+
+    const inputData = testimonialSchema.parse({
+      id: formData.get("id"),
+      content: testimonialText.contentHtml,
+      author: formData.get("testimonialAuthor"),
+    })
+
+    const data = {
+      document: "courses",
+      entry: "testimonials",
+      itemLocator: "testimonials.id",
+      newContent: inputData,
+    }
+
+    const updated = await fetch(`${BASE_URL}/server/edit/item`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        'API-Key': DATA_API_KEY
+      },
+      referrerPolicy: 'no-referrer',
+      body: JSON.stringify(data)
+    });
+    revalidatePath('/(editor)/editor', 'page');
+    return { message: `Testimonial has been updated!!!` }
+  } catch(e){
+    console.error(e);
+    return { message: `${e}` }
+  }
+}
+
 export async function createSection(prevState: any, formData: FormData) {
   // REUSE FUNCTIONALITY FROM ARRAY MODIFICATION IN MONGODB
   try {

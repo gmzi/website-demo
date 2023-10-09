@@ -4,7 +4,7 @@ import { getData } from "@/lib/getData";
 import TextEditor from "../forms/text-editor/TextEditor";
 import TextEditorEntry from "../forms/text-editor/TextEditorEntry";
 import ImageUpload from "../forms/ImageUpload";
-import { HeroImage, HeroText, AvailableCourses, CreateCourse, CreateSection, CourseReviews, CreateCourseReview } from "../forms/EditCourses";
+import { HeroImage, HeroText, AvailableCourses, CreateCourse, CreateSection, CourseReviews, CreateCourseReview, Testimonials, CreateTestimonial } from "../forms/EditCourses";
 import { Edit } from "../forms/Edit";
 
 export default async function Courses() {
@@ -27,6 +27,7 @@ export default async function Courses() {
     const availableCourses = data?.available_courses || [];
 
     const reviews = data?.reviews || [];
+    const testimonials = data?.testimonials || [];
 
     
     return (
@@ -38,6 +39,8 @@ export default async function Courses() {
             <CreateCourse/>
             <CourseReviews reviews={reviews}/>
             <CreateCourseReview/>
+            <Testimonials testimonials={testimonials}/>
+            <CreateTestimonial/>
         </div>
     )
   }

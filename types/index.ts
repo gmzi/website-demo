@@ -93,6 +93,7 @@ export interface OnlineAdd {
 }
 
 export interface Testimonial {
+  id: string;
   content: string;
   author: string;
 }
