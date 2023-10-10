@@ -4,12 +4,12 @@
 import { experimental_useFormState as useFormState } from 'react-dom'
 import { experimental_useFormStatus as useFormStatus } from 'react-dom'
 import type { About } from '@/types'
-import { editCoursesHeroImage, editHeroText, editAvailableCourse, createCourse, createSection, createCourseReview, editCourseReview, editTestimonial, createTestimonial } from '@/app/actions'
+import { editCoursesHeroImage, editHeroText, editAvailableCourse, createCourse, createSection, createCourseReview, editCourseReview, editTestimonial, createTestimonial, editCourseLogistics } from '@/app/actions'
 import { ImageEdit } from './ImageEdit'
 import { ImageForm } from './ImageForm'
 import { ImagesEdit } from './ImageEdit'
 import { RichText } from './text-editor/RichText'
-import type { Course, Goals, OnlineAdd, Testimonial, Data, Review } from '@/types'
+import type { Course, Goals, Testimonial, Data, Review } from '@/types'
 import parse from 'html-react-parser'
 import HTMLReactParser from 'html-react-parser'
 import { useState } from 'react'
@@ -53,6 +53,12 @@ interface ReviewsProps {
 
 interface TestimonialsProps {
     testimonials: Testimonial[];
+}
+
+interface LogisticsProps {
+    title: string;
+    contentHtml: string;
+    imageUrl: string;
 }
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
@@ -198,7 +204,7 @@ export function CourseReviews({ reviews }: ReviewsProps) {
     }
 
     const reviewsList = reviews.map((review: Review, i: number) => (
-        <div>
+        <div key={`review-${i}`}>
             <blockquote>
                 {parse(review.content)}
                 <cite>{review.author}</cite>
@@ -275,7 +281,7 @@ export function Testimonials({ testimonials }: TestimonialsProps) {
             {testimonials.map((testimonial: Testimonial, i: number) => (
                 <div key={`card-${i}`} className="testimonialCard">
                     <h3>{testimonial.author}</h3>
-                    <p>{testimonial.content}</p>
+                    {parse(testimonial.content)}
                     <button key={`btn-testimonials-${i}`} onClick={handleClick} tabIndex={i}>Editar</button>
                     <Delete document="courses" entry="testimonials" section="courses" id={testimonial.id} />
                 </div>
@@ -325,7 +331,7 @@ export function CreateTestimonial() {
             <RichText contentHtml="" />
             <label htmlFor="testimonialAuthor">Autor del testimonio:</label>
             <input type="text" id="testimonialAuthor" name="testimonialAuthor" />
-            <SubmitButton />
+            <EditButton />
             <p aria-live="polite" className="sr-only" role="status">
                 {state?.message}
             </p>
@@ -333,25 +339,22 @@ export function CreateTestimonial() {
     )
 }
 
-export function CreateSection() {
-    // a section has: a title, an image, a contentHtml
-    const [state, formAction] = useFormState(createSection, initialState)
+export function EditLogistics({ title, contentHtml, imageUrl }: LogisticsProps) {
+    const [state, formAction] = useFormState(editCourseLogistics, initialState)
 
     return (
         <form action={formAction}>
-            <h2>Crear sección</h2>
-            <ImageForm />
-            <label htmlFor="title">Título principal:</label>
-            <input type="text" id="title" name="title" />
-            <label htmlFor="editor_content">Contenido:</label>
-            <RichText contentHtml="" />
+            <div className="course-logistics">
+                <ImageEdit imageUrl={imageUrl} />
+                <label htmlFor="title">Título:</label>
+                <input type="text" id="title" name="title" defaultValue={title}/>
+                <label htmlFor="editor_content">Detalles logísticos del curso:</label>
+                <RichText contentHtml={contentHtml} />
+            </div>
             <EditButton />
-            <Link href="/contact">
-                <button>Consultame</button>
-            </Link>
             <p aria-live="polite" className="sr-only" role="status">
                 {state?.message}
             </p>
         </form>
     )
-}
+} 

@@ -207,7 +207,7 @@ ol li div {
 }
 
 .faq, 
-.online {
+.course-logistics {
   border-radius: 5px;
   margin: 1em 0em;
   padding: 1em;
@@ -221,7 +221,7 @@ ol li div {
   color: var(--color-purple);
 }
 
-.online {
+.course-logistics {
   background-color: var(--color-background-box);
 }
 

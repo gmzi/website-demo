@@ -87,9 +87,10 @@ export interface Goals {
   FAQ: string;
 }
 
-export interface OnlineAdd {
-  description: string;
-  logistics: string;
+export interface Logistics {
+  title: string;
+  image_url: string;
+  content_html: string;
 }
 
 export interface Testimonial {

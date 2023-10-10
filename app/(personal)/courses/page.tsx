@@ -4,9 +4,9 @@ import { getData } from "@/lib/getData"
 import parse from 'html-react-parser'
 import { availableParallelism, type } from "os"
 import { IntegerType } from "mongodb"
-import {GoalsIcon} from "@/components/shared/icons"
+import { GoalsIcon } from "@/components/shared/icons"
 import document from "@/document.json"
-import type {Course, Goals, OnlineAdd, Testimonial, Data} from '@/types'
+import type { Course, Goals, Logistics, Testimonial, Data } from '@/types'
 
 const isProd = process.env.NODE_ENV === 'production';
 
@@ -24,15 +24,15 @@ export default async function CoursesPage() {
     // } else {
     //     data = document.courses;
     // }
-    
+
     const data = await getData("courses");
 
     const texto = (data: Data) => {
-        if (data.content_html){
+        if (data.content_html) {
             return parse(data.content_html)
         }
         return ''
-    } 
+    }
 
     const image1Url = data?.image_1_url || '';
     const image2Url = data?.image_2_url || '';
@@ -41,8 +41,8 @@ export default async function CoursesPage() {
     const goals = data?.goals || [];
 
     const FAQ = parse(data?.FAQ) || "";
-    const onlineAdd = parse(data?.online.description) || "";
-    const testimonials  = data?.testimonials || [];
+    const logistics: Logistics = data?.logistics || {};
+    const testimonials = data?.testimonials || [];
     const contactWhatsapp = data?.contact.whatsapp || {};
     const reviews = data?.reviews || [];
 
@@ -54,87 +54,100 @@ export default async function CoursesPage() {
     return (
         <section className='sectionCourses'>
             <h1>Cursos</h1>
-                <div className="coursesHero">
-                    <Image
-                        alt="Picture of the author"
-                        src={image1Url}
-                        width={0}
-                        height={0}
-                        sizes="100vw"
-                        style={{
-                            width: '100%', 
-                            height: 'auto', 
-                            borderRadius: '5px',
-                            marginBottom: '.5em'
-                        }}
-                    />
-                    <div className='description'>
-                        {texto(data)}
-                    </div>
+            <div className="coursesHero">
+                <Image
+                    alt="Picture of the author"
+                    src={image1Url}
+                    width={0}
+                    height={0}
+                    sizes="100vw"
+                    style={{
+                        width: '100%',
+                        height: 'auto',
+                        borderRadius: '5px',
+                        marginBottom: '.5em'
+                    }}
+                />
+                <div className='description'>
+                    {texto(data)}
                 </div>
-                <div className="btnContainer">
-                    {contactBtn}
-                </div>
-                <div>
-                    <h2>Mis tres cursos:</h2>
-                        <div className='courseCards-container'>
-                        {availableCourses.map((course: Course, i: number) => (
+            </div>
+            <div className="btnContainer">
+                {contactBtn}
+            </div>
+            <div>
+                <h2>Mis tres cursos:</h2>
+                <div className='courseCards-container'>
+                    {availableCourses.map((course: Course, i: number) => (
                         <div className="courseCard" key={`course-${i}`}>{course.name}</div>
-                        ))}
-                    </div>
+                    ))}
                 </div>
-                <div>
-                    <ol>
-                        <h2>Objetivos</h2>
-                        {goals.map((goal: string, i: number) => (
+            </div>
+            <div>
+                <ol>
+                    <h2>Objetivos</h2>
+                    {goals.map((goal: string, i: number) => (
                         <li key={`illustration-${i}`}>
-                            <div><GoalsIcon/></div>
+                            <div><GoalsIcon /></div>
                             {goal}
                         </li>
-                        ))}
-                    </ol>
-                </div>
-                <div>
+                    ))}
+                </ol>
+            </div>
+            <div>
                 <div className="faq">
                     <h2>Preguntas frecuentes</h2>
                     {FAQ}
                 </div>
                 <div className="reviews">
-                    {reviews.map((review: {content: string, author: string}, i: number) => (
-                        <blockquote>
-                        {parse(review.content)}
-                        <cite>{review.author}</cite>
-                    </blockquote>
+                    {reviews.map((review: { content: string, author: string }, i: number) => (
+                        <blockquote key={`review-${i}`}>
+                            {parse(review.content)}
+                            <cite>{review.author}</cite>
+                        </blockquote>
                     ))}
                 </div>
-                </div>
-                <div className="btnContainer">
-                    {contactBtn}
-                </div>
-                <div className="online">
-                    <h1>ONLINE</h1>
-                    {onlineAdd}
-                </div>
-                <div>
-                    <h2>Testimonios</h2>
-                    <div className="testimonialCards-container">
-                        {testimonials.map((testimonial: Testimonial, i: IntegerType) => (
-                            <div key={`testimonial-card-${i}`} className="testimonialCard">
-                                <h3>{testimonial.author}</h3>
-                                {parse(testimonial.content)}
-                            </div>
-                        ))}
-                    </div>
-                </div>
-                <div>
-                    <h2>Inscripción y consultas</h2>
-                        <div className="btnContainer">
-                            <p>podés consultarme por whatsapp cliqueando acá:</p>
-                            {contactBtn}
-                            <p>o por email cliqueando <a href="mailto:name@email.com">acá</a></p>
-                            <p>o en cualquiera de mis redes sociales acá abajo:</p>
+            </div>
+            <div className="btnContainer">
+                {contactBtn}
+            </div>
+            <div className="course-logistics">
+                <Image
+                    alt="Picture of the author"
+                    src={logistics.image_url}
+                    width={0}
+                    height={0}
+                    sizes="100vw"
+                    style={{
+                        width: '30%',
+                        height: 'auto',
+                        borderRadius: '5px',
+                        marginBottom: '.5em'
+                    }}
+                />
+                <h2>{logistics.title}</h2>
+                {parse(logistics.content_html)}
+            </div>
+            <div>
+                <h2>Testimonios</h2>
+                <div className="testimonialCards-container">
+                    {testimonials.map((testimonial: Testimonial, i: IntegerType) => (
+                        <div key={`testimonial-card-${i}`} className="testimonialCard">
+                            <h3>{testimonial.author}</h3>
+                            {parse(testimonial.content)}
                         </div>
+                    ))}
                 </div>
+            </div>
+            <div>
+                <h2>Inscripción y consultas</h2>
+                <div className="btnContainer">
+                    <p>podés consultarme por whatsapp cliqueando acá:</p>
+                    {contactBtn}
+                    <p>o por email cliqueando <a href="mailto:name@email.com">acá</a></p>
+                    <p>o en cualquiera de mis redes sociales acá abajo:</p>
+                </div>
+            </div>
         </section>
     )
 }

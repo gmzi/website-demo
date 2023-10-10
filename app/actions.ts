@@ -1093,6 +1093,55 @@ export async function editTestimonial(prevState: any, formData: FormData) {
   }
 }
 
+export async function editCourseLogistics(prevState: any, formData: FormData) {
+  try {
+    let imageInput = parseImageInput(formData);
+  
+    if (imageInput.image_file) {
+      imageInput = await handleNewImage(imageInput, 'courses');
+    }
+
+    const imageUrl= imageInput.image_url;
+    const content = parseRichTextInput(formData);
+
+    const courseLogisticsSchema = z.object({
+      title: z.string(),
+      content_html: z.string(),
+      image_url: z.string(),  
+    })
+
+    const inputData = courseLogisticsSchema.parse({
+      title: formData.get("title"),
+      content_html: content.contentHtml,
+      image_url: imageUrl,
+    })
+
+    const data = {
+      document: "courses",
+      entry: "logistics",
+      content: inputData
+    }
+
+    const updated = await fetch(`${BASE_URL}/server/courses`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        'API-Key': DATA_API_KEY
+      },
+      referrerPolicy: 'no-referrer',
+      body: JSON.stringify(data)
+    });
+
+    revalidatePath('/(editor)/editor', 'page');
+    return { message: `Course logistics has been updated!!!` }
+  }
+  catch(e){
+    console.error(e);
+    return { message: `${e}` }
+  }
+
+}
+
 export async function createSection(prevState: any, formData: FormData) {
   // REUSE FUNCTIONALITY FROM ARRAY MODIFICATION IN MONGODB
   try {
