@@ -5,6 +5,7 @@ import { z } from 'zod'
 import createAlphaNumericString from '@/lib/createAlphanumericString';
 import { uploadToCloudinary } from './cloudinary';
 import { moveToTrash } from './cloudinary';
+import {transformYouTubeUrl} from '@/lib/transformYouTubeUrl'
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 const DATA_API_KEY = process.env.NEXT_PUBLIC_DATA_API_KEY || '';
@@ -193,6 +194,58 @@ const pressArticleSchema = z.object({
   image_url: z.string()
 })
 
+export async function createPressVideo(prevState: any, formData: FormData) {
+  try {
+    const pressVideoSchema = z.object({
+      id: z.string(),
+      show: z.string(),
+      // check if youtube link has valid format
+      video_url: z.string().refine((url) => {
+        const embedUrl = transformYouTubeUrl(url);
+        if (!embedUrl){
+          throw new Error("invalid youtube url")
+        }
+        return embedUrl
+      }),
+      title: z.string(),
+      description: z.string(),
+      source_organization: z.string(),
+    })
+
+    const inputData = pressVideoSchema.parse({
+      id: createAlphaNumericString(20),
+      show: formData.get('show'),
+      video_url: formData.get('video_url'),
+      title: formData.get('title'),
+      description: formData.get('description'),
+      source_organization: formData.get('source_organization'),
+    })
+
+    const data = {
+      document: "press",
+      entry: "video_press",
+      content: inputData
+    }
+
+    const saved = await fetch(`${BASE_URL}/server/create`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'API-Key': DATA_API_KEY
+      },
+      referrerPolicy: 'no-referrer',
+      body: JSON.stringify(data)
+    });
+
+    revalidatePath('/(editor)/editor', 'page');
+
+    return { message: `video press added` }
+
+  } catch (e) {
+    console.log(e)
+    return { message: `${e}` }
+  }
+}
 export async function createPressArticle(prevState: any, formData: FormData) {
   try {
     const inputData = pressArticleSchema.parse({

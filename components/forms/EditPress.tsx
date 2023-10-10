@@ -4,12 +4,12 @@
 import { experimental_useFormState as useFormState } from 'react-dom'
 import { experimental_useFormStatus as useFormStatus } from 'react-dom'
 import type { About } from '@/types'
-import { editPressArticle, createPressArticle, editHeroText, editAvailableCourse, createCourse, createSection, createCourseReview, editCourseReview, editTestimonial, createTestimonial, editCourseLogistics, editPressHeroImage } from '@/app/actions'
+import { editPressArticle, createPressArticle, editHeroText, editAvailableCourse, createCourse, createSection, createCourseReview, editCourseReview, editTestimonial, createTestimonial, editCourseLogistics, editPressHeroImage, createPressVideo } from '@/app/actions'
 import { ImageEdit } from './ImageEdit'
 import { ImageForm } from './ImageForm'
 import { ImagesEdit } from './ImageEdit'
 import { RichText } from './text-editor/RichText'
-import type { WrittenPressArticle, Course, Goals, Testimonial, Data, Review } from '@/types'
+import type { WrittenPressArticle, VideoPressArticle, Course, Goals, Testimonial, Data, Review } from '@/types'
 import parse from 'html-react-parser'
 import HTMLReactParser from 'html-react-parser'
 import { useState } from 'react'
@@ -23,6 +23,10 @@ interface ImageProp {
 
 interface PressArticlesProps {
     articles: WrittenPressArticle[];
+}
+
+interface PressVideosProps {
+    pressVideos: VideoPressArticle[];
 }
 
 interface EditProps {
@@ -179,6 +183,84 @@ export function CreatePressArticle() {
                 <label htmlFor="show">Espectaculo:</label>
                 <input type="text" id="show" name="show" />
                 <ImageForm />
+                <SubmitButton />
+            </div>
+
+            <p aria-live="polite" className="sr-only" role="status">
+                {state?.message}
+            </p>
+        </form>
+    )
+}
+
+export function PressVideos({ pressVideos }: PressVideosProps) {
+    const [openEditor, setOpenEditor] = useState<number | false>(false);
+
+    function handleClick(e: React.MouseEvent<HTMLButtonElement>) {
+        e.preventDefault();
+        setOpenEditor(e.currentTarget.tabIndex)
+    }
+
+
+    function handleCancel() {
+        setOpenEditor(false)
+    }
+
+    const pressVideosList = pressVideos.map((pressVideo: VideoPressArticle, i: number) => (
+        <div className="press-video-card" key={pressVideo.video_url}>
+            <div className="video-container">
+                <iframe
+                    // width="398"
+                    // height="248"
+                    src={pressVideo.video_url}
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    title={pressVideo.description}
+                />
+            </div>
+            <div className="video-description">
+                <span>{pressVideo.description}</span>
+            </div>
+            <button onClick={handleClick} tabIndex={i}>Editar</button>
+            <Delete document="press" entry="video_press" section="press" id={pressVideo.id} />
+        </div>
+    ));
+
+    return (
+        <div>
+            <h2>Videos de prensa:</h2>
+            {/* {openEditor !== false ? <EditAvailableCourse pressVideos={pressVideos} index={openEditor} handleCancel={handleCancel} /> : pressVideosList} */}
+            {openEditor !== false ? <Edit pressVideos={pressVideos} index={openEditor} handleCancel={handleCancel} /> : pressVideosList}
+        </div>
+    )
+}
+
+
+export function CreatePressVideo() {
+    const [state, formAction] = useFormState(createPressVideo, initialState)
+
+    // until we figure out how to reset form input after successfull data savign, bare with this:
+    if (state?.message === 'article added') {
+
+        const form = document.getElementById("myForm");
+        // @ts-ignore
+        form.reset()
+        // state.message = null;
+    }
+
+    return (
+        <form action={formAction} id="myForm">
+            <h2>Agregar video</h2>
+            <div className="press-video-card">
+                <label htmlFor="show">Espectaculo:</label>
+                <input type="text" id="show" name="show" />
+                <label htmlFor="video_url">Link al video:</label>
+                <input type="text" id="video_url" name="video_url" required />
+                <label htmlFor="title">Titulo del video:</label>
+                <input type="text" id="title" name="title"/>
+                <label htmlFor="description">Epigrafe del video:</label>
+                <input type="text" id="description" name="description"/>
+                <label htmlFor="source_organization">Institución:</label>
+                <input type="text" id="source_organization" name="source_organization" />
                 <SubmitButton />
             </div>
 

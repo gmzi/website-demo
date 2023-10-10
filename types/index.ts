@@ -22,6 +22,7 @@ export interface WrittenPressArticle {
 }
 
 export interface VideoPressArticle {
+  id: string;
   show: string;
   video_url: string;
   title: string;

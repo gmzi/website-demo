@@ -77,15 +77,18 @@ export default async function PressPage() {
                         .filter((item: { show: string }) => item.show === show)
                         .map((item, index) => (
                             <div className="press-video-card" key={item.video_url}>
-                                <iframe
-                                    width="398"
-                                    height="248"
-                                    src={item.video_url}
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                />
-                                <div>
+                                <div className="video-container">
+                                    <iframe
+                                        // width="398"
+                                        // height="248"
+                                        src={item.video_url}
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                        title={item.description}
+                                    />
+                                </div>
+                                <div className="video-description">
                                     <span>{item.description}</span>
-                                </div>  
+                                </div>
                             </div>
                         ))
                     }
