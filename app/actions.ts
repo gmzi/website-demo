@@ -2,10 +2,11 @@
 
 import { revalidatePath } from 'next/cache'
 import { z } from 'zod'
+import { ZodError } from 'zod';
 import createAlphaNumericString from '@/lib/createAlphanumericString';
 import { uploadToCloudinary } from './cloudinary';
 import { moveToTrash } from './cloudinary';
-import {transformYouTubeUrl} from '@/lib/transformYouTubeUrl'
+import { transformYouTubeUrl } from '@/lib/transformYouTubeUrl'
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 const DATA_API_KEY = process.env.NEXT_PUBLIC_DATA_API_KEY || '';
@@ -67,7 +68,7 @@ function parseImageInput(formData: FormData) {
   return inputData;
 }
 
-function parseRichTextInput(formData: FormData){
+function parseRichTextInput(formData: FormData) {
   const htmlSchema = z.object({
     contentHtml: z.string()
   })
@@ -196,17 +197,23 @@ const pressArticleSchema = z.object({
 
 export async function createPressVideo(prevState: any, formData: FormData) {
   try {
+
+    const videoUrlInput = formData.get('video_url');
+    if (!videoUrlInput) {
+      throw new Error("video url is required")
+    }
+
+    const embedUrl = transformYouTubeUrl(videoUrlInput);
+
     const pressVideoSchema = z.object({
       id: z.string(),
       show: z.string(),
-      // check if youtube link has valid format
-      video_url: z.string().refine((url) => {
-        const embedUrl = transformYouTubeUrl(url);
-        if (!embedUrl){
-          throw new Error("invalid youtube url")
-        }
-        return embedUrl
-      }),
+      video_url: embedUrl ?
+        z.string() :
+        z.any()
+          .refine((file) => {
+            return embedUrl === "condition"
+          }, "invalid youtube link"),
       title: z.string(),
       description: z.string(),
       source_organization: z.string(),
@@ -215,7 +222,7 @@ export async function createPressVideo(prevState: any, formData: FormData) {
     const inputData = pressVideoSchema.parse({
       id: createAlphaNumericString(20),
       show: formData.get('show'),
-      video_url: formData.get('video_url'),
+      video_url: embedUrl,
       title: formData.get('title'),
       description: formData.get('description'),
       source_organization: formData.get('source_organization'),
@@ -246,6 +253,56 @@ export async function createPressVideo(prevState: any, formData: FormData) {
     return { message: `${e}` }
   }
 }
+export async function editPressVideo(prevState: any, formData: FormData) {
+  try {
+    const newVideoUrl = formData.get('new_video_url');
+
+    const pressVideoSchema = z.object({
+      id: z.string(),
+      show: z.string(),
+      video_url: z.string(),
+      title: z.string(),
+      description: z.string(),
+      source_organization: z.string(),
+    })
+
+    const inputData = pressVideoSchema.parse({
+      id: formData.get('id'),
+      show: formData.get('show'),
+      video_url: newVideoUrl?.length ? transformYouTubeUrl(newVideoUrl) : formData.get('video_url') as string,
+      title: formData.get('title'),
+      description: formData.get('description'),
+      source_organization: formData.get('source_organization'),
+    })
+
+    const data = {
+      document: "press",
+      entry: "video_press",
+      itemLocator: "video_press.id",
+      newContent: inputData,
+    }
+
+    const updated = await fetch(`${BASE_URL}/server/edit/item`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        'API-Key': DATA_API_KEY
+      },
+      referrerPolicy: 'no-referrer',
+      body: JSON.stringify(data)
+    });
+
+    revalidatePath('/(editor)/editor', 'page');
+
+    return { message: `Item updated!!!` }
+
+  } catch(e){
+    console.log(e)
+    return {message: `${e}`}
+  }
+}
+      
+
 export async function createPressArticle(prevState: any, formData: FormData) {
   try {
     const inputData = pressArticleSchema.parse({
@@ -385,42 +442,6 @@ export async function editPressArticle(prevState: any, formData: FormData) {
     return { message: `${e}` }
   }
 }
-
-// export async function deletePressArticle(prevState: any, formData: FormData) {
-
-//   const schema = z.object({
-//     id: z.string(),
-//   })
-
-//   const inputData = schema.parse({
-//     id: formData.get('id')
-//   })
-
-//   const data = {
-//     document: "press",
-//     entry: "written_press",
-//     keyName: "id",
-//     valueName: inputData.id,
-//   }
-//   try {
-//     const deleted = await fetch(`${BASE_URL}/server/remove`, {
-//       method: 'POST',
-//       headers: {
-//         'Content-Type': 'application/json',
-//       },
-//       referrerPolicy: 'no-referrer',
-//       body: JSON.stringify(data)
-//     });
-
-//     revalidatePath('/(editor)/editor', 'page');
-
-//     return { message: `Item deleted` }
-
-//   } catch (e) {
-//     console.error(e);
-//     return { message: `${e}` }
-//   }
-// }
 
 export async function deleteItem(prevState: any, formData: FormData) {
 
@@ -860,7 +881,7 @@ export async function editCoursesHeroImage(prevState: any, formData: FormData) {
 
       return { message: `Courses main image has been updated!!!` }
     }
-    return { message: `No courses main image image file uploaded`} 
+    return { message: `No courses main image image file uploaded` }
   } catch (e) {
     console.error(e);
     return { message: `${e}` }
@@ -895,7 +916,7 @@ export async function editPressHeroImage(prevState: any, formData: FormData) {
 
       return { message: `Press hero image updated!!!` }
     }
-    return { message: `No press main image file uploaded`} 
+    return { message: `No press main image file uploaded` }
   } catch (e) {
     console.error(e);
     return { message: `${e}` }
@@ -925,7 +946,7 @@ export async function editHeroText(prevState: any, formData: FormData) {
     revalidatePath('/(editor)/editor', 'page');
 
     return { message: `Hero text has been updated!!!` }
-  } catch(e){
+  } catch (e) {
     console.error(e);
     return { message: `${e}` }
   }
@@ -939,13 +960,13 @@ export async function editAvailableCourse(prevState: any, formData: FormData) {
     const courseSchema = z.object({
       id: z.string(),
       name: z.string(),
-      description: z.string(),  
+      description: z.string(),
     })
 
     const inputData = courseSchema.parse({
       id: formData.get("id"),
       name: formData.get("course_name"),
-      description:  courseDescription.contentHtml
+      description: courseDescription.contentHtml
     })
 
     const data = {
@@ -968,7 +989,7 @@ export async function editAvailableCourse(prevState: any, formData: FormData) {
     revalidatePath('/(editor)/editor', 'page');
 
     return { message: `Available course text has been updated!!!` }
-  } catch(e){
+  } catch (e) {
     console.error(e);
     return { message: `${e}` }
   }
@@ -982,13 +1003,13 @@ export async function createCourse(prevState: any, formData: FormData) {
     const courseSchema = z.object({
       id: z.string(),
       name: z.string(),
-      description: z.string(),  
+      description: z.string(),
     })
 
     const inputData = courseSchema.parse({
       id: createAlphaNumericString(20),
       name: formData.get("course_name"),
-      description:  courseDescription.contentHtml
+      description: courseDescription.contentHtml
     })
 
     const data = {
@@ -1010,7 +1031,7 @@ export async function createCourse(prevState: any, formData: FormData) {
     revalidatePath('/(editor)/editor', 'page');
 
     return { message: `a course has been created created` }
-  } catch(e) {
+  } catch (e) {
     console.error(e);
     return { message: `${e}` }
   }
@@ -1023,7 +1044,7 @@ export async function createCourseReview(prevState: any, formData: FormData) {
     const courseReviewSchema = z.object({
       id: z.string(),
       content: z.string(),
-      author: z.string(),  
+      author: z.string(),
     })
 
     const inputData = courseReviewSchema.parse({
@@ -1051,7 +1072,7 @@ export async function createCourseReview(prevState: any, formData: FormData) {
     revalidatePath('/(editor)/editor', 'page');
 
     return { message: `a course review has been created created` }
-  } catch(e) {
+  } catch (e) {
     console.error(e);
     return { message: `${e}` }
   }
@@ -1064,7 +1085,7 @@ export async function editCourseReview(prevState: any, formData: FormData) {
     const courseReviewSchema = z.object({
       id: z.string(),
       content: z.string(),
-      author: z.string(),  
+      author: z.string(),
     })
 
     const inputData = courseReviewSchema.parse({
@@ -1093,7 +1114,7 @@ export async function editCourseReview(prevState: any, formData: FormData) {
     revalidatePath('/(editor)/editor', 'page');
 
     return { message: `Review has been updated!!!` }
-  } catch(e){
+  } catch (e) {
     console.error(e);
     return { message: `${e}` }
   }
@@ -1106,7 +1127,7 @@ export async function createTestimonial(prevState: any, formData: FormData) {
     const testimonialSchema = z.object({
       id: z.string(),
       content: z.string(),
-      author: z.string(),  
+      author: z.string(),
     })
 
     const inputData = testimonialSchema.parse({
@@ -1135,7 +1156,7 @@ export async function createTestimonial(prevState: any, formData: FormData) {
 
     return { message: `a testimonial has been created created` }
   }
-  catch(e) {
+  catch (e) {
     console.error(e);
     return { message: `${e}` }
   }
@@ -1148,7 +1169,7 @@ export async function editTestimonial(prevState: any, formData: FormData) {
     const testimonialSchema = z.object({
       id: z.string(),
       content: z.string(),
-      author: z.string(),  
+      author: z.string(),
     })
 
     const inputData = testimonialSchema.parse({
@@ -1175,7 +1196,7 @@ export async function editTestimonial(prevState: any, formData: FormData) {
     });
     revalidatePath('/(editor)/editor', 'page');
     return { message: `Testimonial has been updated!!!` }
-  } catch(e){
+  } catch (e) {
     console.error(e);
     return { message: `${e}` }
   }
@@ -1184,18 +1205,18 @@ export async function editTestimonial(prevState: any, formData: FormData) {
 export async function editCourseLogistics(prevState: any, formData: FormData) {
   try {
     let imageInput = parseImageInput(formData);
-  
+
     if (imageInput.image_file) {
       imageInput = await handleNewImage(imageInput, 'courses');
     }
 
-    const imageUrl= imageInput.image_url;
+    const imageUrl = imageInput.image_url;
     const content = parseRichTextInput(formData);
 
     const courseLogisticsSchema = z.object({
       title: z.string(),
       content_html: z.string(),
-      image_url: z.string(),  
+      image_url: z.string(),
     })
 
     const inputData = courseLogisticsSchema.parse({
@@ -1223,7 +1244,7 @@ export async function editCourseLogistics(prevState: any, formData: FormData) {
     revalidatePath('/(editor)/editor', 'page');
     return { message: `Course logistics has been updated!!!` }
   }
-  catch(e){
+  catch (e) {
     console.error(e);
     return { message: `${e}` }
   }
@@ -1236,17 +1257,17 @@ export async function createSection(prevState: any, formData: FormData) {
 
     console.log(formData)
 
-    return {message: 'hi'}
+    return { message: 'hi' }
     const sectionSchema = z.object({
       id: z.string(),
       name: z.string(),
-      description: z.string(),  
+      description: z.string(),
     })
 
     const inputData = sectionSchema.parse({
       id: createAlphaNumericString(20),
       name: formData.get("section_name"),
-      description:  formData.get("section_description")
+      description: formData.get("section_description")
     })
 
     const data = {
@@ -1268,8 +1289,8 @@ export async function createSection(prevState: any, formData: FormData) {
     revalidatePath('/(editor)/editor', 'page');
     return { message: `a section has been created created` }
 
-  } catch(e){
+  } catch (e) {
     console.error(e);
-    return { message: `${e}` } 
+    return { message: `${e}` }
   }
 }

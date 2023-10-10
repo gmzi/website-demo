@@ -1,7 +1,7 @@
 import { getData } from "@/lib/getData";
 import type { WrittenPressArticle } from "@/types";
 import type { VideoPressArticle } from "@/types";
-import { PressArticles, CreatePressArticle, HeroImage, CreatePressVideo } from '@/components/forms/EditPress'
+import { PressArticles, CreatePressArticle, HeroImage, PressVideos, CreatePressVideo } from '@/components/forms/EditPress'
 import document from '../../document.json';
 import { Delete } from "../forms/Delete";
 import { Edit } from "../forms/Edit";
@@ -28,6 +28,7 @@ export default async function Press() {
             <HeroImage imageUrl={heroImageUrl}/>
             <PressArticles articles={written_articles} />
             <CreatePressArticle />
+            <PressVideos pressVideos={video_articles} />
             <CreatePressVideo/>
         </div>
 

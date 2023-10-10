@@ -4,11 +4,12 @@
 import { experimental_useFormState as useFormState } from 'react-dom'
 import { experimental_useFormStatus as useFormStatus } from 'react-dom'
 import type { About } from '@/types'
-import { editPressArticle, createPressArticle, editHeroText, editAvailableCourse, createCourse, createSection, createCourseReview, editCourseReview, editTestimonial, createTestimonial, editCourseLogistics, editPressHeroImage, createPressVideo } from '@/app/actions'
+import { editPressArticle, createPressArticle, editHeroText, editAvailableCourse, createCourse, createSection, createCourseReview, editCourseReview, editTestimonial, createTestimonial, editCourseLogistics, editPressHeroImage, createPressVideo, editPressVideo } from '@/app/actions'
 import { ImageEdit } from './ImageEdit'
 import { ImageForm } from './ImageForm'
 import { ImagesEdit } from './ImageEdit'
 import { RichText } from './text-editor/RichText'
+import { IframeForm, IframeEdit } from './IframeForm'
 import type { WrittenPressArticle, VideoPressArticle, Course, Goals, Testimonial, Data, Review } from '@/types'
 import parse from 'html-react-parser'
 import HTMLReactParser from 'html-react-parser'
@@ -27,6 +28,12 @@ interface PressArticlesProps {
 
 interface PressVideosProps {
     pressVideos: VideoPressArticle[];
+}
+
+interface EditPressVideoProps {
+    pressVideos: VideoPressArticle[];
+    index: number;
+    handleCancel: () => void;
 }
 
 interface EditProps {
@@ -210,8 +217,6 @@ export function PressVideos({ pressVideos }: PressVideosProps) {
         <div className="press-video-card" key={pressVideo.video_url}>
             <div className="video-container">
                 <iframe
-                    // width="398"
-                    // height="248"
                     src={pressVideo.video_url}
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                     title={pressVideo.description}
@@ -229,8 +234,55 @@ export function PressVideos({ pressVideos }: PressVideosProps) {
         <div>
             <h2>Videos de prensa:</h2>
             {/* {openEditor !== false ? <EditAvailableCourse pressVideos={pressVideos} index={openEditor} handleCancel={handleCancel} /> : pressVideosList} */}
-            {openEditor !== false ? <Edit pressVideos={pressVideos} index={openEditor} handleCancel={handleCancel} /> : pressVideosList}
+            {openEditor !== false ? <EditPressVideo pressVideos={pressVideos} index={openEditor} handleCancel={handleCancel} /> : pressVideosList}
         </div>
+    )
+}
+
+export function EditPressVideo({ pressVideos, index, handleCancel }: EditPressVideoProps) {
+    const [state, formAction] = useFormState(editPressVideo, initialState)
+
+    const item = pressVideos[index];
+
+    return (
+        <form action={formAction}>
+            <h2>EDITAR</h2>
+            <input type="hidden" name="id" value={item.id} />
+
+            <div className="press-video-card">
+                <label htmlFor="show">Espectaculo:</label>
+                <input type="text" id="show" name="show" defaultValue={item.show} />
+
+                {/* <label htmlFor="video_url">Link al video:</label>
+                <input type="text" id="video_url" name="video_url" defaultValue={item.video_url} required />
+                <div className="video-container">
+                    <iframe
+                        src={item.video_url}
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        title={item.description}
+                    />
+                </div> */}
+
+                <IframeEdit videoUrl={item.video_url}/>
+
+                <div className="video-description">
+                    <label htmlFor="description">Epigrafe del video:</label>
+                    <input type="text" id="description" name="description" defaultValue={item.description}/>   
+                </div>
+
+                <label htmlFor="title">Titulo del video:</label>
+                <input type="text" id="title" name="title"/>
+
+                <label htmlFor="source_organization">Institución:</label>
+                <input type="text" id="source_organization" name="source_organization" defaultValue={item.source_organization}/>
+
+                <EditButton />
+                <button onClick={handleCancel}>Cancelar</button>
+            </div>
+            <p aria-live="polite" className="sr-only" role="status">
+                {state?.message}
+            </p>
+        </form>
     )
 }
 
@@ -253,14 +305,22 @@ export function CreatePressVideo() {
             <div className="press-video-card">
                 <label htmlFor="show">Espectaculo:</label>
                 <input type="text" id="show" name="show" />
-                <label htmlFor="video_url">Link al video:</label>
+
+                {/* <label htmlFor="video_url">Link al video:</label>
                 <input type="text" id="video_url" name="video_url" required />
+                <h2>IFrame test</h2> */}
+
+                <IframeForm/>
+
                 <label htmlFor="title">Titulo del video:</label>
                 <input type="text" id="title" name="title"/>
+
                 <label htmlFor="description">Epigrafe del video:</label>
                 <input type="text" id="description" name="description"/>
+
                 <label htmlFor="source_organization">Institución:</label>
                 <input type="text" id="source_organization" name="source_organization" />
+
                 <SubmitButton />
             </div>
 
