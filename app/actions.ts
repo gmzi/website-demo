@@ -814,6 +814,41 @@ export async function editCoursesHeroImage(prevState: any, formData: FormData) {
   }
 }
 
+export async function editPressHeroImage(prevState: any, formData: FormData) {
+  try {
+    let inputData = parseImageInput(formData);
+
+    if (inputData.image_file) {
+      inputData = await handleNewImage(inputData, 'press');
+      const imageUrl = inputData.image_url;
+
+      const data = {
+        document: "press",
+        entry: "hero_image_url",
+        content: imageUrl
+      }
+
+      const updated = await fetch(`${BASE_URL}/server/input`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+          'API-Key': DATA_API_KEY
+        },
+        referrerPolicy: 'no-referrer',
+        body: JSON.stringify(data)
+      });
+
+      revalidatePath('/(editor)/editor', 'page');
+
+      return { message: `Press hero image updated!!!` }
+    }
+    return { message: `No press main image file uploaded`} 
+  } catch (e) {
+    console.error(e);
+    return { message: `${e}` }
+  }
+}
+
 export async function editHeroText(prevState: any, formData: FormData) {
   try {
     const inputData = parseRichTextInput(formData);

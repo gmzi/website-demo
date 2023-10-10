@@ -55,10 +55,10 @@ export default async function PressPage() {
                                     <div>
                                         <p>{item.quote}</p>
                                         <div>
-                                            <span>{item.journalist}</span>
+                                            <span className="journalist">{item.journalist}</span>
                                         </div>
                                         <div>
-                                            <span>{item.media_organization}</span>
+                                            <span className="media-organization">{item.media_organization}</span>
                                         </div>
                                     </div>
                                 </div>

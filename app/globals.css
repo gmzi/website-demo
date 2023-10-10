@@ -412,12 +412,64 @@ ol li div {
 
 /* PRESS ARTICLES */
 
-.press-card {
+/* .press-card {
   border-radius: 5px;
   border: 1px solid rgb(107, 107, 107);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   text-decoration: none;
+} */
+/* Container for the theater show card */
+.press-card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
+
+/* Header of the card */
+.press-card-header {
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
+  border-radius: 4px 4px 0 0;
+  width: 100%;
+}
+
+/* Verdict text styling */
+.press-card h4 {
+  font-size: 24px;
+  margin: 0;
+}
+
+/* Quote text styling */
+.press-card p {
+  font-size: 18px;
+  margin: 10px 0;
+}
+
+/* Journalist and Media Organization text styling */
+.press-card span {
+  font-size: 16px;
+  color: #777;
+}
+
+/* Media Organization should have a different color */
+.press-card .media-organization {
+  color: #555;
+}
+
+/* Add some spacing between the elements */
+.press-card div {
+  margin-top: 10px;
+}
+
+
 
 
 @media (min-width: 430px) {
