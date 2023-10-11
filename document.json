@@ -77,142 +77,53 @@
     },
     "shows": {
         "_id": {
-            "$oid": "649b09c568815c955b54b17e"
+            "$oid": "64c152eeffa705ef046bb604"
         },
         "name": "shows",
         "content": [
             {
-                "title": "Mamita!!!!! Show 1",
-                "slug": "mamita!!!!!-show-1",
+                "id": "v1shevuss4y4l8vt9dec",
+                "title": "Third show",
+                "slug": "third-show",
                 "opening_date": "2023-01-12",
-                "content_html": "this is the text at the top of the section",
-                "image_1_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1687379968/website-fer/about/zngp5hpy0hox2ngsoknn.jpg",
-                "image_2_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1687379968/website-fer/about/zngp5hpy0hox2ngsoknn.jpg",
-                "image_3_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1687379968/website-fer/about/zngp5hpy0hox2ngsoknn.jpg",
+                "content_html": "my content",
+                "image_1_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1687897400/website-fer/shows/oi0mlaebaor351cqlbzd.webp",
+                "image_2_url": "",
+                "image_3_url": "",
                 "seasons": [
                     {
-                        "year": {
-                            "$numberInt": "2023"
-                        },
-                        "theater": "Espacion Callejon"
-                    },
-                    {
-                        "year": {
-                            "$numberInt": "2022"
-                        },
-                        "theater": "El camarin"
+                        "year": "2021",
+                        "theater": "el camarin"
                     }
                 ],
-                "theatre": "el camarín",
-                "sinopsis": "this is a sinopsis.",
+                "theatre": "a theatre",
+                "sinopsis": "<p>a sinopsis</p>",
                 "castAndCreative": {
                     "cast": [
                         {
-                            "name": "john Doe",
-                            "role": "Erico"
+                            "name": "john doe",
+                            "role": "the pianist"
                         },
                         {
-                            "name": "Margot Smith",
-                            "role": "Hannah"
+                            "name": "mix max",
+                            "role": "the cellist"
                         }
                     ],
                     "creative": [
                         {
-                            "name": "Tom Wilson",
+                            "name": "trimti",
                             "role": "director"
                         },
                         {
-                            "name": "Mieke Ploeg",
-                            "role": "costume designer"
-                        },
-                        {
-                            "name": "Jessie Kelsey",
+                            "name": "siux",
                             "role": "lighting designer"
                         }
                     ],
-                    "musicians": [
-                        {
-                            "name": "Sam Tim King",
-                            "instrument": "cello"
-                        },
-                        {
-                            "name": "Scott Wies",
-                            "instrument": "piano"
-                        }
-                    ],
-                    "dancers": [
-                        {
-                            "name": "Sam Smith",
-                            "role": "the swan"
-                        }
-                    ]
-                }
-            },
-            {
-                "title": "Querida!!!!",
-                "slug": "querida!!!!",
-                "content_html": "this is the text at the top of the section",
-                "image_1_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1687379968/website-fer/about/zngp5hpy0hox2ngsoknn.jpg",
-                "image_2_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1687379968/website-fer/about/zngp5hpy0hox2ngsoknn.jpg",
-                "image_3_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1687379968/website-fer/about/zngp5hpy0hox2ngsoknn.jpg",
-                "seasons": [
-                    {
-                        "year": {
-                            "$numberInt": "2023"
-                        },
-                        "theater": "Espacion Callejon"
-                    },
-                    {
-                        "year": {
-                            "$numberInt": "2022"
-                        },
-                        "theater": "El camarin"
-                    }
-                ],
-                "theatre": "el camarín",
-                "sinopsis": "this is a sinopsis.",
-                "castAndCreative": {
-                    "cast": [
-                        {
-                            "name": "john Doe",
-                            "role": "Erico"
-                        },
-                        {
-                            "name": "Margot Smith",
-                            "role": "Hannah"
-                        }
-                    ],
-                    "creative": [
-                        {
-                            "name": "Tom Wilson",
-                            "role": "director"
-                        },
-                        {
-                            "name": "Mieke Ploeg",
-                            "role": "costume designer"
-                        },
-                        {
-                            "name": "Jessie Kelsey",
-                            "role": "lighting designer"
-                        }
-                    ],
-                    "musicians": [
-                        {
-                            "name": "Sam Tim King",
-                            "instrument": "cello"
-                        },
-                        {
-                            "name": "Scott Wies",
-                            "instrument": "piano"
-                        }
-                    ],
-                    "dancers": [
-                        {
-                            "name": "Sam Smith",
-                            "role": "the swan"
-                        }
-                    ]
-                }
+                    "musicians": [],
+                    "dancers": []
+                },
+                "wholeCast": "",
+                "wholeCreativeTeam": ""
             }
         ]
     },

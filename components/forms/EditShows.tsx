@@ -4,7 +4,7 @@
 import { experimental_useFormState as useFormState } from 'react-dom'
 import { experimental_useFormStatus as useFormStatus } from 'react-dom'
 import type { About } from '@/types'
-import { editPressArticle, createPressArticle, editHeroText, editAvailableCourse, createCourse, createSection, createCourseReview, editCourseReview, editTestimonial, createTestimonial, editCourseLogistics, editPressHeroImage, createPressVideo, editPressVideo } from '@/app/actions'
+import { editPressArticle, createPressArticle, editHeroText, editAvailableCourse, createCourse, createSection, createCourseReview, editCourseReview, editTestimonial, createTestimonial, editCourseLogistics, editPressHeroImage, createPressVideo, editPressVideo, editShow } from '@/app/actions'
 import { ImageEdit } from './ImageEdit'
 import { ImageForm } from './ImageForm'
 import { ImagesEdit } from './ImageEdit'
@@ -16,7 +16,8 @@ import HTMLReactParser from 'html-react-parser'
 import { useState } from 'react'
 import Link from 'next/link'
 import { Delete } from './Delete'
-import {ShowDisplay} from '@/components/ShowDisplay'
+import { ShowDisplay } from '@/components/ShowDisplay'
+import Image from 'next/image'
 
 
 interface ImageProp {
@@ -27,7 +28,7 @@ interface PressArticlesProps {
     articles: WrittenPressArticle[];
 }
 
-interface ShowsProps {
+interface ShowsListProps {
     shows: Show[];
 }
 
@@ -42,7 +43,7 @@ interface EditPressVideoProps {
 }
 
 interface EditProps {
-    articles: WrittenPressArticle[];
+    articles: Show[];
     index: number;
     handleCancel: () => void;
 }
@@ -87,48 +88,7 @@ export function HeroImage({ imageUrl }: ImageProp) {
 
 }
 
-export function PressArticles({ articles }: PressArticlesProps) {
-    const [openEditor, setOpenEditor] = useState<number | false>(false);
-
-    function handleClick(e: React.MouseEvent<HTMLButtonElement>) {
-        e.preventDefault();
-        setOpenEditor(e.currentTarget.tabIndex)
-    }
-
-
-    function handleCancel() {
-        setOpenEditor(false)
-    }
-
-    const artciclesList = articles.map((article: WrittenPressArticle, i: number) => (
-        <div key={`press-card-${i}`} className="press-card">
-            <div className="press-card-header">
-                <h4>{article.veredict}</h4>
-            </div>
-            <div>
-                <p>{article.quote}</p>
-                <div>
-                    <span className="journalist">{article.journalist}</span>
-                </div>
-                <div>
-                    <span className="media-organization">{article.media_organization}</span>
-                </div>
-            </div>
-            <button onClick={handleClick} tabIndex={i}>Editar</button>
-            <Delete document="press" entry="written_press" section="press" id={article.id} />
-        </div>
-    ));
-
-    return (
-        <div>
-            <h2>Artículos de prensa:</h2>
-            {/* {openEditor !== false ? <EditAvailableCourse articles={articles} index={openEditor} handleCancel={handleCancel} /> : artciclesList} */}
-            {openEditor !== false ? <Edit articles={articles} index={openEditor} handleCancel={handleCancel} /> : artciclesList}
-        </div>
-    )
-}
-
-// export function Shows({shows} : ShowsProps){
+// export function PressArticles({ articles }: PressArticlesProps) {
 //     const [openEditor, setOpenEditor] = useState<number | false>(false);
 
 //     function handleClick(e: React.MouseEvent<HTMLButtonElement>) {
@@ -141,37 +101,91 @@ export function PressArticles({ articles }: PressArticlesProps) {
 //         setOpenEditor(false)
 //     }
 
-//     const showsList = shows.map((show: Show, i: number) => (
+//     const artciclesList = articles.map((article: WrittenPressArticle, i: number) => (
 //         <div key={`press-card-${i}`} className="press-card">
 //             <div className="press-card-header">
-//                 <h4>{show.veredict}</h4>
+//                 <h4>{article.veredict}</h4>
 //             </div>
 //             <div>
-//                 <p>{show.quote}</p>
+//                 <p>{article.quote}</p>
 //                 <div>
-//                     <span className="journalist">{show.journalist}</span>
+//                     <span className="journalist">{article.journalist}</span>
 //                 </div>
 //                 <div>
-//                     <span className="media-organization">{show.media_organization}</span>
+//                     <span className="media-organization">{article.media_organization}</span>
 //                 </div>
 //             </div>
 //             <button onClick={handleClick} tabIndex={i}>Editar</button>
-//             <Delete document="press" entry="written_press" section="press" id={show.id} />
+//             <Delete document="press" entry="written_press" section="press" id={article.id} />
 //         </div>
 //     ));
 
 //     return (
 //         <div>
 //             <h2>Artículos de prensa:</h2>
-//             {/* {openEditor !== false ? <EditAvailableCourse shows={shows} index={openEditor} handleCancel={handleCancel} /> : showsList} */}
-//             {openEditor !== false ? <Edit shows={shows} index={openEditor} handleCancel={handleCancel} /> : showsList}
+//             {/* {openEditor !== false ? <EditAvailableCourse articles={articles} index={openEditor} handleCancel={handleCancel} /> : artciclesList} */}
+//             {/* {openEditor !== false ? <Edit articles={articles} index={openEditor} handleCancel={handleCancel} /> : artciclesList} */}
 //         </div>
 //     )
-
 // }
 
+export function ShowsList({ shows }: ShowsListProps) {
+    const [openEditor, setOpenEditor] = useState<number | false>(false);
+
+    function handleClick(e: React.MouseEvent<HTMLButtonElement>) {
+        e.preventDefault();
+        setOpenEditor(e.currentTarget.tabIndex)
+    }
+
+
+    function handleCancel() {
+        setOpenEditor(false)
+    }
+
+    const showsList = shows.map((show: Show, i: number) => (
+        <div>
+            {/* <ShowDisplay show={show} /> */}
+
+            <div className="display-show-card">
+                <div className="display-show-card__content">
+                    <h2 className="display-show-card__title">{show.title}</h2>
+                    <p className="display-show-card__theatre">{show.theatre}</p>
+                    <p className="display-show-card__date">{show.opening_date}</p>
+                </div>
+                <div className="display-show-card__image">
+                    <Image
+                        src={show.image_1_url}
+                        alt={show.title}
+                        width={0}
+                        height={0}
+                        sizes="100vw"
+                        style={{
+                            width: '10%',
+                            height: 'auto',
+                            borderRadius: '5px',
+                            marginBottom: '.5em'
+                        }}
+
+                    />
+                </div>
+            </div>
+            <button onClick={handleClick} tabIndex={i}>Editar</button>
+            <Delete document="shows" entry="content" section="shows" id={show.id} />
+        </div>
+    ));
+
+    return (
+        <div>
+            <h2>Artículos de prensa:</h2>
+            {/* {openEditor !== false ? <EditAvailableCourse shows={shows} index={openEditor} handleCancel={handleCancel} /> : showsList} */}
+            {openEditor !== false ? <Edit articles={shows} index={openEditor} handleCancel={handleCancel} /> : showsList}
+        </div>
+    )
+
+}
+
 export function Edit({ articles, index, handleCancel }: EditProps) {
-    const [state, formAction] = useFormState(editPressArticle, initialState)
+    const [state, formAction] = useFormState(editShow, initialState)
 
     const item = articles[index];
 
@@ -180,7 +194,9 @@ export function Edit({ articles, index, handleCancel }: EditProps) {
             <h2>EDITAR</h2>
             <input type="hidden" name="id" value={item.id} />
 
-            <div className="press-card">
+            <h2>Show Card goes here</h2>
+
+            {/* <div className="press-card">
                 <label htmlFor="veredict">Veredict:</label>
                 <input type="text" id="veredict" name="veredict" defaultValue={item.veredict} />
                 <label htmlFor="quote">Cita:</label>
@@ -198,7 +214,7 @@ export function Edit({ articles, index, handleCancel }: EditProps) {
                 <ImageEdit imageUrl={item.image_url} />
                 <EditButton />
                 <button onClick={handleCancel}>Cancelar</button>
-            </div>
+            </div> */}
             <p aria-live="polite" className="sr-only" role="status">
                 {state?.message}
             </p>
@@ -310,18 +326,18 @@ export function EditPressVideo({ pressVideos, index, handleCancel }: EditPressVi
                     />
                 </div> */}
 
-                <IframeEdit videoUrl={item.video_url}/>
+                <IframeEdit videoUrl={item.video_url} />
 
                 <div className="video-description">
                     <label htmlFor="description">Epigrafe del video:</label>
-                    <input type="text" id="description" name="description" defaultValue={item.description}/>   
+                    <input type="text" id="description" name="description" defaultValue={item.description} />
                 </div>
 
                 <label htmlFor="title">Titulo del video:</label>
-                <input type="text" id="title" name="title"/>
+                <input type="text" id="title" name="title" />
 
                 <label htmlFor="source_organization">Institución:</label>
-                <input type="text" id="source_organization" name="source_organization" defaultValue={item.source_organization}/>
+                <input type="text" id="source_organization" name="source_organization" defaultValue={item.source_organization} />
 
                 <EditButton />
                 <button onClick={handleCancel}>Cancelar</button>
@@ -357,13 +373,13 @@ export function CreatePressVideo() {
                 <input type="text" id="video_url" name="video_url" required />
                 <h2>IFrame test</h2> */}
 
-                <IframeForm/>
+                <IframeForm />
 
                 <label htmlFor="title">Titulo del video:</label>
-                <input type="text" id="title" name="title"/>
+                <input type="text" id="title" name="title" />
 
                 <label htmlFor="description">Epigrafe del video:</label>
-                <input type="text" id="description" name="description"/>
+                <input type="text" id="description" name="description" />
 
                 <label htmlFor="source_organization">Institución:</label>
                 <input type="text" id="source_organization" name="source_organization" />

@@ -443,6 +443,15 @@ export async function editPressArticle(prevState: any, formData: FormData) {
   }
 }
 
+export async function editShow(prevState: any, formData: FormData) {
+  try {
+  } catch(e){
+    console.log(e)
+    return {message: `${e}`}
+  }
+}
+
+
 export async function deleteItem(prevState: any, formData: FormData) {
 
   const schema = z.object({

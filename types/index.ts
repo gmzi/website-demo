@@ -105,7 +105,7 @@ export interface Data {
 }
 
 export interface Show {
-  showID: string;
+  id: string;
   title: string;
   slug: string;
   opening_date: string;
