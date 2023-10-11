@@ -277,6 +277,63 @@ ol li div {
   margin: 1em;
 }
 
+/* Add this CSS to your stylesheet or use a CSS-in-JS solution */
+.create-show-form {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.show-card.create {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #f7f7f7;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 20px 0;
+}
+
+.show-card__image.create {
+  flex: 1;
+}
+
+.show-card__content.create {
+  flex: 2;
+}
+
+label {
+  font-weight: bold;
+  margin-top: 10px;
+  display: block;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-top: 5px;
+}
+
+.show-card__title.create {
+  font-size: 18px;
+}
+
+.show-card__date.create {
+  font-size: 16px;
+}
+
+.show-card__theatre.create {
+  font-size: 16px;
+}
+
+.sr-only {
+  position: absolute;
+  left: -9999px;
+}
+
+
 /* ---------------------------------- */
 /* AI GENERATED */
 /* ---------------------------------- */
@@ -503,8 +560,46 @@ ol li div {
 }
 
 
+/* RICH TEXT EDITOR */
 
+.editor-menu-bar {
+  align-items: center;
+  padding: .2em;
+  border: 1px solid #555;
+  border-radius: 5px;
+}
 
+.editor-menu-bar button {
+  background: none;
+  border: 1px solid gray;
+  color: black;
+  margin-right: .2em;
+  padding: .2em;
+  cursor: pointer;
+
+}
+
+.editor-menu-bar button.is-active {
+  color: #958DF1; /* Highlight active buttons */
+}
+
+/* Editor Content Styles */
+.editor__content {
+  padding: .1em;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-top: .1em;
+}
+
+/* Hidden Input for Content */
+input[type="hidden"] {
+  display: none; /* Hide the hidden input */
+}
+
+/* Styling for Text Styles (e.g., purple) */
+.editor-menu-bar button.is-active.textStyle-color {
+  color: #958DF1;
+}
 
 
 @media (min-width: 430px) {

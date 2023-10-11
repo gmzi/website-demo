@@ -2,11 +2,11 @@
 
 import { revalidatePath } from 'next/cache'
 import { z } from 'zod'
-import { ZodError } from 'zod';
 import createAlphaNumericString from '@/lib/createAlphanumericString';
 import { uploadToCloudinary } from './cloudinary';
 import { moveToTrash } from './cloudinary';
 import { transformYouTubeUrl } from '@/lib/transformYouTubeUrl'
+import makeSlug from '@/lib/makeSlug';
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 const DATA_API_KEY = process.env.NEXT_PUBLIC_DATA_API_KEY || '';
@@ -324,22 +324,58 @@ const showSchema = z.object({
   castAndCreative: z.array(seasonSchema, nameAndRoleSchema),
   wholeCast: z.string(),
   wholeCreativeTeam: z.string(),
-  image_url_0: z.string(),
-  image_url_1: z.string(),
-  image_url_2: z.string(),
+  image_1_file: z
+    .any()
+    .refine((file) => {
+      return file?.size <= MAX_FILE_SIZE;
+    }, 'Max image size is 4MB.')
+    .refine(
+      (file) => {
+        return ACCEPTED_IMAGE_MIME_TYPES.includes(file?.type)
+      },
+      "Only .jpg, .jpeg, .png, and .webp formats are supported"
+    ),
+  image_2_file: z.optional(
+    z
+      .any()
+      .refine((file) => {
+        return file?.size <= MAX_FILE_SIZE;
+      }, 'Max image size is 4MB.')
+      .refine(
+        (file) => {
+          return ACCEPTED_IMAGE_MIME_TYPES.includes(file?.type)
+        },
+        "Only .jpg, .jpeg, .png, and .webp formats are supported"
+      )
+  ),
+  image_3_file: z.optional(
+    z
+      .any()
+      .refine((file) => {
+        return file?.size <= MAX_FILE_SIZE;
+      }, 'Max image size is 4MB.')
+      .refine(
+        (file) => {
+          return ACCEPTED_IMAGE_MIME_TYPES.includes(file?.type)
+        },
+        "Only .jpg, .jpeg, .png, and .webp formats are supported"
+      )
+  ),
+  image_1_url: z.string(),
+  image_2_url: z.string(),
+  image_3_url: z.string(),
 })
 
 export async function createShow(prevState: any, formData: FormData) {
   try {
     const inputData = showSchema.parse({
       id: createAlphaNumericString(20),
-      veredict: formData.get('veredict'),
-      quote: formData.get('quote'),
-      media_organization: formData.get('media_organization'),
-      journalist: formData.get('journalist'),
-      date: formData.get('date'),
-      article_url: formData.get('article_url'),
-      show: formData.get('show'),
+      title: formData.get('title'),
+      slug: makeSlug(formData.get('title')),
+      opening_date: formData.get('opening_date'),
+      theatre: formData.get('theatre'),
+      sinopsis: formData.get('editor_content'),
+      
       image_file: formData.get('image_file'),
       // just for type declaration, will be added after uploadingToCloud
       image_url: ""

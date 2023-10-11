@@ -4,9 +4,9 @@
 import { experimental_useFormState as useFormState } from 'react-dom'
 import { experimental_useFormStatus as useFormStatus } from 'react-dom'
 import type { About } from '@/types'
-import { editPressArticle, createPressArticle, editHeroText, editAvailableCourse, createCourse, createSection, createCourseReview, editCourseReview, editTestimonial, createTestimonial, editCourseLogistics, editPressHeroImage, createPressVideo, editPressVideo, editShow } from '@/app/actions'
+import { editPressArticle, createPressArticle, editHeroText, editAvailableCourse, createCourse, createSection, createCourseReview, editCourseReview, editTestimonial, createTestimonial, editCourseLogistics, editPressHeroImage, createPressVideo, editPressVideo, editShow, createShow } from '@/app/actions'
 import { ImageEdit } from './ImageEdit'
-import { ImageInput } from './ImageInput'
+import { ImageInput, ImageInputWithIndex } from './ImageInput'
 import { ImagesEdit } from './ImageEdit'
 import { RichText } from './text-editor/RichText'
 import { IframeForm, IframeEdit } from './IframeForm'
@@ -220,7 +220,7 @@ export function Edit({ articles, index, handleCancel }: EditProps) {
 }
 
 export function CreateShow() {
-    const [state, formAction] = useFormState(createPressArticle, initialState)
+    const [state, formAction] = useFormState(createShow, initialState)
 
     // until we figure out how to reset form input after successfull data savign, bare with this:
     if (state?.message === 'article added') {
@@ -232,24 +232,31 @@ export function CreateShow() {
     }
 
     return (
-        <form action={formAction} id="myForm">
-            <h2>Agregar artículo de prensa</h2>
-            <div className="press-card">
-                <label htmlFor="veredict">Veredict:</label>
-                <input type="text" id="veredict" name="veredict" />
-                <label htmlFor="quote">Cita:</label>
-                <input type="text" id="quote" name="quote" required />
-                <label htmlFor="media_organization">Medio:</label>
-                <input type="text" id="media_organization" name="media_organization" required />
-                <label htmlFor="journalist">Autor de la nota:</label>
-                <input type="text" id="journalist" name="journalist" required />
-                <label htmlFor="date">Fecha:</label>
-                <input type="text" id="date" name="date" />
-                <label htmlFor="article_url">Link al articulo:</label>
-                <input type="text" id="article_url" name="article_url" />
-                <label htmlFor="show">Espectaculo:</label>
-                <input type="text" id="show" name="show" />
-                <ImageInput />
+        <form action={formAction} id="myForm" className="create-show-form">
+            <h2>Crear show</h2>
+            <div className="show-card create">
+                <div className="show-card__image create">
+                    <h2>Adjuntar imágenes -una obligatoria, dos opcionales-</h2>
+                    <ImageInputWithIndex idx={1} />
+                    <ImageInputWithIndex idx={2} />
+                    <ImageInputWithIndex idx={3} />
+                </div>
+                <div className="show-card__content create">
+                    <label htmlFor="title">Título del espectáculo:</label>
+                    <input type="text" id="title" name="title" className="show-card__title create" required />
+
+                    <label htmlFor="opening_date">Fecha de estreno:</label>
+                    <input type="text" id="opening_date" name="opening_date" className="show-card__date create"/>
+
+                    <label htmlFor="theatre">Sala:</label>
+                    <input type="text" id="theatre" name="theatre" className="show-card__theatre create" />
+
+                    <label htmlFor="editor_content">Sinopsis:</label>
+                    <RichText contentHtml='' />
+                    
+                </div>
+
+
                 <SubmitButton />
             </div>
 

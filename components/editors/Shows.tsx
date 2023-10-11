@@ -2,7 +2,7 @@
 
 import { getData } from "@/lib/getData";
 import type { Show } from "@/types";
-import { ShowsList } from "@/components/forms/EditShows"
+import { ShowsList, CreateShow } from "@/components/forms/EditShows"
 
 
 
@@ -30,6 +30,7 @@ export default async function Shows() {
         <div>
             <h1>Shows</h1>
             <ShowsList shows={showsList} />
+            <CreateShow/>
         </div>
     )
   }

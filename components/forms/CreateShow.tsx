@@ -24,7 +24,7 @@ import StarterKit from '@tiptap/starter-kit'
 import MenuBar from '@/components/forms/text-editor/MenuBar'
 import uploadToCloudinary from '@/lib/uploadToCloudinary'
 import saveFormDataToDB from "@/lib/saveFormDataToDB";
-import createSlug from '@/lib/createSlug';
+import makeSlug from '@/lib/makeSlug';
 import createAlphaNumericString from '@/lib/createAlphanumericString'
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL
@@ -201,7 +201,7 @@ const CreateShow: React.FC<FormComponentProps> = ({ document, entry, section }) 
         // formData.showID = createAlphaNumericString(20);
         formData.showID = createAlphaNumericString(20);
 
-        formData.slug = createSlug(formData.title);
+        formData.slug = makeSlug(formData.title);
 
         const data = {
             document: document,
