@@ -1,5 +1,6 @@
 import ShowCard from "@/components/ShowCard";
 import ShowsGallery from "@/components/ShowsGallery";
+import type { Show } from "@/types";
 import { useParams } from "next/navigation";
 import { notFound } from "next/navigation";
 
@@ -11,43 +12,6 @@ import document from "@/document.json"
 import { getRemoteOrLocalData } from "@/lib/getRemoteOrLocalData";
 
 const isProd = process.env.NODE_ENV === 'production';
-
-export interface Show {
-    showID: string;
-    title: string;
-    slug: string;
-    opening_date: string;
-    content_html: string;
-    image_1_url: string;
-    image_2_url: string;
-    image_3_url: string;
-    seasons: {
-        year: string;
-        theater: string;
-    }[];
-    theatre: string;
-    sinopsis: string;
-    castAndCreative: {
-        cast: {
-            name: string;
-            role: string;
-        }[];
-        creative: {
-            name: string;
-            role: string;
-        }[];
-        musicians: {
-            name: string;
-            instrument: string;
-        }[];
-        dancers: {
-            name: string;
-            role: string;
-        }[];
-    }
-    wholeCast: string;
-    wholeCreativeTeam: string;
-}
 
 export async function generateStaticParams() {
     // const data = await getRemoteOrLocalData("shows");

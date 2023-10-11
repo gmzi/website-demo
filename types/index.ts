@@ -103,3 +103,40 @@ export interface Testimonial {
 export interface Data {
   content_html: string;
 }
+
+export interface Show {
+  showID: string;
+  title: string;
+  slug: string;
+  opening_date: string;
+  content_html: string;
+  image_1_url: string;
+  image_2_url: string;
+  image_3_url: string;
+  seasons: {
+      year: string;
+      theater: string;
+  }[];
+  theatre: string;
+  sinopsis: string;
+  castAndCreative: {
+      cast: {
+          name: string;
+          role: string;
+      }[];
+      creative: {
+          name: string;
+          role: string;
+      }[];
+      musicians: {
+          name: string;
+          instrument: string;
+      }[];
+      dancers: {
+          name: string;
+          role: string;
+      }[];
+  }
+  wholeCast: string;
+  wholeCreativeTeam:  string;
+}

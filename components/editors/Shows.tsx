@@ -12,7 +12,9 @@ import TextEditorIndex from '../forms/text-editor/InputEditor';
 import ImageUpload from "../forms/ImageUpload";
 import ButtonDelete from "../shared/ButtonDelete";
 import document from '@/document.json'
-import type { Show } from "@/app/(personal)/shows/page";
+import type { Show } from "@/types";
+
+
 
 const isProd = process.env.NODE_ENV === 'production';
 

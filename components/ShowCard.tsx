@@ -1,32 +1,33 @@
 import Image from "next/image";
 import parse from 'html-react-parser'
+import type { Show } from "@/types";
 
-interface Show {
-    title: string;
-    opening_date: string;
-    content_html: string;
-    image_1_url: string;
-    sinopsis: string;
-    theatre: string;
-    castAndCreative: {
-        cast: {
-            name: string;
-            role: string;
-        }[];
-        creative: {
-            name: string;
-            role: string;
-        }[];
-        musicians: {
-            name: string;
-            instrument: string;
-        }[];
-        dancers: {
-            name: string;
-            role: string;
-        }[];
-    };
-}
+// interface Show {
+//     title: string;
+//     opening_date: string;
+//     content_html: string;
+//     image_1_url: string;
+//     sinopsis: string;
+//     theatre: string;
+//     castAndCreative: {
+//         cast: {
+//             name: string;
+//             role: string;
+//         }[];
+//         creative: {
+//             name: string;
+//             role: string;
+//         }[];
+//         musicians: {
+//             name: string;
+//             instrument: string;
+//         }[];
+//         dancers: {
+//             name: string;
+//             role: string;
+//         }[];
+//     };
+// }
 
 interface ShowCardProps {
     show: Show;

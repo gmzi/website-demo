@@ -8,7 +8,7 @@ import { EmptyImageIcon } from "../shared/icons";
 import sanitizeHtml from 'sanitize-html'
 import { EditorContent, useEditor } from '@tiptap/react'
 import StarterKit from '@tiptap/starter-kit'
-import type { Show } from "@/app/(personal)/shows/[slug]/page";
+import type { Show } from "@/types";
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 const DATA_API_KEY = process.env.NEXT_PUBLIC_DATA_API_KEY || '';

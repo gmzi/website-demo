@@ -4,48 +4,15 @@ import { getData } from "@/lib/getData"
 import parse from 'html-react-parser'
 import document from "@/document.json"
 import ShowCard from "@/components/ShowCard"
-import ShowDisplay from '@/components/ShowDisplay'
+import {ShowDisplay} from '@/components/ShowDisplay'
 import ShowsGallery from "@/components/ShowsGallery"
 import {getRemoteOrLocalData} from '@/lib/getRemoteOrLocalData';
+// import type { Show } from "@/lib/types"
+
+
 
 const isProd = process.env.NODE_ENV === 'production';
 
-export interface Show {
-    showID: string;
-    title: string;
-    slug: string;
-    opening_date: string;
-    content_html: string;
-    image_1_url: string;
-    image_2_url: string;
-    image_3_url: string;
-    seasons: {
-        year: string;
-        theater: string;
-    }[];
-    theatre: string;
-    sinopsis: string;
-    castAndCreative: {
-        cast: {
-            name: string;
-            role: string;
-        }[];
-        creative: {
-            name: string;
-            role: string;
-        }[];
-        musicians: {
-            name: string;
-            instrument: string;
-        }[];
-        dancers: {
-            name: string;
-            role: string;
-        }[];
-    }
-    wholeCast: string;
-    wholeCreativeTeam:  string;
-}
 
 
 export const metadata: Metadata = {

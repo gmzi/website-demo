@@ -20,7 +20,7 @@ import TextStyle from '@tiptap/extension-text-style'
 import { EditorContent, useEditor } from '@tiptap/react'
 import StarterKit from '@tiptap/starter-kit'
 import MenuBar from '@/components/forms/text-editor/MenuBar'
-import type { Show } from "@/app/(personal)/shows/[slug]/page";
+import type { Show } from "@/types";
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL
 const DATA_API_KEY = process.env.NEXT_PUBLIC_DATA_API_KEY || '';

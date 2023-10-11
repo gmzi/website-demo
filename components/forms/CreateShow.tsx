@@ -10,7 +10,7 @@ import InputEditorString from './text-editor/InputEditorString';
 import TextEditorIndex from './text-editor/InputEditor';
 import ImageUpload from "./ImageUpload";
 import document from '@/document.json'
-import type { Show } from "@/app/(personal)/shows/page";
+import type { Show } from "@/types";
 import { revalidateEditorPage } from "@/lib/revalidateEditorPage";
 import { revalidatePersonalPage } from "@/lib/revalidatePersonalPage";
 import Image from "next/image";
