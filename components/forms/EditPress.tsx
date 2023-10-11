@@ -214,7 +214,7 @@ export function PressVideos({ pressVideos }: PressVideosProps) {
     }
 
     const pressVideosList = pressVideos.map((pressVideo: VideoPressArticle, i: number) => (
-        <div className="press-video-card" key={pressVideo.video_url}>
+        <div className="press-video-card" key={`${pressVideo.video_url}-${i}`}>
             <div className="video-container">
                 <iframe
                     src={pressVideo.video_url}

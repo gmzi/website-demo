@@ -4,6 +4,27 @@ import { useState } from 'react';
 import { transformYouTubeUrl } from '@/lib/transformYouTubeUrl';
 
 
+export function Iframe({sourceUrl}:{sourceUrl:string}){
+    return (
+        <iframe src={sourceUrl}
+        allowFullScreen
+        allow="accelerometer; 
+                autoplay; 
+                clipboard-write;
+                encrypted-media;
+                gyroscope;
+                picture-in-picture;
+                web-share"
+        loading="lazy"
+        title="Embedded youtube"
+        width={100}
+        height={100}
+    ></iframe>
+    )
+}
+    
+
+
 export function IframeForm() {
     const [sourceUrl, setSourceUrl] = useState<string | null>();
 
@@ -31,7 +52,8 @@ export function IframeForm() {
                 onChange={handleUrlChange}
                 required
             />
-            {sourceUrl && <div className='video-container'><iframe src={sourceUrl}></iframe></div>}
+            {/* {sourceUrl && <div className='video-container'><iframe src={sourceUrl}></iframe></div>} */}
+            {sourceUrl && <div className='video-container'><Iframe sourceUrl={sourceUrl}/></div>}
         </>
     )
 }
@@ -63,7 +85,7 @@ export function IframeEdit({ videoUrl }: { videoUrl: string }) {
                 name="new_video_url"
                 onChange={handleUrlChange}
             />
-            {sourceUrl && <div className='video-container'><iframe src={sourceUrl}></iframe></div>}
+            {sourceUrl && <div className='video-container'><Iframe sourceUrl={sourceUrl}/></div>}
         </>
     )
 }
