@@ -94,7 +94,7 @@ export interface FormComponentProps {
 // };
 
 
-const CreateShow: React.FC<FormComponentProps> = ({ document, entry, section }) => {
+const CreateShowFromClient: React.FC<FormComponentProps> = ({ document, entry, section }) => {
 
     const router = useRouter();
 
@@ -695,4 +695,4 @@ const CreateShow: React.FC<FormComponentProps> = ({ document, entry, section }) 
     )
 }
 
-export default CreateShow;
+export default CreateShowFromClient;

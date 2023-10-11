@@ -119,24 +119,15 @@ export interface Show {
   }[];
   theatre: string;
   sinopsis: string;
-  castAndCreative: {
-      cast: {
-          name: string;
-          role: string;
-      }[];
-      creative: {
-          name: string;
-          role: string;
-      }[];
-      musicians: {
-          name: string;
-          instrument: string;
-      }[];
-      dancers: {
-          name: string;
-          role: string;
-      }[];
-  }
+  cast: NameAndRole[];
+  creative: NameAndRole[];
+  musicians: NameAndRole[];
+  dancers: NameAndRole[];
   wholeCast: string;
   wholeCreativeTeam:  string;
+}
+
+export interface NameAndRole {
+  name: string;
+  role: string;
 }

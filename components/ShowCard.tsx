@@ -34,9 +34,9 @@ interface ShowCardProps {
 }
 
 const ShowCard: React.FC<ShowCardProps> = ({ show }) => {
-    const { title, opening_date, content_html, image_1_url, sinopsis, theatre, castAndCreative } = show;
-    const { cast, creative, musicians, dancers } = castAndCreative;
-
+    // const { title, opening_date, content_html, image_1_url, sinopsis, theatre, castAndCreative } = show;
+    // const { cast, creative, musicians, dancers } = castAndCreative;
+    const { title, opening_date, content_html, image_1_url, sinopsis, theatre, cast, creative, musicians, dancers } = show;
     return (
         <div className="show-card">
             <div className="show-card__image">

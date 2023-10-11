@@ -321,7 +321,10 @@ const showSchema = z.object({
   seasons: z.array(seasonSchema),
   theatre: z.string(),
   sinopsis: z.string(),
-  castAndCreative: z.array(seasonSchema, nameAndRoleSchema),
+  cast: z.array(nameAndRoleSchema),
+  creative: z.array(nameAndRoleSchema),
+  musicians: z.array(nameAndRoleSchema),
+  dancers: z.array(nameAndRoleSchema),
   wholeCast: z.string(),
   wholeCreativeTeam: z.string(),
   image_1_file: z
@@ -375,11 +378,18 @@ export async function createShow(prevState: any, formData: FormData) {
       opening_date: formData.get('opening_date'),
       theatre: formData.get('theatre'),
       sinopsis: formData.get('editor_content'),
+      image_1_file: formData.get('image_1_file'),
+      image_2_file: formData.get('image_2_file'),
+      image_3_file: formData.get('image_3_file'),
+      seasons: [''],
+
       
-      image_file: formData.get('image_file'),
+      // image_file: formData.get('image_file'),
       // just for type declaration, will be added after uploadingToCloud
-      image_url: ""
+      // image_url: ""
     })
+
+    console.log(inputData);
 
     // const folderName = `${IMAGE_MAIN_FOLDER}/press`
 

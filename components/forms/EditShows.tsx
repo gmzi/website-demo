@@ -3,6 +3,7 @@
 // @ts-expect-error
 import { experimental_useFormState as useFormState } from 'react-dom'
 import { experimental_useFormStatus as useFormStatus } from 'react-dom'
+import { ChangeEvent } from 'react'
 import type { About } from '@/types'
 import { editPressArticle, createPressArticle, editHeroText, editAvailableCourse, createCourse, createSection, createCourseReview, editCourseReview, editTestimonial, createTestimonial, editCourseLogistics, editPressHeroImage, createPressVideo, editPressVideo, editShow, createShow } from '@/app/actions'
 import { ImageEdit } from './ImageEdit'
@@ -10,7 +11,7 @@ import { ImageInput, ImageInputWithIndex } from './ImageInput'
 import { ImagesEdit } from './ImageEdit'
 import { RichText } from './text-editor/RichText'
 import { IframeForm, IframeEdit } from './IframeForm'
-import type { Show, WrittenPressArticle, VideoPressArticle, Course, Goals, Testimonial, Data, Review } from '@/types'
+import type { Show, NameAndRole, WrittenPressArticle, VideoPressArticle, Course, Goals, Testimonial, Data, Review } from '@/types'
 import parse from 'html-react-parser'
 import HTMLReactParser from 'html-react-parser'
 import { useState } from 'react'
@@ -30,6 +31,7 @@ interface PressArticlesProps {
 interface ShowsListProps {
     shows: Show[];
 }
+
 
 interface PressVideosProps {
     pressVideos: VideoPressArticle[];
@@ -246,14 +248,15 @@ export function CreateShow() {
                     <input type="text" id="title" name="title" className="show-card__title create" required />
 
                     <label htmlFor="opening_date">Fecha de estreno:</label>
-                    <input type="text" id="opening_date" name="opening_date" className="show-card__date create"/>
+                    <input type="text" id="opening_date" name="opening_date" className="show-card__date create" />
 
                     <label htmlFor="theatre">Sala:</label>
                     <input type="text" id="theatre" name="theatre" className="show-card__theatre create" />
 
                     <label htmlFor="editor_content">Sinopsis:</label>
                     <RichText contentHtml='' />
-                    
+
+                    <AddWholeCast/>
                 </div>
 
 
@@ -264,6 +267,52 @@ export function CreateShow() {
                 {state?.message}
             </p>
         </form>
+    )
+}
+
+export function AddWholeCast(){
+    const [cast, setCast] = useState<string>('');
+    const [parsedCast, setParsedCast] = useState<NameAndRole[]>([]);
+
+    const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+        const value = e.target.value;
+        setCast(value)
+    };
+
+    function handleWholeCast(){
+        const contentString = cast.trim();
+        const namesAndRolesArray = contentString.split(",");
+    
+        const parsedData = namesAndRolesArray.map(element => {
+          const nameAndRole = element.split(":");
+          const name = nameAndRole[0]?.trim() || '';
+          const role = nameAndRole[1]?.trim() || '';
+          return { name, role };
+        });
+
+        setParsedCast(parsedData);
+
+      };
+
+    return (
+        <>
+        <label htmlFor="wholeCast">Agregar cast</label>
+        <input type="text" id="wholeCast" name="wholeCast" onChange={handleInputChange}/>
+        <button type="button" onClick={handleWholeCast}> add whole cast</button>
+        {parsedCast.length > 0 && (
+        <div>
+          <h3>Parsed Cast:</h3>
+          <ul>
+            {parsedCast.map((item, index) => (
+              <li key={index}>
+                {item.name} - {item.role}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+        </>
+        
     )
 }
 

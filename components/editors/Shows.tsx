@@ -3,6 +3,9 @@
 import { getData } from "@/lib/getData";
 import type { Show } from "@/types";
 import { ShowsList, CreateShow } from "@/components/forms/EditShows"
+import CreateShowFromClient from "../forms/CreateShowFromClient";
+
+
 
 
 
@@ -31,6 +34,7 @@ export default async function Shows() {
             <h1>Shows</h1>
             <ShowsList shows={showsList} />
             <CreateShow/>
+            {/* <CreateShowFromClient document={documentName} entry={'content'} section={sectionName}/> */}
         </div>
     )
   }
