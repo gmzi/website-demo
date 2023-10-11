@@ -86,7 +86,7 @@ interface FormComponentProps {
 const EditShow: React.FC<FormComponentProps> = ({ document, entry, section, show }) => {
 
     const [formData, setFormData] = useState<FormData>({
-        showID: show.showID,
+        showID: show.id,
         title: show.title,
         slug: show.slug,
         opening_date: show.opening_date,

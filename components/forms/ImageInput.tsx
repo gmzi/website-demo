@@ -7,7 +7,7 @@ import { FormEvent, useState } from 'react';
 import Image from 'next/image';
 
 
-export function ImageForm() {
+export function ImageInput() {
     const [imageFile, setImageFile] = useState(null);
     const [imageUrl, setImageUrl] = useState(null);
 

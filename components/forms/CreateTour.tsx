@@ -4,8 +4,8 @@
 import { experimental_useFormState as useFormState } from 'react-dom'
 import { experimental_useFormStatus as useFormStatus } from 'react-dom'
 import { createTour } from '@/app/actions';
-// import { ImageForm } from '../ImageForm';
-import { ImageForm } from './ImageForm';
+// import { ImageInput } from '../ImageInput';
+import { ImageInput } from './ImageInput';
 
 const initialState = {
   message: null,
@@ -48,7 +48,7 @@ export function CreateTour() {
       <input type="text" id="country" name="country" />
       <label htmlFor="press_url">Link al articulo de prensa:</label>
       <input type="text" id="press_url" name="press_url" />
-      <ImageForm/>
+      <ImageInput/>
       <SubmitButton />
       <p aria-live="polite" className="sr-only" role="status">
         {state?.message}

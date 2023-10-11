@@ -303,6 +303,84 @@ export async function editPressVideo(prevState: any, formData: FormData) {
 }
       
 
+const seasonSchema = z.object({
+  year: z.string(),
+  theater: z.string()
+})
+const nameAndRoleSchema = z.object({
+  name: z.string(),
+  role: z.string()
+})
+
+const showSchema = z.object({
+  id: z.string(),
+  title: z.string(),
+  slug: z.string(),
+  opening_date: z.string(),
+  content_html: z.string(),
+  seasons: z.array(seasonSchema),
+  theatre: z.string(),
+  sinopsis: z.string(),
+  castAndCreative: z.array(seasonSchema, nameAndRoleSchema),
+  wholeCast: z.string(),
+  wholeCreativeTeam: z.string(),
+  image_url_0: z.string(),
+  image_url_1: z.string(),
+  image_url_2: z.string(),
+})
+
+export async function createShow(prevState: any, formData: FormData) {
+  try {
+    const inputData = showSchema.parse({
+      id: createAlphaNumericString(20),
+      veredict: formData.get('veredict'),
+      quote: formData.get('quote'),
+      media_organization: formData.get('media_organization'),
+      journalist: formData.get('journalist'),
+      date: formData.get('date'),
+      article_url: formData.get('article_url'),
+      show: formData.get('show'),
+      image_file: formData.get('image_file'),
+      // just for type declaration, will be added after uploadingToCloud
+      image_url: ""
+    })
+
+    // const folderName = `${IMAGE_MAIN_FOLDER}/press`
+
+    // const imageHostingMetadata = await uploadToCloudinary(inputData.image_file, folderName);
+
+    // const image_url = imageHostingMetadata.secure_url;
+    // // remove image file from inputData
+    // delete inputData.image_file;
+    // // add image url to inputData
+    // inputData.image_url = image_url;
+
+    // const data = {
+    //   document: "press",
+    //   entry: "written_press",
+    //   content: inputData
+    // }
+
+    // const saved = await fetch(`${BASE_URL}/server/create`, {
+    //   method: 'POST',
+    //   headers: {
+    //     'Content-Type': 'application/json',
+    //     'API-Key': DATA_API_KEY
+    //   },
+    //   referrerPolicy: 'no-referrer',
+    //   body: JSON.stringify(data)
+    // });
+
+    // revalidatePath('/(editor)/editor', 'page');
+
+    return { message: `show added!!!` }
+
+  } catch (e) {
+    console.log(e)
+    return { message: `${e}` }
+  }
+}
+
 export async function createPressArticle(prevState: any, formData: FormData) {
   try {
     const inputData = pressArticleSchema.parse({

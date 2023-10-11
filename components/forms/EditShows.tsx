@@ -6,7 +6,7 @@ import { experimental_useFormStatus as useFormStatus } from 'react-dom'
 import type { About } from '@/types'
 import { editPressArticle, createPressArticle, editHeroText, editAvailableCourse, createCourse, createSection, createCourseReview, editCourseReview, editTestimonial, createTestimonial, editCourseLogistics, editPressHeroImage, createPressVideo, editPressVideo, editShow } from '@/app/actions'
 import { ImageEdit } from './ImageEdit'
-import { ImageForm } from './ImageForm'
+import { ImageInput } from './ImageInput'
 import { ImagesEdit } from './ImageEdit'
 import { RichText } from './text-editor/RichText'
 import { IframeForm, IframeEdit } from './IframeForm'
@@ -16,7 +16,6 @@ import HTMLReactParser from 'html-react-parser'
 import { useState } from 'react'
 import Link from 'next/link'
 import { Delete } from './Delete'
-import { ShowDisplay } from '@/components/ShowDisplay'
 import Image from 'next/image'
 
 
@@ -143,9 +142,7 @@ export function ShowsList({ shows }: ShowsListProps) {
     }
 
     const showsList = shows.map((show: Show, i: number) => (
-        <div>
-            {/* <ShowDisplay show={show} /> */}
-
+        <div key={`${show.title}-${i}`} >
             <div className="display-show-card">
                 <div className="display-show-card__content">
                     <h2 className="display-show-card__title">{show.title}</h2>
@@ -160,7 +157,7 @@ export function ShowsList({ shows }: ShowsListProps) {
                         height={0}
                         sizes="100vw"
                         style={{
-                            width: '10%',
+                            width: '20%',
                             height: 'auto',
                             borderRadius: '5px',
                             marginBottom: '.5em'
@@ -222,7 +219,7 @@ export function Edit({ articles, index, handleCancel }: EditProps) {
     )
 }
 
-export function CreatePressArticle() {
+export function CreateShow() {
     const [state, formAction] = useFormState(createPressArticle, initialState)
 
     // until we figure out how to reset form input after successfull data savign, bare with this:
@@ -252,7 +249,7 @@ export function CreatePressArticle() {
                 <input type="text" id="article_url" name="article_url" />
                 <label htmlFor="show">Espectaculo:</label>
                 <input type="text" id="show" name="show" />
-                <ImageForm />
+                <ImageInput />
                 <SubmitButton />
             </div>
 

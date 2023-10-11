@@ -6,7 +6,7 @@ import { experimental_useFormStatus as useFormStatus } from 'react-dom'
 import type { About } from '@/types'
 import { editPressArticle, createPressArticle, editHeroText, editAvailableCourse, createCourse, createSection, createCourseReview, editCourseReview, editTestimonial, createTestimonial, editCourseLogistics, editPressHeroImage, createPressVideo, editPressVideo } from '@/app/actions'
 import { ImageEdit } from './ImageEdit'
-import { ImageForm } from './ImageForm'
+import { ImageInput } from './ImageInput'
 import { ImagesEdit } from './ImageEdit'
 import { RichText } from './text-editor/RichText'
 import { IframeForm, IframeEdit } from './IframeForm'
@@ -189,7 +189,7 @@ export function CreatePressArticle() {
                 <input type="text" id="article_url" name="article_url" />
                 <label htmlFor="show">Espectaculo:</label>
                 <input type="text" id="show" name="show" />
-                <ImageForm />
+                <ImageInput />
                 <SubmitButton />
             </div>
 
