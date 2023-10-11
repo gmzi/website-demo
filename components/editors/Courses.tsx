@@ -1,11 +1,7 @@
 // http://localhost:3000/editor
 
 import { getData } from "@/lib/getData";
-import TextEditor from "../forms/text-editor/TextEditor";
-import TextEditorEntry from "../forms/text-editor/TextEditorEntry";
-import ImageUpload from "../forms/ImageUpload";
 import { HeroImage, HeroText, AvailableCourses, CreateCourse, CourseReviews, CreateCourseReview, Testimonials, CreateTestimonial, EditLogistics } from "../forms/EditCourses";
-import { Edit } from "../forms/Edit";
 
 export default async function Courses() {
     const data = await getData("courses")
@@ -41,7 +37,6 @@ export default async function Courses() {
             <Testimonials testimonials={testimonials}/>
             <CreateTestimonial/>
             <EditLogistics title={logistics.title} contentHtml={logistics.content_html} imageUrl={logistics.image_url} />
-
         </div>
     )
   }
