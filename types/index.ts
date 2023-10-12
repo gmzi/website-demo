@@ -121,6 +121,6 @@ export interface Show {
 }
 
 export interface NameAndRole {
-  name: string;
   role: string;
+  name: string;
 }

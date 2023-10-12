@@ -70,11 +70,37 @@ export function ImageInputWithIndex({idx}: {idx: number}) {
     }
 
     return (
+        // <>
+        //     <label htmlFor={`image_${idx}_file`}>Adjuntar imagen:</label>
+        //     <input
+        //         type="file"
+        //         id={`image_${idx}_file`}
+        //         name={`image_${idx}_file`}
+        //         accept="image/*"
+        //         onChange={handleImageChange}
+        //     />
+        //     {imageUrl && 
+        //     <Image
+        //             src={imageUrl}
+        //             alt="preview"
+        //             width={0}
+        //             height={0}
+        //             sizes="100vw"
+        //             style={{
+        //                 width: '100%',
+        //                 height: 'auto',
+        //                 borderRadius: '5px',
+        //                 marginBottom: '.5em'
+        //             }}
+
+        //         />
+        //     }
+        // </>
         <>
             <label htmlFor={`image_${idx}_file`}>Adjuntar imagen:</label>
             <input
                 type="file"
-                id={`image_${idx}_file`}
+                id={`IDEEEEEE_image_${idx}_file`}
                 name={`image_${idx}_file`}
                 accept="image/*"
                 onChange={handleImageChange}

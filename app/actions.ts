@@ -7,7 +7,8 @@ import { uploadToCloudinary } from './cloudinary';
 import { moveToTrash } from './cloudinary';
 import { transformYouTubeUrl } from '@/lib/transformYouTubeUrl'
 import { makeSlug } from '@/lib/makeSlug';
-import { parseNameAndRole } from '@/lib/parseNameAndRole'
+import { parseNameAndRoleInServer } from '@/lib/parseNameAndRole'
+import { Show } from '@/types';
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 const DATA_API_KEY = process.env.NEXT_PUBLIC_DATA_API_KEY || '';
@@ -303,10 +304,12 @@ export async function editPressVideo(prevState: any, formData: FormData) {
   }
 }
 
-const nameAndRoleSchema = z.object({
-  name: z.string(),
-  role: z.string()
-})
+// const nameAndRoleSchema = z.object({
+//   name: z.string(),
+//   role: z.string()
+// })
+
+
 
 // @ts-ignore
 // const optionalImageSchema = z.custom((data: File | undefined | {}) => {
@@ -322,15 +325,45 @@ const nameAndRoleSchema = z.object({
 
 // @ts-ignore
 const optionalImageSchema = z.any().refine((data: File | undefined | {}) => {
-  if (!data?.size) { return true }
+  // @ts-ignore
+  if (!data.size) { return true }
+  // @ts-ignore
   else if (data?.size > MAX_FILE_SIZE) {
     throw new Error("Max image size is 4MB")
+    // @ts-ignore
   } else if (!ACCEPTED_IMAGE_MIME_TYPES.includes(data?.type)) {
     throw new Error("Only .jpg, .jpeg, .png, and .webp formats are supported")
   } else {
     return true;
   }
 }, "check optionalImageSchema");
+
+const nameAndRoleSchema = z.array(
+  z.object({
+    name: z.optional(z.string()),
+    role: z.optional(z.string()),
+  })
+);
+
+const optionalNameAndRoleSchemaOld = z.union([
+  z.array(
+    z.object({
+      name: z.optional(z.string()),
+      role: z.optional(z.string()),
+    }),
+  ),
+  z.undefined()
+]);
+
+const optionalNameAndRoleSchema = z.array(
+  z.optional(
+    z.object({
+      name: z.optional(z.string()),
+      role: z.optional(z.string()),
+    })
+  )
+)
+
 
 const showSchema = z.object({
   id: z.string(),
@@ -339,10 +372,14 @@ const showSchema = z.object({
   opening_date: z.string(),
   theatre: z.string(),
   sinopsis: z.string(),
-  cast: z.array(nameAndRoleSchema),
-  creative: z.array(nameAndRoleSchema),
-  musicians: z.optional(z.array(nameAndRoleSchema)),
-  dancers: z.optional(z.array(nameAndRoleSchema)),
+  cast: nameAndRoleSchema,
+  creative: optionalNameAndRoleSchema,
+  musicians: optionalNameAndRoleSchema,
+  dancers: optionalNameAndRoleSchema,
+  // cast: z.array(nameAndRoleSchema),
+  // creative: z.array(nameAndRoleSchema),
+  // musicians: z.optional(z.array(nameAndRoleSchema)),
+  // dancers: z.optional(z.array(nameAndRoleSchema)),
   image_1_file: z
     .any()
     .refine((file) => {
@@ -363,6 +400,11 @@ const showSchema = z.object({
 
 export async function createShow(prevState: any, formData: FormData) {
   try {
+    const castTeam = parseNameAndRoleInServer(formData.get('cast'))
+    const creativeTeam = parseNameAndRoleInServer(formData.get('creative'))
+    const musiciansTeam = parseNameAndRoleInServer(formData.get('musicians'))
+    const dancersTeam = parseNameAndRoleInServer(formData.get('dancers'))
+
     const inputData = showSchema.parse({
       id: createAlphaNumericString(20),
       title: formData.get('title'),
@@ -373,46 +415,59 @@ export async function createShow(prevState: any, formData: FormData) {
       image_1_file: formData.get('image_1_file'),
       image_2_file: formData.get('image_2_file'),
       image_3_file: formData.get('image_3_file'),
-      cast: parseNameAndRole(formData.get('cast')),
-      creative: parseNameAndRole(formData.get('creative')),
-      musicians: parseNameAndRole(formData.get('musicians')),
-      dancers: parseNameAndRole(formData.get('dancers')),
+      cast: castTeam,
+      creative: creativeTeam.length > 0 ? creativeTeam : [],
+      musicians: musiciansTeam.length > 0 ? musiciansTeam : [],
+      dancers: dancersTeam.length > 0 ? dancersTeam : [],
       image_1_url: "",
       image_2_url: "",
       image_3_url: "",
-    })
+    }) as Show;
 
-    console.log(inputData);
+    const imageFiles : {
+      [key: string]: string | File | undefined;
+    } = {};
 
-    return { message: "hi" };
+    for (const key in inputData) {
+      if (key.includes("image_") && key.includes("_file")) {
+        // @ts-ignore
+        imageFiles[key] = inputData[key];
+      }
+    }
 
-    // const folderName = `${IMAGE_MAIN_FOLDER}/press`
+    for (const key in imageFiles) {
+      const imageFile = imageFiles[key];
+      const [, fileNumber] = key.split('_');
+      // @ts-ignore
+      if (imageFile?.size > 0){
+        const imageMetadata = await uploadToCloudinary(imageFile, 'shows');
+        // @ts-ignore
+        inputData[`image_${fileNumber}_url`] = imageMetadata.secure_url; 
+        // @ts-ignore
+        delete inputData[`image_${fileNumber}_file`];
+    } else {
+      // @ts-ignore
+      delete inputData[`image_${fileNumber}_file`];
+    }
+  }
 
-    // const imageHostingMetadata = await uploadToCloudinary(inputData.image_file, folderName);
+    const data = {
+      document: "shows",
+      entry: "content",
+      content: inputData
+    }
 
-    // const image_url = imageHostingMetadata.secure_url;
-    // // remove image file from inputData
-    // delete inputData.image_file;
-    // // add image url to inputData
-    // inputData.image_url = image_url;
+    const saved = await fetch(`${BASE_URL}/server/create`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'API-Key': DATA_API_KEY
+      },
+      referrerPolicy: 'no-referrer',
+      body: JSON.stringify(data)
+    });
 
-    // const data = {
-    //   document: "press",
-    //   entry: "written_press",
-    //   content: inputData
-    // }
-
-    // const saved = await fetch(`${BASE_URL}/server/create`, {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //     'API-Key': DATA_API_KEY
-    //   },
-    //   referrerPolicy: 'no-referrer',
-    //   body: JSON.stringify(data)
-    // });
-
-    // revalidatePath('/(editor)/editor', 'page');
+    revalidatePath('/(editor)/editor', 'page');
 
     return { message: `show added!!!` }
 

@@ -9,7 +9,7 @@ import { EmptyImageIcon } from "../shared/icons";
 import sanitizeHtml from 'sanitize-html'
 import { EditorContent, useEditor } from '@tiptap/react'
 import StarterKit from '@tiptap/starter-kit'
-import type { FormComponentProps } from "./CreateShow";
+import type { FormComponentProps } from "./CreateShowFromClient";
 import uploadToCloudinary from '@/lib/uploadToCloudinary'
 import saveFormDataToDB from "@/lib/saveFormDataToDB";
 

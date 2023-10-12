@@ -234,11 +234,6 @@ export function CreateShow() {
         // state.message = null;
     }
 
-    if(state.message){
-        console.log(state.message)
-    
-    }
-
     return (
         <form action={formAction} id="myForm" className="create-show-form">
             <h2>Crear show</h2>
@@ -263,24 +258,22 @@ export function CreateShow() {
                     <RichText contentHtml='' />
 
                     {/* <AddWholeCast/> */}
-                    <AddTeam labelContent="Agregar cast" inputName="cast" />
-                    <AddTeam labelContent="Agregar equipo creativo" inputName="creative" />
-                    <AddTeam labelContent="Agregar musicos" inputName="musicians" />
-                    <AddTeam labelContent="Agregar bailarines" inputName="dancers" />
+                    <AddTeam labelContent="Agregar cast" inputName="cast" required={true}/>
+                    <AddTeam labelContent="Agregar equipo creativo" inputName="creative" required={false}/>
+                    <AddTeam labelContent="Agregar musicos" inputName="musicians" required={false}/>
+                    <AddTeam labelContent="Agregar bailarines" inputName="dancers" required={false}/>
                 </div>
-
-
                 <SubmitButton />
                 <p aria-live="polite" className="sr-only" role="status">
-                    {state?.message}
-                </p>
-            </div>
+                {state?.message}
+            </p>
+            </div>   
         </form>
     )
 }
 
-export function AddTeam({labelContent, inputName}: {labelContent: string, inputName: string}){
-    const [team, setTeam] = useState<string>('');
+export function AddTeam({labelContent, inputName, required}: {labelContent: string, inputName: string, required: boolean}){
+    const [team, setTeam] = useState<string | null>();
     const [parsedTeam, setParsedTeam] = useState<NameAndRole[]>([]);
 
     const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -290,14 +283,15 @@ export function AddTeam({labelContent, inputName}: {labelContent: string, inputN
 
     function handleWholeCast(){
         const parsedData = parseNameAndRole(team);
-        setParsedTeam(parsedData);511
+        setParsedTeam(parsedData);
+        setTeam(null);
       };
 
     return (
         <>
-        <label htmlFor="wholeCast">{labelContent}</label>
-        <input type="text" id={inputName} name={inputName} onChange={handleInputChange}/>
-        <button type="button" onClick={handleWholeCast}>parse</button>
+        <label htmlFor={inputName}>{labelContent}</label>
+        <input type="text" id={inputName} name={inputName} onChange={handleInputChange} required={required}/>
+        {team ? (<button type="button" onClick={handleWholeCast}>parse</button>): <button disabled type="button" onClick={handleWholeCast}>parse</button>}
         {parsedTeam.length > 0 && (
         <div>
           <h3>Parsed team:</h3>
