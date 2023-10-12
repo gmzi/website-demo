@@ -24,7 +24,7 @@ import StarterKit from '@tiptap/starter-kit'
 import MenuBar from '@/components/forms/text-editor/MenuBar'
 import uploadToCloudinary from '@/lib/uploadToCloudinary'
 import saveFormDataToDB from "@/lib/saveFormDataToDB";
-import makeSlug from '@/lib/makeSlug';
+import {makeSlug} from '@/lib/makeSlug';
 import createAlphaNumericString from '@/lib/createAlphanumericString'
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL

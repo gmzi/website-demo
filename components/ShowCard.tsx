@@ -36,7 +36,7 @@ interface ShowCardProps {
 const ShowCard: React.FC<ShowCardProps> = ({ show }) => {
     // const { title, opening_date, content_html, image_1_url, sinopsis, theatre, castAndCreative } = show;
     // const { cast, creative, musicians, dancers } = castAndCreative;
-    const { title, opening_date, content_html, image_1_url, sinopsis, theatre, cast, creative, musicians, dancers } = show;
+    const { title, opening_date, image_1_url, sinopsis, theatre, cast, creative, musicians, dancers } = show;
     return (
         <div className="show-card">
             <div className="show-card__image">
@@ -87,7 +87,7 @@ const ShowCard: React.FC<ShowCardProps> = ({ show }) => {
                         <ul>
                             {musicians.map((musician, index) => (
                                 <li key={index}>
-                                    <strong>{musician.name}</strong> - {musician.instrument}
+                                    <strong>{musician.name}</strong> - {musician.role}
                                 </li>
                             ))}
                         </ul>
@@ -108,7 +108,7 @@ const ShowCard: React.FC<ShowCardProps> = ({ show }) => {
                 ) : null}
 
 
-                <p className="show-card__description">{content_html}</p>
+                {/* <p className="show-card__description">{content_html}</p> */}
             </div>
         </div>
     );

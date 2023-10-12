@@ -6,7 +6,8 @@ import createAlphaNumericString from '@/lib/createAlphanumericString';
 import { uploadToCloudinary } from './cloudinary';
 import { moveToTrash } from './cloudinary';
 import { transformYouTubeUrl } from '@/lib/transformYouTubeUrl'
-import makeSlug from '@/lib/makeSlug';
+import { makeSlug } from '@/lib/makeSlug';
+import { parseNameAndRole } from '@/lib/parseNameAndRole'
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 const DATA_API_KEY = process.env.NEXT_PUBLIC_DATA_API_KEY || '';
@@ -296,37 +297,52 @@ export async function editPressVideo(prevState: any, formData: FormData) {
 
     return { message: `Item updated!!!` }
 
-  } catch(e){
+  } catch (e) {
     console.log(e)
-    return {message: `${e}`}
+    return { message: `${e}` }
   }
 }
-      
 
-const seasonSchema = z.object({
-  year: z.string(),
-  theater: z.string()
-})
 const nameAndRoleSchema = z.object({
   name: z.string(),
   role: z.string()
 })
+
+// @ts-ignore
+// const optionalImageSchema = z.custom((data: File | undefined | {}) => {
+//   if (!data.size) { return true }
+//   else if (data.size > MAX_FILE_SIZE) {
+//     throw new Error("Max image size is 4MB")
+//   } else if (!ACCEPTED_IMAGE_MIME_TYPES.includes(data?.type)) {
+//     throw new Error("Only .jpg, .jpeg, .png, and .webp formats are supported")
+//   } else {
+//     return true;
+//   }
+// });
+
+// @ts-ignore
+const optionalImageSchema = z.any().refine((data: File | undefined | {}) => {
+  if (!data?.size) { return true }
+  else if (data?.size > MAX_FILE_SIZE) {
+    throw new Error("Max image size is 4MB")
+  } else if (!ACCEPTED_IMAGE_MIME_TYPES.includes(data?.type)) {
+    throw new Error("Only .jpg, .jpeg, .png, and .webp formats are supported")
+  } else {
+    return true;
+  }
+}, "check optionalImageSchema");
 
 const showSchema = z.object({
   id: z.string(),
   title: z.string(),
   slug: z.string(),
   opening_date: z.string(),
-  content_html: z.string(),
-  seasons: z.array(seasonSchema),
   theatre: z.string(),
   sinopsis: z.string(),
   cast: z.array(nameAndRoleSchema),
   creative: z.array(nameAndRoleSchema),
-  musicians: z.array(nameAndRoleSchema),
-  dancers: z.array(nameAndRoleSchema),
-  wholeCast: z.string(),
-  wholeCreativeTeam: z.string(),
+  musicians: z.optional(z.array(nameAndRoleSchema)),
+  dancers: z.optional(z.array(nameAndRoleSchema)),
   image_1_file: z
     .any()
     .refine((file) => {
@@ -338,32 +354,8 @@ const showSchema = z.object({
       },
       "Only .jpg, .jpeg, .png, and .webp formats are supported"
     ),
-  image_2_file: z.optional(
-    z
-      .any()
-      .refine((file) => {
-        return file?.size <= MAX_FILE_SIZE;
-      }, 'Max image size is 4MB.')
-      .refine(
-        (file) => {
-          return ACCEPTED_IMAGE_MIME_TYPES.includes(file?.type)
-        },
-        "Only .jpg, .jpeg, .png, and .webp formats are supported"
-      )
-  ),
-  image_3_file: z.optional(
-    z
-      .any()
-      .refine((file) => {
-        return file?.size <= MAX_FILE_SIZE;
-      }, 'Max image size is 4MB.')
-      .refine(
-        (file) => {
-          return ACCEPTED_IMAGE_MIME_TYPES.includes(file?.type)
-        },
-        "Only .jpg, .jpeg, .png, and .webp formats are supported"
-      )
-  ),
+  image_2_file: optionalImageSchema,
+  image_3_file: optionalImageSchema,
   image_1_url: z.string(),
   image_2_url: z.string(),
   image_3_url: z.string(),
@@ -381,15 +373,18 @@ export async function createShow(prevState: any, formData: FormData) {
       image_1_file: formData.get('image_1_file'),
       image_2_file: formData.get('image_2_file'),
       image_3_file: formData.get('image_3_file'),
-      seasons: [''],
-
-      
-      // image_file: formData.get('image_file'),
-      // just for type declaration, will be added after uploadingToCloud
-      // image_url: ""
+      cast: parseNameAndRole(formData.get('cast')),
+      creative: parseNameAndRole(formData.get('creative')),
+      musicians: parseNameAndRole(formData.get('musicians')),
+      dancers: parseNameAndRole(formData.get('dancers')),
+      image_1_url: "",
+      image_2_url: "",
+      image_3_url: "",
     })
 
     console.log(inputData);
+
+    return { message: "hi" };
 
     // const folderName = `${IMAGE_MAIN_FOLDER}/press`
 
@@ -569,9 +564,9 @@ export async function editPressArticle(prevState: any, formData: FormData) {
 
 export async function editShow(prevState: any, formData: FormData) {
   try {
-  } catch(e){
+  } catch (e) {
     console.log(e)
-    return {message: `${e}`}
+    return { message: `${e}` }
   }
 }
 

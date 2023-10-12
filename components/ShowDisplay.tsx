@@ -38,7 +38,7 @@ interface ShowCardProps {
 export function ShowDisplay({ show }: ShowCardProps) {
     // const { title, slug, opening_date, content_html, image_1_url, sinopsis, theatre, castAndCreative } = show;
     // const { cast, creative, musicians, dancers } = castAndCreative;
-    const { title, slug, opening_date, content_html, image_1_url, sinopsis, theatre, cast, creative, musicians, dancers } = show;
+    const { title, slug, opening_date, image_1_url, sinopsis, theatre, cast, creative, musicians, dancers } = show;
 
 
     return (

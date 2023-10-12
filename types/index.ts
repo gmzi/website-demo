@@ -109,22 +109,15 @@ export interface Show {
   title: string;
   slug: string;
   opening_date: string;
-  content_html: string;
   image_1_url: string;
   image_2_url: string;
   image_3_url: string;
-  seasons: {
-      year: string;
-      theater: string;
-  }[];
   theatre: string;
   sinopsis: string;
   cast: NameAndRole[];
   creative: NameAndRole[];
   musicians: NameAndRole[];
   dancers: NameAndRole[];
-  wholeCast: string;
-  wholeCreativeTeam:  string;
 }
 
 export interface NameAndRole {
