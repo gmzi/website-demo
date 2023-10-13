@@ -19,7 +19,7 @@ export async function uploadToCloudinary(imageFile, folderName) {
   const formData = new FormData();
   formData.append("file", imageFile);
   formData.append("upload_preset", `${CLOUDINARY_UPLOAD_PRESET}`)
-  formData.append("folder", folderName);
+  formData.append("folder", `${IMAGE_MAIN_FOLDER}/${folderName}`);
 
   try {
     const response = await fetch(
@@ -50,10 +50,10 @@ export async function moveToTrash(imageUrl) {
 
     const moved = await cloudinary.uploader.rename(imagePublicID, trashDestination)
 
-    return { message: 'image moved to trash' };
+    return { status: 200, message: 'image moved to trash', recoveryUrl: moved?.secure_url };
 
   } catch (e) {
     console.error(e)
-    return { message: 'failed deleting image', error: JSON.stringify(e) }
+    return { status: 500, message: 'failed deleting image', error: JSON.stringify(e) }
   }
 }

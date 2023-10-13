@@ -2,6 +2,8 @@
 
 import { v2 as cloudinary} from 'cloudinary'
 
+
+
 const CLOUDINARY_CLOUD_NAME= process.env.CLOUDINARY_CLOUD_NAME;
 const CLOUDINARY_API_KEY= process.env.CLOUDINARY_API_KEY;
 const CLOUDINARY_API_SECRET= process.env.CLOUDINARY_API_SECRET;
@@ -31,6 +33,7 @@ export default async function handler(req, res) {
 
         const imageID = imageUrl.match(`${IMAGE_MAIN_FOLDER}.+`)[0]
 
+
         const imagePublicID = imageID.replace(/\..+$/, '');
 
         const trashDestination = `${IMAGE_MAIN_FOLDER}/trash/${imagePublicID.replace(`${IMAGE_MAIN_FOLDER}/`, "")}`;
@@ -38,6 +41,9 @@ export default async function handler(req, res) {
         // example to : 'website-fer/trash/about/i4ey8istvgaphyohjupc'
 
         const moveToTrash = await cloudinary.uploader.rename(imagePublicID, trashDestination)
+
+        console.log('/server/image/delete moveToTrash:')
+        console.log(moveToTrash)
 
         if (!moveToTrash.asset_id){
             res.status(404).json({message: "failed to trash image"})

@@ -3,12 +3,12 @@
 // @ts-expect-error
 import { experimental_useFormState as useFormState } from 'react-dom'
 import { experimental_useFormStatus as useFormStatus } from 'react-dom'
-import { ChangeEvent } from 'react'
+import { ChangeEvent, useEffect } from 'react'
 import type { About } from '@/types'
 import { editPressArticle, createPressArticle, editHeroText, editAvailableCourse, createCourse, createSection, createCourseReview, editCourseReview, editTestimonial, createTestimonial, editCourseLogistics, editPressHeroImage, createPressVideo, editPressVideo, editShow, createShow } from '@/app/actions'
 import { ImageEdit } from './ImageEdit'
-import {parseNameAndRole} from '@/lib/parseNameAndRole'
-import { ImageInput, ImageInputWithIndex } from './ImageInput'
+import { parseNameAndRole } from '@/lib/parseNameAndRole'
+import { ImageInputWithIndex, ImageInputWithIndexAndDefaultValue, ImageInputWithIndexAndDefaultValueAndDeleteButton } from './ImageInput'
 import { ImagesEdit } from './ImageEdit'
 import { RichText } from './text-editor/RichText'
 import { IframeForm, IframeEdit } from './IframeForm'
@@ -19,6 +19,7 @@ import { useState } from 'react'
 import Link from 'next/link'
 import { Delete } from './Delete'
 import Image from 'next/image'
+import { set } from 'zod'
 
 
 interface ImageProp {
@@ -190,34 +191,45 @@ export function Edit({ articles, index, handleCancel }: EditProps) {
     const item = articles[index];
 
     return (
-        <form action={formAction}>
-            <h2>EDITAR</h2>
+        <form action={formAction} id="myForm" className="edit-show-form">
             <input type="hidden" name="id" value={item.id} />
+            <input type="hidden" name="slug" value={item.slug} />
+            <h2>Editar show</h2>
+            <div className="show-card create">
+                <div className="show-card__image create">
+                    <h2>Adjuntar imágenes -una obligatoria, dos opcionales-</h2>
+                    <ImageInputWithIndexAndDefaultValue idx={1} defaultValue={item.image_1_url} />
+                    <ImageInputWithIndexAndDefaultValueAndDeleteButton idx={2} defaultValue={item.image_2_url} />
+                    <ImageInputWithIndexAndDefaultValueAndDeleteButton idx={3} defaultValue={item.image_3_url} />
+                </div>
+                <div className="show-card__content create">
+                    <label htmlFor="title">Título del espectáculo:</label>
+                    <input type="text" id="title" name="title" className="show-card__title create" defaultValue={item.title} required />
 
-            <h2>Show Card goes here</h2>
+                    <label htmlFor="opening_date">Fecha de estreno:</label>
+                    <input type="text" id="opening_date" name="opening_date" className="show-card__date create" defaultValue={item.opening_date} />
 
-            {/* <div className="press-card">
-                <label htmlFor="veredict">Veredict:</label>
-                <input type="text" id="veredict" name="veredict" defaultValue={item.veredict} />
-                <label htmlFor="quote">Cita:</label>
-                <input type="text" id="quote" name="quote" defaultValue={item.quote} />
-                <label htmlFor="media_organization">Medio:</label>
-                <input type="text" id="media_organization" name="media_organization" defaultValue={item.media_organization} />
-                <label htmlFor="journalist">Autor de la nota:</label>
-                <input type="text" id="journalist" name="journalist" defaultValue={item.journalist} />
-                <label htmlFor="date">Fecha:</label>
-                <input type="text" id="date" name="date" defaultValue={item.date} />
-                <label htmlFor="article_url">Link al articulo:</label>
-                <input type="text" id="article_url" name="article_url" defaultValue={item.article_url} />
-                <label htmlFor="show">Espectaculo:</label>
-                <input type="text" id="show" name="show" defaultValue={item.show} />
-                <ImageEdit imageUrl={item.image_url} />
+                    <label htmlFor="theatre">Sala:</label>
+                    <input type="text" id="theatre" name="theatre" className="show-card__theatre create" defaultValue={item.theatre} />
+
+                    <label htmlFor="editor_content">Sinopsis:</label>
+                    <RichText contentHtml={item.sinopsis} />
+
+                    {/* <AddTeam labelContent="Agregar cast" inputName="cast" required={true}/>
+                    <AddTeam labelContent="Agregar equipo creativo" inputName="creative" required={false}/>
+                    <AddTeam labelContent="Agregar musicos" inputName="musicians" required={false}/>
+                    <AddTeam labelContent="Agregar bailarines" inputName="dancers" required={false}/> */}
+                    <EditTeam labelContent='Editar cast' inputName='cast' required={true} membersArray={item.cast} />
+                    <EditTeam labelContent='Editar equipo creativo' inputName='creative' required={false} membersArray={item.creative} />
+                    <EditTeam labelContent='Editar músicos' inputName='musicians' required={false} membersArray={item.musicians} />
+                    <EditTeam labelContent='Editar bilarines' inputName='dancers' required={false} membersArray={item.dancers} />
+                </div>
                 <EditButton />
                 <button onClick={handleCancel}>Cancelar</button>
-            </div> */}
-            <p aria-live="polite" className="sr-only" role="status">
-                {state?.message}
-            </p>
+                <p aria-live="polite" className="sr-only" role="status">
+                    {state?.message}
+                </p>
+            </div>
         </form>
     )
 }
@@ -258,21 +270,21 @@ export function CreateShow() {
                     <RichText contentHtml='' />
 
                     {/* <AddWholeCast/> */}
-                    <AddTeam labelContent="Agregar cast" inputName="cast" required={true}/>
-                    <AddTeam labelContent="Agregar equipo creativo" inputName="creative" required={false}/>
-                    <AddTeam labelContent="Agregar musicos" inputName="musicians" required={false}/>
-                    <AddTeam labelContent="Agregar bailarines" inputName="dancers" required={false}/>
+                    <AddTeam labelContent="Agregar cast" inputName="cast" required={true} />
+                    <AddTeam labelContent="Agregar equipo creativo" inputName="creative" required={false} />
+                    <AddTeam labelContent="Agregar musicos" inputName="musicians" required={false} />
+                    <AddTeam labelContent="Agregar bailarines" inputName="dancers" required={false} />
                 </div>
                 <SubmitButton />
                 <p aria-live="polite" className="sr-only" role="status">
-                {state?.message}
-            </p>
-            </div>   
+                    {state?.message}
+                </p>
+            </div>
         </form>
     )
 }
 
-export function AddTeam({labelContent, inputName, required}: {labelContent: string, inputName: string, required: boolean}){
+export function AddTeam({ labelContent, inputName, required }: { labelContent: string, inputName: string, required: boolean }) {
     const [team, setTeam] = useState<string | null>();
     const [parsedTeam, setParsedTeam] = useState<NameAndRole[]>([]);
 
@@ -281,31 +293,91 @@ export function AddTeam({labelContent, inputName, required}: {labelContent: stri
         setTeam(value)
     };
 
-    function handleWholeCast(){
+    function handleWholeTeam() {
         const parsedData = parseNameAndRole(team);
         setParsedTeam(parsedData);
         setTeam(null);
-      };
+    };
 
     return (
         <>
-        <label htmlFor={inputName}>{labelContent}</label>
-        <input type="text" id={inputName} name={inputName} onChange={handleInputChange} required={required}/>
-        {team ? (<button type="button" onClick={handleWholeCast}>parse</button>): <button disabled type="button" onClick={handleWholeCast}>parse</button>}
-        {parsedTeam.length > 0 && (
-        <div>
-          <h3>Parsed team:</h3>
-          <ul>
-            {parsedTeam.map((item, index) => (
-              <li key={index}>
-                {item.name} - {item.role}
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
+            <label htmlFor={inputName}>{labelContent}</label>
+            <input type="text" id={inputName} name={inputName} onChange={handleInputChange} required={required} />
+            {team ? (<button type="button" onClick={handleWholeTeam}>parse</button>) : <button disabled type="button" onClick={handleWholeTeam}>parse</button>}
+            {parsedTeam.length > 0 && (
+                <div>
+                    <h3>Parsed team:</h3>
+                    <ul>
+                        {parsedTeam.map((item, index) => (
+                            <li key={index}>
+                                {item.name} - {item.role}
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+            )}
         </>
-        
+
+    )
+}
+
+export function EditTeam({ labelContent, inputName, required, membersArray }: { labelContent: string, inputName: string, required: boolean, membersArray: NameAndRole[] }) {
+    const [team, setTeam] = useState<string | null>();
+    const [parsedTeam, setParsedTeam] = useState<NameAndRole[]>(membersArray);
+
+    function handleWholeTeam() {
+        const parsedData = parseNameAndRole(team);
+        const updatedData = [...parsedTeam, ...parsedData];
+        setParsedTeam(updatedData);
+    };
+
+    const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+        const value = e.target.value;
+        setTeam(value)
+    };
+
+    function handleItemChange(e: React.ChangeEvent<HTMLInputElement>, index: number) {
+        const name = e.target.name;
+        const value = e.target.value;
+
+        setParsedTeam((prevParsedTeam) => {
+            const updatedTeam = prevParsedTeam.map((item, itemIndex) => {
+                if (itemIndex === index) {
+                    if (name === 'name') {
+                        return { ...item, name: value };
+                    } else if (name === 'role') {
+                        return { ...item, role: value };
+                    }
+                }
+                return item;
+            });
+            return updatedTeam;
+        });
+    }
+
+    return (
+        <>
+            <h2>{labelContent}</h2>
+            {parsedTeam.length > 0 && (
+                <div>
+                    <ul>
+                        {parsedTeam.map((item, index) => (
+                            <li key={`item-${index}`}>
+                                <label htmlFor='name'>name: </label>
+                                <input type="text" name='name' defaultValue={item.name} onChange={(e) => handleItemChange(e, index)} />
+                                <label htmlFor='role'>role: </label>
+                                <input type="text" name='role' defaultValue={item.role} onChange={(e) => handleItemChange(e, index)} />
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+            )}
+            <input type="hidden" id={inputName} name={inputName} value={JSON.stringify(parsedTeam)} />
+            {/* <input type="text" id={inputName} name={inputName} onChange={handleInputChange}/> */}
+            <label htmlFor='clientInput'>Agregar miembros</label>
+            <input type="text" id='clientInput' name='clientInput' onChange={handleInputChange} />
+            {team ? (<button type="button" onClick={handleWholeTeam}>agregar</button>) : <button disabled type="button" onClick={handleWholeTeam}>agregar</button>}
+        </>
     )
 }
 
@@ -388,51 +460,6 @@ export function EditPressVideo({ pressVideos, index, handleCancel }: EditPressVi
                 <EditButton />
                 <button onClick={handleCancel}>Cancelar</button>
             </div>
-            <p aria-live="polite" className="sr-only" role="status">
-                {state?.message}
-            </p>
-        </form>
-    )
-}
-
-
-export function CreatePressVideo() {
-    const [state, formAction] = useFormState(createPressVideo, initialState)
-
-    // until we figure out how to reset form input after successfull data savign, bare with this:
-    if (state?.message === 'article added') {
-
-        const form = document.getElementById("myForm");
-        // @ts-ignore
-        form.reset()
-        // state.message = null;
-    }
-
-    return (
-        <form action={formAction} id="myForm">
-            <h2>Agregar video</h2>
-            <div className="press-video-card">
-                <label htmlFor="show">Espectaculo:</label>
-                <input type="text" id="show" name="show" />
-
-                {/* <label htmlFor="video_url">Link al video:</label>
-                <input type="text" id="video_url" name="video_url" required />
-                <h2>IFrame test</h2> */}
-
-                <IframeForm />
-
-                <label htmlFor="title">Titulo del video:</label>
-                <input type="text" id="title" name="title" />
-
-                <label htmlFor="description">Epigrafe del video:</label>
-                <input type="text" id="description" name="description" />
-
-                <label htmlFor="source_organization">Institución:</label>
-                <input type="text" id="source_organization" name="source_organization" />
-
-                <SubmitButton />
-            </div>
-
             <p aria-live="polite" className="sr-only" role="status">
                 {state?.message}
             </p>

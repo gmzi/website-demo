@@ -7,7 +7,7 @@ import { uploadToCloudinary } from './cloudinary';
 import { moveToTrash } from './cloudinary';
 import { transformYouTubeUrl } from '@/lib/transformYouTubeUrl'
 import { makeSlug } from '@/lib/makeSlug';
-import { parseNameAndRoleInServer } from '@/lib/parseNameAndRole'
+import { parseNameAndRoleInServer, parseNameAndRole } from '@/lib/parseNameAndRole'
 import { Show } from '@/types';
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
@@ -324,7 +324,7 @@ export async function editPressVideo(prevState: any, formData: FormData) {
 // });
 
 // @ts-ignore
-const optionalImageSchema = z.any().refine((data: File | undefined | {}) => {
+const optionalImageSchemaBackup = z.any().refine((data: File | undefined | {}) => {
   // @ts-ignore
   if (!data.size) { return true }
   // @ts-ignore
@@ -355,6 +355,20 @@ const optionalNameAndRoleSchemaOld = z.union([
   z.undefined()
 ]);
 
+const imageSchema = z.union([
+  z.any()
+  .refine((file) => {
+    return file?.size <= MAX_FILE_SIZE; 
+  }, "Max image size is 4MB.")
+  .refine((file) => {
+    return ACCEPTED_IMAGE_MIME_TYPES.includes(file?.type);
+  }, "Only .jpg, .jpeg, .png, and .webp formats are supported")
+  .refine((file)=> {
+    return file?.size !== 0;
+  }, "plase attach an image file"),
+  z.undefined()
+])
+
 const optionalNameAndRoleSchema = z.array(
   z.optional(
     z.object({
@@ -376,34 +390,65 @@ const showSchema = z.object({
   creative: optionalNameAndRoleSchema,
   musicians: optionalNameAndRoleSchema,
   dancers: optionalNameAndRoleSchema,
-  // cast: z.array(nameAndRoleSchema),
-  // creative: z.array(nameAndRoleSchema),
-  // musicians: z.optional(z.array(nameAndRoleSchema)),
-  // dancers: z.optional(z.array(nameAndRoleSchema)),
-  image_1_file: z
-    .any()
-    .refine((file) => {
-      return file?.size <= MAX_FILE_SIZE;
-    }, 'Max image size is 4MB.')
-    .refine(
-      (file) => {
-        return ACCEPTED_IMAGE_MIME_TYPES.includes(file?.type)
-      },
-      "Only .jpg, .jpeg, .png, and .webp formats are supported"
-    ),
-  image_2_file: optionalImageSchema,
-  image_3_file: optionalImageSchema,
+  // image_1_file: z
+  //   .any()
+  //   .refine((file) => {
+  //     return file?.size <= MAX_FILE_SIZE;
+  //   }, 'Max image size is 4MB.')
+  //   .refine(
+  //     (file) => {
+  //       return ACCEPTED_IMAGE_MIME_TYPES.includes(file?.type)
+  //     },
+  //     "Only .jpg, .jpeg, .png, and .webp formats are supported"
+  //   ),
+  image_1_file: imageSchema,
+  image_2_file: imageSchema,
+  image_3_file: imageSchema,
   image_1_url: z.string(),
   image_2_url: z.string(),
   image_3_url: z.string(),
 })
 
+
+async function handleInputDataWithNewImageFiles(inputData: any, folderName: string){
+  const imageFiles : {
+    [key: string]: string | File | undefined;
+  } = {};
+
+  for (const key in inputData) {
+    if (key.includes("image_") && key.includes("_file")) {
+      // @ts-ignore
+      imageFiles[key] = inputData[key];
+    }
+  }
+
+  for (const key in imageFiles) {
+    const imageFile = imageFiles[key];
+    const [, fileNumber] = key.split('_');
+    // @ts-ignore
+    if (imageFile?.size > 0){
+      const imageMetadata = await uploadToCloudinary(imageFile, folderName);
+      // @ts-ignore
+      inputData[`image_${fileNumber}_url`] = imageMetadata.secure_url; 
+      // @ts-ignore
+      delete inputData[`image_${fileNumber}_file`];
+  } else {
+    // @ts-ignore
+    delete inputData[`image_${fileNumber}_file`];
+  }
+}
+  return inputData;
+}
+
 export async function createShow(prevState: any, formData: FormData) {
   try {
-    const castTeam = parseNameAndRoleInServer(formData.get('cast'))
-    const creativeTeam = parseNameAndRoleInServer(formData.get('creative'))
-    const musiciansTeam = parseNameAndRoleInServer(formData.get('musicians'))
-    const dancersTeam = parseNameAndRoleInServer(formData.get('dancers'))
+    const castTeam = parseNameAndRole(formData.get('cast'))
+    const creativeTeam = parseNameAndRole(formData.get('creative'))
+    const musiciansTeam = parseNameAndRole(formData.get('musicians'))
+    const dancersTeam = parseNameAndRole(formData.get('dancers'))
+    const image_1_file = formData.get('image_1_file') as File;
+    const image_2_file = formData.get('image_2_file') as File;
+    const image_3_file = formData.get('image_3_file') as File;
 
     const inputData = showSchema.parse({
       id: createAlphaNumericString(20),
@@ -412,9 +457,12 @@ export async function createShow(prevState: any, formData: FormData) {
       opening_date: formData.get('opening_date'),
       theatre: formData.get('theatre'),
       sinopsis: formData.get('editor_content'),
-      image_1_file: formData.get('image_1_file'),
-      image_2_file: formData.get('image_2_file'),
-      image_3_file: formData.get('image_3_file'),
+      // image_1_file: formData.get('image_1_file'),
+      // image_2_file: formData.get('image_2_file'),
+      // image_3_file: formData.get('image_3_file'),
+      image_1_file: image_1_file,
+      image_2_file: image_2_file.size > 0 ? image_2_file : undefined,
+      image_3_file: image_3_file.size > 0 ? image_3_file : undefined,
       cast: castTeam,
       creative: creativeTeam.length > 0 ? creativeTeam : [],
       musicians: musiciansTeam.length > 0 ? musiciansTeam : [],
@@ -424,37 +472,39 @@ export async function createShow(prevState: any, formData: FormData) {
       image_3_url: "",
     }) as Show;
 
-    const imageFiles : {
-      [key: string]: string | File | undefined;
-    } = {};
+  //   const imageFiles : {
+  //     [key: string]: string | File | undefined;
+  //   } = {};
 
-    for (const key in inputData) {
-      if (key.includes("image_") && key.includes("_file")) {
-        // @ts-ignore
-        imageFiles[key] = inputData[key];
-      }
-    }
+  //   for (const key in inputData) {
+  //     if (key.includes("image_") && key.includes("_file")) {
+  //       // @ts-ignore
+  //       imageFiles[key] = inputData[key];
+  //     }
+  //   }
 
-    for (const key in imageFiles) {
-      const imageFile = imageFiles[key];
-      const [, fileNumber] = key.split('_');
-      // @ts-ignore
-      if (imageFile?.size > 0){
-        const imageMetadata = await uploadToCloudinary(imageFile, 'shows');
-        // @ts-ignore
-        inputData[`image_${fileNumber}_url`] = imageMetadata.secure_url; 
-        // @ts-ignore
-        delete inputData[`image_${fileNumber}_file`];
-    } else {
-      // @ts-ignore
-      delete inputData[`image_${fileNumber}_file`];
-    }
-  }
+  //   for (const key in imageFiles) {
+  //     const imageFile = imageFiles[key];
+  //     const [, fileNumber] = key.split('_');
+  //     // @ts-ignore
+  //     if (imageFile?.size > 0){
+  //       const imageMetadata = await uploadToCloudinary(imageFile, 'shows');
+  //       // @ts-ignore
+  //       inputData[`image_${fileNumber}_url`] = imageMetadata.secure_url; 
+  //       // @ts-ignore
+  //       delete inputData[`image_${fileNumber}_file`];
+  //   } else {
+  //     // @ts-ignore
+  //     delete inputData[`image_${fileNumber}_file`];
+  //   }
+  // }
+
+  const updatedInputData = await handleInputDataWithNewImageFiles(inputData, "shows");
 
     const data = {
       document: "shows",
       entry: "content",
-      content: inputData
+      content: updatedInputData
     }
 
     const saved = await fetch(`${BASE_URL}/server/create`, {
@@ -619,6 +669,64 @@ export async function editPressArticle(prevState: any, formData: FormData) {
 
 export async function editShow(prevState: any, formData: FormData) {
   try {
+    const newImage_1_File = formData.get("new_image_1_file") as File;
+    const newImage_2_File = formData.get("new_image_2_file") as File;
+    const newImage_3_File = formData.get("new_image_3_file") as File;
+
+    const castTeamInput = formData.get('cast') as string;
+    const castTeamParsed = JSON.parse(castTeamInput);
+
+    const creativeTeamInput = formData.get('creative') as string;
+    const creativeTeamParsed = JSON.parse(creativeTeamInput);
+
+    const musiciansTeamInput = formData.get('musicians') as string;
+    const musiciansTeamParsed = JSON.parse(musiciansTeamInput);
+
+    const dancersTeamInput = formData.get('dancers') as string;
+    const dancersTeamParsed = JSON.parse(dancersTeamInput);
+
+    const inputData = showSchema.parse({
+      id: formData.get('id'),
+      title: formData.get('title'),
+      slug: formData.get('slug'),
+      opening_date: formData.get('opening_date'),
+      theatre: formData.get('theatre'),
+      sinopsis: formData.get('editor_content'),
+      image_1_file: newImage_1_File.size > 0 ? newImage_1_File : undefined,
+      image_2_file: newImage_2_File.size > 0 ? newImage_2_File : undefined,
+      image_3_file: newImage_3_File.size > 0 ? newImage_3_File : undefined,
+      cast: castTeamParsed,
+      creative: creativeTeamParsed,
+      musicians: musiciansTeamParsed,
+      dancers: dancersTeamParsed,
+      image_1_url: formData.get('image_1_url'),
+      image_2_url: formData.get('image_2_url'),
+      image_3_url: formData.get('image_3_url'),
+    }) as Show;
+
+
+    const updatedInputData = await handleInputDataWithNewImageFiles(inputData, "shows");
+
+    const data = {
+      document: "shows",
+      entry: "content",
+      itemLocator: "content.id",
+      newContent: updatedInputData,
+    }
+
+    const updated = await fetch(`${BASE_URL}/server/edit/item`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        'API-Key': DATA_API_KEY
+      },
+      referrerPolicy: 'no-referrer',
+      body: JSON.stringify(data)
+    });
+
+    revalidatePath('/(editor)/editor', 'page');
+
+    return { message: `show updated!!!` }
   } catch (e) {
     console.log(e)
     return { message: `${e}` }

@@ -9,6 +9,9 @@ import CreateShowFromClient from "../forms/CreateShowFromClient";
 
 
 
+function hi(){
+    console.log('hi')
+}
 
 
 const isProd = process.env.NODE_ENV === 'production';
