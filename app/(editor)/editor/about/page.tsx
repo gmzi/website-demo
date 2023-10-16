@@ -1,3 +1,4 @@
+import { notFound, redirect } from "next/navigation";
 import About from "@/components/editors/About";
 import { EditAbout } from "@/components/forms/EditAbout";
 import Bio from "@/components/editors/Bio";
@@ -14,8 +15,21 @@ import { auth } from '@clerk/nextjs';
 const AUTHORIZED_USER_ID = process.env.AUTHORIZED_USER_ID;
 
 export default async function EditorMainPage() {
+
   // const user: User | null = await currentUser();
+  const {orgRole} = auth();
   // const {userId} : {userId: string | null} = auth();
+
+  if (orgRole !== 'admin') {
+    return (
+      <div>
+        <UserButton afterSignOutUrl="/editor" />
+        <SignOutButton />
+        <p>you are an unauthorized user to edit this page, please sign out from your account and sign in as an authorized user</p>
+      </div>
+
+    )
+  }
   // if (user?.id !== AUTHORIZED_USER_ID) {
   //   return (
   //     <div>
@@ -27,42 +41,14 @@ export default async function EditorMainPage() {
   //   )
   // }
 
-
-  const {orgRole} = auth();
-  if (orgRole !== 'admin') {
-    return (
-      <div>
-        <UserButton afterSignOutUrl="/editor" />
-        <SignOutButton />
-        <p>you are an unauthorized user to edit this page, please sign out from your account and sign in as an authorized user</p>
-      </div>
-
-    )
-  }
-
   return (
     <>
       <UserButton afterSignOutUrl="/editor" />
       <SignOutButton />
       <div className="editor-sections-wrapper">
+        <h1>About!!!!</h1>
         {/* @ts-expect-error Server Component  */}
-        <About/> 
-        {/* @ts-expect-error Server Component  */}
-        <Shows/>
-        
-        
-        {/* 
-        <Shows />
-        
-        
-        <Courses />        
-        <Press/>
-        <Bio />
-        
-        <Tours/>
-        <Press/>
-        <Podcast/>
-         */}
+        <About/>
       </div>
     </>
   )

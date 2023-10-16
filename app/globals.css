@@ -144,9 +144,10 @@ main {
     }
   }
 /* ---------------------------------------- */
+/* SECTIONS */
 /* ---------------------------------------- */
 
-.imgContainer {
+/* .imgContainer {
   padding-bottom: .5em;
 }
 
@@ -156,7 +157,67 @@ main {
 
 .sectionBio div {
   margin: 2em 0em;
+} */
+
+/* Styles for the about-container */
+/* .about-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 2em;
 }
+
+.about-image img {
+  max-width: 100%;
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.about-content {
+  margin-left: 2em;
+}
+.sectionAbout {
+  text-align: center;
+  padding: 2em;
+}
+
+.sectionAbout h1 {
+  font-size: 2em;
+  color: #333;
+  margin-bottom: 1em;
+}
+
+.imgContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.about-text {
+  font-size: 1.2em;
+  line-height: 1.5;
+} */
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  /* Adjust styles for smaller screens */
+  .about-container {
+      flex-direction: column;
+      align-items: center;
+  }
+
+  .about-content {
+      margin: 1em 0;
+  }
+
+  .sectionAbout h1 {
+      font-size: 1.5em;
+  }
+
+  .imgContainer {
+      width: 100%;
+  }
+}
+
 
 /* ---------------------------------------- */
 /* ---------------------------------------- */

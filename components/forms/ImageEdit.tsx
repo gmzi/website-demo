@@ -44,6 +44,8 @@ export function ImageEdit({ imageUrl }: { imageUrl: string }) {
                     width={0}
                     height={0}
                     sizes="100vw"
+                    priority={false}
+                    placeholder='empty'
                     style={{
                         width: '30%',
                         height: 'auto',

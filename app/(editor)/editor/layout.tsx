@@ -1,4 +1,3 @@
-const BASE_URL = process.env.BASE_URL;
 
 interface EditorProps {
   children?: React.ReactNode
@@ -7,7 +6,7 @@ interface EditorProps {
 export default async function EditorLayout({ children }: EditorProps) {
 
   return (
-    <div className="container mx-auto grid items-start gap-10 py-8">
+    <div>
       {children}
     </div>
   )
