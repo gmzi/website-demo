@@ -667,8 +667,21 @@ export async function editPressArticle(prevState: any, formData: FormData) {
   }
 }
 
+async function deleteImagesAndUpdateObject(imagesArray: {url: string, index: number}[], inputData: any){
+  for (const imageObject of imagesArray) {
+    const index = imageObject.index
+    const trashOldImage = await moveToTrash(imageObject.url);
+    inputData[`image_${index}_url`] = "";
+  }
+  return inputData;
+}
+
 export async function editShow(prevState: any, formData: FormData) {
   try {
+    const imagesToDelete = formData.get("delete_image_urls");
+
+    const parsedImagesToDelete = JSON.parse(imagesToDelete as string);
+
     const newImage_1_File = formData.get("new_image_1_file") as File;
     const newImage_2_File = formData.get("new_image_2_file") as File;
     const newImage_3_File = formData.get("new_image_3_file") as File;
@@ -705,13 +718,17 @@ export async function editShow(prevState: any, formData: FormData) {
     }) as Show;
 
 
-    const updatedInputData = await handleInputDataWithNewImageFiles(inputData, "shows");
+    // mutate inputData to load new images:
+    const inputDataWithNewImages = await handleInputDataWithNewImageFiles(inputData, "shows");
+
+    // mutate inputData to delete images removed by client:
+    const inputDataDeletedImages = await deleteImagesAndUpdateObject(parsedImagesToDelete,inputDataWithNewImages)
 
     const data = {
       document: "shows",
       entry: "content",
       itemLocator: "content.id",
-      newContent: updatedInputData,
+      newContent: inputDataDeletedImages,
     }
 
     const updated = await fetch(`${BASE_URL}/server/edit/item`, {

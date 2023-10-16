@@ -3,7 +3,7 @@
 // @ts-expect-error
 import { experimental_useFormState as useFormState } from 'react-dom'
 import { experimental_useFormStatus as useFormStatus } from 'react-dom'
-import { FormEvent, useState } from 'react';
+import { FormEvent, useEffect, useState } from 'react';
 import Image from 'next/image';
 import { set } from 'zod';
 import { moveToTrash } from '@/app/cloudinary';
@@ -166,7 +166,7 @@ export function ImageInputWithIndexAndDefaultValue({ idx, defaultValue }: { idx:
     )
 }
 
-export function ImageInputWithIndexAndDefaultValueAndDeleteButton({ idx, defaultValue }: { idx: number, defaultValue: string }) {
+export function ImageInputWithIndexAndDefaultValueAndDeleteButton({ idx, defaultValue, handleDeleteImage }: { idx: number, defaultValue: string, handleDeleteImage: (url: string, index: number) => void  }) {
     const [imageFile, setImageFile] = useState(null);
     const [previewImageUrl, setPreviewImageUrl] = useState<string | null>(defaultValue);
     const [imageUrl, setImageUrl] = useState(defaultValue)
@@ -194,29 +194,11 @@ export function ImageInputWithIndexAndDefaultValueAndDeleteButton({ idx, default
         return;
     }
 
-    async function handleDeleteImage() {
-        const data = {
-            imageUrl: imageUrl
-        }
-
-        
-        // TODO: DELETE IMAGE FROM CLOUDINARY:
-        // currently calling from client triggers a form submission, 
-        // figure out a way to get the imageUrl, delete it from 
-        // cloudinary and empty database. 
-        // const deleteImage = await fetch(`/server/image/delete`, {
-        //     method: 'POST',
-        //     headers: {
-        //         'Content-Type': 'application/json',
-        //         'API-Key': DATA_API_KEY
-        //     },
-        //     referrerPolicy: 'no-referrer',
-        //     body: JSON.stringify(data)
-        // })
-
+    function handleDelete(){
         setImageFile(null);
         setPreviewImageUrl(null);
         setImageUrl('');
+        handleDeleteImage(imageUrl, idx);
     }
 
     return (
@@ -247,7 +229,7 @@ export function ImageInputWithIndexAndDefaultValueAndDeleteButton({ idx, default
                         }}
 
                     />
-                    <button onClick={handleDeleteImage}>Eliminar Imagen</button>
+                    <button onClick={handleDelete}>Eliminar Imagen</button>
                 </div>
             }
         </>

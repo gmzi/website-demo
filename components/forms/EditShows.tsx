@@ -22,21 +22,8 @@ import Image from 'next/image'
 import { set } from 'zod'
 
 
-interface ImageProp {
-    imageUrl: string;
-}
-
-interface PressArticlesProps {
-    articles: WrittenPressArticle[];
-}
-
 interface ShowsListProps {
     shows: Show[];
-}
-
-
-interface PressVideosProps {
-    pressVideos: VideoPressArticle[];
 }
 
 interface EditPressVideoProps {
@@ -74,63 +61,6 @@ function EditButton() {
         </button>
     )
 }
-
-export function HeroImage({ imageUrl }: ImageProp) {
-    const [state, formAction] = useFormState(editPressHeroImage, initialState)
-
-    return (
-        <form action={formAction}>
-            <h2>Editar imagen</h2>
-            <ImageEdit imageUrl={imageUrl} />
-            <EditButton />
-            <p aria-live="polite" className="sr-only" role="status">
-                {state?.message}
-            </p>
-        </form>
-    )
-
-}
-
-// export function PressArticles({ articles }: PressArticlesProps) {
-//     const [openEditor, setOpenEditor] = useState<number | false>(false);
-
-//     function handleClick(e: React.MouseEvent<HTMLButtonElement>) {
-//         e.preventDefault();
-//         setOpenEditor(e.currentTarget.tabIndex)
-//     }
-
-
-//     function handleCancel() {
-//         setOpenEditor(false)
-//     }
-
-//     const artciclesList = articles.map((article: WrittenPressArticle, i: number) => (
-//         <div key={`press-card-${i}`} className="press-card">
-//             <div className="press-card-header">
-//                 <h4>{article.veredict}</h4>
-//             </div>
-//             <div>
-//                 <p>{article.quote}</p>
-//                 <div>
-//                     <span className="journalist">{article.journalist}</span>
-//                 </div>
-//                 <div>
-//                     <span className="media-organization">{article.media_organization}</span>
-//                 </div>
-//             </div>
-//             <button onClick={handleClick} tabIndex={i}>Editar</button>
-//             <Delete document="press" entry="written_press" section="press" id={article.id} />
-//         </div>
-//     ));
-
-//     return (
-//         <div>
-//             <h2>Artículos de prensa:</h2>
-//             {/* {openEditor !== false ? <EditAvailableCourse articles={articles} index={openEditor} handleCancel={handleCancel} /> : artciclesList} */}
-//             {/* {openEditor !== false ? <Edit articles={articles} index={openEditor} handleCancel={handleCancel} /> : artciclesList} */}
-//         </div>
-//     )
-// }
 
 export function ShowsList({ shows }: ShowsListProps) {
     const [openEditor, setOpenEditor] = useState<number | false>(false);
@@ -187,20 +117,28 @@ export function ShowsList({ shows }: ShowsListProps) {
 
 export function Edit({ articles, index, handleCancel }: EditProps) {
     const [state, formAction] = useFormState(editShow, initialState)
+    const [deleteImages, setDeleteImages] = useState<{url: string, index: number}[]>([]);
 
     const item = articles[index];
 
+    function handleDeleteImage(url: string, index: number) {
+        setDeleteImages(prevParsedUrls => [...prevParsedUrls, {url: url, index: index}])
+    }
+
     return (
         <form action={formAction} id="myForm" className="edit-show-form">
+
             <input type="hidden" name="id" value={item.id} />
             <input type="hidden" name="slug" value={item.slug} />
+            <input type="hidden" name={`delete_image_urls`} id={`delete_image_urls`} value={JSON.stringify(deleteImages)} />
+
             <h2>Editar show</h2>
             <div className="show-card create">
                 <div className="show-card__image create">
                     <h2>Adjuntar imágenes -una obligatoria, dos opcionales-</h2>
                     <ImageInputWithIndexAndDefaultValue idx={1} defaultValue={item.image_1_url} />
-                    <ImageInputWithIndexAndDefaultValueAndDeleteButton idx={2} defaultValue={item.image_2_url} />
-                    <ImageInputWithIndexAndDefaultValueAndDeleteButton idx={3} defaultValue={item.image_3_url} />
+                    <ImageInputWithIndexAndDefaultValueAndDeleteButton idx={2} defaultValue={item.image_2_url} handleDeleteImage={handleDeleteImage}  />
+                    <ImageInputWithIndexAndDefaultValueAndDeleteButton idx={3} defaultValue={item.image_3_url} handleDeleteImage={handleDeleteImage} />
                 </div>
                 <div className="show-card__content create">
                     <label htmlFor="title">Título del espectáculo:</label>
@@ -378,91 +316,5 @@ export function EditTeam({ labelContent, inputName, required, membersArray }: { 
             <input type="text" id='clientInput' name='clientInput' onChange={handleInputChange} />
             {team ? (<button type="button" onClick={handleWholeTeam}>agregar</button>) : <button disabled type="button" onClick={handleWholeTeam}>agregar</button>}
         </>
-    )
-}
-
-export function PressVideos({ pressVideos }: PressVideosProps) {
-    const [openEditor, setOpenEditor] = useState<number | false>(false);
-
-    function handleClick(e: React.MouseEvent<HTMLButtonElement>) {
-        e.preventDefault();
-        setOpenEditor(e.currentTarget.tabIndex)
-    }
-
-
-    function handleCancel() {
-        setOpenEditor(false)
-    }
-
-    const pressVideosList = pressVideos.map((pressVideo: VideoPressArticle, i: number) => (
-        <div className="press-video-card" key={`${pressVideo.video_url}-${i}`}>
-            <div className="video-container">
-                <iframe
-                    src={pressVideo.video_url}
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    title={pressVideo.description}
-                />
-            </div>
-            <div className="video-description">
-                <span>{pressVideo.description}</span>
-            </div>
-            <button onClick={handleClick} tabIndex={i}>Editar</button>
-            <Delete document="press" entry="video_press" section="press" id={pressVideo.id} />
-        </div>
-    ));
-
-    return (
-        <div>
-            <h2>Videos de prensa:</h2>
-            {/* {openEditor !== false ? <EditAvailableCourse pressVideos={pressVideos} index={openEditor} handleCancel={handleCancel} /> : pressVideosList} */}
-            {openEditor !== false ? <EditPressVideo pressVideos={pressVideos} index={openEditor} handleCancel={handleCancel} /> : pressVideosList}
-        </div>
-    )
-}
-
-export function EditPressVideo({ pressVideos, index, handleCancel }: EditPressVideoProps) {
-    const [state, formAction] = useFormState(editPressVideo, initialState)
-
-    const item = pressVideos[index];
-
-    return (
-        <form action={formAction}>
-            <h2>EDITAR</h2>
-            <input type="hidden" name="id" value={item.id} />
-
-            <div className="press-video-card">
-                <label htmlFor="show">Espectaculo:</label>
-                <input type="text" id="show" name="show" defaultValue={item.show} />
-
-                {/* <label htmlFor="video_url">Link al video:</label>
-                <input type="text" id="video_url" name="video_url" defaultValue={item.video_url} required />
-                <div className="video-container">
-                    <iframe
-                        src={item.video_url}
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        title={item.description}
-                    />
-                </div> */}
-
-                <IframeEdit videoUrl={item.video_url} />
-
-                <div className="video-description">
-                    <label htmlFor="description">Epigrafe del video:</label>
-                    <input type="text" id="description" name="description" defaultValue={item.description} />
-                </div>
-
-                <label htmlFor="title">Titulo del video:</label>
-                <input type="text" id="title" name="title" />
-
-                <label htmlFor="source_organization">Institución:</label>
-                <input type="text" id="source_organization" name="source_organization" defaultValue={item.source_organization} />
-
-                <EditButton />
-                <button onClick={handleCancel}>Cancelar</button>
-            </div>
-            <p aria-live="polite" className="sr-only" role="status">
-                {state?.message}
-            </p>
-        </form>
     )
 }
