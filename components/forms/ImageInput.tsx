@@ -132,11 +132,6 @@ export function ImageInputWithIndexAndDefaultValue({ idx, defaultValue }: { idx:
         return;
     }
 
-    function handleDeleteImage() {
-        setImageFile(null);
-        setPreviewImageUrl(null);
-    }
-
     return (
         <>
             <input type="hidden" name={`image_${idx}_url`} value={defaultValue} />
