@@ -321,5 +321,15 @@
             "key2",
             "key3"
         ]
+    },
+    "bio": {
+        "_id": {
+            "$oid": "64937242971d34b2fbbfb9a5"
+        },
+        "name": "bio",
+        "content_html": "<p><strong>EDIT 2 </strong>Soy dramaturgo, director, docente y actor. Estudié en la <strong>Escuela Nacional de Arte Dramático</strong>. En Dramaturgia me formé con <strong>Javier Daulte</strong> y con <strong>Ricardo Monti</strong>, dos referentes fundamentales en mi vida.</p><p><strong>Me dedico a contar historias</strong> y ese viaje es mi preferido. La cosa empieza con una imagen interna y finaliza con la concreción de la misma en proyecto teatral o fílmico. <strong>Me apasiona esta profesión en todas sus formas</strong>, ya sea en el desarrollo de los proyectos propios, como así también acompañando a otras personas en sus búsquedas creativas. De ahí deviene esta otra forma de pasión que es la docencia.</p><p>Mis maestros me impulsaron a escribir y a entender este arte como herramienta de libertad a la hora de producir. Cuando era estudiante de actuación en el Conservatorio Nacional con mis compañeros actores buscábamos textos ya escritos para montarlos y poder actuar. Siento que pertenezco a una generación de transición entre aquel modo y uno nuevo (muy antiguo) en donde uno escribe sus textos para producir sus espectáculos.</p><p>Eso mismo es lo que pretendo transmitir con la docencia: la dramaturgia como herramienta de libertad para llevar adelante la propia historia.</p><p><strong>La imagen interna que necesita evolucionar en obra, te puede cambiar la vida de modo literal y absoluto. Desarrollarla te hace alguien felíz, lo puedo asegurar por lo que veo en mis amigos colegas, en los alumnos y en mí.</strong></p><p>La imagen en términos artísticos trae algo de lo profundo de uno y por ende se configura en novedad para la vida de quien la saca a la luz (y de algún modo de quien la ve luego materializada en obra). Ese es el viaje.</p><p>Nunca pensé que algunas de mis imágenes se transformarían en obras, menos que alguien las quisiera actuar, mucho menos que la gente y la crítica fueran a verlas y las elogiaran. <strong>Incluso, que algunas fueran reconocidas en Argentina, Latinoamérica, Europa y Estados Unidos</strong>.</p><p><strong>Es una locura</strong>. Pero todo nace de una imagen interna, genuina, potente y única, de esa novedad íntima y de la constancia para que se configure en obra.</p><p>Así que atención porque es cosa seria: Nunca se sabe a dónde te va a llevar la imagen y es bueno estar muy preparados para serle fieles y desarrollarla con todo el amor y dedicación posibles.</p><p></p><p><strong>Así me enseñaron y así humildemente me gustaría acompañarte en tu viaje personal.</strong></p>",
+        "image_1_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1696548631/bio/c8ugxrsrv9tgein9rzlw.webp",
+        "image_2_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1696604547/bio/uclpmh9mizjklegsrib9.jpg",
+        "image_3_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1696604569/bio/xia5nugb0sijf8yy7gfj.jpg"
     }
 }

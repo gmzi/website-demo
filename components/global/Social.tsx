@@ -27,22 +27,6 @@ const Social = async function Social() {
 
     const socialData: SocialData[] = localData.social!
 
-    // return (
-    //     <ul className={'social'}>
-    //         {socialData.map((item, index) => (
-    //             <li key={index}>
-    //                 <a href={item.url} rel="noopener noreferrer" target="_blank">{
-    //                     item.name === "instagram" ? <InstagramIcon /> :
-    //                         item.name === "facebook" ? <FacebookIcon /> :
-    //                             item.name === "twitter" ? <TwitterIcon /> :
-    //                                 item.name === "youtube" ? <YoutubeIcon /> :
-    //                                     null
-    //                 }</a>
-    //             </li>
-    //         ))}
-    //     </ul>
-    // )
-
     return (
         <div className="social-media">
             {socialData.map((item, index) => (

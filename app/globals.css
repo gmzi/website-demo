@@ -142,7 +142,7 @@ main {
 section {
   max-width: 70em;
   margin: 0 auto;
-  padding: 2em;
+  padding: 1em;
   margin-top: 1em;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
   border-radius: 10px;
@@ -623,6 +623,7 @@ input[type="hidden"] {
 footer {
   text-align: center;
   margin: 0em;
+  padding: .5em 0em;
   border-top: var(--color-border-bottom);
   position: relative;
   background-color: rgb(245, 245, 245);
@@ -661,6 +662,43 @@ footer p {
 
 .social-media a:hover {
   transform: scale(1.2);
+}
+
+
+/* -------------------------------------------------------- */
+/* IMAGE GRID */
+/* -------------------------------------------------------- */
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: .6em;
+  margin: 2em 0em;
+}
+
+.image-box {
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.image-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease-in-out;
+}
+
+.image-box:hover img {
+  transform: scale(1.1);
+}
+
+.image-box-0, .image-box-2, .image-box-3, .image-box-4 {
+  height: 16em;
+
+}
+
+.image-box-1, .image-box-5 {
+  height: 31em;
 }
 
 

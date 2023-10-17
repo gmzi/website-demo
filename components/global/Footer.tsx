@@ -5,7 +5,7 @@ export function Footer() {
     <footer>
       <Social/>
       <p>
-        &copy; 2024, todos los derechos reservados.
+        &copy;2024, todos los derechos reservados.
       </p>
     </footer>
   )

@@ -3,6 +3,16 @@ import Image from 'next/image'
 import { getData } from "@/lib/getData"
 import parse from 'html-react-parser'
 import { type } from "os"
+import { getRemoteOrLocalData } from "@/lib/getRemoteOrLocalData"
+import ImageGrid from "@/components/ImageGrid"
+
+import image1 from '../../../public/images/grid/1.jpg'
+import image2 from '../../../public/images/grid/2.jpg'
+import image3 from '../../../public/images/grid/3.jpg'
+import image4 from '../../../public/images/grid/4.jpg'
+import image5 from '../../../public/images/grid/5.jpg'
+import image6 from '../../../public/images/grid/6.jpg'
+
 
 export const metadata: Metadata = {
     title: 'Bio',
@@ -10,8 +20,9 @@ export const metadata: Metadata = {
 }
 
 export default async function BioPage() {
-    
-    const data = await getData("bio");
+
+    // const data = await getData("bio");
+    const data = await getRemoteOrLocalData("bio");
 
     // const text = parse(data?.content_html) || '';
     const image1Url = data?.image_1_url || '';
@@ -27,47 +38,23 @@ export default async function BioPage() {
 
     const html_1 = array_1.join("")
     const html_2 = array_2.join("")
-    
+
     const text_1 = parse(html_1)
     const text_2 = parse(html_2)
 
 
     return (
-        <section className='sectionBio'>
+        <section className='bio'>
+            
             <h1>Bio</h1>
             <div>
-                <Image
-                    src={image1Url}
-                    width={0}
-                    height={0}
-                    sizes="100vw"
-                    style={{
-                        width: '40%', 
-                        height: 'auto', 
-                        borderRadius: '5px',
-                        float: 'left',
-                        marginRight: '1em',
-                    }}
-                    alt="Picture of the author"
-                />
-                {text_1}
-            </div>
-            <div>
-                <Image
-                    src={image3Url}
-                    width={0}
-                    height={0}
-                    sizes="100vw"
-                    style={{
-                        width: '30%', 
-                        height: 'auto', 
-                        borderRadius: '5px', 
-                        float: 'right',
-                        marginRight: '1em',
-                    }}
-                    alt="Picture of the author"
-                />
-                {text_2}
+                <div className="paragraphContainer">
+                    {text_1}
+                </div>
+                <ImageGrid images={[image1Url, image2Url, image3Url]}/>
+                <div className="paragraphContainer">
+                    {text_2}
+                </div>
             </div>
         </section>
     )

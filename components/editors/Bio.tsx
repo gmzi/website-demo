@@ -24,11 +24,14 @@ export default async function Bio() {
     return (
         <div>
             <h2>Bio</h2>
-            {/* <TextEditor contentHtml={contentHtml} document={documentName} section={sectionName}/>
-            <ImageUpload imageUrl={image1Url} document={documentName} folder={folderName} entry={'image_1_url'} section={sectionName}/>
-            <ImageUpload imageUrl={image2Url} document={documentName} folder={folderName} entry={'image_2_url'} section={sectionName}/>
-            <ImageUpload imageUrl={image3Url} document={documentName} folder={folderName} entry={'image_3_url'} section={sectionName}/> */}
             <EditBio contentHtml={contentHtml} imageUrls={imageURLS}/>
         </div>
     )
   }
+
+  /* 
+  <TextEditor contentHtml={contentHtml} document={documentName} section={sectionName}/>
+<ImageUpload imageUrl={image1Url} document={documentName} folder={folderName} entry={'image_1_url'} section={sectionName}/>
+<ImageUpload imageUrl={image2Url} document={documentName} folder={folderName} entry={'image_2_url'} section={sectionName}/>
+<ImageUpload imageUrl={image3Url} document={documentName} folder={folderName} entry={'image_3_url'} section={sectionName}/>
+  */
