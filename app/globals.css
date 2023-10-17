@@ -44,7 +44,9 @@
     background-color: var(--primary-background);
     max-width: 100vw;
     overflow-x: hidden;
-    margin: .5em 1em;
+    margin: 0;
+    padding: 0;
+    /* margin: .5em 1em; */
     /* font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
       Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif; */
   }
@@ -147,76 +149,36 @@ main {
 /* SECTIONS */
 /* ---------------------------------------- */
 
-/* .imgContainer {
-  padding-bottom: .5em;
-}
-
-.sectionAbout p {
-  margin: 1em 0em;
-}
-
-.sectionBio div {
-  margin: 2em 0em;
-} */
-
-/* Styles for the about-container */
-/* .about-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 2em;
-}
-
-.about-image img {
-  max-width: 100%;
-  border-radius: 50%;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-}
-
-.about-content {
-  margin-left: 2em;
-}
-.sectionAbout {
-  text-align: center;
+section {
+  max-width: 70em;
+  margin: 0 auto;
   padding: 2em;
-}
-
-.sectionAbout h1 {
-  font-size: 2em;
-  color: #333;
-  margin-bottom: 1em;
+  margin-top: 1em;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
 }
 
 .imgContainer {
-  display: flex;
-  justify-content: center;
+  margin: 1em;
+  /* border: 10px solid red; */
 }
 
-.about-text {
-  font-size: 1.2em;
-  line-height: 1.5;
-} */
-
-/* Responsive Styles */
-@media (max-width: 768px) {
-  /* Adjust styles for smaller screens */
-  .about-container {
-      flex-direction: column;
-      align-items: center;
-  }
-
-  .about-content {
-      margin: 1em 0;
-  }
-
-  .sectionAbout h1 {
-      font-size: 1.5em;
-  }
-
-  .imgContainer {
-      width: 100%;
-  }
+.imgContainer img {
+  border-radius: 10%;
+  display: block;
+  /* center image: */
+  margin: 0 auto;
 }
+
+p {
+  /* text-indent: 1em; */
+  margin-top: 1em;
+}
+
+
+
+
+
 
 
 /* ---------------------------------------- */

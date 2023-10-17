@@ -50,7 +50,6 @@ export default async function EditorMainPage() {
         {/* @ts-expect-error Server Component  */}
         <Shows/>
         
-        
         {/* 
         <Shows />
         
