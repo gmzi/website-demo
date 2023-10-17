@@ -1,39 +1,60 @@
 import { SocialData } from "@/types";
 import { getMetadata } from "@/lib/getMetadata";
+import { getData } from "@/lib/getData";
+import { getRemoteOrLocalData } from "@/lib/getRemoteOrLocalData";
 import {
     FacebookIcon,
     InstagramIcon,
     TwitterIcon,
     YoutubeIcon,
-  } from '../shared/icons';
+} from '../shared/icons';
 
-const Social = async function Social(){
-        const remote = await getMetadata() || {
-        author_name: '', 
+const Social = async function Social() {
+    //     const data = await getData("metadata") || {
+    //     author_name: '', 
+    //     description: '',
+    //     social: []
+    //   }
+    const data = await getRemoteOrLocalData("metadata") || {
+        author_name: '',
         description: '',
         social: []
-      }
-    
-      const {author_name, title, description, social} = remote
-    
-      const localData = {author_name, title, description, social}
+    }
 
-      const socialData:SocialData[] = localData.social!
+    const { author_name, title, description, social } = data
+
+    const localData = { author_name, title, description, social }
+
+    const socialData: SocialData[] = localData.social!
+
+    // return (
+    //     <ul className={'social'}>
+    //         {socialData.map((item, index) => (
+    //             <li key={index}>
+    //                 <a href={item.url} rel="noopener noreferrer" target="_blank">{
+    //                     item.name === "instagram" ? <InstagramIcon /> :
+    //                         item.name === "facebook" ? <FacebookIcon /> :
+    //                             item.name === "twitter" ? <TwitterIcon /> :
+    //                                 item.name === "youtube" ? <YoutubeIcon /> :
+    //                                     null
+    //                 }</a>
+    //             </li>
+    //         ))}
+    //     </ul>
+    // )
 
     return (
-        <ul className={'social'}>
+        <div className="social-media">
             {socialData.map((item, index) => (
-                <li key={index}>
-                    <a href={item.url} rel="noopener noreferrer" target="_blank">{
-                        item.name === "instagram" ? <InstagramIcon/>:
-                        item.name === "facebook" ? <FacebookIcon/> :
-                        item.name === "twitter" ? <TwitterIcon/> :
-                        item.name === "youtube" ? <YoutubeIcon/> :
-                        null
-                    }</a>
-                </li>
+                <a href={item.url} rel="noopener noreferrer" target="_blank" className="social-link">{
+                    item.name === "instagram" ? <InstagramIcon /> :
+                        item.name === "facebook" ? <FacebookIcon /> :
+                            item.name === "twitter" ? <TwitterIcon /> :
+                                item.name === "youtube" ? <YoutubeIcon /> :
+                                    null
+                }</a>
             ))}
-        </ul>
+        </div>
     )
 }
 
