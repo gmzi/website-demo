@@ -1050,6 +1050,9 @@ export async function editBio(prevState: any, formData: FormData) {
     const newImageFile0 = formData.get('new_image_file_0') as File;
     const newImageFile1 = formData.get('new_image_file_1') as File;
     const newImageFile2 = formData.get('new_image_file_2') as File;
+    const newImageFile3 = formData.get('new_image_file_3') as File;
+    const newImageFile4 = formData.get('new_image_file_4') as File;
+    const newImageFile5 = formData.get('new_image_file_5') as File;
 
 
     const bioSchema = z.object({
@@ -1090,9 +1093,48 @@ export async function editBio(prevState: any, formData: FormData) {
             }, "Only .jpg, .jpeg, .png, and .webp formats are supported"
           )
         : z.undefined(),
+      image_file_3: newImageFile3.size > 0
+        ? z
+          .any()
+          .refine((file) => {
+            return file?.size <= MAX_FILE_SIZE;
+          }, 'Max image size is 4MB.')
+          .refine(
+            (file) => {
+              return ACCEPTED_IMAGE_MIME_TYPES.includes(file?.type)
+            }, "Only .jpg, .jpeg, .png, and .webp formats are supported"
+          )
+        : z.undefined(),
+      image_file_4: newImageFile4.size > 0
+        ? z
+          .any()
+          .refine((file) => {
+            return file?.size <= MAX_FILE_SIZE;
+          }, 'Max image size is 4MB.')
+          .refine(
+            (file) => {
+              return ACCEPTED_IMAGE_MIME_TYPES.includes(file?.type)
+            }, "Only .jpg, .jpeg, .png, and .webp formats are supported"
+          )
+        : z.undefined(),
+      image_file_5: newImageFile5.size > 0
+        ? z
+          .any()
+          .refine((file) => {
+            return file?.size <= MAX_FILE_SIZE;
+          }, 'Max image size is 4MB.')
+          .refine(
+            (file) => {
+              return ACCEPTED_IMAGE_MIME_TYPES.includes(file?.type)
+            }, "Only .jpg, .jpeg, .png, and .webp formats are supported"
+          )
+        : z.undefined(),
       image_url_0: z.string(),
       image_url_1: z.string(),
       image_url_2: z.string(),
+      image_url_3: z.string(),
+      image_url_4: z.string(),
+      image_url_5: z.string(),
     })
 
     const inputData: {
@@ -1102,9 +1144,15 @@ export async function editBio(prevState: any, formData: FormData) {
       image_file_0: newImageFile0.size > 0 ? (formData.get('new_image_file_0') as File) : undefined,
       image_file_1: newImageFile1.size > 0 ? (formData.get('new_image_file_1') as File) : undefined,
       image_file_2: newImageFile2.size > 0 ? (formData.get('new_image_file_2') as File) : undefined,
+      image_file_3: newImageFile3.size > 0 ? (formData.get('new_image_file_3') as File) : undefined,
+      image_file_4: newImageFile4.size > 0 ? (formData.get('new_image_file_4') as File) : undefined,
+      image_file_5: newImageFile5.size > 0 ? (formData.get('new_image_file_5') as File) : undefined,
       image_url_0: formData.get('image_url_0'),
       image_url_1: formData.get('image_url_1'),
-      image_url_2: formData.get('image_url_2')
+      image_url_2: formData.get('image_url_2'),
+      image_url_3: formData.get('image_url_3'),
+      image_url_4: formData.get('image_url_4'),
+      image_url_5: formData.get('image_url_5'),
     })
 
     // store image  files only:
@@ -1138,7 +1186,10 @@ export async function editBio(prevState: any, formData: FormData) {
       content_html: inputData.contentHtml,
       image_1_url: inputData.image_url_0,
       image_2_url: inputData.image_url_1,
-      image_3_url: inputData.image_url_2
+      image_3_url: inputData.image_url_2,
+      image_4_url: inputData.image_url_3,
+      image_5_url: inputData.image_url_4,
+      image_6_url: inputData.image_url_5
     }
 
     const updated = await fetch(`${BASE_URL}/server/bio`, {
