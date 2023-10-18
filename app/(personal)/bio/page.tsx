@@ -6,13 +6,6 @@ import { type } from "os"
 import { getRemoteOrLocalData } from "@/lib/getRemoteOrLocalData"
 import ImageGrid from "@/components/ImageGrid"
 
-import image1 from '../../../public/images/grid/1.jpg'
-import image2 from '../../../public/images/grid/2.jpg'
-import image3 from '../../../public/images/grid/3.jpg'
-import image4 from '../../../public/images/grid/4.jpg'
-import image5 from '../../../public/images/grid/5.jpg'
-import image6 from '../../../public/images/grid/6.jpg'
-
 
 export const metadata: Metadata = {
     title: 'Bio',

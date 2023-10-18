@@ -21,21 +21,14 @@ export const metadata: Metadata = {
 }
 
 export default async function ShowsPage() {
-    // let data;
-    // if (isProd){
-    //     data = await getData("shows");
-    // } else {
-    //     data = document.shows;
-    // }
 
-    // const data = await getRemoteOrLocalData("shows");
-
-    const data = await getData("shows");
+    // const data = await getData("shows");
+    const data = await getRemoteOrLocalData("shows");
 
     const shows = [...data.content].reverse() || [];
 
     return (
-        <section className="sectionShows">
+        <section className="shows">
             <h1>Espectáculos</h1>
             <ShowsGallery shows={shows}/>
         </section>

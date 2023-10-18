@@ -413,7 +413,7 @@ input[type="text"] {
 /* ------------------------------------ */
 /* SHOW CARD */
 
-.show-card {
+/* .show-card {
   display: flex;
   flex-direction: column;
   border: 1px solid black;
@@ -423,7 +423,6 @@ input[type="text"] {
 }
 .show-card__image {
   width: 100%;
-  /* max-width: 50em; */
 }
 
 .show-card__image img {
@@ -451,32 +450,62 @@ input[type="text"] {
   background-color: #25d36535;
 }
 
-/* .show-card__section-title {
-
-} */
-
 .show-card__cast,
 .show-card__creative,
 .show-card__musicians,
 .show-card__dancers {
   margin: 1em 0em;
 }
-
-/* .show-card__cast ul,
-.show-card__creative ul,
-.show-card__musicians ul,
-.show-card__dancers ul {
-} */
-
 .show-card__cast li,
 .show-card__creative li,
 .show-card__musicians li,
 .show-card__dancers li {
   list-style: none;
+} */
+.show-card {
+  margin: 1em auto;
+  text-align: center; 
 }
 
-/* .show-card__description {
-} */
+.show-title {
+  font-size: 2.5em;
+  font-weight: bold;
+  margin-bottom: .1em;
+}
+
+.show-year {
+  font-size: 1em;
+  margin-top: .1em;
+}
+
+.show-image {
+  width: 100%;
+  object-fit: cover;
+  margin: 2.4em auto;
+}
+
+.show-sinopsis {
+  line-height: 1.3;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.show-credits-title {
+  font-weight: bold;
+  line-height: 3;
+  text-decoration: underline;
+  margin: 1em 0;
+  border-top: var(--color-border-bottom); 
+}
+
+.show-credits {
+  text-align: left;
+  font-size: 16px;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+
 
 /* ------------------------------------------------------------- */
 /* ------------------------------------------------------------- */

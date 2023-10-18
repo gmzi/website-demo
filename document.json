@@ -90,24 +90,108 @@
         "name": "shows",
         "content": [
             {
-                "id": "pu8neljwhofyqs9g3now",
-                "title": "SHOW 1",
-                "slug": "show-1",
-                "opening_date": "ooo",
-                "theatre": "o",
-                "sinopsis": "<p>jiojij</p>",
+                "id": "o2pyn00qzkvkd7v55jwp",
+                "title": "AYA",
+                "slug": "aya",
+                "opening_date": "fdsfsd",
+                "theatre": "fdsfs",
+                "sinopsis": "<p>jioijo</p>",
                 "cast": [
                     {
-                        "name": "o",
-                        "role": "a"
+                        "name": "jiojji"
                     }
                 ],
                 "creative": [],
                 "musicians": [],
                 "dancers": [],
-                "image_1_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1697151064/shows/xbdym988vgbb0yyrmisl.jpg",
+                "image_1_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1697474895/website-fer/shows/dkmex9kupyadr0ovevob.jpg",
                 "image_2_url": "",
                 "image_3_url": ""
+            },
+            {
+                "id": "5b897j8yv9ytlswkslrk",
+                "title": "La Payanca",
+                "slug": "la-payanca",
+                "opening_date": "2018",
+                "theatre": "",
+                "sinopsis": "<p><span>Es la historia de Jam, un chico del interior, que vuelve a su pueblo con motivo de la inauguración de nuevo taller de la fábrica familiar. </span></p><p><span>La empresa está en manos de su mamá y su tío Claudio, hermano de su padre muerto y actual esposo de su madre, Gertrudis. Previo a la inauguración se encontrarán en la casa de descanso familiar en la isla y a esta reunión, está invitada Ofelia, antiguo amor de Jam. Es de la mano de Ofelia que Jam tiene una visión de su padre en el río, quien le dice que en realidad no murió ahogado sino que fue asesinado por su propio hermano Claudio.</span></p><p><span>Jam, a partir de esa revelación fantasmagórica, intentara junto a Ofelia, develar la verdad y tomar venganza.</span></p>",
+                "cast": [
+                    {
+                        "name": "Sofía Gala Castiglione",
+                        "role": "OFELIA"
+                    },
+                    {
+                        "name": "Alejandro Paker",
+                        "role": "CLAUDIO"
+                    },
+                    {
+                        "name": "Santiago Pedrero",
+                        "role": "JAM"
+                    },
+                    {
+                        "name": "Estela Garelli",
+                        "role": "GERTRUDIS"
+                    }
+                ],
+                "creative": [
+                    {
+                        "name": "Espacio e iluminación",
+                        "role": "Fernando Ferrer"
+                    },
+                    {
+                        "name": "Gráfica",
+                        "role": "Juan Francisco Reato"
+                    },
+                    {
+                        "name": "Foto",
+                        "role": "Romina Giorno"
+                    },
+                    {
+                        "name": "Escenografía",
+                        "role": "Fernando Ferrer - Romina Giorno"
+                    },
+                    {
+                        "name": "Musicalización",
+                        "role": "Mauro Di Benedetto"
+                    },
+                    {
+                        "name": "Dirección de Arte",
+                        "role": "Romina Giorno"
+                    },
+                    {
+                        "name": "Vestuario",
+                        "role": "Romina Santorsola"
+                    },
+                    {
+                        "name": "Musicalización",
+                        "role": "Mauro Di Benedetto"
+                    },
+                    {
+                        "name": "Producción Ejecutiva",
+                        "role": "Laura Quevedo"
+                    },
+                    {
+                        "name": "Producción",
+                        "role": "Antonio Di Benedetto"
+                    },
+                    {
+                        "name": "Prensa y Difusión",
+                        "role": "Noe Cardaci - Maxi Cardaci"
+                    },
+                    {
+                        "name": "Asistencia de Producción y Dirección",
+                        "role": "Max Ruíz"
+                    },
+                    {
+                        "name": "Dramaturgia y Dirección",
+                        "role": "Fernando Ferrer"
+                    }
+                ],
+                "musicians": [],
+                "dancers": [],
+                "image_1_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1697649331/website-fer/shows/k7j1yixzysowtlypmxc0.webp",
+                "image_2_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1697649331/website-fer/shows/fytmcv1kvoxsrcfqiq3j.webp",
+                "image_3_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1697649332/website-fer/shows/ls1d2j7424hrikitdrjw.png"
             }
         ]
     },
