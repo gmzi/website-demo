@@ -30,7 +30,7 @@ const Social = async function Social() {
     return (
         <div className="social-media">
             {socialData.map((item, index) => (
-                <a href={item.url} rel="noopener noreferrer" target="_blank" className="social-link">{
+                <a key={`social-link-${index}`} href={item.url} rel="noopener noreferrer" target="_blank" className="social-link">{
                     item.name === "instagram" ? <InstagramIcon /> :
                         item.name === "facebook" ? <FacebookIcon /> :
                             item.name === "twitter" ? <TwitterIcon /> :

@@ -28,6 +28,9 @@ export default async function BioPage() {
     const image1Url = data?.image_1_url || '';
     const image2Url = data?.image_2_url || '';
     const image3Url = data?.image_3_url || '';
+    const image4Url = data?.image_4_url || '';
+    const image5Url = data?.image_5_url || '';
+    const image6Url = data?.image_6_url || '';
 
     const paragraphs = data?.content_html.split(/<\/?p>/).filter(Boolean);
 
@@ -45,13 +48,28 @@ export default async function BioPage() {
 
     return (
         <section className='bio'>
-            
             <h1>Bio</h1>
+            <div className="imgContainer">
+            <Image
+                    src={image1Url}
+                    width={0}
+                    height={0}
+                    sizes="100vw"
+                    style={{
+                        width: '60%',
+                        height: 'auto',
+                        borderRadius: '50%'
+                    }}
+                    alt="Picture of the author"
+                />
+            </div>
+            
             <div>
                 <div className="paragraphContainer">
                     {text_1}
                 </div>
-                <ImageGrid images={[image1Url, image2Url, image3Url]}/>
+                
+                <ImageGrid images={[image1Url, image2Url, image3Url, image4Url, image5Url, image6Url]}/>
                 <div className="paragraphContainer">
                     {text_2}
                 </div>
