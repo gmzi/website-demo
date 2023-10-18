@@ -14,8 +14,8 @@ import { getRemoteOrLocalData } from "@/lib/getRemoteOrLocalData";
 const isProd = process.env.NODE_ENV === 'production';
 
 export async function generateStaticParams() {
-    // const data = await getRemoteOrLocalData("shows");
-    const data = await getData("shows")
+    // const data = await getData("shows")
+    const data = await getRemoteOrLocalData("shows");
     const shows = data.content
     return shows.map((show: Show) => ({
         slug: show.slug,
@@ -28,8 +28,8 @@ export async function generateStaticParams() {
 
 export default async function ShowRoute({params}: {params: {slug: string}}) {
 
-    const data = await getData("shows");
-    // const data = await getRemoteOrLocalData("shows");
+    // const data = await getData("shows");
+    const data = await getRemoteOrLocalData("shows");
 
     const shows = data.content;
     
@@ -41,8 +41,6 @@ export default async function ShowRoute({params}: {params: {slug: string}}) {
 
 
     if (!show){
-        console.log('slug:', slug)
-        console.log('fixedSlug:', fixedSlug)
         return (
             <div>
                 <p>Thats not found</p>
