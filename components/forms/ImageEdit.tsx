@@ -91,7 +91,6 @@ export function ImagesEdit({ imageUrls }: { imageUrls: string[] }) {
                         accept="image/*"
                         onChange={(e) => handleImageChange(e, index)}
                     />
-
                     {previewImageUrls[index] && (
                         <Image
                             src={previewImageUrls[index]}
