@@ -4,10 +4,10 @@ import { getData } from "@/lib/getData"
 import parse from 'html-react-parser'
 import document from "@/document.json"
 import ShowCard from "@/components/ShowCard"
-import {ShowDisplay} from '@/components/ShowDisplay'
+import { ShowDisplay } from '@/components/ShowDisplay'
 import ShowsGallery from "@/components/ShowsGallery"
-import {getRemoteOrLocalData} from '@/lib/getRemoteOrLocalData';
-// import type { Show } from "@/lib/types"
+import { getRemoteOrLocalData } from '@/lib/getRemoteOrLocalData';
+import type { Show } from "@/types"
 
 
 
@@ -30,7 +30,12 @@ export default async function ShowsPage() {
     return (
         <section className="shows">
             <h1>Espectáculos</h1>
-            <ShowsGallery shows={shows}/>
+            <div className="shows-previews-container">
+                {/* <ShowsGallery shows={shows}/> */}
+                {shows.map((show: Show, index: number) => (
+                    <ShowDisplay key={`show-${show.title}-${index}`} show={show} />
+                ))}
+            </div>
         </section>
     )
 }
