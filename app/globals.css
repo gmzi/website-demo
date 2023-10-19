@@ -389,67 +389,44 @@ ol li div {
 /* ---------------------------------- */
 /* EDITOR */
 /* ---------------------------------- */
-.editor-showCard {
-  border: 3px solid gold;
-  margin: 1em;
-}
 
-/* Add this CSS to your stylesheet or use a CSS-in-JS solution */
-.create-show-form {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
-}
-
-/* .show-card.create {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: #f7f7f7;
-  border-radius: 10px;
-  padding: 20px;
-  margin: 20px 0;
-}
-
-.show-card__image.create {
-  flex: 1;
-}
-
-.show-card__content.create {
-  flex: 2;
-}
-
-label {
-  font-weight: bold;
-  margin-top: 10px;
+.form-edit label {
   display: block;
 }
 
-input[type="text"] {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  margin-top: 5px;
+.form-edit input {
+  text-align: center;
 }
 
-.show-card__title.create {
-  font-size: 18px;
+.show-credits-container {
+  text-align: center; 
 }
 
-.show-card__date.create {
-  font-size: 16px;
+.form-edit .show-credits {
+  display: inline-block; 
+  text-align: left; 
 }
 
-.show-card__theatre.create {
-  font-size: 16px;
+.form-edit .show-credits label, 
+.form-edit .show-credits input {
+  display: inline;
+  text-align: left;
+}
+.form-edit .show-credits input {
+  margin: .4em;
+  padding: .4em;
+}
+.form-edit .show-credits label {
+  margin: .2em;
 }
 
-.sr-only {
-  position: absolute;
-  left: -9999px;
-}
- */
+
+/* Add this CSS to your stylesheet or use a CSS-in-JS solution */
+/* .create-show-form {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+} */
 
 /* ---------------------------------- */
 /* AI GENERATED */

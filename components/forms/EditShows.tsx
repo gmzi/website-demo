@@ -77,10 +77,10 @@ export function ShowsList({ shows }: ShowsListProps) {
 
     const showsList = shows.map((show: Show, i: number) => (
         <div key={`${show.title}-${i}`} className="show-card-container">
-            <div className='display-show-card'>
+            <div className=''>
                 <div>
-                    <h1 className="display-show-card__title">{show.title}</h1>
-                    <p className="display-show-card__date">{show.opening_date}</p>
+                    <h1 className="">{show.title}</h1>
+                    <p className="">{show.opening_date}</p>
                 </div>
                 <Image
                     className="show-card-image"
@@ -98,7 +98,6 @@ export function ShowsList({ shows }: ShowsListProps) {
 
     return (
         <div className='shows-previews-container'>
-            <h2>Espectaculos:</h2>
             {openEditor !== false ? <Edit articles={shows} index={openEditor} handleCancel={handleCancel} /> : showsList}
         </div>
     )
@@ -116,12 +115,11 @@ export function Edit({ articles, index, handleCancel }: EditProps) {
     }
 
     return (
-        <form action={formAction} id="myForm" className="edit-show-form">
+        <form action={formAction} id="myForm" className="form-edit">
             <input type="hidden" name="id" value={item.id} />
             <input type="hidden" name="slug" value={item.slug} />
             <input type="hidden" name={`delete_image_urls`} id={`delete_image_urls`} value={JSON.stringify(deleteImages)} />
-            <h2>Editar show</h2>
-            <div className="show-card">
+            <div className="show-card editor">
                 <label htmlFor="title">Título del espectáculo:</label>
                 <input type="text" id="title" name="title" className="show-title" defaultValue={item.title} required />
 
@@ -135,21 +133,23 @@ export function Edit({ articles, index, handleCancel }: EditProps) {
                     <RichText contentHtml={item.sinopsis} />
                 </div>
                 <h2 className="show-credits-title">CREDITOS</h2>
-                <div className="show-credits">
-                    <h3>CON</h3>
-                    <EditTeam labelContent='Editar cast' inputName='cast' required={true} membersArray={item.cast} />
-                </div>
-                <div className="show-credits">
-                    {item.dancers.length ? <h3>Bailarines</h3> : null}
-                    <EditTeam labelContent='Editar bilarines' inputName='dancers' required={false} membersArray={item.dancers} />
-                </div>
-                <div className='show-credits'>
-                    {item.musicians.length ? <h3>Musicos</h3> : null}
-                    <EditTeam labelContent='Editar músicos' inputName='musicians' required={false} membersArray={item.musicians} />
-                </div>
-                <div className='show-credits'>
-                    <h3>Equipo creativo</h3>
-                    <EditTeam labelContent='Editar equipo creativo' inputName='creative' required={false} membersArray={item.creative} />
+                <div className="show-credits-container">
+                    <div className="show-credits editor">
+                        <h3>CON</h3>
+                        <EditTeam labelContent='' inputName='cast' required={true} membersArray={item.cast} />
+                    </div>
+                    <div className="show-credits">
+                        <h3>Bailarines</h3>
+                        <EditTeam labelContent='' inputName='dancers' required={false} membersArray={item.dancers} />
+                    </div>
+                    <div className='show-credits'>
+                        <h3>Musicos</h3> 
+                        <EditTeam labelContent='' inputName='musicians' required={false} membersArray={item.musicians} />                    
+                    </div>
+                    <div className='show-credits'>
+                        <h3>Equipo creativo</h3>
+                        <EditTeam labelContent='' inputName='creative' required={false} membersArray={item.creative} />
+                    </div>
                 </div>
                 <EditButton />
                 <button onClick={handleCancel}>Cancelar</button>
@@ -157,10 +157,12 @@ export function Edit({ articles, index, handleCancel }: EditProps) {
                     {state?.message}
                 </p>
                 {/* these fields are functional and available, but not being used in client: */}
-                {/* <ImageInputWithIndexAndDefaultValueAndDeleteButton idx={2} defaultValue={item.image_2_url} handleDeleteImage={handleDeleteImage}  /> */}
-                {/* <ImageInputWithIndexAndDefaultValueAndDeleteButton idx={3} defaultValue={item.image_3_url} handleDeleteImage={handleDeleteImage} /> */}
-                {/* <label htmlFor="theatre">Sala:</label> */}
-                {/* <input type="text" id="theatre" name="theatre" className="show-card__theatre create" defaultValue={item.theatre} /> */}
+                <div style={{display: 'none'}}>
+                    <ImageInputWithIndexAndDefaultValueAndDeleteButton idx={2} defaultValue={item.image_2_url} handleDeleteImage={handleDeleteImage}  />
+                    <ImageInputWithIndexAndDefaultValueAndDeleteButton idx={3} defaultValue={item.image_3_url} handleDeleteImage={handleDeleteImage} />
+                    <label htmlFor="theatre">Sala:</label>
+                    <input type="text" id="theatre" name="theatre" className="show-card__theatre create" defaultValue={item.theatre} />
+                </div>
             </div>
         </form>
     )
