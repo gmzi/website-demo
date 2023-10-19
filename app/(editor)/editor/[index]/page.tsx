@@ -44,7 +44,6 @@ export default async function EditorPage({ params }: { params: { index: string }
         <SignOutButton /> */}
         <p>you are an unauthorized user to edit this page, please sign out from your account and sign in as an authorized user</p>
       </div>
-
     )
   }
 
@@ -66,15 +65,5 @@ export default async function EditorPage({ params }: { params: { index: string }
   if (index === 'tours') return <Tours/>
   {/* @ts-expect-error Server Component */}
   if (index === 'press') return <Press/>
-
-  // return (
-  //   <>
-
-  //     <p>this route is NOT DEPRECATED </p>
-  //     <p>{index}</p>
-  //   </>
-    
-  // )
-
 }
   
