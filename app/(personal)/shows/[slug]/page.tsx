@@ -55,11 +55,10 @@ export default async function ShowRoute({params}: {params: {slug: string}}) {
             <ShowCard show={show}/>
             <br />
             <hr/>
+            {/* HERE IS WHERE WE SHOULD IMPLEMENT A SHOWS GALLERY THAT DOESN'T INCLUDE THE SHOW THAT IS BEING DISPLAYED ABOVE, LIKE A SHOWS.MAP WHERE
+            WE CAN FILTER OUT THE SHOW THAT WE DON'T WANT TO DISPLAY TWICE. WE CAN ADAPT SHOWSGALLERY COMPONENT, SINCE WE'RE NOT USING IT ANYWHERE ELSE, 
+            WE MIGHT EVENT DO THE SHOWS.MAP RIGHT HERE, NO SPECIFIC NEED TO CREATE ANOTHER COMPONENT, CAN BE DONE HERE PERFECTLY WELL*/}
             <ShowsGallery shows={shows}/>
         </section>
     )
 }
-
-
-// result : My%20show%20slug
-// I want: My-show-slug

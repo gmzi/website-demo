@@ -1,6 +1,6 @@
-@tailwind base;
+/* @tailwind base;
 @tailwind components;
-@tailwind utilities;
+@tailwind utilities; */
 
 :root {
     --max-width: 1100px;
@@ -15,6 +15,58 @@
     --color-background-box: #68adcf5b;
     --color-background-card: #84d0c05b;
     --color-background-courseCard: #4390d05b;
+    /* BROUGHT FRO   BLOG-REFLEXION ----------------------------------*/
+    --color-bg-def: ghostwhite;
+    --color-border-bottom-def: 1px solid rgba(217, 217, 233, 0.438);
+    --color-a-def: #0070f3;
+    --color-ul-a: rgba(0, 0, 0, 0.844);
+    --color-stroke-def: rgba(26, 26, 26, 0.623);
+    --color-article-def: #181818e6;
+    --color-bg-header: whitesmoke;
+    --color-bg-snippets: rgba(26, 0, 0, 0.897);
+    --color-font-snippets: whitesmoke;
+    --color-fill-circle: rgba(0, 0, 0, 0.744);
+    --color-date-def: rgb(140, 140, 140);
+    --color-hover: underline 3px solid #0000ffc9;
+    --color-bg-hover: rgba(175, 184, 194, 0.535);
+    --color-section-def: rgba(0, 0, 0, 0.963);
+    --color-border: 1px solid #bbb;
+    --color-editor-code: rgba(28, 28, 28, 0.888);
+    --color-btn:  rgb(21, 21, 21);
+    --color-btn-background: white;
+    --color-btn-hover-background: rgba(99, 226, 226, 0.2);
+    --color-btn-border: 1px solid #bbb;
+    --color-box-shadow: 0 0.3rem 0.3rem rgba(0, 0, 0, 0.15), inset 0 0.1rem 0.2rem #fff,
+    inset 0 -0.1rem 0.1rem rgba(0, 0, 0, 0.05);
+    --color-btn-box-shadow: 0 0.15rem 0.3rem rgba(0, 0, 0, 0.15), inset 0 0.1rem 0.2rem #fff,
+    inset 0 -0.1rem 0.1rem rgba(0, 0, 0, 0.05);
+    --color-btn-active-box-shadow: inset 0 0 0rem black;
+    --color-btnPreview: black;
+    --color-btnPreview-border: 1px solid rgba(119, 246, 255, 0.849);
+    --color-btnPublish: blue;
+    --color-btnUpload: rgb(38, 109, 0);
+    --color-btnPublish-background: white;
+    --color-btnPublish-disabled: rgb(105, 105, 209);
+    --color-btnPublish-disabled-background: rgba(208, 205, 205, 0.94);
+    --color-btnCreate-border: 1px solid rgba(250, 183, 255, 0.849);
+    --color-btnCounter-border: 1px solid rgba(116, 247, 252, 0.849);
+    --color-btnCounter-background: rgba(249, 161, 252, 0.2);
+    --color-btnDelete: red;
+    --color-btnDelete-border: 1px solid rgba(250, 100, 100, 0.681);
+    --color-btnDelete-background: rgba(217, 226, 99, 0.2);
+    --color-btnDelete-disabled: rgb(242, 114, 114);
+    --color-btnDelete-disabled-border: 1px solid rgba(247, 138, 138, 0.681);
+    --color-btnDelete-disabled-background: rgba(220, 227, 122, 0.2);
+    --color-btnDownload-border: 1px solid rgba(0, 0, 255, 0.377);
+    --color-logoTitle: rgba(0, 0, 0, 0.922);
+    --color-logoTitle-text-decoration: underline 1px solid #0000ff86;
+    --color-border-top: 1px solid #eaeaea;
+    --color-guidelines-background:  #f0f8ff;
+    --color-alert-border: 5px solid rgba(109, 109, 243, 0.432);
+    --color-alert-background: rgba(255, 255, 255, 0.884);
+    --color-url-font: rgba(255, 255, 255, 0.932);
+    --color-url-background: rgba(0, 0, 0, 0.426);
+    --color-sbumitInput-border: 1px solid rgba(2, 103, 2, 0.974);
 }
 
 /* Color for dark theme */
@@ -29,6 +81,59 @@
         --color-background-box: #68adcf30;
         --color-background-card: #84d0c023;
         --color-background-courseCard: #84d0c05b;
+        /* BROUGHT FRO   BLOG-REFLEXION ----------------------------------*/
+        --color-bg-def: rgb(48, 48, 50);
+        --color-border-bottom-def: 1px solid rgba(178, 178, 192, 0.124);
+        --color-a-def: #8ACAFF;
+        --color-ul-a: rgba(240, 236, 236, 0.844);
+        --color-stroke-def: rgba(243, 243, 243, 0.623);
+        --color-article-def: #eaeaeae6;
+        --color-bg-header: rgba(245, 245, 245, 0.147);
+        --color-bg-snippets: rgba(140, 139, 139, 0.215);
+        --color-font-snippets: rgb(218, 218, 218);
+        --color-fill-circle: rgba(255, 255, 255, 0.787);
+        --color-date-def: rgb(140, 140, 140);
+        --color-hover: underline 3px solid #B798FF;
+        --color-bg-hover: rgba(79, 83, 89, 0.535);
+        --color-section-def: rgba(211, 211, 211, 0.933);
+        --color-border: 1px solid rgba(187, 187, 187, 0.345);
+        --color-editor-code: rgba(232, 229, 229, 0.848);
+        --color-btn:  rgb(222, 222, 222);
+        --color-btn-background: rgba(193, 192, 192, 0.164);
+        --color-btn-hover-background: rgba(175, 183, 183, 0.55);
+        --color-btn-border: 1px solid rgba(133, 133, 133, 0.644);
+        --color-box-shadow: 0 0.3rem 0.3rem rgba(190, 190, 190, 0.15), inset 0 0.1rem 0.2rem rgb(7, 7, 7),
+        inset 0 -0.1rem 0.1rem rgba(213, 213, 213, 0.05);
+        --color-btn-box-shadow: 0 0.15rem 0.3rem rgba(88, 88, 88, 0.085), inset 0 0.1rem 0.2rem rgba(17, 17, 17, 0.169),
+        inset 0 -0.1rem 0.1rem rgba(150, 150, 150, 0.05);
+        --color-btn-active-box-shadow: inset 0 0 0rem black;
+        --color-btnPreview: rgba(255, 255, 255, 0.944);
+        --color-btnPreview-border: 1px solid rgba(177, 248, 253, 0.849);
+        --color-btnPublish: rgb(194, 194, 254);
+        --color-btnUpload: white;
+        --color-btnPublish-background: rgba(222, 222, 222, 0.167);
+        --color-btnPublish-disabled: rgba(91, 91, 249, 0.871);
+        --color-btnPublish-disabled-background: rgba(191, 190, 190, 0.167);
+        --color-btnCreate-border: 1px solid rgba(245, 173, 252, 0.849);
+        --color-btnCounter-border: 1px solid rgba(173, 249, 251, 0.675);
+        --color-btnCounter-background: rgba(249, 210, 251, 0.2);
+        --color-btnDelete: rgb(255, 89, 89);
+        --color-btnDelete-border: 1px solid rgba(245, 151, 151, 0.681);
+        --color-btnDelete-background: rgba(223, 230, 120, 0.431);
+        --color-btnDelete-disabled: rgba(249, 90, 90, 0.612);
+        --color-btnDelete-disabled-border: 1px solid rgba(247, 134, 134, 0.59);
+        --color-btnDelete-disabled-background: rgba(186, 186, 185, 0.2);
+        --color-btnDownload-border: 1px solid rgba(163, 163, 251, 0.377);
+        --color-logoTitle: rgba(216, 212, 212, 0.922);
+        --color-logoTitle-text-decoration: underline 1px solid #B798FF;
+        --color-border-top: 1px solid #eaeaea8c;
+        --color-guidelines-background:   #3d4043ee;
+        --color-alert-border: 5px solid rgba(145, 145, 244, 0.432);
+        --color-alert-background: rgba(55, 55, 55, 0.884);
+        --color-url-font: rgba(220, 217, 217, 0.932);
+        --color-url-background: rgba(0, 0, 0, 0.426);
+        --color-input-background-disabled: rgba(91, 91, 91, 0.472);
+        --color-sbumitInput-border: 1px solid rgba(2, 103, 2, 0.655);
     }
 }
 
@@ -778,4 +883,151 @@ footer p {
   height: 120%;
   background: linear-gradient(45deg, transparent, rgba(60, 60, 220, 0.3), transparent);
   transform: rotate(5deg);
+}
+
+/* ----------------------------------------------------------------------- */
+/* BUTTONS */
+/* ----------------------------------------------------------------------- */
+
+.buttonTheme,
+.buttonTheme:hover,
+.buttonTheme:active {
+  border: none;
+  box-shadow: none;
+  display: inline-flex;
+  align-items: center;
+  background-color: inherit;
+  margin: 0px;
+  padding: 0px;
+  transition: none;
+  cursor: pointer;
+}
+
+button,
+.submitInput {
+  border-radius: 0.3rem;
+  transition: all 0.1s ease-in-out;
+  box-shadow: var(--color-btn-box-shadow);
+}
+
+button {
+  margin: 0 0 0.75rem;
+  padding: 0.35rem 0.6rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--color-btn);
+  background-color: var(--color-btn-background);
+  border: var(--color-btn-border);
+}
+
+input:disabled {
+  background-color: var(--color-input-background-disabled);
+}
+
+button:hover, 
+.submitInput:hover,
+.uploadForm input[type="submit"]:hover {
+  background-color: var(--color-btn-hover-background);
+}
+
+button:active,
+.submitInput:active {
+  box-shadow: var(--color-btn-active-box-shadow);
+}
+
+.submitInput,
+.submitInput-disabled,
+.uploadForm input[type="file"]::file-selector-button{
+  border: var(--color-sbumitInput-border);
+  border-radius: 3px;
+}
+
+.uploadForm input[type="file"]::file-selector-button{
+  font-size: small;
+}
+
+.btnPreview {
+  font-size: large;
+  padding: 0.8rem 0.8rem;
+  color: var(--color-btnPreview);
+  border: var(--color-btnPreview-border);
+}
+
+.btnPublish,
+.uploadForm input[type="submit"] {
+  background-color: var(--color-btnPublish-background);
+}
+
+.btnPublish {
+  color: var(--color-btnPublish);
+}
+
+.btnPublish-disabled,
+.uploadForm input[type="submit"]:disabled {
+  background-color: var(--color-btnPublish-disabled-background);
+}
+
+.btnPublish-disabled {
+  color: var(--color-btnPublish-disabled);
+}
+
+.btnPublish-disabled:hover {
+  background-color: var(--color-btnPublish-disabled-background);
+}
+
+.btnCreate {
+  border: var(--color-btnCreate-border);
+}
+
+.btnCounter {
+  border: var(--color-btnCounter-border);
+}
+
+.btnCounter:hover {
+  background-color: var(--color-btnCounter-background);
+}
+
+.btnDelete {
+  color: var(--color-btnDelete);
+  border: var(--color-btnDelete-border)
+}
+
+.btnDelete:hover {
+  background-color: var(--color-btnDelete-background);
+}
+
+.btnPublish-disabled,
+.btnDelete-disabled {
+  box-shadow: none;
+}
+
+.btnDelete-disabled {
+  color: var(--color-btnDelete-disabled);
+  border: var(--color-btnDelete-disabled-border);
+  background-color: var(--color-btnDelete-disabled-background);
+}
+
+.btnDelete-disabled:hover {
+  background-color: var(--color-btnDelete-disabled-background);
+}
+
+.btnDownload {
+  border: var(--color-btnDownload-border);
+}
+
+
+.uploadForm input[type="submit"]{
+  height: 100%;
+  width: 100%;
+  color: var(--color-btnUpload)
+}
+
+.editor {
+  margin: 1rem 0rem;
+}
+
+.postHeading {
+  margin: 4rem 0;
+  padding: 0;
+  font-size: 2rem;
 }

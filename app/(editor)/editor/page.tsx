@@ -10,6 +10,7 @@ import { currentUser } from "@clerk/nextjs";
 import type { User } from '@clerk/nextjs/api';
 import { SignIn, UserButton, SignOutButton } from "@clerk/nextjs";
 import { auth } from '@clerk/nextjs';
+import Link from "next/link";
 
 const AUTHORIZED_USER_ID = process.env.AUTHORIZED_USER_ID;
 
@@ -27,8 +28,8 @@ export default async function EditorMainPage() {
   //   )
   // }
 
+  const { orgRole } = auth();
 
-  const {orgRole} = auth();
   if (orgRole !== 'admin') {
     return (
       <div>
@@ -42,28 +43,47 @@ export default async function EditorMainPage() {
 
   return (
     <>
-      <UserButton afterSignOutUrl="/editor" />
-      <SignOutButton />
+      {/* <UserButton afterSignOutUrl="/editor" />
+      <SignOutButton /> */}
       <div className="editor-sections-wrapper">
-        {/* @ts-expect-error Server Component  */}
-        <Bio />
-        {/* @ts-expect-error Server Component  */}
-        <About/> 
-        {/* @ts-expect-error Server Component  */}
-        <Shows/>
-        
-        {/* 
-        <Shows />
-        
-        
-        <Courses />        
-        <Press/>
-        <Bio />
-        
-        <Tours/>
-        <Press/>
-        <Podcast/>
-         */}
+        <h1>Please choose a section to work on:</h1>
+        <ul>
+          <li>
+            <Link href="/editor/about">
+              <button className="btnCreate">About</button>
+            </Link>
+          </li>
+          <li>
+            <Link href="/editor/bio">
+              <button className="btnCreate">Bio</button>
+            </Link>
+          </li>
+          <li>
+            <Link href="/editor/shows">
+              <button className="btnCreate">shows</button>
+            </Link>
+          </li>
+          <li>
+            <Link href="/editor/courses">
+              <button className="btnCreate">Courses</button>
+            </Link>
+          </li>
+          <li>
+            <Link href="/editor/podcast">
+              <button className="btnCreate">podcast</button>
+            </Link>
+          </li>
+          <li>
+            <Link href="/editor/tours">
+              <button className="btnCreate">tours</button>
+            </Link>
+          </li>
+          <li>
+            <Link href="/editor/press">
+              <button className="btnCreate">press</button>
+            </Link>
+          </li>
+        </ul>
       </div>
     </>
   )
