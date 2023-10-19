@@ -511,6 +511,10 @@ input[type="text"] {
 
 /* Style for the "Shows" section */
 
+.show-card-container {
+  border: 1px solid red;
+}
+
 .shows-previews-container {
   display: grid;
   grid-template-columns: 1fr;
@@ -552,7 +556,7 @@ input[type="text"] {
                 0 0 20px rgba(0, 0, 255, 0.4); */
 }
 
-.show-card-preview img {
+.show-card-image {
   max-width: 100%;
   width: 100%;
   height: auto;

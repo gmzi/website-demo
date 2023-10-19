@@ -19,6 +19,7 @@ export function ShowDisplay({ show }: ShowCardProps) {
                 </div>
                 {/* <img src="/poster.webp" alt="Show 1"> */}
                 <Image
+                    className="show-card-image"
                     src={image_1_url}
                     alt={`poster preview of ${title}`}
                     width={0}

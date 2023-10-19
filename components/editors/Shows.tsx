@@ -1,26 +1,10 @@
-// http://localhost:3000/editor
+// /editor/shows
 
 import { getData } from "@/lib/getData";
-import type { Show } from "@/types";
 import { ShowsList, CreateShow } from "@/components/forms/EditShows"
-import CreateShowFromClient from "../forms/CreateShowFromClient";
-
-
-const isProd = process.env.NODE_ENV === 'production';
 
 export default async function Shows() {
-    // let data;
-    // if (isProd){
-    //     data = await getData("shows");
-    // } else {
-    //     data = document.shows;
-    // }
-
     const data = await getData("shows")
-
-    const documentName = "shows"
-    const sectionName = "shows"
-    const folderName="shows"
 
     const showsList = [...data?.content].reverse() || [];
     
@@ -29,13 +13,16 @@ export default async function Shows() {
             <h1>Shows</h1>
             <ShowsList shows={showsList} />
             <CreateShow/>
-            {/* <CreateShowFromClient document={documentName} entry={'content'} section={sectionName}/> */}
         </div>
     )
   }
 
 /* 
+    // const documentName = "shows"
+    // const sectionName = "shows"
+    // const folderName="shows"
     <h2>Add a show</h2>
+    <CreateShowFromClient document={documentName} entry={'content'} section={sectionName}/>
     <CreateShow document={documentName} entry={'content'} section={sectionName}/>
     <h2>Edit shows</h2>
     {shows.map((show: Show, index: number) => (

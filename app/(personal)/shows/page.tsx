@@ -1,11 +1,6 @@
 import type { Metadata } from "next"
-import Image from 'next/image'
 import { getData } from "@/lib/getData"
-import parse from 'html-react-parser'
-import document from "@/document.json"
-import ShowCard from "@/components/ShowCard"
 import { ShowDisplay } from '@/components/ShowDisplay'
-import ShowsGallery from "@/components/ShowsGallery"
 import { getRemoteOrLocalData } from '@/lib/getRemoteOrLocalData';
 import type { Show } from "@/types"
 
@@ -31,7 +26,6 @@ export default async function ShowsPage() {
         <section className="shows">
             <h1>Espectáculos</h1>
             <div className="shows-previews-container">
-                {/* <ShowsGallery shows={shows}/> */}
                 {shows.map((show: Show, index: number) => (
                     <ShowDisplay key={`show-${show.title}-${index}`} show={show} />
                 ))}
@@ -39,11 +33,3 @@ export default async function ShowsPage() {
         </section>
     )
 }
-
-/*
-
-{shows.map((show, index) => (
-                // <ShowCard key={`show-${show.title}-${index}`} show={show} />
-                <ShowDisplay key={`show-${show.title}-${index}`} show={show}/>
-            ))}
-*/

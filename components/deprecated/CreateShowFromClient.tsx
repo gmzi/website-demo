@@ -1,14 +1,16 @@
 'use client'
 
+// THIS COMPONENT IS DEPRECATED
+
 import { useState, ChangeEvent, FormEvent } from "react";
 import { useRouter } from 'next/navigation'
 import { getData } from "@/lib/getData";
-import TextEditor2 from "./text-editor/TextEditor2";
-import TextEditorEntry from "./text-editor/TextEditorEntry";
-import InputEditor from "./text-editor/InputEditor";
-import InputEditorString from './text-editor/InputEditorString';
-import TextEditorIndex from './text-editor/InputEditor';
-import ImageUpload from "./ImageUpload";
+import TextEditor2 from "../forms/text-editor/TextEditor2";
+import TextEditorEntry from "../forms/text-editor/TextEditorEntry";
+import InputEditor from "../forms/text-editor/InputEditor";
+import InputEditorString from '../forms/text-editor/InputEditorString';
+import TextEditorIndex from '../forms/text-editor/InputEditor';
+import ImageUpload from "../forms/ImageUpload";
 import document from '@/document.json'
 import type { Show } from "@/types";
 import { revalidateEditorPage } from "@/lib/revalidateEditorPage";
