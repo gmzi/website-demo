@@ -16,10 +16,13 @@ interface Shows {
 const ShowsGallery: React.FC<Shows> = ({shows}) => {
 
     return (
-        <div className="shows-gallery">
-            {shows.map((show: Show, index: number) => (
-                <ShowDisplay key={`show-${show.title}-${index}`} show={show}/>
-            ))}
+        <div>
+        <h2>Mas espectaculos</h2>
+            <div className="shows-gallery">
+                {shows.map((show: Show, index: number) => (
+                    <ShowDisplay key={`show-${show.title}-${index}`} show={show}/>
+                ))}
+            </div>
         </div>
     )
 }

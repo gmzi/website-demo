@@ -578,13 +578,10 @@ input[type="text"] {
 /* SHOWS GALLERY */
 /* ------------------------------------------------- */
 
-/* .shows-gallery {
-  margin: 2em 0em;
-  padding: 2em .5em;
-  border: 1px solid green;
-  background-color: #25d366;
+.shows-gallery {
+  padding: 1em 5em;
   display: grid;
-} */
+}
 
 
 /* ------------------------------------------------- */
@@ -608,6 +605,7 @@ input[type="text"] {
 
 .show-image {
   width: 100%;
+  height: auto;
   object-fit: cover;
   margin: 2.4em auto;
 }
@@ -631,6 +629,10 @@ input[type="text"] {
   font-size: 16px;
   line-height: 1.6;
   margin-bottom: 20px;
+}
+
+.show-credits li {
+  list-style: none;
 }
 
 

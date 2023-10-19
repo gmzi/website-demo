@@ -1,18 +1,6 @@
-import About from "@/components/editors/About";
-import { EditAbout } from "@/components/forms/EditAbout";
-import Bio from "@/components/editors/Bio";
-import Courses from "@/components/editors/Courses";
-import Shows from "@/components/editors/Shows";
-import Podcast from "@/components/editors/Podcast";
-import Tours from "@/components/editors/Tours";
-import Press from "@/components/editors/Press";
-import { currentUser } from "@clerk/nextjs";
-import type { User } from '@clerk/nextjs/api';
-import { SignIn, UserButton, SignOutButton } from "@clerk/nextjs";
+import { UserButton, SignOutButton } from "@clerk/nextjs";
 import { auth } from '@clerk/nextjs';
 import Link from "next/link";
-
-const AUTHORIZED_USER_ID = process.env.AUTHORIZED_USER_ID;
 
 export default async function EditorMainPage() {
   // const user: User | null = await currentUser();

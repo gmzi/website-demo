@@ -1,15 +1,6 @@
-
-/* ------------------------------------------------
-    THIS ROUTE IS DEPRECATED
-    
---------------------------------------------------*/
-
 // example path:
 // http://localhost:3000/editor/bio
 
-import TextEditor from '../../../../components/forms/text-editor/TextEditor'
-import ImageUpload from '../../../../components/forms/ImageUpload'
-import { getData } from '@/lib/getData'
 import { notFound } from 'next/navigation';
 import { navItems } from '@/lib/navItems';
 import About from '@/components/editors/About';
@@ -20,7 +11,6 @@ import Podcast from "@/components/editors/Podcast";
 import Tours from "@/components/editors/Tours";
 import Press from "@/components/editors/Press";
 import { auth } from '@clerk/nextjs';
-import { SignIn, UserButton, SignOutButton } from "@clerk/nextjs";
 
 
 export async function generateStaticParams() {
@@ -40,9 +30,10 @@ export default async function EditorPage({ params }: { params: { index: string }
   if (orgRole !== 'admin') {
     return (
       <div>
-        {/* <UserButton afterSignOutUrl="/editor" />
-        <SignOutButton /> */}
-        <p>you are an unauthorized user to edit this page, please sign out from your account and sign in as an authorized user</p>
+        <p>
+          you are an unauthorized user to edit this page, 
+          please sign out from your current clerk account and sign in as an authorized user
+        </p>
       </div>
     )
   }
