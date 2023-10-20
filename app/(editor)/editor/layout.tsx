@@ -7,9 +7,10 @@ interface EditorProps {
 
 export default async function EditorLayout({ children }: EditorProps) {
   const { orgRole } = auth();
+  // const orgRole  = false;
 
   return (
-    <div>
+    <div className="editor-wrapper">
       {orgRole ? (
         <>
           <UserButton afterSignOutUrl="/editor" />

@@ -77,9 +77,9 @@ export function ShowsList({ shows }: ShowsListProps) {
 
     const showsList = shows.map((show: Show, i: number) => (
         <div key={`${show.title}-${i}`} className="show-card-container">
-            <div className=''>
+            <div className='show-card editor'>
                 <div>
-                    <h1 className="">{show.title}</h1>
+                    <h2 className="">{show.title}</h2>
                     <p className="">{show.opening_date}</p>
                 </div>
                 <Image
@@ -97,8 +97,11 @@ export function ShowsList({ shows }: ShowsListProps) {
     ));
 
     return (
-        <div className='shows-previews-container'>
-            {openEditor !== false ? <Edit articles={shows} index={openEditor} handleCancel={handleCancel} /> : showsList}
+        <div className=''>
+            <>  
+                <h1>shows</h1>
+                {openEditor !== false ? <Edit articles={shows} index={openEditor} handleCancel={handleCancel} /> : showsList}
+            </>
         </div>
     )
 
@@ -119,7 +122,7 @@ export function Edit({ articles, index, handleCancel }: EditProps) {
             <input type="hidden" name="id" value={item.id} />
             <input type="hidden" name="slug" value={item.slug} />
             <input type="hidden" name={`delete_image_urls`} id={`delete_image_urls`} value={JSON.stringify(deleteImages)} />
-            <div className="show-card editor">
+            <div className="show-card">
                 <label htmlFor="title">Título del espectáculo:</label>
                 <input type="text" id="title" name="title" className="show-title" defaultValue={item.title} required />
 
@@ -134,7 +137,7 @@ export function Edit({ articles, index, handleCancel }: EditProps) {
                 </div>
                 <h2 className="show-credits-title">CREDITOS</h2>
                 <div className="show-credits-container">
-                    <div className="show-credits editor">
+                    <div className="show-credits">
                         <h3>CON</h3>
                         <EditTeam labelContent='' inputName='cast' required={true} membersArray={item.cast} />
                     </div>
@@ -290,16 +293,20 @@ export function EditTeam({ labelContent, inputName, required, membersArray }: { 
     }
 
     return (
-        <>
+        <div className="what">
             <h2>{labelContent}</h2>
             {parsedTeam.length > 0 && (
                 <ul>
                     {parsedTeam.map((item, index) => (
-                        <li key={`item-${index}`}>
-                            <label htmlFor='name'>name: </label>
-                            <input type="text" name='name' defaultValue={item.name} onChange={(e) => handleItemChange(e, index)} />
-                            <label htmlFor='role'>role: </label>
-                            <input type="text" name='role' defaultValue={item.role} onChange={(e) => handleItemChange(e, index)} />
+                        <li key={`item-${index}`} className="nameAndRole">
+                            <span className="credits-name">
+                                <label htmlFor='name'>name: </label>
+                                <input type="text" name='name' defaultValue={item.name} onChange={(e) => handleItemChange(e, index)} />
+                            </span>
+                            <span className="credits-role">
+                                <label htmlFor='role'>role: </label>
+                                <input type="text" name='role' defaultValue={item.role} onChange={(e) => handleItemChange(e, index)} />
+                            </span>
                         </li>
                     ))}
                 </ul>
@@ -309,6 +316,6 @@ export function EditTeam({ labelContent, inputName, required, membersArray }: { 
             <label htmlFor='clientInput'>Agregar miembros</label>
             <input type="text" id='clientInput' name='clientInput' onChange={handleInputChange} />
             {team ? (<button type="button" onClick={handleWholeTeam}>agregar</button>) : <button disabled type="button" onClick={handleWholeTeam}>agregar</button>}
-        </>
+        </div>
     )
 }

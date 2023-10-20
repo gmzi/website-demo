@@ -7,6 +7,7 @@ const publicRoutesArray = Object.entries(navItems).map(([path, {name}])=> path)
 publicRoutesArray.push('/shows(.*)');
 publicRoutesArray.push('/server(.*)');
 publicRoutesArray.push('/api(.*)');
+
  
 export default authMiddleware({
   ignoredRoutes: publicRoutesArray,

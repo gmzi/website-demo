@@ -390,16 +390,34 @@ ol li div {
 /* EDITOR */
 /* ---------------------------------- */
 
+.editor-wrapper {
+  padding: .5em;
+}
+
+.editor-inner {
+  margin: 0 auto;
+}
+
+.form-edit {
+  border: 4px solid magenta;
+  padding: .2em;
+}
+
+.form-edit .show-card {
+  max-width: 100%;
+}
+
 .form-edit label {
   display: block;
 }
 
 .form-edit input {
   text-align: center;
+  max-width: 100%;
 }
 
 .show-credits-container {
-  text-align: center; 
+  text-align: center;  
 }
 
 .form-edit .show-credits {
@@ -409,15 +427,45 @@ ol li div {
 
 .form-edit .show-credits label, 
 .form-edit .show-credits input {
-  display: inline;
+  display: inline-block;
   text-align: left;
 }
+
+.nameAndRole {
+  border-bottom: var(--color-border-bottom);
+  padding: .5em;
+}
+
+.what {
+  text-align: center;
+  padding: .1em;
+}
+
+@media (max-width:507px){
+  .credits-name, 
+  .credits-role {
+    display: block;
+  }
+}
+
+@media(min-width: 508px){
+  .form-edit .show-credits label,
+  .form-edit .show-credits input {
+    display: inline-block;
+    text-align: left;
+  }
+}
+
 .form-edit .show-credits input {
   margin: .4em;
   padding: .4em;
 }
 .form-edit .show-credits label {
   margin: .2em;
+}
+
+.nameAndRole {
+  border-bottom: var(--color-border-bottom);
 }
 
 
@@ -543,16 +591,16 @@ ol li div {
 
 /* Two columns for medium screens */
 @media (min-width: 768px) {
-  .shows-previews-container {
+  /* .shows-previews-container {
       grid-template-columns: repeat(2, 1fr);
-  }
+  } */
 }
 
 /* Three columns for larger screens */
 @media (min-width: 1024px) {
-  .shows-previews-container {
+  /* .shows-previews-container {
       grid-template-columns: repeat(3, 1fr);
-  }
+  } */
 }
 
 /* ------------------------------------------------- */
@@ -839,9 +887,9 @@ footer p {
 } */
 
 @media (min-width: 1025px) {
-  .show-card {
+  /* .show-card {
     flex-direction: row;
-  }
+  } */
   /* .shows-gallery {
     grid-template-columns: 33% 33% 33%;
   } */
