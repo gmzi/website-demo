@@ -3,7 +3,7 @@
 // @ts-expect-error
 import { experimental_useFormState as useFormState } from 'react-dom'
 import { experimental_useFormStatus as useFormStatus } from 'react-dom'
-import { ChangeEvent, useEffect } from 'react'
+import { ChangeEvent, ChangeEventHandler, useEffect } from 'react'
 import type { About } from '@/types'
 import { editPressArticle, createPressArticle, editHeroText, editAvailableCourse, createCourse, createSection, createCourseReview, editCourseReview, editTestimonial, createTestimonial, editCourseLogistics, editPressHeroImage, createPressVideo, editPressVideo, editShow, createShow } from '@/app/actions'
 import { ImageEdit } from './ImageEdit'
@@ -239,7 +239,7 @@ export function CreateShow() {
                 </div>
                 <h2 className="show-credits-title">CREDITOS</h2>
                 <div className="show-credits-container">
-                    <div className="show-credits create">
+                    <div className="show-credits">
                         <h3>CON</h3>
                         {/* <EditTeam labelContent='' inputName='cast' required={true} membersArray={item.cast} /> */}
                         <AddTeam labelContent='' inputName='cast' required={true}/>
@@ -283,6 +283,7 @@ export function AddTeam({ labelContent, inputName, required }: { labelContent: s
     const [parsedTeam, setParsedTeam] = useState<NameAndRole[]>([]);
 
     const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+    // const handleInputChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
         const value = e.target.value;
         setTeam(value)
     };
@@ -296,7 +297,8 @@ export function AddTeam({ labelContent, inputName, required }: { labelContent: s
     return (
         <div>
             <label htmlFor={inputName}>{labelContent}</label>
-            {/* <input type="text" id={inputName} name={inputName} onChange={handleInputChange} required={required}/> */}
+            {/* <input type="text" id={inputName} name={inputName} onChange={handleInputChange} required={required} className="team-creation-input"/> */}
+            {/* @ts-ignore */}
             <textarea id={inputName} name={inputName} onChange={handleInputChange} required={required}>Type here</textarea>
 
             {team ? (<button type="button" onClick={handleWholeTeam}>parse</button>) : <button disabled type="button" onClick={handleWholeTeam}>parse</button>}

@@ -5,6 +5,7 @@ import { experimental_useFormState as useFormState } from 'react-dom'
 import { experimental_useFormStatus as useFormStatus } from 'react-dom'
 import { FormEvent, useEffect, useState } from 'react';
 import Image from 'next/image';
+import { EmptyImageIcon } from '../shared/icons';
 import { set } from 'zod';
 import { moveToTrash } from '@/app/cloudinary';
 
@@ -88,7 +89,7 @@ export function ImageInputWithIndex({ idx }: { idx: number }) {
                 accept="image/*"
                 onChange={handleImageChange}
             />
-            {imageUrl &&
+            {imageUrl ? (
                 <Image
                     src={imageUrl}
                     alt="preview"
@@ -103,7 +104,9 @@ export function ImageInputWithIndex({ idx }: { idx: number }) {
                     }}
 
                 />
-            }
+            ) : (
+                <EmptyImageIcon/>
+            )}
         </>
     )
 }
