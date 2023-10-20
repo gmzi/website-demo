@@ -16,6 +16,8 @@ export default async function EditorMainPage() {
   //   )
   // }
 
+
+
   const { orgRole } = auth();
 
   if (orgRole !== 'admin') {

@@ -154,8 +154,10 @@ export function Edit({ articles, index, handleCancel }: EditProps) {
                         <EditTeam labelContent='' inputName='creative' required={false} membersArray={item.creative} />
                     </div>
                 </div>
-                <EditButton />
-                <button onClick={handleCancel}>Cancelar</button>
+                <div className="buttonsContainer">
+                    <EditButton />
+                    <button onClick={handleCancel}>Cancelar</button>
+                </div>
                 <p aria-live="polite" className="sr-only" role="status">
                     {state?.message}
                 </p>
@@ -184,38 +186,93 @@ export function CreateShow() {
     }
 
     return (
-        <form action={formAction} id="myForm" className="create-show-form">
-            <h2>Crear show</h2>
-            <div className="show-card create">
-                <div className="show-card__image create">
-                    <h2>Adjuntar imágenes -una obligatoria, dos opcionales-</h2>
-                    <ImageInputWithIndex idx={1} />
-                    <ImageInputWithIndex idx={2} />
-                    <ImageInputWithIndex idx={3} />
-                </div>
-                <div className="show-card__content create">
-                    <label htmlFor="title">Título del espectáculo:</label>
-                    <input type="text" id="title" name="title" className="show-card__title create" required />
+        // <form action={formAction} id="myForm" className="create-show-form">
+        //     <h2>Crear show</h2>
+        //     <div className="show-card create">
+        //         <div className="show-card__image create">
+        //             <h2>Adjuntar imágenes -una obligatoria, dos opcionales-</h2>
+        //             <ImageInputWithIndex idx={1} />
+        //             <ImageInputWithIndex idx={2} />
+        //             <ImageInputWithIndex idx={3} />
+        //         </div>
+        //         <div className="show-card__content create">
+        //             <label htmlFor="title">Título del espectáculo:</label>
+        //             <input type="text" id="title" name="title" className="show-card__title create" required />
 
-                    <label htmlFor="opening_date">Fecha de estreno:</label>
-                    <input type="text" id="opening_date" name="opening_date" className="show-card__date create" />
+        //             <label htmlFor="opening_date">Fecha de estreno:</label>
+        //             <input type="text" id="opening_date" name="opening_date" className="show-card__date create" />
 
-                    <label htmlFor="theatre">Sala:</label>
-                    <input type="text" id="theatre" name="theatre" className="show-card__theatre create" />
+        //             <label htmlFor="theatre">Sala:</label>
+        //             <input type="text" id="theatre" name="theatre" className="show-card__theatre create" />
 
+        //             <label htmlFor="editor_content">Sinopsis:</label>
+        //             <RichText contentHtml='' />
+
+        //             {/* <AddWholeCast/> */}
+        //             <AddTeam labelContent="Agregar cast" inputName="cast" required={true} />
+        //             <AddTeam labelContent="Agregar equipo creativo" inputName="creative" required={false} />
+        //             <AddTeam labelContent="Agregar musicos" inputName="musicians" required={false} />
+        //             <AddTeam labelContent="Agregar bailarines" inputName="dancers" required={false} />
+        //         </div>
+        //         <SubmitButton />
+        //         <p aria-live="polite" className="sr-only" role="status">
+        //             {state?.message}
+        //         </p>
+        //     </div>
+        // </form>
+        <form action={formAction} id="myForm" className="form-edit">
+            <h2>Agregar nuevo show</h2>
+            <div className="show-card">
+                <label htmlFor="title">Título del espectáculo:</label>
+                <input type="text" id="title" name="title" className="show-title" required />
+
+                <label htmlFor="opening_date">Año de estreno:</label>
+                <input type="text" id="opening_date" name="opening_date" className="show-year"/>
+
+                <h3>Poster</h3>
+                {/* <ImageInputWithIndexAndDefaultValue idx={1} defaultValue={item.image_1_url} /> */}
+                <ImageInputWithIndex idx={1} />
+                
+                <div className="show-sinopsis">
                     <label htmlFor="editor_content">Sinopsis:</label>
-                    <RichText contentHtml='' />
-
-                    {/* <AddWholeCast/> */}
-                    <AddTeam labelContent="Agregar cast" inputName="cast" required={true} />
-                    <AddTeam labelContent="Agregar equipo creativo" inputName="creative" required={false} />
-                    <AddTeam labelContent="Agregar musicos" inputName="musicians" required={false} />
-                    <AddTeam labelContent="Agregar bailarines" inputName="dancers" required={false} />
+                    <RichText contentHtml={''} />
                 </div>
-                <SubmitButton />
+                <h2 className="show-credits-title">CREDITOS</h2>
+                <div className="show-credits-container">
+                    <div className="show-credits create">
+                        <h3>CON</h3>
+                        {/* <EditTeam labelContent='' inputName='cast' required={true} membersArray={item.cast} /> */}
+                        <AddTeam labelContent='' inputName='cast' required={true}/>
+                    </div>
+                    <div className="show-credits">
+                        <h3>Bailarines</h3>
+                        {/* <EditTeam labelContent='' inputName='dancers' required={false} membersArray={item.dancers} /> */}
+                        <AddTeam labelContent='' inputName='dancers' required={false}/>
+                    </div>
+                    <div className='show-credits'>
+                        <h3>Musicos</h3> 
+                        {/* <EditTeam labelContent='' inputName='musicians' required={false} membersArray={item.musicians} />*/}
+                        <AddTeam labelContent='' inputName='musicians' required={false}/>
+                    </div>
+                    <div className='show-credits'>
+                        <h3>Equipo creativo</h3>
+                        {/* <EditTeam labelContent='' inputName='creative' required={false} membersArray={item.creative} /> */}
+                        <AddTeam labelContent='' inputName='creative' required={false}/>
+                    </div>
+                </div>
+                <div className="buttonsContainer">
+                    <SubmitButton />
+                </div>
                 <p aria-live="polite" className="sr-only" role="status">
                     {state?.message}
                 </p>
+                {/* these fields are functional and available, but not being used in client: */}
+                <div style={{display: 'none'}}>
+                    <ImageInputWithIndex idx={2}/>
+                    <ImageInputWithIndex idx={3}/>
+                    <label htmlFor="theatre">Sala:</label>
+                    <input type="text" id="theatre" name="theatre" className="show-card__theatre create" value='' readOnly />
+                </div>
             </div>
         </form>
     )
@@ -237,23 +294,31 @@ export function AddTeam({ labelContent, inputName, required }: { labelContent: s
     };
 
     return (
-        <>
+        <div>
             <label htmlFor={inputName}>{labelContent}</label>
-            <input type="text" id={inputName} name={inputName} onChange={handleInputChange} required={required} />
+            {/* <input type="text" id={inputName} name={inputName} onChange={handleInputChange} required={required}/> */}
+            <textarea id={inputName} name={inputName} onChange={handleInputChange} required={required}>Type here</textarea>
+
             {team ? (<button type="button" onClick={handleWholeTeam}>parse</button>) : <button disabled type="button" onClick={handleWholeTeam}>parse</button>}
             {parsedTeam.length > 0 && (
-                <div>
-                    <h3>Parsed team:</h3>
+                <div className='team-wrapper'>
                     <ul>
                         {parsedTeam.map((item, index) => (
-                            <li key={index}>
-                                {item.name} - {item.role}
+                            <li key={index} className="nameAndRole">
+                                <span className="credits-name">
+                                    <label htmlFor='name'>name: </label>
+                                    <input type="text" name='readonly-name' value={item.name} readOnly/>
+                                </span>
+                                <span className="credits-role">
+                                    <label htmlFor='role'>role: </label>
+                                    <input type="text" name='readonly-role' value={item.role} readOnly/>
+                                </span>
                             </li>
                         ))}
                     </ul>
                 </div>
             )}
-        </>
+        </div>
 
     )
 }
@@ -293,7 +358,7 @@ export function EditTeam({ labelContent, inputName, required, membersArray }: { 
     }
 
     return (
-        <div className="what">
+        <div className="team-wrapper">
             <h2>{labelContent}</h2>
             {parsedTeam.length > 0 && (
                 <ul>

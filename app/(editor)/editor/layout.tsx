@@ -6,8 +6,8 @@ interface EditorProps {
 }
 
 export default async function EditorLayout({ children }: EditorProps) {
-  const { orgRole } = auth();
-  // const orgRole  = false;
+  // const { orgRole } = auth();
+  const orgRole  = false;
 
   return (
     <div className="editor-wrapper">

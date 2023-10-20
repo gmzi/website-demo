@@ -401,6 +401,7 @@ ol li div {
 .form-edit {
   border: 4px solid magenta;
   padding: .2em;
+  
 }
 
 .form-edit .show-card {
@@ -421,8 +422,8 @@ ol li div {
 }
 
 .form-edit .show-credits {
-  display: inline-block; 
-  text-align: left; 
+  /* display: inline-block;  */
+  text-align: center; 
 }
 
 .form-edit .show-credits label, 
@@ -436,9 +437,20 @@ ol li div {
   padding: .5em;
 }
 
-.what {
-  text-align: center;
+.team-wrapper {
+  /* text-align: center; */
   padding: .1em;
+}
+
+.create {
+  display: block;
+  border: 1px solid red;
+}
+
+textarea {
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: .8em;
 }
 
 @media (max-width:507px){

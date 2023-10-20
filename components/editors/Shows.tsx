@@ -5,8 +5,8 @@ import { getRemoteOrLocalData } from "@/lib/getRemoteOrLocalData";
 import { ShowsList, CreateShow } from "@/components/forms/EditShows"
 
 export default async function Shows() {
-    // const data = await getData("shows")
-    const data = await getRemoteOrLocalData("shows");
+    const data = await getData("shows")
+    // const data = await getRemoteOrLocalData("shows");
 
     const showsList = [...data?.content].reverse() || [];
     
