@@ -15,6 +15,7 @@ export default async function Shows() {
             <ShowsList shows={showsList} />
             <CreateShow/>
         </div>
+            
     )
   }
 

@@ -76,14 +76,32 @@ export function ShowsList({ shows }: ShowsListProps) {
     }
 
     const showsList = shows.map((show: Show, i: number) => (
-        <div key={`${show.title}-${i}`} className="show-card-container">
-            <div className='show-card editor'>
-                <div>
+        // <div key={`${show.title}-${i}`} className="show-card-container">
+        //     <div className='show-card'>
+        //         <div>
+        //             <h2 className="">{show.title}</h2>
+        //             <p className="">{show.opening_date}</p>
+        //         </div>
+        //         <Image
+        //             className="show-card-image"
+        //             src={show.image_1_url}
+        //             alt={show.title}
+        //             width={0}
+        //             height={0}
+        //             sizes="100vw"
+        //         />
+        //     </div>
+        //     <button onClick={handleClick} tabIndex={i}>Editar</button>
+        //     <Delete document="shows" entry="content" section="shows" id={show.id} />
+        // </div>
+        <div key={`${show.title}-${i}`} className="card-container">
+            <div className='card'>
+                <div className='card-head'>
                     <h2 className="">{show.title}</h2>
                     <p className="">{show.opening_date}</p>
                 </div>
                 <Image
-                    className="show-card-image"
+                    className="card-image"
                     src={show.image_1_url}
                     alt={show.title}
                     width={0}
@@ -91,13 +109,16 @@ export function ShowsList({ shows }: ShowsListProps) {
                     sizes="100vw"
                 />
             </div>
-            <button onClick={handleClick} tabIndex={i}>Editar</button>
-            <Delete document="shows" entry="content" section="shows" id={show.id} />
+            <div className="card-buttons">
+                <button onClick={handleClick} tabIndex={i}>Editar</button>
+                <Delete document="shows" entry="content" section="shows" id={show.id} />
+            </div>
+            
         </div>
     ));
 
     return (
-        <div className=''>
+        <div className='showsList'>
             <>
                 <h1>shows</h1>
                 {openEditor !== false ? <Edit articles={shows} index={openEditor} handleCancel={handleCancel} /> : showsList}
