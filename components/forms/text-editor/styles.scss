@@ -99,11 +99,6 @@
   min-height: 10rem;
 }
 
-.editor__content p {
-  /* margin-bottom: 1em; */
-  line-height: .7;
-}
-
 /* ----------------------------------------------------------------------------------- */
 // MENU BAR
 /* ----------------------------------------------------------------------------------- */
@@ -130,6 +125,8 @@
   outline: none;
   border-radius: 3px;
   transition: background-color 0.3s ease;
+  border: 1px solid rgba(173, 170, 170, 0.636);
+  box-shadow: none;
 }
 
 .editor-menu-bar button:hover {
