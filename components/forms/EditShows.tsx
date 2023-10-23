@@ -98,7 +98,7 @@ export function ShowsList({ shows }: ShowsListProps) {
 
     return (
         <div className=''>
-            <>  
+            <>
                 <h1>shows</h1>
                 {openEditor !== false ? <Edit articles={shows} index={openEditor} handleCancel={handleCancel} /> : showsList}
             </>
@@ -109,12 +109,12 @@ export function ShowsList({ shows }: ShowsListProps) {
 
 export function Edit({ articles, index, handleCancel }: EditProps) {
     const [state, formAction] = useFormState(editShow, initialState)
-    const [deleteImages, setDeleteImages] = useState<{url: string, index: number}[]>([]);
+    const [deleteImages, setDeleteImages] = useState<{ url: string, index: number }[]>([]);
 
     const item = articles[index];
 
     function handleDeleteImage(url: string, index: number) {
-        setDeleteImages(prevParsedUrls => [...prevParsedUrls, {url: url, index: index}])
+        setDeleteImages(prevParsedUrls => [...prevParsedUrls, { url: url, index: index }])
     }
 
     return (
@@ -130,7 +130,7 @@ export function Edit({ articles, index, handleCancel }: EditProps) {
                 <input type="text" id="opening_date" name="opening_date" className="show-year" defaultValue={item.opening_date} />
                 <h3>Poster</h3>
                 <ImageInputWithIndexAndDefaultValue idx={1} defaultValue={item.image_1_url} />
-                
+
                 <div className="show-sinopsis">
                     <label htmlFor="editor_content">Sinopsis:</label>
                     <RichText contentHtml={item.sinopsis} />
@@ -146,8 +146,8 @@ export function Edit({ articles, index, handleCancel }: EditProps) {
                         <EditTeam labelContent='' inputName='dancers' required={false} membersArray={item.dancers} />
                     </div>
                     <div className='show-credits'>
-                        <h3>Musicos</h3> 
-                        <EditTeam labelContent='' inputName='musicians' required={false} membersArray={item.musicians} />                    
+                        <h3>Musicos</h3>
+                        <EditTeam labelContent='' inputName='musicians' required={false} membersArray={item.musicians} />
                     </div>
                     <div className='show-credits'>
                         <h3>Equipo creativo</h3>
@@ -162,8 +162,8 @@ export function Edit({ articles, index, handleCancel }: EditProps) {
                     {state?.message}
                 </p>
                 {/* these fields are functional and available, but not being used in client: */}
-                <div style={{display: 'none'}}>
-                    <ImageInputWithIndexAndDefaultValueAndDeleteButton idx={2} defaultValue={item.image_2_url} handleDeleteImage={handleDeleteImage}  />
+                <div style={{ display: 'none' }}>
+                    <ImageInputWithIndexAndDefaultValueAndDeleteButton idx={2} defaultValue={item.image_2_url} handleDeleteImage={handleDeleteImage} />
                     <ImageInputWithIndexAndDefaultValueAndDeleteButton idx={3} defaultValue={item.image_3_url} handleDeleteImage={handleDeleteImage} />
                     <label htmlFor="theatre">Sala:</label>
                     <input type="text" id="theatre" name="theatre" className="show-card__theatre create" defaultValue={item.theatre} />
@@ -227,12 +227,12 @@ export function CreateShow() {
                 <input type="text" id="title" name="title" className="show-title" required />
 
                 <label htmlFor="opening_date">Año de estreno:</label>
-                <input type="text" id="opening_date" name="opening_date" className="show-year"/>
+                <input type="text" id="opening_date" name="opening_date" className="show-year" />
 
                 <h3>Poster</h3>
                 {/* <ImageInputWithIndexAndDefaultValue idx={1} defaultValue={item.image_1_url} /> */}
                 <ImageInputWithIndex idx={1} />
-                
+
                 <div className="show-sinopsis">
                     <label htmlFor="editor_content">Sinopsis:</label>
                     <RichText contentHtml={''} />
@@ -242,22 +242,22 @@ export function CreateShow() {
                     <div className="show-credits">
                         <h3>CON</h3>
                         {/* <EditTeam labelContent='' inputName='cast' required={true} membersArray={item.cast} /> */}
-                        <AddTeam labelContent='' inputName='cast' required={true}/>
+                        <AddTeam labelContent='' inputName='cast' required={true} />
                     </div>
                     <div className="show-credits">
                         <h3>Bailarines</h3>
                         {/* <EditTeam labelContent='' inputName='dancers' required={false} membersArray={item.dancers} /> */}
-                        <AddTeam labelContent='' inputName='dancers' required={false}/>
+                        <AddTeam labelContent='' inputName='dancers' required={false} />
                     </div>
                     <div className='show-credits'>
-                        <h3>Musicos</h3> 
+                        <h3>Musicos</h3>
                         {/* <EditTeam labelContent='' inputName='musicians' required={false} membersArray={item.musicians} />*/}
-                        <AddTeam labelContent='' inputName='musicians' required={false}/>
+                        <AddTeam labelContent='' inputName='musicians' required={false} />
                     </div>
                     <div className='show-credits'>
                         <h3>Equipo creativo</h3>
                         {/* <EditTeam labelContent='' inputName='creative' required={false} membersArray={item.creative} /> */}
-                        <AddTeam labelContent='' inputName='creative' required={false}/>
+                        <AddTeam labelContent='' inputName='creative' required={false} />
                     </div>
                 </div>
                 <div className="buttonsContainer">
@@ -267,9 +267,9 @@ export function CreateShow() {
                     {state?.message}
                 </p>
                 {/* these fields are functional and available, but not being used in client: */}
-                <div style={{display: 'none'}}>
-                    <ImageInputWithIndex idx={2}/>
-                    <ImageInputWithIndex idx={3}/>
+                <div style={{ display: 'none' }}>
+                    <ImageInputWithIndex idx={2} />
+                    <ImageInputWithIndex idx={3} />
                     <label htmlFor="theatre">Sala:</label>
                     <input type="text" id="theatre" name="theatre" className="show-card__theatre create" value='' readOnly />
                 </div>
@@ -282,8 +282,8 @@ export function AddTeam({ labelContent, inputName, required }: { labelContent: s
     const [team, setTeam] = useState<string | null>();
     const [parsedTeam, setParsedTeam] = useState<NameAndRole[]>([]);
 
-    const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-    // const handleInputChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
+    // const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const handleInputChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
         const value = e.target.value;
         setTeam(value)
     };
@@ -296,10 +296,9 @@ export function AddTeam({ labelContent, inputName, required }: { labelContent: s
 
     return (
         <div>
-            <label htmlFor={inputName}>{labelContent}</label>
-            {/* <input type="text" id={inputName} name={inputName} onChange={handleInputChange} required={required} className="team-creation-input"/> */}
-            {/* @ts-ignore */}
-            <textarea id={inputName} name={inputName} onChange={handleInputChange} required={required}>Type here</textarea>
+            {/* <label htmlFor={inputName}>{labelContent}</label>
+            <input type="text" id={inputName} name={inputName} onChange={handleInputChange} required={required} className="team-creation-input"/> */}
+            <textarea id={inputName} name={inputName} onChange={handleInputChange} required={required} defaultValue={"Name 1: role 1, Name 2: role 2"}/>
 
             {team ? (<button type="button" onClick={handleWholeTeam}>parse</button>) : <button disabled type="button" onClick={handleWholeTeam}>parse</button>}
             {parsedTeam.length > 0 && (
@@ -309,11 +308,11 @@ export function AddTeam({ labelContent, inputName, required }: { labelContent: s
                             <li key={index} className="nameAndRole">
                                 <span className="credits-name">
                                     <label htmlFor='name'>name: </label>
-                                    <input type="text" name='readonly-name' value={item.name} readOnly/>
+                                    <input type="text" name='readonly-name' value={item.name} readOnly />
                                 </span>
                                 <span className="credits-role">
                                     <label htmlFor='role'>role: </label>
-                                    <input type="text" name='readonly-role' value={item.role} readOnly/>
+                                    <input type="text" name='readonly-role' value={item.role} readOnly />
                                 </span>
                             </li>
                         ))}

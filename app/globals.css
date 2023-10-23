@@ -477,6 +477,37 @@ textarea,
   border-bottom: var(--color-border-bottom);
 }
 
+.image-upload {
+  border: var(--color-border);
+  margin: .5em;
+  padding: .5em;
+}
+
+.image-upload label {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.image-upload input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.placeholder-wrapper {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  margin: 2.4em auto;
+}
+
+svg.lucide.lucide-file-up {
+  width: 30%;
+  height: 60%;
+}
+
+
 
 /* Add this CSS to your stylesheet or use a CSS-in-JS solution */
 /* .create-show-form {

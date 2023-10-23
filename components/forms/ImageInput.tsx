@@ -5,7 +5,7 @@ import { experimental_useFormState as useFormState } from 'react-dom'
 import { experimental_useFormStatus as useFormStatus } from 'react-dom'
 import { FormEvent, useEffect, useState } from 'react';
 import Image from 'next/image';
-import { EmptyImageIcon } from '../shared/icons';
+import { Upload } from '../shared/icons';
 import { set } from 'zod';
 import { moveToTrash } from '@/app/cloudinary';
 
@@ -80,7 +80,7 @@ export function ImageInputWithIndex({ idx }: { idx: number }) {
     }
 
     return (
-        <>
+        <div className="image-upload">
             <label htmlFor={`image_${idx}_file`}>Adjuntar imagen:</label>
             <input
                 type="file"
@@ -91,23 +91,19 @@ export function ImageInputWithIndex({ idx }: { idx: number }) {
             />
             {imageUrl ? (
                 <Image
+                    className='show-image'
                     src={imageUrl}
                     alt="preview"
                     width={0}
                     height={0}
                     sizes="100vw"
-                    style={{
-                        width: '100%',
-                        height: 'auto',
-                        borderRadius: '5px',
-                        marginBottom: '.5em'
-                    }}
-
                 />
             ) : (
-                <EmptyImageIcon/>
+                <div className="placeholder-wrapper">
+                    <Upload/>
+                </div>
             )}
-        </>
+        </div>
     )
 }
 
