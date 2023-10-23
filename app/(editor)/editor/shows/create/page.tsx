@@ -12,9 +12,7 @@ export default async function Shows() {
     
     return (
         <div className="editor-inner">
-            <ShowsList shows={showsList} />
-            {/* <CreateShow/> */}
+            <CreateShow/>
         </div>
-            
     )
   }

@@ -11,6 +11,7 @@ import Podcast from "@/components/editors/Podcast";
 import Tours from "@/components/editors/Tours";
 import Press from "@/components/editors/Press";
 import { auth } from '@clerk/nextjs';
+import { CreateShow } from '@/components/forms/EditShows';
 
 
 export async function generateStaticParams() {

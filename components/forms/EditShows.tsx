@@ -76,24 +76,6 @@ export function ShowsList({ shows }: ShowsListProps) {
     }
 
     const showsList = shows.map((show: Show, i: number) => (
-        // <div key={`${show.title}-${i}`} className="show-card-container">
-        //     <div className='show-card'>
-        //         <div>
-        //             <h2 className="">{show.title}</h2>
-        //             <p className="">{show.opening_date}</p>
-        //         </div>
-        //         <Image
-        //             className="show-card-image"
-        //             src={show.image_1_url}
-        //             alt={show.title}
-        //             width={0}
-        //             height={0}
-        //             sizes="100vw"
-        //         />
-        //     </div>
-        //     <button onClick={handleClick} tabIndex={i}>Editar</button>
-        //     <Delete document="shows" entry="content" section="shows" id={show.id} />
-        // </div>
         <div key={`${show.title}-${i}`} className="card-container">
             <div className='card'>
                 <div className='card-head'>
@@ -111,9 +93,8 @@ export function ShowsList({ shows }: ShowsListProps) {
             </div>
             <div className="card-buttons">
                 <button onClick={handleClick} tabIndex={i}>Editar</button>
-                <Delete document="shows" entry="content" section="shows" id={show.id} />
+                <Delete document="shows" entry="content" section="shows" id={show.id}/>
             </div>
-            
         </div>
     ));
 
@@ -207,40 +188,6 @@ export function CreateShow() {
     }
 
     return (
-        // <form action={formAction} id="myForm" className="create-show-form">
-        //     <h2>Crear show</h2>
-        //     <div className="show-card create">
-        //         <div className="show-card__image create">
-        //             <h2>Adjuntar imágenes -una obligatoria, dos opcionales-</h2>
-        //             <ImageInputWithIndex idx={1} />
-        //             <ImageInputWithIndex idx={2} />
-        //             <ImageInputWithIndex idx={3} />
-        //         </div>
-        //         <div className="show-card__content create">
-        //             <label htmlFor="title">Título del espectáculo:</label>
-        //             <input type="text" id="title" name="title" className="show-card__title create" required />
-
-        //             <label htmlFor="opening_date">Fecha de estreno:</label>
-        //             <input type="text" id="opening_date" name="opening_date" className="show-card__date create" />
-
-        //             <label htmlFor="theatre">Sala:</label>
-        //             <input type="text" id="theatre" name="theatre" className="show-card__theatre create" />
-
-        //             <label htmlFor="editor_content">Sinopsis:</label>
-        //             <RichText contentHtml='' />
-
-        //             {/* <AddWholeCast/> */}
-        //             <AddTeam labelContent="Agregar cast" inputName="cast" required={true} />
-        //             <AddTeam labelContent="Agregar equipo creativo" inputName="creative" required={false} />
-        //             <AddTeam labelContent="Agregar musicos" inputName="musicians" required={false} />
-        //             <AddTeam labelContent="Agregar bailarines" inputName="dancers" required={false} />
-        //         </div>
-        //         <SubmitButton />
-        //         <p aria-live="polite" className="sr-only" role="status">
-        //             {state?.message}
-        //         </p>
-        //     </div>
-        // </form>
         <form action={formAction} id="myForm" className="form-shows">
             <h2>Agregar nuevo show</h2>
             <div className="show-card">

@@ -1,6 +1,7 @@
 import { UserButton, SignOutButton } from "@clerk/nextjs";
 import { auth } from '@clerk/nextjs';
 import Link from "next/link";
+import { enableAuthIfProd } from '@/lib/EnableAuthIfProd';
 
 export default async function EditorMainPage() {
   // const user: User | null = await currentUser();
@@ -18,7 +19,8 @@ export default async function EditorMainPage() {
 
 
 
-  const { orgRole } = auth();
+  // const { orgRole } = auth();
+  const orgRole = await enableAuthIfProd();
 
   if (orgRole !== 'admin') {
     return (
@@ -33,8 +35,6 @@ export default async function EditorMainPage() {
 
   return (
     <>
-      {/* <UserButton afterSignOutUrl="/editor" />
-      <SignOutButton /> */}
       <div className="editor-sections-wrapper">
         <h1>Please choose a section to work on:</h1>
         <ul>
@@ -50,7 +50,12 @@ export default async function EditorMainPage() {
           </li>
           <li>
             <Link href="/editor/shows">
-              <button className="btnCreate">shows</button>
+              <button className="btnCreate">shows - edit</button>
+            </Link>
+          </li>
+          <li>
+            <Link href="/editor/shows/create">
+              <button className="btnCreate">shows - create</button>
             </Link>
           </li>
           <li>

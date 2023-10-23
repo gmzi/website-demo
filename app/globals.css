@@ -391,6 +391,7 @@ ol li div {
 /* ---------------------------------- */
 /* EDITOR */
 /* ---------------------------------- */
+
 .editor-wrapper {
   padding: .5em;
 }
@@ -570,29 +571,46 @@ svg.lucide.lucide-file-up {
   .card-container {
       grid-template-columns: 1fr; /* Full width for everything to stack */
       grid-template-rows: auto auto auto; /* Title, Image, and Button rows */
-      align-items: center; /* Center items vertically */
-        justify-items: center; /* Center items horizontally */
+      align-items: center;
+      justify-items: center;
   }
 
   .card {
       grid-column: 1; /* Span the full width */
       grid-row: 1; /* Place at the top */
       grid-template-columns: 1fr; /* Only one column as elements will stack */
+      align-items: center;
+      justify-items: center;
   }
 
   .card-image {
-      grid-row: 2; /* Place below the title */
-      grid-column: 1; /* Span the full width */
+      grid-row: 2;
+      grid-column: 1;
       margin: 10px 0;
   }
 
   .card-buttons {
-      grid-row: 3; /* Place below the image */
-      grid-column: 1; /* Span the full width */
-      align-self: center; /* Center align the button */
-      justify-self: center; /* Center the button horizontally */
+      grid-row: 3;
+      grid-column: 1;
+      align-self: center;
+      justify-self: center;
   }
   
+}
+
+.warning-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.8); 
+  backdrop-filter: blur(5px);
+  z-index: 10;
 }
 
 
