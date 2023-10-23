@@ -118,7 +118,7 @@ export function Edit({ articles, index, handleCancel }: EditProps) {
     }
 
     return (
-        <form action={formAction} id="myForm" className="form-edit">
+        <form action={formAction} id="myForm" className="form-shows">
             <input type="hidden" name="id" value={item.id} />
             <input type="hidden" name="slug" value={item.slug} />
             <input type="hidden" name={`delete_image_urls`} id={`delete_image_urls`} value={JSON.stringify(deleteImages)} />
@@ -220,7 +220,7 @@ export function CreateShow() {
         //         </p>
         //     </div>
         // </form>
-        <form action={formAction} id="myForm" className="form-edit">
+        <form action={formAction} id="myForm" className="form-shows">
             <h2>Agregar nuevo show</h2>
             <div className="show-card">
                 <label htmlFor="title">Título del espectáculo:</label>

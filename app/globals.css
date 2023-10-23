@@ -398,21 +398,33 @@ ol li div {
   margin: 0 auto;
 }
 
-.form-edit {
+.form-shows {
   border: 4px solid magenta;
   padding: .2em;
-  
 }
 
-.form-edit .show-card {
+.form-shows input,
+.form-shows textarea {
+  border: 1px solid #d1d1d1;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.form-shows textarea {
+  margin: 1.5em 0;
+  padding: .5em;
+}
+
+.form-shows .show-card {
   max-width: 100%;
 }
 
-.form-edit label {
+.form-shows label {
   display: block;
 }
 
-.form-edit input {
+.form-shows input {
   text-align: center;
   max-width: 100%;
 }
@@ -421,13 +433,13 @@ ol li div {
   text-align: center;  
 }
 
-.form-edit .show-credits {
+.form-shows .show-credits {
   /* display: inline-block;  */
   text-align: center; 
 }
 
-.form-edit .show-credits label, 
-.form-edit .show-credits input {
+.form-shows .show-credits label, 
+.form-shows .show-credits input {
   display: inline-block;
   text-align: left;
 }
@@ -458,18 +470,18 @@ textarea,
 }
 
 @media(min-width: 508px){
-  .form-edit .show-credits label,
-  .form-edit .show-credits input {
+  .form-shows .show-credits label,
+  .form-shows .show-credits input {
     display: inline-block;
     text-align: left;
   }
 }
 
-.form-edit .show-credits input {
+.form-shows .show-credits input {
   margin: .4em;
   padding: .4em;
 }
-.form-edit .show-credits label {
+.form-shows .show-credits label {
   margin: .2em;
 }
 
