@@ -40,11 +40,11 @@ export function RichText({contentHtml}: RichTextProps) {
   });
 
   return (
-    <>
+    <div className="rich-text-editor">
         <input type="hidden" name="editor_content" value={sanitizeHtml(editor?.getHTML()|| '')} />
         {editor && <MenuBar editor={editor} />}
         {editor && <EditorContent editor={editor} className="editor__content"/>}
-    </>
+    </div>
   )
       
 }

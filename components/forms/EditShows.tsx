@@ -228,8 +228,7 @@ export function CreateShow() {
 
                 <label htmlFor="opening_date">Año de estreno:</label>
                 <input type="text" id="opening_date" name="opening_date" className="show-year" />
-
-                <h3>Poster</h3>
+                
                 {/* <ImageInputWithIndexAndDefaultValue idx={1} defaultValue={item.image_1_url} /> */}
                 <ImageInputWithIndex idx={1} />
 

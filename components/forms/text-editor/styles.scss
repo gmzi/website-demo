@@ -1,3 +1,21 @@
+/* ----------------------------------------------- */
+/* RICH TEXT EDITOR */
+
+// container:
+.rich-text-editor {
+  border: 1px solid #d1d1d1;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  overflow: hidden; 
+  margin: 1.5em 0;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.rich-text-editor:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
+  transform: translateY(-2px);
+}
+
 /* Basic editor styles */
 .ProseMirror {
   > * + * {
@@ -21,6 +39,9 @@
   code {
     background-color: rgba(#616161, 0.1);
     color: #616161;
+    font-family: "Courier New", monospace;
+    border-radius: 3px;
+    padding: 0 5px;
   }
 
   pre {
@@ -46,6 +67,7 @@
   blockquote {
     padding-left: 1rem;
     border-left: 2px solid rgba(#0D0D0D, 0.1);
+    font-style: italic;
   }
 
   hr {
@@ -59,12 +81,82 @@
   background-color: rgb(226, 69, 69);
 }
 
-.editor__content {
-  border: 1px solid green;
-  min-height: 3rem;
-}
-
 .input__editor__content {
   border: 1px solid black;
   margin: 0em .5em;
 }
+
+.ProseMirror-focused {
+  outline: none;
+}
+
+.editor__content {
+  padding: 1em;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  font-family: "Arial", sans-serif;
+  max-width: 100%;
+  overflow-wrap: break-word;
+  min-height: 10rem;
+}
+
+.editor__content p {
+  /* margin-bottom: 1em; */
+  line-height: .7;
+}
+
+/* ----------------------------------------------------------------------------------- */
+// MENU BAR
+/* ----------------------------------------------------------------------------------- */
+
+.rich-text-editor input[type="hidden"] {
+  display: none;
+}
+
+.editor-menu-bar {
+  display: flex;
+  flex-wrap: wrap;
+  border: 1px solid #e0e0e0;
+  padding: .5em;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  border-bottom: var(--color-border);
+}
+
+.editor-menu-bar button {
+  background-color: transparent;
+  border: none;
+  margin: 5px;
+  padding: 8px;
+  cursor: pointer;
+  outline: none;
+  border-radius: 3px;
+  transition: background-color 0.3s ease;
+}
+
+.editor-menu-bar button:hover {
+  background-color: #e5e5e5;
+}
+
+.editor-menu-bar button.is-active {
+  background-color: #d1e7ff;
+  border-color: #007BFF;
+  color: #007BFF;
+}
+
+.editor-menu-bar button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.editor-menu-bar button:active {
+  transform: scale(0.96);
+}
+
+@media (max-width: 600px) {
+  .editor-menu-bar button {
+      margin: 3px;
+      padding: 5px;
+  }
+}
+
+
+

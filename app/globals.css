@@ -483,10 +483,10 @@ textarea,
   padding: .5em;
 }
 
-.image-upload label {
+/* .image-upload label {
   font-size: 16px;
   font-weight: bold;
-}
+} */
 
 .image-upload input {
   width: 100%;
@@ -799,48 +799,6 @@ svg.lucide.lucide-file-up {
   color: #555;
 }
 
-
-/* ----------------------------------------------- */
-/* ----------------------------------------------- */
-/* RICH TEXT EDITOR */
-
-.editor-menu-bar {
-  align-items: center;
-  padding: .2em;
-  border: 1px solid #555;
-  border-radius: 5px;
-}
-
-.editor-menu-bar button {
-  background: none;
-  border: 1px solid gray;
-  color: black;
-  margin-right: .2em;
-  padding: .2em;
-  cursor: pointer;
-
-}
-
-.editor-menu-bar button.is-active {
-  color: #958DF1; 
-}
-
-.editor__content {
-  padding: .1em;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  margin-top: .1em;
-}
-
-input[type="hidden"] {
-  display: none;
-}
-
-.editor-menu-bar button.is-active.textStyle-color {
-  color: #958DF1;
-}
-
-
 /* -------------------------------------------------------- */
 /* FOOTER */
 /* -------------------------------------------------------- */
@@ -960,7 +918,7 @@ footer p {
 /* BUTTONS */
 /* ----------------------------------------------------------------------- */
 
-.buttonTheme,
+/* .buttonTheme,
 .buttonTheme:hover,
 .buttonTheme:active {
   border: none;
@@ -1101,4 +1059,4 @@ button:active,
   margin: 4rem 0;
   padding: 0;
   font-size: 2rem;
-}
+} */
