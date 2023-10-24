@@ -987,10 +987,12 @@ footer p {
   grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
   margin: 2rem 0;
+  padding: 1rem .5rem;
 }
 
 .image-grid img {
   width: 100%;
+  height: auto;
   border-radius: 0.5rem;
   object-fit: cover;
 }

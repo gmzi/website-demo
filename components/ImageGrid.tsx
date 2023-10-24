@@ -41,7 +41,6 @@ const ImageGrid: React.FC<ImageGridProps> = ({ images }) => {
             src={src}
           /> */}
           <Image
-            className="ImageGrid-img"
             src={src}
             width={0}
             height={0}
