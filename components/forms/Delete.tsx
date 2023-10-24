@@ -25,7 +25,7 @@ function DeleteButton() {
 
   return (
     <button type="submit" className="btnDelete" aria-disabled={pending}>
-      Delete
+      ELIMINAR
     </button>
   )
 }
@@ -57,28 +57,23 @@ export function Delete({ document, entry, section, id }: DeletionFormProps) {
   return (
       <div>
         {warning ? (
-          <div className="warning-container">
-            <p>Seguro que queres eliminar? Esta acción no puede deshacerse.</p>
-            <form action={formAction}>
-              <input type="hidden" name="id" value={id} />
-              <input type="hidden" name="document" value={document} />
-              <input type="hidden" name="entry" value={entry} />
-              <DeleteButton />
-              <button type="button" onClick={handleCancel}>
-                Cancel
-              </button>
-            </form>
+          <div className="warning">
+            <div className="warning-box">
+              <p className="warning-text">Seguro que queres eliminar? Esta acción no puede deshacerse.</p>
+              <form action={formAction}>
+                <input type="hidden" name="id" value={id} />
+                <input type="hidden" name="document" value={document} />
+                <input type="hidden" name="entry" value={entry} />
+                <DeleteButton />
+                <button type="button" onClick={handleCancel}>
+                  Cancelar
+                </button>
+              </form>
+            </div>
           </div>
         ) : (
-          <form action={formAction}>
-            <input type="hidden" name="id" value={id} />
-            <input type="hidden" name="document" value={document} />
-            <input type="hidden" name="entry" value={entry} />
-            {/* <DeleteButton /> */}
-            <button type="button" onClick={handleDeleteConfirm}>DELETE</button>
-            <p aria-live="polite" className="sr-only" role="status">
-              {state?.message}
-            </p>
+          <form>
+            <button type="button" onClick={handleDeleteConfirm}>ELIMINAR</button>
           </form>
         )}
       </div>

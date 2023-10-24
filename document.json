@@ -90,18 +90,49 @@
         "name": "shows",
         "content": [
             {
-                "id": "o2pyn00qzkvkd7v55jwp",
-                "title": "AYA",
-                "slug": "aya",
-                "opening_date": "fdsfsd",
-                "theatre": "fdsfs",
-                "sinopsis": "<p>jioijo</p>",
+                "id": "o2pyn00qzkvkd7v55jwp-myID",
+                "title": "test-show",
+                "slug": "test-show",
+                "opening_date": "2024",
+                "theatre": "test-theatre",
+                "sinopsis": "<p>test sinopsis</p>",
                 "cast": [
                     {
-                        "name": "jiojji"
+                        "name": "test name",
+                        "role": "test role"
                     }
                 ],
-                "creative": [],
+                "creative": [
+                    {
+                        "name": "test creative name",
+                        "role": "test creative role"
+                    }
+                ],
+                "musicians": [],
+                "dancers": [],
+                "image_1_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1697474895/website-fer/shows/dkmex9kupyadr0ovevob.jpg",
+                "image_2_url": "",
+                "image_3_url": ""
+            },
+            {
+                "id": "ofdssyn00qzkvkd7v55jwp-myID",
+                "title": "HELLO",
+                "slug": "hello",
+                "opening_date": "2024",
+                "theatre": "test-theatre",
+                "sinopsis": "<p>test sinopsis</p>",
+                "cast": [
+                    {
+                        "name": "test name",
+                        "role": ""
+                    }
+                ],
+                "creative": [
+                    {
+                        "name": "test creative name",
+                        "role": ""
+                    }
+                ],
                 "musicians": [],
                 "dancers": [],
                 "image_1_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1697474895/website-fer/shows/dkmex9kupyadr0ovevob.jpg",

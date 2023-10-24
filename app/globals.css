@@ -448,6 +448,22 @@ ol li div {
   text-align: center;  
 }
 
+.show-credits ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.team-name, .team-role {
+  line-height: 1.4;
+  margin-right: 5px;
+}
+
+.team-role {
+  font-weight: 400;
+  font-size: .9em;
+}
+
 .form-shows .show-credits {
   /* display: inline-block;  */
   text-align: center; 
@@ -470,9 +486,10 @@ ol li div {
 
 textarea,
 .team-creation-input {
-  width: 100%;
-  /* height: 100%; */
-  max-width: 100%;
+  width: 95%;
+  min-height: 3em;
+  max-width: 95%;
+  min-width: 94%;
   margin-bottom: .8em;
 }
 
@@ -598,7 +615,7 @@ svg.lucide.lucide-file-up {
   
 }
 
-.warning-container {
+.warning {
   position: absolute;
   top: 0;
   left: 0;
@@ -610,6 +627,31 @@ svg.lucide.lucide-file-up {
   align-items: center;
   background-color: rgba(255, 255, 255, 0.8); 
   backdrop-filter: blur(5px);
+  z-index: 10;
+}
+
+.warning-box {
+  border: var(--color-btnDelete-border);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.warning-text {
+  padding: 5em;
+}
+
+.warning button {
+  margin: 1em;
+}
+
+.sr-only {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-background-box);
   z-index: 10;
 }
 

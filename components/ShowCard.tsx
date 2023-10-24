@@ -31,8 +31,9 @@ const ShowCard: React.FC<ShowCardProps> = ({ show }) => {
                 <h3>CON</h3>
                 <ul>
                     {cast.map((member, index) => (
-                        <li key={index}>
-                            <strong>{member.name}</strong> - {member.role}
+                        <li key={`creative-team-${index}`}>
+                            <span className="team-name">{member.name}</span>
+                            {member.role && member.role.length > 0 ? <span className="team-role">: {member.role}</span> : null}
                         </li>
                     ))}
                 </ul>
@@ -41,18 +42,20 @@ const ShowCard: React.FC<ShowCardProps> = ({ show }) => {
                 {dancers.length ? <h3>Bailarines</h3> : null}
                 <ul>
                     {dancers.map((member, index) => (
-                        <li key={index}>
-                            <strong>{member.name}</strong> - {member.role}
+                        <li key={`dancers-team-${index}`}>
+                            <span className="team-name">{member.name}</span>
+                            {member.role && member.role.length > 0 ? <span className="team-role">: {member.role}</span> : null}
                         </li>
                     ))}
                 </ul>
             </div>
             <div className="show-credits">
-            {musicians.length ? <h3>Músicos</h3> : null}
+                {musicians.length ? <h3>Músicos</h3> : null}
                 <ul>
                     {musicians.map((member, index) => (
-                        <li key={index}>
-                            <strong>{member.name}</strong> - {member.role}
+                        <li key={`musicians-team-${index}`}>
+                            <span className="team-name">{member.name}</span>
+                            {member.role && member.role.length > 0 ? <span className="team-role">: {member.role}</span> : null}
                         </li>
                     ))}
                 </ul>
@@ -60,11 +63,12 @@ const ShowCard: React.FC<ShowCardProps> = ({ show }) => {
             <div className="show-credits">
                 <h3>Equipo creativo</h3>
                 <ul>
-                {creative.map((member, index) => (
-                    <li key={index}>
-                        <strong>{member.name}</strong> - {member.role}
-                    </li>
-                ))}
+                    {creative.map((member, index) => (
+                        <li key={`creative-team-${index}`}>
+                            <span className="team-name">{member.name}</span>
+                            {member.role && member.role.length > 0 ? <span className="team-role">: {member.role}</span> : null}
+                        </li>
+                    ))}
                 </ul>
             </div>
         </div>
