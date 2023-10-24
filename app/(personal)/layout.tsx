@@ -15,7 +15,7 @@ export default async function IndexRoute({
       <Navbar/>
       <main>
         {children}
-        <Analytics/>
+        {/* <Analytics/> */}
       </main>
       <Footer/>
     </>

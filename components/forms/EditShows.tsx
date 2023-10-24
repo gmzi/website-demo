@@ -265,7 +265,7 @@ export function AddTeam({ labelContent, inputName, required }: { labelContent: s
         <div>
             {/* <label htmlFor={inputName}>{labelContent}</label>
             <input type="text" id={inputName} name={inputName} onChange={handleInputChange} required={required} className="team-creation-input"/> */}
-            <textarea id={inputName} name={inputName} onChange={handleInputChange} required={required} defaultValue={"Name 1: role 1, Name 2: role 2"}/>
+            <textarea id={inputName} name={inputName} onChange={handleInputChange} required={required}/>
 
             {team ? (<button type="button" onClick={handleWholeTeam}>parse</button>) : <button disabled type="button" onClick={handleWholeTeam}>parse</button>}
             {parsedTeam.length > 0 && (

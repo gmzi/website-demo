@@ -12,11 +12,6 @@ publicRoutesArray.push('/api(.*)');
 export default authMiddleware({
   ignoredRoutes: publicRoutesArray,
   debug: false, 
-  // afterAuth(auth, req, evt){
-  //   if (!auth.userId){
-  //     return redirectToSignIn({returnBackUrl: req.url})
-  //   }
-  // }
 });
  
 export const config = {

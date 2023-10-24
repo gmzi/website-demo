@@ -7,7 +7,7 @@ import { uploadToCloudinary } from './cloudinary';
 import { moveToTrash } from './cloudinary';
 import { transformYouTubeUrl } from '@/lib/transformYouTubeUrl'
 import { makeSlug } from '@/lib/makeSlug';
-import { parseNameAndRoleInServer, parseNameAndRole } from '@/lib/parseNameAndRole'
+import { parseNameAndRole } from '@/lib/parseNameAndRole'
 import { Show } from '@/types';
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
@@ -83,7 +83,60 @@ function parseRichTextInput(formData: FormData) {
   return inputData;
 }
 
+async function handleInputDataWithNewImageFiles(inputData: any, folderName: string){
+  const imageFiles : {
+    [key: string]: string | File | undefined;
+  } = {};
 
+  for (const key in inputData) {
+    if (key.includes("image_") && key.includes("_file")) {
+      // @ts-ignore
+      imageFiles[key] = inputData[key];
+    }
+  }
+
+  for (const key in imageFiles) {
+    const imageFile = imageFiles[key];
+    const [, fileNumber] = key.split('_');
+    // @ts-ignore
+    if (imageFile?.size > 0){
+      const imageMetadata = await uploadToCloudinary(imageFile, folderName);
+      // @ts-ignore
+      inputData[`image_${fileNumber}_url`] = imageMetadata.secure_url; 
+      // @ts-ignore
+      delete inputData[`image_${fileNumber}_file`];
+  } else {
+    // @ts-ignore
+    delete inputData[`image_${fileNumber}_file`];
+  }
+}
+  return inputData;
+}
+
+export async function saveHtmlContent(contentHtml: string, document: string) {
+  try {
+    const content = {
+      content_html: contentHtml,
+      document: document
+    }
+    const saved = await fetch(`${BASE_URL}/server/text`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        'API-Key': DATA_API_KEY
+      },
+      referrerPolicy: 'no-referrer',
+      body: JSON.stringify(content)
+    })
+    revalidatePath('/(editor)/editor', 'page');
+
+    return { message: `Content saved` }
+
+  } catch (e) {
+    console.log(e);
+    return { message: `${e}` }
+  }
+}
 
 // handles multiple image inputs, saves them to cloudinary if there's 
 // new files, or returns old image_urls if not.
@@ -304,6 +357,54 @@ export async function editPressVideo(prevState: any, formData: FormData) {
   }
 }
 
+async function deleteImagesAndUpdateObject(imagesArray: {url: string, index: number}[], inputData: any){
+  for (const imageObject of imagesArray) {
+    const index = imageObject.index
+    const trashOldImage = await moveToTrash(imageObject.url);
+    inputData[`image_${index}_url`] = "";
+  }
+  return inputData;
+}
+
+export async function deleteItem(prevState: any, formData: FormData) {
+
+  const schema = z.object({
+    id: z.string(),
+    document: z.string(),
+    entry: z.string(),
+  })
+
+  const inputData = schema.parse({
+    id: formData.get('id'),
+    document: formData.get('document'),
+    entry: formData.get('entry'),
+  })
+
+  const data = {
+    document: inputData.document,
+    entry: inputData.entry,
+    keyName: "id",
+    valueName: inputData.id,
+  }
+  try {
+    const deleted = await fetch(`${BASE_URL}/server/remove`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      referrerPolicy: 'no-referrer',
+      body: JSON.stringify(data)
+    });
+
+    revalidatePath('/(editor)/editor', 'page');
+
+    return { message: `Item deleted` }
+
+  } catch (e) {
+    console.error(e);
+    return { message: `${e}` }
+  }
+}
 // const nameAndRoleSchema = z.object({
 //   name: z.string(),
 //   role: z.string()
@@ -378,7 +479,6 @@ const optionalNameAndRoleSchema = z.array(
   )
 )
 
-
 const showSchema = z.object({
   id: z.string(),
   title: z.string(),
@@ -408,37 +508,6 @@ const showSchema = z.object({
   image_2_url: z.string(),
   image_3_url: z.string(),
 })
-
-
-async function handleInputDataWithNewImageFiles(inputData: any, folderName: string){
-  const imageFiles : {
-    [key: string]: string | File | undefined;
-  } = {};
-
-  for (const key in inputData) {
-    if (key.includes("image_") && key.includes("_file")) {
-      // @ts-ignore
-      imageFiles[key] = inputData[key];
-    }
-  }
-
-  for (const key in imageFiles) {
-    const imageFile = imageFiles[key];
-    const [, fileNumber] = key.split('_');
-    // @ts-ignore
-    if (imageFile?.size > 0){
-      const imageMetadata = await uploadToCloudinary(imageFile, folderName);
-      // @ts-ignore
-      inputData[`image_${fileNumber}_url`] = imageMetadata.secure_url; 
-      // @ts-ignore
-      delete inputData[`image_${fileNumber}_file`];
-  } else {
-    // @ts-ignore
-    delete inputData[`image_${fileNumber}_file`];
-  }
-}
-  return inputData;
-}
 
 export async function createShow(prevState: any, formData: FormData) {
   try {
@@ -517,10 +586,88 @@ export async function createShow(prevState: any, formData: FormData) {
       body: JSON.stringify(data)
     });
 
+    revalidatePath(`/(personal)/shows/${inputData.slug}`, 'page');
+
     revalidatePath('/(editor)/editor', 'page');
 
     return { message: `show added!!!` }
 
+  } catch (e) {
+    console.log(e)
+    return { message: `${e}` }
+  }
+}
+
+export async function editShow(prevState: any, formData: FormData) {
+  try {
+    const imagesToDelete = formData.get("delete_image_urls");
+
+    const parsedImagesToDelete = JSON.parse(imagesToDelete as string);
+
+    const newImage_1_File = formData.get("new_image_1_file") as File;
+    const newImage_2_File = formData.get("new_image_2_file") as File;
+    const newImage_3_File = formData.get("new_image_3_file") as File;
+
+    const castTeamInput = formData.get('cast') as string;
+    const castTeamParsed = JSON.parse(castTeamInput);
+
+    const creativeTeamInput = formData.get('creative') as string;
+    const creativeTeamParsed = JSON.parse(creativeTeamInput);
+
+    const musiciansTeamInput = formData.get('musicians') as string;
+    const musiciansTeamParsed = JSON.parse(musiciansTeamInput);
+
+    const dancersTeamInput = formData.get('dancers') as string;
+    const dancersTeamParsed = JSON.parse(dancersTeamInput);
+
+    const inputData = showSchema.parse({
+      id: formData.get('id'),
+      title: formData.get('title'),
+      slug: formData.get('slug'),
+      opening_date: formData.get('opening_date'),
+      theatre: formData.get('theatre'),
+      sinopsis: formData.get('editor_content'),
+      image_1_file: newImage_1_File.size > 0 ? newImage_1_File : undefined,
+      image_2_file: newImage_2_File.size > 0 ? newImage_2_File : undefined,
+      image_3_file: newImage_3_File.size > 0 ? newImage_3_File : undefined,
+      cast: castTeamParsed,
+      creative: creativeTeamParsed,
+      musicians: musiciansTeamParsed,
+      dancers: dancersTeamParsed,
+      image_1_url: formData.get('image_1_url'),
+      image_2_url: formData.get('image_2_url'),
+      image_3_url: formData.get('image_3_url'),
+    }) as Show;
+
+
+    // mutate inputData to load new images:
+    const inputDataWithNewImages = await handleInputDataWithNewImageFiles(inputData, "shows");
+
+    // mutate inputData to delete images removed by client:
+    const inputDataDeletedImages = await deleteImagesAndUpdateObject(parsedImagesToDelete,inputDataWithNewImages)
+
+    const data = {
+      document: "shows",
+      entry: "content",
+      itemLocator: "content.id",
+      newContent: inputDataDeletedImages,
+    }
+
+    const updated = await fetch(`${BASE_URL}/server/edit/item`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        'API-Key': DATA_API_KEY
+      },
+      referrerPolicy: 'no-referrer',
+      body: JSON.stringify(data)
+    });
+
+    revalidatePath(`/(personal)/shows/${inputData.slug}`, 'page');
+
+    revalidatePath('/(editor)/editor', 'page');
+
+    return { message: `show updated!!!` }
   } catch (e) {
     console.log(e)
     return { message: `${e}` }
@@ -660,130 +807,6 @@ export async function editPressArticle(prevState: any, formData: FormData) {
     revalidatePath('/(editor)/editor', 'page');
 
     return { message: `Item updated!!!` }
-
-  } catch (e) {
-    console.error(e);
-    return { message: `${e}` }
-  }
-}
-
-async function deleteImagesAndUpdateObject(imagesArray: {url: string, index: number}[], inputData: any){
-  for (const imageObject of imagesArray) {
-    const index = imageObject.index
-    const trashOldImage = await moveToTrash(imageObject.url);
-    inputData[`image_${index}_url`] = "";
-  }
-  return inputData;
-}
-
-export async function editShow(prevState: any, formData: FormData) {
-  try {
-    const imagesToDelete = formData.get("delete_image_urls");
-
-    const parsedImagesToDelete = JSON.parse(imagesToDelete as string);
-
-    const newImage_1_File = formData.get("new_image_1_file") as File;
-    const newImage_2_File = formData.get("new_image_2_file") as File;
-    const newImage_3_File = formData.get("new_image_3_file") as File;
-
-    const castTeamInput = formData.get('cast') as string;
-    const castTeamParsed = JSON.parse(castTeamInput);
-
-    const creativeTeamInput = formData.get('creative') as string;
-    const creativeTeamParsed = JSON.parse(creativeTeamInput);
-
-    const musiciansTeamInput = formData.get('musicians') as string;
-    const musiciansTeamParsed = JSON.parse(musiciansTeamInput);
-
-    const dancersTeamInput = formData.get('dancers') as string;
-    const dancersTeamParsed = JSON.parse(dancersTeamInput);
-
-    const inputData = showSchema.parse({
-      id: formData.get('id'),
-      title: formData.get('title'),
-      slug: formData.get('slug'),
-      opening_date: formData.get('opening_date'),
-      theatre: formData.get('theatre'),
-      sinopsis: formData.get('editor_content'),
-      image_1_file: newImage_1_File.size > 0 ? newImage_1_File : undefined,
-      image_2_file: newImage_2_File.size > 0 ? newImage_2_File : undefined,
-      image_3_file: newImage_3_File.size > 0 ? newImage_3_File : undefined,
-      cast: castTeamParsed,
-      creative: creativeTeamParsed,
-      musicians: musiciansTeamParsed,
-      dancers: dancersTeamParsed,
-      image_1_url: formData.get('image_1_url'),
-      image_2_url: formData.get('image_2_url'),
-      image_3_url: formData.get('image_3_url'),
-    }) as Show;
-
-
-    // mutate inputData to load new images:
-    const inputDataWithNewImages = await handleInputDataWithNewImageFiles(inputData, "shows");
-
-    // mutate inputData to delete images removed by client:
-    const inputDataDeletedImages = await deleteImagesAndUpdateObject(parsedImagesToDelete,inputDataWithNewImages)
-
-    const data = {
-      document: "shows",
-      entry: "content",
-      itemLocator: "content.id",
-      newContent: inputDataDeletedImages,
-    }
-
-    const updated = await fetch(`${BASE_URL}/server/edit/item`, {
-      method: 'PATCH',
-      headers: {
-        'Content-Type': 'application/json',
-        'API-Key': DATA_API_KEY
-      },
-      referrerPolicy: 'no-referrer',
-      body: JSON.stringify(data)
-    });
-
-    revalidatePath('/(editor)/editor', 'page');
-
-    return { message: `show updated!!!` }
-  } catch (e) {
-    console.log(e)
-    return { message: `${e}` }
-  }
-}
-
-
-export async function deleteItem(prevState: any, formData: FormData) {
-
-  const schema = z.object({
-    id: z.string(),
-    document: z.string(),
-    entry: z.string(),
-  })
-
-  const inputData = schema.parse({
-    id: formData.get('id'),
-    document: formData.get('document'),
-    entry: formData.get('entry'),
-  })
-
-  const data = {
-    document: inputData.document,
-    entry: inputData.entry,
-    keyName: "id",
-    valueName: inputData.id,
-  }
-  try {
-    const deleted = await fetch(`${BASE_URL}/server/remove`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      referrerPolicy: 'no-referrer',
-      body: JSON.stringify(data)
-    });
-
-    revalidatePath('/(editor)/editor', 'page');
-
-    return { message: `Item deleted` }
 
   } catch (e) {
     console.error(e);
@@ -947,32 +970,6 @@ export async function editTour(prevState: any, formData: FormData) {
     return { message: `${e}` }
   }
 }
-
-export async function saveHtmlContent(contentHtml: string, document: string) {
-  try {
-    const content = {
-      content_html: contentHtml,
-      document: document
-    }
-    const saved = await fetch(`${BASE_URL}/server/text`, {
-      method: 'PATCH',
-      headers: {
-        'Content-Type': 'application/json',
-        'API-Key': DATA_API_KEY
-      },
-      referrerPolicy: 'no-referrer',
-      body: JSON.stringify(content)
-    })
-    revalidatePath('/(editor)/editor', 'page');
-
-    return { message: `Content saved` }
-
-  } catch (e) {
-    console.log(e);
-    return { message: `${e}` }
-  }
-}
-
 
 export async function editAbout(prevState: any, formData: FormData) {
 
