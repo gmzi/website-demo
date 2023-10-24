@@ -60,9 +60,9 @@ export function ImageEdit({ imageUrl }: { imageUrl: string }) {
 }
 
 
-export function ImagesEdit({ imageUrls }: { imageUrls: string[] }) {
+export function ImagesEdit({ imageUrls, className }: { imageUrls: string[], className: string }) {
     const [previewImageUrls, setPreviewImageUrls] = useState(imageUrls);
-    
+
     function handleImageChange(e: React.FormEvent<HTMLInputElement>, index: number): void {
         const selectedFile = e.currentTarget.files?.[0];
         const newPreviewImageUrls = [...previewImageUrls];
@@ -92,19 +92,22 @@ export function ImagesEdit({ imageUrls }: { imageUrls: string[] }) {
                         onChange={(e) => handleImageChange(e, index)}
                     />
                     {previewImageUrls[index] && (
-                        <Image
-                            src={previewImageUrls[index]}
-                            alt={`preview_${index}`}
-                            width={0}
-                            height={0}
-                            sizes="100vw"
-                            style={{
-                                width: '20%',
-                                height: 'auto',
-                                borderRadius: '5px',
-                                marginBottom: '.5em'
-                            }}
-                        />
+                        <div className="preview">
+                            <Image
+                                className={className}
+                                src={previewImageUrls[index]}
+                                alt={`preview_${index}`}
+                                width={0}
+                                height={0}
+                                sizes="100vw"
+                                // style={{
+                                //     width: '20%',
+                                //     height: 'auto',
+                                //     borderRadius: '5px',
+                                //     marginBottom: '.5em'
+                                // }}
+                            />
+                        </div>
                     )}
                 </div>
             ))}

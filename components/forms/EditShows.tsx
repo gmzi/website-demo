@@ -131,7 +131,7 @@ export function Edit({ articles, index, handleCancel }: EditProps) {
                 <label htmlFor="opening_date">Fecha de estreno:</label>
                 <input type="text" id="opening_date" name="opening_date" className="show-year" defaultValue={item.opening_date} />
                 <h3>Poster</h3>
-                <ImageInputWithIndexAndDefaultValue idx={1} defaultValue={item.image_1_url} />
+                <ImageInputWithIndexAndDefaultValue idx={1} defaultValue={item.image_1_url} className="preview-default" />
 
                 <div className="show-sinopsis">
                     <label htmlFor="editor_content">Sinopsis:</label>

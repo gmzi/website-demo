@@ -263,16 +263,19 @@ section {
 }
 
 .imgContainer img {
-  /* max-width: 30em; */
-  border-radius: 10%;
   display: block;
-  /* center image: */
   margin: 0 auto;
 }
 
 p {
   /* text-indent: 1em; */
   margin-top: 1em;
+}
+
+.bio-hero-image {
+  width: 60%;
+  height: auto;
+  border-radius: 50%;
 }
 
 
@@ -391,6 +394,24 @@ ol li div {
 /* ---------------------------------- */
 /* EDITOR */
 /* ---------------------------------- */
+
+.preview-default {
+  width: 100;
+  height: auto;
+  border-radius: 5p;
+  margin-bottom: .5em;
+}
+
+.preview {
+  border: var(--color-border);
+  margin: .5em;
+  padding: 1em;
+}
+
+.preview img {
+  display: block;
+  margin: 0 auto;
+}
 
 .editor-wrapper {
   padding: .5em;
@@ -995,6 +1016,11 @@ footer p {
   height: auto;
   border-radius: 0.5rem;
   object-fit: cover;
+}
+
+.image-grid label,
+.image-grid input {
+  display: none;
 }
 
 /* -------------------------------------------------------- */

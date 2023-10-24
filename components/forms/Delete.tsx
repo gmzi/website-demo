@@ -55,27 +55,27 @@ export function Delete({ document, entry, section, id }: DeletionFormProps) {
   // )
 
   return (
-      <div>
-        {warning ? (
-          <div className="warning">
-            <div className="warning-box">
-              <p className="warning-text">Seguro que queres eliminar? Esta acción no puede deshacerse.</p>
-              <form action={formAction}>
-                <input type="hidden" name="id" value={id} />
-                <input type="hidden" name="document" value={document} />
-                <input type="hidden" name="entry" value={entry} />
-                <DeleteButton />
-                <button type="button" onClick={handleCancel}>
-                  Cancelar
-                </button>
-              </form>
-            </div>
+    <div>
+      {warning ? (
+        <div className="warning">
+          <div className="warning-box">
+            <p className="warning-text">Seguro que queres eliminar? Esta acción no puede deshacerse.</p>
+            <form action={formAction}>
+              <input type="hidden" name="id" value={id} />
+              <input type="hidden" name="document" value={document} />
+              <input type="hidden" name="entry" value={entry} />
+              <DeleteButton />
+              <button type="button" onClick={handleCancel}>
+                Cancelar
+              </button>
+            </form>
           </div>
-        ) : (
-          <form>
-            <button type="button" onClick={handleDeleteConfirm}>ELIMINAR</button>
-          </form>
-        )}
-      </div>
+        </div>
+      ) : (
+        <form>
+          <button type="button" onClick={handleDeleteConfirm}>ELIMINAR</button>
+        </form>
+      )}
+    </div>
   )
 }

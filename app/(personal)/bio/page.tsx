@@ -38,31 +38,39 @@ export default async function BioPage() {
     const text_1 = parse(html_1)
     const text_2 = parse(html_2)
 
+    console.log(image1Url)
+    console.log(image2Url)
+    console.log(image3Url)
+    console.log(image4Url)
+    console.log(image5Url)
+    console.log(image6Url)
+
 
     return (
         <section className='bio'>
             <h1>Bio</h1>
             <div className="imgContainer">
-            <Image
+                <Image
+                    className="bio-hero-image"
                     src={image1Url}
                     width={0}
                     height={0}
                     sizes="100vw"
-                    style={{
-                        width: '60%',
-                        height: 'auto',
-                        borderRadius: '50%'
-                    }}
+                    // style={{
+                    //     width: '60%',
+                    //     height: 'auto',
+                    //     borderRadius: '50%'
+                    // }}
                     alt="Picture of the author"
                 />
             </div>
-            
+
             <div>
                 <div className="paragraphContainer">
                     {text_1}
                 </div>
-                
-                <ImageGrid images={[image1Url, image2Url, image3Url, image4Url, image5Url, image6Url]}/>
+
+                <ImageGrid images={[image2Url, image3Url, image4Url, image5Url, image6Url]} />
                 <div className="paragraphContainer">
                     {text_2}
                 </div>
