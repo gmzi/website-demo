@@ -15,6 +15,8 @@ interface Shows {
 
 const ShowsGallery: React.FC<Shows> = ({shows}) => {
 
+    if (!shows.length) return <></>
+
     return (
         <div>
         <h2>Mas espectaculos</h2>

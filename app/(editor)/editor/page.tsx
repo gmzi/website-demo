@@ -4,34 +4,6 @@ import Link from "next/link";
 import { enableAuthIfProd } from '@/lib/EnableAuthIfProd';
 
 export default async function EditorMainPage() {
-  // const user: User | null = await currentUser();
-  // const {userId} : {userId: string | null} = auth();
-  // if (user?.id !== AUTHORIZED_USER_ID) {
-  //   return (
-  //     <div>
-  //       <UserButton afterSignOutUrl="/editor" />
-  //       <SignOutButton />
-  //       <p>you are an unauthorized user to edit this page, please sign out from your account and sign in as an authorized user</p>
-  //     </div>
-
-  //   )
-  // }
-
-
-
-  // const { orgRole } = auth();
-  const orgRole = await enableAuthIfProd();
-
-  if (orgRole !== 'admin') {
-    return (
-      <div>
-        <UserButton afterSignOutUrl="/editor" />
-        <SignOutButton />
-        <p>you are an unauthorized user to edit this page, please sign out from your account and sign in as an authorized user</p>
-      </div>
-
-    )
-  }
 
   return (
     <>
