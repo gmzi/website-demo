@@ -26,18 +26,18 @@ export default async function EditorPage({ params }: { params: { index: string }
   const indexes = Object.entries(navItems).map(([path, {name}]) => name)
   const index = indexes.find((index) => index === params.index);
 
-  const { orgRole } = auth();
+  // const { orgRole } = auth();
 
-  if (orgRole !== 'admin') {
-    return (
-      <div>
-        <p>
-          you are an unauthorized user to edit this page, 
-          please sign out from your current clerk account and sign in as an authorized user
-        </p>
-      </div>
-    )
-  }
+  // if (orgRole !== 'admin') {
+  //   return (
+  //     <div>
+  //       <p>
+  //         you are an unauthorized user to edit this page, 
+  //         please sign out from your current clerk account and sign in as an authorized user
+  //       </p>
+  //     </div>
+  //   )
+  // }
 
   if (!index) {
     notFound();
