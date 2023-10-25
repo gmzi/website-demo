@@ -24,6 +24,7 @@ export default async function BioPage() {
     const image4Url = data?.image_4_url || '';
     const image5Url = data?.image_5_url || '';
     const image6Url = data?.image_6_url || '';
+    const image7Url = data?.image_7_url || '';
 
     // const paragraphs = data?.content_html.split(/<\/?p>/).filter(Boolean);
 
@@ -66,7 +67,7 @@ export default async function BioPage() {
                     {text_1}
                 </div>
 
-                <ImageGrid images={[image2Url, image3Url, image4Url, image5Url, image6Url]} />
+                <ImageGrid images={[image2Url, image3Url, image4Url, image5Url, image6Url, image7Url]} />
                 <div className="paragraphContainer">
                     {text_2}
                 </div>

@@ -20,8 +20,9 @@ export default async function Bio() {
     const image4Url = data?.image_4_url || '';
     const image5Url = data?.image_5_url || '';
     const image6Url = data?.image_6_url || '';
+    const image7Url = data?.image_7_url || '';
 
-    const imageURLS = [image1Url, image2Url, image3Url, image4Url, image5Url, image6Url];
+    const imageURLS = [image1Url, image2Url, image3Url, image4Url, image5Url, image6Url, image7Url];
     // continue on the passing cycle to ImagesEdit, remember to rename `ImageEdit` 
     // component to `ImageInput`, and fix all imports. 
     

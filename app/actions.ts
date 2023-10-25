@@ -1043,96 +1043,31 @@ export async function editAbout(prevState: any, formData: FormData) {
 
 export async function editBio(prevState: any, formData: FormData) {
   try {
-
-    const newImageFile0 = formData.get('new_image_file_0') as File;
-    const newImageFile1 = formData.get('new_image_file_1') as File;
-    const newImageFile2 = formData.get('new_image_file_2') as File;
-    const newImageFile3 = formData.get('new_image_file_3') as File;
-    const newImageFile4 = formData.get('new_image_file_4') as File;
-    const newImageFile5 = formData.get('new_image_file_5') as File;
-
-
+    const newImage_1_File = formData.get('new_image_1_file') as File;
+    const newImage_2_File = formData.get('new_image_2_file') as File;
+    const newImage_3_File = formData.get('new_image_3_file') as File;
+    const newImage_4_File = formData.get('new_image_4_file') as File;
+    const newImage_5_File = formData.get('new_image_5_file') as File;
+    const newImage_6_File = formData.get('new_image_6_file') as File;
+    const newImage_7_File = formData.get('new_image_7_file') as File;
+    
     const bioSchema = z.object({
       contentHtml_1: z.string(),
       contentHtml_2: z.string(),
-      image_file_0: newImageFile0.size > 0
-        ? z
-          .any()
-          .refine((file) => {
-            return file?.size <= MAX_FILE_SIZE;
-          }, 'Max image size is 4MB.')
-          .refine(
-            (file) => {
-              return ACCEPTED_IMAGE_MIME_TYPES.includes(file?.type)
-            }, "Only .jpg, .jpeg, .png, and .webp formats are supported"
-          )
-        : z.undefined(),
-      image_file_1: newImageFile1.size > 0
-        ? z
-          .any()
-          .refine((file) => {
-            return file?.size <= MAX_FILE_SIZE;
-          }, 'Max image size is 4MB.')
-          .refine(
-            (file) => {
-              return ACCEPTED_IMAGE_MIME_TYPES.includes(file?.type)
-            }, "Only .jpg, .jpeg, .png, and .webp formats are supported"
-          )
-        : z.undefined(),
-      image_file_2: newImageFile2.size > 0
-        ? z
-          .any()
-          .refine((file) => {
-            return file?.size <= MAX_FILE_SIZE;
-          }, 'Max image size is 4MB.')
-          .refine(
-            (file) => {
-              return ACCEPTED_IMAGE_MIME_TYPES.includes(file?.type)
-            }, "Only .jpg, .jpeg, .png, and .webp formats are supported"
-          )
-        : z.undefined(),
-      image_file_3: newImageFile3.size > 0
-        ? z
-          .any()
-          .refine((file) => {
-            return file?.size <= MAX_FILE_SIZE;
-          }, 'Max image size is 4MB.')
-          .refine(
-            (file) => {
-              return ACCEPTED_IMAGE_MIME_TYPES.includes(file?.type)
-            }, "Only .jpg, .jpeg, .png, and .webp formats are supported"
-          )
-        : z.undefined(),
-      image_file_4: newImageFile4.size > 0
-        ? z
-          .any()
-          .refine((file) => {
-            return file?.size <= MAX_FILE_SIZE;
-          }, 'Max image size is 4MB.')
-          .refine(
-            (file) => {
-              return ACCEPTED_IMAGE_MIME_TYPES.includes(file?.type)
-            }, "Only .jpg, .jpeg, .png, and .webp formats are supported"
-          )
-        : z.undefined(),
-      image_file_5: newImageFile5.size > 0
-        ? z
-          .any()
-          .refine((file) => {
-            return file?.size <= MAX_FILE_SIZE;
-          }, 'Max image size is 4MB.')
-          .refine(
-            (file) => {
-              return ACCEPTED_IMAGE_MIME_TYPES.includes(file?.type)
-            }, "Only .jpg, .jpeg, .png, and .webp formats are supported"
-          )
-        : z.undefined(),
-      image_url_0: z.string(),
-      image_url_1: z.string(),
-      image_url_2: z.string(),
-      image_url_3: z.string(),
-      image_url_4: z.string(),
-      image_url_5: z.string(),
+      image_1_file : imageSchema,
+      image_2_file : imageSchema,
+      image_3_file : imageSchema,
+      image_4_file : imageSchema,
+      image_5_file : imageSchema,
+      image_6_file : imageSchema,
+      image_7_file : imageSchema,
+      image_1_url: z.string(),
+      image_2_url: z.string(),
+      image_3_url: z.string(),
+      image_4_url: z.string(),
+      image_5_url: z.string(),
+      image_6_url: z.string(),
+      image_7_url: z.string(),
     })
 
     const inputData: {
@@ -1140,56 +1075,37 @@ export async function editBio(prevState: any, formData: FormData) {
     } = bioSchema.parse({
       contentHtml_1: formData.get('editor_content_1'),
       contentHtml_2: formData.get('editor_content_2'),
-      image_file_0: newImageFile0.size > 0 ? (formData.get('new_image_file_0') as File) : undefined,
-      image_file_1: newImageFile1.size > 0 ? (formData.get('new_image_file_1') as File) : undefined,
-      image_file_2: newImageFile2.size > 0 ? (formData.get('new_image_file_2') as File) : undefined,
-      image_file_3: newImageFile3.size > 0 ? (formData.get('new_image_file_3') as File) : undefined,
-      image_file_4: newImageFile4.size > 0 ? (formData.get('new_image_file_4') as File) : undefined,
-      image_file_5: newImageFile5.size > 0 ? (formData.get('new_image_file_5') as File) : undefined,
-      image_url_0: formData.get('image_url_0'),
-      image_url_1: formData.get('image_url_1'),
-      image_url_2: formData.get('image_url_2'),
-      image_url_3: formData.get('image_url_3'),
-      image_url_4: formData.get('image_url_4'),
-      image_url_5: formData.get('image_url_5'),
+      image_1_file: newImage_1_File.size > 0 ? newImage_1_File : undefined,
+      image_2_file: newImage_2_File.size > 0 ? newImage_2_File : undefined,
+      image_3_file: newImage_3_File.size > 0 ? newImage_3_File : undefined,
+      image_4_file: newImage_4_File.size > 0 ? newImage_4_File : undefined,
+      image_5_file: newImage_5_File.size > 0 ? newImage_5_File : undefined,
+      image_6_file: newImage_6_File.size > 0 ? newImage_6_File : undefined,
+      image_7_file: newImage_7_File.size > 0 ? newImage_7_File : undefined,
+      image_1_url: formData.get('image_1_url'),
+      image_2_url: formData.get('image_2_url'),
+      image_3_url: formData.get('image_3_url'),
+      image_4_url: formData.get('image_4_url'),
+      image_5_url: formData.get('image_5_url'),
+      image_6_url: formData.get('image_6_url'),
+      image_7_url: formData.get('image_7_url'),
     })
 
-    // store image  files only:
-    const imageFiles: {
-      [key: string]: string | File | undefined;
-    } = {};
+    
+    // mutate inputData to load new images:
+    const updatedInputData = await handleInputDataWithNewImageFiles(inputData, "bio");
 
-    // loop over inputData and store image files only:
-    for (const key in inputData) {
-      if (key.includes('image_file_')) {
-        imageFiles[key] = inputData[key];
-      }
-    }
-
-    // upload image files to Cloudinary:
-    for (const key in imageFiles) {
-      const imageFile = imageFiles[key];
-      if (imageFile) {
-        const idx = key.split('image_file_')[1];
-        const imageMetadata = await uploadToCloudinary(imageFile, 'bio');
-        // store image url in inputData:
-        // deletion of old image would go here: await moveToTrash(oldImageUrl);
-        inputData[`image_url_${idx}`] = imageMetadata.secure_url;
-      }
-    }
-
-    // mind that images in DB are numbered starting from 1, and the above function uses index positions, just
-    // translate when assigning values
     const data = {
       document: "bio",
-      content_html_1: inputData.contentHtml_1,
-      content_html_2: inputData.contentHtml_2,
-      image_1_url: inputData.image_url_0,
-      image_2_url: inputData.image_url_1,
-      image_3_url: inputData.image_url_2,
-      image_4_url: inputData.image_url_3,
-      image_5_url: inputData.image_url_4,
-      image_6_url: inputData.image_url_5
+      content_html_1: updatedInputData.contentHtml_1,
+      content_html_2: updatedInputData.contentHtml_2,
+      image_1_url: updatedInputData.image_1_url,
+      image_2_url: updatedInputData.image_2_url,
+      image_3_url: updatedInputData.image_3_url,
+      image_4_url: updatedInputData.image_4_url,
+      image_5_url: updatedInputData.image_5_url,
+      image_6_url: updatedInputData.image_6_url,
+      image_7_url: updatedInputData.image_7_url
     }
 
     const updated = await fetch(`${BASE_URL}/server/bio`, {
@@ -1201,6 +1117,8 @@ export async function editBio(prevState: any, formData: FormData) {
       referrerPolicy: 'no-referrer',
       body: JSON.stringify(data)
     });
+
+    revalidatePath(`/(personal)/bio`, 'page');
 
     revalidatePath('/(editor)/editor', 'page');
 

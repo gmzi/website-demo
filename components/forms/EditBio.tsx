@@ -67,14 +67,11 @@ export function EditBio({ contentHtml_1, contentHtml_2, imageUrls }: BioProps) {
         <form action={formAction}>
             <h2>EDITAR Bio</h2>
             <ImageInputWithIDAndDefaultValue id={1} defaultValue={heroImageUrl} className="bio-hero-image" />
-            {/* <RichText contentHtml={contentHtml} /> */}
             <RichTextWithIdentificator contentHtml={contentHtml_1} identificator={1} />
             <div className="image-grid">
                 {imagesGrid}
             </div>
             <RichTextWithIdentificator contentHtml={contentHtml_2} identificator={2} />
-            {/* <ImageGrid images={gridImageUrls} /> */}
-            {/* <ImagesEdit imageUrls={imageUrls} /> */}
             <EditButton />
             <button onClick={handleCancel}>Cancelar</button>
             <p aria-live="polite" className="sr-only" role="status">
