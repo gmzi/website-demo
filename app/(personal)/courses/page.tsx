@@ -29,10 +29,12 @@ export default async function CoursesPage() {
     const image5Url = data?.image_5_url || '';
     const image6Url = data?.image_6_url || '';
     const image7Url = data?.image_7_url || '';
+    const image8Url = data?.image_8_url || '';
 
     const grid_1 = [image2Url, image3Url];
     const grid_2 = [image4Url, image5Url];
     const grid_3 = [image6Url, image7Url];
+    const grid_4 = [image8Url];
 
 
     const availableCourses_writing = data?.available_courses_writing || [];
@@ -44,14 +46,18 @@ export default async function CoursesPage() {
     const FAQ = parse(data?.FAQ) || "";
     const testimonials = data?.testimonials || [];
     const contactWhatsapp = data?.contact.whatsapp || {};
-    const reviews = data?.reviews || {};
+    const reviews = data?.reviews || [];
 
 
 
+    // const contactBtn =
+    //     <form action={`https://wa.me/${contactWhatsapp}`}>
+    //         <button className="btn-whatsapp" type="submit">contactame por whatsapp</button>
+    //     </form>
     const contactBtn =
-        <form action={`https://wa.me/${contactWhatsapp}`}>
-            <button className="btn-whatsapp" type="submit">contactame por whatsapp</button>
-        </form>
+        <Link href={`https://wa.me/${contactWhatsapp}`} target="_blank">
+            <button className="btnWhatsapp">whatsapp</button>
+        </Link>
 
     return (
         <section className='courses'>
@@ -70,9 +76,7 @@ export default async function CoursesPage() {
                 <div className='description'>
                     {texto}
                 </div>
-                <Link href={`https://wa.me/${contactWhatsapp}`} target="_blank">
-                    <button className="btnWhatsapp">contactame por whatsapp</button>
-                </Link>
+                {contactBtn}
             </div>
 
             <ImageGrid images={grid_1} />
@@ -111,19 +115,23 @@ export default async function CoursesPage() {
                         </li>
                     ))}
                 </ol>
-                <div>
-                    <div className="faq">
-                        <h2>Preguntas frecuentes</h2>
-                        {FAQ}
-                    </div>
-                </div>
+                <ol className="goals">
+                    <h3>Preguntas frecuentes</h3>
+                    <li className="faq">{FAQ}</li>
+                </ol>
             </div>
 
             <ImageGrid images={grid_2} />
 
-            <div className="btnContainer">
-                {contactBtn}
+            <div className="reviews">
+                {reviews.map((review: { content: string, author: string }, i: number) => (
+                    <blockquote key={`review-${i}`} className="review">
+                        {parse(review.content)}
+                        <cite>{review.author}</cite>
+                    </blockquote>
+                ))}
             </div>
+
             <ImageGrid images={grid_3} />
 
             <div>
@@ -137,25 +145,34 @@ export default async function CoursesPage() {
                     ))}
                 </div>
             </div>
-            {/* <div>
-                {reviews.map((item, i) => {
-                    return (
-                        <div key={`review-${i}`}>
-                            <h2>{item.title}</h2>
-                            {parse(item.content)}
-                        </div>
-                    )
-                
-                })}
-            </div> */}
-            <div>
+
+            <div className="contact">
                 <h2>Inscripción y consultas</h2>
-                <div className="btnContainer">
-                    <p>podés consultarme por whatsapp cliqueando acá:</p>
-                    {contactBtn}
-                    <p>o por email cliqueando <a href="mailto:name@email.com">acá</a></p>
-                    <p>o en cualquiera de mis redes sociales acá abajo:</p>
-                </div>
+                <ol className="contact-items">
+                    <li>
+                        <span className="emoji">&#x1F4DE;</span>
+                        <span className="text">whapp: </span>
+                        <span className="link">{contactBtn}</span>
+                    </li>
+                    <li>
+                        {/* <span>por email: <a href="mailto:XXXXXXXXXXXXXX">acá</a></span> */}
+                        <span className="emoji">&#x2709;</span>
+                        <span className="text">mail: </span>
+                        {/* <span className="link"><a href="mailto:XXXXXXXXXXXXXX">redactar</a></span> */}
+                        <span className="link"><a href="mailto:example@email.com?subject=consulta">redactar</a></span>
+                    </li>
+                    <li>
+                        {/* <span>llenando este <a href="/contact">formulario</a> </span> */}
+                        <span className="emoji">&#x1F4BB;</span>
+                        <span className="text">llenando este </span>
+                        <span className="link"><a href="/contact">formulario</a></span>
+                    </li>
+                    <li>
+                        {/* <span>o en cualquiera de mis redes sociales</span> */}
+                        <span className="goals-emoji">&#x1F310;</span>
+                        <span className="goals-text">o en cualquiera de mis redes sociales!!!</span>
+                    </li>
+                </ol>
             </div>
         </section>
     )
