@@ -35,14 +35,16 @@ export default async function CoursesPage() {
     const grid_3 = [image6Url, image7Url];
 
 
-    const availableCourses = data?.available_courses || [];
-    const goals = data?.goals || [];
+    const availableCourses_writing = data?.available_courses_writing || [];
+    const availableCourses_acting = data?.available_courses_acting || [];
+
+    const goals_writing = data?.goals_writing || [];
+    const goals_acting = data?.goals_acting || [];
 
     const FAQ = parse(data?.FAQ) || "";
-    const logistics: Logistics = data?.logistics || {};
     const testimonials = data?.testimonials || [];
     const contactWhatsapp = data?.contact.whatsapp || {};
-    const reviews = data?.reviews || [];
+    const reviews = data?.reviews || {};
 
 
 
@@ -76,15 +78,15 @@ export default async function CoursesPage() {
             <ImageGrid images={grid_1} />
 
             <div className="cards-and-goals">
-                <h2>Mis tres cursos:</h2>
+                <h2>Mis cursos de actuación:</h2>
                 <div className='courseCards-container'>
-                    {availableCourses.map((course: Course, i: number) => (
+                    {availableCourses_acting.map((course: Course, i: number) => (
                         <div className="courseCard" key={`course-${i}`}>{course.name}</div>
                     ))}
                 </div>
                 <ol className="goals">
-                    <h3>Objetivos:</h3>
-                    {goals.map((goal: string, i: number) => (
+                    {goals_acting.length > 0 && <h3>Objetivos:</h3>}
+                    {goals_acting.map((goal: string, i: number) => (
                         <li key={`illustration-${i}`}>
                             <span className="goals-emoji">&#x1F3AF;</span>
                             <span className="goals-text">{goal}</span>
@@ -92,43 +94,38 @@ export default async function CoursesPage() {
                     ))}
                 </ol>
             </div>
-                
-            <ImageGrid images={grid_2} />
-            <div>
-                <div className="faq">
-                    <h2>Preguntas frecuentes</h2>
-                    {FAQ}
-                </div>
-                <div className="reviews">
-                    {reviews.map((review: { content: string, author: string }, i: number) => (
-                        <blockquote key={`review-${i}`}>
-                            {parse(review.content)}
-                            <cite>{review.author}</cite>
-                        </blockquote>
+
+            <div className="cards-and-goals">
+                <h2>Mis cursos de dramaturgia:</h2>
+                <div className='courseCards-container'>
+                    {availableCourses_writing.map((course: Course, i: number) => (
+                        <div className="courseCard" key={`course-${i}`}>{course.name}</div>
                     ))}
                 </div>
+                <ol className="goals">
+                    {goals_writing.length > 0 && <h3>Objetivos:</h3>}
+                    {goals_writing.map((goal: string, i: number) => (
+                        <li key={`illustration-${i}`}>
+                            <span className="goals-emoji">&#x1F3AF;</span>
+                            <span className="goals-text">{goal}</span>
+                        </li>
+                    ))}
+                </ol>
+                <div>
+                    <div className="faq">
+                        <h2>Preguntas frecuentes</h2>
+                        {FAQ}
+                    </div>
+                </div>
             </div>
+
+            <ImageGrid images={grid_2} />
+
             <div className="btnContainer">
                 {contactBtn}
             </div>
             <ImageGrid images={grid_3} />
-            <div className="course-logistics">
-                {/* <Image
-                    alt="Picture of the author"
-                    src={logistics.image_url}
-                    width={0}
-                    height={0}
-                    sizes="100vw"
-                    style={{
-                        width: '30%',
-                        height: 'auto',
-                        borderRadius: '5px',
-                        marginBottom: '.5em'
-                    }}
-                /> */}
-                <h2>{logistics.title}</h2>
-                {parse(logistics.content_html)}
-            </div>
+
             <div>
                 <h2>Testimonios</h2>
                 <div className="testimonialCards-container">
@@ -140,6 +137,17 @@ export default async function CoursesPage() {
                     ))}
                 </div>
             </div>
+            {/* <div>
+                {reviews.map((item, i) => {
+                    return (
+                        <div key={`review-${i}`}>
+                            <h2>{item.title}</h2>
+                            {parse(item.content)}
+                        </div>
+                    )
+                
+                })}
+            </div> */}
             <div>
                 <h2>Inscripción y consultas</h2>
                 <div className="btnContainer">
