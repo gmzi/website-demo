@@ -13,9 +13,14 @@
         },
         "name": "courses",
         "content_html": "<p>EDIT Las clases son prácticas y la idea es que ya desde el primer encuentro comiences a concretar tu obra. De mi parte, me voy a ocupar de brindarte las herramientas necesarias y acompañarte para desarrollar tu propia dramaturgia.<br />Para las tres modalidades del curso, partiremos de una imagen como disparador para desarrollar nuestra historia. Esa primera foto o visualización que surge sin saber por qué, será nuestro motor fundamental para recorrer el camino.</p>",
-        "image_1_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1696614320/website-fer/courses/yexldmxrst1qldf1r67r.webp",
-        "image_2_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1687379968/website-fer/about/zngp5hpy0hox2ngsoknn.jpg",
-        "image_3_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1687379968/website-fer/about/zngp5hpy0hox2ngsoknn.jpg",
+        "image_1_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1697580300/website-fer/bio/dgfhalhrnnw0satt10xi.webp",
+        "image_2_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1697579608/website-fer/bio/w65phhxvey7krrslxhnj.jpg",
+        "image_3_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1697647971/website-fer/bio/zbo6v9rqp7mh0a790iym.webp",
+        "image_4_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1697580300/website-fer/bio/dgfhalhrnnw0satt10xi.webp",
+        "image_5_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1697647971/website-fer/bio/x9hpb9f6xgkv1rsyqvfh.jpg",
+        "image_6_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1697647972/website-fer/bio/lhbzkzubke3mart4jhs9.webp",
+        "image_7_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1697580300/website-fer/bio/dgfhalhrnnw0satt10xi.webp",
+        "image_8_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1697580300/website-fer/bio/dgfhalhrnnw0satt10xi.webp",
         "available_courses": [
             {
                 "id": "fds1",

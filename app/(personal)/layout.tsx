@@ -3,6 +3,8 @@ import { Footer } from '@/components/global/Footer'
 import { Analytics } from '@vercel/analytics/react'
 import Social from '@/components/global/Social'
 
+const isProd = process.env.NODE_ENV === 'production'
+
 export default async function IndexRoute({
   children,
 }: {
@@ -16,6 +18,7 @@ export default async function IndexRoute({
       <main>
         {children}
         {/* <Analytics/> */}
+        {isProd && <Analytics/>}
       </main>
       <Footer/>
     </>

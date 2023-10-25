@@ -1,42 +1,40 @@
 import type { Metadata } from "next"
 import Image from 'next/image'
+import Link from "next/link"
 import { getData } from "@/lib/getData"
 import parse from 'html-react-parser'
 import { availableParallelism, type } from "os"
 import { IntegerType } from "mongodb"
 import { GoalsIcon } from "@/components/shared/icons"
-import document from "@/document.json"
+import ImageGrid from '@/components/ImageGrid';
 import type { Course, Goals, Logistics, Testimonial, Data } from '@/types'
-
-const isProd = process.env.NODE_ENV === 'production';
-
+import { getRemoteOrLocalData } from "@/lib/getRemoteOrLocalData"
 
 export const metadata: Metadata = {
     title: 'Cursos',
-    description: 'cursos',
+    description: 'cursos dictados por John Doe',
 }
 
 export default async function CoursesPage() {
 
-    // let data;
-    // if (isProd){
-    //     data = await getData("courses");
-    // } else {
-    //     data = document.courses;
-    // }
+    // const data = await getData("courses");
+    const data = await getRemoteOrLocalData("courses");
 
-    const data = await getData("courses");
-
-    const texto = (data: Data) => {
-        if (data.content_html) {
-            return parse(data.content_html)
-        }
-        return ''
-    }
+    const texto = parse(data.content_html) || "";
 
     const image1Url = data?.image_1_url || '';
     const image2Url = data?.image_2_url || '';
     const image3Url = data?.image_3_url || '';
+    const image4Url = data?.image_4_url || '';
+    const image5Url = data?.image_5_url || '';
+    const image6Url = data?.image_6_url || '';
+    const image7Url = data?.image_7_url || '';
+
+    const grid_1 = [image2Url, image3Url];
+    const grid_2 = [image4Url, image5Url];
+    const grid_3 = [image6Url, image7Url];
+
+
     const availableCourses = data?.available_courses || [];
     const goals = data?.goals || [];
 
@@ -46,54 +44,56 @@ export default async function CoursesPage() {
     const contactWhatsapp = data?.contact.whatsapp || {};
     const reviews = data?.reviews || [];
 
-    const contactBtn = <form action={`https://wa.me/${contactWhatsapp}`}><button className="btn-whatsapp" type="submit">contactame por whatsapp</button></form>
 
 
-
+    const contactBtn =
+        <form action={`https://wa.me/${contactWhatsapp}`}>
+            <button className="btn-whatsapp" type="submit">contactame por whatsapp</button>
+        </form>
 
     return (
-        <section className='sectionCourses'>
+        <section className='courses'>
             <h1>Cursos</h1>
-            <div className="coursesHero">
-                <Image
-                    alt="Picture of the author"
-                    src={image1Url}
-                    width={0}
-                    height={0}
-                    sizes="100vw"
-                    style={{
-                        width: '100%',
-                        height: 'auto',
-                        borderRadius: '5px',
-                        marginBottom: '.5em'
-                    }}
-                />
-                <div className='description'>
-                    {texto(data)}
+            <div className="heroContainer">
+                <div className="">
+                    <Image
+                        className="defaultImgStyle"
+                        src={image1Url}
+                        width={0}
+                        height={0}
+                        sizes="100vw"
+                        alt="Picture of a class"
+                    />
                 </div>
+                <div className='description'>
+                    {texto}
+                </div>
+                <Link href={`https://wa.me/${contactWhatsapp}`} target="_blank">
+                    <button className="btnWhatsapp">contactame por whatsapp</button>
+                </Link>
             </div>
-            <div className="btnContainer">
-                {contactBtn}
-            </div>
-            <div>
+
+            <ImageGrid images={grid_1} />
+
+            <div className="cards-and-goals">
                 <h2>Mis tres cursos:</h2>
                 <div className='courseCards-container'>
                     {availableCourses.map((course: Course, i: number) => (
                         <div className="courseCard" key={`course-${i}`}>{course.name}</div>
                     ))}
                 </div>
-            </div>
-            <div>
-                <ol>
-                    <h2>Objetivos</h2>
+                <ol className="goals">
+                    <h3>Objetivos:</h3>
                     {goals.map((goal: string, i: number) => (
                         <li key={`illustration-${i}`}>
-                            <div><GoalsIcon /></div>
-                            {goal}
+                            <span className="goals-emoji">&#x1F3AF;</span>
+                            <span className="goals-text">{goal}</span>
                         </li>
                     ))}
                 </ol>
             </div>
+                
+            <ImageGrid images={grid_2} />
             <div>
                 <div className="faq">
                     <h2>Preguntas frecuentes</h2>
@@ -111,8 +111,9 @@ export default async function CoursesPage() {
             <div className="btnContainer">
                 {contactBtn}
             </div>
+            <ImageGrid images={grid_3} />
             <div className="course-logistics">
-                <Image
+                {/* <Image
                     alt="Picture of the author"
                     src={logistics.image_url}
                     width={0}
@@ -124,7 +125,7 @@ export default async function CoursesPage() {
                         borderRadius: '5px',
                         marginBottom: '.5em'
                     }}
-                />
+                /> */}
                 <h2>{logistics.title}</h2>
                 {parse(logistics.content_html)}
             </div>
