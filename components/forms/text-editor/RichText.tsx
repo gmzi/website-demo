@@ -48,3 +48,41 @@ export function RichText({contentHtml}: RichTextProps) {
   )
       
 }
+
+export function RichTextWithIdentificator({contentHtml, identificator}: {contentHtml: string, identificator: number}) {
+
+  const editor = useEditor({
+    extensions: [
+      Color.configure({ types: [TextStyle.name, ListItem.name] }),
+    //   @ts-ignore
+      TextStyle.configure({ types: [ListItem.name] }),
+      StarterKit.configure({
+        history: false,
+        bulletList: {
+          keepMarks: true,
+          keepAttributes: false, // TODO : Making this as `false` becase marks are not preserved when I try to preserve attrs, awaiting a bit of help
+        },
+        orderedList: {
+          keepMarks: true,
+          keepAttributes: false, // TODO : Making this as `false` becase marks are not preserved when I try to preserve attrs, awaiting a bit of help
+        },
+      }),
+      // Highlight,
+      // TaskList,
+      // TaskItem,
+    ],
+    content: sanitizeHtml(contentHtml),
+    onTransaction: () => {
+      const html = editor?.getHTML();
+    },
+  });
+
+  return (
+    <div className="rich-text-editor">
+        <input type="hidden" name={`editor_content_${identificator}`} value={sanitizeHtml(editor?.getHTML()|| '')} />
+        {editor && <MenuBar editor={editor} />}
+        {editor && <EditorContent editor={editor} className="editor__content"/>}
+    </div>
+  )
+      
+}

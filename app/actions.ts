@@ -1053,7 +1053,8 @@ export async function editBio(prevState: any, formData: FormData) {
 
 
     const bioSchema = z.object({
-      contentHtml: z.string(),
+      contentHtml_1: z.string(),
+      contentHtml_2: z.string(),
       image_file_0: newImageFile0.size > 0
         ? z
           .any()
@@ -1137,7 +1138,8 @@ export async function editBio(prevState: any, formData: FormData) {
     const inputData: {
       [key: string]: string | File | undefined;
     } = bioSchema.parse({
-      contentHtml: formData.get('editor_content'),
+      contentHtml_1: formData.get('editor_content_1'),
+      contentHtml_2: formData.get('editor_content_2'),
       image_file_0: newImageFile0.size > 0 ? (formData.get('new_image_file_0') as File) : undefined,
       image_file_1: newImageFile1.size > 0 ? (formData.get('new_image_file_1') as File) : undefined,
       image_file_2: newImageFile2.size > 0 ? (formData.get('new_image_file_2') as File) : undefined,
@@ -1180,7 +1182,8 @@ export async function editBio(prevState: any, formData: FormData) {
     // translate when assigning values
     const data = {
       document: "bio",
-      content_html: inputData.contentHtml,
+      content_html_1: inputData.contentHtml_1,
+      content_html_2: inputData.contentHtml_2,
       image_1_url: inputData.image_url_0,
       image_2_url: inputData.image_url_1,
       image_3_url: inputData.image_url_2,

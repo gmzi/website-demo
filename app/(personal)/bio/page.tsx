@@ -25,25 +25,21 @@ export default async function BioPage() {
     const image5Url = data?.image_5_url || '';
     const image6Url = data?.image_6_url || '';
 
-    const paragraphs = data?.content_html.split(/<\/?p>/).filter(Boolean);
+    // const paragraphs = data?.content_html.split(/<\/?p>/).filter(Boolean);
 
-    const midpoint = Math.floor(paragraphs.length / 2);
+    // const midpoint = Math.floor(paragraphs.length / 2);
 
-    const array_1 = paragraphs.slice(0, midpoint)
-    const array_2 = paragraphs.slice(midpoint)
+    // const array_1 = paragraphs.slice(0, midpoint)
+    // const array_2 = paragraphs.slice(midpoint)
 
-    const html_1 = array_1.join("")
-    const html_2 = array_2.join("")
+    // const html_1 = array_1.join("")
+    // const html_2 = array_2.join("")
+
+    const html_1 = data?.content_html_1 || '';
+    const html_2 = data?.content_html_2 || '';
 
     const text_1 = parse(html_1)
     const text_2 = parse(html_2)
-
-    console.log(image1Url)
-    console.log(image2Url)
-    console.log(image3Url)
-    console.log(image4Url)
-    console.log(image5Url)
-    console.log(image6Url)
 
 
     return (

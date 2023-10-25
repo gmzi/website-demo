@@ -1018,8 +1018,7 @@ footer p {
   object-fit: cover;
 }
 
-.image-grid label,
-.image-grid input {
+.image-grid label {
   display: none;
 }
 

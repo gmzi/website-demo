@@ -8,7 +8,7 @@ import type { About } from '@/types'
 import { editPressArticle, createPressArticle, editHeroText, editAvailableCourse, createCourse, createSection, createCourseReview, editCourseReview, editTestimonial, createTestimonial, editCourseLogistics, editPressHeroImage, createPressVideo, editPressVideo, editShow, createShow } from '@/app/actions'
 import { ImageEdit } from './ImageEdit'
 import { parseNameAndRole } from '@/lib/parseNameAndRole'
-import { ImageInputWithIndex, ImageInputWithIndexAndDefaultValue, ImageInputWithIndexAndDefaultValueAndDeleteButton } from './ImageInput'
+import { ImageInputWithIndex, ImageInputWithIDAndDefaultValue, ImageInputWithIndexAndDefaultValueAndDeleteButton } from './ImageInput'
 import { ImagesEdit } from './ImageEdit'
 import { RichText } from './text-editor/RichText'
 import { IframeForm, IframeEdit } from './IframeForm'
@@ -131,7 +131,7 @@ export function Edit({ articles, index, handleCancel }: EditProps) {
                 <label htmlFor="opening_date">Fecha de estreno:</label>
                 <input type="text" id="opening_date" name="opening_date" className="show-year" defaultValue={item.opening_date} />
                 <h3>Poster</h3>
-                <ImageInputWithIndexAndDefaultValue idx={1} defaultValue={item.image_1_url} className="preview-default" />
+                <ImageInputWithIDAndDefaultValue id={1} defaultValue={item.image_1_url} className="preview-default" />
 
                 <div className="show-sinopsis">
                     <label htmlFor="editor_content">Sinopsis:</label>

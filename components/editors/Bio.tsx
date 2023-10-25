@@ -11,7 +11,8 @@ export default async function Bio() {
     const sectionName = "bio"
     const folderName="bio"
 
-    const contentHtml = data.content_html;
+    const html_1 = data?.content_html_1;
+    const html_2 = data?.content_html_2;
 
     const image1Url = data?.image_1_url || '';
     const image2Url = data?.image_2_url || '';
@@ -27,7 +28,7 @@ export default async function Bio() {
     return (
         <div>
             <h2>Bio</h2>
-            <EditBio contentHtml={contentHtml} imageUrls={imageURLS}/>
+            <EditBio contentHtml_1={html_1} contentHtml_2={html_2} imageUrls={imageURLS}/>
         </div>
     )
   }

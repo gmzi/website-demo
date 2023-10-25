@@ -107,7 +107,7 @@ export function ImageInputWithIndex({ idx }: { idx: number }) {
     )
 }
 
-export function ImageInputWithIndexAndDefaultValue({ idx, defaultValue, className }: { idx: number, defaultValue: string, className: string }) {
+export function ImageInputWithIDAndDefaultValue({ id, defaultValue, className }: { id: number, defaultValue: string, className: string }) {
     const [imageFile, setImageFile] = useState(null);
     const [previewImageUrl, setPreviewImageUrl] = useState<string | null>(defaultValue);
 
@@ -133,13 +133,13 @@ export function ImageInputWithIndexAndDefaultValue({ idx, defaultValue, classNam
 
     return (
         <>
-            <input type="hidden" name={`image_${idx}_url`} value={defaultValue} />
+            <input type="hidden" name={`image_${id}_url`} value={defaultValue} />
 
-            <label htmlFor={`new_image_${idx}_file`}>Cambiar/agregar imagen:</label>
+            <label htmlFor={`new_image_${id}_file`}>Cambiar/agregar imagen:</label>
             <input
                 type="file"
-                id={`new_image_${idx}_file`}
-                name={`new_image_${idx}_file`}
+                id={`new_image_${id}_file`}
+                name={`new_image_${id}_file`}
                 accept="image/*"
                 onChange={handleImageChange}
             />
@@ -229,7 +229,7 @@ export function ImageInputWithIndexAndDefaultValueAndDeleteButton({ idx, default
     )
 }
 
-export function ImageGridInput({ idx, defaultValue, className }: { idx: number, defaultValue: string, className: string }) {
+export function ImageGridInput({ id, defaultValue, className }: { id: number, defaultValue: string, className: string }) {
     const [imageFile, setImageFile] = useState(null);
     const [previewImageUrl, setPreviewImageUrl] = useState<string | null>(defaultValue);
 
@@ -255,13 +255,13 @@ export function ImageGridInput({ idx, defaultValue, className }: { idx: number, 
 
     return (
         <>
-            <input type="hidden" name={`image_${idx}_url`} value={defaultValue} />
+            <input type="hidden" name={`image_${id}_url`} value={defaultValue} />
 
-            <label htmlFor={`new_image_${idx}_file`}>Cambiar/agregar imagen:</label>
+            <label htmlFor={`new_image_${id}_file`}>Cambiar/agregar imagen:</label>
             <input
                 type="file"
-                id={`new_image_${idx}_file`}
-                name={`new_image_${idx}_file`}
+                id={`new_image_${id}_file`}
+                name={`new_image_${id}_file`}
                 accept="image/*"
                 onChange={handleImageChange}
             />

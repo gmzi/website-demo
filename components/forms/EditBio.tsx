@@ -7,13 +7,14 @@ import type { Bio } from '@/types'
 import { editBio } from '@/app/actions'
 import { ImageEdit } from './ImageEdit'
 import { ImagesEdit } from './ImageEdit'
-import { ImageGridInput, ImageInputWithIndexAndDefaultValue } from './ImageInput'
-import { RichText } from './text-editor/RichText'
+import { ImageGridInput, ImageInputWithIDAndDefaultValue } from './ImageInput'
+import { RichText, RichTextWithIdentificator } from './text-editor/RichText'
 import ImageGrid from '../ImageGrid'
 
 
 interface BioProps {
-    contentHtml: string;
+    contentHtml_1: string;
+    contentHtml_2: string;
     imageUrls: string[];
 }
 
@@ -34,7 +35,7 @@ function EditButton() {
     )
 }
 
-export function EditBio({ contentHtml, imageUrls }: BioProps) {
+export function EditBio({ contentHtml_1, contentHtml_2, imageUrls }: BioProps) {
     const [state, formAction] = useFormState(editBio, initialState)
 
     const heroImageUrl = imageUrls[0];
@@ -43,7 +44,7 @@ export function EditBio({ contentHtml, imageUrls }: BioProps) {
     const imagesGrid = gridImageUrls.map((url, index) => {
         return (
             <div key={`edit-image-${index}`}>
-                <ImageGridInput idx={index + 2} defaultValue={url} className="" />
+                <ImageGridInput id={index + 2} defaultValue={url} className="" />
             </div>
         )
     })
@@ -52,7 +53,6 @@ export function EditBio({ contentHtml, imageUrls }: BioProps) {
         e.preventDefault();
         window.location.reload();
     }
-
 
     return (
         // <form action={formAction}>
@@ -66,11 +66,13 @@ export function EditBio({ contentHtml, imageUrls }: BioProps) {
         // </form>
         <form action={formAction}>
             <h2>EDITAR Bio</h2>
-            <ImageInputWithIndexAndDefaultValue idx={1} defaultValue={heroImageUrl} className="bio-hero-image" />
-            <RichText contentHtml={contentHtml} />
+            <ImageInputWithIDAndDefaultValue id={1} defaultValue={heroImageUrl} className="bio-hero-image" />
+            {/* <RichText contentHtml={contentHtml} /> */}
+            <RichTextWithIdentificator contentHtml={contentHtml_1} identificator={1} />
             <div className="image-grid">
                 {imagesGrid}
             </div>
+            <RichTextWithIdentificator contentHtml={contentHtml_2} identificator={2} />
             {/* <ImageGrid images={gridImageUrls} /> */}
             {/* <ImagesEdit imageUrls={imageUrls} /> */}
             <EditButton />
