@@ -83,8 +83,8 @@ function parseRichTextInput(formData: FormData) {
   return inputData;
 }
 
-async function handleInputDataWithNewImageFiles(inputData: any, folderName: string){
-  const imageFiles : {
+async function handleInputDataWithNewImageFiles(inputData: any, folderName: string) {
+  const imageFiles: {
     [key: string]: string | File | undefined;
   } = {};
 
@@ -99,17 +99,17 @@ async function handleInputDataWithNewImageFiles(inputData: any, folderName: stri
     const imageFile = imageFiles[key];
     const [, fileNumber] = key.split('_');
     // @ts-ignore
-    if (imageFile?.size > 0){
+    if (imageFile?.size > 0) {
       const imageMetadata = await uploadToCloudinary(imageFile, folderName);
       // @ts-ignore
-      inputData[`image_${fileNumber}_url`] = imageMetadata.secure_url; 
+      inputData[`image_${fileNumber}_url`] = imageMetadata.secure_url;
       // @ts-ignore
       delete inputData[`image_${fileNumber}_file`];
-  } else {
-    // @ts-ignore
-    delete inputData[`image_${fileNumber}_file`];
+    } else {
+      // @ts-ignore
+      delete inputData[`image_${fileNumber}_file`];
+    }
   }
-}
   return inputData;
 }
 
@@ -357,7 +357,7 @@ export async function editPressVideo(prevState: any, formData: FormData) {
   }
 }
 
-async function deleteImagesAndUpdateObject(imagesArray: {url: string, index: number}[], inputData: any){
+async function deleteImagesAndUpdateObject(imagesArray: { url: string, index: number }[], inputData: any) {
   for (const imageObject of imagesArray) {
     const index = imageObject.index
     const trashOldImage = await moveToTrash(imageObject.url);
@@ -458,15 +458,15 @@ const optionalNameAndRoleSchemaOld = z.union([
 
 const imageSchema = z.union([
   z.any()
-  .refine((file) => {
-    return file?.size <= MAX_FILE_SIZE; 
-  }, "Max image size is 4MB.")
-  .refine((file) => {
-    return ACCEPTED_IMAGE_MIME_TYPES.includes(file?.type);
-  }, "Only .jpg, .jpeg, .png, and .webp formats are supported")
-  .refine((file)=> {
-    return file?.size !== 0;
-  }, "plase attach an image file"),
+    .refine((file) => {
+      return file?.size <= MAX_FILE_SIZE;
+    }, "Max image size is 4MB.")
+    .refine((file) => {
+      return ACCEPTED_IMAGE_MIME_TYPES.includes(file?.type);
+    }, "Only .jpg, .jpeg, .png, and .webp formats are supported")
+    .refine((file) => {
+      return file?.size !== 0;
+    }, "plase attach an image file"),
   z.undefined()
 ])
 
@@ -541,34 +541,34 @@ export async function createShow(prevState: any, formData: FormData) {
       image_3_url: "",
     }) as Show;
 
-  //   const imageFiles : {
-  //     [key: string]: string | File | undefined;
-  //   } = {};
+    //   const imageFiles : {
+    //     [key: string]: string | File | undefined;
+    //   } = {};
 
-  //   for (const key in inputData) {
-  //     if (key.includes("image_") && key.includes("_file")) {
-  //       // @ts-ignore
-  //       imageFiles[key] = inputData[key];
-  //     }
-  //   }
+    //   for (const key in inputData) {
+    //     if (key.includes("image_") && key.includes("_file")) {
+    //       // @ts-ignore
+    //       imageFiles[key] = inputData[key];
+    //     }
+    //   }
 
-  //   for (const key in imageFiles) {
-  //     const imageFile = imageFiles[key];
-  //     const [, fileNumber] = key.split('_');
-  //     // @ts-ignore
-  //     if (imageFile?.size > 0){
-  //       const imageMetadata = await uploadToCloudinary(imageFile, 'shows');
-  //       // @ts-ignore
-  //       inputData[`image_${fileNumber}_url`] = imageMetadata.secure_url; 
-  //       // @ts-ignore
-  //       delete inputData[`image_${fileNumber}_file`];
-  //   } else {
-  //     // @ts-ignore
-  //     delete inputData[`image_${fileNumber}_file`];
-  //   }
-  // }
+    //   for (const key in imageFiles) {
+    //     const imageFile = imageFiles[key];
+    //     const [, fileNumber] = key.split('_');
+    //     // @ts-ignore
+    //     if (imageFile?.size > 0){
+    //       const imageMetadata = await uploadToCloudinary(imageFile, 'shows');
+    //       // @ts-ignore
+    //       inputData[`image_${fileNumber}_url`] = imageMetadata.secure_url; 
+    //       // @ts-ignore
+    //       delete inputData[`image_${fileNumber}_file`];
+    //   } else {
+    //     // @ts-ignore
+    //     delete inputData[`image_${fileNumber}_file`];
+    //   }
+    // }
 
-  const updatedInputData = await handleInputDataWithNewImageFiles(inputData, "shows");
+    const updatedInputData = await handleInputDataWithNewImageFiles(inputData, "shows");
 
     const data = {
       document: "shows",
@@ -644,7 +644,7 @@ export async function editShow(prevState: any, formData: FormData) {
     const inputDataWithNewImages = await handleInputDataWithNewImageFiles(inputData, "shows");
 
     // mutate inputData to delete images removed by client:
-    const inputDataDeletedImages = await deleteImagesAndUpdateObject(parsedImagesToDelete,inputDataWithNewImages)
+    const inputDataDeletedImages = await deleteImagesAndUpdateObject(parsedImagesToDelete, inputDataWithNewImages)
 
     const data = {
       document: "shows",
@@ -1050,17 +1050,17 @@ export async function editBio(prevState: any, formData: FormData) {
     const newImage_5_File = formData.get('new_image_5_file') as File;
     const newImage_6_File = formData.get('new_image_6_file') as File;
     const newImage_7_File = formData.get('new_image_7_file') as File;
-    
+
     const bioSchema = z.object({
       contentHtml_1: z.string(),
       contentHtml_2: z.string(),
-      image_1_file : imageSchema,
-      image_2_file : imageSchema,
-      image_3_file : imageSchema,
-      image_4_file : imageSchema,
-      image_5_file : imageSchema,
-      image_6_file : imageSchema,
-      image_7_file : imageSchema,
+      image_1_file: imageSchema,
+      image_2_file: imageSchema,
+      image_3_file: imageSchema,
+      image_4_file: imageSchema,
+      image_5_file: imageSchema,
+      image_6_file: imageSchema,
+      image_7_file: imageSchema,
       image_1_url: z.string(),
       image_2_url: z.string(),
       image_3_url: z.string(),
@@ -1091,7 +1091,7 @@ export async function editBio(prevState: any, formData: FormData) {
       image_7_url: formData.get('image_7_url'),
     })
 
-    
+
     // mutate inputData to load new images:
     const updatedInputData = await handleInputDataWithNewImageFiles(inputData, "bio");
 
@@ -1132,28 +1132,78 @@ export async function editBio(prevState: any, formData: FormData) {
 
 export async function editCoursesHeroImage(prevState: any, formData: FormData) {
   try {
-      const newImage_1_File = formData.get('new_image_1_file') as File;
-      
-      const heroSchema = z.object({
-        image_1_file : imageSchema,
-        image_1_url: z.string()
-      })
+    const newImage_1_File = formData.get('new_image_1_file') as File;
 
-      const inputData: {
-        [key: string]: string | File | undefined;
-      } = heroSchema.parse({
-        image_1_file: newImage_1_File.size > 0 ? newImage_1_File : undefined,
-        image_1_url: formData.get('image_1_url')
-      })
+    const heroSchema = z.object({
+      image_1_file: imageSchema,
+      image_1_url: z.string()
+    })
 
-      const updatedInputData = await handleInputDataWithNewImageFiles(inputData, "courses");
+    const inputData: {
+      [key: string]: string | File | undefined;
+    } = heroSchema.parse({
+      image_1_file: newImage_1_File.size > 0 ? newImage_1_File : undefined,
+      image_1_url: formData.get('image_1_url')
+    })
 
+    const updatedInputData = await handleInputDataWithNewImageFiles(inputData, "courses");
+
+    const data = {
+      document: "courses",
+      entry: "image_1_url",
+      content: updatedInputData.image_1_url
+    }
+
+    const updated = await fetch(`${BASE_URL}/server/courses`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        'API-Key': DATA_API_KEY
+      },
+      referrerPolicy: 'no-referrer',
+      body: JSON.stringify(data)
+    });
+
+    revalidatePath('/(personal)/courses', 'page');
+    revalidatePath('/(editor)/editor', 'page');
+
+    return { message: `Courses main image has been updated!!!` }
+  } catch (e) {
+    console.error(e);
+    return { message: `${e}` }
+  }
+}
+
+export async function editImageGrid_A(prevState: any, formData: FormData) {
+  try {
+
+    const newImage_2_File = formData.get('new_image_2_file') as File;
+    const newImage_3_File = formData.get('new_image_3_file') as File;
+
+    const gridSchema_A = z.object({
+      image_2_file: imageSchema,
+      image_3_file: imageSchema,
+      image_2_url: z.string(),
+      image_3_url: z.string()
+    })
+
+    const inputData: {
+      [key: string]: string | File | undefined;
+    } = gridSchema_A.parse({
+      image_2_file: newImage_2_File.size > 0 ? newImage_2_File : undefined,
+      image_3_file: newImage_3_File.size > 0 ? newImage_3_File : undefined,
+      image_2_url: formData.get('image_2_url'),
+      image_3_url: formData.get('image_3_url')
+    })
+    const updatedInputData = await handleInputDataWithNewImageFiles(inputData, "courses");
+
+    for (const key in updatedInputData){
+      // console.log(`${key}: ${updatedInputData[key]}`)
       const data = {
         document: "courses",
-        entry: "image_1_url",
-        content: updatedInputData.image_1_url
+        entry: key,
+        content: updatedInputData[key]
       }
-
       const updated = await fetch(`${BASE_URL}/server/courses`, {
         method: 'PATCH',
         headers: {
@@ -1163,16 +1213,20 @@ export async function editCoursesHeroImage(prevState: any, formData: FormData) {
         referrerPolicy: 'no-referrer',
         body: JSON.stringify(data)
       });
+    }
+    revalidatePath('/(personal)/courses', 'page');
+    revalidatePath('/(editor)/editor', 'page');
 
-      revalidatePath('/(personal)/courses', 'page');
-      revalidatePath('/(editor)/editor', 'page');
+    return {message: "images 2 and 3 updated"};
 
-      return { message: `Courses main image has been updated!!!` }
   } catch (e) {
     console.error(e);
     return { message: `${e}` }
   }
+
 }
+
+
 
 
 export async function editPressHeroImage(prevState: any, formData: FormData) {
@@ -1210,7 +1264,7 @@ export async function editPressHeroImage(prevState: any, formData: FormData) {
   }
 }
 
-export async function editHeroText(prevState: any, formData: FormData) {
+export async function editCoursesHeroText(prevState: any, formData: FormData) {
   try {
     const inputData = parseRichTextInput(formData);
 
@@ -1230,6 +1284,7 @@ export async function editHeroText(prevState: any, formData: FormData) {
       body: JSON.stringify(data)
     });
 
+    revalidatePath('/(personal)/courses', 'page');
     revalidatePath('/(editor)/editor', 'page');
 
     return { message: `Hero text has been updated!!!` }

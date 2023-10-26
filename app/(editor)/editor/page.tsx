@@ -50,6 +50,11 @@ export default async function EditorMainPage() {
               <button className="btnCreate">press</button>
             </Link>
           </li>
+          <li>
+            <Link href="/editor/metadata">
+              <button className="btnCreate">metadata</button>
+            </Link>
+          </li>
         </ul>
       </div>
     </>

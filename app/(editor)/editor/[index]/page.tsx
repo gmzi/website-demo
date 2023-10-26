@@ -10,6 +10,7 @@ import Courses from '@/components/editors/Courses'
 import Podcast from "@/components/editors/Podcast";
 import Tours from "@/components/editors/Tours";
 import Press from "@/components/editors/Press";
+import Metadata from '@/components/editors/Metadata';
 import { auth } from '@clerk/nextjs';
 import { CreateShow } from '@/components/forms/EditShows';
 
@@ -57,5 +58,7 @@ export default async function EditorPage({ params }: { params: { index: string }
   if (index === 'tours') return <Tours/>
   {/* @ts-expect-error Server Component */}
   if (index === 'press') return <Press/>
+  {/* @ts-expect-error Server Component */}
+  if (index === 'metadata') return <Metadata/>
 }
   

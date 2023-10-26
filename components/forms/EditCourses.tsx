@@ -4,9 +4,21 @@
 import { experimental_useFormState as useFormState } from 'react-dom'
 import { experimental_useFormStatus as useFormStatus } from 'react-dom'
 import type { About } from '@/types'
-import { editCoursesHeroImage, editHeroText, editAvailableCourse, createCourse, createSection, createCourseReview, editCourseReview, editTestimonial, createTestimonial, editCourseLogistics } from '@/app/actions'
+import {
+    editCoursesHeroImage,
+    editCoursesHeroText,
+    editAvailableCourse,
+    createCourse,
+    createSection,
+    createCourseReview,
+    editCourseReview,
+    editTestimonial,
+    createTestimonial,
+    editCourseLogistics,
+    editImageGrid_A
+} from '@/app/actions'
 import { ImageEdit } from './ImageEdit'
-import { ImageInputWithIDAndDefaultValue } from './ImageInput'
+import { ImageGridInput, ImageInputWithIDAndDefaultValue } from './ImageInput'
 import { ImageInput } from './ImageInput'
 import { ImagesEdit } from './ImageEdit'
 import { RichText } from './text-editor/RichText'
@@ -54,6 +66,15 @@ interface ReviewsProps {
 
 interface TestimonialsProps {
     testimonials: Testimonial[];
+}
+
+interface ImageProps {
+    url: string;
+    id: number
+}
+
+interface EditImageGridProps {
+    images: ImageProps[];
 }
 
 interface LogisticsProps {
@@ -109,11 +130,10 @@ export function HeroImage({ imageUrl }: ImageProp) {
 }
 
 export function HeroText({ contentHtml }: TextProp) {
-    const [state, formAction] = useFormState(editHeroText, initialState)
+    const [state, formAction] = useFormState(editCoursesHeroText, initialState)
 
     return (
         <form action={formAction}>
-            <h2>Editar texto principal</h2>
             <RichText contentHtml={contentHtml} />
             <EditButton />
             <p aria-live="polite" className="sr-only" role="status">
@@ -123,7 +143,32 @@ export function HeroText({ contentHtml }: TextProp) {
     )
 }
 
-export function AvailableCourses({ courses }: CoursesProps) {
+
+export function EditImageGrid_A({ images }: EditImageGridProps) {
+    const [state, formAction] = useFormState(editImageGrid_A, initialState)
+
+    const imagesGrid = images.map((image: ImageProps, index) => {
+        return (
+            <div key={`edit-image-${index}`}>
+                <ImageGridInput id={image.id} defaultValue={image.url} className="" />
+            </div>
+        )
+    })
+
+    return (
+        <form action={formAction}>
+            <div className="image-grid">
+                {imagesGrid}
+            </div>
+            <EditButton />
+            <p aria-live="polite" className="sr-only" role="status">
+                {state?.message}
+            </p>
+        </form>
+    )
+}
+
+export function AvailableCourses({ courses, entry }: { courses: Course[], entry: string }) {
     const [openEditor, setOpenEditor] = useState<number | false>(false);
 
     function handleClick(e: React.MouseEvent<HTMLButtonElement>) {
@@ -136,18 +181,34 @@ export function AvailableCourses({ courses }: CoursesProps) {
         setOpenEditor(false)
     }
 
-    const coursesList = courses.map((course: Course, i: number) => (
-        <div key={`course-${course.name}`}>
-            <h3>{course.name}</h3>
-            {parse(course.description)}
-            <button onClick={handleClick} tabIndex={i}>Editar</button>
-            <Delete document="courses" entry="available_courses" section="courses" id={course.id} />
+    // const coursesList = courses.map((course: Course, i: number) => (
+    //     <div key={`course-${course.name}`}>
+    //         <h3>{course.name}</h3>
+    //         {parse(course.description)}
+    //         <button onClick={handleClick} tabIndex={i}>Editar</button>
+    //         <Delete document="courses" entry={entry} section="courses" id={course.id} />
+    //     </div>
+    // ));
+
+    const coursesList =
+        <div className="cards-and-goals">
+            <h2>Mis cursos de actuación:</h2>
+            <div className='courseCards-container'>
+                {courses.map((course: Course, i: number) => (
+                    <div className="courseCard" key={`course-${i}`}>
+                        {course.name}
+                        {/* <p>{parse(course.description)}</p> */}
+                        <div>
+                            <button onClick={handleClick} tabIndex={i}>Editar</button>
+                            <Delete document="courses" entry={entry} section="courses" id={course.id} />
+                        </div>
+                    </div>
+                ))}
+            </div>
         </div>
-    ));
 
     return (
         <div>
-            <h2>Cursos disponibles:</h2>
             {openEditor !== false ? <EditAvailableCourse courses={courses} index={openEditor} handleCancel={handleCancel} /> : coursesList}
         </div>
     )

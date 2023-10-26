@@ -1,7 +1,9 @@
 // http://localhost:3000/editor
 
 import { getData } from "@/lib/getData";
-import { HeroImage, HeroText, AvailableCourses, CreateCourse, CourseReviews, CreateCourseReview, Testimonials, CreateTestimonial, EditLogistics } from "../forms/EditCourses";
+import { HeroImage, HeroText, AvailableCourses, CreateCourse, CourseReviews, CreateCourseReview, Testimonials, CreateTestimonial, EditLogistics, EditImageGrid_A } from "../forms/EditCourses";
+import { ImageGridInput } from "../forms/ImageInput";
+import Link from "next/link";
 
 export default async function Courses() {
     const data = await getData("courses")
@@ -14,11 +16,22 @@ export default async function Courses() {
     const image1Url = data?.image_1_url || '';
     const image2Url = data?.image_2_url || '';
     const image3Url = data?.image_3_url || '';
+    const image4Url = data?.image_4_url || '';
+    const image5Url = data?.image_5_url || '';
+    const image6Url = data?.image_6_url || '';
+    const image7Url = data?.image_7_url || '';
+    const image8Url = data?.image_8_url || '';
+
+    const grid_A = [{id: 2, url: image2Url}, {id: 3, url: image3Url}];
+    const grid_2 = [image4Url, image5Url];
+    const grid_3 = [image6Url, image7Url];
 
     const goals = data?.goals || []
     const FAQ = data?.FAQ || [];
 
     const availableCourses = data?.available_courses || [];
+    const availableCourses_writing = data?.available_courses_writing || [];
+    const availableCourses_acting = data?.available_courses_acting || [];
 
     const reviews = data?.reviews || [];
     const testimonials = data?.testimonials || [];
@@ -29,14 +42,18 @@ export default async function Courses() {
         <div>
             <h2>Editar cursos</h2>
             <HeroImage imageUrl={image1Url}/>
-            {/* <HeroText contentHtml={contentHtml}/>
-            <AvailableCourses courses={availableCourses}/>
-            <CreateCourse/>
-            <CourseReviews reviews={reviews}/>
-            <CreateCourseReview/>
-            <Testimonials testimonials={testimonials}/>
-            <CreateTestimonial/>
-            <EditLogistics title={logistics.title} contentHtml={logistics.content_html} imageUrl={logistics.image_url} /> */}
+            <HeroText contentHtml={contentHtml}/>
+            <Link href={`/contact`} target="_blank">
+                <button className="btnWhatsapp">Editar numero de contacto</button>
+            </Link>
+            <EditImageGrid_A images={grid_A}/>
+            <AvailableCourses courses={availableCourses_acting} entry="available_courses_acting"/>
+            {/* <CreateCourse/> */}
+            {/* <CourseReviews reviews={reviews}/> */}
+            {/* <CreateCourseReview/> */}
+            {/* <Testimonials testimonials={testimonials}/> */}
+            {/* <CreateTestimonial/> */}
+            {/* <EditLogistics title={logistics.title} contentHtml={logistics.content_html} imageUrl={logistics.image_url} /> */}
         </div>
     )
   }
