@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { navItems } from '@/lib/navItems';
+import { editorNaviItems } from '@/lib/navItems';
 
 function Logo() {
   return (
@@ -48,3 +49,33 @@ export async function Navbar() {
     </div>
   )
 }
+
+export function EditorNavbar() {
+
+  let pathname = usePathname() || '/';
+
+  return (
+    <div className={'navbarContainer'}>
+        <ul className={'navigationLinksList'}>
+          {Object.entries(editorNaviItems).map(([path, {name}]) => {
+            const isActive = path === pathname;
+            if (path !== '/') {
+              return (
+                <Link
+                  key={path}
+                  href={path}
+                >
+                  {isActive ? (
+                    <li className={'active'}>{name}</li>
+                  ) : (
+                  <li>{name}</li>
+                  )}
+                </Link>
+              )
+            }
+          })}
+        </ul>
+    </div>
+  )
+}
+

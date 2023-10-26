@@ -49,11 +49,6 @@ export default async function CoursesPage() {
     const reviews = data?.reviews || [];
 
 
-
-    // const contactBtn =
-    //     <form action={`https://wa.me/${contactWhatsapp}`}>
-    //         <button className="btn-whatsapp" type="submit">contactame por whatsapp</button>
-    //     </form>
     const contactBtn =
         <Link href={`https://wa.me/${contactWhatsapp}`} target="_blank">
             <button className="btnWhatsapp">whatsapp</button>

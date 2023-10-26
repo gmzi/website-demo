@@ -1,6 +1,7 @@
 import { SignIn, UserButton, SignOutButton } from "@clerk/nextjs";
 import { auth } from '@clerk/nextjs';
 import { enableAuthIfProd } from '@/lib/EnableAuthIfProd';
+import { EditorNavbar } from "@/components/global/Navbar";
 
 
 
@@ -30,7 +31,10 @@ export default async function EditorLayout({ children }: EditorProps) {
           <SignOutButton />
         </>
       ) : null}
+      <>
+      <EditorNavbar/>
       {children}
+      </>
     </div>
   )
 }
