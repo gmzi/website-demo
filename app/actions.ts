@@ -1132,16 +1132,26 @@ export async function editBio(prevState: any, formData: FormData) {
 
 export async function editCoursesHeroImage(prevState: any, formData: FormData) {
   try {
-    let inputData = parseImageInput(formData);
+      const newImage_1_File = formData.get('new_image_1_file') as File;
+      
+      const heroSchema = z.object({
+        image_1_file : imageSchema,
+        image_1_url: z.string()
+      })
 
-    if (inputData.image_file) {
-      inputData = await handleNewImage(inputData, 'courses');
-      const imageUrl = inputData.image_url;
+      const inputData: {
+        [key: string]: string | File | undefined;
+      } = heroSchema.parse({
+        image_1_file: newImage_1_File.size > 0 ? newImage_1_File : undefined,
+        image_1_url: formData.get('image_1_url')
+      })
+
+      const updatedInputData = await handleInputDataWithNewImageFiles(inputData, "courses");
 
       const data = {
         document: "courses",
         entry: "image_1_url",
-        content: imageUrl
+        content: updatedInputData.image_1_url
       }
 
       const updated = await fetch(`${BASE_URL}/server/courses`, {
@@ -1154,16 +1164,16 @@ export async function editCoursesHeroImage(prevState: any, formData: FormData) {
         body: JSON.stringify(data)
       });
 
+      revalidatePath('/(personal)/courses', 'page');
       revalidatePath('/(editor)/editor', 'page');
 
       return { message: `Courses main image has been updated!!!` }
-    }
-    return { message: `No courses main image image file uploaded` }
   } catch (e) {
     console.error(e);
     return { message: `${e}` }
   }
 }
+
 
 export async function editPressHeroImage(prevState: any, formData: FormData) {
   try {

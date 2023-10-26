@@ -6,6 +6,7 @@ import { experimental_useFormStatus as useFormStatus } from 'react-dom'
 import type { About } from '@/types'
 import { editCoursesHeroImage, editHeroText, editAvailableCourse, createCourse, createSection, createCourseReview, editCourseReview, editTestimonial, createTestimonial, editCourseLogistics } from '@/app/actions'
 import { ImageEdit } from './ImageEdit'
+import { ImageInputWithIDAndDefaultValue } from './ImageInput'
 import { ImageInput } from './ImageInput'
 import { ImagesEdit } from './ImageEdit'
 import { RichText } from './text-editor/RichText'
@@ -92,14 +93,17 @@ export function HeroImage({ imageUrl }: ImageProp) {
     const [state, formAction] = useFormState(editCoursesHeroImage, initialState)
 
     return (
-        <form action={formAction}>
-            <h2>Editar imagen principal</h2>
-            <ImageEdit imageUrl={imageUrl} />
-            <EditButton />
-            <p aria-live="polite" className="sr-only" role="status">
-                {state?.message}
-            </p>
-        </form>
+        <div className="heroContainer">
+            <form action={formAction}>
+                {/* <ImageEdit imageUrl={imageUrl} /> */}
+                <ImageInputWithIDAndDefaultValue id={1} defaultValue={imageUrl} className="" />
+                <EditButton />
+                <p aria-live="polite" className="sr-only" role="status">
+                    {state?.message}
+                </p>
+            </form>
+        </div>
+
     )
 
 }
@@ -347,7 +351,7 @@ export function EditLogistics({ title, contentHtml, imageUrl }: LogisticsProps) 
             <div className="course-logistics">
                 <ImageEdit imageUrl={imageUrl} />
                 <label htmlFor="title">Título:</label>
-                <input type="text" id="title" name="title" defaultValue={title}/>
+                <input type="text" id="title" name="title" defaultValue={title} />
                 <label htmlFor="editor_content">Detalles logísticos del curso:</label>
                 <RichText contentHtml={contentHtml} />
             </div>

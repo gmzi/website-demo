@@ -27,16 +27,16 @@ export default async function Courses() {
     
     return (
         <div>
-            <h2>Courses</h2>
+            <h2>Editar cursos</h2>
             <HeroImage imageUrl={image1Url}/>
-            <HeroText contentHtml={contentHtml}/>
+            {/* <HeroText contentHtml={contentHtml}/>
             <AvailableCourses courses={availableCourses}/>
             <CreateCourse/>
             <CourseReviews reviews={reviews}/>
             <CreateCourseReview/>
             <Testimonials testimonials={testimonials}/>
             <CreateTestimonial/>
-            <EditLogistics title={logistics.title} contentHtml={logistics.content_html} imageUrl={logistics.image_url} />
+            <EditLogistics title={logistics.title} contentHtml={logistics.content_html} imageUrl={logistics.image_url} /> */}
         </div>
     )
   }

@@ -32,8 +32,8 @@ export default async function EditorLayout({ children }: EditorProps) {
         </>
       ) : null}
       <>
-      <EditorNavbar/>
-      {children}
+        <EditorNavbar/>
+        {children}
       </>
     </div>
   )
