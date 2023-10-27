@@ -196,7 +196,7 @@ export function AvailableCourses({ courses, entry }: { courses: Course[], entry:
             <div className='courseCards-container'>
                 {courses.map((course: Course, i: number) => (
                     <div className="courseCard" key={`course-${i}`}>
-                        {course.name}
+                        {parse(course.name)}
                         {/* <p>{parse(course.description)}</p> */}
                         <div>
                             <button onClick={handleClick} tabIndex={i}>Editar</button>

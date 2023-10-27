@@ -9,6 +9,8 @@ import { transformYouTubeUrl } from '@/lib/transformYouTubeUrl'
 import { makeSlug } from '@/lib/makeSlug';
 import { parseNameAndRole } from '@/lib/parseNameAndRole'
 import { Show } from '@/types';
+// import { redirect } from 'next/dist/server/api-utils';
+import { redirect } from 'next/navigation';
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 const DATA_API_KEY = process.env.NEXT_PUBLIC_DATA_API_KEY || '';
