@@ -39,6 +39,7 @@ interface TextProp {
 }
 
 interface CourseProps {
+    entry: string;
     index: number
     courses: Course[];
     handleCancel: () => void;
@@ -143,9 +144,8 @@ export function HeroText({ contentHtml }: TextProp) {
     )
 }
 
-
 export function EditImageGrid_A({ images }: EditImageGridProps) {
-    const [state, formAction] = useFormState(editImageGrid_A, initialState)
+    const [state, formAction] = useFormState(editImageGrid_A, initialState);
 
     const imagesGrid = images.map((image: ImageProps, index) => {
         return (
@@ -209,25 +209,26 @@ export function AvailableCourses({ courses, entry }: { courses: Course[], entry:
 
     return (
         <div>
-            {openEditor !== false ? <EditAvailableCourse courses={courses} index={openEditor} handleCancel={handleCancel} /> : coursesList}
+            {openEditor !== false ? <EditAvailableCourse entry={entry} courses={courses} index={openEditor} handleCancel={handleCancel} /> : coursesList}
         </div>
     )
 }
 
-export function EditAvailableCourse({ courses, index, handleCancel }: CourseProps) {
+export function EditAvailableCourse({entry, courses, index, handleCancel }: CourseProps) {
     const [state, formAction] = useFormState(editAvailableCourse, initialState)
 
     const course = courses[index]
 
     return (
         <form action={formAction}>
-            <h2>Editar curso</h2>
+            <input type="hidden" name="entry" value={entry} />
             <input type="hidden" name="id" value={course.id} />
 
-            <label htmlFor="course_name">Nombre del curso:</label>
-            <input type="text" id="course_name" name="course_name" defaultValue={course.name} />
-            <label htmlFor="editor_content">Descripcion del curso:</label>
-            <RichText contentHtml={course.description} />
+            {/* <input type="text" id="course_name" name="course_name" defaultValue={course.name} />
+            <label htmlFor="editor_content">Descripcion del curso:</label> */}
+            {/* TODO rename `course.name` to `course.content, since we're handling it in a single field, will have
+            to update the naming in the whole cycle - database, client and here. */}
+            <RichText contentHtml={course.name} />
             <EditButton />
             <button onClick={handleCancel}>Cancelar</button>
             <p aria-live="polite" className="sr-only" role="status">

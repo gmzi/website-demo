@@ -1295,26 +1295,28 @@ export async function editCoursesHeroText(prevState: any, formData: FormData) {
 }
 
 export async function editAvailableCourse(prevState: any, formData: FormData) {
-  // REUSE FUNCTIONALITY FROM ARRAY MODIFICATION IN MONGODB
   try {
-    const courseDescription = parseRichTextInput(formData);
+    const courseName = formData.get('editor_content')
 
     const courseSchema = z.object({
       id: z.string(),
       name: z.string(),
+      entry: z.string(),
       description: z.string(),
     })
 
     const inputData = courseSchema.parse({
       id: formData.get("id"),
-      name: formData.get("course_name"),
-      description: courseDescription.contentHtml
+      entry: formData.get("entry"),
+      name: formData.get('editor_content'),
+      description: ''
     })
 
     const data = {
       document: "courses",
-      entry: "available_courses",
-      itemLocator: "available_courses.id",
+      entry: inputData.entry,
+      // itemLocator: "available_courses.id",
+      itemLocator: `${inputData.entry}.id`,
       newContent: inputData,
     }
 
@@ -1328,6 +1330,7 @@ export async function editAvailableCourse(prevState: any, formData: FormData) {
       body: JSON.stringify(data)
     });
 
+    revalidatePath('/(personal)/courses', 'page');
     revalidatePath('/(editor)/editor', 'page');
 
     return { message: `Available course text has been updated!!!` }

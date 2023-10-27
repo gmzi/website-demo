@@ -1355,7 +1355,8 @@ button,
 
 button {
   margin: 0 0 0.75rem;
-  padding: 0.35rem 0.6rem;
+  /* padding: 0.35rem 0.6rem; */
+  padding: 8px 12px;
   font-size: 0.8rem;
   font-weight: 500;
   color: var(--color-btn);

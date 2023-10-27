@@ -38,22 +38,23 @@ export function ImageEdit({ imageUrl }: { imageUrl: string }) {
                 onChange={handleImageChange}
             />
             {previewImageUrl &&
-                <Image
-                    src={previewImageUrl}
-                    alt="preview"
-                    width={0}
-                    height={0}
-                    sizes="100vw"
-                    priority={false}
-                    placeholder='empty'
-                    style={{
-                        width: '30%',
-                        height: 'auto',
-                        borderRadius: '5px',
-                        marginBottom: '.5em'
-                    }}
-
-                />
+                <div className="preview">
+                    <Image
+                        src={previewImageUrl}
+                        alt="preview"
+                        width={0}
+                        height={0}
+                        sizes="100vw"
+                        priority={false}
+                        placeholder='empty'
+                        // style={{
+                        //     width: '30%',
+                        //     height: 'auto',
+                        //     borderRadius: '5px',
+                        //     marginBottom: '.5em'
+                        // }}
+                    />
+                </div>
             }
         </>
     )
@@ -100,12 +101,12 @@ export function ImagesEdit({ imageUrls, className }: { imageUrls: string[], clas
                                 width={0}
                                 height={0}
                                 sizes="100vw"
-                                // style={{
-                                //     width: '20%',
-                                //     height: 'auto',
-                                //     borderRadius: '5px',
-                                //     marginBottom: '.5em'
-                                // }}
+                            // style={{
+                            //     width: '20%',
+                            //     height: 'auto',
+                            //     borderRadius: '5px',
+                            //     marginBottom: '.5em'
+                            // }}
                             />
                         </div>
                     )}

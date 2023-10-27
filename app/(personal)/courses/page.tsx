@@ -80,7 +80,7 @@ export default async function CoursesPage() {
                 <h2>Mis cursos de actuación:</h2>
                 <div className='courseCards-container'>
                     {availableCourses_acting.map((course: Course, i: number) => (
-                        <div className="courseCard" key={`course-${i}`}>{course.name}</div>
+                        <div className="courseCard" key={`course-${i}`}>{parse(course.name)}</div>
                     ))}
                 </div>
                 <ol className="goals">
@@ -98,7 +98,7 @@ export default async function CoursesPage() {
                 <h2>Mis cursos de dramaturgia:</h2>
                 <div className='courseCards-container'>
                     {availableCourses_writing.map((course: Course, i: number) => (
-                        <div className="courseCard" key={`course-${i}`}>{course.name}</div>
+                        <div className="courseCard" key={`course-${i}`}>{parse(course.name)}</div>
                     ))}
                 </div>
                 <ol className="goals">
