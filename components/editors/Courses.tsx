@@ -57,23 +57,23 @@ export default async function Courses() {
             <h2>Editar cursos</h2>
             <HeroImage imageUrl={image1Url}/>
             <HeroText contentHtml={contentHtml}/>
+
             <Link href={`/contact`} target="_blank">
                 <button className="btnWhatsapp">Editar numero de contacto</button>
             </Link>
+        
             <EditImageGrid_A images={grid_A}/>
-            <div className="">
-                <AvailableCourses title="Mis cursos de actuación:" courses={availableCourses_acting} entry="available_courses_acting"/>
+            
+            <AvailableCourses title="Mis cursos de actuación:" courses={availableCourses_acting} entry="available_courses_acting"/>
+            <AvailableCourses title="Mis cursos de dramaturgia:" courses={availableCourses_writing} entry="available_courses_writing"/>
+            <div className="faq-editor">
+                <EditFAQ contentHtml={FAQ}/>
             </div>
-            <div className="">
-                <AvailableCourses title="Mis cursos de dramaturgia:" courses={availableCourses_writing} entry="available_courses_writing"/>
-                <div className="faq-editor">
-                    <EditFAQ contentHtml={FAQ}/>
-                </div>
-            </div>
-            <CourseReviews reviews={reviews}/>
 
             <EditImageGrid_B images={grid_B}/>
-            {/* <CreateCourseReview/> */}
+            
+            <CourseReviews reviews={reviews}/>
+            
             {/* <Testimonials testimonials={testimonials}/> */}
             {/* <CreateTestimonial/> */}
             {/* <EditLogistics title={logistics.title} contentHtml={logistics.content_html} imageUrl={logistics.image_url} /> */}

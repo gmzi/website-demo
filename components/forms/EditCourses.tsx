@@ -324,6 +324,7 @@ export function CreateCourse({ entry, handleCreateCancel }: { entry: string, han
 
 export function CourseReviews({ reviews }: ReviewsProps) {
     const [openEditor, setOpenEditor] = useState<number | false>(false);
+    const [openCreator, setOpenCreator] = useState<true | false>(false);
 
     function handleClick(e: React.MouseEvent<HTMLButtonElement>) {
         e.preventDefault();
@@ -335,21 +336,37 @@ export function CourseReviews({ reviews }: ReviewsProps) {
         setOpenEditor(false)
     }
 
+    function handleCreate(e: React.MouseEvent<HTMLButtonElement>) {
+        e.preventDefault();
+        setOpenCreator(true)
+    }
+
+    function handleCreateCancel() {
+        setOpenCreator(false)
+    }
+
     const reviewsList = reviews.map((review: Review, i: number) => (
-        <div key={`review-${i}`}>
-            <blockquote>
+        <div key={`review-${review.author}-${i}`}>
+            <blockquote className="review">
                 {parse(review.content)}
                 <cite>{review.author}</cite>
+                <div>
+                    <button onClick={handleClick} tabIndex={i}>Editar</button>
+                    <Delete document="courses" entry="reviews" section="reviews" id={review.id} />
+                </div>
             </blockquote>
-            <button onClick={handleClick} tabIndex={i}>Editar</button>
-            <Delete document="courses" entry="reviews" section="reviews" id={review.id} />
         </div>
     ));
 
     return (
-        <div>
-            <h2>Reseñas:</h2>
+        <div className="reviews">
             {openEditor !== false ? <EditCourseReview reviews={reviews} index={openEditor} handleCancel={handleCancel} /> : reviewsList}
+            {openCreator ? (<CreateCourseReview handleCreateCancel={handleCreateCancel} />) : (
+                <div className="review">
+                    <h3>Agregar nueva reseña</h3>
+                    <button onClick={handleCreate}>agregar reseña</button>
+                </div>
+            )}
         </div>
     )
 }
@@ -363,7 +380,6 @@ export function EditCourseReview({ reviews, index, handleCancel }: ReviewProps) 
         <form action={formAction}>
             <input type="hidden" name="id" value={review.id} />
 
-            <h2>Editar reseña</h2>
             <label htmlFor="editor_content">Texto de la reseña:</label>
             <RichText contentHtml={review.content} />
             <label htmlFor="reviewAuthor">Autor de la reseña:</label>
@@ -377,7 +393,7 @@ export function EditCourseReview({ reviews, index, handleCancel }: ReviewProps) 
     )
 }
 
-export function CreateCourseReview() {
+export function CreateCourseReview({handleCreateCancel}: {handleCreateCancel : () => void}) {
     const [state, formAction] = useFormState(createCourseReview, initialState)
 
     return (
@@ -388,6 +404,7 @@ export function CreateCourseReview() {
             <label htmlFor="reviewAuthor">Autor de la reseña:</label>
             <input type="text" id="reviewAuthor" name="reviewAuthor" />
             <SubmitButton />
+            <button onClick={handleCreateCancel}>Cancelar</button>
             <p aria-live="polite" className="sr-only" role="status">
                 {state?.message}
             </p>
