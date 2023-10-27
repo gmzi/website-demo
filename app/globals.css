@@ -10,6 +10,7 @@
     --primary-background: rgb(253, 253, 253);
     --color-hover: underline 3px solid #0000ffc9;
     --color-bg-hover: rgba(175, 184, 194, 0.535);
+    --color-bg-contact: #E6F7FF;
     --color-border-bottom: 1px solid rgba(217, 217, 233, 0.438);
     --color-purple: #958DF1;
     --color-background-box: #68adcf5b;
@@ -85,6 +86,7 @@
         --color-purple: #958DF1;
         --color-background-box: #68adcf30;
         --color-background-card: #84d0c023;
+        --color-bg-contact: #2B2B2B;
         --color-background-footer: rgba(112, 112, 112, 0.346);
         --color-background-courseCard: #84d0c05b;
         /* BROUGHT FRO   BLOG-REFLEXION ----------------------------------*/
@@ -624,7 +626,7 @@ ol li div {
 
 /* fdsfsadfdsfsda))))))^^^^^------------------------------ */
 
-.contact {
+/* .contact {
   margin: 1em 0;
   padding: 1em 0;
   border-top: var(--color-border-top);
@@ -667,6 +669,54 @@ ol li div {
 
 .contact a:hover {
   text-decoration: underline;
+} */
+
+/* Base styling */
+.contact {
+  padding: 20px;
+  border: 2px solid #4A90E2;
+  border-radius: 10px;
+  background-color: #FAFAFA;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+  margin: 20px auto; /* Centering the div */
+  background-color: var(--color-bg-contact);
+}
+
+.contact h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.contact-items {
+  list-style-type: none;
+  padding: 2em;
+}
+
+.contact-items li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.emoji, .goals-emoji {
+  font-size: 24px;
+  margin-right: 10px;
+}
+
+.text, .goals-text {
+  font-size: 16px;
+}
+
+.link a {
+  color: var(--color-a-def);
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+  transition: border-bottom 0.3s ease, color 0.3s ease;
+}
+
+.link a:hover {
+  border-bottom: 2px solid #4A90E2;
+  color: #2A5B8D; /* A darker shade for hover */
 }
 
 
