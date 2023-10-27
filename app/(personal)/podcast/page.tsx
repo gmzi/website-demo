@@ -34,6 +34,7 @@ export default async function PodcastPage() {
                         sizes="100vw"
                         alt="Picture of a class"
                     />
+                    <h2>Testigo de la creación</h2>
                 </div>
                 <div className='description'>
                     {text}
