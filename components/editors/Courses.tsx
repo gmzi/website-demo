@@ -1,6 +1,7 @@
 // http://localhost:3000/editor
 
 import { getData } from "@/lib/getData";
+import { getRemoteOrLocalData } from "@/lib/getRemoteOrLocalData";
 import { 
     HeroImage, 
     HeroText, 
@@ -19,7 +20,8 @@ import { ImageGridInput } from "../forms/ImageInput";
 import Link from "next/link";
 
 export default async function Courses() {
-    const data = await getData("courses")
+    // const data = await getData("courses")
+    const data = await getRemoteOrLocalData("courses");
     const documentName = "courses"
     const sectionName = "courses"
     const folderName="courses"
@@ -63,7 +65,7 @@ export default async function Courses() {
             </Link>
         
             <EditImageGrid_A images={grid_A}/>
-            
+
             <AvailableCourses title="Mis cursos de actuación:" courses={availableCourses_acting} entry="available_courses_acting"/>
             <AvailableCourses title="Mis cursos de dramaturgia:" courses={availableCourses_writing} entry="available_courses_writing"/>
             <div className="faq-editor">
@@ -74,9 +76,7 @@ export default async function Courses() {
             
             <CourseReviews reviews={reviews}/>
             
-            {/* <Testimonials testimonials={testimonials}/> */}
-            {/* <CreateTestimonial/> */}
-            {/* <EditLogistics title={logistics.title} contentHtml={logistics.content_html} imageUrl={logistics.image_url} /> */}
+            <Testimonials testimonials={testimonials}/>
         </div>
     )
   }
