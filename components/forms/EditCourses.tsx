@@ -118,7 +118,7 @@ export function HeroImage({ imageUrl }: ImageProp) {
     const [state, formAction] = useFormState(editCoursesHeroImage, initialState)
 
     return (
-        <div className="heroContainer">
+        <div className="heroContainer editor-group">
             <form action={formAction}>
                 {/* <ImageEdit imageUrl={imageUrl} /> */}
                 <ImageInputWithIDAndDefaultValue id={1} defaultValue={imageUrl} className="" />
@@ -137,13 +137,16 @@ export function HeroText({ contentHtml }: TextProp) {
     const [state, formAction] = useFormState(editCoursesHeroText, initialState)
 
     return (
-        <form action={formAction}>
+        <div className="editor-group">
+            <form action={formAction}>
             <RichText contentHtml={contentHtml} />
             <EditButton />
             <p aria-live="polite" className="sr-only" role="status">
                 {state?.message}
             </p>
-        </form>
+            </form>
+        </div>
+        
     )
 }
 

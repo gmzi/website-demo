@@ -254,7 +254,7 @@ export function ImageGridInput({ id, defaultValue, className }: { id: number, de
     }
 
     return (
-        <>
+        <div className="">
             <input type="hidden" name={`image_${id}_url`} value={defaultValue} />
 
             <label htmlFor={`new_image_${id}_file`}>Cambiar/agregar imagen:</label>
@@ -266,7 +266,7 @@ export function ImageGridInput({ id, defaultValue, className }: { id: number, de
                 onChange={handleImageChange}
             />
             {previewImageUrl &&
-                <div className="">
+            <div className="">
                     <Image
                         className={className}
                         src={previewImageUrl}
@@ -275,8 +275,8 @@ export function ImageGridInput({ id, defaultValue, className }: { id: number, de
                         height={0}
                         sizes="100vw"
                     />
-                </div>
+            </div>
             }
-        </>
+        </div>
     )
 }

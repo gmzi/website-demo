@@ -55,10 +55,13 @@ export default async function Courses() {
 
     
     return (
-        <div>
+        <section className="courses">
             <h2>Editar cursos</h2>
+
             <HeroImage imageUrl={image1Url}/>
+
             <HeroText contentHtml={contentHtml}/>
+            
 
             <Link href={`/contact`} target="_blank">
                 <button className="btnWhatsapp">Editar numero de contacto</button>
@@ -66,7 +69,7 @@ export default async function Courses() {
         
             <EditImageGrid_A images={grid_A}/>
 
-            <AvailableCourses title="Mis cursos de actuación:" courses={availableCourses_acting} entry="available_courses_acting"/>
+            {/* <AvailableCourses title="Mis cursos de actuación:" courses={availableCourses_acting} entry="available_courses_acting"/>
             <AvailableCourses title="Mis cursos de dramaturgia:" courses={availableCourses_writing} entry="available_courses_writing"/>
             <div className="faq-editor">
                 <EditFAQ contentHtml={FAQ}/>
@@ -76,8 +79,8 @@ export default async function Courses() {
             
             <CourseReviews reviews={reviews}/>
             
-            <Testimonials testimonials={testimonials}/>
-        </div>
+            <Testimonials testimonials={testimonials}/> */}
+        </section>
     )
   }
 

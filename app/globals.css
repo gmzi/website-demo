@@ -288,6 +288,8 @@ section {
   margin: 0 auto;
 }
 
+
+
 .defaultImgStyle {
   width: 100%;
   height: auto;
@@ -475,10 +477,12 @@ ol li div {
 
 .editor-group {
   border: var(--color-border);
-  border-radius: 5px;
-  /* padding: 0 1em; */
   margin: 1em 0;
-  position: relative;
+  background-color: var(--color-bg-def);
+  /* border-radius: 5px; */
+  /* padding: 0 1em; */
+  /* margin: 1em 0; */
+  /* position: relative; */
 }
 
 .editor-group button {
@@ -910,8 +914,7 @@ svg.lucide.lucide-file-up {
       grid-column: 1;
       align-self: center;
       justify-self: center;
-  }
-  
+  } 
 }
 
 .card-container-editor {
@@ -1293,6 +1296,13 @@ footer p {
   margin: 2rem 0;
   padding: 1rem .5rem;
 }
+@media (max-width: 576px) {
+  .image-grid {
+    grid-template-columns: 1fr;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+}
 
 .image-grid img {
   width: 100%;
@@ -1303,6 +1313,11 @@ footer p {
 
 .image-grid label {
   display: none;
+}
+
+.hi {
+  display: flex;
+  flex-direction: column;
 }
 
 /* -------------------------------------------------------- */
