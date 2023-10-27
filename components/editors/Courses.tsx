@@ -1,7 +1,20 @@
 // http://localhost:3000/editor
 
 import { getData } from "@/lib/getData";
-import { HeroImage, HeroText, AvailableCourses, CreateCourse, CourseReviews, CreateCourseReview, Testimonials, CreateTestimonial, EditLogistics, EditImageGrid_A } from "../forms/EditCourses";
+import { 
+    HeroImage, 
+    HeroText, 
+    AvailableCourses, 
+    CreateCourse, 
+    CourseReviews, 
+    CreateCourseReview, 
+    Testimonials, 
+    CreateTestimonial,
+    EditLogistics, 
+    EditImageGrid_A,
+    EditImageGrid_B, 
+    EditFAQ 
+} from "../forms/EditCourses";
 import { ImageGridInput } from "../forms/ImageInput";
 import Link from "next/link";
 
@@ -24,6 +37,7 @@ export default async function Courses() {
 
     const grid_A = [{id: 2, url: image2Url}, {id: 3, url: image3Url}];
     const grid_2 = [image4Url, image5Url];
+    const grid_B = [{id: 4, url: image4Url}, {id: 5, url: image5Url}]
     const grid_3 = [image6Url, image7Url];
 
     const goals = data?.goals || []
@@ -47,9 +61,18 @@ export default async function Courses() {
                 <button className="btnWhatsapp">Editar numero de contacto</button>
             </Link>
             <EditImageGrid_A images={grid_A}/>
-            <AvailableCourses courses={availableCourses_acting} entry="available_courses_acting"/>
-            {/* <CreateCourse/> */}
-            {/* <CourseReviews reviews={reviews}/> */}
+            <div className="">
+                <AvailableCourses title="Mis cursos de actuación:" courses={availableCourses_acting} entry="available_courses_acting"/>
+            </div>
+            <div className="">
+                <AvailableCourses title="Mis cursos de dramaturgia:" courses={availableCourses_writing} entry="available_courses_writing"/>
+                <div className="faq-editor">
+                    <EditFAQ contentHtml={FAQ}/>
+                </div>
+            </div>
+            <CourseReviews reviews={reviews}/>
+
+            <EditImageGrid_B images={grid_B}/>
             {/* <CreateCourseReview/> */}
             {/* <Testimonials testimonials={testimonials}/> */}
             {/* <CreateTestimonial/> */}

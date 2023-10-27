@@ -1228,6 +1228,59 @@ export async function editImageGrid_A(prevState: any, formData: FormData) {
 
 }
 
+export async function editImageGrid_B(prevState: any, formData: FormData) {
+  try {
+
+    const newImage_4_File = formData.get('new_image_4_file') as File;
+    const newImage_5_File = formData.get('new_image_5_file') as File;
+
+    const gridSchema_A = z.object({
+      image_4_file: imageSchema,
+      image_5_file: imageSchema,
+      image_4_url: z.string(),
+      image_5_url: z.string()
+    })
+
+    const inputData: {
+      [key: string]: string | File | undefined;
+    } = gridSchema_A.parse({
+      image_4_file: newImage_4_File.size > 0 ? newImage_4_File : undefined,
+      image_5_file: newImage_5_File.size > 0 ? newImage_5_File : undefined,
+      image_4_url: formData.get('image_4_url'),
+      image_5_url: formData.get('image_5_url')
+    })
+
+    const updatedInputData = await handleInputDataWithNewImageFiles(inputData, "courses");
+
+    for (const key in updatedInputData){
+      const data = {
+        document: "courses",
+        entry: key,
+        content: updatedInputData[key]
+      }
+      const updated = await fetch(`${BASE_URL}/server/courses`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+          'API-Key': DATA_API_KEY
+        },
+        referrerPolicy: 'no-referrer',
+        body: JSON.stringify(data)
+      });
+    }
+
+    revalidatePath('/(personal)/courses', 'page');
+    revalidatePath('/(editor)/editor', 'page');
+
+    return {message: "images 4 and 5 updated"};
+
+  } catch (e) {
+    console.error(e);
+    return { message: `${e}` }
+  }
+
+}
+
 
 
 
@@ -1296,10 +1349,38 @@ export async function editCoursesHeroText(prevState: any, formData: FormData) {
   }
 }
 
+export async function editFAQ(prevState: any, formData: FormData) {
+  try {
+    const inputData = parseRichTextInput(formData);
+
+    const data = {
+      document: "courses",
+      entry: "FAQ",
+      content: inputData.contentHtml
+    }
+
+    const updated = await fetch(`${BASE_URL}/server/courses`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        'API-Key': DATA_API_KEY
+      },
+      referrerPolicy: 'no-referrer',
+      body: JSON.stringify(data)
+    });
+
+    revalidatePath('/(personal)/courses', 'page');
+    revalidatePath('/(editor)/editor', 'page');
+
+    return { message: `Preguntas frecuentes actualizadas!!!` }
+  } catch (e) {
+    console.error(e);
+    return { message: `${e}` }
+  }
+}
+
 export async function editAvailableCourse(prevState: any, formData: FormData) {
   try {
-    const courseName = formData.get('editor_content')
-
     const courseSchema = z.object({
       id: z.string(),
       name: z.string(),
@@ -1345,23 +1426,23 @@ export async function editAvailableCourse(prevState: any, formData: FormData) {
 
 export async function createCourse(prevState: any, formData: FormData) {
   try {
-    const courseDescription = parseRichTextInput(formData);
-
     const courseSchema = z.object({
       id: z.string(),
       name: z.string(),
+      entry: z.string(),
       description: z.string(),
     })
 
     const inputData = courseSchema.parse({
       id: createAlphaNumericString(20),
-      name: formData.get("course_name"),
-      description: courseDescription.contentHtml
+      entry: formData.get("entry"),
+      name: formData.get('editor_content'),
+      description: ''
     })
 
     const data = {
       document: "courses",
-      entry: "available_courses",
+      entry: inputData.entry,
       content: inputData
     }
 
@@ -1375,6 +1456,7 @@ export async function createCourse(prevState: any, formData: FormData) {
       body: JSON.stringify(data)
     });
 
+    revalidatePath('/(personal)/courses');
     revalidatePath('/(editor)/editor', 'page');
 
     return { message: `a course has been created created` }

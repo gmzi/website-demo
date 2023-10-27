@@ -7,6 +7,7 @@ import type { About } from '@/types'
 import {
     editCoursesHeroImage,
     editCoursesHeroText,
+    editFAQ,
     editAvailableCourse,
     createCourse,
     createSection,
@@ -15,7 +16,8 @@ import {
     editTestimonial,
     createTestimonial,
     editCourseLogistics,
-    editImageGrid_A
+    editImageGrid_A,
+    editImageGrid_B
 } from '@/app/actions'
 import { ImageEdit } from './ImageEdit'
 import { ImageGridInput, ImageInputWithIDAndDefaultValue } from './ImageInput'
@@ -28,6 +30,7 @@ import HTMLReactParser from 'html-react-parser'
 import { useState } from 'react'
 import Link from 'next/link'
 import { Delete } from './Delete'
+import { set } from 'zod'
 
 
 interface ImageProp {
@@ -144,6 +147,25 @@ export function HeroText({ contentHtml }: TextProp) {
     )
 }
 
+export function EditFAQ({ contentHtml }: { contentHtml: string }) {
+    const [state, formAction] = useFormState(editFAQ, initialState)
+
+    return (
+        <ol className="goals">
+            <form action={formAction}>
+                <h3>Preguntas frecuentes</h3>
+                <li className="faq">
+                    <RichText contentHtml={contentHtml} />
+                    <EditButton />
+                    <p aria-live="polite" className="sr-only" role="status">
+                        {state?.message}
+                    </p>
+                </li>
+            </form>
+        </ol>
+    )
+}
+
 export function EditImageGrid_A({ images }: EditImageGridProps) {
     const [state, formAction] = useFormState(editImageGrid_A, initialState);
 
@@ -168,8 +190,33 @@ export function EditImageGrid_A({ images }: EditImageGridProps) {
     )
 }
 
-export function AvailableCourses({ courses, entry }: { courses: Course[], entry: string }) {
+export function EditImageGrid_B({ images }: EditImageGridProps) {
+    const [state, formAction] = useFormState(editImageGrid_B, initialState);
+
+    const imagesGrid = images.map((image: ImageProps, index) => {
+        return (
+            <div key={`edit-image-${index}`}>
+                <ImageGridInput id={image.id} defaultValue={image.url} className="" />
+            </div>
+        )
+    })
+
+    return (
+        <form action={formAction}>
+            <div className="image-grid">
+                {imagesGrid}
+            </div>
+            <EditButton />
+            <p aria-live="polite" className="sr-only" role="status">
+                {state?.message}
+            </p>
+        </form>
+    )
+}
+
+export function AvailableCourses({ title, courses, entry }: { title: string, courses: Course[], entry: string }) {
     const [openEditor, setOpenEditor] = useState<number | false>(false);
+    const [openCreator, setOpenCreator] = useState<true | false>(false);
 
     function handleClick(e: React.MouseEvent<HTMLButtonElement>) {
         e.preventDefault();
@@ -179,6 +226,15 @@ export function AvailableCourses({ courses, entry }: { courses: Course[], entry:
 
     function handleCancel() {
         setOpenEditor(false)
+    }
+
+    function handleCreate(e: React.MouseEvent<HTMLButtonElement>) {
+        e.preventDefault();
+        setOpenCreator(true)
+    }
+
+    function handleCreateCancel() {
+        setOpenCreator(false)
     }
 
     // const coursesList = courses.map((course: Course, i: number) => (
@@ -192,7 +248,7 @@ export function AvailableCourses({ courses, entry }: { courses: Course[], entry:
 
     const coursesList =
         <div className="cards-and-goals">
-            <h2>Mis cursos de actuación:</h2>
+            <h2>{title}</h2>
             <div className='courseCards-container'>
                 {courses.map((course: Course, i: number) => (
                     <div className="courseCard" key={`course-${i}`}>
@@ -204,17 +260,27 @@ export function AvailableCourses({ courses, entry }: { courses: Course[], entry:
                         </div>
                     </div>
                 ))}
+                {openCreator ? (<CreateCourse entry={entry} handleCreateCancel={handleCreateCancel} />) : (
+                    <div className="courseCard">
+                        <button onClick={handleCreate}>agregar un nuevo curso</button>
+                    </div>
+                )}
             </div>
         </div>
 
     return (
-        <div>
+        <div className="card-container-editor">
             {openEditor !== false ? <EditAvailableCourse entry={entry} courses={courses} index={openEditor} handleCancel={handleCancel} /> : coursesList}
+            {/* {openCreator ? (<CreateCourse entry={entry} handleCreateCancel={handleCreateCancel}  />) : (
+                <div className="courseCard">
+                    <button onClick={handleCreate}>agregar un nuevo curso</button>
+                </div>
+            )} */}
         </div>
     )
 }
 
-export function EditAvailableCourse({entry, courses, index, handleCancel }: CourseProps) {
+export function EditAvailableCourse({ entry, courses, index, handleCancel }: CourseProps) {
     const [state, formAction] = useFormState(editAvailableCourse, initialState)
 
     const course = courses[index]
@@ -238,17 +304,17 @@ export function EditAvailableCourse({entry, courses, index, handleCancel }: Cour
     )
 }
 
-export function CreateCourse() {
+export function CreateCourse({ entry, handleCreateCancel }: { entry: string, handleCreateCancel: () => void }) {
     const [state, formAction] = useFormState(createCourse, initialState)
 
     return (
         <form action={formAction}>
-            <h2>Crear nuevo curso</h2>
-            <label htmlFor="course_name">Nombre del curso:</label>
-            <input type="text" id="course_name" name="course_name" />
-            <label htmlFor="editor_content">Descripcion del curso:</label>
+            <input type="hidden" name="entry" value={entry} />
+
+            <label htmlFor="editor_content" style={{ display: 'none' }}>Descripcion del curso:</label>
             <RichText contentHtml="" />
             <SubmitButton />
+            <button onClick={handleCreateCancel}>Cancelar</button>
             <p aria-live="polite" className="sr-only" role="status">
                 {state?.message}
             </p>

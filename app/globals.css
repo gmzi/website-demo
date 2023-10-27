@@ -465,6 +465,13 @@ ol li div {
   border-radius: 5px;
 }
 
+.faq-editor {
+  border: var(--color-border);
+  border-radius: 5px;
+  padding: 0 1em;
+}
+
+
 .courseCards-container {
   display: flex;
   flex-wrap: wrap;
@@ -890,6 +897,10 @@ svg.lucide.lucide-file-up {
       justify-self: center;
   }
   
+}
+
+.card-container-editor {
+  position: relative;
 }
 
 .warning {
