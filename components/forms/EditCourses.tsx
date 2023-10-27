@@ -139,14 +139,14 @@ export function HeroText({ contentHtml }: TextProp) {
     return (
         <div className="editor-group">
             <form action={formAction}>
-            <RichText contentHtml={contentHtml} />
-            <EditButton />
-            <p aria-live="polite" className="sr-only" role="status">
-                {state?.message}
-            </p>
+                <RichText contentHtml={contentHtml} />
+                <EditButton />
+                <p aria-live="polite" className="sr-only" role="status">
+                    {state?.message}
+                </p>
             </form>
         </div>
-        
+
     )
 }
 
@@ -154,18 +154,18 @@ export function EditFAQ({ contentHtml }: { contentHtml: string }) {
     const [state, formAction] = useFormState(editFAQ, initialState)
 
     return (
-        <ol className="goals">
+        <div className="editor-group">
             <form action={formAction}>
-                <h3>Preguntas frecuentes</h3>
-                <li className="faq">
+                <h2>Preguntas frecuentes</h2>
+                <div className="">
                     <RichText contentHtml={contentHtml} />
                     <EditButton />
                     <p aria-live="polite" className="sr-only" role="status">
                         {state?.message}
                     </p>
-                </li>
+                </div>
             </form>
-        </ol>
+        </div>
     )
 }
 
@@ -181,15 +181,17 @@ export function EditImageGrid_A({ images }: EditImageGridProps) {
     })
 
     return (
-        <form action={formAction}>
-            <div className="image-grid">
-                {imagesGrid}
-            </div>
-            <EditButton />
-            <p aria-live="polite" className="sr-only" role="status">
-                {state?.message}
-            </p>
-        </form>
+        <div className="editor-group">
+            <form action={formAction}>
+                <div className="image-grid">
+                    {imagesGrid}
+                </div>
+                <EditButton />
+                <p aria-live="polite" className="sr-only" role="status">
+                    {state?.message}
+                </p>
+            </form>
+        </div>
     )
 }
 
@@ -205,15 +207,17 @@ export function EditImageGrid_B({ images }: EditImageGridProps) {
     })
 
     return (
-        <form action={formAction}>
-            <div className="image-grid">
-                {imagesGrid}
-            </div>
-            <EditButton />
-            <p aria-live="polite" className="sr-only" role="status">
-                {state?.message}
-            </p>
-        </form>
+        <div className="editor-group">
+            <form action={formAction}>
+                <div className="image-grid">
+                    {imagesGrid}
+                </div>
+                <EditButton />
+                <p aria-live="polite" className="sr-only" role="status">
+                    {state?.message}
+                </p>
+            </form>
+        </div>
     )
 }
 
@@ -265,6 +269,7 @@ export function AvailableCourses({ title, courses, entry }: { title: string, cou
                 ))}
                 {openCreator ? (<CreateCourse entry={entry} handleCreateCancel={handleCreateCancel} />) : (
                     <div className="courseCard">
+                        <h5>Agregar nuevo curso</h5>
                         <button onClick={handleCreate}>agregar un nuevo curso</button>
                     </div>
                 )}
@@ -289,21 +294,23 @@ export function EditAvailableCourse({ entry, courses, index, handleCancel }: Cou
     const course = courses[index]
 
     return (
-        <form action={formAction}>
-            <input type="hidden" name="entry" value={entry} />
-            <input type="hidden" name="id" value={course.id} />
+        <div className='courseCard'>
+            <form action={formAction}>
+                <input type="hidden" name="entry" value={entry} />
+                <input type="hidden" name="id" value={course.id} />
 
-            {/* <input type="text" id="course_name" name="course_name" defaultValue={course.name} />
+                {/* <input type="text" id="course_name" name="course_name" defaultValue={course.name} />
             <label htmlFor="editor_content">Descripcion del curso:</label> */}
-            {/* TODO rename `course.name` to `course.content, since we're handling it in a single field, will have
+                {/* TODO rename `course.name` to `course.content, since we're handling it in a single field, will have
             to update the naming in the whole cycle - database, client and here. */}
-            <RichText contentHtml={course.name} />
-            <EditButton />
-            <button onClick={handleCancel}>Cancelar</button>
-            <p aria-live="polite" className="sr-only" role="status">
-                {state?.message}
-            </p>
-        </form>
+                <RichText contentHtml={course.name} />
+                <EditButton />
+                <button onClick={handleCancel}>Cancelar</button>
+                <p aria-live="polite" className="sr-only" role="status">
+                    {state?.message}
+                </p>
+            </form>
+        </div>
     )
 }
 
@@ -311,17 +318,19 @@ export function CreateCourse({ entry, handleCreateCancel }: { entry: string, han
     const [state, formAction] = useFormState(createCourse, initialState)
 
     return (
-        <form action={formAction}>
-            <input type="hidden" name="entry" value={entry} />
+        <div className='courseCard'>
+            <form action={formAction}>
+                <input type="hidden" name="entry" value={entry} />
 
-            <label htmlFor="editor_content" style={{ display: 'none' }}>Descripcion del curso:</label>
-            <RichText contentHtml="" />
-            <SubmitButton />
-            <button onClick={handleCreateCancel}>Cancelar</button>
-            <p aria-live="polite" className="sr-only" role="status">
-                {state?.message}
-            </p>
-        </form>
+                <label htmlFor="editor_content" style={{ display: 'none' }}>Descripcion del curso:</label>
+                <RichText contentHtml="" />
+                <SubmitButton />
+                <button onClick={handleCreateCancel}>Cancelar</button>
+                <p aria-live="polite" className="sr-only" role="status">
+                    {state?.message}
+                </p>
+            </form>
+        </div>
     )
 }
 
@@ -331,19 +340,21 @@ export function EditCourseReview({ reviews, index, handleCancel }: ReviewProps) 
     const review = reviews[index]
 
     return (
-        <form action={formAction}>
-            <input type="hidden" name="id" value={review.id} />
+        <blockquote className="review">
+            <form action={formAction}>
+                <input type="hidden" name="id" value={review.id} />
 
-            <label htmlFor="editor_content">Texto de la reseña:</label>
-            <RichText contentHtml={review.content} />
-            <label htmlFor="reviewAuthor">Autor de la reseña:</label>
-            <input type="text" id="reviewAuthor" name="reviewAuthor" defaultValue={review.author} />
-            <EditButton />
-            <button onClick={handleCancel}>Cancelar</button>
-            <p aria-live="polite" className="sr-only" role="status">
-                {state?.message}
-            </p>
-        </form>
+                <label htmlFor="editor_content">Texto de la reseña:</label>
+                <RichText contentHtml={review.content} />
+                <label htmlFor="reviewAuthor">Autor de la reseña:</label>
+                <input type="text" id="reviewAuthor" name="reviewAuthor" defaultValue={review.author} />
+                <EditButton />
+                <button onClick={handleCancel}>Cancelar</button>
+                <p aria-live="polite" className="sr-only" role="status">
+                    {state?.message}
+                </p>
+            </form>
+        </blockquote>
     )
 }
 
@@ -396,24 +407,24 @@ export function CourseReviews({ reviews }: ReviewsProps) {
     )
 }
 
-
-
 export function CreateCourseReview({ handleCreateCancel }: { handleCreateCancel: () => void }) {
     const [state, formAction] = useFormState(createCourseReview, initialState)
 
     return (
-        <form action={formAction}>
-            <h2>Agregar reseña</h2>
-            <label htmlFor="editor_content">Texto de la reseña:</label>
-            <RichText contentHtml="" />
-            <label htmlFor="reviewAuthor">Autor de la reseña:</label>
-            <input type="text" id="reviewAuthor" name="reviewAuthor" />
-            <SubmitButton />
-            <button onClick={handleCreateCancel}>Cancelar</button>
-            <p aria-live="polite" className="sr-only" role="status">
-                {state?.message}
-            </p>
-        </form>
+        <blockquote className="review">
+            <form action={formAction}>
+                <h2>Agregar reseña</h2>
+                <label htmlFor="editor_content">Texto de la reseña:</label>
+                <RichText contentHtml="" />
+                <label htmlFor="reviewAuthor">Autor de la reseña:</label>
+                <input type="text" id="reviewAuthor" name="reviewAuthor" />
+                <SubmitButton />
+                <button onClick={handleCreateCancel}>Cancelar</button>
+                <p aria-live="polite" className="sr-only" role="status">
+                    {state?.message}
+                </p>
+            </form>
+        </blockquote>
     )
 }
 
@@ -450,18 +461,18 @@ export function Testimonials({ testimonials }: TestimonialsProps) {
                     <Delete document="courses" entry="testimonials" section="courses" id={testimonial.id} />
                 </div>
             ))}
-        </div>
-
-    return (
-        <div>
-            <h2>Testimonios:</h2>
-            {openEditor !== false ? <EditTestimonial testimonials={testimonials} index={openEditor} handleCancel={handleCancel} /> : testimonialsList}
             {openCreator ? (<CreateTestimonial handleCreateCancel={handleCreateCancel} />) : (
                 <div className="testimonialCard">
                     <h3>Agregar testimonio</h3>
                     <button onClick={handleCreate}>agregar testimonio</button>
                 </div>
             )}
+        </div>
+
+    return (
+        <div>
+            <h2>Testimonios:</h2>
+            {openEditor !== false ? <EditTestimonial testimonials={testimonials} index={openEditor} handleCancel={handleCancel} /> : testimonialsList}
         </div>
     )
 }

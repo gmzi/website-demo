@@ -69,17 +69,17 @@ export default async function Courses() {
         
             <EditImageGrid_A images={grid_A}/>
 
-            {/* <AvailableCourses title="Mis cursos de actuación:" courses={availableCourses_acting} entry="available_courses_acting"/>
+            <AvailableCourses title="Mis cursos de actuación:" courses={availableCourses_acting} entry="available_courses_acting"/>
+
             <AvailableCourses title="Mis cursos de dramaturgia:" courses={availableCourses_writing} entry="available_courses_writing"/>
-            <div className="faq-editor">
-                <EditFAQ contentHtml={FAQ}/>
-            </div>
+
+            <EditFAQ contentHtml={FAQ}/>
 
             <EditImageGrid_B images={grid_B}/>
             
             <CourseReviews reviews={reviews}/>
             
-            <Testimonials testimonials={testimonials}/> */}
+            <Testimonials testimonials={testimonials}/>
         </section>
     )
   }
