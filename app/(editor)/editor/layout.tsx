@@ -11,26 +11,26 @@ interface EditorProps {
 
 export default async function EditorLayout({ children }: EditorProps) {
 
-  // const { orgRole } = auth();
-  // if (orgRole !== 'admin') {
-  //   return (
-  //     <div>
-  //       <UserButton afterSignOutUrl="/editor" />
-  //       <SignOutButton />
-  //       <p>you are an unauthorized user to edit this page, please sign out from your 
-  //         current account and sign in as an authorized user</p>
-  //     </div>
-  //   )
-  // }
+  const { orgRole } = auth();
+  if (orgRole !== 'admin') {
+    return (
+      <div>
+        <UserButton afterSignOutUrl="/editor" />
+        <SignOutButton />
+        <p>you are an unauthorized user to edit this page, please sign out from your 
+          current account and sign in as an authorized user</p>
+      </div>
+    )
+  }
 
   return (
     <main className="editor-wrapper">
-      {/* {orgRole ? (
+      {orgRole ? (
         <>
           <UserButton afterSignOutUrl="/editor" />
           <SignOutButton />
         </>
-      ) : null} */}
+      ) : null}
       <>
         <EditorNavbar/>
         {children}
