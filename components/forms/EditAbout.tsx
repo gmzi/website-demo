@@ -33,15 +33,17 @@ export function EditAbout({ contentHtml, imageUrl }: AboutProps) {
     const [state, formAction] = useFormState(editAbout, initialState)
 
     return (
-        <form action={formAction} id="myForm-about" className="editor-about">
-            <h2>EDITAR Bio</h2>
-            <label htmlFor="editor_content">Texto:</label>
-            <RichText contentHtml={contentHtml} />
-            <ImageEdit imageUrl={imageUrl} />
-            <EditButton />
-            <p aria-live="polite" className="sr-only" role="status">
-                {state?.message}
-            </p>
-        </form>
+        <div className="editor-group">
+            <form action={formAction} id="myForm-about" className="editor-about">
+                <h2>Editar página principal</h2>
+                <ImageEdit imageUrl={imageUrl} />
+                <label htmlFor="editor_content" style={{ display: "none" }}>Texto:</label>
+                <RichText contentHtml={contentHtml} />
+                <EditButton />
+                <p aria-live="polite" className="sr-only" role="status">
+                    {state?.message}
+                </p>
+            </form>
+        </div>
     )
 }

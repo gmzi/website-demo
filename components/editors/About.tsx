@@ -16,7 +16,6 @@ export default async function About(){
 
     return (
         <div>
-            <h2>About</h2>
             <EditAbout contentHtml={contentHtml} imageUrl={imageUrl}/>
         </div>
     )

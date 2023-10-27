@@ -12,7 +12,7 @@ export default async function Podcast(){
     const apple_url = data.apple_url;
 
     return (
-        <div>
+        <div className="editor-group">
             <h2>Podcast</h2>
             <h3>Description</h3>
             <TextEditor contentHtml={contentHtml} document={documentName} section={sectionName}/>

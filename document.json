@@ -471,5 +471,14 @@
         "name": "contact-info",
         "phone": "123456",
         "email": "me@mail.com"
+    },
+    "podcast": {
+        "_id": {
+            "$oid": "6509ee70fc7284c4295c8b61"
+        },
+        "name": "podcast",
+        "content_html": "<p>Pienso que <strong>La Creación</strong> se está creando a sí misma, y nos utiliza para plasmarse. Intento estar entregado a ese misterio. <strong>En este Podcast</strong> tengo el privilegio de ser testigo del modo en que La Creación se presenta <strong>en otros a quienes admiro, respeto y de quienes aprendo</strong>. Espero que estas conversaciones nos conecten con la maravillosa energía de manifestar <strong>el impulso creador en obras, en experiencias, en arte</strong> y más proyectos.</p>",
+        "apple_url": "https://podcasts.apple.com/podcast/testigo-de-la-creaci%C3%B3n/id1533448118",
+        "spotify_url": "https://open.spotify.com/show/3GL13X7HswQjyLL3gDc0m8"
     }
 }

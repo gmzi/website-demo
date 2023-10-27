@@ -290,8 +290,6 @@ section {
   margin: 0 auto;
 }
 
-
-
 .defaultImgStyle {
   width: 100%;
   height: auto;
@@ -309,141 +307,38 @@ p {
   border-radius: 50%;
 }
 
-
-
-/* ---------------------------------------- */
-/* ---------------------------------------- */
-/* COURSES */
-
-/* ---------------------------- */
-/* .coursesHero {
+.podcast-links {
   text-align: center;
-  margin: 1em;
+  margin-top: 30px;
 }
 
-.courses h2 {
-  margin: 1em 0em .1em 0em;
+.podcast-links h3 {
+  font-size: 20px;
+  font-weight: lighter;
+  margin-right: 10px;
 }
 
-.description {
-  text-align: left;
-  font-size: small;
-}
-
-.courseCards-container {
-  display: flex;
-  justify-content: space-evenly;
-}
-
-.courseCard {
-  background-color: var(--color-background-courseCard);
-  margin: .2em;
-  padding: 2em;
-  border-radius: 5px;
-  font-weight: bold;
-  text-align: center;
-}
-
-ol {
-  margin: .1em;
-  padding: .5em;
-  text-align: center;
-}
-
-ol li {
-  list-style: none;
-}
-
-ol li div {
-  margin: .3em;
-  font-weight: bold;
-  display: inline;
-}
-
-.faq, 
-.course-logistics {
-  border-radius: 5px;
-  margin: 1em 0em;
-  padding: 1em;
-}
-
-.faq {
-  border: 1px solid black;
-}
-
-.faq span {
-  color: var(--color-purple);
-}
-
-.course-logistics {
-  background-color: var(--color-background-box);
-}
-
-.testimonialCards-container {
-  display: flex;
-  align-items: flex-start;
-}
-
-.testimonialCard {
-  border-radius: 5px;
-  margin: 1em;
-  padding: 1em;
-  background-color: var(--color-background-card);
-}
-
-.btnContainer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.btn-whatsapp {
-  background-color: #25d366;
-  color: white;
-  padding: 1em;
-  border: none;
-  border-radius: 5px;
-  text-align: center;
-  cursor: pointer;
-}
-
-.pairInput {
-  border: 2px solid black;
-  padding: .2em;
-  display: flex;
-  flex-direction: row;
-}
-
-.reviews blockquote {
-  border: 1px solid black;
-  padding: 3em;
-}
-
-.reviews cite {
-  display: block;
-} */
-
-
-/* ---------------------------- */
-
-/* Style the courses section */
-.courses {
-  /* padding: 40px;
-  text-align: center; */
-}
-
-/* Style the section heading */
-.courses h1 {
-  /* font-size: 36px;
+.podcast-links a {
+  display: inline-block;
+  margin: 10px;
+  text-decoration: none;
   color: #333;
-  margin-bottom: 20px; */
+  transition: transform 0.2s ease-in-out;
 }
 
-/* Style the hero image */
-.coursesHero {
-  /* position: relative;
-  margin: 20px 0; */
+.podcast-links a:hover {
+  transform: scale(1.2);
 }
+
+
+.podcast-links a svg {
+  width: 3em; 
+  height: auto; 
+}
+
+/* ---------------------------------------- */
+/* ---------------------------------------- */
+
 
 .heroContainer {
   padding: 1em;
@@ -454,6 +349,16 @@ ol li div {
   width: 100%;
   max-height: 400px;
   object-fit: cover;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.max-width {
+  width: 100%;
+  max-width: 20em;
+  height: auto;
+  display: block;
+  margin: 0 auto;
   border-radius: 5px;
   margin-bottom: 10px;
 }
