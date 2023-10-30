@@ -108,7 +108,6 @@ export async function generateMetadata() {
       { media: '(prefers-color-scheme: light)', color: 'ghostwhite' },
       { media: '(prefers-color-scheme: dark)', color: 'black' },
     ],
-
     // TODO
     // manifest: '../public/manifest.json',
     twitter: {

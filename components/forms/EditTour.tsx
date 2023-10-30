@@ -1,8 +1,7 @@
 'use client'
 
 // @ts-expect-error
-import { experimental_useFormState as useFormState } from 'react-dom'
-import { experimental_useFormStatus as useFormStatus } from 'react-dom'
+import { useFormState, useFormStatus } from 'react-dom'
 import { ImageEdit } from './ImageEdit'
 import type { Tour } from '@/types'
 import { editTour } from '@/app/actions'
