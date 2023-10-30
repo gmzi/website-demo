@@ -17,7 +17,6 @@ export default async function BioPage() {
     // const data = await getData("bio");
     const data = await getRemoteOrLocalData("bio");
 
-    // const text = parse(data?.content_html) || '';
     const image1Url = data?.image_1_url || '';
     const image2Url = data?.image_2_url || '';
     const image3Url = data?.image_3_url || '';
@@ -25,16 +24,6 @@ export default async function BioPage() {
     const image5Url = data?.image_5_url || '';
     const image6Url = data?.image_6_url || '';
     const image7Url = data?.image_7_url || '';
-
-    // const paragraphs = data?.content_html.split(/<\/?p>/).filter(Boolean);
-
-    // const midpoint = Math.floor(paragraphs.length / 2);
-
-    // const array_1 = paragraphs.slice(0, midpoint)
-    // const array_2 = paragraphs.slice(midpoint)
-
-    // const html_1 = array_1.join("")
-    // const html_2 = array_2.join("")
 
     const html_1 = data?.content_html_1 || '';
     const html_2 = data?.content_html_2 || '';
