@@ -8,6 +8,15 @@ import { metadata } from '../metadata'
 import { Navbar } from '@/components/global/Navbar'
 import { Footer } from '@/components/global/Footer'
 import { ClerkProvider } from '@clerk/nextjs';
+import { Viewport } from 'next'
+
+
+export const viewport = {
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: 'ghostwhite' },
+    { media: '(prefers-color-scheme: dark)', color: 'black' },
+  ],
+}
 
 // const inter = Inter({ subsets: ['latin'] })
 
@@ -104,10 +113,10 @@ export async function generateMetadata() {
     },
 
     // colorScheme: 'dark',
-    themeColor: [
-      { media: '(prefers-color-scheme: light)', color: 'ghostwhite' },
-      { media: '(prefers-color-scheme: dark)', color: 'black' },
-    ],
+    // themeColor: [
+    //   { media: '(prefers-color-scheme: light)', color: 'ghostwhite' },
+    //   { media: '(prefers-color-scheme: dark)', color: 'black' },
+    // ],
     // TODO
     // manifest: '../public/manifest.json',
     twitter: {
