@@ -10,8 +10,12 @@ import type { Tour } from '@/types';
 import { useState } from 'react';
 import { editTour } from '@/app/actions';
 import Image from 'next/image';
+import Link from 'next/link';
 
 
+export interface ToursProps {
+    tours: Tour[];
+}
 
 const initialState = {
     message: null,
@@ -38,12 +42,12 @@ function EditButton() {
 }
 
 export function ToursList({ tours }: { tours: Tour[] }) {
-    const [openEditor, setOpenEditor] = useState<number | false>(false);
+    const [openEditor, setOpenEditor] = useState<string | false>(false);
     const [openCreator, setOpenCreator] = useState<true | false>(false);
 
     function handleClick(e: React.MouseEvent<HTMLButtonElement>) {
         e.preventDefault();
-        setOpenEditor(e.currentTarget.tabIndex)
+        setOpenEditor(e.currentTarget.id);
     }
 
 
@@ -60,67 +64,124 @@ export function ToursList({ tours }: { tours: Tour[] }) {
         setOpenCreator(false)
     }
 
+    const uniqueYears: string[] = [...new Set(tours.map(item => item.year))]
+        .sort((a, b) => parseInt(b, 10) - parseInt(a, 10));
+
+    // const toursList =
+    //     <div>
+    //         <h1>Editar giras</h1>
+    //         {tours.map((tour: Tour, i: number) => (
+    //             <div key={`item-${tour.id}`} className="editor-group">
+    //                 <h2>{tour.title_or_place}</h2>
+    //                 <div className="heroContainer">
+    //                     <ImageInputWithIDAndDefaultValue id={1} defaultValue={tour.image_1_url} className="" />
+    //                 </div>
+    //                 <div className="card-buttons">
+    //                     <button onClick={handleClick} tabIndex={i}>Editar</button>
+    //                     <Delete document="tours" entry={`content`} section="tours" id={tour.id} />
+    //                 </div>
+    //             </div>
+    //         ))}
+    //         {openCreator ? <CreateTour handleCreateCancel={handleCreateCancel} /> : <button onClick={handleCreate}>Agregar una nueva gira</button>}
+    //     </div>
     const toursList =
-        <div>
-            {tours.map((tour: Tour, i: number) => (
-                <div key={`item-${tour.id}`} className="editor-group">
-                    <h2>{tour.title_or_place}</h2>
-                    <div className="heroContainer">
-                        <ImageInputWithIDAndDefaultValue id={1} defaultValue={tour.image_1_url} className="" />
-                    </div>
-                    <div className="card-buttons">
-                        <button onClick={handleClick} tabIndex={i}>Editar</button>
-                        <Delete document="tours" entry={`content`} section="tours" id={tour.id} />
-                    </div>
-                </div>
-            ))}
+        <div className="">
+            {uniqueYears.map(year => (
+                <ul key={year} className="years-list">
+                    <li>
+                        <h2>{year}</h2>
+                        <ul className="tours-list">
+                            {tours
+                                .filter(item => item.year === year)
+                                .map((item, index) => (
+                                    <li key={index} className="editor-group">
+                                        <h3>{item.title_or_place}</h3>
+                                        <p>{item.city}</p>
+                                        {item.press_url.length > 0 &&
+                                            <Link href={item.press_url} target="_blank">Artículo de prensa</Link>
+                                        }
+                                        {item.image_1_url.length > 0 &&
+                                            <div className="imgContainer">
+                                                <Image
+                                                    className="tours-default"
+                                                    src={item.image_1_url}
+                                                    width={0}
+                                                    height={0}
+                                                    sizes="100vw"
+                                                    alt="Gira"
+                                                />
+                                            </div>
+
+                                        }
+                                        <div className='card-buttons'>
+                                            <button onClick={handleClick} id={item.id}>Editar</button>
+                                            <Delete document="tours" entry={`content`} section="tours" id={item.id} />
+                                        </div>
+                                    </li>
+                                ))}
+                        </ul>
+                    </li>
+
+                </ul>
+            ))
+            }
             {openCreator ? <CreateTour handleCreateCancel={handleCreateCancel} /> : <button onClick={handleCreate}>Agregar una nueva gira</button>}
         </div>
 
     return (
         <div className="showsList">
             <h1>Giras</h1>
-            {openEditor !== false ? <EditTour tours={tours} index={openEditor} handleCancel={handleCancel} /> : toursList}
+            {openEditor !== false ? <EditTour tours={tours} id={openEditor} handleCancel={handleCancel} /> : toursList}
         </div>
     )
 }
 
-export function EditTour({ tours, index, handleCancel }: { tours: Tour[], index: number, handleCancel: () => void }) {
+export function EditTour({ tours, id, handleCancel }: { tours: Tour[], id: string, handleCancel: () => void }) {
     const [state, formAction] = useFormState(editTour, initialState)
 
-    const tour = tours[index];
+    // const tour = tours.filter((item) => item.id === id);
+    const tour = tours.find((item) => item.id === id);
+
+    if (!tour) {
+        // Handle the case where 'tour' is not found (optional)
+        return <div>Tour not found</div>;
+    }
 
     return (
-        <form action={formAction}>
+        <form action={formAction} className='form-shows'>
             <h2>EDITAR Gira</h2>
-            <input type="hidden" name="id" value={tour.id} />
+            <div className="show-card">
+                <input type="hidden" name="id" value={tour.id} />
 
-            <label htmlFor="show_title">Espectáculo:</label>
-            <input type="text" id="show_title" name="show_title" defaultValue={tour.show_title} />
-            <label htmlFor="year">Año de la gira:</label>
-            <input type="text" id="year" name="year" defaultValue={tour.year} />
-            <label htmlFor="title_or_place">Nombre del festival o sala:</label>
-            <input type="text" id="title_or_place" name="title_or_place" defaultValue={tour.title_or_place} />
-            <label htmlFor="city">Ciudad:</label>
-            <input type="text" id="city" name="city" defaultValue={tour.city} />
-            <label htmlFor="country">Fecha:</label>
-            <input type="text" id="country" name="country" defaultValue={tour.country} />
-            <label htmlFor="press_url">Link al articulo de prensa:</label>
-            <input type="text" id="press_url" name="press_url" defaultValue={tour.press_url} />
-            {/* <ImageEdit imageUrl={tour.image_url} /> */}
-            <ImageInputWithIDAndDefaultValue id={1} defaultValue={tour.image_1_url} className="preview-default" />
-            <EditButton />
-            <button onClick={handleCancel}>Cancelar</button>
-            <p aria-live="polite" className="sr-only" role="status">
-                {state?.message}
-            </p>
+                <label htmlFor="show_title">Espectáculo:</label>
+                <input type="text" id="show_title" name="show_title" defaultValue={tour.show_title} />
+                <label htmlFor="year">Año de la gira:</label>
+                <input type="text" id="year" name="year" defaultValue={tour.year} />
+                <label htmlFor="title_or_place">Nombre del festival o sala:</label>
+                <input type="text" id="title_or_place" name="title_or_place" defaultValue={tour.title_or_place} />
+                <label htmlFor="city">Ciudad:</label>
+                <input type="text" id="city" name="city" defaultValue={tour.city} />
+                <label htmlFor="country">Fecha:</label>
+                <input type="text" id="country" name="country" defaultValue={tour.country} />
+                <label htmlFor="press_url">Link al articulo de prensa:</label>
+                <input type="text" id="press_url" name="press_url" defaultValue={tour.press_url} />
+                {/* <ImageEdit imageUrl={tour.image_url} /> */}
+                <ImageInputWithIDAndDefaultValue id={1} defaultValue={tour.image_1_url} className="preview-default" />
+                <EditButton />
+                <button onClick={handleCancel}>Cancelar</button>
+                <p aria-live="polite" className="sr-only" role="status">
+                    {state?.message}
+                </p>
+            </div>
+
         </form>
+
     )
 }
 
 
 
-export function CreateTour({handleCreateCancel}: {handleCreateCancel: () => void}) {
+export function CreateTour({ handleCreateCancel }: { handleCreateCancel: () => void }) {
     const [state, formAction] = useFormState(createTour, initialState)
 
     // until we figure out how to reset form input after successfull data savign, bare with this:

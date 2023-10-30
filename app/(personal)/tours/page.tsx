@@ -27,7 +27,7 @@ export default async function ToursPage() {
     return (
         <section className="tours">
             <h1>Giras</h1>
-            <div className="heroContainer">
+            <div className="imgContainer">
                 <ImageGrid images={grid_1} />
             </div>
             {uniqueYears.map(year => (
