@@ -1,6 +1,10 @@
 import './globals.css'
 import { Metadata, ResolvingMetadata } from 'next'
-import { Space_Mono } from 'next/font/google'
+import { 
+  Space_Mono,
+  Inter, 
+  Lusitana 
+} from 'next/font/google';
 import { getMetadata } from '@/lib/getMetadata'
 import { getLetterAfterSlash } from '@/lib/getLetterAfterSlash'
 import { Analytics } from '@vercel/analytics/react';
@@ -20,11 +24,19 @@ export const viewport = {
 
 // const inter = Inter({ subsets: ['latin'] })
 
+export const inter = Inter({ subsets: ['latin'] });
+
+export const lusitana = Lusitana({ 
+    subsets: ['latin'],
+    weight: '400'
+});
+
 const space_mono = Space_Mono({
   weight: ['400', '700'],
   style: ['normal', 'italic'],
   subsets: ['latin'],
-  display: 'swap'
+  display: 'swap',
+  fallback: ['Helvetica', 'Arial', 'sans-serif'],
 })
 
 const BASE_URL = process.env.BASE_URL;
@@ -154,11 +166,7 @@ export default function RootLayout({
       <body
       // className={inter.className}
       >
-        {/* <ClerkProvider allowedRedirectOrigins={[`${BASE_URL}/editor`]}> */}
           {children}
-          {/* UNCOMMENT BELOW TO ENABLE ANALYTICS */}
-          {/* {prodEnv && <Analytics/>} */}
-        {/* </ClerkProvider> */}
       </body>
     </html>
   )

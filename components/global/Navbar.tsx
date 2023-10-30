@@ -4,13 +4,17 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { navItems } from '@/lib/navItems';
 import { editorNaviItems } from '@/lib/navItems';
+import { 
+  Circle,
+  Globe
+} from '../shared/icons';
 
 function Logo() {
   return (
     <Link aria-label="John Done" href="/">
       <div className={'logoContainer'}>
         <span className={'logoTitle'}>
-            <span>John Done</span>
+          <span>John Done</span>
         </span>
       </div>
     </Link>
@@ -23,29 +27,34 @@ export async function Navbar() {
 
   return (
     <div className={'navbarContainer'}>
-        <div> 
-            <Logo/>
-        </div>
-        <ul className={'navigationLinksList'}>
-          {Object.entries(navItems).map(([path, {name}]) => {
-            const isActive = path === pathname;
-            if (path !== '/') {
-              return (
-                <Link
-                  key={path}
-                  href={path}
-                >
-                  {isActive ? (
-                    <li className={'active'}>{name}</li>
-                  ) : (
+      <div>
+        <Logo />
+      </div>
+      <ul className={'navigationLinksList'}>
+        {Object.entries(navItems).map(([path, { name }]) => {
+          const isActive = path === pathname;
+          if (path !== '/') {
+            return (
+              <Link
+                key={path}
+                href={path}
+              >
+                {isActive ? (
+                  <li className={'active'}>{name}</li>
+                ) : (
                   <li>{name}</li>
-                  )}
-                  {/* <li>{name}</li> */}
-                </Link>
-              )
-            }
-          })}
-        </ul>
+                )}
+                {/* <li>{name}</li> */}
+              </Link>
+            )
+          }
+        })}
+        <li>
+          <Link href="/editor">
+            <Circle />
+          </Link>
+        </li>
+      </ul>
     </div>
   )
 }
@@ -56,25 +65,30 @@ export function EditorNavbar() {
 
   return (
     <div className={'navbarContainer'}>
-        <ul className={'navigationLinksList'}>
-          {Object.entries(editorNaviItems).map(([path, {name}]) => {
-            const isActive = path === pathname;
-            if (path !== '/') {
-              return (
-                <Link
-                  key={path}
-                  href={path}
-                >
-                  {isActive ? (
-                    <li className={'active'}>{name}</li>
-                  ) : (
+      <ul className={'navigationLinksList'}>
+        {Object.entries(editorNaviItems).map(([path, { name }]) => {
+          const isActive = path === pathname;
+          if (path !== '/') {
+            return (
+              <Link
+                key={path}
+                href={path}
+              >
+                {isActive ? (
+                  <li className={'active'}>{name}</li>
+                ) : (
                   <li>{name}</li>
-                  )}
-                </Link>
-              )
-            }
-          })}
-        </ul>
+                )}
+              </Link>
+            )
+          }
+        })}
+        <li>
+          <Link href="/">
+            <Globe />
+          </Link>
+        </li>
+      </ul>
     </div>
   )
 }
