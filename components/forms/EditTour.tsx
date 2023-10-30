@@ -5,11 +5,7 @@ import { useFormState, useFormStatus } from 'react-dom'
 import { ImageEdit } from './ImageEdit'
 import type { Tour } from '@/types'
 import { editTour } from '@/app/actions'
-
-interface TourProp {
-    tour: Tour
-}
-
+import { ImageInputWithIDAndDefaultValue } from './ImageInput'
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
@@ -27,7 +23,7 @@ function EditButton() {
     )
 }
 
-export function EditTour({ tour }: TourProp) {
+export function EditTour({ tour }: {tour: Tour}) {
     const [state, formAction] = useFormState(editTour, initialState)
 
     return (
@@ -47,7 +43,8 @@ export function EditTour({ tour }: TourProp) {
             <input type="text" id="country" name="country" defaultValue={tour.country}/>
             <label htmlFor="press_url">Link al articulo de prensa:</label>
             <input type="text" id="press_url" name="press_url" defaultValue={tour.press_url} />
-            <ImageEdit imageUrl={tour.image_url} />
+            {/* <ImageEdit imageUrl={tour.image_url} /> */}
+            <ImageInputWithIDAndDefaultValue id={1} defaultValue={tour.image_1_url} className=""/>
             <EditButton />
             <p aria-live="polite" className="sr-only" role="status">
                 {state?.message}

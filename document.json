@@ -239,142 +239,150 @@
         ]
     },
     "tours": {
+        "_id": {
+            "$oid": "650b37bfb2f0562d6499ddd3"
+        },
         "name": "tours",
         "content": [
             {
+                "id": "5l8gyt99naksdc10vae3",
+                "show_title": "La fiesta del Viejo",
+                "year": "2015",
+                "title_or_place": "Festival Temporada Alta",
+                "city": "Girona",
+                "country": "España",
+                "press_url": "",
+                "image_1_url": ""
+            },
+            {
+                "id": "4gnzxn6w2jeqq6lr8i2o",
                 "show_title": "La fiesta del viejo",
                 "year": "2020",
-                "title_or_place": "Ciclo de Teatro Argentino de Barcelona",
+                "title_or_place": "Ciclo de Teatro Argentino",
                 "city": "Barcelona",
                 "country": "España",
                 "press_url": "",
-                "image_url": ""
+                "image_1_url": ""
             },
             {
+                "id": "fjc6ayyobtr00q2p24bi",
                 "show_title": "La fiesta del viejo",
-                "year": "2019",
-                "title_or_place": "Teatro Circo Murcia",
-                "city": "Ciudad de Murcia",
-                "country": "España",
+                "year": "2015",
+                "title_or_place": "Off Broadway",
+                "city": "New York",
+                "country": "USA",
+                "press_url": "https://thetheatretimes.com/la-fiesta-del-viejo-fresh-perspective-classic-tale/",
+                "image_1_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1698696340/website-fer/tours/us6iivgkht4bs8sievcx.jpg"
+            },
+            {
+                "id": "7euf02qxlqr4y1e534y6",
+                "show_title": "La fiesta del viejo",
+                "year": "2018",
+                "title_or_place": "FIBA. Festival Internacional de Buenos Aires",
+                "city": "Buenos Aires",
+                "country": "Argentina",
                 "press_url": "",
-                "image_url": ""
+                "image_1_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1698696340/website-fer/tours/us6iivgkht4bs8sievcx.jpg"
             },
             {
-                "show_title": "La fiesta del viejo",
-                "year": "2019",
-                "title_or_place": "Festival de Teatro Clásicos en Alcalá",
-                "city": "",
-                "country": "España",
-                "press_url": "https://noticiasdemadrid.com/cultura/13/07/2018/la-fiesta-del-viejo-cierra-la-iii-edicion-del-ciclo-de-teatro-argentino-de-el-umbral-de-primavera/5621.html",
-                "image_url": ""
-            },
-            {
-                "show_title": "La fiesta del viejo",
-                "year": "2019",
-                "title_or_place": "Festival Iberoamericano de Teatro de Cádiz",
-                "city": "",
-                "country": "España",
+                "id": "gtr9x1pu55x51hp72x8i",
+                "show_title": "La intención de las palomas",
+                "year": "2018",
+                "title_or_place": "GIRART. Mercado de las Artes Escénicas y la Música de Argentina",
+                "city": "Buenos Aires",
+                "country": "Argentina",
                 "press_url": "",
-                "image_url": ""
+                "image_1_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1698696340/website-fer/tours/us6iivgkht4bs8sievcx.jpg"
             },
             {
+                "id": "vw3jsg8vmsnhhktut8yh",
+                "show_title": "La intención de las palomas",
+                "year": "2018",
+                "title_or_place": "IV Muestra Iberoamericana de Teatro",
+                "city": "Montevideo",
+                "country": "Uruguay",
+                "press_url": "",
+                "image_1_url": ""
+            },
+            {
+                "id": "271bwx80jh9n31y6q8iq",
                 "show_title": "La fiesta del viejo",
                 "year": "2018",
                 "title_or_place": "Clásicos en Alcalá",
-                "city": "Alcalá de Henares",
+                "city": "Alcalá",
                 "country": "España",
-                "press_url": "https://www.larazon.es/cultura/teatro/olite-un-verano-de-teatro-y-jersey-GN19145245/",
-                "image_url": ""
+                "press_url": "",
+                "image_1_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1696367712/website-fer/tours/mnjq4smkyeys3cgalmep.webp"
             },
             {
+                "id": "fk9rtg1pxt2lcpzhezip",
                 "show_title": "La fiesta del viejo",
                 "year": "2018",
                 "title_or_place": "Festival de Artes Escénicas de la Comunidad de Madrid",
                 "city": "Madrid",
                 "country": "España",
                 "press_url": "",
-                "image_url": ""
+                "image_1_url": ""
             },
             {
+                "id": "qsd0q16m20vdaywu9fp3",
                 "show_title": "La fiesta del viejo",
                 "year": "2018",
                 "title_or_place": "Mercado de las Artes Performativas del Atlántico Sur",
                 "city": "Tenerife",
                 "country": "España",
                 "press_url": "",
-                "image_url": ""
+                "image_1_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1696363382/website-fer/tours/jpqomjlqn9m3ykejcvet.jpg"
             },
             {
+                "id": "gw1cudbtoiifjeyrqty8",
                 "show_title": "La fiesta del viejo",
                 "year": "2018",
                 "title_or_place": "Festival de Teatro de Olite",
-                "city": "Navarra",
+                "city": "Olite",
                 "country": "España",
-                "press_url": "",
-                "image_url": ""
+                "press_url": "https://www.larazon.es/cultura/teatro/olite-un-verano-de-teatro-y-jersey-GN19145245/",
+                "image_1_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1698696765/website-fer/tours/inanro6szjmqlhbcwx3w.gif"
             },
             {
+                "id": "iya8hynisaqbz3bbn3lb",
                 "show_title": "La fiesta del viejo",
                 "year": "2018",
                 "title_or_place": "III Ciclo de Teatro Argentino",
                 "city": "Madrid",
                 "country": "España",
                 "press_url": "",
-                "image_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1695237434/website-fer/tours/III_ciclo_de_teatro_argentino_gou66i.jpg"
+                "image_1_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1698696807/website-fer/tours/uy7lif1oyrorxovxdmpj.jpg"
             },
             {
+                "id": "gzt4mhk6vi1m2xboufby",
                 "show_title": "La fiesta del viejo",
                 "year": "2018",
                 "title_or_place": "International Shakespeare Festival",
                 "city": "Gdansk",
                 "country": "Polonia",
                 "press_url": "",
-                "image_url": ""
+                "image_1_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1696366511/website-fer/tours/jb4j9etuvnywyxbwavvq.jpg"
             },
             {
+                "id": "x2845j87l4wq15l71q2c",
                 "show_title": "La fiesta del viejo",
-                "year": "2018",
-                "title_or_place": "IV Muestra Iberoamericana de teatro",
-                "city": "Montevideo",
-                "country": "Uruguay",
-                "press_url": "",
-                "image_url": ""
-            },
-            {
-                "show_title": "La fiesta del viejo",
-                "year": "2018",
-                "title_or_place": "FIBA, Festival Internacional de teatro de Buenos Aires",
-                "city": "Buenos Aires",
-                "country": "Argentina",
-                "press_url": "",
-                "image_url": ""
-            },
-            {
-                "show_title": "La fiesta del viejo",
-                "year": "2018",
-                "title_or_place": "GIRART, Mercado de las artes escénicas y la música de Argentina",
-                "city": "Buenos Aires",
-                "country": "Argentina",
-                "press_url": "",
-                "image_url": ""
-            },
-            {
-                "show_title": "La fiesta del viejo",
-                "year": "2015",
-                "title_or_place": "Off Broadway",
-                "city": "Nueva York",
-                "country": "Estados Unidos",
-                "press_url": "https://thetheatretimes.com/la-fiesta-del-viejo-fresh-perspective-classic-tale/",
-                "image_url": ""
-            },
-            {
-                "show_title": "La fiesta del viejo",
-                "year": "2015",
-                "title_or_place": "Festival de Temporada Alta de Girona",
-                "city": "Girona",
+                "year": "2019",
+                "title_or_place": "Teatro Circo Murcia",
+                "city": "Murcia",
                 "country": "España",
                 "press_url": "",
-                "image_url": ""
+                "image_1_url": ""
+            },
+            {
+                "id": "aoox5ueg30g0ydu7og7f",
+                "show_title": "La fiesta del viejo",
+                "year": "2019",
+                "title_or_place": "Festival Iberoamericano de Teatro de Cádiz",
+                "city": "Cádiz",
+                "country": "España",
+                "press_url": "",
+                "image_1_url": ""
             }
         ]
     },

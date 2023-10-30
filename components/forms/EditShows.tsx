@@ -7,7 +7,7 @@ import type { About } from '@/types'
 import { editPressArticle, createPressArticle, editAvailableCourse, createCourse, createSection, createCourseReview, editCourseReview, editTestimonial, createTestimonial, editCourseLogistics, editPressHeroImage, createPressVideo, editPressVideo, editShow, createShow } from '@/app/actions'
 import { ImageEdit } from './ImageEdit'
 import { parseNameAndRole } from '@/lib/parseNameAndRole'
-import { ImageInputWithIndex, ImageInputWithIDAndDefaultValue, ImageInputWithIndexAndDefaultValueAndDeleteButton } from './ImageInput'
+import { ImageInputWithID, ImageInputWithIDAndDefaultValue, ImageInputWithIndexAndDefaultValueAndDeleteButton } from './ImageInput'
 import { ImagesEdit } from './ImageEdit'
 import { RichText } from './text-editor/RichText'
 import { IframeForm, IframeEdit } from './IframeForm'
@@ -197,7 +197,7 @@ export function CreateShow() {
                 <input type="text" id="opening_date" name="opening_date" className="show-year" />
                 
                 {/* <ImageInputWithIndexAndDefaultValue idx={1} defaultValue={item.image_1_url} /> */}
-                <ImageInputWithIndex idx={1} />
+                <ImageInputWithID id={1} />
 
                 <div className="show-sinopsis">
                     <label htmlFor="editor_content">Sinopsis:</label>
@@ -234,8 +234,8 @@ export function CreateShow() {
                 </p>
                 {/* these fields are functional and available, but not being used in client: */}
                 <div style={{ display: 'none' }}>
-                    <ImageInputWithIndex idx={2} />
-                    <ImageInputWithIndex idx={3} />
+                    <ImageInputWithID id={2} />
+                    <ImageInputWithID id={3} />
                     <label htmlFor="theatre">Sala:</label>
                     <input type="text" id="theatre" name="theatre" className="show-card__theatre create" value='' readOnly />
                 </div>

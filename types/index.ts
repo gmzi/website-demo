@@ -6,7 +6,7 @@ export interface Tour {
   city: string;
   country: string;
   press_url: string;
-  image_url: string;
+  image_1_url: string;
 }
 
 export interface WrittenPressArticle {

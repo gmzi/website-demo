@@ -824,21 +824,15 @@ const tourSchema = z.object({
   city: z.string(),
   country: z.string(),
   press_url: z.string(),
-  image_file: z
-    .any()
-    .refine((file) => {
-      return file?.size <= MAX_FILE_SIZE;
-    }, 'Max image size is 4MB.')
-    .refine(
-      (file) => {
-        return ACCEPTED_IMAGE_MIME_TYPES.includes(file?.type)
-      }, "Only .jpg, .jpeg, .png, and .webp formats are supported"
-    ),
-  image_url: z.string()
+  image_1_file: imageSchema,
+  image_1_url: z.string()
 })
 
 export async function createTour(prevState: any, formData: FormData) {
   try {
+
+    const image_1_file = formData.get('image_1_file') as File;
+
     const inputData = tourSchema.parse({
       id: createAlphaNumericString(20),
       show_title: formData.get('show_title'),
@@ -847,25 +841,17 @@ export async function createTour(prevState: any, formData: FormData) {
       city: formData.get('city'),
       country: formData.get('country'),
       press_url: formData.get('press_url'),
-      image_file: formData.get('image_file'),
+      image_1_file: image_1_file.size > 0 ? image_1_file : undefined,
       // just for type declaration, will be added after uploadingToCloud
-      image_url: ""
+      image_1_url: ""
     })
 
-    const folderName = `${IMAGE_MAIN_FOLDER}/tours`
-
-    const imageHostingMetadata = await uploadToCloudinary(inputData.image_file, folderName);
-
-    const image_url = imageHostingMetadata.secure_url;
-    // remove image file from inputData
-    delete inputData.image_file;
-    // add image url to inputData
-    inputData.image_url = image_url;
+    const updatedInputData = await handleInputDataWithNewImageFiles(inputData, 'tours');
 
     const data = {
       document: "tours",
       entry: "content",
-      content: inputData
+      content: updatedInputData
     }
 
     const saved = await fetch(`${BASE_URL}/server/create`, {
@@ -878,9 +864,10 @@ export async function createTour(prevState: any, formData: FormData) {
       body: JSON.stringify(data)
     });
 
+    revalidatePath('/(personal)/tours', 'page');
     revalidatePath('/(editor)/editor', 'page');
 
-    return { message: `tour has been created created` }
+    return { message: `tour has been created` }
 
   } catch (e) {
     console.log(e)
@@ -891,66 +878,27 @@ export async function createTour(prevState: any, formData: FormData) {
 export async function editTour(prevState: any, formData: FormData) {
   try {
 
-    const newImageFile = formData.get("new_image_file") as File;
-    const isNewImage = newImageFile?.size > 0;
+    const newImage_1_File = formData.get("new_image_1_file") as File;
 
-    let inputData;
+    const inputData = tourSchema.parse({
+      id: formData.get('id'),
+      show_title: formData.get('show_title'),
+      year: formData.get('year'),
+      title_or_place: formData.get('title_or_place'),
+      city: formData.get('city'),
+      country: formData.get('country'),
+      press_url: formData.get('press_url'),
+      image_1_file: newImage_1_File.size > 0 ? newImage_1_File : undefined,
+      image_1_url: formData.get('image_1_url'),
+    })
 
-    if (isNewImage) {
-      inputData = tourSchema.parse({
-        id: formData.get('id'),
-        show_title: formData.get('show_title'),
-        year: formData.get('year'),
-        title_or_place: formData.get('title_or_place'),
-        city: formData.get('city'),
-        country: formData.get('country'),
-        press_url: formData.get('press_url'),
-        image_file: newImageFile,
-        image_url: formData.get('image_url')
-      })
-
-      // const oldImageUrl = inputData.image_url;
-      // // save new image to Cloudinary:
-      // const folderName = `${IMAGE_MAIN_FOLDER}/press`
-      // const newImageHostingMetadata = await uploadToCloudinary(inputData.image_file, folderName);
-      // const newImageUrl = newImageHostingMetadata.secure_url;
-      // delete inputData.image_file;
-      // inputData.image_url = newImageUrl;
-      // //move old image to trash:
-      // const trashOldImage = await moveToTrash(oldImageUrl);
-
-      inputData = await handleNewImage(inputData, 'tours');
-
-    } else {
-      const tourSchemaNoImage = z.object({
-        id: z.string(),
-        show_title: z.string(),
-        year: z.string(),
-        title_or_place: z.string(),
-        city: z.string(),
-        country: z.string(),
-        press_url: z.string(),
-        image_url: z.string()
-      })
-
-      inputData = tourSchemaNoImage.parse({
-        id: formData.get('id'),
-        show_title: formData.get('show_title'),
-        year: formData.get('year'),
-        title_or_place: formData.get('title_or_place'),
-        city: formData.get('city'),
-        country: formData.get('country'),
-        press_url: formData.get('press_url'),
-        image_url: formData.get('image_url')
-        // continue deleting old, uploading uploading new.
-      })
-    }
+    const updatedInputData = await handleInputDataWithNewImageFiles(inputData, "tours");
 
     const data = {
       document: "tours",
       entry: "content",
       itemLocator: "content.id",
-      newContent: inputData,
+      newContent: updatedInputData,
     }
 
     const updated = await fetch(`${BASE_URL}/server/edit/item`, {
@@ -962,7 +910,8 @@ export async function editTour(prevState: any, formData: FormData) {
       referrerPolicy: 'no-referrer',
       body: JSON.stringify(data)
     });
-
+    
+    revalidatePath('/(personal)/tours', 'page');
     revalidatePath('/(editor)/editor', 'page');
 
     return { message: `Item updated!!!` }

@@ -56,7 +56,7 @@ export function ImageInput() {
     )
 }
 
-export function ImageInputWithIndex({ idx }: { idx: number }) {
+export function ImageInputWithID({ id }: { id: number }) {
     const [imageFile, setImageFile] = useState(null);
     const [imageUrl, setImageUrl] = useState(null);
 
@@ -80,11 +80,11 @@ export function ImageInputWithIndex({ idx }: { idx: number }) {
 
     return (
         <div className="image-upload">
-            <label htmlFor={`image_${idx}_file`}>Adjuntar imagen:</label>
+            <label htmlFor={`image_${id}_file`}>Adjuntar imagen:</label>
             <input
                 type="file"
-                id={`image_${idx}_file`}
-                name={`image_${idx}_file`}
+                id={`image_${id}_file`}
+                name={`image_${id}_file`}
                 accept="image/*"
                 onChange={handleImageChange}
             />

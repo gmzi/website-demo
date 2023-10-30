@@ -1,9 +1,7 @@
 import { getData } from "@/lib/getData";
-import type { Tour } from "@/app/(personal)/tours/page";
-// import CreateTour from "../forms/CreateTour";
-import {CreateTour} from "../forms/CreateTour";
-import { Delete } from "../forms/Delete";
-import { EditTour } from "../forms/EditTour";
+import {ToursList} from "../forms/EditTours";
+
+
 
 
 export default async function Tours(){
@@ -18,15 +16,16 @@ export default async function Tours(){
     return (
         <div>
             <h1>Giras</h1>
+            <ToursList tours={tours} />
             {/* <CreateTour document={documentName} entry={"content"} section={sectionName}/> */}
-            <CreateTour/>
-            {tours.map((tour: Tour, index: number) => (
-                <div key={`tour-${tour.id}`}>
-                    <div>{tour.title_or_place}</div>
-                    <Delete document={documentName} entry={`content`} section={sectionName} id={tour.id}/>
-                    <EditTour tour={tour}/>
+            {/* <CreateTour/>
+            {tours.map((item: Tour, index: number) => (
+                <div key={`item-${item.id}`}>
+                    <div>{item.title_or_place}</div>
+                    <Delete document={documentName} entry={`content`} section={sectionName} id={item.id}/>
+                    <EditTour tour={item}/>
                 </div>
-            ))}
+            ))} */}
         </div>
     )
 }
