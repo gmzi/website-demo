@@ -400,6 +400,36 @@
                 "id": "fdsfds"
             },
             {
+                "veredict": "Muy buena",
+                "quote": "Bello Ritual escénico de domingo al mediodía. \nImperdible reescritura del clásico King Lear.",
+                "media_organization": "La Nación",
+                "journalist": "Jazmín Carbonell",
+                "date": "2020-05-01",
+                "article_url": "www.google.com",
+                "show": "La fiesta del viejo",
+                "id": "fdsfds"
+            },
+            {
+                "veredict": "Muy buena",
+                "quote": "Bello Ritual escénico de domingo al mediodía. \nImperdible reescritura del clásico King Lear.",
+                "media_organization": "La Nación",
+                "journalist": "Jazmín Carbonell",
+                "date": "2020-05-01",
+                "article_url": "www.google.com",
+                "show": "La fiesta del viejo",
+                "id": "fdsfds"
+            },
+            {
+                "veredict": "Muy buena",
+                "quote": "Bello Ritual escénico de domingo al mediodía. \nImperdible reescritura del clásico King Lear.",
+                "media_organization": "La Nación",
+                "journalist": "Jazmín Carbonell",
+                "date": "2020-05-01",
+                "article_url": "www.google.com",
+                "show": "La fiesta del viejo",
+                "id": "fdsfds"
+            },
+            {
                 "veredict": "",
                 "quote": "Espíritus en la fábrica es la reunión de tres compañías teatrales dispuestas a construir el drama e inventar una estructura que nos sumerja palabra por palabra, acción por acción, al rito teatral.",
                 "media_organization": "Experiencia Konex #34",
@@ -419,7 +449,7 @@
                 "source_organization": "La Tv Pública"
             }
         ],
-        "hero_image_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1695412355/website-fer/press/press_hero_u9jdi6.jpg"
+        "image_1_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1695412355/website-fer/press/press_hero_u9jdi6.jpg"
     },
     "metadata": {
         "_id": {

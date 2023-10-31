@@ -340,103 +340,8 @@ p {
   height: auto; 
 }
 
-/* ---------------------------------------- */
 /* TOURS */
-/* ---------------------------------------- */
 
-/* .tours-list {
-  list-style-type: none;
-  margin-bottom: 40px;
-}
-
-.tours-list h2 {
-  border-bottom: 2px solid #333;
-  padding-bottom: 10px;
-  font-size: 1.5em;
-  color: #444;
-}
-
-.tours-list > li > div {
-  display: flex;
-  flex-direction: column;
-  align-items: center; 
-  margin-top: 20px;
-}
-
-.tours-list img {
-  border-radius: 10%;
-  margin-bottom: 10px;
-}
-
-.tours-list > li > div > h2 {
-  font-size: 1.2em;
-  color: #555;
-  margin-top: 10px;
-}
-
-.tours-list p {
-  color: #777;
-  font-size: 1em;
-  margin: 5px 0;
-}
-
-.tours-list a {
-  color: #007BFF; 
-  text-decoration: none; 
-}
-
-.tours-list a:hover {
-  text-decoration: underline;
-} */
-
-
-/* .years-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.years-list li {
-  margin-bottom: 20px;
-}
-
-.years-list h2 {
-  border-bottom: 2px solid #333;
-  font-size: 24px;
-  color: #333;
-  margin-bottom: 10px;
-}
-
-.years-list div {
-  padding: 20px;
-  border-radius: 5px;
-  margin-bottom: 10px;
-}
-
-.years-list div h2 {
-  font-size: 20px;
-  color: #333;
-  margin-bottom: 5px;
-}
-
-.years-list div p {
-  font-size: 16px;
-  color: #777;
-  margin: 0;
-}
-
-.years-list div a {
-  text-decoration: none;
-  color: #007bff;
-}
-
-.years-list div a:hover {
-  text-decoration: underline;
-}
-
-.tours-list {
-  padding: 1em 3em;
-} */
 
 .years-list {
   list-style: none;
@@ -446,56 +351,50 @@ p {
 .years-list li {
   margin-bottom: 20px;
 }
-.years-list h2 {
+.years-list h2, 
+.show-item {
   border-bottom: var(--color-border);
 }
 
-/* Style the tour list */
 .tours-list {
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
-/* Style each tour item */
 .tours-list li {
   padding: 20px;
   border-radius: 5px;
   margin-bottom: 10px;
 }
 
-/* Style the tour item title */
 .tours-list h3 {
   font-size: 20px;
-  color: #333;
   margin: 0;
   margin-bottom: 5px;
 }
 
-/* Style the city text */
 .tours-list p {
   font-size: 16px;
   color: #777;
   margin: 0;
 }
 
-/* Style the press link */
 .tours-list a {
   text-decoration: none;
   color: #007bff;
 }
 
-/* Hover effect for the press link */
 .tours-list a:hover {
   text-decoration: underline;
 }
 
+/* ---------------------------------------------- */
+/* PRESS */
 
-
-
-/* ---------------------------------------- */
-/* ---------------------------------------- */
-
+.media-organization {
+  text-decoration: underline;
+}
 
 .heroContainer {
   padding: 1em;
@@ -530,32 +429,6 @@ p {
   border: var(--color-border);
   border-radius: 5px;
 }
-
-
-
-.faq-editor {
-  border: var(--color-border);
-  border-radius: 5px;
-  padding: 0 1em;
-}
-
-.editor-group {
-  border: var(--color-border);
-  margin: 1em 0;
-  padding: 1em;
-  background-color: var(--color-bg-def);
-  position: relative;
-  /* border-radius: 5px; */
-  /* padding: 0 1em; */
-  /* margin: 1em 0; */
-  /* position: relative; */
-}
-
-.editor-group button {
-  display: block;
-  margin: 2em auto;
-}
-
 
 .courseCards-container {
   display: flex;
@@ -592,15 +465,11 @@ p {
   font-size: 20px;
 }
 
-/* 77777777777777 */
-/* Style the review container */
 .reviews {
   margin-top: 20px;
 }
 
-/* Style individual reviews */
 .review {
-  /* background-color: #f9f9f9; */
   background-color: var(--color-background-card);
   border-left: var(--color-border-quote);
   padding: 2em;
@@ -614,7 +483,7 @@ p {
 }
 
 .review cite {
-  font-size: 14px;
+  /* font-size: 14px; */
   font-weight: bold;
   color: var(--color-font-light);
   margin-top: 10px;
@@ -687,54 +556,6 @@ p {
   text-decoration: underline;
 }
 
-/* fdsfsadfdsfsda))))))^^^^^------------------------------ */
-
-/* .contact {
-  margin: 1em 0;
-  padding: 1em 0;
-  border-top: var(--color-border-top);
-  text-align: center;
-}
-
-.contact h2 {
-  margin-bottom: 1em;
-}
-
-.contact-items { 
-  padding: 0 .5em;
-  margin-top: 20px;
-  list-style-type: none;
-  text-align: center;
-}
-
-.contact-items li {
-  padding: 0 1em;
-}
-
-.contact-items .emoji {
-  margin-right: 2em;
-  display: inline-block;
-  margin-right: 10px;
-  font-size: 20px;
-}
-
-.contact-items li {
-  line-height: 1.5;
-  margin-bottom: 10px;
-  padding: 0 1em;
-}
-
-.contact a {
-  color: var(--color-a-def);
-  text-decoration: none;
-  font-weight: bold;
-}
-
-.contact a:hover {
-  text-decoration: underline;
-} */
-
-/* Base styling */
 .contact {
   padding: 20px;
   border: 2px solid #4A90E2;
@@ -788,6 +609,25 @@ p {
 /* ---------------------------------- */
 /* EDITOR */
 /* ---------------------------------- */
+
+.faq-editor {
+  border: var(--color-border);
+  border-radius: 5px;
+  padding: 0 1em;
+}
+
+.editor-group {
+  border: var(--color-border);
+  margin: 1em 0;
+  padding: 1em;
+  background-color: var(--color-bg-def);
+  position: relative;
+}
+
+.editor-group button {
+  display: block;
+  margin: 2em auto;
+}
 
 .preview-default {
   width: 100;
@@ -1259,100 +1099,6 @@ svg.lucide.lucide-file-up {
   list-style: none;
 }
 
-
-
-/* ------------------------------------------------------------- */
-/* ------------------------------------------------------------- */
-/* PRESS ARTICLES */
-
-.press-card {
-  background-color: #fff;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  margin: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-}
-
-/* Header of the card */
-.press-card-header {
-  background-color: #333;
-  color: #fff;
-  padding: 10px;
-  border-radius: 4px 4px 0 0;
-  width: 100%;
-}
-
-/* Verdict text styling */
-.press-card h4 {
-  font-size: 24px;
-  margin: 0;
-}
-
-/* Quote text styling */
-.press-card p {
-  font-size: 18px;
-  margin: 10px 0;
-}
-
-/* Journalist and Media Organization text styling */
-.press-card span {
-  font-size: 16px;
-  color: #777;
-}
-
-/* Media Organization should have a different color */
-.press-card .media-organization {
-  color: #555;
-}
-
-/* Add some spacing between the elements */
-.press-card div {
-  margin-top: 10px;
-}
-
-/* PRESS VIDEOS */
-/* Styling for the video card container */
-.press-video-card {
-  background-color: #fff;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  margin: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  padding: 20px;
-}
-
-/* Styling for the video container */
-.video-container {
-  position: relative;
-  width: 100%;
-  padding-top: 56.25%; /* 16:9 aspect ratio */
-}
-
-/* Styling for the iframe (video player) */
-.press-video-card iframe {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border: none; /* Remove iframe border */
-}
-
-/* Styling for the video description */
-.video-description {
-  margin-top: 10px;
-  font-size: 16px;
-  color: #555;
-}
 
 /* -------------------------------------------------------- */
 /* FOOTER */
