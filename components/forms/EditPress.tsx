@@ -112,7 +112,7 @@ export function PressArticles({ articles }: PressArticlesProps) {
                 <li key={`press-item-${i}`} className="">
                     <blockquote className="review">
                         <h4>{article.veredict}</h4>
-                        <p>{article.quote}</p>
+                        <p>{parse(article.quote)}</p>
                         <cite>
                             <div className="journalist">{article.journalist}</div>
                             <div className="media-organization">{article.media_organization}</div>
@@ -150,15 +150,16 @@ export function Edit({ articles, index, handleCancel }: EditProps) {
     const item = articles[index];
 
     return (
-        <form action={formAction}>
-            <h2>EDITAR</h2>
-            <input type="hidden" name="id" value={item.id} />
+        <blockquote className="review">
+            <form action={formAction} className="">
+                <input type="hidden" name="id" value={item.id} />
 
-            <div className="press-card">
                 <label htmlFor="veredict">Veredict:</label>
                 <input type="text" id="veredict" name="veredict" defaultValue={item.veredict} />
-                <label htmlFor="quote">Cita:</label>
-                <input type="text" id="quote" name="quote" defaultValue={item.quote} />
+                {/* <label htmlFor="quote">Cita:</label>
+                <input type="text" id="quote" name="quote" defaultValue={item.quote} /> */}
+                <label htmlFor="editor_content">Texto de la reseña:</label>
+                <RichText contentHtml={item.quote} />
                 <label htmlFor="media_organization">Medio:</label>
                 <input type="text" id="media_organization" name="media_organization" defaultValue={item.media_organization} />
                 <label htmlFor="journalist">Autor de la nota:</label>
@@ -169,14 +170,13 @@ export function Edit({ articles, index, handleCancel }: EditProps) {
                 <input type="text" id="article_url" name="article_url" defaultValue={item.article_url} />
                 <label htmlFor="show">Espectaculo:</label>
                 <input type="text" id="show" name="show" defaultValue={item.show} />
-                <ImageEdit imageUrl={item.image_url} />
                 <EditButton />
                 <button onClick={handleCancel}>Cancelar</button>
-            </div>
-            <p aria-live="polite" className="sr-only" role="status">
-                {state?.message}
-            </p>
-        </form>
+                <p aria-live="polite" className="sr-only" role="status">
+                    {state?.message}
+                </p>
+            </form>
+        </blockquote>
     )
 }
 
@@ -198,8 +198,10 @@ export function CreatePressArticle({ handleCreateCancel }: { handleCreateCancel:
                 <div className="press-card">
                     <label htmlFor="veredict">Veredict:</label>
                     <input type="text" id="veredict" name="veredict" />
-                    <label htmlFor="quote">Cita:</label>
-                    <input type="text" id="quote" name="quote" required />
+                    {/* <label htmlFor="quote">Cita:</label>
+                    <input type="text" id="quote" name="quote" required /> */}
+                    <label htmlFor="editor_content">Texto de la reseña:</label>
+                    <RichText contentHtml={""} />
                     <label htmlFor="media_organization">Medio:</label>
                     <input type="text" id="media_organization" name="media_organization" required />
                     <label htmlFor="journalist">Autor de la nota:</label>

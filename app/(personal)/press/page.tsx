@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import parse from 'html-react-parser'
 import { getData } from "@/lib/getData";
 import { getRemoteOrLocalData } from "@/lib/getRemoteOrLocalData";
 import Image from "next/image";
@@ -53,7 +54,7 @@ export default async function PressPage() {
                                         <li className="">
                                             <blockquote className="review">
                                                 <h4>{item.veredict}</h4>
-                                                <p>{item.quote}</p>
+                                                <p>{parse(item.quote)}</p>
                                                 <cite>
                                                     <div className="journalist">{item.journalist}</div>
                                                     <div className="media-organization">{item.media_organization}</div>

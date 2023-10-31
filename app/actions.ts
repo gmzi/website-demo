@@ -668,7 +668,7 @@ export async function createPressArticle(prevState: any, formData: FormData) {
     const inputData = pressArticleSchema.parse({
       id: createAlphaNumericString(20),
       veredict: formData.get('veredict'),
-      quote: formData.get('quote'),
+      quote: formData.get('editor_content'),
       media_organization: formData.get('media_organization'),
       journalist: formData.get('journalist'),
       date: formData.get('date'),
@@ -705,64 +705,16 @@ export async function createPressArticle(prevState: any, formData: FormData) {
 
 export async function editPressArticle(prevState: any, formData: FormData) {
   try {
-
-    const newImageFile = formData.get("new_image_file") as File;
-    const isNewImage = newImageFile?.size > 0;
-
-    let inputData;
-
-    if (isNewImage) {
-      inputData = pressArticleSchema.parse({
-        id: formData.get('id'),
-        veredict: formData.get('veredict'),
-        quote: formData.get('quote'),
-        media_organization: formData.get('media_organization'),
-        journalist: formData.get('journalist'),
-        date: formData.get('date'),
-        article_url: formData.get('article_url'),
-        show: formData.get('show'),
-        image_file: newImageFile,
-        image_url: formData.get('image_url')
-      })
-
-      // const oldImageUrl = inputData.image_url;
-      // // save new image to Cloudinary:
-      // const folderName = `${IMAGE_MAIN_FOLDER}/press`
-      // const newImageHostingMetadata = await uploadToCloudinary(inputData.image_file, folderName);
-      // const newImageUrl = newImageHostingMetadata.secure_url;
-      // delete inputData.image_file;
-      // inputData.image_url = newImageUrl;
-      // //move old image to trash:
-      // const trashOldImage = await moveToTrash(oldImageUrl);
-
-      inputData = await handleNewImage(inputData, 'press')
-
-    } else {
-      const pressArticleSchemaNoImage = z.object({
-        id: z.string(),
-        veredict: z.string(),
-        quote: z.string(),
-        media_organization: z.string(),
-        journalist: z.string(),
-        date: z.string(),
-        article_url: z.string(),
-        show: z.string(),
-        image_url: z.string()
-      })
-
-      inputData = pressArticleSchemaNoImage.parse({
-        id: formData.get('id'),
-        veredict: formData.get('veredict'),
-        quote: formData.get('quote'),
-        media_organization: formData.get('media_organization'),
-        journalist: formData.get('journalist'),
-        date: formData.get('date'),
-        article_url: formData.get('article_url'),
-        show: formData.get('show'),
-        image_url: formData.get('image_url')
-        // continue deleting old, uploading uploading new.
-      })
-    }
+    const inputData = pressArticleSchema.parse({
+      id: formData.get('id'),
+      veredict: formData.get('veredict'),
+      quote: formData.get('editor_content'),
+      media_organization: formData.get('media_organization'),
+      journalist: formData.get('journalist'),
+      date: formData.get('date'),
+      article_url: formData.get('article_url'),
+      show: formData.get('show'),
+    })
 
     const data = {
       document: "press",
@@ -780,6 +732,8 @@ export async function editPressArticle(prevState: any, formData: FormData) {
       referrerPolicy: 'no-referrer',
       body: JSON.stringify(data)
     });
+
+    revalidatePath('/(personal)/press', 'page');
 
     revalidatePath('/(editor)/editor', 'page');
 
