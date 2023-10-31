@@ -40,19 +40,7 @@ export function Delete({ document, entry, section, id }: DeletionFormProps) {
   const handleCancel = () => {
     setWarning(false)
   }
-
-  // return (
-  //   <form action={formAction}>
-  //     <input type="hidden" name="id" value={id} />
-  //     <input type="hidden" name="document" value={document} />
-  //     <input type="hidden" name="entry" value={entry} />
-  //     <DeleteButton />
-  //     <p aria-live="polite" className="sr-only" role="status">
-  //       {state?.message}
-  //     </p>
-  //   </form>
-  // )
-
+  
   return (
     <div>
       {warning ? (
