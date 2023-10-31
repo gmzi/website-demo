@@ -237,19 +237,6 @@ const pressArticleSchema = z.object({
   date: z.string(),
   article_url: z.string(),
   show: z.string(),
-  image_file: z
-    .any()
-    .refine((file) => {
-      return file?.size <= MAX_FILE_SIZE;
-    }, 'Max image size is 4MB.')
-    .refine(
-      (file) => {
-        return ACCEPTED_IMAGE_MIME_TYPES.includes(file?.type)
-      },
-      // "Only .jpg, .jpeg, .png, and .webp formats are supported"
-      { message: 'failed to save press article' }
-    ),
-  image_url: z.string()
 })
 
 export async function createPressVideo(prevState: any, formData: FormData) {
@@ -687,20 +674,7 @@ export async function createPressArticle(prevState: any, formData: FormData) {
       date: formData.get('date'),
       article_url: formData.get('article_url'),
       show: formData.get('show'),
-      image_file: formData.get('image_file'),
-      // just for type declaration, will be added after uploadingToCloud
-      image_url: ""
     })
-
-    const folderName = `${IMAGE_MAIN_FOLDER}/press`
-
-    const imageHostingMetadata = await uploadToCloudinary(inputData.image_file, folderName);
-
-    const image_url = imageHostingMetadata.secure_url;
-    // remove image file from inputData
-    delete inputData.image_file;
-    // add image url to inputData
-    inputData.image_url = image_url;
 
     const data = {
       document: "press",
@@ -718,6 +692,7 @@ export async function createPressArticle(prevState: any, formData: FormData) {
       body: JSON.stringify(data)
     });
 
+    revalidatePath('/(personal)/press', 'page');
     revalidatePath('/(editor)/editor', 'page');
 
     return { message: `article added` }
@@ -1246,7 +1221,6 @@ export async function editPressHeroImage(prevState: any, formData: FormData) {
     })
 
     const updatedInputData = await handleInputDataWithNewImageFiles(inputData, "press");
-
 
     const data = {
       document: "press",

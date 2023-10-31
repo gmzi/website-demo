@@ -28,10 +28,10 @@ export default async function Press() {
         <div>
             <h1>Editar prensa</h1>
             <HeroImage imageUrl={image_1_url}/>
-            {/* <PressArticles articles={written_articles} />
-            <CreatePressArticle />
-            <PressVideos pressVideos={video_articles} />
-            <CreatePressVideo/> */}
+            <PressArticles articles={written_articles} />
+            {/* <CreatePressArticle /> */}
+            {/* <PressVideos pressVideos={video_articles} /> */}
+            {/* <CreatePressVideo/> */}
         </div>
 
     )

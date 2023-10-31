@@ -73,7 +73,7 @@ export function HeroImage({ imageUrl }: ImageProp) {
             <form action={formAction}>
                 <h2>Editar imagen</h2>
                 {/* <ImageEdit imageUrl={imageUrl} /> */}
-                <ImageInputWithIDAndDefaultValue id={1} defaultValue={imageUrl} className=""/>
+                <ImageInputWithIDAndDefaultValue id={1} defaultValue={imageUrl} className="" />
                 <EditButton />
                 <p aria-live="polite" className="sr-only" role="status">
                     {state?.message}
@@ -85,6 +85,7 @@ export function HeroImage({ imageUrl }: ImageProp) {
 
 export function PressArticles({ articles }: PressArticlesProps) {
     const [openEditor, setOpenEditor] = useState<number | false>(false);
+    const [openCreator, setOpenCreator] = useState<true | false>(false);
 
     function handleClick(e: React.MouseEvent<HTMLButtonElement>) {
         e.preventDefault();
@@ -96,24 +97,43 @@ export function PressArticles({ articles }: PressArticlesProps) {
         setOpenEditor(false)
     }
 
-    const artciclesList = articles.map((article: WrittenPressArticle, i: number) => (
-        <div key={`press-card-${i}`} className="press-card">
-            <div className="press-card-header">
-                <h4>{article.veredict}</h4>
-            </div>
-            <div>
-                <p>{article.quote}</p>
-                <div>
-                    <span className="journalist">{article.journalist}</span>
-                </div>
-                <div>
-                    <span className="media-organization">{article.media_organization}</span>
-                </div>
-            </div>
-            <button onClick={handleClick} tabIndex={i}>Editar</button>
-            <Delete document="press" entry="written_press" section="press" id={article.id} />
-        </div>
-    ));
+    function handleCreate(e: React.MouseEvent<HTMLButtonElement>) {
+        e.preventDefault();
+        setOpenCreator(true)
+    }
+
+    function handleCreateCancel() {
+        setOpenCreator(false)
+    }
+
+    const artciclesList =
+        <ul className="tours-list">
+            {articles.map((article: WrittenPressArticle, i: number) => (
+                <li key={`press-item-${i}`} className="">
+                    <blockquote className="review">
+                        <h4>{article.veredict}</h4>
+                        <p>{article.quote}</p>
+                        <cite>
+                            <div className="journalist">{article.journalist}</div>
+                            <div className="media-organization">{article.media_organization}</div>
+                        </cite>
+                        <div>
+                            <button onClick={handleClick} tabIndex={i}>Editar</button>
+                            <Delete document="press" entry="written_press" section="press" id={article.id} />
+                        </div>
+                    </blockquote>
+                </li>
+            ))}
+            <li>
+                {openCreator ? (<CreatePressArticle handleCreateCancel={handleCreateCancel} />) : (
+                    <blockquote className="review">
+                        <h5>Agregar nueva crítica</h5>
+                        <button onClick={handleCreate}>agregar un nueva crítica</button>
+                    </blockquote>
+                )}
+            </li>
+        </ul>
+
 
     return (
         <div>
@@ -160,7 +180,7 @@ export function Edit({ articles, index, handleCancel }: EditProps) {
     )
 }
 
-export function CreatePressArticle() {
+export function CreatePressArticle({ handleCreateCancel }: { handleCreateCancel: () => void }) {
     const [state, formAction] = useFormState(createPressArticle, initialState)
 
     // until we figure out how to reset form input after successfull data savign, bare with this:
@@ -173,31 +193,32 @@ export function CreatePressArticle() {
     }
 
     return (
-        <form action={formAction} id="myForm">
-            <h2>Agregar artículo de prensa</h2>
-            <div className="press-card">
-                <label htmlFor="veredict">Veredict:</label>
-                <input type="text" id="veredict" name="veredict" />
-                <label htmlFor="quote">Cita:</label>
-                <input type="text" id="quote" name="quote" required />
-                <label htmlFor="media_organization">Medio:</label>
-                <input type="text" id="media_organization" name="media_organization" required />
-                <label htmlFor="journalist">Autor de la nota:</label>
-                <input type="text" id="journalist" name="journalist" required />
-                <label htmlFor="date">Fecha:</label>
-                <input type="text" id="date" name="date" />
-                <label htmlFor="article_url">Link al articulo:</label>
-                <input type="text" id="article_url" name="article_url" />
-                <label htmlFor="show">Espectaculo:</label>
-                <input type="text" id="show" name="show" />
-                <ImageInput />
-                <SubmitButton />
-            </div>
+        <blockquote className="review">
+            <form action={formAction} id="myForm" className="form-shows">
+                <div className="press-card">
+                    <label htmlFor="veredict">Veredict:</label>
+                    <input type="text" id="veredict" name="veredict" />
+                    <label htmlFor="quote">Cita:</label>
+                    <input type="text" id="quote" name="quote" required />
+                    <label htmlFor="media_organization">Medio:</label>
+                    <input type="text" id="media_organization" name="media_organization" required />
+                    <label htmlFor="journalist">Autor de la nota:</label>
+                    <input type="text" id="journalist" name="journalist" required />
+                    <label htmlFor="date">Fecha:</label>
+                    <input type="text" id="date" name="date" />
+                    <label htmlFor="article_url">Link al articulo:</label>
+                    <input type="text" id="article_url" name="article_url" />
+                    <label htmlFor="show">Espectaculo:</label>
+                    <input type="text" id="show" name="show" />
+                    <SubmitButton />
+                    <button onClick={handleCreateCancel}>Cancelar</button>
+                </div>
 
-            <p aria-live="polite" className="sr-only" role="status">
-                {state?.message}
-            </p>
-        </form>
+                <p aria-live="polite" className="sr-only" role="status">
+                    {state?.message}
+                </p>
+            </form>
+        </blockquote>
     )
 }
 

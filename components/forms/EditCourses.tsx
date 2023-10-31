@@ -278,11 +278,6 @@ export function AvailableCourses({ title, courses, entry }: { title: string, cou
     return (
         <div className="card-container-editor">
             {openEditor !== false ? <EditAvailableCourse entry={entry} courses={courses} index={openEditor} handleCancel={handleCancel} /> : coursesList}
-            {/* {openCreator ? (<CreateCourse entry={entry} handleCreateCancel={handleCreateCancel}  />) : (
-                <div className="courseCard">
-                    <button onClick={handleCreate}>agregar un nuevo curso</button>
-                </div>
-            )} */}
         </div>
     )
 }
