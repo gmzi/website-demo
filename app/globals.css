@@ -345,7 +345,7 @@ p {
 
 .years-list {
   list-style: none;
-  padding: 0;
+  padding: 1em 0;
 }
 
 .years-list li {
@@ -366,6 +366,15 @@ p {
   padding: 20px;
   border-radius: 5px;
   margin-bottom: 10px;
+}
+
+.show-item {
+  margin: 0 2em;
+}
+
+.press .tours-list li {
+  padding: .1em;
+  margin-bottom: .1em;
 }
 
 .tours-list h3 {
@@ -395,6 +404,57 @@ p {
 .media-organization {
   text-decoration: underline;
 }
+
+.video-embeds {
+  list-style: none;
+}
+
+.video-container {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+}
+
+.video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.video-description {
+  font-size: small;
+  font-weight: lighter;
+  margin-top: 10px;
+}
+
+.videos-list {
+  list-style: none;
+  padding: 0;
+  list-style-type: none;
+}
+
+.videos-list > li {
+  margin-bottom: 20px;
+  list-style-type: none;
+}
+
+.press-video-card {
+  border: var(--color-border);
+  margin: 1em;
+  padding: 15px;
+  border-radius: 5px;
+  transition: box-shadow 0.2s;
+}
+
+.press-video-card:hover {
+  box-shadow: var(--box-shadow-hover);
+}
+
+
+/* ---------------------------------------------- */
 
 .heroContainer {
   padding: 1em;

@@ -41,9 +41,9 @@ export default async function PressPage() {
             </div>
 
             <h2>Artículos</h2>
-            {written_uniqueShows.map(show => (
-                <ul key={show} className="years-list">
-                    <li className="">
+            <ul className="years-list">
+                {written_uniqueShows.map(show => (
+                    <li key={`${show}-key`} className="">
                         <h3 className="show-item">{show}</h3>
                         <ul className="tours-list">
                             {written_articles
@@ -66,35 +66,37 @@ export default async function PressPage() {
 
                         </ul>
                     </li>
-                </ul>
-            ))}
+                ))}
+            </ul>
 
             <h2>Entrevistas</h2>
+            <ul className="videos-list">
+                {video_uniqueShows.map((show, i) => (
+                    <li key={`${show}-${i}`}>
+                        {/* <h3 className="show-item">{show}</h3> */}
+                        <ul className="video-embeds">
+                            {video_articles
+                                .filter((item: { show: string }) => item.show === show)
+                                .map((item, index) => (
+                                    <li className="press-video-card" key={`${item.video_url}-${index}`}>
+                                        <div className="video-container">
+                                            <iframe
+                                                src={item.video_url}
+                                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                                title={item.description}
+                                            />
+                                        </div>
+                                        <div className="video-description">
+                                            <span>{item.description}</span>
+                                        </div>
+                                    </li>
+                                ))
+                            }
+                        </ul>
 
-            {video_uniqueShows.map(show => (
-                <div key={show}>
-                    <h3>{show}</h3>
-                    {video_articles
-                        .filter((item: { show: string }) => item.show === show)
-                        .map((item, index) => (
-                            <div className="press-video-card" key={item.video_url}>
-                                <div className="video-container">
-                                    <iframe
-                                        // width="398"
-                                        // height="248"
-                                        src={item.video_url}
-                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                        title={item.description}
-                                    />
-                                </div>
-                                <div className="video-description">
-                                    <span>{item.description}</span>
-                                </div>
-                            </div>
-                        ))
-                    }
-                </div>
-            ))}
+                    </li>
+                ))}
+            </ul>
         </section>
     )
 }
