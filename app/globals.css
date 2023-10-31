@@ -600,7 +600,15 @@ p {
   margin-bottom: 10px;
 }
 
-/* Style the inscriptions and queries section */
+.btnContainer {
+  margin: 1em; 
+  padding: 1em;
+}
+
+.btnContainer button {
+  margin: .5em;
+}
+
 .btnContainer p {
   font-size: 18px;
   margin-bottom: 10px;

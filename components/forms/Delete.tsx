@@ -40,7 +40,16 @@ export function Delete({ document, entry, section, id }: DeletionFormProps) {
   const handleCancel = () => {
     setWarning(false)
   }
-  
+
+  if (state.message) {
+    return (
+      <div>
+        <p>{state.message}</p>
+        <button>ok</button>
+      </div>
+    )
+  }
+
   return (
     <div>
       {warning ? (

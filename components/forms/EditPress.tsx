@@ -112,15 +112,16 @@ export function PressArticles({ articles }: PressArticlesProps) {
                 <li key={`press-item-${i}`} className="">
                     <blockquote className="review">
                         <h4>{article.veredict}</h4>
-                        <p>{parse(article.quote)}</p>
+                        {parse(article.quote)}
                         <cite>
                             <div className="journalist">{article.journalist}</div>
                             <div className="media-organization">{article.media_organization}</div>
                         </cite>
-                        <div>
-                            <button onClick={handleClick} tabIndex={i}>Editar</button>
-                            <Delete document="press" entry="written_press" section="press" id={article.id} />
+                        <div className="btnContainer">
+                            <div><button onClick={handleClick} tabIndex={i}>Editar</button></div>
+                            <div><Delete document="press" entry="written_press" section="press" id={article.id} /></div>
                         </div>
+                        
                     </blockquote>
                 </li>
             ))}
@@ -151,30 +152,33 @@ export function Edit({ articles, index, handleCancel }: EditProps) {
 
     return (
         <blockquote className="review">
-            <form action={formAction} className="">
+            <form action={formAction} className="form-shows">
                 <input type="hidden" name="id" value={item.id} />
-
-                <label htmlFor="veredict">Veredict:</label>
-                <input type="text" id="veredict" name="veredict" defaultValue={item.veredict} />
-                {/* <label htmlFor="quote">Cita:</label>
+                <div className="show-card">
+                    <label htmlFor="veredict">Veredict:</label>
+                    <input type="text" id="veredict" name="veredict" defaultValue={item.veredict} />
+                    {/* <label htmlFor="quote">Cita:</label>
                 <input type="text" id="quote" name="quote" defaultValue={item.quote} /> */}
-                <label htmlFor="editor_content">Texto de la reseña:</label>
-                <RichText contentHtml={item.quote} />
-                <label htmlFor="media_organization">Medio:</label>
-                <input type="text" id="media_organization" name="media_organization" defaultValue={item.media_organization} />
-                <label htmlFor="journalist">Autor de la nota:</label>
-                <input type="text" id="journalist" name="journalist" defaultValue={item.journalist} />
-                <label htmlFor="date">Fecha:</label>
-                <input type="text" id="date" name="date" defaultValue={item.date} />
-                <label htmlFor="article_url">Link al articulo:</label>
-                <input type="text" id="article_url" name="article_url" defaultValue={item.article_url} />
-                <label htmlFor="show">Espectaculo:</label>
-                <input type="text" id="show" name="show" defaultValue={item.show} />
-                <EditButton />
-                <button onClick={handleCancel}>Cancelar</button>
-                <p aria-live="polite" className="sr-only" role="status">
-                    {state?.message}
-                </p>
+                    <label htmlFor="editor_content">Texto de la reseña:</label>
+                    <RichText contentHtml={item.quote} />
+                    <label htmlFor="media_organization">Medio:</label>
+                    <input type="text" id="media_organization" name="media_organization" defaultValue={item.media_organization} />
+                    <label htmlFor="journalist">Autor de la nota:</label>
+                    <input type="text" id="journalist" name="journalist" defaultValue={item.journalist} />
+                    <label htmlFor="date">Fecha:</label>
+                    <input type="text" id="date" name="date" defaultValue={item.date} />
+                    <label htmlFor="article_url">Link al articulo:</label>
+                    <input type="text" id="article_url" name="article_url" defaultValue={item.article_url} />
+                    <label htmlFor="show">Espectaculo:</label>
+                    <input type="text" id="show" name="show" defaultValue={item.show} />
+                    <div className="btnContainer">
+                        <EditButton />
+                        <button onClick={handleCancel}>Cancelar</button>
+                    </div>
+                    <p aria-live="polite" className="sr-only" role="status">
+                        {state?.message}
+                    </p>
+                </div>
             </form>
         </blockquote>
     )
@@ -195,7 +199,7 @@ export function CreatePressArticle({ handleCreateCancel }: { handleCreateCancel:
     return (
         <blockquote className="review">
             <form action={formAction} id="myForm" className="form-shows">
-                <div className="press-card">
+                <div className="show-card">
                     <label htmlFor="veredict">Veredict:</label>
                     <input type="text" id="veredict" name="veredict" />
                     {/* <label htmlFor="quote">Cita:</label>
@@ -212,13 +216,14 @@ export function CreatePressArticle({ handleCreateCancel }: { handleCreateCancel:
                     <input type="text" id="article_url" name="article_url" />
                     <label htmlFor="show">Espectaculo:</label>
                     <input type="text" id="show" name="show" />
-                    <SubmitButton />
-                    <button onClick={handleCreateCancel}>Cancelar</button>
+                    <div className="btnContainer">
+                        <SubmitButton />
+                        <button onClick={handleCreateCancel}>Cancelar</button>
+                    </div>
+                    <p aria-live="polite" className="sr-only" role="status">
+                        {state?.message}
+                    </p>
                 </div>
-
-                <p aria-live="polite" className="sr-only" role="status">
-                    {state?.message}
-                </p>
             </form>
         </blockquote>
     )
