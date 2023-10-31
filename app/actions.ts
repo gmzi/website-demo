@@ -910,7 +910,7 @@ export async function editTour(prevState: any, formData: FormData) {
       referrerPolicy: 'no-referrer',
       body: JSON.stringify(data)
     });
-    
+
     revalidatePath('/(personal)/tours', 'page');
     revalidatePath('/(editor)/editor', 'page');
 
@@ -1081,19 +1081,25 @@ export async function editBio(prevState: any, formData: FormData) {
   }
 }
 
+const heroImageSchema = z.object({
+  image_1_file: imageSchema,
+  image_1_url: z.string()
+})
+
 export async function editCoursesHeroImage(prevState: any, formData: FormData) {
   try {
     const newImage_1_File = formData.get('new_image_1_file') as File;
 
-    const heroSchema = z.object({
-      image_1_file: imageSchema,
-      image_1_url: z.string()
-    })
+    // const heroSchema = z.object({
+    //   image_1_file: imageSchema,
+    //   image_1_url: z.string()
+    // })
 
     const inputData: {
       [key: string]: string | File | undefined;
-    } = heroSchema.parse({
-      image_1_file: newImage_1_File.size > 0 ? newImage_1_File : undefined,
+    } = heroImageSchema.parse({
+      // image_1_file: newImage_1_File.size > 0 ? newImage_1_File : undefined,
+      image_1_file: newImage_1_File,
       image_1_url: formData.get('image_1_url')
     })
 
@@ -1148,7 +1154,7 @@ export async function editImageGrid_A(prevState: any, formData: FormData) {
     })
     const updatedInputData = await handleInputDataWithNewImageFiles(inputData, "courses");
 
-    for (const key in updatedInputData){
+    for (const key in updatedInputData) {
       // console.log(`${key}: ${updatedInputData[key]}`)
       const data = {
         document: "courses",
@@ -1168,7 +1174,7 @@ export async function editImageGrid_A(prevState: any, formData: FormData) {
     revalidatePath('/(personal)/courses', 'page');
     revalidatePath('/(editor)/editor', 'page');
 
-    return {message: "images 2 and 3 updated"};
+    return { message: "images 2 and 3 updated" };
 
   } catch (e) {
     console.error(e);
@@ -1201,7 +1207,7 @@ export async function editImageGrid_B(prevState: any, formData: FormData) {
 
     const updatedInputData = await handleInputDataWithNewImageFiles(inputData, "courses");
 
-    for (const key in updatedInputData){
+    for (const key in updatedInputData) {
       const data = {
         document: "courses",
         entry: key,
@@ -1221,7 +1227,7 @@ export async function editImageGrid_B(prevState: any, formData: FormData) {
     revalidatePath('/(personal)/courses', 'page');
     revalidatePath('/(editor)/editor', 'page');
 
-    return {message: "images 4 and 5 updated"};
+    return { message: "images 4 and 5 updated" };
 
   } catch (e) {
     console.error(e);
@@ -1230,38 +1236,38 @@ export async function editImageGrid_B(prevState: any, formData: FormData) {
 
 }
 
-
-
-
 export async function editPressHeroImage(prevState: any, formData: FormData) {
   try {
-    let inputData = parseImageInput(formData);
+    const newImage_1_File = formData.get('new_image_1_file') as File;
 
-    if (inputData.image_file) {
-      inputData = await handleNewImage(inputData, 'press');
-      const imageUrl = inputData.image_url;
+    const inputData = heroImageSchema.parse({
+      image_1_file: newImage_1_File,
+      image_1_url: formData.get('image_1_url')
+    })
 
-      const data = {
-        document: "press",
-        entry: "hero_image_url",
-        content: imageUrl
-      }
+    const updatedInputData = await handleInputDataWithNewImageFiles(inputData, "press");
 
-      const updated = await fetch(`${BASE_URL}/server/input`, {
-        method: 'PATCH',
-        headers: {
-          'Content-Type': 'application/json',
-          'API-Key': DATA_API_KEY
-        },
-        referrerPolicy: 'no-referrer',
-        body: JSON.stringify(data)
-      });
 
-      revalidatePath('/(editor)/editor', 'page');
-
-      return { message: `Press hero image updated!!!` }
+    const data = {
+      document: "press",
+      entry: "image_1_url",
+      content: updatedInputData.image_1_url
     }
-    return { message: `No press main image file uploaded` }
+
+    const updated = await fetch(`${BASE_URL}/server/input`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        'API-Key': DATA_API_KEY
+      },
+      referrerPolicy: 'no-referrer',
+      body: JSON.stringify(data)
+    });
+
+    revalidatePath('/(personal)/press', 'page');
+    revalidatePath('/(editor)/editor', 'page');
+
+    return { message: `Press hero image updated!!!` }
   } catch (e) {
     console.error(e);
     return { message: `${e}` }

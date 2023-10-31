@@ -5,7 +5,7 @@ import { useFormState, useFormStatus } from 'react-dom'
 import type { About } from '@/types'
 import { editPressArticle, createPressArticle, editAvailableCourse, createCourse, createSection, createCourseReview, editCourseReview, editTestimonial, createTestimonial, editCourseLogistics, editPressHeroImage, createPressVideo, editPressVideo } from '@/app/actions'
 import { ImageEdit } from './ImageEdit'
-import { ImageInput } from './ImageInput'
+import { ImageInput, ImageInputWithIDAndDefaultValue } from './ImageInput'
 import { ImagesEdit } from './ImageEdit'
 import { RichText } from './text-editor/RichText'
 import { IframeForm, IframeEdit } from './IframeForm'
@@ -69,16 +69,18 @@ export function HeroImage({ imageUrl }: ImageProp) {
     const [state, formAction] = useFormState(editPressHeroImage, initialState)
 
     return (
-        <form action={formAction}>
-            <h2>Editar imagen</h2>
-            <ImageEdit imageUrl={imageUrl} />
-            <EditButton />
-            <p aria-live="polite" className="sr-only" role="status">
-                {state?.message}
-            </p>
-        </form>
+        <div className="heroContainer editor-group">
+            <form action={formAction}>
+                <h2>Editar imagen</h2>
+                {/* <ImageEdit imageUrl={imageUrl} /> */}
+                <ImageInputWithIDAndDefaultValue id={1} defaultValue={imageUrl} className=""/>
+                <EditButton />
+                <p aria-live="polite" className="sr-only" role="status">
+                    {state?.message}
+                </p>
+            </form>
+        </div>
     )
-
 }
 
 export function PressArticles({ articles }: PressArticlesProps) {
@@ -262,18 +264,18 @@ export function EditPressVideo({ pressVideos, index, handleCancel }: EditPressVi
                     />
                 </div> */}
 
-                <IframeEdit videoUrl={item.video_url}/>
+                <IframeEdit videoUrl={item.video_url} />
 
                 <div className="video-description">
                     <label htmlFor="description">Epigrafe del video:</label>
-                    <input type="text" id="description" name="description" defaultValue={item.description}/>   
+                    <input type="text" id="description" name="description" defaultValue={item.description} />
                 </div>
 
                 <label htmlFor="title">Titulo del video:</label>
-                <input type="text" id="title" name="title"/>
+                <input type="text" id="title" name="title" />
 
                 <label htmlFor="source_organization">Institución:</label>
-                <input type="text" id="source_organization" name="source_organization" defaultValue={item.source_organization}/>
+                <input type="text" id="source_organization" name="source_organization" defaultValue={item.source_organization} />
 
                 <EditButton />
                 <button onClick={handleCancel}>Cancelar</button>
@@ -309,13 +311,13 @@ export function CreatePressVideo() {
                 <input type="text" id="video_url" name="video_url" required />
                 <h2>IFrame test</h2> */}
 
-                <IframeForm/>
+                <IframeForm />
 
                 <label htmlFor="title">Titulo del video:</label>
-                <input type="text" id="title" name="title"/>
+                <input type="text" id="title" name="title" />
 
                 <label htmlFor="description">Epigrafe del video:</label>
-                <input type="text" id="description" name="description"/>
+                <input type="text" id="description" name="description" />
 
                 <label htmlFor="source_organization">Institución:</label>
                 <input type="text" id="source_organization" name="source_organization" />
