@@ -467,6 +467,11 @@ p {
   justify-content: space-around;
 }
 
+.video-form label {
+  margin-top: 1em;
+}
+
+
 /* ---------------------------------------------- */
 
 .heroContainer {
@@ -616,6 +621,7 @@ p {
 .btnContainer {
   margin: 1em; 
   padding: 1em;
+  text-align: center;
 }
 
 .btnContainer button {

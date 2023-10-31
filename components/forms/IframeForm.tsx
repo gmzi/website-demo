@@ -78,6 +78,7 @@ export function IframeEdit({ videoUrl }: { videoUrl: string }) {
         <>
             <input type="hidden" name="video_url" value={videoUrl} />
 
+            {sourceUrl && <div className='video-container'><Iframe sourceUrl={sourceUrl}/></div>}
             <label htmlFor="new_video_url">Cambiar link del video:</label>
             <input
                 type="text"
@@ -85,7 +86,6 @@ export function IframeEdit({ videoUrl }: { videoUrl: string }) {
                 name="new_video_url"
                 onChange={handleUrlChange}
             />
-            {sourceUrl && <div className='video-container'><Iframe sourceUrl={sourceUrl}/></div>}
         </>
     )
 }

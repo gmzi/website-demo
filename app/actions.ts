@@ -243,6 +243,7 @@ export async function createPressVideo(prevState: any, formData: FormData) {
   try {
 
     const videoUrlInput = formData.get('video_url');
+
     if (!videoUrlInput) {
       throw new Error("video url is required")
     }
@@ -288,6 +289,7 @@ export async function createPressVideo(prevState: any, formData: FormData) {
       body: JSON.stringify(data)
     });
 
+    revalidatePath('/(personal)/press', 'page');
     revalidatePath('/(editor)/editor', 'page');
 
     return { message: `video press added` }
@@ -336,6 +338,7 @@ export async function editPressVideo(prevState: any, formData: FormData) {
       body: JSON.stringify(data)
     });
 
+    revalidatePath('/(personal)/press', 'page');
     revalidatePath('/(editor)/editor', 'page');
 
     return { message: `Item updated!!!` }

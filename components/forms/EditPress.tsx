@@ -301,29 +301,14 @@ export function EditPressVideo({ pressVideos, index, handleCancel }: EditPressVi
 
     return (
         <form action={formAction}>
-            <h2>EDITAR</h2>
             <input type="hidden" name="id" value={item.id} />
+            <div className="video-form">
+                <IframeEdit videoUrl={item.video_url} />
+                <label htmlFor="description">Epigrafe del video:</label>
+                <input type="text" id="description" name="description" defaultValue={item.description} />
 
-            <div className="press-video-card">
                 <label htmlFor="show">Espectaculo:</label>
                 <input type="text" id="show" name="show" defaultValue={item.show} />
-
-                {/* <label htmlFor="video_url">Link al video:</label>
-                <input type="text" id="video_url" name="video_url" defaultValue={item.video_url} required />
-                <div className="video-container">
-                    <iframe
-                        src={item.video_url}
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        title={item.description}
-                    />
-                </div> */}
-
-                <IframeEdit videoUrl={item.video_url} />
-
-                <div className="video-description">
-                    <label htmlFor="description">Epigrafe del video:</label>
-                    <input type="text" id="description" name="description" defaultValue={item.description} />
-                </div>
 
                 <label htmlFor="title">Titulo del video:</label>
                 <input type="text" id="title" name="title" />
@@ -331,12 +316,14 @@ export function EditPressVideo({ pressVideos, index, handleCancel }: EditPressVi
                 <label htmlFor="source_organization">Institución:</label>
                 <input type="text" id="source_organization" name="source_organization" defaultValue={item.source_organization} />
 
-                <EditButton />
-                <button onClick={handleCancel}>Cancelar</button>
+                <div className='btnContainer'>
+                    <EditButton />
+                    <button onClick={handleCancel}>Cancelar</button>
+                </div>
+                <p aria-live="polite" className="sr-only" role="status">
+                    {state?.message}
+                </p>
             </div>
-            <p aria-live="polite" className="sr-only" role="status">
-                {state?.message}
-            </p>
         </form>
     )
 }
@@ -357,7 +344,7 @@ export function CreatePressVideo({ handleCreateCancel }: { handleCreateCancel: (
     return (
         <form action={formAction} id="myForm" className="">
             <div className="video-form">
-            <IframeForm />
+                <IframeForm />
                 <label htmlFor="description">Epigrafe del video:</label>
                 <input type="text" id="description" name="description" />
 
