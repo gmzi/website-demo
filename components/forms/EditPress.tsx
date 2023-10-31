@@ -121,7 +121,7 @@ export function PressArticles({ articles }: PressArticlesProps) {
                             <div><button onClick={handleClick} tabIndex={i}>Editar</button></div>
                             <div><Delete document="press" entry="written_press" section="press" id={article.id} /></div>
                         </div>
-                        
+
                     </blockquote>
                 </li>
             ))}
@@ -231,6 +231,7 @@ export function CreatePressArticle({ handleCreateCancel }: { handleCreateCancel:
 
 export function PressVideos({ pressVideos }: PressVideosProps) {
     const [openEditor, setOpenEditor] = useState<number | false>(false);
+    const [openCreator, setOpenCreator] = useState<true | false>(false);
 
     function handleClick(e: React.MouseEvent<HTMLButtonElement>) {
         e.preventDefault();
@@ -242,28 +243,53 @@ export function PressVideos({ pressVideos }: PressVideosProps) {
         setOpenEditor(false)
     }
 
-    const pressVideosList = pressVideos.map((pressVideo: VideoPressArticle, i: number) => (
-        <div className="press-video-card" key={`${pressVideo.video_url}-${i}`}>
-            <div className="video-container">
-                <iframe
-                    src={pressVideo.video_url}
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    title={pressVideo.description}
-                />
-            </div>
-            <div className="video-description">
-                <span>{pressVideo.description}</span>
-            </div>
-            <button onClick={handleClick} tabIndex={i}>Editar</button>
-            <Delete document="press" entry="video_press" section="press" id={pressVideo.id} />
-        </div>
-    ));
+    function handleCreate(e: React.MouseEvent<HTMLButtonElement>) {
+        e.preventDefault();
+        setOpenCreator(true)
+    }
+
+    function handleCreateCancel() {
+        setOpenCreator(false)
+    }
+
+    const videosList =
+        <ul className="video-embeds">
+            {pressVideos.map((pressVideo: VideoPressArticle, i: number) => (
+                <li className="press-video-card editor-group" key={`${pressVideo.video_url}-${i}`}>
+                    <div className="video-container">
+                        <iframe
+                            src={pressVideo.video_url}
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            title={pressVideo.description}
+                        />
+                    </div>
+                    <div className="video-description">
+                        <span>{pressVideo.description}</span>
+                    </div>
+                    <div className="btnContainer">
+                        <button onClick={handleClick} tabIndex={i}>Editar</button>
+                        <Delete document="press" entry="video_press" section="press" id={pressVideo.id} />
+                    </div>
+                </li>
+            ))}
+            <li className="press-video-card editor-group">
+                <div className="">
+                    {openCreator ? (<CreatePressVideo handleCreateCancel={handleCreateCancel} />) : (
+                        <div className="add-video-card">
+                            <h5>Agregar nuevo video</h5>
+                            <button onClick={handleCreate}>agregar un nuevo video</button>
+                        </div>
+                    )}
+                </div>
+            </li>
+        </ul>
+
 
     return (
         <div>
             <h2>Videos de prensa:</h2>
-            {/* {openEditor !== false ? <EditAvailableCourse pressVideos={pressVideos} index={openEditor} handleCancel={handleCancel} /> : pressVideosList} */}
-            {openEditor !== false ? <EditPressVideo pressVideos={pressVideos} index={openEditor} handleCancel={handleCancel} /> : pressVideosList}
+            {/* {openEditor !== false ? <EditAvailableCourse pressVideos={pressVideos} index={openEditor} handleCancel={handleCancel} /> : videosList} */}
+            {openEditor !== false ? <EditPressVideo pressVideos={pressVideos} index={openEditor} handleCancel={handleCancel} /> : videosList}
         </div>
     )
 }
@@ -316,7 +342,7 @@ export function EditPressVideo({ pressVideos, index, handleCancel }: EditPressVi
 }
 
 
-export function CreatePressVideo() {
+export function CreatePressVideo({ handleCreateCancel }: { handleCreateCancel: () => void }) {
     const [state, formAction] = useFormState(createPressVideo, initialState)
 
     // until we figure out how to reset form input after successfull data savign, bare with this:
@@ -329,33 +355,32 @@ export function CreatePressVideo() {
     }
 
     return (
-        <form action={formAction} id="myForm">
-            <h2>Agregar video</h2>
-            <div className="press-video-card">
+        <form action={formAction} id="myForm" className="">
+            <div className="video-form">
+            <IframeForm />
+                <label htmlFor="description">Epigrafe del video:</label>
+                <input type="text" id="description" name="description" />
+
                 <label htmlFor="show">Espectaculo:</label>
                 <input type="text" id="show" name="show" />
 
-                {/* <label htmlFor="video_url">Link al video:</label>
-                <input type="text" id="video_url" name="video_url" required />
-                <h2>IFrame test</h2> */}
-
-                <IframeForm />
 
                 <label htmlFor="title">Titulo del video:</label>
                 <input type="text" id="title" name="title" />
 
-                <label htmlFor="description">Epigrafe del video:</label>
-                <input type="text" id="description" name="description" />
-
                 <label htmlFor="source_organization">Institución:</label>
                 <input type="text" id="source_organization" name="source_organization" />
 
-                <SubmitButton />
-            </div>
 
-            <p aria-live="polite" className="sr-only" role="status">
-                {state?.message}
-            </p>
+                <div className="btnContainer">
+                    <SubmitButton />
+                    <button onClick={handleCreateCancel}>Cancelar</button>
+                </div>
+
+                <p aria-live="polite" className="sr-only" role="status">
+                    {state?.message}
+                </p>
+            </div>
         </form>
     )
 }

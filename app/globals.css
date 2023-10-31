@@ -453,6 +453,19 @@ p {
   box-shadow: var(--box-shadow-hover);
 }
 
+.add-video-card {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+}
+
+.video-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
 
 /* ---------------------------------------------- */
 

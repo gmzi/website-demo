@@ -53,7 +53,7 @@ export function IframeForm() {
                 required
             />
             {/* {sourceUrl && <div className='video-container'><iframe src={sourceUrl}></iframe></div>} */}
-            {sourceUrl && <div className='video-container'><Iframe sourceUrl={sourceUrl}/></div>}
+            {sourceUrl && <div className="video-container"><Iframe sourceUrl={sourceUrl}/></div>}
         </>
     )
 }
