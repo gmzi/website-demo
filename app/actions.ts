@@ -1212,14 +1212,19 @@ export async function editToursHeroImage(prevState: any, formData: FormData) {
     const inputData = heroImageSchema.parse({
       image_1_file: newImage_1_File,
       image_1_url: formData.get('image_1_url')
-    })
+    })    
 
     const updatedInputData = await handleInputDataWithNewImageFiles(inputData, "tours");
+
+    // in order to prevent MongoDB to cache an image already uploaded, generate
+    // a random string to append to the image URL, that will be stripped afterwards
+    // on the client.
+    const ID = createAlphaNumericString(5);
 
     const data = {
       document: "tours",
       entry: "image_1_url",
-      content: updatedInputData.image_1_url
+      content: `${ID}D--${updatedInputData.image_1_url}`
     }
 
     const updated = await fetch(`${BASE_URL}/server/input`, {

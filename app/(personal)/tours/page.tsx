@@ -12,12 +12,13 @@ export const metadata: Metadata = {
 
 export default async function ToursPage() {
 
-    const data = await getData("tours");
-    // const data = await getRemoteOrLocalData("tours");
+    // const data = await getData("tours");
+    const data = await getRemoteOrLocalData("tours");
 
     const tours = [...data.content] || [];
 
-    const heroImage = data.image_1_url;
+    const heroImageRaw = data.image_1_url;
+    const heroImage = heroImageRaw.split("--", 2)[1];
 
     const uniqueYears: string[] = [...new Set(tours.map(item => item.year))]
         .sort((a, b) => parseInt(b, 10) - parseInt(a, 10));
