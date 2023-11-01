@@ -19,9 +19,9 @@ export default async function PressPage() {
 
     const image_1_url: string = data.image_1_url;
 
-    const written_articles: WrittenPressArticle[] = data.written_press;
+    const written_articles: WrittenPressArticle[] = [...data?.written_press].reverse() || [];
 
-    const video_articles: VideoPressArticle[] = data.video_press;
+    const video_articles: VideoPressArticle[] = [...data?.video_press].reverse() || [];
 
     const written_uniqueShows: string[] = [...new Set(written_articles.map((item: { show: string }) => item.show))]
 

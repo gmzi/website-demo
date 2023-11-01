@@ -20,9 +20,9 @@ export default async function Press() {
 
     const image_1_url = data?.image_1_url || "";
 
-    const written_articles = [...data?.written_press] || [];
+    const written_articles = [...data?.written_press].reverse() || [];
 
-    const video_articles = [...data?.video_press] || [];
+    const video_articles = [...data?.video_press].reverse() || [];
 
     return (
         <div>
@@ -30,7 +30,6 @@ export default async function Press() {
             <HeroImage imageUrl={image_1_url}/>
             <PressArticles articles={written_articles} />
             <PressVideos pressVideos={video_articles} />
-            {/* <CreatePressVideo/> */}
         </div>
 
     )
