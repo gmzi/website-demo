@@ -12,8 +12,8 @@ export const metadata: Metadata = {
 
 export default async function ToursPage() {
 
-    // const data = await getData("tours");
-    const data = await getRemoteOrLocalData("tours");
+    const data = await getData("tours");
+    // const data = await getRemoteOrLocalData("tours");
 
     const tours = [...data.content] || [];
 
