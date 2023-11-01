@@ -17,6 +17,8 @@ export default async function ToursPage() {
 
     const tours = [...data.content] || [];
 
+    const heroImage = data.image_1_url;
+
     const uniqueYears: string[] = [...new Set(tours.map(item => item.year))]
         .sort((a, b) => parseInt(b, 10) - parseInt(a, 10));
 
@@ -28,7 +30,14 @@ export default async function ToursPage() {
         <section className="tours">
             <h1>Giras</h1>
             <div className="imgContainer">
-                <ImageGrid images={grid_1} />
+                <Image
+                    className="defaultImgStyle"
+                    src={heroImage}
+                    alt="press-image"
+                    width={0}
+                    height={0}
+                    sizes="100vw"
+                />
             </div>
             {uniqueYears.map(year => (
                 <ul key={year} className="years-list">
@@ -52,6 +61,9 @@ export default async function ToursPage() {
 
                 </ul>
             ))}
+            <div className="imgContainer">
+                <ImageGrid images={grid_1} />
+            </div>
         </section>
     )
 }

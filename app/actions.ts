@@ -1205,6 +1205,43 @@ export async function editPressHeroImage(prevState: any, formData: FormData) {
   }
 }
 
+export async function editToursHeroImage(prevState: any, formData: FormData) {
+  try {
+    const newImage_1_File = formData.get('new_image_1_file') as File;
+
+    const inputData = heroImageSchema.parse({
+      image_1_file: newImage_1_File,
+      image_1_url: formData.get('image_1_url')
+    })
+
+    const updatedInputData = await handleInputDataWithNewImageFiles(inputData, "tours");
+
+    const data = {
+      document: "tours",
+      entry: "image_1_url",
+      content: updatedInputData.image_1_url
+    }
+
+    const updated = await fetch(`${BASE_URL}/server/input`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        'API-Key': DATA_API_KEY
+      },
+      referrerPolicy: 'no-referrer',
+      body: JSON.stringify(data)
+    });
+
+    revalidatePath('/(personal)/tours', 'page');
+    revalidatePath('/(editor)/editor', 'page');
+
+    return { message: `Tour hero image updated!!!` }
+  } catch (e) {
+    console.error(e);
+    return { message: `${e}` }
+  }
+}
+
 export async function editCoursesHeroText(prevState: any, formData: FormData) {
   try {
     const inputData = parseRichTextInput(formData);

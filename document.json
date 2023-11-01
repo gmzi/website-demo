@@ -384,86 +384,219 @@
                 "press_url": "",
                 "image_1_url": ""
             }
-        ]
+        ], 
+        "image_1_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1698786509/website-fer/press/wsk2ectfel5znwl71bp6.jpg"
     },
     "press": {
+        "_id": {
+            "$oid": "650e162e09c84fed6fcf44a9"
+        },
         "name": "press",
         "written_press": [
             {
-                "veredict": "Muy buena",
-                "quote": "<p>una obra <strong>Para disfrutar</strong> con amigos</p>",
-                "media_organization": "La Nación",
-                "journalist": "Jazmín Carbonell",
-                "date": "2020-05-01",
-                "article_url": "www.google.com",
-                "show": "La fiesta del viejo",
-                "id": "fdsfds"
-            },
-            {
-                "veredict": "Muy buena",
-                "quote": "<p>una obra <strong>Para disfrutar</strong> con amigos</p>",
-                "media_organization": "La Nación",
-                "journalist": "Jazmín Carbonell",
-                "date": "2020-05-01",
-                "article_url": "www.google.com",
-                "show": "La fiesta del viejo",
-                "id": "fdsfds"
-            },
-            {
-                "veredict": "Muy buena",
-                "quote": "<p>una obra <strong>Para disfrutar</strong> con amigos</p>",
-                "media_organization": "La Nación",
-                "journalist": "Jazmín Carbonell",
-                "date": "2020-05-01",
-                "article_url": "www.google.com",
-                "show": "La fiesta del viejo",
-                "id": "fdsfds"
-            },
-            {
-                "veredict": "Muy buena",
-                "quote": "<p>una obra <strong>Para disfrutar</strong> con amigos</p>",
-                "media_organization": "La Nación",
-                "journalist": "Jazmín Carbonell",
-                "date": "2020-05-01",
-                "article_url": "www.google.com",
-                "show": "La fiesta del viejo",
-                "id": "fdsfds"
-            },
-            {
+                "id": "4wngls9r907o7ljtem6d",
                 "veredict": "",
-                "quote": "<p>una obra <strong>Para disfrutar</strong> con amigos</p>",
+                "quote": "<p><em>Espíritus en la fábrica es la reunión de tres compañías</em></p><p><em>teatrales despuestas a construir el drama e inventar una</em></p><p><em>estructura que nos sumerja palabra por palabra, acción por acción,</em></p><p><em>al rito teatral</em></p>",
                 "media_organization": "Experiencia Konex #34",
-                "journalist": "",
+                "journalist": "''",
                 "date": "",
                 "article_url": "",
-                "show": "La Payanca",
-                "id": "fdsfdswww"
+                "show": "La payanca"
+            },
+            {
+                "id": "pxxfz5t8z4qssx2f8c2q",
+                "veredict": "",
+                "quote": "<p><span><em>El texto sencillo, pero emotivo que concibió Ferrer</em></span></p><p><span><em>encontró al intérprete ideal en Federico Buso</em></span></p>",
+                "media_organization": "La Nacion",
+                "journalist": "Pablo Gorlero",
+                "date": "",
+                "article_url": "",
+                "show": "La intención de las palomas"
+            },
+            {
+                "id": "sos6m64y4o1n4hwki8yj",
+                "veredict": "",
+                "quote": "<p><span>La obra <em>surge del encuentro con estas complejidades</em></span></p><p><span><em>que plantea la realidad, junto con disparadores de diversa índole,</em></span></p><p><span><em>como la vejez o el desconcierto que genera</em></span></p><p><span><em>la situación política argentina</em></span></p>",
+                "media_organization": "La diaria (Uruguay)",
+                "journalist": "Pablo Tesoriere",
+                "date": "",
+                "article_url": "https://findesemana.ladiaria.com.uy/articulo/2019/2/la-intencion-de-las-palomas-cierra-hoy-y-manana-el-festival-temporada-alta-de-girona/",
+                "show": "La intención de las palomas"
+            },
+            {
+                "id": "tggioupsib2inl0ih538",
+                "veredict": "",
+                "quote": "<p><span><em>La Payanca de Fernando Ferrer es una valiosa</em></span></p><p><span><em>versión vernácula de Hamlet.</em></span></p><p><span><em>Bien dirigida e interpretada</em></span></p><p><span><em>por un grupo de excelentes actores</em></span></p>",
+                "media_organization": "La TV Pública",
+                "journalist": "Osvaldo Quiroga",
+                "date": "",
+                "article_url": "",
+                "show": "La payanca"
+            },
+            {
+                "id": "94wwzhw7lmy0u0jvsc1f",
+                "veredict": "",
+                "quote": "<p><span><em>Cada uno de los que está en la escena hace vibrar</em></span></p><p><span><em>con verdadera emoción por la historia que narra</em></span></p>",
+                "media_organization": "El Duende",
+                "journalist": "''",
+                "date": "",
+                "article_url": "https://periodicoelduende.blogspot.com/2017/02/la-fiesta-del-viejo.html",
+                "show": "La fiesta del viejo"
+            },
+            {
+                "id": "l4wo4zempp1u1s3m6bh9",
+                "veredict": "",
+                "quote": "<p><span><em>De forma muy original y creativa, Ferrer toma la obra de Shakespeare</em></span></p><p><span><em>para implementarle cambios de diverso grado y calidad,</em></span></p><p><span><em>trabaja sobre el clásico una política de la diferencia</em></span></p><p><span><em>y lo transforma en un nuevo texto</em></span></p>",
+                "media_organization": "Acción",
+                "journalist": "Jorge Dubatti",
+                "date": "",
+                "article_url": "https://accion.coop/la-fiesta-del-viejo",
+                "show": "La fiesta del viejo"
+            },
+            {
+                "id": "ok5e1fo4uu4s64cbxnnt",
+                "veredict": "",
+                "quote": "<p><em>La fiesta del viejo es una interesante propuesta</em></p><p><em>que pone en escena la relación entre las palabras,</em></p><p><em>los sentimientos y el dinero dentro de las relaciones familiares</em></p>",
+                "media_organization": "Farsa MAG",
+                "journalist": "Florencia Aroldi",
+                "date": "",
+                "article_url": "https://farsamag.com.ar/obras/la-fiesta-del-viejo/",
+                "show": "La fiesta del viejo"
+            },
+            {
+                "id": "2d7r191cmp7cmusmkvd6",
+                "veredict": "",
+                "quote": "<p><span><em>La fiesta del viejo nace como una necesidad de otros.</em></span></p><p><span><em>De no estar solo escribiendo ahí mirando por la ventana</em></span></p><p><span><em>como esa paloma va y viene en la rama que salió</em></span></p><p><span><em>del ladrillo no se sabe como.</em></span></p><p><span><em>Nace yendo y viniendo a mi infancia, a las infancias</em></span></p><p><span><em>de los que tengo cerca, en donde en algunos</em></span></p><p><span><em>casos la muerte mordió temprano.</em></span></p>",
+                "media_organization": "Infobae",
+                "journalist": "Fernando Ferrer",
+                "date": "",
+                "article_url": "",
+                "show": "La fiesta del viejo"
+            },
+            {
+                "id": "3znwcnyehdomk513nj20",
+                "veredict": "",
+                "quote": "<p>La fiesta del viejo offers the public a uniquely captivating, sensorial experience. Ferrer ́s skillful implementation of precision timing among the actors, together with his ability to attain the physical and emotional crescendo of the play, are critical in achievement the jolting, apocalyptic ending that leaves spectators stunned.</p>",
+                "media_organization": "The Theatre Times",
+                "journalist": "Susan Berardini",
+                "date": "",
+                "article_url": "https://thetheatretimes.com/la-fiesta-del-viejo-fresh-perspective-classic-tale/",
+                "show": "La fiesta del viejo"
+            },
+            {
+                "id": "z3bhrrpbd88vdryv07lb",
+                "veredict": "Muy Buena",
+                "quote": "<p><span><em>Vodka ruso para un viejo polaco en su domingo familiar</em></span></p><p><span><em>en donde el publico será recibido con Knishes de papa,</em></span></p><p><span><em>vino y torta de cumpleaños.</em></span></p>",
+                "media_organization": "Tiempo Argentino",
+                "journalist": "Juliana Corbelli",
+                "date": "",
+                "article_url": "https://www.tiempoar.com.ar/ta_article/vodka-ruso-para-un-viejo-polaco",
+                "show": "La fiesta del viejo"
+            },
+            {
+                "id": "p7em7aw9qrm3fddoad3e",
+                "veredict": "Imperdible",
+                "quote": "<p><em>La mesa familiar puede ser un campo de batalla</em></p><p><em>donde cada uno saca a relucir su verdad.</em></p>",
+                "media_organization": "Pagina 12",
+                "journalist": "Cecilia Hopkins",
+                "date": "",
+                "article_url": "https://www.pagina12.com.ar/30678-rey-lear-en-villa-crespo",
+                "show": "La fiesta del viejo"
+            },
+            {
+                "id": "70vven6e4c6iup9co8ww",
+                "veredict": "Muy Buena",
+                "quote": "<p><span><em>Bello Ritual escénico de domingo al mediodía.</em></span></p><p><span><em>Imperdible reescritura del clásico King Lear.</em></span></p>",
+                "media_organization": "La Nación",
+                "journalist": "Jazmín Carbonell",
+                "date": "",
+                "article_url": "https://www.lanacion.com.ar/espectaculos/teatro/bello-ritual-escenico-de-domingo-al-mediodia-nid1999035/",
+                "show": "La fiesta del viejo"
             }
         ],
         "video_press": [
             {
+                "id": "hkxqwkvtn5txh3z8nn09",
                 "show": "La fiesta del viejo",
                 "video_url": "https://www.youtube.com/embed/73wnMHftomo",
-                "title": "Entrevista por Jorge Dubatti",
+                "title": "Entrevista",
                 "description": "Con Dubatti en la Escuela de Espectadores. PT 1",
-                "source_organization": "La Tv Pública"
+                "source_organization": "Escuela de Espectadores"
             },
             {
+                "id": "6qn61hqq8o2wp5c12z64",
                 "show": "La fiesta del viejo",
-                "video_url": "https://www.youtube.com/embed/73wnMHftomo",
-                "title": "Entrevista por Jorge Dubatti",
-                "description": "Con Dubatti en la Escuela de Espectadores. PT 1",
-                "source_organization": "La Tv Pública"
+                "video_url": "https://www.youtube.com/embed/bcp6rm85qOc",
+                "title": "Entrevista",
+                "description": "Con Dubatti en la Escuela de Espectadores. PT 2",
+                "source_organization": "Escuela de Espectadores"
             },
             {
+                "id": "yc0piphofozwr2iokzo3",
                 "show": "La fiesta del viejo",
-                "video_url": "https://www.youtube.com/embed/73wnMHftomo",
-                "title": "Entrevista por Jorge Dubatti",
-                "description": "Con Dubatti en la Escuela de Espectadores. PT 1",
-                "source_organization": "La Tv Pública"
+                "video_url": "https://www.youtube.com/embed/5QF75tDNogc",
+                "title": "Entrevista",
+                "description": "La fiesta del viejo con Carolina Kurz",
+                "source_organization": "Tras Bambalinas"
+            },
+            {
+                "id": "73xyepb582gu2jlwkv39",
+                "show": "La fiesta del viejo",
+                "video_url": "https://www.youtube.com/embed/w1JrIcNYNfo",
+                "title": "Entrevista",
+                "description": "La fiesta del viejo / con Quiroga en el I.F.T.. PT 1",
+                "source_organization": "I.F.T"
+            },
+            {
+                "id": "sppz4ar2u2koe12cnz5w",
+                "show": "La fiesta del viejo",
+                "video_url": "https://www.youtube.com/embed/S08IaRYcx7Y",
+                "title": "Entrevista",
+                "description": "La fiesta del viejo / con Quiroga en el I.F.T.. PT 2",
+                "source_organization": "I.F.T"
+            },
+            {
+                "id": "8xxuvml9zfoyv7mnl9nu",
+                "show": "La fiesta del viejo",
+                "video_url": "https://www.youtube.com/embed/7fyN_K6Mtmg",
+                "title": "Entrevista",
+                "description": "La fiesta del viejo / con Quiroga en el I.F.T.. PT 3",
+                "source_organization": "I.F.T"
+            },
+            {
+                "id": "rvuc1dxbd8k2bqvw70r7",
+                "show": "La fiesta del viejo",
+                "video_url": "https://www.youtube.com/embed/1McHnLAIVss",
+                "title": "Entrevista",
+                "description": "Con Laura Oliva en La TV Pública",
+                "source_organization": "La TV Pública"
+            },
+            {
+                "id": "zb84axasmz1e40k3v332",
+                "show": "La payanca",
+                "video_url": "https://www.youtube.com/embed/4-G35Z_NdF0",
+                "title": "Entrevista",
+                "description": "La payanca en La TV Pública",
+                "source_organization": "La TV Pública"
+            },
+            {
+                "id": "d2t0qfg4khvyn6te9hcp",
+                "show": "La payanca",
+                "video_url": "https://www.youtube.com/embed/p9fLsNTdl5w",
+                "title": "Entrevista",
+                "description": "La payanca en La TV Pública",
+                "source_organization": "La TV Pública"
+            },
+            {
+                "id": "wt8qr8x01ex0nhfzeyrr",
+                "show": "La payanca",
+                "video_url": "https://www.youtube.com/embed/kAeH-0zsUHg",
+                "title": "Entrevista",
+                "description": "La payanca en En casa no me quedo",
+                "source_organization": "Canal de la Ciudad"
             }
         ],
-        "image_1_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1698772304/website-fer/press/dgedmiww4wpobxmfr6il.jpg"
+        "image_1_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1698786509/website-fer/press/wsk2ectfel5znwl71bp6.jpg"
     },
     "metadata": {
         "_id": {

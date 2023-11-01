@@ -2,7 +2,7 @@
 
 // @ts-expect-error
 import { useFormState, useFormStatus } from 'react-dom'
-import { createTour } from '@/app/actions';
+import { createTour, editToursHeroImage } from '@/app/actions';
 // import { ImageInput } from '../ImageInput';
 import { ImageInputWithID, ImageInputWithIDAndDefaultValue } from './ImageInput';
 import { Delete } from './Delete';
@@ -12,6 +12,10 @@ import { editTour } from '@/app/actions';
 import Image from 'next/image';
 import Link from 'next/link';
 
+
+interface ImageProp {
+    imageUrl: string;
+}
 
 export interface ToursProps {
     tours: Tour[];
@@ -41,6 +45,24 @@ function EditButton() {
     )
 }
 
+export function HeroImage({ imageUrl }: ImageProp) {
+    const [state, formAction] = useFormState(editToursHeroImage, initialState)
+
+    return (
+        <div className="heroContainer editor-group">
+            <form action={formAction}>
+                <h2>Editar imagen</h2>
+                {/* <ImageEdit imageUrl={imageUrl} /> */}
+                <ImageInputWithIDAndDefaultValue id={1} defaultValue={imageUrl} className="" />
+                <EditButton />
+                <p aria-live="polite" className="sr-only" role="status">
+                    {state?.message}
+                </p>
+            </form>
+        </div>
+    )
+}
+
 export function ToursList({ tours }: { tours: Tour[] }) {
     const [openEditor, setOpenEditor] = useState<string | false>(false);
     const [openCreator, setOpenCreator] = useState<true | false>(false);
@@ -67,23 +89,6 @@ export function ToursList({ tours }: { tours: Tour[] }) {
     const uniqueYears: string[] = [...new Set(tours.map(item => item.year))]
         .sort((a, b) => parseInt(b, 10) - parseInt(a, 10));
 
-    // const toursList =
-    //     <div>
-    //         <h1>Editar giras</h1>
-    //         {tours.map((tour: Tour, i: number) => (
-    //             <div key={`item-${tour.id}`} className="editor-group">
-    //                 <h2>{tour.title_or_place}</h2>
-    //                 <div className="heroContainer">
-    //                     <ImageInputWithIDAndDefaultValue id={1} defaultValue={tour.image_1_url} className="" />
-    //                 </div>
-    //                 <div className="card-buttons">
-    //                     <button onClick={handleClick} tabIndex={i}>Editar</button>
-    //                     <Delete document="tours" entry={`content`} section="tours" id={tour.id} />
-    //                 </div>
-    //             </div>
-    //         ))}
-    //         {openCreator ? <CreateTour handleCreateCancel={handleCreateCancel} /> : <button onClick={handleCreate}>Agregar una nueva gira</button>}
-    //     </div>
     const toursList =
         <div className="">
             {uniqueYears.map(year => (
