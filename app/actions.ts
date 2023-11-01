@@ -2,6 +2,7 @@
 
 import { revalidatePath } from 'next/cache'
 import { z } from 'zod'
+import { send } from '@emailjs/browser';
 import createAlphaNumericString from '@/lib/createAlphanumericString';
 import { uploadToCloudinary } from './cloudinary';
 import { moveToTrash } from './cloudinary';
@@ -1212,7 +1213,7 @@ export async function editToursHeroImage(prevState: any, formData: FormData) {
     const inputData = heroImageSchema.parse({
       image_1_file: newImage_1_File,
       image_1_url: formData.get('image_1_url')
-    })    
+    })
 
     const updatedInputData = await handleInputDataWithNewImageFiles(inputData, "tours");
 
