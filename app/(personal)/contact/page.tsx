@@ -26,9 +26,6 @@ export default function ContactPage() {
                 message: toSend.message,
             }
 
-            // setSent('mensaje enviado!!! Muchas gracias por contactarte');
-            // return;
-
             send(`${SERVICE_ID}`, `${TEMPLATE_ID}`, data, `${USER_ID}`)
                 .then((response) => {
                     // alert('message sent, thank you so much');
@@ -44,36 +41,35 @@ export default function ContactPage() {
         }
     }
 
-    // function handleChange(e) {
-    //     setToSend({ ...toSend, [e.target.name]: e.target.value });
-    // }
+
     function handleChange(e: React.ChangeEvent<HTMLFormElement>) {
         setToSend({ ...toSend, [e.target.name]: e.target.value });
     }
 
     return (
-        <section className="">
+        <section className="contact-me">
             <div>
                 <h2>Contacto</h2>
                 {sent ? (
-                    <div>
+                    <div className="alert">
                         {sent}
                     </div>
                 ) : (
                     <form
-                        name="contact"
+                        name="contact-form"
                         onSubmit={handleSubmit}
                         onChange={handleChange}
+                        className="contact-form"
                     >
-                        <label htmlFor="name" style={styles.label}>Nombre:</label>
+                        <label htmlFor="name">Nombre:</label>
                         <input type="text" id="name" name="name" required/>
 
-                        <label htmlFor="email" style={styles.label}>Email:</label>
-                        <input type="email" id="email" name="email" required />
+                        <label htmlFor="email">Email:</label>
+                        <input type="email" id="email" name="email" />
 
-                        <label htmlFor="message" style={styles.label}>Mensaje:</label>
+                        <label htmlFor="message">Mensaje:</label>
                         <textarea id="message" name="message" required ></textarea>
-                        <button type="submit" style={styles.button}>Enviar</button>
+                        <button type="submit">Enviar</button>
                     </form>
                 )}
 
@@ -81,54 +77,3 @@ export default function ContactPage() {
         </section>
     )
 }
-
-const styles = {
-
-    alert: {
-        padding: '10px',
-        backgroundColor: '#d4edda',
-        color: '#155724',
-        marginBottom: '20px',
-        textAlign: 'center',
-        borderRadius: '4px',
-        border: '1px solid #c3e6cb'
-    },
-    contactForm: {
-        margin: '0 auto',
-        padding: '2em',
-        borderRadius: '5px',
-        maxWidth: '500px',
-        width: '100%'
-    },
-    label: {
-        display: 'block',
-        marginBottom: '5px'
-    },
-    input: {
-        width: '100%',
-        padding: '10px',
-        borderRadius: '4px',
-        border: '1px solid #ccc',
-        marginBottom: '10px',
-        fontSize: '15px',
-    },
-    textarea: {
-        width: '100%',
-        padding: '10px',
-        borderRadius: '4px',
-        border: '1px solid #ccc',
-        marginBottom: '10px',
-        fontSize: '15px',
-    },
-    button: {
-        width: '100%',
-        padding: '10px',
-        borderRadius: '4px',
-        border: 'none',
-        backgroundColor: '#007bff',
-        color: '#fff',
-        cursor: 'pointer',
-        transition: 'background-color 0.3s'
-    }
-}
-
