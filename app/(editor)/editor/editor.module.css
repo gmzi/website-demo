@@ -1,16 +1,18 @@
 .editorMain {
   background: var(--editor-main-background);
+  padding: 1em 1em 1em 1em;
+  min-height: calc(100vh - 5em);
 }
 
 .navbar {
   text-align: center;
-  position: fixed;
+  /* position: fixed;
   top: 0;
   left: 0;
   right: 0;
   width: 100%;
+  z-index: 1000; */
   margin: 0 auto;
-  z-index: 1000;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(20px);
   background-color: var(--navbar-background-color);

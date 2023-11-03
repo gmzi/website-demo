@@ -18,10 +18,10 @@ export default async function Tours(){
     const tours = [...data?.content] || [];
 
     return (
-        <div>
+        <section>
             <h1>Editar Giras</h1>
             <HeroImage imageUrl={image_1_url}/>
             <ToursList tours={tours} />
-        </div>
+        </section>
     )
 }

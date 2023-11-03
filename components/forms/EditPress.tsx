@@ -121,7 +121,6 @@ export function PressArticles({ articles }: PressArticlesProps) {
                             <div><button onClick={handleClick} tabIndex={i}>Editar</button></div>
                             <div><Delete document="press" entry="written_press" section="press" id={article.id} /></div>
                         </div>
-
                     </blockquote>
                 </li>
             ))}

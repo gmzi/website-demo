@@ -83,11 +83,6 @@ export default async function EditorMainPage() {
         </Link>
       </li>
       <li>
-        <Link href="/editor/shows/create">
-          <span className={e.cmsLink}>crear show</span>
-        </Link>
-      </li>
-      <li>
         <Link href="/editor/courses">
           <span className={e.cmsLink}>cursos</span>
         </Link>

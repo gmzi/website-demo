@@ -34,7 +34,6 @@ export function EditAbout({ contentHtml, imageUrl }: AboutProps) {
     return (
         <div className="editor-group">
             <form action={formAction} id="myForm-about" className="editor-about">
-                <h2>Editar página principal</h2>
                 <ImageEdit imageUrl={imageUrl} />
                 <label htmlFor="editor_content" style={{ display: "none" }}>Texto:</label>
                 <RichText contentHtml={contentHtml} />

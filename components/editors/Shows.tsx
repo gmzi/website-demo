@@ -11,10 +11,11 @@ export default async function Shows() {
     const showsList = [...data?.content].reverse() || [];
     
     return (
-        <div className="editor-inner">
+        <section className="">
+            <h1>Editar Shows</h1>
             <ShowsList shows={showsList} />
             {/* <CreateShow/> */}
-        </div>
+        </section>
             
     )
   }

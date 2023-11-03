@@ -101,7 +101,7 @@ const EditLinks: React.FC<FormComponentProps> = ({ spotify_url, apple_url, docum
 
     return (
         <div>
-            <form name="spotify" style={{ border: '1px solid blue' }}>
+            <form name="spotify" className="show-credits">
                 <label>
                     Spotify link:
                     <input

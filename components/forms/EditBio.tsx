@@ -65,7 +65,6 @@ export function EditBio({ contentHtml_1, contentHtml_2, imageUrls }: BioProps) {
         // </form>
         <div className="editor-group">
             <form action={formAction}>
-            <h2>EDITAR Bio</h2>
             <ImageInputWithIDAndDefaultValue id={1} defaultValue={heroImageUrl} className="bio-hero-image" />
             <RichTextWithIdentificator contentHtml={contentHtml_1} identificator={1} />
             <div className="image-grid">

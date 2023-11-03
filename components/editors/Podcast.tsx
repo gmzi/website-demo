@@ -12,11 +12,10 @@ export default async function Podcast(){
     const apple_url = data.apple_url;
 
     return (
-        <div className="editor-group">
-            <h2>Podcast</h2>
-            <h3>Description</h3>
+        <section className="editor-group">
+            <h1>Editar - Podcast</h1>
             <TextEditor contentHtml={contentHtml} document={documentName} section={sectionName}/>
             <EditLinks spotify_url={spotify_url} apple_url={apple_url} document={documentName} section={sectionName}/>
-        </div>
+        </section>
     )
 }

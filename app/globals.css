@@ -1590,10 +1590,19 @@ svg.lucide.lucide-file-up {
 }
 
 .showsList {
-  padding: 2em;
+  /* padding: 2em;
   border-radius: 5px;
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-  margin: 2em 0;
+  margin: 2em 0; */
+  border: var(--color-border);
+  margin: 1em 0;
+  padding: 1em;
+  background-color: var(--color-bg-def);
+}
+
+.showsList button {
+  display: block;
+  margin: .2em auto;
 }
 
 .card-container {

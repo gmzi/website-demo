@@ -25,12 +25,12 @@ export default async function Press() {
     const video_articles = [...data?.video_press].reverse() || [];
 
     return (
-        <div>
+        <section>
             <h1>Editar prensa</h1>
             <HeroImage imageUrl={image_1_url}/>
             <PressArticles articles={written_articles} />
             <PressVideos pressVideos={video_articles} />
-        </div>
+        </section>
 
     )
 }

@@ -15,9 +15,10 @@ export default async function About(){
     const contentHtml = data?.content_html || '';
 
     return (
-        <div>
+        <section>
+            <h1>Editar - Inicio</h1>
             <EditAbout contentHtml={contentHtml} imageUrl={imageUrl}/>
-        </div>
+        </section>
     )
 }
 

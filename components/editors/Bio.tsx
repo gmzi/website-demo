@@ -27,10 +27,10 @@ export default async function Bio() {
     // component to `ImageInput`, and fix all imports. 
     
     return (
-        <div className="editor-inner">
-            <h2>Bio</h2>
+        <section className="">
+            <h1>Editar - Bio</h1>
             <EditBio contentHtml_1={html_1} contentHtml_2={html_2} imageUrls={imageURLS}/>
-        </div>
+        </section>
     )
   }
 

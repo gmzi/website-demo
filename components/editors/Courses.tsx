@@ -56,7 +56,7 @@ export default async function Courses() {
     
     return (
         <section className="courses">
-            <h2>Editar cursos</h2>
+            <h1>Editar cursos</h1>
 
             <HeroImage imageUrl={image1Url}/>
 

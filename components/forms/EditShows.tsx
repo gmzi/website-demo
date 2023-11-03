@@ -63,6 +63,7 @@ function EditButton() {
 
 export function ShowsList({ shows }: ShowsListProps) {
     const [openEditor, setOpenEditor] = useState<number | false>(false);
+    const [openCreator, setOpenCreator] = useState<true | false>(false);
 
     function handleClick(e: React.MouseEvent<HTMLButtonElement>) {
         e.preventDefault();
@@ -74,35 +75,55 @@ export function ShowsList({ shows }: ShowsListProps) {
         setOpenEditor(false)
     }
 
-    const showsList = shows.map((show: Show, i: number) => (
-        <div key={`${show.title}-${i}`} className="card-container">
-            <div className='card'>
-                <div className='card-head'>
-                    <h2 className="">{show.title}</h2>
-                    <p className="">{show.opening_date}</p>
-                </div>
-                <Image
-                    className="card-image"
-                    src={show.image_1_url}
-                    alt={show.title}
-                    width={0}
-                    height={0}
-                    sizes="100vw"
-                />
-            </div>
-            <div className="card-buttons">
-                <button onClick={handleClick} tabIndex={i}>Editar</button>
-                <Delete document="shows" entry="content" section="shows" id={show.id}/>
-            </div>
-        </div>
-    ));
+    function handleCreate(e: React.MouseEvent<HTMLButtonElement>) {
+        e.preventDefault();
+        setOpenCreator(true)
+    }
+
+    function handleCreateCancel() {
+        setOpenCreator(false)
+    }
+
+    const showsList =
+        <ul className="shows-list">
+            {shows.map((show: Show, i: number) => (
+                <li key={`show-item-${i}`}>
+                    <div key={`${show.title}-${i}`} className="card-container">
+                        <div className='card'>
+                            <div className='card-head'>
+                                <h2 className="">{show.title}</h2>
+                                <p className="">{show.opening_date}</p>
+                            </div>
+                            <Image
+                                className="card-image"
+                                src={show.image_1_url}
+                                alt={show.title}
+                                width={0}
+                                height={0}
+                                sizes="100vw"
+                            />
+                        </div>
+                        <div className="card-buttons">
+                            <button onClick={handleClick} tabIndex={i}>Editar</button>
+                            <Delete document="shows" entry="content" section="shows" id={show.id} />
+                        </div>
+                    </div>
+                </li>
+            ))}
+            <li>
+                {openCreator ? (<CreateShow handleCreateCancel={handleCreateCancel} />) : (
+                    <blockquote className="card-container">
+                        <h5>Agregar nuevo show</h5>
+                        <button onClick={handleCreate}>crear nuevo show</button>
+                    </blockquote>
+                )}
+            </li>
+        </ul>
 
     return (
         <div className='showsList'>
-            <>
-                <h1>shows</h1>
-                {openEditor !== false ? <Edit articles={shows} index={openEditor} handleCancel={handleCancel} /> : showsList}
-            </>
+        {/* <div className='editor-group'> */}
+            {openEditor !== false ? <Edit articles={shows} index={openEditor} handleCancel={handleCancel} /> : showsList}
         </div>
     )
 
@@ -174,7 +195,7 @@ export function Edit({ articles, index, handleCancel }: EditProps) {
     )
 }
 
-export function CreateShow() {
+export function CreateShow({ handleCreateCancel }: { handleCreateCancel: () => void }) {
     const [state, formAction] = useFormState(createShow, initialState)
 
     // until we figure out how to reset form input after successfull data savign, bare with this:
@@ -195,7 +216,7 @@ export function CreateShow() {
 
                 <label htmlFor="opening_date">Año de estreno:</label>
                 <input type="text" id="opening_date" name="opening_date" className="show-year" />
-                
+
                 {/* <ImageInputWithIndexAndDefaultValue idx={1} defaultValue={item.image_1_url} /> */}
                 <ImageInputWithID id={1} />
 
@@ -228,6 +249,7 @@ export function CreateShow() {
                 </div>
                 <div className="buttonsContainer">
                     <SubmitButton />
+                    <button onClick={handleCreateCancel}>Cancelar</button>
                 </div>
                 <p aria-live="polite" className="sr-only" role="status">
                     {state?.message}
@@ -264,7 +286,7 @@ export function AddTeam({ labelContent, inputName, required }: { labelContent: s
         <div>
             {/* <label htmlFor={inputName}>{labelContent}</label>
             <input type="text" id={inputName} name={inputName} onChange={handleInputChange} required={required} className="team-creation-input"/> */}
-            <textarea id={inputName} name={inputName} onChange={handleInputChange} required={required}/>
+            <textarea id={inputName} name={inputName} onChange={handleInputChange} required={required} />
 
             {team ? (<button type="button" onClick={handleWholeTeam}>parse</button>) : <button disabled type="button" onClick={handleWholeTeam}>parse</button>}
             {parsedTeam.length > 0 && (
