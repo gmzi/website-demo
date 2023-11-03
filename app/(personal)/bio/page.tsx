@@ -42,15 +42,9 @@ export default async function BioPage() {
                     width={0}
                     height={0}
                     sizes="100vw"
-                    // style={{
-                    //     width: '60%',
-                    //     height: 'auto',
-                    //     borderRadius: '50%'
-                    // }}
                     alt="Picture of the author"
                 />
             </div>
-
             <div>
                 <div className="paragraphContainer">
                     {text_1}

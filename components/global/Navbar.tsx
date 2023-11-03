@@ -13,7 +13,7 @@ import { TwitterIcon } from '../shared/icons';
 import { YoutubeIcon } from '../shared/icons';
 import { FacebookIcon } from '../shared/icons';
 import { SignIn, UserButton, SignOutButton } from "@clerk/nextjs";
-import styles from '../../app/(editor)/editor/styles.css'
+import e from '../../app/(editor)/editor/editor.module.css'
 
 function Logo() {
   return (
@@ -150,48 +150,47 @@ export function EditorNavbar({ orgRole }: { orgRole: string }) {
     //     </li>
     //   </ul>
     // </div>
-    <h1 className={styles.hi}>HELLO</h1>
-    // <nav className="navbar">
-    //   <div className="navbar-top">
-    //     <div className="navbar-header">
-    //       <Link href="/editor">
-    //         - EDITOR -
-    //       </Link>
-    //     </div>
-    //     {orgRole &&
-    //       <div className="userButtons">
-    //         <UserButton afterSignOutUrl="/editor" />
-    //         <SignOutButton />
-    //       </div>
-    //     }
-    //     <div className="social-icons">
-    //       <Link href="/" className="">
-    //         <Globe />
-    //       </Link>
-    //     </div>
-    //   </div>
-    //   <div className="separator"></div>
-    //   <div className="navbar-bottom">
-    //     <ul className="navbar-menu">
-    //       {Object.entries(editorNaviItems).map(([path, { name }]) => {
-    //         const isActive = path === pathname;
-    //         if (path !== '/') {
-    //           return (
-    //             <Link
-    //               key={path}
-    //               href={path}>
-    //               {isActive ? (
-    //                 <li className={'active'}>{name}</li>
-    //               ) : (
-    //                 <li>{name}</li>
-    //               )}
-    //             </Link>
-    //           )
-    //         }
-    //       })}
-    //     </ul>
-    //   </div>
-    // </nav>
+    <nav className={e.navbar}>
+      <div className={e.navbarTop}>
+        <div className={e.navbarHeader}>
+          <Link href="/editor">
+            - EDITOR -
+          </Link>
+        </div>
+        {orgRole &&
+          <div className="userButtons">
+            <UserButton afterSignOutUrl="/editor" />
+            <SignOutButton />
+          </div>
+        }
+        <div className="social-icons">
+          <Link href="/" className="">
+            <Globe />
+          </Link>
+        </div>
+      </div>
+      <div className="separator"></div>
+      <div className="navbar-bottom">
+        <ul className="navbar-menu">
+          {Object.entries(editorNaviItems).map(([path, { name }]) => {
+            const isActive = path === pathname;
+            if (path !== '/') {
+              return (
+                <Link
+                  key={path}
+                  href={path}>
+                  {isActive ? (
+                    <li className={'active'}>{name}</li>
+                  ) : (
+                    <li>{name}</li>
+                  )}
+                </Link>
+              )
+            }
+          })}
+        </ul>
+      </div>
+    </nav>
   )
 }
 
