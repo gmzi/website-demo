@@ -193,7 +193,7 @@ main {
   background: var(--main-background-standard);
   backdrop-filter: blur(10px);
   padding: 10em 1em 1em 1em;
-  min-height: calc(100vh - 4em); 
+  min-height: calc(100vh - 5em); 
 }
 
 @media(max-width: 430px){
@@ -214,10 +214,6 @@ section {
 /* ----------------------------------------------- */
 /* NAV */
 /* ----------------------------------------------- */
-
-/* 
-
- */
 
 .navbar {
   text-align: center;
@@ -295,7 +291,8 @@ section {
 }
 
 @media (max-width: 400px) {
-  .navbar {
+  .navbar, 
+  footer {
     font-size: small;
   }
   .navbar-bottom {
@@ -1366,8 +1363,19 @@ footer {
   margin: 0em;
 }
 
+.circle {
+  text-align: center;
+}
+
+.circle svg {
+  margin: 0 auto;
+  color: rgba(255, 255, 255, 0.916);
+}
+
 footer p {
-  margin: .1em;
+  margin: 0;
+  padding: .5em 0;
+  /* border: 1px solid red; */
 }
 
 .social-media {
