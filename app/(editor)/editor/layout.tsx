@@ -4,6 +4,7 @@ import { enableAuthIfProd } from '@/lib/EnableAuthIfProd';
 import { EditorNavbar } from "@/components/global/Navbar";
 import { ClerkProvider } from '@clerk/nextjs';
 import e from '@/app/(editor)/editor/editor.module.css'
+import { Footer } from "@/components/global/Footer";
 
 const BASE_URL = process.env.BASE_URL;
 
@@ -40,6 +41,7 @@ export default async function EditorLayout({ children }: EditorProps) {
       <main className={e.editorMain}>
         {children}
       </main>
+      <Footer/>
     </ClerkProvider>
   )
 }
