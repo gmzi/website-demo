@@ -12,6 +12,8 @@ import { InstagramIcon } from '../shared/icons';
 import { TwitterIcon } from '../shared/icons';
 import { YoutubeIcon } from '../shared/icons';
 import { FacebookIcon } from '../shared/icons';
+import { SignIn, UserButton, SignOutButton } from "@clerk/nextjs";
+import styles from '../../app/(editor)/editor/styles.css'
 
 function Logo() {
   return (
@@ -63,53 +65,53 @@ function Logo() {
 //   )
 // }
 
-export function Navbar(){
+export function Navbar() {
   let pathname = usePathname() || '/';
 
   return (
     <nav className="navbar">
-        <div className="navbar-top">
-            <div className="navbar-header">
-              <Link href="/">
-                John Doe
-              </Link>
-            </div>
-            <div className="social-icons">
-              <Link href="https://www.instagram.com"  className="instagram">
-                <InstagramIcon/>
-              </Link>
-              <Link href="https://www.facebook.com" className="facebook">
-                <FacebookIcon/>
-              </Link>
-              <Link href="https://www.youtube.com" className="youtube">
-                <YoutubeIcon/>
-              </Link>
-              <Link href="https://www.twitter.com" className="twitter">
-                <TwitterIcon/>
-              </Link>
-            </div>
+      <div className="navbar-top">
+        <div className="navbar-header">
+          <Link href="/">
+            John Doe
+          </Link>
         </div>
-        <div className="separator"></div>
-        <div className="navbar-bottom">
-            <ul className="navbar-menu">
-                {Object.entries(navItems).map(([path, {name}]) => {
-                  const isActive = path === pathname;
-                  if (path !== '/') {
-                    return(
-                      <Link
-                        key={path}
-                        href={path}>
-                          {isActive ? (
-                            <li className={'active'}>{name}</li>
-                          ) : (
-                            <li>{name}</li>
-                          )}
-                      </Link>
-                    )
-                  }
-                })}
-            </ul>
+        <div className="social-icons">
+          <Link href="https://www.instagram.com" className="instagram">
+            <InstagramIcon />
+          </Link>
+          <Link href="https://www.facebook.com" className="facebook">
+            <FacebookIcon />
+          </Link>
+          <Link href="https://www.youtube.com" className="youtube">
+            <YoutubeIcon />
+          </Link>
+          <Link href="https://www.twitter.com" className="twitter">
+            <TwitterIcon />
+          </Link>
         </div>
+      </div>
+      <div className="separator"></div>
+      <div className="navbar-bottom">
+        <ul className="navbar-menu">
+          {Object.entries(navItems).map(([path, { name }]) => {
+            const isActive = path === pathname;
+            if (path !== '/') {
+              return (
+                <Link
+                  key={path}
+                  href={path}>
+                  {isActive ? (
+                    <li className={'active'}>{name}</li>
+                  ) : (
+                    <li>{name}</li>
+                  )}
+                </Link>
+              )
+            }
+          })}
+        </ul>
+      </div>
     </nav>
   )
 }
@@ -117,37 +119,79 @@ export function Navbar(){
 
 
 
-export function EditorNavbar() {
+export function EditorNavbar({ orgRole }: { orgRole: string }) {
 
   let pathname = usePathname() || '/';
 
   return (
-    <div className={'navbarContainer'}>
-      <ul className={'navigationLinksList'}>
-        {Object.entries(editorNaviItems).map(([path, { name }]) => {
-          const isActive = path === pathname;
-          if (path !== '/') {
-            return (
-              <Link
-                key={path}
-                href={path}
-              >
-                {isActive ? (
-                  <li className={'active'}>{name}</li>
-                ) : (
-                  <li>{name}</li>
-                )}
-              </Link>
-            )
-          }
-        })}
-        <li>
-          <Link href="/">
-            <Globe />
-          </Link>
-        </li>
-      </ul>
-    </div>
+    // <div className={'navbarContainer'}>
+    //   <ul className={'navigationLinksList'}>
+    //     {Object.entries(editorNaviItems).map(([path, { name }]) => {
+    //       const isActive = path === pathname;
+    //       if (path !== '/') {
+    //         return (
+    //           <Link
+    //             key={path}
+    //             href={path}
+    //           >
+    //             {isActive ? (
+    //               <li className={'active'}>{name}</li>
+    //             ) : (
+    //               <li>{name}</li>
+    //             )}
+    //           </Link>
+    //         )
+    //       }
+    //     })}
+    //     <li>
+    //       <Link href="/">
+    //         <Globe />
+    //       </Link>
+    //     </li>
+    //   </ul>
+    // </div>
+    <h1 className={styles.hi}>HELLO</h1>
+    // <nav className="navbar">
+    //   <div className="navbar-top">
+    //     <div className="navbar-header">
+    //       <Link href="/editor">
+    //         - EDITOR -
+    //       </Link>
+    //     </div>
+    //     {orgRole &&
+    //       <div className="userButtons">
+    //         <UserButton afterSignOutUrl="/editor" />
+    //         <SignOutButton />
+    //       </div>
+    //     }
+    //     <div className="social-icons">
+    //       <Link href="/" className="">
+    //         <Globe />
+    //       </Link>
+    //     </div>
+    //   </div>
+    //   <div className="separator"></div>
+    //   <div className="navbar-bottom">
+    //     <ul className="navbar-menu">
+    //       {Object.entries(editorNaviItems).map(([path, { name }]) => {
+    //         const isActive = path === pathname;
+    //         if (path !== '/') {
+    //           return (
+    //             <Link
+    //               key={path}
+    //               href={path}>
+    //               {isActive ? (
+    //                 <li className={'active'}>{name}</li>
+    //               ) : (
+    //                 <li>{name}</li>
+    //               )}
+    //             </Link>
+    //           )
+    //         }
+    //       })}
+    //     </ul>
+    //   </div>
+    // </nav>
   )
 }
 

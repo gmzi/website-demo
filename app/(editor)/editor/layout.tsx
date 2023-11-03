@@ -16,6 +16,7 @@ export default async function EditorLayout({ children }: EditorProps) {
 
   const { orgRole } = auth();
 
+
   if (orgRole !== 'admin') {
     return (
       <ClerkProvider allowedRedirectOrigins={[`${BASE_URL}/editor`]}>
@@ -32,14 +33,14 @@ export default async function EditorLayout({ children }: EditorProps) {
   return (
     <ClerkProvider allowedRedirectOrigins={[`${BASE_URL}/editor`]}>
       <main className="editor-wrapper">
-        {orgRole ? (
+        {/* {orgRole ? (
           <>
             <UserButton afterSignOutUrl="/editor" />
             <SignOutButton />
           </>
-        ) : null}
+        ) : null} */}
         <>
-          <EditorNavbar />
+          <EditorNavbar orgRole={orgRole}/>
           {children}
         </>
       </main>
