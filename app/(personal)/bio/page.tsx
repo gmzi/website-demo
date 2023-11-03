@@ -35,9 +35,9 @@ export default async function BioPage() {
     return (
         <section className='bio'>
             <h1>Bio</h1>
-            <div className="imgContainer">
+            <div className="heroContainer">
                 <Image
-                    className="bio-hero-image"
+                    className="defaultImgStyle"
                     src={image1Url}
                     width={0}
                     height={0}

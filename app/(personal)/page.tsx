@@ -37,23 +37,36 @@ export default async function AboutPage() {
     // }
 
     return (
+        // <section className='about'>
+        //     <h1>John Done</h1>
+        //     <h1>John Done</h1>
+        //     <div className="heroContainer">
+        //         <div className=''>
+        //             <Image
+        //                 className="defaultImgStyle"
+        //                 src={imageUrl}
+        //                 width={0}
+        //                 height={0}
+        //                 sizes="100vw"
+        //                 alt="Picture of the author"
+        //             />
+        //         </div>
+        //         <div className="paragraphContainer">
+        //             {text}
+        //         </div>
+        //     </div>
+        // </section>
         <section className='about'>
             <h1>John Done</h1>
             <div className="heroContainer">
-                <div className=''>
-                    <Image
-                        className="defaultImgStyle"
-                        src={imageUrl}
-                        width={0}
-                        height={0}
-                        sizes="100vw"
-                        // style={{
-                        //     width: '100%',
-                        //     height: 'auto',
-                        // }}
-                        alt="Picture of the author"
-                    />
-                </div>
+                <Image
+                    className="bio-hero-image"
+                    src={imageUrl}
+                    width={0}
+                    height={0}
+                    sizes="100vw"
+                    alt="Picture of the author"
+                />
                 <div className="paragraphContainer">
                     {text}
                 </div>

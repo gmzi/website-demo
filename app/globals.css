@@ -403,14 +403,14 @@ section h2 {
   padding: 1em;
 }
 
-.imgContainer {
-  margin: 1em;
+.heroContainer {
+  margin: .1em;
   padding: 1em;
 }
 
-.heroContainer {
-  margin: 1em;
-  padding: 1em;
+.heroContainer img {
+  display: block;
+  margin: 0em auto;
 }
 
 .heroContainer a {
@@ -420,18 +420,6 @@ section h2 {
 .heroContainer button {
   display: block;
   margin: 2em auto;
-}
-
-.imgContainer img {
-  display: block;
-  margin: 0 auto;
-}
-
-.hero-img-container {
-  /* display: flex;
-flex-direction: column;
-align-items: center;
-justify-content: center; */
 }
 
 .defaultImgStyle {
@@ -460,9 +448,9 @@ p {
 }
 
 .bio-hero-image {
-  width: 60%;
+  width: 70%;
   height: auto;
-  border-radius: 50%;
+  border-radius: 49%;
 }
 
 .podcast h2 {
@@ -674,11 +662,6 @@ p {
 }
 
 /* ---------------------------------------------- */
-
-.heroContainer {
-  padding: 1em;
-  margin: 1em 0;
-}
 
 .coursesHero img {
   width: 100%;
