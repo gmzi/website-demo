@@ -48,8 +48,8 @@ export default function ContactPage() {
 
     return (
         <section className="contact-me">
+            <h1>Contacto</h1>
             <div>
-                <h2>Contacto</h2>
                 {sent ? (
                     <div className="alert">
                         {sent}

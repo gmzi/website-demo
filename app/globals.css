@@ -367,6 +367,7 @@ section h1 {
   font-size: larger;
   text-align: right;
   font-weight: bold;
+  padding-right: 2em;
 }
 
 .imgContainer {
@@ -411,10 +412,10 @@ justify-content: center; */
 
 @media(min-width: 769px){
   .defaultImgStyle {
-    width: 80%;
+    width: 95%;
   }
   .description {
-    width: 80%;
+    width: 95%;
     margin: 0 auto;
   }
 }
