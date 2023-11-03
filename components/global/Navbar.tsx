@@ -123,36 +123,27 @@ export function EditorNavbar({ orgRole }: { orgRole: string }) {
 
   let pathname = usePathname() || '/';
 
+  if (!orgRole) {
+    return (
+      <nav className="navbar">
+        <div className="navbar-top">
+          <div className="navbar-header">
+            <Link href="/editor">
+              - EDITOR -
+            </Link>
+          </div>
+        </div>
+      </nav>
+    ) 
+  }
+    
+  
+
   return (
-    // <div className={'navbarContainer'}>
-    //   <ul className={'navigationLinksList'}>
-    //     {Object.entries(editorNaviItems).map(([path, { name }]) => {
-    //       const isActive = path === pathname;
-    //       if (path !== '/') {
-    //         return (
-    //           <Link
-    //             key={path}
-    //             href={path}
-    //           >
-    //             {isActive ? (
-    //               <li className={'active'}>{name}</li>
-    //             ) : (
-    //               <li>{name}</li>
-    //             )}
-    //           </Link>
-    //         )
-    //       }
-    //     })}
-    //     <li>
-    //       <Link href="/">
-    //         <Globe />
-    //       </Link>
-    //     </li>
-    //   </ul>
-    // </div>
+  
     <nav className={e.navbar}>
-      <div className={e.navbarTop}>
-        <div className={e.navbarHeader}>
+      <div className="navbar-top">
+        <div className="navbar-header">
           <Link href="/editor">
             - EDITOR -
           </Link>

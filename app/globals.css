@@ -3,169 +3,196 @@
 @tailwind utilities;
 
 :root {
-    --max-width: 1100px;
-    --border-radius: 12px;
-    /* Default color for light theme */
-    --primary-color: #2f2f2f;
-    --primary-background: rgb(253, 253, 253);
-    --color-hover: underline 3px solid #0000ffc9;
-    --color-bg-hover: rgba(175, 184, 194, 0.535);
-    --color-bg-contact: #E6F7FF;
-    --color-border-bottom: 1px solid rgba(217, 217, 233, 0.438);
-    --color-purple: #958DF1;
-    --color-background-box: #68adcf5b;
-    --color-background-card: #f2f2f2;
-    --color-background-footer:#2D3748;
-    --color-font-footer: white;
-    --color-background-courseCard: #4390d05b;
-    /* BROUGHT FRO   BLOG-REFLEXION ----------------------------------*/
-    --color-bg-def: ghostwhite;
-    --color-border-bottom-def: 1px solid rgba(217, 217, 233, 0.438);
-    --color-a-def: #0070f3;
-    --color-ul-a: rgba(0, 0, 0, 0.844);
-    --color-stroke-def: rgba(26, 26, 26, 0.623);
-    --color-article-def: #181818e6;
-    --color-bg-header: whitesmoke;
-    --color-bg-snippets: rgba(26, 0, 0, 0.897);
-    --color-font-snippets: whitesmoke;
-    --color-font-light: #555;
-    --color-fill-circle: rgba(0, 0, 0, 0.744);
-    --color-date-def: rgb(140, 140, 140);
-    --color-hover: underline 3px solid #0000ffc9;
-    --color-bg-hover: rgba(175, 184, 194, 0.535);
-    --color-section-def: rgba(0, 0, 0, 0.963);
-    --color-border: 1px solid #bbb;
-    --color-border-quote: 4px solid #bbb;
-    --color-editor-code: rgba(28, 28, 28, 0.888);
-    --color-btn:  rgb(21, 21, 21);
-    --color-btn-background: white;
-    --color-btn-hover-background: rgba(99, 226, 226, 0.2);
-    --color-btn-border: 1px solid #bbb;
-    --color-box-shadow: 0 0.3rem 0.3rem rgba(0, 0, 0, 0.15), inset 0 0.1rem 0.2rem #fff,
-    inset 0 -0.1rem 0.1rem rgba(0, 0, 0, 0.05);
-    --color-btn-box-shadow: 0 0.15rem 0.3rem rgba(0, 0, 0, 0.15), inset 0 0.1rem 0.2rem #fff,
-    inset 0 -0.1rem 0.1rem rgba(0, 0, 0, 0.05);
-    --color-btn-active-box-shadow: inset 0 0 0rem black;
-    --color-btnPreview: black;
-    --color-btnPreview-border: 1px solid rgba(119, 246, 255, 0.849);
-    --color-btnPublish: blue;
-    --color-btnUpload: rgb(38, 109, 0);
-    --color-btnPublish-background: white;
-    --color-btnPublish-disabled: rgb(105, 105, 209);
-    --color-btnPublish-disabled-background: rgba(208, 205, 205, 0.94);
-    --color-btnCreate-border: 1px solid rgba(250, 183, 255, 0.849);
-    --color-btnCounter-border: 1px solid rgba(116, 247, 252, 0.849);
-    --color-btnCounter-background: rgba(249, 161, 252, 0.2);
-    --color-btnDelete: red;
-    --color-btnDelete-border: 1px solid rgba(250, 100, 100, 0.681);
-    --color-btnDelete-background: rgba(217, 226, 99, 0.2);
-    --color-btnDelete-disabled: rgb(242, 114, 114);
-    --color-btnDelete-disabled-border: 1px solid rgba(247, 138, 138, 0.681);
-    --color-btnDelete-disabled-background: rgba(220, 227, 122, 0.2);
-    --color-btnDownload-border: 1px solid rgba(0, 0, 255, 0.377);
-    --color-logoTitle: rgba(0, 0, 0, 0.922);
-    --color-logoTitle-text-decoration: underline 1px solid #0000ff86;
-    --color-border-top: 1px solid #eaeaea;
-    --color-guidelines-background:  #f0f8ff;
-    --color-alert-border: 5px solid rgba(109, 109, 243, 0.432);
-    --color-alert-background: rgba(255, 255, 255, 0.884);
-    --color-url-font: rgba(255, 255, 255, 0.932);
-    --color-url-background: rgba(0, 0, 0, 0.426);
-    --color-sbumitInput-border: 1px solid rgba(2, 103, 2, 0.974);
-    --box-shadow-hover: 0 4px 8px rgba(0, 0, 0, 0.12);
-    --main-background: #abbaab;
-    --main-background-webkit: -webkit-linear-gradient(to bottom, #ffffff, #abbaab 50%, #ffffff);
-    --main-background-standard: linear-gradient(to bottom, #ffffff, #abbaab 50%, #ffffff);
-    --section-background-color: rgba(255, 255, 255, 0.887);
-    --section-box-shadow: 0px 1px 1px 1px rgb(226, 226, 226);
-    --navbar-background-color: rgba(255, 255, 255, 0.734);
+  --max-width: 1100px;
+  --border-radius: 12px;
+  /* Default color for light theme */
+  --primary-color: #2f2f2f;
+  --primary-background: rgb(253, 253, 253);
+  --color-hover: underline 3px solid #0000ffc9;
+  --color-bg-hover: rgba(175, 184, 194, 0.535);
+  --color-bg-contact: #e6f7ff;
+  --color-border-bottom: 1px solid rgba(217, 217, 233, 0.438);
+  --color-purple: #958df1;
+  --color-background-box: #68adcf5b;
+  --color-background-card: #f2f2f2;
+  --color-background-footer: #2d3748;
+  --color-font-footer: white;
+  --color-background-courseCard: #4390d05b;
+  /* BROUGHT FRO   BLOG-REFLEXION ----------------------------------*/
+  --color-bg-def: ghostwhite;
+  --color-border-bottom-def: 1px solid rgba(217, 217, 233, 0.438);
+  --color-a-def: #0070f3;
+  --color-ul-a: rgba(0, 0, 0, 0.844);
+  --color-stroke-def: rgba(26, 26, 26, 0.623);
+  --color-article-def: #181818e6;
+  --color-bg-header: whitesmoke;
+  --color-bg-snippets: rgba(26, 0, 0, 0.897);
+  --color-font-snippets: whitesmoke;
+  --color-font-light: #555;
+  --color-fill-circle: rgba(0, 0, 0, 0.744);
+  --color-date-def: rgb(140, 140, 140);
+  --color-hover: underline 3px solid #0000ffc9;
+  --color-bg-hover: rgba(175, 184, 194, 0.535);
+  --color-section-def: rgba(0, 0, 0, 0.963);
+  --color-border: 1px solid #bbb;
+  --color-border-quote: 4px solid #bbb;
+  --color-editor-code: rgba(28, 28, 28, 0.888);
+  --color-btn: rgb(21, 21, 21);
+  --color-btn-background: white;
+  --color-btn-hover-background: rgba(99, 226, 226, 0.2);
+  --color-btn-border: 1px solid #bbb;
+  --color-box-shadow: 0 0.3rem 0.3rem rgba(0, 0, 0, 0.15),
+    inset 0 0.1rem 0.2rem #fff, inset 0 -0.1rem 0.1rem rgba(0, 0, 0, 0.05);
+  --color-btn-box-shadow: 0 0.15rem 0.3rem rgba(0, 0, 0, 0.15),
+    inset 0 0.1rem 0.2rem #fff, inset 0 -0.1rem 0.1rem rgba(0, 0, 0, 0.05);
+  --color-btn-active-box-shadow: inset 0 0 0rem black;
+  --color-btnPreview: black;
+  --color-btnPreview-border: 1px solid rgba(119, 246, 255, 0.849);
+  --color-btnPublish: blue;
+  --color-btnUpload: rgb(38, 109, 0);
+  --color-btnPublish-background: white;
+  --color-btnPublish-disabled: rgb(105, 105, 209);
+  --color-btnPublish-disabled-background: rgba(208, 205, 205, 0.94);
+  --color-btnCreate-border: 1px solid rgba(250, 183, 255, 0.849);
+  --color-btnCounter-border: 1px solid rgba(116, 247, 252, 0.849);
+  --color-btnCounter-background: rgba(249, 161, 252, 0.2);
+  --color-btnDelete: red;
+  --color-btnDelete-border: 1px solid rgba(250, 100, 100, 0.681);
+  --color-btnDelete-background: rgba(217, 226, 99, 0.2);
+  --color-btnDelete-disabled: rgb(242, 114, 114);
+  --color-btnDelete-disabled-border: 1px solid rgba(247, 138, 138, 0.681);
+  --color-btnDelete-disabled-background: rgba(220, 227, 122, 0.2);
+  --color-btnDownload-border: 1px solid rgba(0, 0, 255, 0.377);
+  --color-logoTitle: rgba(0, 0, 0, 0.922);
+  --color-logoTitle-text-decoration: underline 1px solid #0000ff86;
+  --color-border-top: 1px solid #eaeaea;
+  --color-guidelines-background: #f0f8ff;
+  --color-alert-border: 5px solid rgba(109, 109, 243, 0.432);
+  --color-alert-background: rgba(255, 255, 255, 0.884);
+  --color-url-font: rgba(255, 255, 255, 0.932);
+  --color-url-background: rgba(0, 0, 0, 0.426);
+  --color-sbumitInput-border: 1px solid rgba(2, 103, 2, 0.974);
+  --box-shadow-hover: 0 4px 8px rgba(0, 0, 0, 0.12);
+  --main-background: #abbaab;
+  --main-background-webkit: -webkit-linear-gradient(
+    to bottom,
+    #ffffff,
+    #abbaab 50%,
+    #ffffff
+  );
+  --main-background-standard: linear-gradient(
+    to bottom,
+    #ffffff,
+    #abbaab 50%,
+    #ffffff
+  );
+  --section-background-color: rgba(255, 255, 255, 0.887);
+  --section-box-shadow: 0px 1px 1px 1px rgb(226, 226, 226);
+  --navbar-background-color: rgba(255, 255, 255, 0.734);
+  /* --------------------------------------------------- */
+  --editor-main-background:linear-gradient(to bottom, #343449, #3b4a5a 50%, #343449);
+
 }
 
 /* Color for dark theme */
-@media (prefers-color-scheme: dark){
-    :root {
-        --primary-color: #eaeaeae6;
-        --primary-background: #303032;
-        --color-bg-hover: rgba(79, 83, 89, 0.535);
-        --color-hover: underline 3px solid #B798FF;
-        --color-border-bottom: 1px solid rgba(178, 178, 192, 0.124);
-        --color-purple: #958DF1;
-        --color-background-box: #68adcf30;
-        --color-background-card: #84d0c023;
-        --color-bg-contact: #2B2B2B;
-        --color-background-footer:#2d3748cd;
-        --color-font-footer: rgba(212, 212, 212, 0.848);
-        --color-background-courseCard: #84d0c05b;
-        /* BROUGHT FRO   BLOG-REFLEXION ----------------------------------*/
-        --color-bg-def: rgb(48, 48, 50);
-        --color-border-bottom-def: 1px solid rgba(178, 178, 192, 0.124);
-        --color-a-def: #8ACAFF;
-        --color-ul-a: rgba(240, 236, 236, 0.844);
-        --color-stroke-def: rgba(243, 243, 243, 0.623);
-        --color-article-def: #eaeaeae6;
-        --color-bg-header: rgba(245, 245, 245, 0.147);
-        --color-bg-snippets: rgba(140, 139, 139, 0.215);
-        --color-font-snippets: rgb(218, 218, 218);
-        --color-font-light: #c0bfbf;
-        --color-fill-circle: rgba(255, 255, 255, 0.787);
-        --color-date-def: rgb(140, 140, 140);
-        --color-hover: underline 3px solid #B798FF;
-        --color-bg-hover: rgba(79, 83, 89, 0.535);
-        --color-section-def: rgba(211, 211, 211, 0.933);
-        --color-border: 1px solid rgba(187, 187, 187, 0.345);
-        --color-border-quote: 4px solid rgba(187, 187, 187, 0.345);
-        --color-editor-code: rgba(232, 229, 229, 0.848);
-        --color-btn:  rgb(222, 222, 222);
-        --color-btn-background: rgba(193, 192, 192, 0.164);
-        --color-btn-hover-background: rgba(175, 183, 183, 0.55);
-        --color-btn-border: 1px solid rgba(133, 133, 133, 0.644);
-        /* --color-box-shadow: 0 0.3rem 0.3rem rgba(120, 120, 120, 0.15), inset 0 0.1rem 0.2rem rgb(7, 7, 7), */
-        --color-box-shadow: 0 0rem 0.1rem rgba(255, 255, 255, 0.15), inset 0 0.1rem 0.2rem rgba(0, 0, 0, 0.2);
-        --color-btn-box-shadow: 0 0.15rem 0.3rem rgba(88, 88, 88, 0.085), inset 0 0.1rem 0.2rem rgba(17, 17, 17, 0.169),
-        inset 0 -0.1rem 0.1rem rgba(150, 150, 150, 0.05);
-        --color-btn-active-box-shadow: inset 0 0 0rem black;
-        --color-btnPreview: rgba(255, 255, 255, 0.944);
-        --color-btnPreview-border: 1px solid rgba(177, 248, 253, 0.849);
-        --color-btnPublish: rgb(194, 194, 254);
-        --color-btnUpload: white;
-        --color-btnPublish-background: rgba(222, 222, 222, 0.167);
-        --color-btnPublish-disabled: rgba(91, 91, 249, 0.871);
-        --color-btnPublish-disabled-background: rgba(191, 190, 190, 0.167);
-        --color-btnCreate-border: 1px solid rgba(245, 173, 252, 0.849);
-        --color-btnCounter-border: 1px solid rgba(173, 249, 251, 0.675);
-        --color-btnCounter-background: rgba(249, 210, 251, 0.2);
-        --color-btnDelete: rgb(255, 89, 89);
-        --color-btnDelete-border: 1px solid rgba(245, 151, 151, 0.681);
-        --color-btnDelete-background: rgba(223, 230, 120, 0.431);
-        --color-btnDelete-disabled: rgba(249, 90, 90, 0.612);
-        --color-btnDelete-disabled-border: 1px solid rgba(247, 134, 134, 0.59);
-        --color-btnDelete-disabled-background: rgba(186, 186, 185, 0.2);
-        --color-btnDownload-border: 1px solid rgba(163, 163, 251, 0.377);
-        --color-logoTitle: rgba(216, 212, 212, 0.922);
-        --color-logoTitle-text-decoration: underline 1px solid #B798FF;
-        --color-border-top: 1px solid #eaeaea8c;
-        --color-guidelines-background:   #3d4043ee;
-        --color-alert-border: 5px solid rgba(145, 145, 244, 0.432);
-        --color-alert-background: rgba(55, 55, 55, 0.884);
-        --color-url-font: rgba(220, 217, 217, 0.932);
-        --color-url-background: rgba(0, 0, 0, 0.426);
-        --color-input-background-disabled: rgba(91, 91, 91, 0.472);
-        --color-sbumitInput-border: 1px solid rgba(2, 103, 2, 0.655);
-        --box-shadow-hover: 0 4px 8px rgba(0, 0, 0, 0.362);
-        --main-background: #4a3b5a;
-        --main-background-webkit: -webkit-linear-gradient(to bottom, #343434, #4a3b5a 50%, #343434);
-        --main-background-standard: linear-gradient(to bottom, #343434, #4a3b5a 50%, #343434);
-        --section-background-color: rgb(48, 48, 50);
-        --section-box-shadow: 0px 1px 1px 1px rgba(55, 55, 55, 0.624);
-        --navbar-background-color: rgba(48, 48, 50, 0.863);
-    }
+@media (prefers-color-scheme: dark) {
+  :root {
+    --primary-color: #eaeaeae6;
+    --primary-background: #303032;
+    --color-bg-hover: rgba(79, 83, 89, 0.535);
+    --color-hover: underline 3px solid #b798ff;
+    --color-border-bottom: 1px solid rgba(178, 178, 192, 0.124);
+    --color-purple: #958df1;
+    --color-background-box: #68adcf30;
+    --color-background-card: #84d0c023;
+    --color-bg-contact: #2b2b2b;
+    --color-background-footer: #2d3748cd;
+    --color-font-footer: rgba(212, 212, 212, 0.848);
+    --color-background-courseCard: #84d0c05b;
+    /* BROUGHT FRO   BLOG-REFLEXION ----------------------------------*/
+    --color-bg-def: rgb(48, 48, 50);
+    --color-border-bottom-def: 1px solid rgba(178, 178, 192, 0.124);
+    --color-a-def: #8acaff;
+    --color-ul-a: rgba(240, 236, 236, 0.844);
+    --color-stroke-def: rgba(243, 243, 243, 0.623);
+    --color-article-def: #eaeaeae6;
+    --color-bg-header: rgba(245, 245, 245, 0.147);
+    --color-bg-snippets: rgba(140, 139, 139, 0.215);
+    --color-font-snippets: rgb(218, 218, 218);
+    --color-font-light: #c0bfbf;
+    --color-fill-circle: rgba(255, 255, 255, 0.787);
+    --color-date-def: rgb(140, 140, 140);
+    --color-hover: underline 3px solid #b798ff;
+    --color-bg-hover: rgba(79, 83, 89, 0.535);
+    --color-section-def: rgba(211, 211, 211, 0.933);
+    --color-border: 1px solid rgba(187, 187, 187, 0.345);
+    --color-border-quote: 4px solid rgba(187, 187, 187, 0.345);
+    --color-editor-code: rgba(232, 229, 229, 0.848);
+    --color-btn: rgb(222, 222, 222);
+    --color-btn-background: rgba(193, 192, 192, 0.164);
+    --color-btn-hover-background: rgba(175, 183, 183, 0.55);
+    --color-btn-border: 1px solid rgba(133, 133, 133, 0.644);
+    /* --color-box-shadow: 0 0.3rem 0.3rem rgba(120, 120, 120, 0.15), inset 0 0.1rem 0.2rem rgb(7, 7, 7), */
+    --color-box-shadow: 0 0rem 0.1rem rgba(255, 255, 255, 0.15),
+      inset 0 0.1rem 0.2rem rgba(0, 0, 0, 0.2);
+    --color-btn-box-shadow: 0 0.15rem 0.3rem rgba(88, 88, 88, 0.085),
+      inset 0 0.1rem 0.2rem rgba(17, 17, 17, 0.169),
+      inset 0 -0.1rem 0.1rem rgba(150, 150, 150, 0.05);
+    --color-btn-active-box-shadow: inset 0 0 0rem black;
+    --color-btnPreview: rgba(255, 255, 255, 0.944);
+    --color-btnPreview-border: 1px solid rgba(177, 248, 253, 0.849);
+    --color-btnPublish: rgb(194, 194, 254);
+    --color-btnUpload: white;
+    --color-btnPublish-background: rgba(222, 222, 222, 0.167);
+    --color-btnPublish-disabled: rgba(91, 91, 249, 0.871);
+    --color-btnPublish-disabled-background: rgba(191, 190, 190, 0.167);
+    --color-btnCreate-border: 1px solid rgba(245, 173, 252, 0.849);
+    --color-btnCounter-border: 1px solid rgba(173, 249, 251, 0.675);
+    --color-btnCounter-background: rgba(249, 210, 251, 0.2);
+    --color-btnDelete: rgb(255, 89, 89);
+    --color-btnDelete-border: 1px solid rgba(245, 151, 151, 0.681);
+    --color-btnDelete-background: rgba(223, 230, 120, 0.431);
+    --color-btnDelete-disabled: rgba(249, 90, 90, 0.612);
+    --color-btnDelete-disabled-border: 1px solid rgba(247, 134, 134, 0.59);
+    --color-btnDelete-disabled-background: rgba(186, 186, 185, 0.2);
+    --color-btnDownload-border: 1px solid rgba(163, 163, 251, 0.377);
+    --color-logoTitle: rgba(216, 212, 212, 0.922);
+    --color-logoTitle-text-decoration: underline 1px solid #b798ff;
+    --color-border-top: 1px solid #eaeaea8c;
+    --color-guidelines-background: #3d4043ee;
+    --color-alert-border: 5px solid rgba(145, 145, 244, 0.432);
+    --color-alert-background: rgba(55, 55, 55, 0.884);
+    --color-url-font: rgba(220, 217, 217, 0.932);
+    --color-url-background: rgba(0, 0, 0, 0.426);
+    --color-input-background-disabled: rgba(91, 91, 91, 0.472);
+    --color-sbumitInput-border: 1px solid rgba(2, 103, 2, 0.655);
+    --box-shadow-hover: 0 4px 8px rgba(0, 0, 0, 0.362);
+    --main-background: #4a3b5a;
+    --main-background-webkit: -webkit-linear-gradient(
+      to bottom,
+      #343434,
+      #4a3b5a 50%,
+      #343434
+    );
+    --main-background-standard: linear-gradient(
+      to bottom,
+      #343434,
+      #4a3b5a 50%,
+      #343434
+    );
+    --section-background-color: rgb(48, 48, 50);
+    --section-box-shadow: 0px 1px 1px 1px rgba(55, 55, 55, 0.624);
+    --navbar-background-color: rgba(48, 48, 50, 0.863);
+    /* ------------------------------------------- */
+    --editor-main-background: linear-gradient(to bottom, #1f1f2b, #2a2938 50%, #1f1f2b);
+  }
 }
 
 * {
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
-  }
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
 
 html,
 body {
@@ -173,7 +200,7 @@ body {
   background-color: var(--primary-background);
   /* max-width: 100vw; */
   overflow-x: hidden;
-  margin: .1em auto;
+  margin: 0.1em auto;
   padding: 0;
   /* margin: .5em 1em; */
   /* font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
@@ -181,7 +208,7 @@ body {
   /* font-family: Arial, sans-serif; */
 }
 
-body, 
+body,
 nav {
   max-width: 60rem;
 }
@@ -193,12 +220,12 @@ main {
   background: var(--main-background-standard);
   backdrop-filter: blur(10px);
   padding: 10em 1em 1em 1em;
-  min-height: calc(100vh - 5em); 
+  min-height: calc(100vh - 5em);
 }
 
-@media(max-width: 430px){
+@media (max-width: 430px) {
   main {
-    padding: 8em .5em .5em .5em;
+    padding: 8em 0.5em 0.5em 0.5em;
   }
 }
 
@@ -218,18 +245,18 @@ section {
 .navbar {
   text-align: center;
   position: fixed;
-  top: 0;       
+  top: 0;
   left: 0;
-  right: 0;      
-  width: 100%;  
+  right: 0;
+  width: 100%;
   margin: 0 auto;
   z-index: 1000;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(20px);
   background-color: var(--navbar-background-color);
 }
 
-.navbar-top, 
+.navbar-top,
 .navbar-bottom {
   display: flex;
   justify-content: space-between;
@@ -264,7 +291,7 @@ section {
 }
 
 .youtube:hover {
-  color: #FF0000;
+  color: #ff0000;
 }
 
 .separator {
@@ -275,7 +302,7 @@ section {
 .navbar-menu {
   list-style-type: none;
   display: flex;
-  gap: .5em;
+  gap: 0.5em;
   margin: 0;
   padding: 0;
 }
@@ -291,7 +318,7 @@ section {
 }
 
 @media (max-width: 400px) {
-  .navbar, 
+  .navbar,
   footer {
     font-size: small;
   }
@@ -301,64 +328,61 @@ section {
   }
 }
 
-
-
-
 /* ---------------------------------------- */
 /* ---------------------------------------- */
 /* LOGO */
-.logoContainer { 
-    border-radius: 3px;
-    display: flex;
+.logoContainer {
+  border-radius: 3px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.logoContainer:hover {
+  text-decoration: var(--color-hover);
+  background-color: var(--color-bg-hover);
+  cursor: pointer;
+}
+
+.logoContainer .svg {
+  margin-right: 0.2rem;
+}
+
+.logoName {
+  font-weight: 400;
+}
+
+.logoTitle,
+.descriptionLine {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  color: var(--color-logoTitle);
+}
+
+.logoTitle {
+  font-size: large;
+  margin-bottom: 0.1rem;
+}
+
+.descriptionLine {
+  font-size: 0.7em;
+}
+
+@media (max-width: 960px) {
+  .navbarContainer {
     flex-direction: column;
     align-items: flex-start;
   }
-  
-  .logoContainer:hover {
-    text-decoration: var(--color-hover);
-    background-color: var(--color-bg-hover);
-    cursor: pointer;
-  }
-  
-  .logoContainer .svg {
-    margin-right: .2rem;
-  }
-  
-  .logoName {
-    font-weight: 400;
-  }
-  
-  .logoTitle,
   .descriptionLine {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    color: var(--color-logoTitle);
+    max-width: 17em;
   }
-  
-  .logoTitle {
-    font-size: large;
-    margin-bottom: .1rem;
+  .testimonialCards-container,
+  .courseCards-container {
+    flex-direction: column;
   }
-  
-  .descriptionLine {
-    font-size: .7em;
-   }
-  
-   @media (max-width: 960px){
-    .navbarContainer {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-    .descriptionLine {
-      max-width: 17em;
-    }
-    .testimonialCards-container, 
-    .courseCards-container {
-      flex-direction: column;
-    }
-  }
+}
 /* ---------------------------------------- */
 /* SECTIONS */
 /* ---------------------------------------- */
@@ -396,7 +420,7 @@ section h1 {
 }
 
 .hero-img-container {
-/* display: flex;
+  /* display: flex;
 flex-direction: column;
 align-items: center;
 justify-content: center; */
@@ -407,10 +431,9 @@ justify-content: center; */
   height: auto;
   margin: 0 auto;
   border-radius: 5px;
-
 }
 
-@media(min-width: 769px){
+@media (min-width: 769px) {
   .defaultImgStyle {
     width: 95%;
   }
@@ -458,10 +481,9 @@ p {
   transform: scale(1.2);
 }
 
-
 .podcast-links a svg {
-  width: 3em; 
-  height: auto; 
+  width: 3em;
+  height: auto;
 }
 
 /* -------------------------------------------------------------------------- */
@@ -482,7 +504,7 @@ p {
 .contact-form input,
 .contact-form textarea {
   width: 100%;
-  padding: .5em;
+  padding: 0.5em;
   border-radius: 4px;
   border: var(--color-border);
   margin-bottom: 2em;
@@ -511,9 +533,6 @@ p {
   border: 1px solid #c3e6cb;
 }
 
-
-
-
 /* TOURS */
 
 .years-list {
@@ -524,7 +543,7 @@ p {
 .years-list li {
   margin-bottom: 20px;
 }
-.years-list h2, 
+.years-list h2,
 .show-item {
   border-bottom: var(--color-border);
 }
@@ -546,8 +565,8 @@ p {
 }
 
 .press .tours-list li {
-  padding: .1em;
-  margin-bottom: .1em;
+  padding: 0.1em;
+  margin-bottom: 0.1em;
 }
 
 .tours-list h3 {
@@ -644,7 +663,6 @@ p {
   margin-top: 1em;
 }
 
-
 /* ---------------------------------------------- */
 
 .heroContainer {
@@ -670,7 +688,7 @@ p {
   margin-bottom: 10px;
 }
 
-.cards-and-goals, 
+.cards-and-goals,
 .faq {
   padding: 1em;
   margin: 1em 0;
@@ -692,13 +710,13 @@ p {
 .courseCard {
   flex: 0 1 calc(33.33% - 20px);
   /* background-color: #f2f2f2; */
-  background-color:var(--color-background-card);
+  background-color: var(--color-background-card);
   padding: 20px;
   border-radius: 5px;
   text-align: center;
 }
 
-.goals { 
+.goals {
   margin-top: 20px;
   list-style-type: none;
 }
@@ -742,7 +760,7 @@ p {
 }
 
 .review::before {
-  content: "\201C";
+  content: '\201C';
   font-size: 40px;
   color: #007bff;
   position: absolute;
@@ -787,13 +805,13 @@ p {
 }
 
 .btnContainer {
-  margin: 1em; 
+  margin: 1em;
   padding: 1em;
   text-align: center;
 }
 
 .btnContainer button {
-  margin: .5em;
+  margin: 0.5em;
 }
 
 .btnContainer p {
@@ -813,9 +831,9 @@ p {
 
 .contact {
   padding: 20px;
-  border: 2px solid #4A90E2;
+  border: 2px solid #4a90e2;
   border-radius: 10px;
-  background-color: #FAFAFA;
+  background-color: #fafafa;
   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
   margin: 20px auto; /* Centering the div */
   background-color: var(--color-bg-contact);
@@ -837,12 +855,14 @@ p {
   margin-bottom: 15px;
 }
 
-.emoji, .goals-emoji {
+.emoji,
+.goals-emoji {
   font-size: 24px;
   margin-right: 10px;
 }
 
-.text, .goals-text {
+.text,
+.goals-text {
   font-size: 16px;
 }
 
@@ -854,14 +874,13 @@ p {
 }
 
 .link a:hover {
-  border-bottom: 2px solid #4A90E2;
-  color: #2A5B8D; /* A darker shade for hover */
+  border-bottom: 2px solid #4a90e2;
+  color: #2a5b8d; /* A darker shade for hover */
 }
 
 /* ---------------------------------- */
 /* EDITOR */
 /* ---------------------------------- */
-
 
 /* ---------------------------------- */
 /* AI GENERATED */
@@ -929,7 +948,7 @@ p {
   color: inherit;
 }
 
-.show-card-preview h1, 
+.show-card-preview h1,
 .show-card-preview p {
   margin: 0;
   padding: 0;
@@ -989,24 +1008,23 @@ p {
   display: grid;
 }
 
-
 /* ------------------------------------------------- */
 /* SHOW CARD */
 /* ------------------------------------------------- */
 .show-card {
   margin: 1em auto;
-  text-align: center; 
+  text-align: center;
 }
 
 .show-title {
   font-size: 2.5em;
   font-weight: bold;
-  margin-bottom: .1em;
+  margin-bottom: 0.1em;
 }
 
 .show-year {
   font-size: 1em;
-  margin-top: .1em;
+  margin-top: 0.1em;
 }
 
 .show-image {
@@ -1027,7 +1045,7 @@ p {
   line-height: 3;
   text-decoration: underline;
   margin: em 0;
-  border-top: var(--color-border-bottom); 
+  border-top: var(--color-border-bottom);
 }
 
 .show-credits {
@@ -1041,14 +1059,13 @@ p {
   list-style: none;
 }
 
-
 /* -------------------------------------------------------- */
 /* FOOTER */
 /* -------------------------------------------------------- */
 
 footer {
   text-align: center;
-  background-color:  var(--color-background-footer);
+  background-color: var(--color-background-footer);
   color: var(--color-font-footer);
   padding: 1em 0;
   margin: 0em;
@@ -1065,22 +1082,22 @@ footer {
 
 footer p {
   margin: 0;
-  padding: .5em 0;
+  padding: 0.5em 0;
   /* border: 1px solid red; */
 }
 
 .social-media {
   border-radius: 5px;
-  padding: .5em 0em;
+  padding: 0.5em 0em;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .social-link {
-  display: flex;            
-  justify-content: center;  
-  align-items: center;      
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin: 0 1em;
   text-decoration: none;
   color: var(--primary-color);
@@ -1088,7 +1105,7 @@ footer p {
   border-radius: 10px;
   width: 3em;
   height: 3em;
-  padding: .5em;
+  padding: 0.5em;
 }
 
 .social-media svg {
@@ -1100,7 +1117,6 @@ footer p {
   transform: scale(1.2);
 }
 
-
 /* -------------------------------------------------------- */
 /* IMAGE GRID */
 /* -------------------------------------------------------- */
@@ -1110,7 +1126,7 @@ footer p {
   grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
   margin: 2rem 0;
-  padding: 1rem .5rem;
+  padding: 1rem 0.5rem;
 }
 @media (max-width: 576px) {
   .image-grid {
@@ -1170,7 +1186,12 @@ footer p {
   left: -1%;
   width: 5%;
   height: 120%; */
-  background: linear-gradient(45deg, transparent, rgba(220, 60, 60, 0.3), transparent);
+  background: linear-gradient(
+    45deg,
+    transparent,
+    rgba(220, 60, 60, 0.3),
+    transparent
+  );
   /* transform: rotate(-1deg); */
 }
 
@@ -1181,7 +1202,12 @@ footer p {
   right: -10%;
   width: 25%;
   height: 120%;
-  background: linear-gradient(45deg, transparent, rgba(60, 60, 220, 0.3), transparent);
+  background: linear-gradient(
+    45deg,
+    transparent,
+    rgba(60, 60, 220, 0.3),
+    transparent
+  );
   transform: rotate(5deg);
 }
 
@@ -1225,9 +1251,9 @@ input:disabled {
   background-color: var(--color-input-background-disabled);
 }
 
-button:hover, 
+button:hover,
 .submitInput:hover,
-.uploadForm input[type="submit"]:hover {
+.uploadForm input[type='submit']:hover {
   background-color: var(--color-btn-hover-background);
 }
 
@@ -1238,12 +1264,12 @@ button:active,
 
 .submitInput,
 .submitInput-disabled,
-.uploadForm input[type="file"]::file-selector-button{
+.uploadForm input[type='file']::file-selector-button {
   border: var(--color-sbumitInput-border);
   border-radius: 3px;
 }
 
-.uploadForm input[type="file"]::file-selector-button{
+.uploadForm input[type='file']::file-selector-button {
   font-size: small;
 }
 
@@ -1255,7 +1281,7 @@ button:active,
 }
 
 .btnPublish,
-.uploadForm input[type="submit"] {
+.uploadForm input[type='submit'] {
   background-color: var(--color-btnPublish-background);
 }
 
@@ -1264,7 +1290,7 @@ button:active,
 }
 
 .btnPublish-disabled,
-.uploadForm input[type="submit"]:disabled {
+.uploadForm input[type='submit']:disabled {
   background-color: var(--color-btnPublish-disabled-background);
 }
 
@@ -1290,7 +1316,7 @@ button:active,
 
 .btnDelete {
   color: var(--color-btnDelete);
-  border: var(--color-btnDelete-border)
+  border: var(--color-btnDelete-border);
 }
 
 .btnDelete:hover {
@@ -1330,11 +1356,10 @@ button:active,
   background-color: #128c7e; /* Change the background color on hover */
 }
 
-
-.uploadForm input[type="submit"]{
+.uploadForm input[type='submit'] {
   height: 100%;
   width: 100%;
-  color: var(--color-btnUpload)
+  color: var(--color-btnUpload);
 }
 
 .editor {
@@ -1359,16 +1384,14 @@ button:active,
   align-items: center;
 }
 
-.userButtons div, 
+.userButtons div,
 .userButtons button {
-  margin: 0 .1em;
+  margin: 0 0.1em;
 }
 
 .userButtons button {
-  padding: .3em;
+  padding: 0.3em;
 }
-
-
 
 .faq-editor {
   border: var(--color-border);
@@ -1393,7 +1416,7 @@ button:active,
   width: 100;
   height: auto;
   border-radius: 5p;
-  margin-bottom: .5em;
+  margin-bottom: 0.5em;
 }
 
 .tours-default {
@@ -1404,7 +1427,7 @@ button:active,
 
 .preview {
   border: var(--color-border);
-  margin: .5em;
+  margin: 0.5em;
   padding: 1em;
 }
 
@@ -1415,17 +1438,13 @@ button:active,
   margin: 0 auto;
 }
 
-.editor-wrapper {
-  padding: .5em;
-}
-
 .editor-inner {
   margin: 0 auto;
 }
 
 .form-shows {
   border: 4px solid magenta;
-  padding: .2em;
+  padding: 0.2em;
 }
 
 .form-shows input,
@@ -1451,7 +1470,7 @@ button:active,
 
 .form-shows textarea {
   margin: 1.5em 0;
-  padding: .5em;
+  padding: 0.5em;
 }
 
 .form-shows .show-card {
@@ -1468,7 +1487,7 @@ button:active,
 }
 
 .show-credits-container {
-  text-align: center;  
+  text-align: center;
 }
 
 .show-credits ul {
@@ -1477,22 +1496,23 @@ button:active,
   margin: 0;
 }
 
-.team-name, .team-role {
+.team-name,
+.team-role {
   line-height: 1.4;
   margin-right: 5px;
 }
 
 .team-role {
   font-weight: 400;
-  font-size: .9em;
+  font-size: 0.9em;
 }
 
 .form-shows .show-credits {
   /* display: inline-block;  */
-  text-align: center; 
+  text-align: center;
 }
 
-.form-shows .show-credits label, 
+.form-shows .show-credits label,
 .form-shows .show-credits input {
   display: inline-block;
   text-align: left;
@@ -1500,11 +1520,11 @@ button:active,
 
 .nameAndRole {
   border-bottom: var(--color-border-bottom);
-  padding: .5em;
+  padding: 0.5em;
 }
 
 .team-wrapper {
-  padding: .1em;
+  padding: 0.1em;
 }
 
 textarea,
@@ -1513,17 +1533,17 @@ textarea,
   min-height: 3em;
   max-width: 95%;
   min-width: 94%;
-  margin-bottom: .8em;
+  margin-bottom: 0.8em;
 }
 
-@media (max-width:507px){
-  .credits-name, 
+@media (max-width: 507px) {
+  .credits-name,
   .credits-role {
     display: block;
   }
 }
 
-@media(min-width: 508px){
+@media (min-width: 508px) {
   .form-shows .show-credits label,
   .form-shows .show-credits input {
     display: inline-block;
@@ -1532,11 +1552,11 @@ textarea,
 }
 
 .form-shows .show-credits input {
-  margin: .4em;
-  padding: .4em;
+  margin: 0.4em;
+  padding: 0.4em;
 }
 .form-shows .show-credits label {
-  margin: .2em;
+  margin: 0.2em;
 }
 
 .nameAndRole {
@@ -1545,8 +1565,8 @@ textarea,
 
 .image-upload {
   border: var(--color-border);
-  margin: .5em;
-  padding: .5em;
+  margin: 0.5em;
+  padding: 0.5em;
 }
 
 .image-upload input {
@@ -1578,7 +1598,7 @@ svg.lucide.lucide-file-up {
 
 .card-container {
   display: grid;
-  grid-template-columns: 1fr 1fr 7em; 
+  grid-template-columns: 1fr 1fr 7em;
   grid-template-rows: 1fr auto;
   gap: 10px;
   padding: 10px;
@@ -1598,43 +1618,43 @@ svg.lucide.lucide-file-up {
   height: auto;
   grid-column: 2;
   max-height: 12em;
-  object-fit: cover; 
+  object-fit: cover;
   border-radius: 5px;
 }
 
 .card-buttons {
-    grid-column: 3;
-    align-self: center;
+  grid-column: 3;
+  align-self: center;
 }
 
 @media (max-width: 768px) {
   .card-container {
-      grid-template-columns: 1fr; /* Full width for everything to stack */
-      grid-template-rows: auto auto auto; /* Title, Image, and Button rows */
-      align-items: center;
-      justify-items: center;
+    grid-template-columns: 1fr; /* Full width for everything to stack */
+    grid-template-rows: auto auto auto; /* Title, Image, and Button rows */
+    align-items: center;
+    justify-items: center;
   }
 
   .card {
-      grid-column: 1; /* Span the full width */
-      grid-row: 1; /* Place at the top */
-      grid-template-columns: 1fr; /* Only one column as elements will stack */
-      align-items: center;
-      justify-items: center;
+    grid-column: 1; /* Span the full width */
+    grid-row: 1; /* Place at the top */
+    grid-template-columns: 1fr; /* Only one column as elements will stack */
+    align-items: center;
+    justify-items: center;
   }
 
   .card-image {
-      grid-row: 2;
-      grid-column: 1;
-      margin: 10px 0;
+    grid-row: 2;
+    grid-column: 1;
+    margin: 10px 0;
   }
 
   .card-buttons {
-      grid-row: 3;
-      grid-column: 1;
-      align-self: center;
-      justify-self: center;
-  } 
+    grid-row: 3;
+    grid-column: 1;
+    align-self: center;
+    justify-self: center;
+  }
 }
 
 .card-container-editor {
@@ -1651,7 +1671,7 @@ svg.lucide.lucide-file-up {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: rgba(255, 255, 255, 0.8); 
+  background-color: rgba(255, 255, 255, 0.8);
   backdrop-filter: blur(5px);
   z-index: 10;
 }

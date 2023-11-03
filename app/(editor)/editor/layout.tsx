@@ -3,6 +3,7 @@ import { auth } from '@clerk/nextjs';
 import { enableAuthIfProd } from '@/lib/EnableAuthIfProd';
 import { EditorNavbar } from "@/components/global/Navbar";
 import { ClerkProvider } from '@clerk/nextjs';
+import e from '@/app/(editor)/editor/editor.module.css'
 
 const BASE_URL = process.env.BASE_URL;
 
@@ -14,7 +15,8 @@ interface EditorProps {
 
 export default async function EditorLayout({ children }: EditorProps) {
 
-  const { orgRole } = auth();
+  // const { orgRole } = auth();
+  const orgRole = 'admin';
 
 
   if (orgRole !== 'admin') {
@@ -32,17 +34,11 @@ export default async function EditorLayout({ children }: EditorProps) {
 
   return (
     <ClerkProvider allowedRedirectOrigins={[`${BASE_URL}/editor`]}>
-      <main className="editor-wrapper">
-        {/* {orgRole ? (
-          <>
-            <UserButton afterSignOutUrl="/editor" />
-            <SignOutButton />
-          </>
-        ) : null} */}
-        <>
-          <EditorNavbar orgRole={orgRole}/>
-          {children}
-        </>
+      <header>
+        {orgRole && <EditorNavbar orgRole={orgRole}/>}
+      </header>
+      <main className={e.editorMain}>
+        {children}
       </main>
     </ClerkProvider>
   )

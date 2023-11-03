@@ -1,22 +1,17 @@
+.editorMain {
+  background: var(--editor-main-background);
+}
+
 .navbar {
   text-align: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
   width: 100%;
   margin: 0 auto;
   z-index: 1000;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(20px);
   background-color: var(--navbar-background-color);
-}
-
-.navbarTop,
-.navbarBottom {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1em;
-}
-
-.navbarHeader {
-  font-size: 1.5em;
-  font-weight: bold;
 }
