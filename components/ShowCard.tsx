@@ -15,7 +15,6 @@ const ShowCard: React.FC<ShowCardProps> = ({ show }) => {
         <div className="show-card">
             <h1 className="show-title">
                 <span>{title}</span>
-                <br />
                 <span className="openingDate">{opening_date}</span>
             </h1>
             <Image
