@@ -394,10 +394,18 @@ section h1 {
   padding-right: 2em;
 }
 
+section h2 {
+  font-weight: bold;
+}
+
+.press h2 {
+  border-top: var(--color-border-bottom);
+  padding: 1em;
+}
+
 .imgContainer {
   margin: 1em;
   padding: 1em;
-  /* border: 10px solid red; */
 }
 
 .heroContainer {
@@ -434,6 +442,9 @@ justify-content: center; */
 }
 
 @media (min-width: 769px) {
+  section {
+    padding: 2em 9em;
+  }
   .defaultImgStyle {
     width: 95%;
   }
@@ -486,6 +497,7 @@ p {
   height: auto;
 }
 
+
 /* -------------------------------------------------------------------------- */
 /* CONTACT FORM */
 .contact-form {
@@ -537,27 +549,25 @@ p {
 
 .years-list {
   list-style: none;
-  padding: 1em 0;
+  margin: 2em .5em;
+  /* margin: 1em;
+  padding: 0em 1em; */
 }
 
-.years-list li {
-  margin-bottom: 20px;
-}
+
 .years-list h2,
 .show-item {
   border-bottom: var(--color-border);
 }
 
 .tours-list {
-  list-style: none;
   margin: 0;
   padding: 0;
 }
 
 .tours-list li {
-  padding: 20px;
-  border-radius: 5px;
-  margin-bottom: 10px;
+  padding: .1em 3em;
+  margin-bottom: 1em;
 }
 
 .show-item {
@@ -943,6 +953,10 @@ p {
   padding: 1em;
 }
 
+.openingDate {
+  font-size: small;
+}
+
 .show-card-preview a {
   text-decoration: none;
   color: inherit;
@@ -982,7 +996,7 @@ p {
   width: 100%;
   height: auto;
   object-fit: cover;
-  border-radius: 8px;
+  border-radius: 5px;
 }
 
 /* Two columns for medium screens */
@@ -1003,8 +1017,17 @@ p {
 /* SHOWS GALLERY */
 /* ------------------------------------------------- */
 
+.gallery {
+  margin-top: 1em;
+}
+
+.gallery-title {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
 .shows-gallery {
-  padding: 1em 5em;
+  padding: 0 2em;
   display: grid;
 }
 
@@ -1012,26 +1035,29 @@ p {
 /* SHOW CARD */
 /* ------------------------------------------------- */
 .show-card {
-  margin: 1em auto;
   text-align: center;
+  padding-bottom: 1em;
 }
 
 .show-title {
-  font-size: 2.5em;
+  font-size: x-large;
   font-weight: bold;
   margin-bottom: 0.1em;
+  text-align: center;
 }
 
 .show-year {
   font-size: 1em;
   margin-top: 0.1em;
+  text-align: center;
 }
 
 .show-image {
   width: 100%;
   height: auto;
   object-fit: cover;
-  margin: 2.4em auto;
+  margin: 1em auto;
+  border-radius: 5px;
 }
 
 .show-sinopsis {

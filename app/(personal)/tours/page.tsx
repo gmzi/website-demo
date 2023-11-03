@@ -39,8 +39,7 @@ export default async function ToursPage() {
                     height={0}
                     sizes="100vw"
                 />
-            </div>
-            {uniqueYears.map(year => (
+                {uniqueYears.map(year => (
                 <ul key={year} className="years-list">
                     <li>
                         <h2>{year}</h2>
@@ -49,7 +48,7 @@ export default async function ToursPage() {
                                 .filter(item => item.year === year)
                                 .map((item, index) => (
                                     <li key={index}>
-                                        <h3>{item.title_or_place}</h3>
+                                        <h4>{item.title_or_place}</h4>
                                         <p>{item.city}</p>
                                         {item.press_url.length > 0 &&
                                             <Link href={item.press_url} target="_blank">Artículo de prensa</Link>
@@ -62,6 +61,8 @@ export default async function ToursPage() {
 
                 </ul>
             ))}
+            </div>
+            
             <div className="imgContainer">
                 <ImageGrid images={grid_1} />
             </div>

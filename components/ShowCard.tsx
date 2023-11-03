@@ -13,8 +13,11 @@ const ShowCard: React.FC<ShowCardProps> = ({ show }) => {
 
     return (
         <div className="show-card">
-            <h1 className="show-title">{title}</h1>
-            <p className="show-year">{opening_date}</p>
+            <h1 className="show-title">
+                <span>{title}</span>
+                <br />
+                <span className="openingDate">{opening_date}</span>
+            </h1>
             <Image
                 className="show-image"
                 src={image_1_url}

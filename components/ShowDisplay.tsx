@@ -14,10 +14,12 @@ export function ShowDisplay({ show }: ShowCardProps) {
         <Link href={`/shows/${slug}`}>
             <div className="show-card-preview">
                 <div>
-                    <h1 className="">{title}</h1>
-                    <p className="">{opening_date}</p>
+                    <h2 className="">
+                        <span>{title}</span>
+                        <span>  </span>
+                        <span className="openingDate">({opening_date})</span>
+                    </h2>
                 </div>
-                {/* <img src="/poster.webp" alt="Show 1"> */}
                 <Image
                     className="show-card-image"
                     src={image_1_url}
