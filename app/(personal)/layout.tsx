@@ -13,8 +13,9 @@ export default async function IndexRoute({
 
   return (
     <>
-      {/* @ts-expect-error Server Component */}
-      <Navbar/>
+      <header>
+        <Navbar/>
+      </header>
       <main>
         {children}
         {/* <Analytics/> */}
