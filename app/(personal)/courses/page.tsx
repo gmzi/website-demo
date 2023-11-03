@@ -58,7 +58,7 @@ export default async function CoursesPage() {
         <section className='courses'>
             <h1>Cursos</h1>
             <div className="heroContainer">
-                <div className="">
+                <div className="hero-img-container">
                     <Image
                         className="defaultImgStyle"
                         src={image1Url}

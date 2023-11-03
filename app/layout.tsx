@@ -3,7 +3,7 @@ import { Metadata, ResolvingMetadata } from 'next'
 import { 
   Space_Mono,
   Inter, 
-  Lusitana 
+  Lusitana,
 } from 'next/font/google';
 import { getMetadata } from '@/lib/getMetadata'
 import { getLetterAfterSlash } from '@/lib/getLetterAfterSlash'

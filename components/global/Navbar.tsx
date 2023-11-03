@@ -70,7 +70,9 @@ export function Navbar(){
     <nav className="navbar">
         <div className="navbar-top">
             <div className="navbar-header">
+              <Link href="/">
                 John Doe
+              </Link>
             </div>
             <div className="social-icons">
               <Link href="https://www.instagram.com"  className="instagram">
