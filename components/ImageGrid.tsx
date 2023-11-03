@@ -36,10 +36,6 @@ const ImageGrid: React.FC<ImageGridProps> = ({ images }) => {
     <div className="image-grid">
       {images.map((src, index) => (
         <div key={index}>
-          {/* <img
-            alt={`Image ${index + 1}`}
-            src={src}
-          /> */}
           <Image
             src={src}
             width={0}

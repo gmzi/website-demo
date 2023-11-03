@@ -1154,6 +1154,7 @@ footer p {
   margin: 2rem 0;
   padding: 1rem 0.5rem;
 }
+
 @media (max-width: 576px) {
   .image-grid {
     grid-template-columns: 1fr;
@@ -1571,7 +1572,9 @@ textarea,
 
 @media (min-width: 508px) {
   .form-shows .show-credits label,
-  .form-shows .show-credits input {
+  .form-shows .show-credits input,
+  .form-bio label, 
+  .form-bio input {
     display: inline-block;
     text-align: left;
   }

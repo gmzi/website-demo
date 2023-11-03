@@ -7,6 +7,7 @@ import Image from 'next/image';
 import { Upload } from '../shared/icons';
 import { set } from 'zod';
 import { moveToTrash } from '@/app/cloudinary';
+import e from '@/app/(editor)/editor/editor.module.css'
 
 const DATA_API_KEY = process.env.NEXT_PUBLIC_DATA_API_KEY
 
@@ -131,7 +132,7 @@ export function ImageInputWithIDAndDefaultValue({ id, defaultValue, className }:
     }
 
     return (
-        <>
+        <div>
             <input type="hidden" name={`image_${id}_url`} value={defaultValue} />
 
             <label htmlFor={`new_image_${id}_file`}>Cambiar/agregar imagen:</label>
@@ -154,7 +155,7 @@ export function ImageInputWithIDAndDefaultValue({ id, defaultValue, className }:
                     />
                 </div>
             }
-        </>
+        </div>
     )
 }
 
@@ -253,7 +254,7 @@ export function ImageGridInput({ id, defaultValue, className }: { id: number, de
     }
 
     return (
-        <div className="">
+        <div className={e.gridUnit}>
             <input type="hidden" name={`image_${id}_url`} value={defaultValue} />
 
             <label htmlFor={`new_image_${id}_file`}>Cambiar/agregar imagen:</label>

@@ -4,9 +4,11 @@ import { getData } from "@/lib/getData";
 import TextEditor from "../forms/text-editor/TextEditor";
 import ImageUpload from "../forms/ImageUpload";
 import { EditBio } from "../forms/EditBio";
+import { getRemoteOrLocalData } from "@/lib/getRemoteOrLocalData";
 
 export default async function Bio() {
-    const data = await getData("bio")
+    // const data = await getData("bio")
+    const data = await getRemoteOrLocalData("bio")
     const documentName = "bio"
     const sectionName = "bio"
     const folderName="bio"

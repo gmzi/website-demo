@@ -9,6 +9,7 @@ import { ImagesEdit } from './ImageEdit'
 import { ImageGridInput, ImageInputWithIDAndDefaultValue } from './ImageInput'
 import { RichText, RichTextWithIdentificator } from './text-editor/RichText'
 import ImageGrid from '../ImageGrid'
+import e from '@/app/(editor)/editor/editor.module.css'
 
 
 interface BioProps {
@@ -64,20 +65,27 @@ export function EditBio({ contentHtml_1, contentHtml_2, imageUrls }: BioProps) {
         //     </p>
         // </form>
         <div className="editor-group">
-            <form action={formAction}>
-            <ImageInputWithIDAndDefaultValue id={1} defaultValue={heroImageUrl} className="bio-hero-image" />
-            <RichTextWithIdentificator contentHtml={contentHtml_1} identificator={1} />
-            <div className="image-grid">
-                {imagesGrid}
-            </div>
-            <RichTextWithIdentificator contentHtml={contentHtml_2} identificator={2} />
-            <EditButton />
-            <button onClick={handleCancel}>Cancelar</button>
-            <p aria-live="polite" className="sr-only" role="status">
-                {state?.message}
-            </p>
-        </form>
+            <form action={formAction} className="form-bio">
+                <div className="imgContainer">
+                    <ImageInputWithIDAndDefaultValue id={1} defaultValue={heroImageUrl} className="bio-hero-image" />
+                </div>
+                <div>
+                    <div className="paragraphContainer">
+                        <RichTextWithIdentificator contentHtml={contentHtml_1} identificator={1} />
+                    </div>
+                    <div className={e.imageGrid}>
+                        {imagesGrid}
+                    </div>
+                    <div className="paragraphContainer">
+                        <RichTextWithIdentificator contentHtml={contentHtml_2} identificator={2} />
+                    </div>
+                </div>
+                <EditButton />
+                <button onClick={handleCancel}>Cancelar</button>
+                <p aria-live="polite" className="sr-only" role="status">
+                    {state?.message}
+                </p>
+            </form>
         </div>
-        
     )
 }

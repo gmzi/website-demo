@@ -30,6 +30,7 @@ import { useState } from 'react'
 import Link from 'next/link'
 import { Delete } from './Delete'
 import { set } from 'zod'
+import e from '@/app/(editor)/editor/editor.module.css'
 
 
 interface ImageProp {
@@ -182,7 +183,7 @@ export function EditImageGrid_A({ images }: EditImageGridProps) {
     return (
         <div className="editor-group">
             <form action={formAction}>
-                <div className="image-grid">
+                <div className={e.imageGrid}>
                     {imagesGrid}
                 </div>
                 <EditButton />
@@ -208,7 +209,7 @@ export function EditImageGrid_B({ images }: EditImageGridProps) {
     return (
         <div className="editor-group">
             <form action={formAction}>
-                <div className="image-grid">
+                <div className={e.imageGrid}>
                     {imagesGrid}
                 </div>
                 <EditButton />
