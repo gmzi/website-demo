@@ -8,18 +8,17 @@ import { Footer } from "@/components/global/Footer";
 
 const BASE_URL = process.env.BASE_URL;
 
-
+const isProd = process.env.NODE_ENV === 'production';
 
 interface EditorProps {
   children?: React.ReactNode
 }
 
 export default async function EditorLayout({ children }: EditorProps) {
-
-  // const { orgRole } = auth();
-  const orgRole = 'admin';
-
-
+  
+  const { orgRole } = auth();
+  // const orgRole = 'admin'
+    
   if (orgRole !== 'admin') {
     return (
       <ClerkProvider allowedRedirectOrigins={[`${BASE_URL}/editor`]}>
