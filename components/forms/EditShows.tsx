@@ -86,6 +86,20 @@ export function ShowsList({ shows }: ShowsListProps) {
 
     const showsList =
         <ul className="shows-list">
+            <li>
+                {openCreator ? (<CreateShow handleCreateCancel={handleCreateCancel} />) : (
+                    <div className="card-container">
+                        <div className="card">
+                            <div className="card-head">
+                                <h5>Agregar nuevo show</h5>
+                            </div>
+                            <div className="card-image">
+                                <button onClick={handleCreate}>crear nuevo show</button>
+                            </div>
+                        </div>
+                    </div>
+                )}
+            </li>
             {shows.map((show: Show, i: number) => (
                 <li key={`show-item-${i}`}>
                     <div key={`${show.title}-${i}`} className="card-container">
@@ -110,19 +124,11 @@ export function ShowsList({ shows }: ShowsListProps) {
                     </div>
                 </li>
             ))}
-            <li>
-                {openCreator ? (<CreateShow handleCreateCancel={handleCreateCancel} />) : (
-                    <blockquote className="card-container">
-                        <h5>Agregar nuevo show</h5>
-                        <button onClick={handleCreate}>crear nuevo show</button>
-                    </blockquote>
-                )}
-            </li>
         </ul>
 
     return (
         <div className='showsList'>
-        {/* <div className='editor-group'> */}
+            {/* <div className='editor-group'> */}
             {openEditor !== false ? <Edit articles={shows} index={openEditor} handleCancel={handleCancel} /> : showsList}
         </div>
     )

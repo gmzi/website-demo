@@ -108,6 +108,14 @@ export function PressArticles({ articles }: PressArticlesProps) {
 
     const artciclesList =
         <ul className="tours-list">
+            <li>
+                {openCreator ? (<CreatePressArticle handleCreateCancel={handleCreateCancel} />) : (
+                    <blockquote className="review">
+                        <h5>Agregar nueva crítica</h5>
+                        <button onClick={handleCreate}>agregar un nueva crítica</button>
+                    </blockquote>
+                )}
+            </li>
             {articles.map((article: WrittenPressArticle, i: number) => (
                 <li key={`press-item-${i}`} className="">
                     <blockquote className="review">
@@ -124,14 +132,6 @@ export function PressArticles({ articles }: PressArticlesProps) {
                     </blockquote>
                 </li>
             ))}
-            <li>
-                {openCreator ? (<CreatePressArticle handleCreateCancel={handleCreateCancel} />) : (
-                    <blockquote className="review">
-                        <h5>Agregar nueva crítica</h5>
-                        <button onClick={handleCreate}>agregar un nueva crítica</button>
-                    </blockquote>
-                )}
-            </li>
         </ul>
 
 
@@ -253,6 +253,16 @@ export function PressVideos({ pressVideos }: PressVideosProps) {
 
     const videosList =
         <ul className="video-embeds">
+            <li className="press-video-card editor-group">
+                <div className="">
+                    {openCreator ? (<CreatePressVideo handleCreateCancel={handleCreateCancel} />) : (
+                        <div className="add-video-card">
+                            <h5>Agregar nuevo video</h5>
+                            <button onClick={handleCreate}>agregar un nuevo video</button>
+                        </div>
+                    )}
+                </div>
+            </li>
             {pressVideos.map((pressVideo: VideoPressArticle, i: number) => (
                 <li className="press-video-card editor-group" key={`${pressVideo.video_url}-${i}`}>
                     <div className="video-container">
@@ -271,16 +281,6 @@ export function PressVideos({ pressVideos }: PressVideosProps) {
                     </div>
                 </li>
             ))}
-            <li className="press-video-card editor-group">
-                <div className="">
-                    {openCreator ? (<CreatePressVideo handleCreateCancel={handleCreateCancel} />) : (
-                        <div className="add-video-card">
-                            <h5>Agregar nuevo video</h5>
-                            <button onClick={handleCreate}>agregar un nuevo video</button>
-                        </div>
-                    )}
-                </div>
-            </li>
         </ul>
 
 

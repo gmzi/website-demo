@@ -91,9 +91,15 @@ export function ToursList({ tours }: { tours: Tour[] }) {
 
     const toursList =
         <div className="">
-            {uniqueYears.map(year => (
-                <ul key={year} className="years-list">
-                    <li>
+            <ul className="years-list">
+            {openCreator ? <CreateTour handleCreateCancel={handleCreateCancel} /> : (
+                <li className="editor-group">
+                    <h2>Agregar nueva gira</h2>
+                    <button onClick={handleCreate}>Agregar una nueva gira</button>
+                </li>
+            )}
+                {uniqueYears.map((year, i) => (
+                    <li key={`${year}-${i}`}>
                         <h2>{year}</h2>
                         <ul className="tours-list">
                             {tours
@@ -127,10 +133,8 @@ export function ToursList({ tours }: { tours: Tour[] }) {
                         </ul>
                     </li>
 
-                </ul>
-            ))
-            }
-            {openCreator ? <CreateTour handleCreateCancel={handleCreateCancel} /> : <button onClick={handleCreate}>Agregar una nueva gira</button>}
+                ))}
+            </ul>
         </div>
 
     return (

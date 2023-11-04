@@ -91,6 +91,7 @@
   --navbar-background-color: rgba(255, 255, 255, 0.734);
   /* --------------------------------------------------- */
   --editor-main-background:linear-gradient(to bottom, #343449, #3b4a5a 50%, #343449);
+  --editor-link: #b4c0d0;
 
 }
 
@@ -185,6 +186,7 @@
     --navbar-background-color: rgba(48, 48, 50, 0.863);
     /* ------------------------------------------- */
     --editor-main-background: linear-gradient(to bottom, #1f1f2b, #2a2938 50%, #1f1f2b);
+    --editor-link: #3b4b5afa;
   }
 }
 
@@ -1627,9 +1629,10 @@ svg.lucide.lucide-file-up {
   grid-template-rows: 1fr auto;
   gap: 10px;
   padding: 10px;
-  margin: 10px 0;
+  margin: 1em 0;
   border-radius: 5px;
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  border: var(--color-border);
 }
 
 .card {

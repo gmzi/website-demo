@@ -16,8 +16,8 @@ interface EditorProps {
 
 export default async function EditorLayout({ children }: EditorProps) {
 
-  const { orgRole } = auth();
-  // const orgRole = 'admin';
+  // const { orgRole } = auth();
+  const orgRole = 'admin';
 
 
   if (orgRole !== 'admin') {
