@@ -4,7 +4,10 @@
             "$oid": "647104b69e481ba6474e78bb"
         },
         "name": "about",
-        "content_html": "<p><strong>Soy dramaturgo, director, docente y actor. Estudié en la Escuela Nacional de Arte Dramático. </strong>En <strong>Dramaturgia</strong> me formé con <strong>Javier Daulte</strong> y con <strong>Ricardo Monti</strong>, dos referentes fundamentales en mi vida.</p><h3></h3><p><strong>Me dedico a contar historias</strong> y ese viaje es mi preferido. La cosa empieza con una imagen interna y finaliza con la concreción de la misma en proyecto teatral o fílmico. <strong>Me apasiona esta profesión en todas sus formas</strong>, ya sea en el desarrollo de los proyectos propios, como así también acompañando a otras personas en sus búsquedas creativas. De ahí deviene esta otra forma de pasión que es la docencia.</p>",
+        "content_html": {
+            "id": "12345",
+            "content": "<p><strong>Soy dramaturgo, director, docente y actor. Estudié en la Escuela Nacional de Arte Dramático. </strong>En <strong>Dramaturgia</strong> me formé con <strong>Javier Daulte</strong> y con <strong>Ricardo Monti</strong>, dos referentes fundamentales en mi vida.</p><h3></h3><p><strong>Me dedico a contar historias</strong> y ese viaje es mi preferido. La cosa empieza con una imagen interna y finaliza con la concreción de la misma en proyecto teatral o fílmico. <strong>Me apasiona esta profesión en todas sus formas</strong>, ya sea en el desarrollo de los proyectos propios, como así también acompañando a otras personas en sus búsquedas creativas. De ahí deviene esta otra forma de pasión que es la docencia.</p>"
+        },
         "image_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1697483639/website-fer/website-fer/about/vejttvqpe7bldahvhkb4.webp"
     },
     "courses": {

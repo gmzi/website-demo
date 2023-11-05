@@ -15,7 +15,10 @@ export default async function AboutPage() {
     const data = await getRemoteOrLocalData("about");
     // const data = await getData("about");
 
-    const text = parse(data?.content_html) || '<p>/</p>';
+    const text = data?.content_html.content || '<p>/</p>';
+    
+    const parsedText = parse(text);
+
     const imageUrl = data?.image_url || '';
 
     const testing = false;
@@ -37,25 +40,6 @@ export default async function AboutPage() {
     // }
 
     return (
-        // <section className='about'>
-        //     <h1>John Done</h1>
-        //     <h1>John Done</h1>
-        //     <div className="heroContainer">
-        //         <div className=''>
-        //             <Image
-        //                 className="defaultImgStyle"
-        //                 src={imageUrl}
-        //                 width={0}
-        //                 height={0}
-        //                 sizes="100vw"
-        //                 alt="Picture of the author"
-        //             />
-        //         </div>
-        //         <div className="paragraphContainer">
-        //             {text}
-        //         </div>
-        //     </div>
-        // </section>
         <section className='about'>
             <h1>John Done</h1>
             <div className="heroContainer">
@@ -68,7 +52,7 @@ export default async function AboutPage() {
                     alt="Picture of the author"
                 />
                 <div className="paragraphContainer">
-                    {text}
+                    {parsedText}
                 </div>
             </div>
         </section>

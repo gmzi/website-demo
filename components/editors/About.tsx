@@ -12,7 +12,9 @@ export default async function About(){
     const folderName = "about";
 
     const imageUrl = data?.image_url || '';
-    const contentHtml = data?.content_html || '';
+    // const contentHtml = data?.content_html.content || '';
+    const contentHtml = data?.content_html.content || '<p>/</p>';
+    
 
     return (
         <section>

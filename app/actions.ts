@@ -899,9 +899,12 @@ export async function editAbout(prevState: any, formData: FormData) {
       })
     }
 
+    const ID = createAlphaNumericString(5);
+
     const data = {
       document: "about",
-      content_html: inputData.contentHtml,
+      // content_html: `${ID}D--${inputData.contentHtml}`,
+      content_html: {id: ID, content: inputData.contentHtml},
       image_url: inputData.image_url
     }
 
