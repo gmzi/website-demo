@@ -915,6 +915,7 @@ export async function editAbout(prevState: any, formData: FormData) {
       body: JSON.stringify(data)
     });
 
+    revalidatePath('/(personal)/', 'page');
     revalidatePath('/(editor)/editor', 'page');
 
     return { message: `About has been updated!!!` }
