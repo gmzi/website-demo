@@ -1720,11 +1720,37 @@ svg.lucide.lucide-file-up {
   margin: 1em;
 }
 
-.sr-only {
+/* .sr-only {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   background-color: var(--color-background-box);
-  z-index: 10;
+  z-index: 1000;
+} */
+
+.sr-only {
+  position: relative;
+  margin: 0 auto;
+  text-align: center;
+  width: 80%; 
+  height: auto;
+  clip: auto;
+  overflow: visible;
+  text-transform: none;
+  font-weight: bold;
+  color: #28a745;
+  background-color: #dff0d8; /* Optional: Use a light green background for the message */
+  border-color: #d4edda; /* Optional: Set a border color that complements the background */
+  padding: .75rem 1.25rem; /* Add some padding to make the message stand out */
+  border: 1px solid transparent; /* Define a border; make it transparent if you don't want it to stand out too much */
+  border-radius: .25rem; /* Optional: Round the corners */
+  display: none; 
 }
+
+/* You may want to add a specific class or modifier when the message should be visible */
+.sr-only.visible {
+  visibility: visible; /* Make the element visible */
+  display: block;
+}
+

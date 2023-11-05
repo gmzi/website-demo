@@ -17,10 +17,10 @@ export default async function About(){
     
 
     return (
-        <section>
+        <>
             <h1>Editar - Inicio</h1>
             <EditAbout contentHtml={contentHtml} imageUrl={imageUrl}/>
-        </section>
+        </>
     )
 }
 
