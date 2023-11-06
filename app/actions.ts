@@ -389,6 +389,12 @@ export async function deleteItem(prevState: any, formData: FormData) {
       body: JSON.stringify(data)
     });
 
+    revalidatePath(`/(personal)/${inputData.document}`, 'page')
+
+    if (inputData.document === 'shows'){
+      revalidatePath('/(personal)/shows/[slug]', 'page')
+    }
+    
     revalidatePath('/(editor)/editor', 'page');
 
     return { message: `Item deleted` }
@@ -579,8 +585,8 @@ export async function createShow(prevState: any, formData: FormData) {
       body: JSON.stringify(data)
     });
 
-    revalidatePath(`/(personal)/shows/${inputData.slug}`, 'page');
-
+    revalidatePath(`/(personal)/shows`, 'page');
+    revalidatePath(`/(personal)/shows/[slug]`, 'page');
     revalidatePath('/(editor)/editor', 'page');
 
     return { message: `show added!!!` }
