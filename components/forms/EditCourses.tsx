@@ -97,6 +97,10 @@ const initialState = {
 function SubmitButton() {
     const { pending } = useFormStatus()
 
+    if (pending) {
+        return <button type="submit" aria-disabled>Saving...</button>
+    }
+
     return (
         <button type="submit" aria-disabled={pending}>
             Create
@@ -106,6 +110,10 @@ function SubmitButton() {
 
 function EditButton() {
     const { pending } = useFormStatus()
+
+    if (pending) {
+        return <button type="submit" aria-disabled>Saving...</button>
+    }
 
     return (
         <button type="submit" aria-disabled={pending}>
@@ -123,7 +131,11 @@ export function HeroImage({ imageUrl }: ImageProp) {
                 {/* <ImageEdit imageUrl={imageUrl} /> */}
                 <ImageInputWithIDAndDefaultValue id={1} defaultValue={imageUrl} className="" />
                 <EditButton />
-                <p aria-live="polite" className="sr-only" role="status">
+                <p
+                    aria-live="polite"
+                    className={`sr-only ${state?.message ? 'visible' : ''}`}
+                    role="status"
+                >
                     {state?.message}
                 </p>
             </form>
@@ -141,7 +153,11 @@ export function HeroText({ contentHtml }: TextProp) {
             <form action={formAction}>
                 <RichText contentHtml={contentHtml} />
                 <EditButton />
-                <p aria-live="polite" className="sr-only" role="status">
+                <p
+                    aria-live="polite"
+                    className={`sr-only ${state?.message ? 'visible' : ''}`}
+                    role="status"
+                >
                     {state?.message}
                 </p>
             </form>
@@ -160,7 +176,11 @@ export function EditFAQ({ contentHtml }: { contentHtml: string }) {
                 <div className="">
                     <RichText contentHtml={contentHtml} />
                     <EditButton />
-                    <p aria-live="polite" className="sr-only" role="status">
+                    <p
+                        aria-live="polite"
+                        className={`sr-only ${state?.message ? 'visible' : ''}`}
+                        role="status"
+                    >
                         {state?.message}
                     </p>
                 </div>
@@ -187,7 +207,11 @@ export function EditImageGrid_A({ images }: EditImageGridProps) {
                     {imagesGrid}
                 </div>
                 <EditButton />
-                <p aria-live="polite" className="sr-only" role="status">
+                <p
+                    aria-live="polite"
+                    className={`sr-only ${state?.message ? 'visible' : ''}`}
+                    role="status"
+                >
                     {state?.message}
                 </p>
             </form>
@@ -213,7 +237,11 @@ export function EditImageGrid_B({ images }: EditImageGridProps) {
                     {imagesGrid}
                 </div>
                 <EditButton />
-                <p aria-live="polite" className="sr-only" role="status">
+                <p
+                    aria-live="polite"
+                    className={`sr-only ${state?.message ? 'visible' : ''}`}
+                    role="status"
+                >
                     {state?.message}
                 </p>
             </form>
@@ -301,7 +329,11 @@ export function EditAvailableCourse({ entry, courses, index, handleCancel }: Cou
                 <RichText contentHtml={course.name} />
                 <EditButton />
                 <button onClick={handleCancel}>Cancelar</button>
-                <p aria-live="polite" className="sr-only" role="status">
+                <p
+                    aria-live="polite"
+                    className={`sr-only ${state?.message ? 'visible' : ''}`}
+                    role="status"
+                >
                     {state?.message}
                 </p>
             </form>
@@ -321,7 +353,11 @@ export function CreateCourse({ entry, handleCreateCancel }: { entry: string, han
                 <RichText contentHtml="" />
                 <SubmitButton />
                 <button onClick={handleCreateCancel}>Cancelar</button>
-                <p aria-live="polite" className="sr-only" role="status">
+                <p
+                    aria-live="polite"
+                    className={`sr-only ${state?.message ? 'visible' : ''}`}
+                    role="status"
+                >
                     {state?.message}
                 </p>
             </form>
@@ -345,7 +381,11 @@ export function EditCourseReview({ reviews, index, handleCancel }: ReviewProps) 
                 <input type="text" id="reviewAuthor" name="reviewAuthor" defaultValue={review.author} />
                 <EditButton />
                 <button onClick={handleCancel}>Cancelar</button>
-                <p aria-live="polite" className="sr-only" role="status">
+                <p
+                    aria-live="polite"
+                    className={`sr-only ${state?.message ? 'visible' : ''}`}
+                    role="status"
+                >
                     {state?.message}
                 </p>
             </form>
@@ -415,7 +455,11 @@ export function CreateCourseReview({ handleCreateCancel }: { handleCreateCancel:
                 <input type="text" id="reviewAuthor" name="reviewAuthor" />
                 <SubmitButton />
                 <button onClick={handleCreateCancel}>Cancelar</button>
-                <p aria-live="polite" className="sr-only" role="status">
+                <p
+                    aria-live="polite"
+                    className={`sr-only ${state?.message ? 'visible' : ''}`}
+                    role="status"
+                >
                     {state?.message}
                 </p>
             </form>
@@ -486,7 +530,11 @@ export function CreateTestimonial({ handleCreateCancel }: { handleCreateCancel: 
                 {/* <EditButton /> */}
                 <SubmitButton />
                 <button onClick={handleCreateCancel}>Cancelar</button>
-                <p aria-live="polite" className="sr-only" role="status">
+                <p
+                    aria-live="polite"
+                    className={`sr-only ${state?.message ? 'visible' : ''}`}
+                    role="status"
+                >
                     {state?.message}
                 </p>
             </div>
@@ -511,7 +559,11 @@ export function EditTestimonial({ testimonials, index, handleCancel }: Testimoni
             </div>
             <EditButton />
             <button onClick={handleCancel}>Cancelar</button>
-            <p aria-live="polite" className="sr-only" role="status">
+            <p
+                aria-live="polite"
+                className={`sr-only ${state?.message ? 'visible' : ''}`}
+                role="status"
+            >
                 {state?.message}
             </p>
         </form>
@@ -531,7 +583,11 @@ export function EditLogistics({ title, contentHtml, imageUrl }: LogisticsProps) 
                 <RichText contentHtml={contentHtml} />
             </div>
             <EditButton />
-            <p aria-live="polite" className="sr-only" role="status">
+            <p
+                aria-live="polite"
+                className={`sr-only ${state?.message ? 'visible' : ''}`}
+                role="status"
+            >
                 {state?.message}
             </p>
         </form>

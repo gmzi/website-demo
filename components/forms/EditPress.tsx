@@ -48,6 +48,10 @@ const initialState = {
 function SubmitButton() {
     const { pending } = useFormStatus()
 
+    if (pending) {
+        return <button type="submit" aria-disabled>Saving...</button>
+    }
+
     return (
         <button type="submit" aria-disabled={pending}>
             Create
@@ -57,6 +61,10 @@ function SubmitButton() {
 
 function EditButton() {
     const { pending } = useFormStatus()
+
+    if (pending) {
+        return <button type="submit" aria-disabled>Saving...</button>
+    }
 
     return (
         <button type="submit" aria-disabled={pending}>
@@ -75,7 +83,11 @@ export function HeroImage({ imageUrl }: ImageProp) {
                 {/* <ImageEdit imageUrl={imageUrl} /> */}
                 <ImageInputWithIDAndDefaultValue id={1} defaultValue={imageUrl} className="" />
                 <EditButton />
-                <p aria-live="polite" className="sr-only" role="status">
+                <p
+                    aria-live="polite"
+                    className={`sr-only ${state?.message ? 'visible' : ''}`}
+                    role="status"
+                >
                     {state?.message}
                 </p>
             </form>
@@ -174,7 +186,11 @@ export function Edit({ articles, index, handleCancel }: EditProps) {
                         <EditButton />
                         <button onClick={handleCancel}>Cancelar</button>
                     </div>
-                    <p aria-live="polite" className="sr-only" role="status">
+                    <p
+                        aria-live="polite"
+                        className={`sr-only ${state?.message ? 'visible' : ''}`}
+                        role="status"
+                    >
                         {state?.message}
                     </p>
                 </div>
@@ -219,7 +235,11 @@ export function CreatePressArticle({ handleCreateCancel }: { handleCreateCancel:
                         <SubmitButton />
                         <button onClick={handleCreateCancel}>Cancelar</button>
                     </div>
-                    <p aria-live="polite" className="sr-only" role="status">
+                    <p
+                        aria-live="polite"
+                        className={`sr-only ${state?.message ? 'visible' : ''}`}
+                        role="status"
+                    >
                         {state?.message}
                     </p>
                 </div>
@@ -319,7 +339,11 @@ export function EditPressVideo({ pressVideos, index, handleCancel }: EditPressVi
                     <EditButton />
                     <button onClick={handleCancel}>Cancelar</button>
                 </div>
-                <p aria-live="polite" className="sr-only" role="status">
+                <p
+                    aria-live="polite"
+                    className={`sr-only ${state?.message ? 'visible' : ''}`}
+                    role="status"
+                >
                     {state?.message}
                 </p>
             </div>
@@ -363,7 +387,11 @@ export function CreatePressVideo({ handleCreateCancel }: { handleCreateCancel: (
                     <button onClick={handleCreateCancel}>Cancelar</button>
                 </div>
 
-                <p aria-live="polite" className="sr-only" role="status">
+                <p
+                    aria-live="polite"
+                    className={`sr-only ${state?.message ? 'visible' : ''}`}
+                    role="status"
+                >
                     {state?.message}
                 </p>
             </div>

@@ -57,7 +57,6 @@ export function EditAbout({ contentHtml, imageUrl }: AboutProps) {
                     >
                         {state?.message}
                     </p>
-
                 </form>
             </div>
         </>

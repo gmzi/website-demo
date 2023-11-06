@@ -28,6 +28,10 @@ const initialState = {
 function SubmitButton() {
     const { pending } = useFormStatus()
 
+    if (pending) {
+        return <button type="submit" aria-disabled>Saving...</button>
+    }
+
     return (
         <button type="submit" aria-disabled={pending}>
             Create tour
@@ -37,6 +41,10 @@ function SubmitButton() {
 
 function EditButton() {
     const { pending } = useFormStatus()
+
+    if (pending) {
+        return <button type="submit" aria-disabled>Saving...</button>
+    }
 
     return (
         <button type="submit" aria-disabled={pending}>
@@ -55,7 +63,11 @@ export function HeroImage({ imageUrl }: ImageProp) {
                 {/* <ImageEdit imageUrl={imageUrl} /> */}
                 <ImageInputWithIDAndDefaultValue id={1} defaultValue={imageUrl} className="" />
                 <EditButton />
-                <p aria-live="polite" className="sr-only" role="status">
+                <p
+                    aria-live="polite"
+                    className={`sr-only ${state?.message ? 'visible' : ''}`}
+                    role="status"
+                >
                     {state?.message}
                 </p>
             </form>
@@ -92,12 +104,12 @@ export function ToursList({ tours }: { tours: Tour[] }) {
     const toursList =
         <div className="">
             <ul className="years-list">
-            {openCreator ? <CreateTour handleCreateCancel={handleCreateCancel} /> : (
-                <li className="editor-group">
-                    <h2>Agregar nueva gira</h2>
-                    <button onClick={handleCreate}>Agregar una nueva gira</button>
-                </li>
-            )}
+                {openCreator ? <CreateTour handleCreateCancel={handleCreateCancel} /> : (
+                    <li className="editor-group">
+                        <h2>Agregar nueva gira</h2>
+                        <button onClick={handleCreate}>Agregar una nueva gira</button>
+                    </li>
+                )}
                 {uniqueYears.map((year, i) => (
                     <li key={`${year}-${i}`}>
                         <h2>{year}</h2>
@@ -178,7 +190,11 @@ export function EditTour({ tours, id, handleCancel }: { tours: Tour[], id: strin
                 <ImageInputWithIDAndDefaultValue id={1} defaultValue={tour.image_1_url} className="preview-default" />
                 <EditButton />
                 <button onClick={handleCancel}>Cancelar</button>
-                <p aria-live="polite" className="sr-only" role="status">
+                <p
+                    aria-live="polite"
+                    className={`sr-only ${state?.message ? 'visible' : ''}`}
+                    role="status"
+                >
                     {state?.message}
                 </p>
             </div>
@@ -226,7 +242,11 @@ export function CreateTour({ handleCreateCancel }: { handleCreateCancel: () => v
                 <ImageInputWithID id={1} />
                 <SubmitButton />
                 <button onClick={handleCreateCancel}>Cancelar</button>
-                <p aria-live="polite" className="sr-only" role="status">
+                <p
+                    aria-live="polite"
+                    className={`sr-only ${state?.message ? 'visible' : ''}`}
+                    role="status"
+                >
                     {state?.message}
                 </p>
             </div>

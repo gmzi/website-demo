@@ -637,13 +637,13 @@ export async function editShow(prevState: any, formData: FormData) {
     const inputDataWithNewImages = await handleInputDataWithNewImageFiles(inputData, "shows");
 
     // mutate inputData to delete images removed by client:
-    const inputDataDeletedImages = await deleteImagesAndUpdateObject(parsedImagesToDelete, inputDataWithNewImages)
+    const updatedData = await deleteImagesAndUpdateObject(parsedImagesToDelete, inputDataWithNewImages)
 
     const data = {
       document: "shows",
       entry: "content",
       itemLocator: "content.id",
-      newContent: inputDataDeletedImages,
+      newContent: updatedData,
     }
 
     const updated = await fetch(`${BASE_URL}/server/edit/item`, {
@@ -656,8 +656,8 @@ export async function editShow(prevState: any, formData: FormData) {
       body: JSON.stringify(data)
     });
 
-    revalidatePath(`/(personal)/shows/${inputData.slug}`, 'page');
-
+    revalidatePath(`/(personal)/shows`, 'page');
+    revalidatePath(`/(personal)/shows/[slug]`, 'page');
     revalidatePath('/(editor)/editor', 'page');
 
     return { message: `show updated!!!` }

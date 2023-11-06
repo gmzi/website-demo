@@ -28,6 +28,10 @@ const initialState = {
 function EditButton() {
     const { pending } = useFormStatus()
 
+    if (pending) {
+        return <button type="submit" aria-disabled>Saving...</button>
+    }
+
     return (
         <button type="submit" aria-disabled={pending}>
             Save changes
@@ -82,8 +86,12 @@ export function EditBio({ contentHtml_1, contentHtml_2, imageUrls }: BioProps) {
                 </div>
                 <EditButton />
                 <button onClick={handleCancel}>Cancelar</button>
-                <p aria-live="polite" className="sr-only" role="status">
-                    {state?.message}
+                <p
+                        aria-live="polite"
+                        className={`sr-only ${state?.message ? 'visible' : ''}`}
+                        role="status"
+                    >
+                        {state?.message}
                 </p>
             </form>
         </div>
