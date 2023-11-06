@@ -13,8 +13,8 @@ export default async function Bio() {
     const sectionName = "bio"
     const folderName="bio"
 
-    const html_1 = data?.content_html_1;
-    const html_2 = data?.content_html_2;
+    const html_1 = data?.content_html_1.content || "";
+    const html_2 = data?.content_html_2.content || "";
 
     const image1Url = data?.image_1_url || '';
     const image2Url = data?.image_2_url || '';

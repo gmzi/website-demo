@@ -25,8 +25,8 @@ export default async function BioPage() {
     const image6Url = data?.image_6_url || '';
     const image7Url = data?.image_7_url || '';
 
-    const html_1 = data?.content_html_1 || '';
-    const html_2 = data?.content_html_2 || '';
+    const html_1 = data?.content_html_1.content || '';
+    const html_2 = data?.content_html_2.content || '';
 
     const text_1 = parse(html_1)
     const text_2 = parse(html_2)

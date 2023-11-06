@@ -983,10 +983,12 @@ export async function editBio(prevState: any, formData: FormData) {
     // mutate inputData to load new images:
     const updatedInputData = await handleInputDataWithNewImageFiles(inputData, "bio");
 
+    const ID = createAlphaNumericString(5);
+
     const data = {
       document: "bio",
-      content_html_1: updatedInputData.contentHtml_1,
-      content_html_2: updatedInputData.contentHtml_2,
+      content_html_1: {id: ID, content: updatedInputData.contentHtml_1},
+      content_html_2: {id: ID, content: updatedInputData.contentHtml_2},
       image_1_url: updatedInputData.image_1_url,
       image_2_url: updatedInputData.image_2_url,
       image_3_url: updatedInputData.image_3_url,
