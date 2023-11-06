@@ -1,12 +1,17 @@
 # What is this? 
-This is Next.js 13 personal website that regenerates on-demand. The website includes a custom CMS that includes Rich text editor and Image uploads.
+This is Next.js 13 App dir website that regenerates on-demand. Content is managed by a built in CMS. 
 
-## Stack
-- Next.js 13 with App directory and server functions as the framework.
-- Clerk manages authentication. 
-- Cloudinary hosts images. 
-- MongoDB is the database. 
-- Zod for form validation. 
+Sta
+- Authentication using [clerk]()
+- Rich text editor with [tiptap-forms]()
+
+## Stack and tools:
+- Next.js 13 (App directory) and server functions.
+- [clerk]() manages authentication. 
+- [tiptap-form]() for a rich text editor.
+- [Cloudinary]() hosts images. 
+- [MongoDB]() is the database. 
+- [Zod] for form validation. 
 
 ## Workflow
 Website's author logs in -> chooses a section to edit -> performs CRUD operations inherent to the section. On form submission, a server action is triggered and performs these actions: 
@@ -23,5 +28,14 @@ Website's author logs in -> chooses a section to edit -> performs CRUD operation
 2. Set up yoour Cloudinary account. 
 3. Clone repo. 
 4. Create `.env.local` file, copy variables from `.env.example`.
-4. `npm run dev` for local dev server
+4. run `npm install` for dependencies 
+5. `npm run dev` to run local dev server.
+7. go to 'localhost:3000' to see the first page with local data pulled from 'document.json'. Deploy your own data on database for prod environment.
+
+## Contribute
+Please clone, fork, contribute in any way you find interesting. I've listed Issues I haven't had the time to fix yet, please feel free to tackle any of them or create new ones. 
+
+
+
+
 
