@@ -6,7 +6,7 @@ Sta
 - Rich text editor with [tiptap-forms]()
 
 ## Stack and tools:
-- Next.js 13 (App directory) and server functions.
+- [Next.js]() 13 with App directory and server functions.
 - [clerk]() manages authentication. 
 - [tiptap-form]() for a rich text editor.
 - [Cloudinary]() hosts images. 
@@ -31,6 +31,8 @@ Website's author logs in -> chooses a section to edit -> performs CRUD operation
 4. run `npm install` for dependencies 
 5. `npm run dev` to run local dev server.
 7. go to 'localhost:3000' to see the first page with local data pulled from 'document.json'. Deploy your own data on database for prod environment.
+
+I've found awesome guidance [here](next.js/leran link);
 
 ## Contribute
 Please clone, fork, contribute in any way you find interesting. I've listed Issues I haven't had the time to fix yet, please feel free to tackle any of them or create new ones. 
