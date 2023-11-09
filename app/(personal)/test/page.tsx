@@ -1,18 +1,18 @@
 import type { Metadata } from "next"
 import Image from 'next/image'
-import { getData } from "@/lib/getData"
+import { getData, getDataWithTag } from "@/lib/getData"
 import parse from 'html-react-parser'
 import { getRemoteOrLocalData } from "@/lib/getRemoteOrLocalData"
 
 export const metadata: Metadata = {
-    title: 'Home',
-    description: 'Sitio oficial de Fernando Ferrer, dramaturgo, director, docente, actor',
+    title: 'Test',
+    description: 'test',
 }
 
-export default async function AboutPage() {
+export default async function TestPage() {
 
     // if prod env, get data from DB, else get it from /document.json
-    const data = await getRemoteOrLocalData("about");
+    const data = await getRemoteOrLocalData("test");
     // const data = await getData("about");
 
     const text = data?.content_html.content || '<p>/</p>';

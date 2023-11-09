@@ -67,8 +67,8 @@ const ShowCard: React.FC<ShowCardProps> = ({ show }) => {
                 <ul>
                     {creative.map((member, index) => (
                         <li key={`creative-team-${index}`}>
+                            {member.role && member.role.length > 0 ? <span className="team-role">{member.role}: </span> : null}
                             <span className="team-name">{member.name}</span>
-                            {member.role && member.role.length > 0 ? <span className="team-role">: {member.role}</span> : null}
                         </li>
                     ))}
                 </ul>

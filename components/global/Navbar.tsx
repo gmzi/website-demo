@@ -13,7 +13,9 @@ import { TwitterIcon } from '../shared/icons';
 import { YoutubeIcon } from '../shared/icons';
 import { FacebookIcon } from '../shared/icons';
 import { SignIn, UserButton, SignOutButton } from "@clerk/nextjs";
-import e from '../../app/(editor)/editor/editor.module.css'
+import e from '@/app/(editor)/editor/editor.module.css'
+
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
 function Logo() {
   return (
@@ -27,44 +29,6 @@ function Logo() {
   )
 }
 
-// export async function Navbar() {
-
-//   let pathname = usePathname() || '/';
-
-//   return (
-//     <div className="navbar">
-//       <div>
-//         <Logo />
-//       </div>
-//       <ul className='navigationLinks'>
-//         {Object.entries(navItems).map(([path, { name }]) => {
-//           const isActive = path === pathname;
-//           if (path !== '/') {
-//             return (
-//               <Link
-//                 key={path}
-//                 href={path}
-//               >
-//                 {isActive ? (
-//                   <li className={'active'}>{name}</li>
-//                 ) : (
-//                   <li>{name}</li>
-//                 )}
-//                 {/* <li>{name}</li> */}
-//               </Link>
-//             )
-//           }
-//         })}
-//         <li>
-//           <Link href="/editor">
-//             <Circle />
-//           </Link>
-//         </li>
-//       </ul>
-//     </div>
-//   )
-// }
-
 export function Navbar() {
   let pathname = usePathname() || '/';
 
@@ -73,20 +37,20 @@ export function Navbar() {
       <div className="navbar-top">
         <div className="navbar-header">
           <Link href="/">
-            John Doe
+            Fernando Ferrer
           </Link>
         </div>
         <div className="social-icons">
-          <Link href="https://www.instagram.com" className="instagram">
+          <Link href="https://www.instagram.com/fernandoferrer.off" className="instagram">
             <InstagramIcon />
           </Link>
-          <Link href="https://www.facebook.com" className="facebook">
+          <Link href="https://www.facebook.com/fernando.ferrer.7121" className="facebook">
             <FacebookIcon />
           </Link>
-          <Link href="https://www.youtube.com" className="youtube">
+          <Link href="https://www.youtube.com/@fernandoferrer4744/featured" className="youtube">
             <YoutubeIcon />
           </Link>
-          <Link href="https://www.twitter.com" className="twitter">
+          <Link href="https://twitter.com/ferferrerok" className="twitter">
             <TwitterIcon />
           </Link>
         </div>
@@ -123,6 +87,14 @@ export function EditorNavbar({ orgRole }: { orgRole: string }) {
 
   let pathname = usePathname() || '/';
 
+  let clientPath = pathname.slice(pathname.lastIndexOf("/") + 1) || '/';
+
+  if (clientPath === 'about' || clientPath === 'editor') {
+    clientPath = '/'
+  }
+
+
+
   if (!orgRole) {
     return (
       <nav className="navbar">
@@ -137,8 +109,6 @@ export function EditorNavbar({ orgRole }: { orgRole: string }) {
     ) 
   }
     
-  
-
   return (
   
     <nav className={e.navbar}>
@@ -155,7 +125,7 @@ export function EditorNavbar({ orgRole }: { orgRole: string }) {
           </div>
         }
         <div className="social-icons">
-          <Link href="/" className="">
+          <Link href={`/${clientPath}`} className="">
             <Globe />
           </Link>
         </div>

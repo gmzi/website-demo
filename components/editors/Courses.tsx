@@ -14,14 +14,15 @@ import {
     EditLogistics, 
     EditImageGrid_A,
     EditImageGrid_B, 
-    EditFAQ 
+    EditFAQ, 
+    EditImageGrid_C
 } from "../forms/EditCourses";
 import { ImageGridInput } from "../forms/ImageInput";
 import Link from "next/link";
 
 export default async function Courses() {
-    // const data = await getData("courses")
-    const data = await getRemoteOrLocalData("courses");
+    const data = await getData("courses")
+    // const data = await getRemoteOrLocalData("courses");
     const documentName = "courses"
     const sectionName = "courses"
     const folderName="courses"
@@ -40,6 +41,9 @@ export default async function Courses() {
     const grid_A = [{id: 2, url: image2Url}, {id: 3, url: image3Url}];
     const grid_2 = [image4Url, image5Url];
     const grid_B = [{id: 4, url: image4Url}, {id: 5, url: image5Url}]
+
+    const grid_C = [{id: 6, url: image6Url}, {id: 7, url: image7Url}]
+
     const grid_3 = [image6Url, image7Url];
 
     const goals = data?.goals || []
@@ -63,9 +67,9 @@ export default async function Courses() {
             <HeroText contentHtml={contentHtml}/>
             
 
-            <Link href={`/contact`} target="_blank">
+            {/* <Link href={`/contact`} target="_blank">
                 <button className="btnWhatsapp">Editar numero de contacto</button>
-            </Link>
+            </Link> */}
         
             <EditImageGrid_A images={grid_A}/>
 
@@ -78,6 +82,8 @@ export default async function Courses() {
             <EditImageGrid_B images={grid_B}/>
             
             <CourseReviews reviews={reviews}/>
+
+            <EditImageGrid_C images={grid_C}/>
             
             <Testimonials testimonials={testimonials}/>
         </section>

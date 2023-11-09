@@ -1,6 +1,6 @@
 'use server'
 
-import { revalidatePath } from 'next/cache'
+import { revalidatePath, revalidateTag } from 'next/cache'
 import { z } from 'zod'
 import { send } from '@emailjs/browser';
 import createAlphaNumericString from '@/lib/createAlphanumericString';
@@ -12,6 +12,10 @@ import { parseNameAndRole } from '@/lib/parseNameAndRole'
 import { Show } from '@/types';
 // import { redirect } from 'next/dist/server/api-utils';
 import { redirect } from 'next/navigation';
+import { updateInput } from '@/lib/updateInput';
+import { updateAbout } from '@/lib/updateAbout';
+import { updateBio } from '@/lib/updateBio';
+import {updateTest, updateItem} from '@/lib/mongo';
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 const DATA_API_KEY = process.env.NEXT_PUBLIC_DATA_API_KEY || '';
@@ -131,6 +135,8 @@ export async function saveHtmlContent(contentHtml: string, document: string) {
       referrerPolicy: 'no-referrer',
       body: JSON.stringify(content)
     })
+    
+    revalidatePath('/(personal)/podcast', 'page');
     revalidatePath('/(editor)/editor', 'page');
 
     return { message: `Content saved` }
@@ -652,15 +658,22 @@ export async function editShow(prevState: any, formData: FormData) {
       newContent: updatedData,
     }
 
-    const updated = await fetch(`${BASE_URL}/server/edit/item`, {
-      method: 'PATCH',
-      headers: {
-        'Content-Type': 'application/json',
-        'API-Key': DATA_API_KEY
-      },
-      referrerPolicy: 'no-referrer',
-      body: JSON.stringify(data)
-    });
+    // const updated = await fetch(`${BASE_URL}/server/edit/item`, {
+    //   method: 'PATCH',
+    //   headers: {
+    //     'Content-Type': 'application/json',
+    //     'API-Key': DATA_API_KEY
+    //   },
+    //   referrerPolicy: 'no-referrer',
+    //   body: JSON.stringify(data)
+    // });
+
+    const updated = await updateItem(
+      data.document, 
+      data.entry,
+      data.itemLocator,
+      data.newContent
+    )
 
     revalidatePath(`/(personal)/shows`, 'page');
     revalidatePath(`/(personal)/shows/[slug]`, 'page');
@@ -862,72 +875,78 @@ export async function editTour(prevState: any, formData: FormData) {
 }
 
 export async function editAbout(prevState: any, formData: FormData) {
-
-  const aboutSchema = z.object({
-    contentHtml: z.string(),
-    image_file: z
-      .any()
-      .refine((file) => {
-        return file?.size <= MAX_FILE_SIZE;
-      }, 'Max image size is 4MB.')
-      .refine(
-        (file) => {
-          return ACCEPTED_IMAGE_MIME_TYPES.includes(file?.type)
-        }, "Only .jpg, .jpeg, .png, and .webp formats are supported"
-      ),
-    image_url: z.string()
-  })
-
   try {
-    const newImageFile = formData.get("new_image_file") as File;
-    const isNewImage = newImageFile?.size > 0;
 
-    let inputData;
+    const newImage_1_File = formData.get('new_image_1_file') as File;
 
-    if (isNewImage) {
-      inputData = aboutSchema.parse({
+    const aboutSchema = z.object({
+      contentHtml: z.string(),
+      image_1_file: imageSchema,
+      image_1_url: z.string()
+    })
+
+    const inputData = aboutSchema.parse({
         contentHtml: formData.get('editor_content'),
-        image_file: newImageFile,
-        image_url: formData.get('image_url')
+        image_1_file: newImage_1_File.size > 0 ? newImage_1_File : undefined,
+        image_1_url: formData.get('image_1_url')
       })
 
-      inputData = await handleNewImage(inputData, 'about');
-
-    } else {
-      const aboutSchemaNoImage = z.object({
-        contentHtml: z.string(),
-        image_url: z.string()
-      })
-
-      inputData = aboutSchemaNoImage.parse({
-        contentHtml: formData.get('editor_content'),
-        image_url: formData.get('image_url')
-      })
-    }
+    const updatedInputData = await handleInputDataWithNewImageFiles(inputData, "about");
 
     const ID = createAlphaNumericString(5);
 
     const data = {
       document: "about",
-      // content_html: `${ID}D--${inputData.contentHtml}`,
-      content_html: {id: ID, content: inputData.contentHtml},
-      image_url: inputData.image_url
+      content_html: {id: ID, content: updatedInputData.contentHtml},
+      image_1_url: {id: ID, content: updatedInputData.image_1_url}
     }
 
-    const updated = await fetch(`${BASE_URL}/server/about`, {
-      method: 'PATCH',
-      headers: {
-        'Content-Type': 'application/json',
-        'API-Key': DATA_API_KEY
-      },
-      referrerPolicy: 'no-referrer',
-      body: JSON.stringify(data)
-    });
+    const updated = await updateAbout(data.document, data.content_html, data.image_1_url);
 
     revalidatePath('/(personal)/', 'page');
     revalidatePath('/(editor)/editor', 'page');
 
-    return { message: `About has been updated!!!` }
+    return { message: `Pagina de inicio editada!!!` }
+
+  } catch (e) {
+    console.error(e);
+    return { message: `${e}` }
+  }
+}
+
+export async function editTest(prevState: any, formData: FormData) {
+  try {
+
+    const newImage_1_File = formData.get('new_image_1_file') as File;
+
+    const aboutSchema = z.object({
+      contentHtml: z.string(),
+      image_1_file: imageSchema,
+      image_1_url: z.string()
+    })
+
+    const inputData = aboutSchema.parse({
+        contentHtml: formData.get('editor_content'),
+        image_1_file: newImage_1_File.size > 0 ? newImage_1_File : undefined,
+        image_1_url: formData.get('image_1_url')
+      })
+
+    const updatedInputData = await handleInputDataWithNewImageFiles(inputData, "test");
+
+    const ID = createAlphaNumericString(5);
+
+    const data = {
+      document: "test",
+      content_html: {id: ID, content: updatedInputData.contentHtml},
+      image_1_url: {id: ID, content: updatedInputData.image_1_url}
+    }
+
+    const updated = await updateTest(data.document, data.content_html, data.image_1_url);
+
+    revalidatePath('/(personal)/test', 'page');
+    revalidatePath('/(editor)/editor', 'page');
+
+    return { message: `Test edit: ${JSON.stringify(updated)}` }
 
   } catch (e) {
     console.error(e);
@@ -1004,19 +1023,23 @@ export async function editBio(prevState: any, formData: FormData) {
       image_7_url: updatedInputData.image_7_url
     }
 
-    const updated = await fetch(`${BASE_URL}/server/bio`, {
-      method: 'PATCH',
-      headers: {
-        'Content-Type': 'application/json',
-        'API-Key': DATA_API_KEY
-      },
-      referrerPolicy: 'no-referrer',
-      body: JSON.stringify(data)
-    });
+    const updated = await updateBio(
+      data.document, 
+      data.content_html_1,
+      data.content_html_2, 
+      data.image_1_url, 
+      data.image_2_url,
+      data.image_3_url,
+      data.image_4_url, 
+      data.image_5_url, 
+      data.image_6_url,
+      data.image_7_url
+      )
+
+      
+    revalidatePath('/(editor)/editor', 'page');
 
     revalidatePath(`/(personal)/bio`, 'page');
-
-    revalidatePath('/(editor)/editor', 'page');
 
     return { message: `Bio has been updated!!!` }
 
@@ -1056,15 +1079,17 @@ export async function editCoursesHeroImage(prevState: any, formData: FormData) {
       content: updatedInputData.image_1_url
     }
 
-    const updated = await fetch(`${BASE_URL}/server/courses`, {
-      method: 'PATCH',
-      headers: {
-        'Content-Type': 'application/json',
-        'API-Key': DATA_API_KEY
-      },
-      referrerPolicy: 'no-referrer',
-      body: JSON.stringify(data)
-    });
+    // const updated = await fetch(`${BASE_URL}/server/courses`, {
+    //   method: 'PATCH',
+    //   headers: {
+    //     'Content-Type': 'application/json',
+    //     'API-Key': DATA_API_KEY
+    //   },
+    //   referrerPolicy: 'no-referrer',
+    //   body: JSON.stringify(data)
+    // });
+
+    const updated = await updateInput(data.document, data.entry, data.content);
 
     revalidatePath('/(personal)/courses', 'page');
     revalidatePath('/(editor)/editor', 'page');
@@ -1097,6 +1122,7 @@ export async function editImageGrid_A(prevState: any, formData: FormData) {
       image_2_url: formData.get('image_2_url'),
       image_3_url: formData.get('image_3_url')
     })
+
     const updatedInputData = await handleInputDataWithNewImageFiles(inputData, "courses");
 
     for (const key in updatedInputData) {
@@ -1106,16 +1132,18 @@ export async function editImageGrid_A(prevState: any, formData: FormData) {
         entry: key,
         content: updatedInputData[key]
       }
-      const updated = await fetch(`${BASE_URL}/server/courses`, {
-        method: 'PATCH',
-        headers: {
-          'Content-Type': 'application/json',
-          'API-Key': DATA_API_KEY
-        },
-        referrerPolicy: 'no-referrer',
-        body: JSON.stringify(data)
-      });
+      // const updated = await fetch(`${BASE_URL}/server/courses`, {
+      //   method: 'PATCH',
+      //   headers: {
+      //     'Content-Type': 'application/json',
+      //     'API-Key': DATA_API_KEY
+      //   },
+      //   referrerPolicy: 'no-referrer',
+      //   body: JSON.stringify(data)
+      // });
+      const updated = await updateInput(data.document, data.entry, data.content);
     }
+
     revalidatePath('/(personal)/courses', 'page');
     revalidatePath('/(editor)/editor', 'page');
 
@@ -1158,21 +1186,76 @@ export async function editImageGrid_B(prevState: any, formData: FormData) {
         entry: key,
         content: updatedInputData[key]
       }
-      const updated = await fetch(`${BASE_URL}/server/courses`, {
-        method: 'PATCH',
-        headers: {
-          'Content-Type': 'application/json',
-          'API-Key': DATA_API_KEY
-        },
-        referrerPolicy: 'no-referrer',
-        body: JSON.stringify(data)
-      });
+      // const updated = await fetch(`${BASE_URL}/server/courses`, {
+      //   method: 'PATCH',
+      //   headers: {
+      //     'Content-Type': 'application/json',
+      //     'API-Key': DATA_API_KEY
+      //   },
+      //   referrerPolicy: 'no-referrer',
+      //   body: JSON.stringify(data)
+      // });
+      const updated = await updateInput(data.document, data.entry, data.content);
     }
 
     revalidatePath('/(personal)/courses', 'page');
     revalidatePath('/(editor)/editor', 'page');
 
     return { message: "images 4 and 5 updated" };
+
+  } catch (e) {
+    console.error(e);
+    return { message: `${e}` }
+  }
+
+}
+
+export async function editImageGrid_C(prevState: any, formData: FormData) {
+  try {
+
+    const newImage_6_File = formData.get('new_image_6_file') as File;
+    const newImage_7_File = formData.get('new_image_7_file') as File;
+
+    const gridSchema_A = z.object({
+      image_6_file: imageSchema,
+      image_7_file: imageSchema,
+      image_6_url: z.string(),
+      image_7_url: z.string()
+    })
+
+    const inputData: {
+      [key: string]: string | File | undefined;
+    } = gridSchema_A.parse({
+      image_6_file: newImage_6_File.size > 0 ? newImage_6_File : undefined,
+      image_7_file: newImage_7_File.size > 0 ? newImage_7_File : undefined,
+      image_6_url: formData.get('image_6_url'),
+      image_7_url: formData.get('image_7_url')
+    })
+
+    const updatedInputData = await handleInputDataWithNewImageFiles(inputData, "courses");
+
+    for (const key in updatedInputData) {
+      const data = {
+        document: "courses",
+        entry: key,
+        content: updatedInputData[key]
+      }
+      // const updated = await fetch(`${BASE_URL}/server/courses`, {
+      //   method: 'PATCH',
+      //   headers: {
+      //     'Content-Type': 'application/json',
+      //     'API-Key': DATA_API_KEY
+      //   },
+      //   referrerPolicy: 'no-referrer',
+      //   body: JSON.stringify(data)
+      // });
+      const updated = await updateInput(data.document, data.entry, data.content);
+    }
+
+    revalidatePath('/(personal)/courses', 'page');
+    revalidatePath('/(editor)/editor', 'page');
+
+    return { message: "images 6 and 7 updated" };
 
   } catch (e) {
     console.error(e);
@@ -1270,20 +1353,22 @@ export async function editCoursesHeroText(prevState: any, formData: FormData) {
       content: inputData.contentHtml
     }
 
-    const updated = await fetch(`${BASE_URL}/server/courses`, {
-      method: 'PATCH',
-      headers: {
-        'Content-Type': 'application/json',
-        'API-Key': DATA_API_KEY
-      },
-      referrerPolicy: 'no-referrer',
-      body: JSON.stringify(data)
-    });
+    const updated = await updateInput(data.document, data.entry, data.content);
+
+    // const updated = await fetch(`${BASE_URL}/server/courses`, {
+    //   method: 'PATCH',
+    //   headers: {
+    //     'Content-Type': 'application/json',
+    //     'API-Key': DATA_API_KEY
+    //   },
+    //   referrerPolicy: 'no-referrer',
+    //   body: JSON.stringify(data)
+    // });
 
     revalidatePath('/(personal)/courses', 'page');
     revalidatePath('/(editor)/editor', 'page');
 
-    return { message: `Hero text has been updated!!!` }
+    return { message: `Hero text has been updated: ${updated}` }
   } catch (e) {
     console.error(e);
     return { message: `${e}` }

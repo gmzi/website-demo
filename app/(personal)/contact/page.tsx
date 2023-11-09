@@ -49,7 +49,7 @@ export default function ContactPage() {
     return (
         <section className="contact-me">
             <h1>Contacto</h1>
-            <div>
+            <div className="contact-container">
                 {sent ? (
                     <div className="alert">
                         {sent}
@@ -62,7 +62,7 @@ export default function ContactPage() {
                         className="contact-form"
                     >
                         <label htmlFor="name">Nombre:</label>
-                        <input type="text" id="name" name="name" required/>
+                        <input type="text" id="name" name="name" required />
 
                         <label htmlFor="email">Email:</label>
                         <input type="email" id="email" name="email" />

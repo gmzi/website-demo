@@ -9,7 +9,7 @@ import type { VideoPressArticle } from "@/types";
 
 export const metadata: Metadata = {
     title: 'Prensa',
-    description: 'articulos de prensa sobre John Doe'
+    description: 'articulos de prensa sobre Fernando Ferrer'
 }
 
 export default async function PressPage() {
@@ -54,7 +54,7 @@ export default async function PressPage() {
                                         <li className="">
                                             <blockquote className="review">
                                                 <h4>{item.veredict}</h4>
-                                                <p>{parse(item.quote)}</p>
+                                                {parse(item.quote)}
                                                 <cite>
                                                     <div className="journalist">{item.journalist}</div>
                                                     <div className="media-organization">{item.media_organization}</div>

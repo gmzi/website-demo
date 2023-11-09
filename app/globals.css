@@ -74,18 +74,8 @@
   --color-sbumitInput-border: 1px solid rgba(2, 103, 2, 0.974);
   --box-shadow-hover: 0 4px 8px rgba(0, 0, 0, 0.12);
   --main-background: #abbaab;
-  --main-background-webkit: -webkit-linear-gradient(
-    to bottom,
-    #ffffff,
-    #abbaab 50%,
-    #ffffff
-  );
-  --main-background-standard: linear-gradient(
-    to bottom,
-    #ffffff,
-    #abbaab 50%,
-    #ffffff
-  );
+  --main-background-webkit: -webkit-linear-gradient(to bottom,#ffffff,#abbaab 50%,#ffffff);
+  --main-background-standard: linear-gradient(to bottom,#ffffff,#abbaab 50%,#ffffff);
   --section-background-color: rgba(255, 255, 255, 0.887);
   --section-box-shadow: 0px 1px 1px 1px rgb(226, 226, 226);
   --navbar-background-color: rgba(255, 255, 255, 0.734);
@@ -194,6 +184,10 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+}
+
+.og-container {
+  background: blue;
 }
 
 html,
@@ -391,9 +385,14 @@ section {
 
 section h1 {
   font-size: larger;
-  text-align: right;
+  text-align: center;
   font-weight: bold;
-  padding-right: 2em;
+  /* padding-right: 2em; */
+}
+
+.podcast h2 {
+  margin-top: 1em;
+  font-size: larger;
 }
 
 section h2 {
@@ -527,12 +526,20 @@ p {
 .alert {
   margin: 2em auto;
   padding: 2em;
-  background-color: #d4edda;
+  background-color: var(--primary-background);
   color: #155724;
-  margin-bottom: 20px;
+  /* margin-bottom: 20px; */
   text-align: center;
   border-radius: 4px;
   border: 1px solid #c3e6cb;
+}
+
+.contact-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 50vh;
 }
 
 /* TOURS */
@@ -731,6 +738,12 @@ p {
 
 .reviews {
   margin-top: 20px;
+}
+
+.contact-items .emoji,
+.contact-items .text,
+.contact-items .link {
+  margin-right: .5em;
 }
 
 .review {

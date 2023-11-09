@@ -5,10 +5,27 @@
         },
         "name": "about",
         "content_html": {
-            "id": "12345",
-            "content": "<p><strong>Soy dramaturgo, director, docente y actor. Estudié en la Escuela Nacional de Arte Dramático. </strong>En <strong>Dramaturgia</strong> me formé con <strong>Javier Daulte</strong> y con <strong>Ricardo Monti</strong>, dos referentes fundamentales en mi vida.</p><h3></h3><p><strong>Me dedico a contar historias</strong> y ese viaje es mi preferido. La cosa empieza con una imagen interna y finaliza con la concreción de la misma en proyecto teatral o fílmico. <strong>Me apasiona esta profesión en todas sus formas</strong>, ya sea en el desarrollo de los proyectos propios, como así también acompañando a otras personas en sus búsquedas creativas. De ahí deviene esta otra forma de pasión que es la docencia.</p>"
+            "id": "qoxs0",
+            "content": "<p><strong>Soy dramaturgo, director, docente y actor. Estudié en la Escuela Nacional de Arte Dramático. </strong>En <strong>Dramaturgia</strong> me formé con <strong>Javier Daulte</strong> y con <strong>Ricardo Monti</strong>, dos referentes fundamentales en mi vida.</p><p><strong>Me dedico a contar historias</strong> y ese viaje es mi preferido. La cosa empieza con una imagen interna y finaliza con la concreción de la misma en proyecto teatral o fílmico. <strong>Me apasiona esta profesión en todas sus formas</strong>, ya sea en el desarrollo de los proyectos propios, como así también acompañando a otras personas en sus búsquedas creativas. De ahí deviene esta otra forma de pasión que es la docencia.</p>"
         },
-        "image_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1697483639/website-fer/website-fer/about/vejttvqpe7bldahvhkb4.webp"
+        "image_1_url": {
+            "id": "qoxs0",
+            "content": "https://res.cloudinary.com/imagesgmzi/image/upload/v1699395709/website-fer/about/vmnt4qojun3l6ycrmfzf.jpg"
+        }
+    },
+    "test": {
+        "_id": {
+            "$oid": "124"
+        },
+        "name": "test",
+        "content_html": {
+            "id": "qoxs0",
+            "content": "<p>this is a test section</p>"
+        },
+        "image_1_url": {
+            "id": "qoxs0",
+            "content": "https://res.cloudinary.com/imagesgmzi/image/upload/v1699395709/website-fer/about/vmnt4qojun3l6ycrmfzf.jpg"
+        }
     },
     "courses": {
         "_id": {
@@ -16,7 +33,7 @@
         },
         "name": "courses",
         "content_html": "<p>EDIT Las clases son prácticas y la idea es que ya desde el primer encuentro comiences a concretar tu obra. De mi parte, me voy a ocupar de brindarte las herramientas necesarias y acompañarte para desarrollar tu propia dramaturgia.<br />Para las tres modalidades del curso, partiremos de una imagen como disparador para desarrollar nuestra historia. Esa primera foto o visualización que surge sin saber por qué, será nuestro motor fundamental para recorrer el camino.</p>",
-        "image_1_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1698246770/website-fer/bio/ql786e1bbrgeedmtxsa9.webp",
+        "image_1_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1698446754/website-fer/courses/lfpfaw722sd29ilmbzgs.jpg",
         "image_2_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1697579608/website-fer/bio/w65phhxvey7krrslxhnj.jpg",
         "image_3_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1697580003/website-fer/bio/i3obdhobc62sx6xjtte8.jpg",
         "image_4_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1698424994/website-fer/courses/ps1qzarli4bitz5naxtv.jpg",
@@ -95,151 +112,8 @@
         "goals_acting": [],
         "FAQ": "<p><strong>¿Qué necesitás para iniciar el curso?</strong></p><p><span>Ganas</span>. Los talleres están destinados tanto para aquellos que nunca escribieron como para los que tienen experiencia.</p><p><strong>¿Cómo es?</strong></p><p>Las clases pueden ser particulares o grupales. En ambos casos los procesos son individuales y personalizados. Podrás elegir la modalidad que creas más conveniente según tu personalidad, posibilidad o gustos.</p><p><span>CLASES INDIVIDUALES</span>: 1 hora de duración (PRESENCIAL | ONLINE).</p><p><span>CLASES GRUPALES</span>: 2 horas de duración. (PRESENCIAL | ONLINE).</p><p>Días y horarios a convenir.</p><p><strong>¿Dónde es?</strong></p><p>En el lugar que a vos te quede mejor. El taller puede ser presencial (zona barrio de Congreso en Capital Federal) u online a través de video conferencias. De esta manera podrás participar del curso desde cualquier parte del mundo.</p><p><strong>¿Cuándo comenzamos?</strong></p><p>En el momento que tomes la decisión de arrancar. Me escribís (ver formulario de contacto),<br />tenemos una charla -sin cargo- en la que te explico los lineamientos generales del curso para que conozcas cómo es la metodología de trabajo, me consultás y preguntás todo lo que necesites y, si te gusta, le damos para adelante.</p><p><strong>¿Cuántas clases son?</strong></p><p>Para quien lo necesite por una cuestión de ordenamiento personal suelo estipular, sobre todo en las clases on line, un marco absolutamente referencial y arbitrario de 12 clases. Al término del cual analizamos como continuamos el trabajo de creación.</p><p><br /><strong>Escritura Creativa</strong></p><p>Destinado a toda persona con inquietudes sensibles y con ganas de divertirse escribiendo.</p><p>Si bien la raíz es común a los otros cursos que dicto y es eminentemente práctico, esta instancia de escritura es la mas abierta de todas puesto que no tiene como objetivo llegar a “ la obra ” sino que mas bien está centrado en la exploración del camino creador y muy acotado a la necesidad particular de cada participante, mas allá de la práctica artística puntual.</p> <p><strong>EDIT </strong>Desde hace ya un tiempo doy cursos online que me dio la posibilidad de llevar el taller a cualquier rincón del mundo con las mismas satisfacciones y resultados obtenidos en las prácticas presenciales. Destaco en esos casos la enriquecedora experiencia de compartir relatos y vivencias con personas de distintos países. Cada uno con su idiosincrasia, cultura y visión particular pero con el denominador común de transitar el camino de la dramaturgia.</p><p></p><p><span>Las clases <strong>ON LINE</strong> las damos por <strong>Zoom</strong>, una plataforma gratuita y muy confiable que nos permite realizar videoconferencias con varias personas a la vez y que nos brinda todo lo necesario para llevar adelante el encuentro de la mejor manera.</span><br /><span>También las podremos realizar por <strong>Skype</strong>, en caso que estén más familiarizados con esa aplicación.</span></p><p><br /><span><strong>Clases individuales: </strong>Duración, 1 hora. </span><br /><span><strong>Clases grupales (Hasta 6 personas): </strong>2 horas de duración. </span></p><p>* Para esta modalidad usamos <strong>Zoom</strong> o <strong>Skype</strong>.</p><p>* Duración: <strong>1 hora</strong> (clases individuales) || <strong>2 horas</strong> (clases grupales, grupos de hasta 6 personas)</p><p></p>",
         "contact": {
-            "whatsapp": "12345678911"
+            "whatsapp": "+5491161578367"
         }
-    },
-    "shows": {
-        "_id": {
-            "$oid": "64c152eeffa705ef046bb604"
-        },
-        "name": "shows",
-        "content": [
-            {
-                "id": "o2pyn00qzkvkd7v55jwp-myID",
-                "title": "test-show",
-                "slug": "test-show",
-                "opening_date": "2024",
-                "theatre": "test-theatre",
-                "sinopsis": "<p>test sinopsis</p>",
-                "cast": [
-                    {
-                        "name": "test name",
-                        "role": "test role"
-                    }
-                ],
-                "creative": [
-                    {
-                        "name": "test creative name",
-                        "role": "test creative role"
-                    }
-                ],
-                "musicians": [],
-                "dancers": [],
-                "image_1_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1697474895/website-fer/shows/dkmex9kupyadr0ovevob.jpg",
-                "image_2_url": "",
-                "image_3_url": ""
-            },
-            {
-                "id": "ofdssyn00qzkvkd7v55jwp-myID",
-                "title": "HELLO",
-                "slug": "hello",
-                "opening_date": "2024",
-                "theatre": "test-theatre",
-                "sinopsis": "<p>test sinopsis</p>",
-                "cast": [
-                    {
-                        "name": "test name",
-                        "role": ""
-                    }
-                ],
-                "creative": [
-                    {
-                        "name": "test creative name",
-                        "role": ""
-                    }
-                ],
-                "musicians": [],
-                "dancers": [],
-                "image_1_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1697474895/website-fer/shows/dkmex9kupyadr0ovevob.jpg",
-                "image_2_url": "",
-                "image_3_url": ""
-            },
-            {
-                "id": "5b897j8yv9ytlswkslrk",
-                "title": "La Payanca",
-                "slug": "la-payanca",
-                "opening_date": "2018",
-                "theatre": "",
-                "sinopsis": "<p><span>Es la historia de Jam, un chico del interior, que vuelve a su pueblo con motivo de la inauguración de nuevo taller de la fábrica familiar. </span></p><p><span>La empresa está en manos de su mamá y su tío Claudio, hermano de su padre muerto y actual esposo de su madre, Gertrudis. Previo a la inauguración se encontrarán en la casa de descanso familiar en la isla y a esta reunión, está invitada Ofelia, antiguo amor de Jam. Es de la mano de Ofelia que Jam tiene una visión de su padre en el río, quien le dice que en realidad no murió ahogado sino que fue asesinado por su propio hermano Claudio.</span></p><p><span>Jam, a partir de esa revelación fantasmagórica, intentara junto a Ofelia, develar la verdad y tomar venganza.</span></p>",
-                "cast": [
-                    {
-                        "name": "Sofía Gala Castiglione",
-                        "role": "OFELIA"
-                    },
-                    {
-                        "name": "Alejandro Paker",
-                        "role": "CLAUDIO"
-                    },
-                    {
-                        "name": "Santiago Pedrero",
-                        "role": "JAM"
-                    },
-                    {
-                        "name": "Estela Garelli",
-                        "role": "GERTRUDIS"
-                    }
-                ],
-                "creative": [
-                    {
-                        "name": "Espacio e iluminación",
-                        "role": "Fernando Ferrer"
-                    },
-                    {
-                        "name": "Gráfica",
-                        "role": "Juan Francisco Reato"
-                    },
-                    {
-                        "name": "Foto",
-                        "role": "Romina Giorno"
-                    },
-                    {
-                        "name": "Escenografía",
-                        "role": "Fernando Ferrer - Romina Giorno"
-                    },
-                    {
-                        "name": "Musicalización",
-                        "role": "Mauro Di Benedetto"
-                    },
-                    {
-                        "name": "Dirección de Arte",
-                        "role": "Romina Giorno"
-                    },
-                    {
-                        "name": "Vestuario",
-                        "role": "Romina Santorsola"
-                    },
-                    {
-                        "name": "Musicalización",
-                        "role": "Mauro Di Benedetto"
-                    },
-                    {
-                        "name": "Producción Ejecutiva",
-                        "role": "Laura Quevedo"
-                    },
-                    {
-                        "name": "Producción",
-                        "role": "Antonio Di Benedetto"
-                    },
-                    {
-                        "name": "Prensa y Difusión",
-                        "role": "Noe Cardaci - Maxi Cardaci"
-                    },
-                    {
-                        "name": "Asistencia de Producción y Dirección",
-                        "role": "Max Ruíz"
-                    },
-                    {
-                        "name": "Dramaturgia y Dirección",
-                        "role": "Fernando Ferrer"
-                    }
-                ],
-                "musicians": [],
-                "dancers": [],
-                "image_1_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1697649331/website-fer/shows/k7j1yixzysowtlypmxc0.webp",
-                "image_2_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1697649331/website-fer/shows/fytmcv1kvoxsrcfqiq3j.webp",
-                "image_3_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1697649332/website-fer/shows/ls1d2j7424hrikitdrjw.png"
-            }
-        ]
     },
     "tours": {
         "_id": {
@@ -607,9 +481,9 @@
         },
         "name": "metadata",
         "language": "ES",
-        "site_name": "John Doe's world",
-        "author_name": "John Doe",
-        "title": "John Doe",
+        "site_name": "Fernando Ferrer's world",
+        "author_name": "Fernando Ferrer",
+        "title": "Fernando Ferrer",
         "description": "fisher, gentleman, mechanic, king, slave",
         "og_image_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1648494033/rem-logo2_n0rybw.png",
         "social": [
@@ -674,5 +548,546 @@
         "content_html": "<p>Pienso que <strong>La Creación</strong> se está creando a sí misma, y nos utiliza para plasmarse. Intento estar entregado a ese misterio. <strong>En este Podcast</strong> tengo el privilegio de ser testigo del modo en que La Creación se presenta <strong>en otros a quienes admiro, respeto y de quienes aprendo</strong>. Espero que estas conversaciones nos conecten con la maravillosa energía de manifestar <strong>el impulso creador en obras, en experiencias, en arte</strong> y más proyectos.</p>",
         "apple_url": "https://podcasts.apple.com/podcast/testigo-de-la-creaci%C3%B3n/id1533448118",
         "spotify_url": "https://open.spotify.com/show/3GL13X7HswQjyLL3gDc0m8"
+    },
+    "shows": {
+        "_id": {
+            "$oid": "65287a920355f9d2d0900148"
+        },
+        "name": "shows",
+        "content": [
+            {
+                "id": "p0rt3rdwxuiv2lnlgwng",
+                "title": "La piedad y los animales",
+                "slug": "la-piedad-y-los-animales",
+                "opening_date": "2012",
+                "theatre": "",
+                "sinopsis": "<p>edit Todos somos un poco animales en el amor\". Un exitoso pintor, su mujer- una actriz en carrera-, una joven y bella modelo, y un representante artístico se verán involucrados en encuentros y desencuentros pasionales. En una intensa velada, estos cuatro personajes intentarán, de modo adulto y civilizado, dar un marco a sus relaciones.</p>",
+                "cast": [
+                    {
+                        "name": "Thelma Fardin",
+                        "role": ""
+                    },
+                    {
+                        "name": "Paula Morales",
+                        "role": ""
+                    },
+                    {
+                        "name": "William Prociuk",
+                        "role": ""
+                    },
+                    {
+                        "name": "Ezequiel Tronconi",
+                        "role": ""
+                    }
+                ],
+                "creative": [
+                    {
+                        "name": "Jam Monti",
+                        "role": "Vestuario"
+                    },
+                    {
+                        "name": "Pablo Calmet",
+                        "role": "Escenografía"
+                    },
+                    {
+                        "name": "Pablo Calmet",
+                        "role": "Diseño de luces"
+                    },
+                    {
+                        "name": "Julián Castro",
+                        "role": "Video"
+                    },
+                    {
+                        "name": "Sebastian Vricella",
+                        "role": "Fotografía"
+                    },
+                    {
+                        "name": "Camilo Polotto",
+                        "role": "Asistencia de dirección"
+                    },
+                    {
+                        "name": "Maxi Vera",
+                        "role": "Asistencia de dirección"
+                    },
+                    {
+                        "name": "Carolina Alfonso",
+                        "role": "Prensa"
+                    },
+                    {
+                        "name": "Fernando Ferrer",
+                        "role": "Prensa"
+                    },
+                    {
+                        "name": "La Cósmica",
+                        "role": "Producción artística"
+                    },
+                    {
+                        "name": "Gastón Mazieres",
+                        "role": "Producción artística"
+                    },
+                    {
+                        "name": "La Cósmica",
+                        "role": "Producción ejecutiva"
+                    },
+                    {
+                        "name": "Laura Quevedo",
+                        "role": "Producción ejecutiva"
+                    },
+                    {
+                        "name": "Adrián Ferreyra",
+                        "role": "Coreografía"
+                    },
+                    {
+                        "name": "Dana Frigoli",
+                        "role": "Coreografía"
+                    },
+                    {
+                        "name": "Jonny Lambert",
+                        "role": "Coreografía"
+                    },
+                    {
+                        "name": "Fernando Ferrer",
+                        "role": "Puesta en escena"
+                    },
+                    {
+                        "name": "Fernando Ferrer",
+                        "role": "Dirección y dramaturgia"
+                    }
+                ],
+                "musicians": [],
+                "dancers": [],
+                "image_1_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1698173438/website-fer/shows/poxim85zohwnzbc6utjd.webp",
+                "image_2_url": "",
+                "image_3_url": ""
+            },
+            {
+                "id": "yowf0utjeqtoy331qh45",
+                "title": "La intención de las palomas",
+                "slug": "la-intencion-de-las-palomas",
+                "opening_date": "2014",
+                "theatre": "",
+                "sinopsis": "<p><span>Todos venimos fallados a este mundo. Y eso hace que nos sintamos terriblemente solos. Hasta que descubrimos algo (por más absurdo que parezca) que nos muestra que eso no es tan malo como suena.</span><br /><span>La historia de Fran y sus palomas es la historia de un chico que entiende que convertirse en adulto es, necesaria e inevitablemente, traumático.</span></p>",
+                "cast": [
+                    {
+                        "name": "Federico Buso",
+                        "role": ""
+                    }
+                ],
+                "creative": [
+                    {
+                        "name": "Federico Buso",
+                        "role": "Idea"
+                    },
+                    {
+                        "name": "Jam Monti",
+                        "role": "Vestuario"
+                    },
+                    {
+                        "name": "Federico Buso - Fernando Ferrer",
+                        "role": "Escenografía"
+                    },
+                    {
+                        "name": "Fernando Ferrer",
+                        "role": "Diseño de luces"
+                    },
+                    {
+                        "name": "Edgar Ferrer",
+                        "role": "Diseño sonoro"
+                    },
+                    {
+                        "name": "Edgar Ferrer",
+                        "role": "Música original"
+                    },
+                    {
+                        "name": "Pablo Graib",
+                        "role": "Diseño gráfico"
+                    },
+                    {
+                        "name": "Federico Buso - Conte Grand",
+                        "role": "Diseño de imagen"
+                    },
+                    {
+                        "name": "Gonzalo de Otaola (gota)",
+                        "role": "Asistencia de dirección"
+                    },
+                    {
+                        "name": "Carolina Alfonso",
+                        "role": "Prensa"
+                    },
+                    {
+                        "name": "Javier Daulte",
+                        "role": "Colaboración en dramaturgia"
+                    },
+                    {
+                        "name": "Fernando Ferrer",
+                        "role": "Dramaturgia y Dirección"
+                    }
+                ],
+                "musicians": [],
+                "dancers": [],
+                "image_1_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1698173541/website-fer/shows/roykgqiwivrtf5bmhego.webp",
+                "image_2_url": "",
+                "image_3_url": ""
+            },
+            {
+                "id": "ej6hndwbx4j4rys1eqla",
+                "title": "Ranas",
+                "slug": "ranas",
+                "opening_date": "2015",
+                "theatre": "",
+                "sinopsis": "<p><span>A veces quedan cosas pendientes por años. Porque duelen quedan ahí tapadas, inconclusas. Pero llega un día en que milagrosamente o no, necesitamos enfrentarnos a esas cosas y dinamizarlas. La ternura compartida y la valentía puede ser un motor fundamental para hacerlo.<br />Es la historia de un reencuentro entre hermanos que quieren acercarse, intentando volver a donde supieron ser felices para desde ahí poder seguir adelante cada uno con sus sueños.</span></p>",
+                "cast": [
+                    {
+                        "name": "LILA",
+                        "role": "Jazmín Falak"
+                    },
+                    {
+                        "name": "PEDRO",
+                        "role": "Camilo Polotto"
+                    },
+                    {
+                        "name": "AMELIA",
+                        "role": "Ailin Salas"
+                    }
+                ],
+                "creative": [
+                    {
+                        "name": "Eva Richter",
+                        "role": "Vestuario"
+                    },
+                    {
+                        "name": "Fernando Ferrer",
+                        "role": "Iluminación"
+                    },
+                    {
+                        "name": "Marcelo Amabile",
+                        "role": "Música"
+                    },
+                    {
+                        "name": "Victoria Beheran",
+                        "role": "Operación técnica"
+                    },
+                    {
+                        "name": "Andrés García Dietze",
+                        "role": "Fotografía"
+                    },
+                    {
+                        "name": "Juan Francisco Reato",
+                        "role": "Diseño gráfico"
+                    },
+                    {
+                        "name": "Mariano Sabo",
+                        "role": "Asistencia general"
+                    },
+                    {
+                        "name": "Clara Ferrer - Mariano Sabo",
+                        "role": "Asistencia de dirección"
+                    },
+                    {
+                        "name": "Mariano Sabo",
+                        "role": "Producción ejecutiva"
+                    },
+                    {
+                        "name": "Salas - Falak - Ferrer - Polotto",
+                        "role": "Producción"
+                    },
+                    {
+                        "name": "Fernando Ferrer",
+                        "role": "Dramaturgia y Dirección"
+                    }
+                ],
+                "musicians": [
+                    {
+                        "name": "Marcelo Amabile",
+                        "role": ""
+                    }
+                ],
+                "dancers": [],
+                "image_1_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1698173658/website-fer/shows/wxubjtoapfeiwrxsaa5h.webp",
+                "image_2_url": "",
+                "image_3_url": ""
+            },
+            {
+                "id": "dx7nfumsh21siikxcgyy",
+                "title": "La payanca",
+                "slug": "la-payanca",
+                "opening_date": "2016",
+                "theatre": "",
+                "sinopsis": "<p><span>Es la historia de Jam, un chico del interior, que vuelve a su pueblo con motivo de la inauguración de nuevo taller de la fábrica familiar. La empresa está en manos de su mamá y su tío Claudio, hermano de su padre muerto y actual esposo de su madre, Gertrudis. Previo a la inauguración se encontrarán en la casa de descanso familiar en la isla y a esta reunión, está invitada Ofelia, antiguo amor de Jam. Es de la mano de Ofelia que Jam tiene una visión de su padre en el río, quien le dice que en realidad no murió ahogado sino que fue asesinado por su propio hermano Claudio.</span></p><p><span>Jam a partir de esa revelación fantasmagórica, intentara junto a Ofelia, develar la verdad y tomar venganza.</span></p>",
+                "cast": [
+                    {
+                        "name": "OFELIA",
+                        "role": "Sofía Gala Castiglione"
+                    },
+                    {
+                        "name": "CLAUDIO",
+                        "role": "Alejandro Paker"
+                    },
+                    {
+                        "name": "JAM",
+                        "role": "Santiago Pedrero"
+                    },
+                    {
+                        "name": "GERTRUDIS",
+                        "role": "Estela Garelli"
+                    }
+                ],
+                "creative": [
+                    {
+                        "name": "Fernando Ferrer",
+                        "role": "Espacio e iluminación"
+                    },
+                    {
+                        "name": "Juan Francisco Reato",
+                        "role": "Gráfica"
+                    },
+                    {
+                        "name": "Romina Giorno",
+                        "role": "Foto"
+                    },
+                    {
+                        "name": "Fernando Ferrer - Romina Giorno",
+                        "role": "Escenografía"
+                    },
+                    {
+                        "name": "Mauro Di Benedetto",
+                        "role": "Musicalización"
+                    },
+                    {
+                        "name": "Romina Giorno",
+                        "role": "Dirección de Arte"
+                    },
+                    {
+                        "name": "Romina Santorsola",
+                        "role": "Vestuario"
+                    },
+                    {
+                        "name": "Mauro Di Benedetto",
+                        "role": "Musicalización"
+                    },
+                    {
+                        "name": "Laura Quevedo",
+                        "role": "Producción Ejecutiva"
+                    },
+                    {
+                        "name": "Antonio Di Benedetto",
+                        "role": "Producción"
+                    },
+                    {
+                        "name": "Noe Cardaci - Maxi Cardaci",
+                        "role": "Prensa y Difusión"
+                    },
+                    {
+                        "name": "Max Ruíz",
+                        "role": "Asistencia de Producción y Dirección"
+                    },
+                    {
+                        "name": "Fernando Ferrer",
+                        "role": "Dramaturgia y Dirección"
+                    }
+                ],
+                "musicians": [],
+                "dancers": [],
+                "image_1_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1698173804/website-fer/shows/cefk9boo2jgwyhbeipql.webp",
+                "image_2_url": "",
+                "image_3_url": ""
+            },
+            {
+                "id": "vw1aydslpc2eckte2pmy",
+                "title": "La Rueda del Tarot",
+                "slug": "la-rueda-del-tarot",
+                "opening_date": "2019",
+                "theatre": "",
+                "sinopsis": "<p><span>Una propuesta artística que vincula de forma novedosa y entretenida al TAROT con el TEATRO en un espectáculo interactivo. La obra acerca a las personas al corazón de esta herramienta antigua y misteriosa develando su enorme poder poético y transformador. En una atmósfera colorida, musical y mágica, las cartas del Tarot toman la voz revelando arquetipos y vivencias universales que son comunes a todos nosotros, desde el principio de los tiempos.</span></p>",
+                "cast": [
+                    {
+                        "name": "Victoria García Garcilazo",
+                        "role": ""
+                    }
+                ],
+                "creative": [
+                    {
+                        "name": "Guillermo Krieger",
+                        "role": "Producción ejecutiva"
+                    },
+                    {
+                        "name": "Juan Francisco Reato",
+                        "role": "Diseño Gráfico"
+                    },
+                    {
+                        "name": "Stine Helkjær Engen y Luigi Coviello",
+                        "role": "Música Original"
+                    },
+                    {
+                        "name": "Stine Helkjær Engen",
+                        "role": "Interpretación"
+                    },
+                    {
+                        "name": "Victoria García Garcilazo.",
+                        "role": "Vestuario"
+                    },
+                    {
+                        "name": "Fernando Ferrer",
+                        "role": "Espacio, Arte e Iluminación"
+                    },
+                    {
+                        "name": "Guillermo Krieger",
+                        "role": "Asistente de Dirección"
+                    },
+                    {
+                        "name": "Fernando Ferrer",
+                        "role": "Dramaturgia y Dirección"
+                    }
+                ],
+                "musicians": [],
+                "dancers": [],
+                "image_1_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1698173879/website-fer/shows/d4jdrzkhvcxz5d2rmatn.webp",
+                "image_2_url": "",
+                "image_3_url": ""
+            },
+            {
+                "id": "81o0wrf4m7gllw99j230",
+                "title": "La Fiesta del Viejo",
+                "slug": "la-fiesta-del-viejo",
+                "opening_date": "2017",
+                "theatre": "",
+                "sinopsis": "<p><span>El Viejo cumple años y decidió festejarlo con todo. ¿Qué mejor que hacerlo en su club del barrio, con los amigos y el amor de toda la familia? En el brindis va a hacer grandes anuncios que tienen que ver con el adelanto de la herencia a sus hijas. Está ansioso por sorprenderlas, por demostrarles su cariño y por ver cómo reaccionan ante tanto amor.</span></p>",
+                "cast": [
+                    {
+                        "name": "Moyra Agrelo",
+                        "role": ""
+                    },
+                    {
+                        "name": "Agustina Benedettelli",
+                        "role": ""
+                    },
+                    {
+                        "name": "Julieta Cayetina",
+                        "role": ""
+                    },
+                    {
+                        "name": "Helkjær Engen",
+                        "role": ""
+                    },
+                    {
+                        "name": "Demián",
+                        "role": ""
+                    },
+                    {
+                        "name": "Gallitelli",
+                        "role": ""
+                    },
+                    {
+                        "name": "Ezequiel Gelbaum",
+                        "role": ""
+                    },
+                    {
+                        "name": "Clarisa Hernandez",
+                        "role": ""
+                    },
+                    {
+                        "name": "Gonzalo Ruiz",
+                        "role": ""
+                    },
+                    {
+                        "name": "Julian Smud",
+                        "role": ""
+                    },
+                    {
+                        "name": "Ezequiel Tronconi",
+                        "role": ""
+                    },
+                    {
+                        "name": "Abian Vainstein",
+                        "role": ""
+                    }
+                ],
+                "creative": [
+                    {
+                        "name": "Peta Moreno Marina Claypole",
+                        "role": "Vestuario"
+                    },
+                    {
+                        "name": "Sebastián Francia",
+                        "role": "Diseño de Luces"
+                    },
+                    {
+                        "name": "Romina Giorno",
+                        "role": "Espacio y Arte"
+                    },
+                    {
+                        "name": "Marisol Scagni",
+                        "role": "Asistente de dirección"
+                    },
+                    {
+                        "name": "Laura Quevedo",
+                        "role": "Producción"
+                    },
+                    {
+                        "name": "Fernando Ferrer",
+                        "role": "Dramaturgia y Dirección"
+                    },
+                    {
+                        "name": "Débora Staiff",
+                        "role": "Representante Internacional"
+                    }
+                ],
+                "musicians": [
+                    {
+                        "name": "Stine Helkjaer Engen",
+                        "role": "Música original e interpretación"
+                    }
+                ],
+                "dancers": [],
+                "image_1_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1698174049/website-fer/shows/j86eok2wbrwhhnv8dyix.webp",
+                "image_2_url": "",
+                "image_3_url": ""
+            },
+            {
+                "id": "8jj5jqk60mmdmd7fxp25",
+                "title": "La que va",
+                "slug": "la-que-va",
+                "opening_date": "2023",
+                "theatre": "",
+                "sinopsis": "<p><span>Una dramaturgia inspirada por el movimiento.</span><br /><span>Un movimiento a partir de la dramaturgia.</span><br /><br /><span>La bailarina y performer Eugenia Carnevali y el dramaturgo y director Fernando Ferrer crean “La que Va”, una pieza de danza contemporánea y dramaturgia donde el cuerpo de una mujer evoluciona con temáticas cotidianas y de la historia de otras mujeres que nos habitan y que la llevan a viajar por estados físicos y teatrales.</span><br /><br /><span>Los dos artistas exploran los límites que navegan entre la danza y el teatro, confrontando elementos con imágenes, en el que hilos comunes o contradictorios conformen composiciones donde puedan llevar a cabo una dramaturgia unitaria.</span></p><p><span>El cuerpo de una mujer intervenido por las mujeres de su historia. El cuerpo de una mujer que espera el regreso de quienes la adujeron, repasando las huellas del encuentro. Entonces se atraviesa lo inmanejable, delineando el porvenir. Abducciones extraterrestres. Un discurso que coopta, toma, divide y explora el propio cuerpo, propulsando a planos nuevos. “La que va” explora la poetización del diálogo interno, la memoria y la lucha, en los límites entre la realidad y lo imaginado.</span></p>",
+                "cast": [
+                    {
+                        "name": "María Eugenia Carnevali",
+                        "role": ""
+                    }
+                ],
+                "creative": [
+                    {
+                        "name": "María Eugenia Carnevali - Fernando Ferrer",
+                        "role": "Autoría"
+                    },
+                    {
+                        "name": "Fernando Ferrer",
+                        "role": "Dramaturgia"
+                    },
+                    {
+                        "name": "Leandro Orellano",
+                        "role": "Diseño De Iluminación"
+                    },
+                    {
+                        "name": "Marisol Scagni",
+                        "role": "Asistencia de dirección"
+                    },
+                    {
+                        "name": "María Eugenia Carnevali",
+                        "role": "Coreografía"
+                    },
+                    {
+                        "name": "Fernando Ferrer",
+                        "role": "Puesta en escena y Dirección"
+                    }
+                ],
+                "musicians": [],
+                "dancers": [],
+                "image_1_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1699302482/website-fer/shows/rrmmgcxmyrnu6ur3ssaj.jpg",
+                "image_2_url": "",
+                "image_3_url": ""
+            }
+        ]
     }
 }

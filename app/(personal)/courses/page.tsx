@@ -12,7 +12,7 @@ import { getRemoteOrLocalData } from "@/lib/getRemoteOrLocalData"
 
 export const metadata: Metadata = {
     title: 'Cursos',
-    description: 'cursos dictados por John Doe',
+    description: 'cursos dictados por Fernando Ferrer',
 }
 
 export default async function CoursesPage() {
@@ -50,9 +50,9 @@ export default async function CoursesPage() {
 
 
     const contactBtn =
-        <Link href={`https://wa.me/${contactWhatsapp}`} target="_blank">
-            <button className="btnWhatsapp">whatsapp</button>
-        </Link>
+            <Link href={`https://wa.me/${contactWhatsapp}`} target="_blank">
+                <button className="btnWhatsapp">consultar por whatsapp</button>
+            </Link>
 
     return (
         <section className='courses'>
@@ -71,8 +71,12 @@ export default async function CoursesPage() {
                 <div className='description'>
                     {texto}
                 </div>
-                {contactBtn}
+                <div>
+                    {contactBtn}
+                </div>
             </div>
+
+            
 
             <ImageGrid images={grid_1} />
 
@@ -146,7 +150,7 @@ export default async function CoursesPage() {
                 <ol className="contact-items">
                     <li>
                         <span className="emoji">&#x1F4DE;</span>
-                        <span className="text">whapp: </span>
+                        <span className="text">whatsapp </span>
                         <span className="link">{contactBtn}</span>
                     </li>
                     <li>
@@ -165,7 +169,7 @@ export default async function CoursesPage() {
                     <li>
                         {/* <span>o en cualquiera de mis redes sociales</span> */}
                         <span className="goals-emoji">&#x1F310;</span>
-                        <span className="goals-text">o en cualquiera de mis redes sociales!!!</span>
+                        <span className="goals-text">o en cualquiera de mis redes sociales!</span>
                     </li>
                 </ol>
             </div>

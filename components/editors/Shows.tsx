@@ -12,7 +12,7 @@ export default async function Shows() {
     
     return (
         <section className="">
-            <h1>Editar Shows</h1>
+            <h1>Editar obras</h1>
             <ShowsList shows={showsList} />
             {/* <CreateShow/> */}
         </section>

@@ -1,8 +1,6 @@
 // http://localhost:3000/editor/bio
 
 import { getData } from "@/lib/getData";
-import TextEditor from "../forms/text-editor/TextEditor";
-import ImageUpload from "../forms/ImageUpload";
 import { EditBio } from "../forms/EditBio";
 import { getRemoteOrLocalData } from "@/lib/getRemoteOrLocalData";
 
@@ -25,8 +23,6 @@ export default async function Bio() {
     const image7Url = data?.image_7_url || '';
 
     const imageURLS = [image1Url, image2Url, image3Url, image4Url, image5Url, image6Url, image7Url];
-    // continue on the passing cycle to ImagesEdit, remember to rename `ImageEdit` 
-    // component to `ImageInput`, and fix all imports. 
     
     return (
         <section className="">
@@ -35,10 +31,3 @@ export default async function Bio() {
         </section>
     )
   }
-
-  /* 
-  <TextEditor contentHtml={contentHtml} document={documentName} section={sectionName}/>
-<ImageUpload imageUrl={image1Url} document={documentName} folder={folderName} entry={'image_1_url'} section={sectionName}/>
-<ImageUpload imageUrl={image2Url} document={documentName} folder={folderName} entry={'image_2_url'} section={sectionName}/>
-<ImageUpload imageUrl={image3Url} document={documentName} folder={folderName} entry={'image_3_url'} section={sectionName}/>
-  */

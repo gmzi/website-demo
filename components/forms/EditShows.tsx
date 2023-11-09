@@ -99,10 +99,10 @@ export function ShowsList({ shows }: ShowsListProps) {
                     <div className="card-container">
                         <div className="card">
                             <div className="card-head">
-                                <h5>Agregar nuevo show</h5>
+                                <h5>Agregar nueva obra</h5>
                             </div>
                             <div className="card-image">
-                                <button onClick={handleCreate}>crear nuevo show</button>
+                                <button onClick={handleCreate}>agregar nueva obra</button>
                             </div>
                         </div>
                     </div>

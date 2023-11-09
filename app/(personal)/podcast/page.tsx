@@ -9,7 +9,7 @@ import { getRemoteOrLocalData } from "@/lib/getRemoteOrLocalData"
 
 export const metadata: Metadata = {
     title: 'Podcast',
-    description: "testigo de la creación, el podcast de Fernando Ferrer"
+    description: "testigo de la creacion, el podcast de Fernando Ferrer"
 }
 
 export default async function PodcastPage() {

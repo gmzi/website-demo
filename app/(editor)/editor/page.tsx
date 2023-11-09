@@ -17,7 +17,7 @@ export default async function EditorMainPage() {
           <ul>
             <li>
               <Link href="/editor/about">
-                <span className={e.cmsLink}>About</span>
+                <span className={e.cmsLink}>inicio</span>
               </Link>
             </li>
             <li>
@@ -27,7 +27,7 @@ export default async function EditorMainPage() {
             </li>
             <li>
               <Link href="/editor/shows">
-                <span className={e.cmsLink}>shows</span>
+                <span className={e.cmsLink}>obras</span>
               </Link>
             </li>
             <li>
@@ -42,12 +42,12 @@ export default async function EditorMainPage() {
             </li>
             <li>
               <Link href="/editor/tours">
-                <span className={e.cmsLink}>tours</span>
+                <span className={e.cmsLink}>giras</span>
               </Link>
             </li>
             <li>
               <Link href="/editor/press">
-                <span className={e.cmsLink}>press</span>
+                <span className={e.cmsLink}>prensa</span>
               </Link>
             </li>
           </ul>

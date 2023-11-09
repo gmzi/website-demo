@@ -1,27 +1,115 @@
+import '../globals.css'
+import { Metadata, ResolvingMetadata } from 'next'
+import {
+  Space_Mono,
+  Inter,
+  Lusitana,
+} from 'next/font/google';
 import { Navbar } from '../../components/global/Navbar'
 import { Footer } from '@/components/global/Footer'
 import { Analytics } from '@vercel/analytics/react'
-import Social from '@/components/global/Social'
 
-const isProd = process.env.NODE_ENV === 'production'
+export const viewport = {
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: 'ghostwhite' },
+    { media: '(prefers-color-scheme: dark)', color: 'black' },
+  ],
+}
 
-export default async function IndexRoute({
+export const inter = Inter({ subsets: ['latin'] });
+
+export const lusitana = Lusitana({
+  subsets: ['latin'],
+  weight: '400'
+});
+
+const BASE_URL = process.env.BASE_URL;
+
+export const metadata: Metadata = {
+  title: 'Fernando Ferrer',
+  // description: 'Sitio oficial de Fernando Ferrer, dramaturgo, director, docente, actor',
+  metadataBase: new URL(`${BASE_URL}`),
+  generator: 'Fernando Ferrer',
+  applicationName: 'Fernando Ferrer',
+  referrer: 'origin-when-cross-origin',
+  keywords: ['fernando', 'ferrer', 'teatro', 'dramaturgia', 'actuacion', 'arte', 'cultura'],
+  authors: [{ name: 'fernando ferrer', url: `${BASE_URL}` }, { name: 'gmzi', url: 'https://twitter.com/spiritusliteram' }],
+  creator: 'Fernando Ferrer',
+  publisher: 'Fernando Ferrer',
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  alternates: {
+    canonical: '/',
+  },
+  openGraph: {
+    title: 'Fernando Ferrer',
+    description: 'sitio oficial de Fernando Ferrer',
+    url: `${BASE_URL}`,
+    siteName: 'Fernando Ferrer',
+    // images: '/og-image.png',
+    images: [{ url: '/server/og' }],
+    locale: 'es-ES',
+    type: 'website',
+  },
+  robots: {
+    index: true,
+    follow: false,
+    nocache: false,
+    googleBot: {
+      index: true,
+      follow: true,
+      noimageindex: false,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  icons: {
+    icon: '/icons/favicon.ico',
+    apple: "/icons/icon-96.png",
+  },
+  manifest: '/manifest.json',
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Fernando Ferrer',
+    description: 'sitio oficial',
+    siteId: '',
+    creator: '@ferferrerok',
+    creatorId: '',
+    images: [`${BASE_URL}/server/og`],
+  },
+  verification: {
+    google: 'google',
+    yandex: 'yandex',
+    yahoo: 'yahoo',
+  },
+  archives: [`${BASE_URL}/shows`],
+  bookmarks: [`${BASE_URL}`],
+  category: 'arts',
+};
+
+
+export default async function Layout({
   children,
 }: {
   children: React.ReactNode
 }) {
 
   return (
-    <>
-      <header>
-        <Navbar/>
-      </header>
-      <main>
-        {children}
-        {/* <Analytics/> */}
-        {isProd && <Analytics/>}
-      </main>
-      <Footer/>
-    </>
+    <html lang="es">
+      <body>
+        <header>
+          <Navbar />
+        </header>
+        <main>
+          {children}
+          <Analytics/>
+        </main>
+        <Footer />
+      </body>
+    </html>
   )
 }

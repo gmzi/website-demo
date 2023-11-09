@@ -1,3 +1,10 @@
+import '../../globals.css'
+import { Metadata, ResolvingMetadata } from 'next'
+import {
+  Space_Mono,
+  Inter,
+  Lusitana,
+} from 'next/font/google';
 import { SignIn, UserButton, SignOutButton } from "@clerk/nextjs";
 import { auth } from '@clerk/nextjs';
 import { enableAuthIfProd } from '@/lib/EnableAuthIfProd';
@@ -6,42 +13,136 @@ import { ClerkProvider } from '@clerk/nextjs';
 import e from '@/app/(editor)/editor/editor.module.css'
 import { Footer } from "@/components/global/Footer";
 
-const BASE_URL = process.env.BASE_URL;
-
-const isProd = process.env.NODE_ENV === 'production';
-
 interface EditorProps {
   children?: React.ReactNode
 }
 
-export default async function EditorLayout({ children }: EditorProps) {
-  
-  // const { orgRole } = auth();
-  const orgRole = 'admin'
-    
+export const viewport = {
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: 'ghostwhite' },
+    { media: '(prefers-color-scheme: dark)', color: 'black' },
+  ],
+}
+
+const inter = Inter({ subsets: ['latin'] });
+
+const lusitana = Lusitana({
+  subsets: ['latin'],
+  weight: '400'
+});
+
+const BASE_URL = process.env.BASE_URL;
+
+
+export const metadata: Metadata = {
+  title: 'EDITOR',
+  description: 'editor del sitio oficial de Fernando Ferrer',
+  metadataBase: new URL(`${BASE_URL}`),
+  generator: 'Fernando Ferrer',
+  applicationName: 'Fernando Ferrer',
+  referrer: 'origin-when-cross-origin',
+  keywords: ['fernando', 'ferrer', 'teatro', 'dramaturgia', 'actuacion', 'arte', 'cultura'],
+  authors: [{ name: 'fernando ferrer', url: `${BASE_URL}` }, { name: 'gmzi', url: 'https://twitter.com/spiritusliteram' }],
+  creator: 'Fernando Ferrer',
+  publisher: 'Fernando Ferrer',
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  alternates: {
+    canonical: '/',
+  },
+  openGraph: {
+    title: 'Editor -',
+    description: 'editor del sitio oficial de Fernando Ferrer',
+    url: `${BASE_URL}/editor`,
+    siteName: 'Fernando Ferrer',
+    // images: '/og-image.png',
+    images: [{ url: '/server/og' }],
+    locale: 'es-ES',
+    type: 'website',
+  },
+  robots: {
+    index: true,
+    follow: false,
+    nocache: false,
+    googleBot: {
+      index: true,
+      follow: true,
+      noimageindex: false,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  icons: {
+    icon: '/icons/editor-favicon.ico',
+    apple: "/icons/icon-96.png",
+  },
+  manifest: '/manifest.json',
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Fernando Ferrer',
+    description: 'sitio oficial',
+    siteId: '',
+    creator: '@ferferrerok',
+    creatorId: '',
+    images: [`${BASE_URL}/server/og`],
+  },
+  verification: {
+    google: 'google',
+    yandex: 'yandex',
+    yahoo: 'yahoo',
+  },
+  archives: [`${BASE_URL}/editor`],
+  bookmarks: [`${BASE_URL}/editor`],
+  category: 'arts',
+};
+
+export default async function Layout({ children }: EditorProps) {
+
+  const { orgRole } = auth();
+  // const orgRole = 'admin'
+
   if (orgRole !== 'admin') {
     return (
-      <ClerkProvider allowedRedirectOrigins={[`${BASE_URL}/editor`]}>
-        <div>
-          <UserButton afterSignOutUrl="/editor" />
-          <SignOutButton />
-          <p>you are an unauthorized user to edit this page, please sign out from your
-            current account and sign in as an authorized user</p>
-        </div>
-      </ClerkProvider>
+      <html>
+        <body>
+          <ClerkProvider allowedRedirectOrigins={[`${BASE_URL}/editor`]}>
+            <header>
+              <UserButton afterSignOutUrl="/editor" />
+              <SignOutButton />
+            </header>
+            <main>
+              <section>
+                <div className="alert">
+                  <p>you are an unauthorized user to edit this page, please sign out from your
+                    current account and sign back in as an authorized user</p>
+                </div>
+              </section>
+            </main>
+          </ClerkProvider>
+        </body>
+      </html>
     )
   }
 
   return (
-    <ClerkProvider allowedRedirectOrigins={[`${BASE_URL}/editor`]}>
-      <header>
-        {orgRole && <EditorNavbar orgRole={orgRole}/>}
-      </header>
-      <main className={e.editorMain}>
-        {children}
-      </main>
-      <Footer/>
-    </ClerkProvider>
+    <html lang="es">
+      <body>
+        <ClerkProvider allowedRedirectOrigins={[`${BASE_URL}/editor`]}>
+          <header>
+            {orgRole && <EditorNavbar orgRole={orgRole} />}
+          </header>
+          {/* <main className={e.editorMain}> */}
+          <main>
+            {children}
+          </main>
+          <Footer />
+        </ClerkProvider>
+      </body>
+    </html>
   )
 }
 

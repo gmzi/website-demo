@@ -2,17 +2,6 @@ import { Circle } from "../shared/icons";
 import Social from "./Social";
 import Link from "next/link";
 
-// export function Footer() {
-//   return (
-//     <footer>
-//       <Social/>
-//       <p>
-//         &copy;2024, todos los derechos reservados.
-//       </p>
-//     </footer>
-//   )
-// }
-
 export function Footer() {
   return (
     <footer>
@@ -21,7 +10,7 @@ export function Footer() {
           <Circle/>
         </div>
       </Link>
-      <p>© 2024 John Doe. Todos los derechos reservados.</p>
+      <p>© 2024 Fernando Ferrer. Todos los derechos reservados.</p>
     </footer>
   )
 }

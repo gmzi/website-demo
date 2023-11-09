@@ -20,7 +20,7 @@ const DATA_API_KEY = process.env.NEXT_PUBLIC_DATA_API_KEY
 const TextEditor = ({ contentHtml, document, section }) => {
 
   const [cleanHtmlContent, setCleanHtmlContent] = useState(contentHtml);
-  const [contentSaved, setContentSaved] = useState(false);
+  const [contentSaved, setContentSaved] = useState({message: null});
 
   const editor = useEditor({
     extensions: [
@@ -66,10 +66,10 @@ const TextEditor = ({ contentHtml, document, section }) => {
       <button onClick={handleSave}>save changes </button>
       <p
         aria-live="polite"
-        className={`sr-only ${state?.message ? 'visible' : ''}`}
+        className={`sr-only ${contentSaved?.message ? 'visible' : ''}`}
         role="status"
       >
-        {state?.message}
+        {contentSaved?.message}
       </p>
     </div>
   )

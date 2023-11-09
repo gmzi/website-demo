@@ -12,7 +12,7 @@ const isProd = process.env.NODE_ENV === 'production';
 
 export const metadata: Metadata = {
     title: 'Espectaculos',
-    description: 'espectaculos escritos y/o dirigidos por John Doe',
+    description: 'espectaculos escritos y/o dirigidos por Fernando Ferrer',
 }
 
 export default async function ShowsPage() {
@@ -24,7 +24,7 @@ export default async function ShowsPage() {
 
     return (
         <section className="shows">
-            <h1>Espectáculos</h1>
+            <h1>Obras</h1>
             <div className="shows-previews-container">
                 {shows.map((show: Show, index: number) => (
                     <ShowDisplay key={`show-${show.title}-${index}`} show={show} />

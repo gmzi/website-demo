@@ -2,13 +2,11 @@
 
 // @ts-expect-error
 import { useFormState, useFormStatus } from 'react-dom'
-import type { Bio } from '@/types'
 import { editBio } from '@/app/actions'
-import { ImageEdit } from './ImageEdit'
-import { ImagesEdit } from './ImageEdit'
 import { ImageGridInput, ImageInputWithIDAndDefaultValue } from './ImageInput'
 import { RichText, RichTextWithIdentificator } from './text-editor/RichText'
 import ImageGrid from '../ImageGrid'
+// import e from '@/app/(editor)/editor/editor.module.css'
 import e from '@/app/(editor)/editor/editor.module.css'
 
 
@@ -71,7 +69,7 @@ export function EditBio({ contentHtml_1, contentHtml_2, imageUrls }: BioProps) {
         <div className="editor-group">
             <form action={formAction} className="form-bio">
                 <div className="imgContainer">
-                    <ImageInputWithIDAndDefaultValue id={1} defaultValue={heroImageUrl} className="bio-hero-image" />
+                    <ImageInputWithIDAndDefaultValue id={1} defaultValue={heroImageUrl} className="" />
                 </div>
                 <div>
                     <div className="paragraphContainer">

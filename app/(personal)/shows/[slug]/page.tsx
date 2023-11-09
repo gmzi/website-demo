@@ -1,17 +1,15 @@
 import ShowCard from "@/components/ShowCard";
 import ShowsGallery from "@/components/ShowsGallery";
 import type { Show } from "@/types";
-import { useParams } from "next/navigation";
-import { notFound } from "next/navigation";
-
-import type { Metadata } from "next"
-import Image from 'next/image'
-import { getData } from "@/lib/getData"
-import parse from 'html-react-parser'
-import document from "@/document.json"
+import { Metadata, ResolvingMetadata } from 'next'
 import { getRemoteOrLocalData } from "@/lib/getRemoteOrLocalData";
 
 const isProd = process.env.NODE_ENV === 'production';
+
+type Props = {
+    params: { slug: string, title: string }
+    searchParams: { [key: string]: string | string[] | undefined }
+  }
 
 export async function generateStaticParams() {
     // const data = await getData("shows")
@@ -19,12 +17,19 @@ export async function generateStaticParams() {
     const shows = data.content
     return shows.map((show: Show) => ({
         slug: show.slug,
+        title: show.title
     }))
 }
 
-
-
-// generateMetadata  goes here
+export async function generateMetadata(
+    {params, searchParams} : Props,
+    parent: ResolvingMetadata
+) : Promise<Metadata> {
+    const slug = params.slug;
+    return {
+        title: slug,
+    }
+}
 
 export default async function ShowRoute({params}: {params: {slug: string}}) {
 

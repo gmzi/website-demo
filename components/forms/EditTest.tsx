@@ -3,8 +3,10 @@
 // @ts-expect-error
 import { useFormState, useFormStatus } from 'react-dom'
 // import type { About } from '@/types'
-import { editAbout } from '@/app/actions'
+import { editAbout, editTest } from '@/app/actions'
+import { ImageEdit } from './ImageEdit'
 import { RichText } from './text-editor/RichText'
+import { useState } from 'react'
 import { ImageInputWithIDAndDefaultValue } from './ImageInput'
 
 
@@ -37,8 +39,8 @@ async function testAbout() {
     return { message: "your action was successfull" };
 }
 
-export function EditAbout({ contentHtml, imageUrl }: AboutProps) {
-    const [state, formAction] = useFormState(editAbout, initialState)
+export function EditTest({ contentHtml, imageUrl }: AboutProps) {
+    const [state, formAction] = useFormState(editTest, initialState)
     // const [state, formAction] = useFormState(testAbout, initialState)
 
     return (

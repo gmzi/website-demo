@@ -16,7 +16,8 @@ import {
     createTestimonial,
     editCourseLogistics,
     editImageGrid_A,
-    editImageGrid_B
+    editImageGrid_B,
+    editImageGrid_C
 } from '@/app/actions'
 import { ImageEdit } from './ImageEdit'
 import { ImageGridInput, ImageInputWithIDAndDefaultValue } from './ImageInput'
@@ -221,6 +222,36 @@ export function EditImageGrid_A({ images }: EditImageGridProps) {
 
 export function EditImageGrid_B({ images }: EditImageGridProps) {
     const [state, formAction] = useFormState(editImageGrid_B, initialState);
+
+    const imagesGrid = images.map((image: ImageProps, index) => {
+        return (
+            <div key={`edit-image-${index}`}>
+                <ImageGridInput id={image.id} defaultValue={image.url} className="" />
+            </div>
+        )
+    })
+
+    return (
+        <div className="editor-group">
+            <form action={formAction}>
+                <div className={e.imageGrid}>
+                    {imagesGrid}
+                </div>
+                <EditButton />
+                <p
+                    aria-live="polite"
+                    className={`sr-only ${state?.message ? 'visible' : ''}`}
+                    role="status"
+                >
+                    {state?.message}
+                </p>
+            </form>
+        </div>
+    )
+}
+
+export function EditImageGrid_C({ images }: EditImageGridProps) {
+    const [state, formAction] = useFormState(editImageGrid_C, initialState);
 
     const imagesGrid = images.map((image: ImageProps, index) => {
         return (

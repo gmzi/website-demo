@@ -17,23 +17,24 @@ export function GET() {
           textAlign: 'center',
           alignItems: 'center', 
           justifyContent: 'center',
-          background: 'white',
+          background: 'linear-gradient(to bottom,#ffffff,#abbaab 50%,#ffffff)',
           border: "1px solid gray", 
           borderRadius: "5px"
-        }}>
-        <div
-        style={{
-          fontSize: 128
         }}
         >
-        Artist - Name
+        <div
+        style={{
+          fontSize: '3em'
+        }}
+        >
+        Fernando Ferrer
         </div>    
         <div
         style={{
-          fontSize: 70
+          fontSize: '2em'
         }}
         >
-        artist - description
+        sitio oficial
         </div>    
       </div>  
     ),
