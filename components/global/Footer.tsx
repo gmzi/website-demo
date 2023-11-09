@@ -10,7 +10,7 @@ export function Footer() {
           <Circle/>
         </div>
       </Link>
-      <p>© 2024 Fernando Ferrer. Todos los derechos reservados.</p>
+      <p><Link href="https://github.com/gmzi/website-demo">github repo</Link></p>
     </footer>
   )
 }

@@ -27,14 +27,14 @@ export function GET() {
           fontSize: '3em'
         }}
         >
-        Fernando Ferrer
+        Tennesee Williams
         </div>    
         <div
         style={{
           fontSize: '2em'
         }}
         >
-        sitio oficial
+        a website
         </div>    
       </div>  
     ),

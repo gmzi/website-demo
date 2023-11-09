@@ -9,7 +9,7 @@ import ImageGrid from "@/components/ImageGrid"
 
 export const metadata: Metadata = {
     title: 'Bio',
-    description: ' Fernando Ferrer, bio',
+    description: ' Tennesee Williams, bio',
 }
 
 export default async function BioPage() {

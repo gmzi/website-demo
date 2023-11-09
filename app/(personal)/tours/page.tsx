@@ -7,7 +7,7 @@ import Link from "next/link";
 
 export const metadata: Metadata = {
     title: 'Giras',
-    description: 'giras, eventos y festivales de Fernando Ferrer'
+    description: 'giras, eventos y festivales de Tennesee Williams'
 }
 
 export default async function ToursPage() {

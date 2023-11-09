@@ -36,15 +36,15 @@ const BASE_URL = process.env.BASE_URL;
 
 export const metadata: Metadata = {
   title: 'EDITOR',
-  description: 'editor del sitio oficial de Fernando Ferrer',
+  description: 'editor del sitio oficial de Tennesee Williams',
   metadataBase: new URL(`${BASE_URL}`),
-  generator: 'Fernando Ferrer',
-  applicationName: 'Fernando Ferrer',
+  generator: 'Tennesee Williams',
+  applicationName: 'Tennesee Williams',
   referrer: 'origin-when-cross-origin',
   keywords: ['fernando', 'ferrer', 'teatro', 'dramaturgia', 'actuacion', 'arte', 'cultura'],
-  authors: [{ name: 'fernando ferrer', url: `${BASE_URL}` }, { name: 'gmzi', url: 'https://twitter.com/spiritusliteram' }],
-  creator: 'Fernando Ferrer',
-  publisher: 'Fernando Ferrer',
+  authors: [{ name: 'Tennesee Williams', url: `${BASE_URL}` }, { name: 'gmzi', url: 'https://twitter.com/spiritusliteram' }],
+  creator: 'Tennesee Williams',
+  publisher: 'Tennesee Williams',
   formatDetection: {
     email: false,
     address: false,
@@ -55,9 +55,9 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: 'Editor -',
-    description: 'editor del sitio oficial de Fernando Ferrer',
+    description: 'editor del sitio oficial de Tennesee Williams',
     url: `${BASE_URL}/editor`,
-    siteName: 'Fernando Ferrer',
+    siteName: 'Tennesee Williams',
     // images: '/og-image.png',
     images: [{ url: '/server/og' }],
     locale: 'es-ES',
@@ -83,7 +83,7 @@ export const metadata: Metadata = {
   manifest: '/manifest.json',
   twitter: {
     card: 'summary_large_image',
-    title: 'Fernando Ferrer',
+    title: 'Tennesee Williams',
     description: 'sitio oficial',
     siteId: '',
     creator: '@ferferrerok',

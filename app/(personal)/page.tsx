@@ -6,7 +6,7 @@ import { getRemoteOrLocalData } from "@/lib/getRemoteOrLocalData"
 
 export const metadata: Metadata = {
     title: 'Home',
-    description: 'Sitio oficial de Fernando Ferrer, dramaturgo, director, docente, actor',
+    description: 'Sitio oficial de Tennesee Williams, dramaturgo, director, docente, actor',
 }
 
 export default async function AboutPage() {

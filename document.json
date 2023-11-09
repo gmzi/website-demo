@@ -73,7 +73,7 @@
         "reviews": [
             {
                 "id": "z61i35osp9okk77y6697",
-                "content": "<p><span>Fernando Ferrer logra con La Fiesta del viejo, una lectura contemporánea y sensible de Rey Lear. Pero lo más curioso y destacable es que no se trata (como suele ocurrir con las adaptaciones de clásicos) de una simplificación, sino del ahondamiento en lo más esencial de la obra de Shakespeare. Su dramaturgia fluye relajada permitiendo que la poesía y la violencia del original se manifiesten de manera tan frondosa como brutal</span></p>",
+                "content": "<p><span>Tennesee Williams logra con La Fiesta del viejo, una lectura contemporánea y sensible de Rey Lear. Pero lo más curioso y destacable es que no se trata (como suele ocurrir con las adaptaciones de clásicos) de una simplificación, sino del ahondamiento en lo más esencial de la obra de Shakespeare. Su dramaturgia fluye relajada permitiendo que la poesía y la violencia del original se manifiesten de manera tan frondosa como brutal</span></p>",
                 "author": "Javier Daulte"
             }
         ],
@@ -303,7 +303,7 @@
             {
                 "id": "tggioupsib2inl0ih538",
                 "veredict": "",
-                "quote": "<p><span><em>La Payanca de Fernando Ferrer es una valiosa</em></span></p><p><span><em>versión vernácula de Hamlet.</em></span></p><p><span><em>Bien dirigida e interpretada</em></span></p><p><span><em>por un grupo de excelentes actores</em></span></p>",
+                "quote": "<p><span><em>La Payanca de Tennesee Williams es una valiosa</em></span></p><p><span><em>versión vernácula de Hamlet.</em></span></p><p><span><em>Bien dirigida e interpretada</em></span></p><p><span><em>por un grupo de excelentes actores</em></span></p>",
                 "media_organization": "La TV Pública",
                 "journalist": "Osvaldo Quiroga",
                 "date": "",
@@ -345,7 +345,7 @@
                 "veredict": "",
                 "quote": "<p><span><em>La fiesta del viejo nace como una necesidad de otros.</em></span></p><p><span><em>De no estar solo escribiendo ahí mirando por la ventana</em></span></p><p><span><em>como esa paloma va y viene en la rama que salió</em></span></p><p><span><em>del ladrillo no se sabe como.</em></span></p><p><span><em>Nace yendo y viniendo a mi infancia, a las infancias</em></span></p><p><span><em>de los que tengo cerca, en donde en algunos</em></span></p><p><span><em>casos la muerte mordió temprano.</em></span></p>",
                 "media_organization": "Infobae",
-                "journalist": "Fernando Ferrer",
+                "journalist": "Tennesee Williams",
                 "date": "",
                 "article_url": "",
                 "show": "La fiesta del viejo"
@@ -481,9 +481,9 @@
         },
         "name": "metadata",
         "language": "ES",
-        "site_name": "Fernando Ferrer's world",
-        "author_name": "Fernando Ferrer",
-        "title": "Fernando Ferrer",
+        "site_name": "Tennesee Williams's world",
+        "author_name": "Tennesee Williams",
+        "title": "Tennesee Williams",
         "description": "fisher, gentleman, mechanic, king, slave",
         "og_image_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1648494033/rem-logo2_n0rybw.png",
         "social": [
@@ -614,7 +614,7 @@
                         "role": "Prensa"
                     },
                     {
-                        "name": "Fernando Ferrer",
+                        "name": "Tennesee Williams",
                         "role": "Prensa"
                     },
                     {
@@ -646,11 +646,11 @@
                         "role": "Coreografía"
                     },
                     {
-                        "name": "Fernando Ferrer",
+                        "name": "Tennesee Williams",
                         "role": "Puesta en escena"
                     },
                     {
-                        "name": "Fernando Ferrer",
+                        "name": "Tennesee Williams",
                         "role": "Dirección y dramaturgia"
                     }
                 ],
@@ -683,11 +683,11 @@
                         "role": "Vestuario"
                     },
                     {
-                        "name": "Federico Buso - Fernando Ferrer",
+                        "name": "Federico Buso - Tennesee Williams",
                         "role": "Escenografía"
                     },
                     {
-                        "name": "Fernando Ferrer",
+                        "name": "Tennesee Williams",
                         "role": "Diseño de luces"
                     },
                     {
@@ -719,7 +719,7 @@
                         "role": "Colaboración en dramaturgia"
                     },
                     {
-                        "name": "Fernando Ferrer",
+                        "name": "Tennesee Williams",
                         "role": "Dramaturgia y Dirección"
                     }
                 ],
@@ -756,7 +756,7 @@
                         "role": "Vestuario"
                     },
                     {
-                        "name": "Fernando Ferrer",
+                        "name": "Tennesee Williams",
                         "role": "Iluminación"
                     },
                     {
@@ -792,7 +792,7 @@
                         "role": "Producción"
                     },
                     {
-                        "name": "Fernando Ferrer",
+                        "name": "Tennesee Williams",
                         "role": "Dramaturgia y Dirección"
                     }
                 ],
@@ -834,7 +834,7 @@
                 ],
                 "creative": [
                     {
-                        "name": "Fernando Ferrer",
+                        "name": "Tennesee Williams",
                         "role": "Espacio e iluminación"
                     },
                     {
@@ -846,7 +846,7 @@
                         "role": "Foto"
                     },
                     {
-                        "name": "Fernando Ferrer - Romina Giorno",
+                        "name": "Tennesee Williams - Romina Giorno",
                         "role": "Escenografía"
                     },
                     {
@@ -882,7 +882,7 @@
                         "role": "Asistencia de Producción y Dirección"
                     },
                     {
-                        "name": "Fernando Ferrer",
+                        "name": "Tennesee Williams",
                         "role": "Dramaturgia y Dirección"
                     }
                 ],
@@ -927,7 +927,7 @@
                         "role": "Vestuario"
                     },
                     {
-                        "name": "Fernando Ferrer",
+                        "name": "Tennesee Williams",
                         "role": "Espacio, Arte e Iluminación"
                     },
                     {
@@ -935,7 +935,7 @@
                         "role": "Asistente de Dirección"
                     },
                     {
-                        "name": "Fernando Ferrer",
+                        "name": "Tennesee Williams",
                         "role": "Dramaturgia y Dirección"
                     }
                 ],
@@ -1024,7 +1024,7 @@
                         "role": "Producción"
                     },
                     {
-                        "name": "Fernando Ferrer",
+                        "name": "Tennesee Williams",
                         "role": "Dramaturgia y Dirección"
                     },
                     {
@@ -1049,7 +1049,7 @@
                 "slug": "la-que-va",
                 "opening_date": "2023",
                 "theatre": "",
-                "sinopsis": "<p><span>Una dramaturgia inspirada por el movimiento.</span><br /><span>Un movimiento a partir de la dramaturgia.</span><br /><br /><span>La bailarina y performer Eugenia Carnevali y el dramaturgo y director Fernando Ferrer crean “La que Va”, una pieza de danza contemporánea y dramaturgia donde el cuerpo de una mujer evoluciona con temáticas cotidianas y de la historia de otras mujeres que nos habitan y que la llevan a viajar por estados físicos y teatrales.</span><br /><br /><span>Los dos artistas exploran los límites que navegan entre la danza y el teatro, confrontando elementos con imágenes, en el que hilos comunes o contradictorios conformen composiciones donde puedan llevar a cabo una dramaturgia unitaria.</span></p><p><span>El cuerpo de una mujer intervenido por las mujeres de su historia. El cuerpo de una mujer que espera el regreso de quienes la adujeron, repasando las huellas del encuentro. Entonces se atraviesa lo inmanejable, delineando el porvenir. Abducciones extraterrestres. Un discurso que coopta, toma, divide y explora el propio cuerpo, propulsando a planos nuevos. “La que va” explora la poetización del diálogo interno, la memoria y la lucha, en los límites entre la realidad y lo imaginado.</span></p>",
+                "sinopsis": "<p><span>Una dramaturgia inspirada por el movimiento.</span><br /><span>Un movimiento a partir de la dramaturgia.</span><br /><br /><span>La bailarina y performer Eugenia Carnevali y el dramaturgo y director Tennesee Williams crean “La que Va”, una pieza de danza contemporánea y dramaturgia donde el cuerpo de una mujer evoluciona con temáticas cotidianas y de la historia de otras mujeres que nos habitan y que la llevan a viajar por estados físicos y teatrales.</span><br /><br /><span>Los dos artistas exploran los límites que navegan entre la danza y el teatro, confrontando elementos con imágenes, en el que hilos comunes o contradictorios conformen composiciones donde puedan llevar a cabo una dramaturgia unitaria.</span></p><p><span>El cuerpo de una mujer intervenido por las mujeres de su historia. El cuerpo de una mujer que espera el regreso de quienes la adujeron, repasando las huellas del encuentro. Entonces se atraviesa lo inmanejable, delineando el porvenir. Abducciones extraterrestres. Un discurso que coopta, toma, divide y explora el propio cuerpo, propulsando a planos nuevos. “La que va” explora la poetización del diálogo interno, la memoria y la lucha, en los límites entre la realidad y lo imaginado.</span></p>",
                 "cast": [
                     {
                         "name": "María Eugenia Carnevali",
@@ -1058,11 +1058,11 @@
                 ],
                 "creative": [
                     {
-                        "name": "María Eugenia Carnevali - Fernando Ferrer",
+                        "name": "María Eugenia Carnevali - Tennesee Williams",
                         "role": "Autoría"
                     },
                     {
-                        "name": "Fernando Ferrer",
+                        "name": "Tennesee Williams",
                         "role": "Dramaturgia"
                     },
                     {
@@ -1078,7 +1078,7 @@
                         "role": "Coreografía"
                     },
                     {
-                        "name": "Fernando Ferrer",
+                        "name": "Tennesee Williams",
                         "role": "Puesta en escena y Dirección"
                     }
                 ],

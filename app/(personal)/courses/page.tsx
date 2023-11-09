@@ -12,7 +12,7 @@ import { getRemoteOrLocalData } from "@/lib/getRemoteOrLocalData"
 
 export const metadata: Metadata = {
     title: 'Cursos',
-    description: 'cursos dictados por Fernando Ferrer',
+    description: 'cursos dictados por Tennesee Williams',
 }
 
 export default async function CoursesPage() {

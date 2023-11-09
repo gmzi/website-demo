@@ -47,6 +47,6 @@ VALUES
 
 INSERT INTO written_press (veredict, quote, media_organization, journalist, date, article_url, image_url, show_id)
 VALUES
-  ('Positive review', 'A must-see!', 'News Network 1', 'Fernando Ferrer', '2023-09-28', 'article1.html', 'image1.jpg', '1'),
+  ('Positive review', 'A must-see!', 'News Network 1', 'Tennesee Williams', '2023-09-28', 'article1.html', 'image1.jpg', '1'),
   ('Mixed review', 'Worth checking out.', 'Press Gazette', 'Jane Smith', '2023-09-29', 'article2.html', 'image2.jpg', '2'),
   ('Negative review', 'Disappointing performance.', 'The Daily Review', 'Bob Johnson', '2023-09-30', 'article3.html', 'image3.jpg', '3');

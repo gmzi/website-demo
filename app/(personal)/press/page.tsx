@@ -9,7 +9,7 @@ import type { VideoPressArticle } from "@/types";
 
 export const metadata: Metadata = {
     title: 'Prensa',
-    description: 'articulos de prensa sobre Fernando Ferrer'
+    description: 'articulos de prensa sobre Tennesee Williams'
 }
 
 export default async function PressPage() {

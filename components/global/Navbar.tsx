@@ -37,20 +37,20 @@ export function Navbar() {
       <div className="navbar-top">
         <div className="navbar-header">
           <Link href="/">
-            Fernando Ferrer
+            Tennessee Williams
           </Link>
         </div>
         <div className="social-icons">
-          <Link href="https://www.instagram.com/fernandoferrer.off" className="instagram">
+          <Link href="https://www.instagram.com" className="instagram">
             <InstagramIcon />
           </Link>
-          <Link href="https://www.facebook.com/fernando.ferrer.7121" className="facebook">
+          <Link href="https://www.facebook.com" className="facebook">
             <FacebookIcon />
           </Link>
-          <Link href="https://www.youtube.com/@fernandoferrer4744/featured" className="youtube">
+          <Link href="https://www.youtube.com" className="youtube">
             <YoutubeIcon />
           </Link>
-          <Link href="https://twitter.com/ferferrerok" className="twitter">
+          <Link href="https://twitter.com" className="twitter">
             <TwitterIcon />
           </Link>
         </div>

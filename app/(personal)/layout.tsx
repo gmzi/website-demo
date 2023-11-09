@@ -26,16 +26,16 @@ export const lusitana = Lusitana({
 const BASE_URL = process.env.BASE_URL;
 
 export const metadata: Metadata = {
-  title: 'Fernando Ferrer',
-  // description: 'Sitio oficial de Fernando Ferrer, dramaturgo, director, docente, actor',
+  title: 'Tennesee Williams',
+  // description: 'Sitio oficial de Tennesee Williams, dramaturgo, director, docente, actor',
   metadataBase: new URL(`${BASE_URL}`),
-  generator: 'Fernando Ferrer',
-  applicationName: 'Fernando Ferrer',
+  generator: 'Tennesee Williams',
+  applicationName: 'Tennesee Williams',
   referrer: 'origin-when-cross-origin',
   keywords: ['fernando', 'ferrer', 'teatro', 'dramaturgia', 'actuacion', 'arte', 'cultura'],
-  authors: [{ name: 'fernando ferrer', url: `${BASE_URL}` }, { name: 'gmzi', url: 'https://twitter.com/spiritusliteram' }],
-  creator: 'Fernando Ferrer',
-  publisher: 'Fernando Ferrer',
+  authors: [{ name: 'Tennesee Williams', url: `${BASE_URL}` }, { name: 'gmzi', url: 'https://twitter.com/spiritusliteram' }],
+  creator: 'Tennesee Williams',
+  publisher: 'Tennesee Williams',
   formatDetection: {
     email: false,
     address: false,
@@ -45,10 +45,10 @@ export const metadata: Metadata = {
     canonical: '/',
   },
   openGraph: {
-    title: 'Fernando Ferrer',
-    description: 'sitio oficial de Fernando Ferrer',
+    title: 'Tennesee Williams',
+    description: 'sitio oficial de Tennesee Williams',
     url: `${BASE_URL}`,
-    siteName: 'Fernando Ferrer',
+    siteName: 'Tennesee Williams',
     // images: '/og-image.png',
     images: [{ url: '/server/og' }],
     locale: 'es-ES',
@@ -74,7 +74,7 @@ export const metadata: Metadata = {
   manifest: '/manifest.json',
   twitter: {
     card: 'summary_large_image',
-    title: 'Fernando Ferrer',
+    title: 'Tennesee Williams',
     description: 'sitio oficial',
     siteId: '',
     creator: '@ferferrerok',
@@ -106,7 +106,7 @@ export default async function Layout({
         </header>
         <main>
           {children}
-          <Analytics/>
+          {/* <Analytics/> */}
         </main>
         <Footer />
       </body>

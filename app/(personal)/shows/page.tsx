@@ -12,7 +12,7 @@ const isProd = process.env.NODE_ENV === 'production';
 
 export const metadata: Metadata = {
     title: 'Espectaculos',
-    description: 'espectaculos escritos y/o dirigidos por Fernando Ferrer',
+    description: 'espectaculos escritos y/o dirigidos por Tennesee Williams',
 }
 
 export default async function ShowsPage() {
