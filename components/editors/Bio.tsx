@@ -23,11 +23,18 @@ export default async function Bio() {
     const image7Url = data?.image_7_url || '';
 
     const imageURLS = [image1Url, image2Url, image3Url, image4Url, image5Url, image6Url, image7Url];
+
+    const filteredUrls = imageURLS.filter(item => item);
+
+
     
     return (
         <section className="">
             <h1>Edit - Bio</h1>
-            <EditBio contentHtml_1={html_1} contentHtml_2={html_2} imageUrls={imageURLS}/>
+            <EditBio contentHtml_1={html_1} contentHtml_2={html_2} imageUrls={filteredUrls}/>
         </section>
     )
   }
+
+//   ON ADAPTING EDITBIO TO DELETE IMAGE FROM GRID:
+// https://chat.openai.com/share/1654f704-7c46-4eee-9776-8325d338c87c

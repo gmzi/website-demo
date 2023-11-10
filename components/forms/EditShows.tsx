@@ -109,7 +109,7 @@ export function ShowsList({ shows }: ShowsListProps) {
                 )}
             </li>
             {shows.map((show: Show, i: number) => (
-                <li key={`show-item-${i}`}>
+                <li key={`show-item-${i}`} className="editor-group">
                     <div key={`${show.title}-${i}`} className="card-container">
                         <div className='card'>
                             <div className='card-head'>
@@ -135,7 +135,7 @@ export function ShowsList({ shows }: ShowsListProps) {
         </ul>
 
     return (
-        <div className='showsList'>
+        <div className='editor-group'>
             {/* <div className='editor-group'> */}
             {openEditor !== false ? <Edit articles={shows} index={openEditor} handleCancel={handleCancel} /> : showsList}
         </div>

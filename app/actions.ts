@@ -16,6 +16,7 @@ import { updateInput } from '@/lib/updateInput';
 import { updateAbout } from '@/lib/updateAbout';
 import { updateBio } from '@/lib/updateBio';
 import {updateTest, updateItem} from '@/lib/mongo';
+import { pushToArray } from '@/lib/mongodb';
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 const DATA_API_KEY = process.env.NEXT_PUBLIC_DATA_API_KEY || '';
@@ -379,15 +380,7 @@ export async function createShow(prevState: any, formData: FormData) {
       content: updatedInputData
     }
 
-    const saved = await fetch(`${BASE_URL}/server/create`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'API-Key': DATA_API_KEY
-      },
-      referrerPolicy: 'no-referrer',
-      body: JSON.stringify(data)
-    });
+    const saved = await pushToArray(data.document, data.entry, data.content);
 
     revalidatePath(`/(personal)/shows`, 'page');
     revalidatePath(`/(personal)/shows/[slug]`, 'page');
@@ -455,17 +448,7 @@ export async function editShow(prevState: any, formData: FormData) {
       itemLocator: "content.id",
       newContent: updatedData,
     }
-
-    // const updated = await fetch(`${BASE_URL}/server/edit/item`, {
-    //   method: 'PATCH',
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //     'API-Key': DATA_API_KEY
-    //   },
-    //   referrerPolicy: 'no-referrer',
-    //   body: JSON.stringify(data)
-    // });
-
+    
     const updated = await updateItem(
       data.document, 
       data.entry,

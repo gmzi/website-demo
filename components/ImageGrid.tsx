@@ -1,40 +1,20 @@
 import React from 'react';
 import Image from 'next/image';
 
-// type ImageGridProps = {
-//     images: string[];
-//   };  
-
-// const ImageGrid: React.FC<ImageGridProps> = ({ images }) => {
-//   return (
-//     <div className="image-grid">
-//       {images.map((url, index) => (
-//         <div key={index} className={`image-box image-box-${index}`}>
-//           {/* <img src={url} alt="Event" /> */}
-//           <Image
-//             src={url}
-//             fill
-//             sizes="(max-width: 768px) 213px, 33vw"
-//             priority
-//             className="rounded-lg object-cover"
-//             alt="Picture of the author"
-//           />
-//         </div>
-//       ))}
-//     </div>
-//   );
-// }
-
-// export default ImageGrid;
 
 type ImageGridProps = {
   images: string[];
 };
 
+
+
 const ImageGrid: React.FC<ImageGridProps> = ({ images }) => {
+
+  const filteredUrls = images.filter(item => item);
+
   return (
     <div className="image-grid">
-      {images.map((src, index) => (
+      {filteredUrls.map((src, index) => (
         <div key={index}>
           <Image
             src={src}
