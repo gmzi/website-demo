@@ -1,0 +1,663 @@
+{
+  "document": "backup",
+  "date": "2023-11-10T16:42:35.277Z",
+  "about": {
+    "_id": "654d63d51ab3c6b4f8ed34ce",
+    "name": "about",
+    "content_html": {
+      "id": "qoxs0",
+      "content": "<p><strong>Soy dramaturgo, director, docente y actor. Estudié en la Escuela Nacional de Arte Dramático. </strong>En <strong>Dramaturgia</strong> me formé con <strong>Javier Daulte</strong> y con <strong>Ricardo Monti</strong>, dos referentes fundamentales en mi vida.</p><p><strong>Me dedico a contar historias</strong> y ese viaje es mi preferido. La cosa empieza con una imagen interna y finaliza con la concreción de la misma en proyecto teatral o fílmico. <strong>Me apasiona esta profesión en todas sus formas</strong>, ya sea en el desarrollo de los proyectos propios, como así también acompañando a otras personas en sus búsquedas creativas. De ahí deviene esta otra forma de pasión que es la docencia.</p>"
+    },
+    "image_1_url": {
+      "id": "qoxs0",
+      "content": "https://res.cloudinary.com/imagesgmzi/image/upload/v1699395709/website-fer/about/vmnt4qojun3l6ycrmfzf.jpg"
+    }
+  },
+  "bio": {
+    "_id": "654aaa274b4b76e27031e540",
+    "name": "bio",
+    "content_html_1": {
+      "id": "6umc6",
+      "content": "<p>Text here</p>"
+    },
+    "content_html_2": {
+      "id": "6umc6",
+      "content": "<p>text here</p>"
+    },
+    "image_1_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1699466239/website-fer/bio/rlx5h7arcccefvhkd0ij.jpg",
+    "image_2_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1697579608/website-fer/bio/w65phhxvey7krrslxhnj.jpg",
+    "image_3_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1698261181/website-fer/bio/ch25r7k442aekgrxefrt.jpg",
+    "image_4_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1698261181/website-fer/bio/wasc4rcta2rr5d7loxc4.jpg",
+    "image_5_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1697648732/website-fer/bio/nucz9usf3wwneralzeuc.jpg",
+    "image_6_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1698261182/website-fer/bio/qrsqhudx6093fqb4vde8.jpg",
+    "image_7_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1698689616/website-fer/bio/nhllyh0wvx6tyintzj0n.webp"
+  },
+  "shows": {
+    "_id": "654aaa474b4b76e27031e541",
+    "name": "shows",
+    "content": [
+      {
+        "id": "o2pyn00qzkvkd7v55jwp-myID",
+        "title": "test-show",
+        "slug": "test-show",
+        "opening_date": "2024",
+        "theatre": "test-theatre",
+        "sinopsis": "<p>test sinopsis</p>",
+        "cast": [
+          {
+            "name": "test name",
+            "role": "test role"
+          }
+        ],
+        "creative": [
+          {
+            "name": "test creative name",
+            "role": "test creative role"
+          }
+        ],
+        "musicians": [],
+        "dancers": [],
+        "image_1_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1697474895/website-fer/shows/dkmex9kupyadr0ovevob.jpg",
+        "image_2_url": "",
+        "image_3_url": ""
+      },
+      {
+        "id": "ofdssyn00qzkvkd7v55jwp-myID",
+        "title": "HELLO",
+        "slug": "hello",
+        "opening_date": "2024",
+        "theatre": "test-theatre",
+        "sinopsis": "<p>test sinopsis</p>",
+        "cast": [
+          {
+            "name": "test name",
+            "role": ""
+          }
+        ],
+        "creative": [
+          {
+            "name": "test creative name",
+            "role": ""
+          }
+        ],
+        "musicians": [],
+        "dancers": [],
+        "image_1_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1697474895/website-fer/shows/dkmex9kupyadr0ovevob.jpg",
+        "image_2_url": "",
+        "image_3_url": ""
+      },
+      {
+        "id": "5b897j8yv9ytlswkslrk",
+        "title": "La Payanca",
+        "slug": "la-payanca",
+        "opening_date": "2018",
+        "theatre": "",
+        "sinopsis": "<p><span>Es la historia de Jam, un chico del interior, que vuelve a su pueblo con motivo de la inauguración de nuevo taller de la fábrica familiar. </span></p><p><span>La empresa está en manos de su mamá y su tío Claudio, hermano de su padre muerto y actual esposo de su madre, Gertrudis. Previo a la inauguración se encontrarán en la casa de descanso familiar en la isla y a esta reunión, está invitada Ofelia, antiguo amor de Jam. Es de la mano de Ofelia que Jam tiene una visión de su padre en el río, quien le dice que en realidad no murió ahogado sino que fue asesinado por su propio hermano Claudio.</span></p><p><span>Jam, a partir de esa revelación fantasmagórica, intentara junto a Ofelia, develar la verdad y tomar venganza.</span></p>",
+        "cast": [
+          {
+            "name": "Sofía Gala Castiglione",
+            "role": "OFELIA"
+          },
+          {
+            "name": "Alejandro Paker",
+            "role": "CLAUDIO"
+          },
+          {
+            "name": "Santiago Pedrero",
+            "role": "JAM"
+          },
+          {
+            "name": "Estela Garelli",
+            "role": "GERTRUDIS"
+          }
+        ],
+        "creative": [
+          {
+            "name": "Espacio e iluminación",
+            "role": "Fernando Ferrer"
+          },
+          {
+            "name": "Gráfica",
+            "role": "Juan Francisco Reato"
+          },
+          {
+            "name": "Foto",
+            "role": "Romina Giorno"
+          },
+          {
+            "name": "Escenografía",
+            "role": "Fernando Ferrer - Romina Giorno"
+          },
+          {
+            "name": "Musicalización",
+            "role": "Mauro Di Benedetto"
+          },
+          {
+            "name": "Dirección de Arte",
+            "role": "Romina Giorno"
+          },
+          {
+            "name": "Vestuario",
+            "role": "Romina Santorsola"
+          },
+          {
+            "name": "Musicalización",
+            "role": "Mauro Di Benedetto"
+          },
+          {
+            "name": "Producción Ejecutiva",
+            "role": "Laura Quevedo"
+          },
+          {
+            "name": "Producción",
+            "role": "Antonio Di Benedetto"
+          },
+          {
+            "name": "Prensa y Difusión",
+            "role": "Noe Cardaci - Maxi Cardaci"
+          },
+          {
+            "name": "Asistencia de Producción y Dirección",
+            "role": "Max Ruíz"
+          },
+          {
+            "name": "Dramaturgia y Dirección",
+            "role": "Fernando Ferrer"
+          }
+        ],
+        "musicians": [],
+        "dancers": [],
+        "image_1_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1697649331/website-fer/shows/k7j1yixzysowtlypmxc0.webp",
+        "image_2_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1697649331/website-fer/shows/fytmcv1kvoxsrcfqiq3j.webp",
+        "image_3_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1697649332/website-fer/shows/ls1d2j7424hrikitdrjw.png"
+      },
+      {
+        "id": "5wl9dg8k77qweit8zf3p",
+        "title": "Title",
+        "slug": "title",
+        "opening_date": "2012",
+        "theatre": "",
+        "sinopsis": "<p>dfsdfsd</p>",
+        "cast": [
+          {
+            "name": "fdsfsdfds",
+            "role": ""
+          },
+          {
+            "name": "fdsf",
+            "role": ""
+          },
+          {
+            "name": "fdsf",
+            "role": ""
+          }
+        ],
+        "creative": [
+          {
+            "name": "fdfdsf",
+            "role": ""
+          },
+          {
+            "name": "fds",
+            "role": ""
+          },
+          {
+            "name": "fsd",
+            "role": ""
+          },
+          {
+            "name": "fsd",
+            "role": ""
+          }
+        ],
+        "musicians": [],
+        "dancers": [],
+        "image_1_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1699584302/website-demo/shows/as5c1jqysdri33mf0dk9.jpg",
+        "image_2_url": "",
+        "image_3_url": ""
+      }
+    ]
+  },
+  "courses": {
+    "_id": "654aafe38d00dca7a7b2ee33",
+    "name": "courses",
+    "content_html": "<p>EDIT Las clases son prácticas y la idea es que ya desde el primer encuentro comiences a concretar tu obra. De mi parte, me voy a ocupar de brindarte las herramientas necesarias y acompañarte para desarrollar tu propia dramaturgia.<br />Para las tres modalidades del curso, partiremos de una imagen como disparador para desarrollar nuestra historia. Esa primera foto o visualización que surge sin saber por qué, será nuestro motor fundamental para recorrer el camino.</p>",
+    "image_1_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1698246770/website-fer/bio/ql786e1bbrgeedmtxsa9.webp",
+    "image_2_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1697579608/website-fer/bio/w65phhxvey7krrslxhnj.jpg",
+    "image_3_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1697580003/website-fer/bio/i3obdhobc62sx6xjtte8.jpg",
+    "image_4_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1698424994/website-fer/courses/ps1qzarli4bitz5naxtv.jpg",
+    "image_5_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1698424933/website-fer/courses/wqhpg6p5xz7tgfsw60rm.jpg",
+    "image_6_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1697580300/website-fer/bio/dgfhalhrnnw0satt10xi.webp",
+    "image_7_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1697647971/website-fer/bio/x9hpb9f6xgkv1rsyqvfh.jpg",
+    "image_8_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1697580300/website-fer/bio/dgfhalhrnnw0satt10xi.webp",
+    "available_courses_writing": [
+      {
+        "id": "fds1",
+        "name": "ALAS De la imagen a la obra",
+        "description": "<p><strong>ALAS </strong>description and <em>fdsfds</em></p>"
+      },
+      {
+        "id": "fds2",
+        "name": "ALAS Del clásico a la obra propia",
+        "description": "<pre><code>ALAS</code></pre><p>this is a course description</p>"
+      },
+      {
+        "id": "fds3",
+        "name": "ALAS Escritura recreativa",
+        "description": "<p>ALSS this is a course description</p>"
+      }
+    ],
+    "available_courses_acting": [
+      {
+        "id": "acting-fds1",
+        "name": "Gimnasio actoral",
+        "description": "<p><strong>ALAS </strong>description and <em>fdsfds</em></p>"
+      },
+      {
+        "id": "acting-fds2",
+        "name": "Actuación y montaje",
+        "description": "<pre><code>ALAS</code></pre><p>this is a course description</p>"
+      }
+    ],
+    "reviews": [
+      {
+        "id": "z61i35osp9okk77y6697",
+        "content": "<p><span>Fernando Ferrer logra con La Fiesta del viejo, una lectura contemporánea y sensible de Rey Lear. Pero lo más curioso y destacable es que no se trata (como suele ocurrir con las adaptaciones de clásicos) de una simplificación, sino del ahondamiento en lo más esencial de la obra de Shakespeare. Su dramaturgia fluye relajada permitiendo que la poesía y la violencia del original se manifiesten de manera tan frondosa como brutal</span></p>",
+        "author": "Javier Daulte"
+      }
+    ],
+    "testimonials": [
+      {
+        "id": "s19nhbf2hlsdhzvjc96w",
+        "content": "<p><span>El curso de dramaturgia me ayuda a escribir cada escena como si la estuviera viviendo y me puedo meter en la piel de los personajes. Siento que escribo pura acción y que a través de ella aparecen las metáforas</span></p>",
+        "author": "Gabriela Alfie"
+      },
+      {
+        "id": "3gq39ze5r5ijihl23t0k",
+        "content": "<p><span>Siendo mi primera experiencia en un taller de dramaturgia, encontrè de la mano de Fernando un espacio donde poder desarrollar mi creatividad, dejando a un lado la critica y aprendiendo a confiar</span></p>",
+        "author": "Paola Rigatuso"
+      },
+      {
+        "id": "67r2tjh8y7u5p1z8ygi1",
+        "content": "<p><span>Encuentro en el espacio compartido con Fernando; momentos plenos de aprendizaje continuo; apertura personal; en un ameno ambiente donde se deja libre la imaginación para soñar...</span></p>",
+        "author": "Adrián Pérez Campos"
+      },
+      {
+        "id": "8hqepl0l35ndd1shmazb",
+        "content": "<p>El curso me parece realmente buenísimo, la escucha atenta y respetuosa de lo que se ha escrito, permite un intercambio que en lo particular generó que mi escritura cobre vuelo...</p>",
+        "author": "Zulema Borona"
+      },
+      {
+        "id": "bnqr8um34959hozmi6l6",
+        "content": "<p><span>En mi proceso creativo personal fue fundamental poder compartir con alguien como Fer, su mirada me devolvió mucha claridad sobre el material, sus puntos fuertes y sus debilidades...</span></p>",
+        "author": "Ana Romans"
+      }
+    ],
+    "goals_writing": [
+      "Que escribas tu propia obra desde cero",
+      "Identificar cuáles son las herramientas que ya tenés y cuáles necesitás incorporar para dinamizar tu dramaturgia",
+      "Desarrollar y reconocer tu modo de escribir"
+    ],
+    "goals_acting": [],
+    "FAQ": "<p><strong>¿Qué necesitás para iniciar el curso?</strong></p><p><span>Ganas</span>. Los talleres están destinados tanto para aquellos que nunca escribieron como para los que tienen experiencia.</p><p><strong>¿Cómo es?</strong></p><p>Las clases pueden ser particulares o grupales. En ambos casos los procesos son individuales y personalizados. Podrás elegir la modalidad que creas más conveniente según tu personalidad, posibilidad o gustos.</p><p><span>CLASES INDIVIDUALES</span>: 1 hora de duración (PRESENCIAL | ONLINE).</p><p><span>CLASES GRUPALES</span>: 2 horas de duración. (PRESENCIAL | ONLINE).</p><p>Días y horarios a convenir.</p><p><strong>¿Dónde es?</strong></p><p>En el lugar que a vos te quede mejor. El taller puede ser presencial (zona barrio de Congreso en Capital Federal) u online a través de video conferencias. De esta manera podrás participar del curso desde cualquier parte del mundo.</p><p><strong>¿Cuándo comenzamos?</strong></p><p>En el momento que tomes la decisión de arrancar. Me escribís (ver formulario de contacto),<br />tenemos una charla -sin cargo- en la que te explico los lineamientos generales del curso para que conozcas cómo es la metodología de trabajo, me consultás y preguntás todo lo que necesites y, si te gusta, le damos para adelante.</p><p><strong>¿Cuántas clases son?</strong></p><p>Para quien lo necesite por una cuestión de ordenamiento personal suelo estipular, sobre todo en las clases on line, un marco absolutamente referencial y arbitrario de 12 clases. Al término del cual analizamos como continuamos el trabajo de creación.</p><p><br /><strong>Escritura Creativa</strong></p><p>Destinado a toda persona con inquietudes sensibles y con ganas de divertirse escribiendo.</p><p>Si bien la raíz es común a los otros cursos que dicto y es eminentemente práctico, esta instancia de escritura es la mas abierta de todas puesto que no tiene como objetivo llegar a “ la obra ” sino que mas bien está centrado en la exploración del camino creador y muy acotado a la necesidad particular de cada participante, mas allá de la práctica artística puntual.</p> <p><strong>EDIT </strong>Desde hace ya un tiempo doy cursos online que me dio la posibilidad de llevar el taller a cualquier rincón del mundo con las mismas satisfacciones y resultados obtenidos en las prácticas presenciales. Destaco en esos casos la enriquecedora experiencia de compartir relatos y vivencias con personas de distintos países. Cada uno con su idiosincrasia, cultura y visión particular pero con el denominador común de transitar el camino de la dramaturgia.</p><p></p><p><span>Las clases <strong>ON LINE</strong> las damos por <strong>Zoom</strong>, una plataforma gratuita y muy confiable que nos permite realizar videoconferencias con varias personas a la vez y que nos brinda todo lo necesario para llevar adelante el encuentro de la mejor manera.</span><br /><span>También las podremos realizar por <strong>Skype</strong>, en caso que estén más familiarizados con esa aplicación.</span></p><p><br /><span><strong>Clases individuales: </strong>Duración, 1 hora. </span><br /><span><strong>Clases grupales (Hasta 6 personas): </strong>2 horas de duración. </span></p><p>* Para esta modalidad usamos <strong>Zoom</strong> o <strong>Skype</strong>.</p><p>* Duración: <strong>1 hora</strong> (clases individuales) || <strong>2 horas</strong> (clases grupales, grupos de hasta 6 personas)</p><p></p>",
+    "contact": {
+      "whatsapp": "12345678911"
+    }
+  },
+  "tours": {
+    "_id": "654ab0268d00dca7a7b2ee36",
+    "name": "tours",
+    "content": [
+      {
+        "id": "5l8gyt99naksdc10vae3",
+        "show_title": "La fiesta del Viejo",
+        "year": "2015",
+        "title_or_place": "Festival Temporada Alta",
+        "city": "Girona",
+        "country": "España",
+        "press_url": "",
+        "image_1_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1698696071/website-fer/tours/pmj53xeidnbqrpqiw4yn.jpg"
+      },
+      {
+        "id": "4gnzxn6w2jeqq6lr8i2o",
+        "show_title": "La fiesta del viejo",
+        "year": "2020",
+        "title_or_place": "Ciclo de Teatro Argentino",
+        "city": "Barcelona",
+        "country": "España",
+        "press_url": "",
+        "image_1_url": ""
+      },
+      {
+        "id": "fjc6ayyobtr00q2p24bi",
+        "show_title": "La fiesta del viejo",
+        "year": "2015",
+        "title_or_place": "Off Broadway",
+        "city": "New York",
+        "country": "USA",
+        "press_url": "https://thetheatretimes.com/la-fiesta-del-viejo-fresh-perspective-classic-tale/",
+        "image_1_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1698701029/website-fer/tours/anwrcojydcbcfhc9manf.jpg"
+      },
+      {
+        "id": "7euf02qxlqr4y1e534y6",
+        "show_title": "La fiesta del viejo",
+        "year": "2018",
+        "title_or_place": "FIBA. Festival Internacional de Buenos Aires",
+        "city": "Buenos Aires",
+        "country": "Argentina",
+        "press_url": "",
+        "image_1_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1698701054/website-fer/tours/yvrpypymryru6brgw6a5.png"
+      },
+      {
+        "id": "gtr9x1pu55x51hp72x8i",
+        "show_title": "La intención de las palomas",
+        "year": "2018",
+        "title_or_place": "GIRART. Mercado de las Artes Escénicas y la Música de Argentina",
+        "city": "Buenos Aires",
+        "country": "Argentina",
+        "press_url": "",
+        "image_1_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1698701069/website-fer/tours/s0ft35iv44gtcnq1rcit.jpg"
+      },
+      {
+        "id": "vw3jsg8vmsnhhktut8yh",
+        "show_title": "La intención de las palomas",
+        "year": "2018",
+        "title_or_place": "IV Muestra Iberoamericana de Teatro",
+        "city": "Montevideo",
+        "country": "Uruguay",
+        "press_url": "",
+        "image_1_url": ""
+      },
+      {
+        "id": "271bwx80jh9n31y6q8iq",
+        "show_title": "La fiesta del viejo",
+        "year": "2018",
+        "title_or_place": "Clásicos en Alcalá",
+        "city": "Alcalá",
+        "country": "España",
+        "press_url": "",
+        "image_1_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1696367712/website-fer/tours/mnjq4smkyeys3cgalmep.webp"
+      },
+      {
+        "id": "fk9rtg1pxt2lcpzhezip",
+        "show_title": "La fiesta del viejo",
+        "year": "2018",
+        "title_or_place": "Festival de Artes Escénicas de la Comunidad de Madrid",
+        "city": "Madrid",
+        "country": "España",
+        "press_url": "",
+        "image_1_url": ""
+      },
+      {
+        "id": "qsd0q16m20vdaywu9fp3",
+        "show_title": "La fiesta del viejo",
+        "year": "2018",
+        "title_or_place": "Mercado de las Artes Performativas del Atlántico Sur",
+        "city": "Tenerife",
+        "country": "España",
+        "press_url": "",
+        "image_1_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1696363382/website-fer/tours/jpqomjlqn9m3ykejcvet.jpg"
+      },
+      {
+        "id": "gw1cudbtoiifjeyrqty8",
+        "show_title": "La fiesta del viejo",
+        "year": "2018",
+        "title_or_place": "Festival de Teatro de Olite",
+        "city": "Olite",
+        "country": "España",
+        "press_url": "https://www.larazon.es/cultura/teatro/olite-un-verano-de-teatro-y-jersey-GN19145245/",
+        "image_1_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1698696765/website-fer/tours/inanro6szjmqlhbcwx3w.gif"
+      },
+      {
+        "id": "iya8hynisaqbz3bbn3lb",
+        "show_title": "La fiesta del viejo",
+        "year": "2018",
+        "title_or_place": "III Ciclo de Teatro Argentino",
+        "city": "Madrid",
+        "country": "España",
+        "press_url": "",
+        "image_1_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1698696807/website-fer/tours/uy7lif1oyrorxovxdmpj.jpg"
+      },
+      {
+        "id": "gzt4mhk6vi1m2xboufby",
+        "show_title": "La fiesta del viejo",
+        "year": "2018",
+        "title_or_place": "International Shakespeare Festival",
+        "city": "Gdansk",
+        "country": "Polonia",
+        "press_url": "",
+        "image_1_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1696366511/website-fer/tours/jb4j9etuvnywyxbwavvq.jpg"
+      },
+      {
+        "id": "x2845j87l4wq15l71q2c",
+        "show_title": "La fiesta del viejo",
+        "year": "2019",
+        "title_or_place": "Teatro Circo Murcia",
+        "city": "Murcia",
+        "country": "España",
+        "press_url": "",
+        "image_1_url": ""
+      },
+      {
+        "id": "aoox5ueg30g0ydu7og7f",
+        "show_title": "La fiesta del viejo",
+        "year": "2019",
+        "title_or_place": "Festival Iberoamericano de Teatro de Cádiz",
+        "city": "Cádiz",
+        "country": "España",
+        "press_url": "",
+        "image_1_url": ""
+      }
+    ],
+    "image_1_url": "asded--https://res.cloudinary.com/imagesgmzi/image/upload/v1698856172/website-fer/tours/mlvpw3hymu7nbu4xg7tf.jpg"
+  },
+  "press": {
+    "_id": "654ab0108d00dca7a7b2ee35",
+    "name": "press",
+    "written_press": [
+      {
+        "id": "4wngls9r907o7ljtem6d",
+        "veredict": "",
+        "quote": "<p><em>Espíritus en la fábrica es la reunión de tres compañías</em></p><p><em>teatrales despuestas a construir el drama e inventar una</em></p><p><em>estructura que nos sumerja palabra por palabra, acción por acción,</em></p><p><em>al rito teatral</em></p>",
+        "media_organization": "Experiencia Konex #34",
+        "journalist": "''",
+        "date": "",
+        "article_url": "",
+        "show": "La payanca"
+      },
+      {
+        "id": "pxxfz5t8z4qssx2f8c2q",
+        "veredict": "",
+        "quote": "<p><span><em>El texto sencillo, pero emotivo que concibió Ferrer</em></span></p><p><span><em>encontró al intérprete ideal en Federico Buso</em></span></p>",
+        "media_organization": "La Nacion",
+        "journalist": "Pablo Gorlero",
+        "date": "",
+        "article_url": "",
+        "show": "La intención de las palomas"
+      },
+      {
+        "id": "sos6m64y4o1n4hwki8yj",
+        "veredict": "",
+        "quote": "<p><span>La obra <em>surge del encuentro con estas complejidades</em></span></p><p><span><em>que plantea la realidad, junto con disparadores de diversa índole,</em></span></p><p><span><em>como la vejez o el desconcierto que genera</em></span></p><p><span><em>la situación política argentina</em></span></p>",
+        "media_organization": "La diaria (Uruguay)",
+        "journalist": "Pablo Tesoriere",
+        "date": "",
+        "article_url": "https://findesemana.ladiaria.com.uy/articulo/2019/2/la-intencion-de-las-palomas-cierra-hoy-y-manana-el-festival-temporada-alta-de-girona/",
+        "show": "La intención de las palomas"
+      },
+      {
+        "id": "tggioupsib2inl0ih538",
+        "veredict": "",
+        "quote": "<p><span><em>La Payanca de Fernando Ferrer es una valiosa</em></span></p><p><span><em>versión vernácula de Hamlet.</em></span></p><p><span><em>Bien dirigida e interpretada</em></span></p><p><span><em>por un grupo de excelentes actores</em></span></p>",
+        "media_organization": "La TV Pública",
+        "journalist": "Osvaldo Quiroga",
+        "date": "",
+        "article_url": "",
+        "show": "La payanca"
+      },
+      {
+        "id": "94wwzhw7lmy0u0jvsc1f",
+        "veredict": "",
+        "quote": "<p><span><em>Cada uno de los que está en la escena hace vibrar</em></span></p><p><span><em>con verdadera emoción por la historia que narra</em></span></p>",
+        "media_organization": "El Duende",
+        "journalist": "''",
+        "date": "",
+        "article_url": "https://periodicoelduende.blogspot.com/2017/02/la-fiesta-del-viejo.html",
+        "show": "La fiesta del viejo"
+      },
+      {
+        "id": "l4wo4zempp1u1s3m6bh9",
+        "veredict": "",
+        "quote": "<p><span><em>De forma muy original y creativa, Ferrer toma la obra de Shakespeare</em></span></p><p><span><em>para implementarle cambios de diverso grado y calidad,</em></span></p><p><span><em>trabaja sobre el clásico una política de la diferencia</em></span></p><p><span><em>y lo transforma en un nuevo texto</em></span></p>",
+        "media_organization": "Acción",
+        "journalist": "Jorge Dubatti",
+        "date": "",
+        "article_url": "https://accion.coop/la-fiesta-del-viejo",
+        "show": "La fiesta del viejo"
+      },
+      {
+        "id": "ok5e1fo4uu4s64cbxnnt",
+        "veredict": "",
+        "quote": "<p><em>La fiesta del viejo es una interesante propuesta</em></p><p><em>que pone en escena la relación entre las palabras,</em></p><p><em>los sentimientos y el dinero dentro de las relaciones familiares</em></p>",
+        "media_organization": "Farsa MAG",
+        "journalist": "Florencia Aroldi",
+        "date": "",
+        "article_url": "https://farsamag.com.ar/obras/la-fiesta-del-viejo/",
+        "show": "La fiesta del viejo"
+      },
+      {
+        "id": "2d7r191cmp7cmusmkvd6",
+        "veredict": "",
+        "quote": "<p><span><em>La fiesta del viejo nace como una necesidad de otros.</em></span></p><p><span><em>De no estar solo escribiendo ahí mirando por la ventana</em></span></p><p><span><em>como esa paloma va y viene en la rama que salió</em></span></p><p><span><em>del ladrillo no se sabe como.</em></span></p><p><span><em>Nace yendo y viniendo a mi infancia, a las infancias</em></span></p><p><span><em>de los que tengo cerca, en donde en algunos</em></span></p><p><span><em>casos la muerte mordió temprano.</em></span></p>",
+        "media_organization": "Infobae",
+        "journalist": "Fernando Ferrer",
+        "date": "",
+        "article_url": "",
+        "show": "La fiesta del viejo"
+      },
+      {
+        "id": "3znwcnyehdomk513nj20",
+        "veredict": "",
+        "quote": "<p>La fiesta del viejo offers the public a uniquely captivating, sensorial experience. Ferrer ́s skillful implementation of precision timing among the actors, together with his ability to attain the physical and emotional crescendo of the play, are critical in achievement the jolting, apocalyptic ending that leaves spectators stunned.</p>",
+        "media_organization": "The Theatre Times",
+        "journalist": "Susan Berardini",
+        "date": "",
+        "article_url": "https://thetheatretimes.com/la-fiesta-del-viejo-fresh-perspective-classic-tale/",
+        "show": "La fiesta del viejo"
+      },
+      {
+        "id": "z3bhrrpbd88vdryv07lb",
+        "veredict": "Muy Buena",
+        "quote": "<p><span><em>Vodka ruso para un viejo polaco en su domingo familiar</em></span></p><p><span><em>en donde el publico será recibido con Knishes de papa,</em></span></p><p><span><em>vino y torta de cumpleaños.</em></span></p>",
+        "media_organization": "Tiempo Argentino",
+        "journalist": "Juliana Corbelli",
+        "date": "",
+        "article_url": "https://www.tiempoar.com.ar/ta_article/vodka-ruso-para-un-viejo-polaco",
+        "show": "La fiesta del viejo"
+      },
+      {
+        "id": "p7em7aw9qrm3fddoad3e",
+        "veredict": "Imperdible",
+        "quote": "<p><em>La mesa familiar puede ser un campo de batalla</em></p><p><em>donde cada uno saca a relucir su verdad.</em></p>",
+        "media_organization": "Pagina 12",
+        "journalist": "Cecilia Hopkins",
+        "date": "",
+        "article_url": "https://www.pagina12.com.ar/30678-rey-lear-en-villa-crespo",
+        "show": "La fiesta del viejo"
+      },
+      {
+        "id": "70vven6e4c6iup9co8ww",
+        "veredict": "Muy Buena",
+        "quote": "<p><span><em>Bello Ritual escénico de domingo al mediodía.</em></span></p><p><span><em>Imperdible reescritura del clásico King Lear.</em></span></p>",
+        "media_organization": "La Nación",
+        "journalist": "Jazmín Carbonell",
+        "date": "",
+        "article_url": "https://www.lanacion.com.ar/espectaculos/teatro/bello-ritual-escenico-de-domingo-al-mediodia-nid1999035/",
+        "show": "La fiesta del viejo"
+      }
+    ],
+    "video_press": [
+      {
+        "id": "hkxqwkvtn5txh3z8nn09",
+        "show": "La fiesta del viejo",
+        "video_url": "https://www.youtube.com/embed/73wnMHftomo",
+        "title": "Entrevista",
+        "description": "Con Dubatti en la Escuela de Espectadores. PT 1",
+        "source_organization": "Escuela de Espectadores"
+      },
+      {
+        "id": "6qn61hqq8o2wp5c12z64",
+        "show": "La fiesta del viejo",
+        "video_url": "https://www.youtube.com/embed/bcp6rm85qOc",
+        "title": "Entrevista",
+        "description": "Con Dubatti en la Escuela de Espectadores. PT 2",
+        "source_organization": "Escuela de Espectadores"
+      },
+      {
+        "id": "yc0piphofozwr2iokzo3",
+        "show": "La fiesta del viejo",
+        "video_url": "https://www.youtube.com/embed/5QF75tDNogc",
+        "title": "Entrevista",
+        "description": "La fiesta del viejo con Carolina Kurz",
+        "source_organization": "Tras Bambalinas"
+      },
+      {
+        "id": "73xyepb582gu2jlwkv39",
+        "show": "La fiesta del viejo",
+        "video_url": "https://www.youtube.com/embed/w1JrIcNYNfo",
+        "title": "Entrevista",
+        "description": "La fiesta del viejo / con Quiroga en el I.F.T.. PT 1",
+        "source_organization": "I.F.T"
+      },
+      {
+        "id": "sppz4ar2u2koe12cnz5w",
+        "show": "La fiesta del viejo",
+        "video_url": "https://www.youtube.com/embed/S08IaRYcx7Y",
+        "title": "Entrevista",
+        "description": "La fiesta del viejo / con Quiroga en el I.F.T.. PT 2",
+        "source_organization": "I.F.T"
+      },
+      {
+        "id": "8xxuvml9zfoyv7mnl9nu",
+        "show": "La fiesta del viejo",
+        "video_url": "https://www.youtube.com/embed/7fyN_K6Mtmg",
+        "title": "Entrevista",
+        "description": "La fiesta del viejo / con Quiroga en el I.F.T.. PT 3",
+        "source_organization": "I.F.T"
+      },
+      {
+        "id": "rvuc1dxbd8k2bqvw70r7",
+        "show": "La fiesta del viejo",
+        "video_url": "https://www.youtube.com/embed/1McHnLAIVss",
+        "title": "Entrevista",
+        "description": "Con Laura Oliva en La TV Pública",
+        "source_organization": "La TV Pública"
+      },
+      {
+        "id": "zb84axasmz1e40k3v332",
+        "show": "La payanca",
+        "video_url": "https://www.youtube.com/embed/4-G35Z_NdF0",
+        "title": "Entrevista",
+        "description": "La payanca en La TV Pública",
+        "source_organization": "La TV Pública"
+      },
+      {
+        "id": "d2t0qfg4khvyn6te9hcp",
+        "show": "La payanca",
+        "video_url": "https://www.youtube.com/embed/p9fLsNTdl5w",
+        "title": "Entrevista",
+        "description": "La payanca en La TV Pública",
+        "source_organization": "La TV Pública"
+      },
+      {
+        "id": "wt8qr8x01ex0nhfzeyrr",
+        "show": "La payanca",
+        "video_url": "https://www.youtube.com/embed/kAeH-0zsUHg",
+        "title": "Entrevista",
+        "description": "La payanca en En casa no me quedo",
+        "source_organization": "Canal de la Ciudad"
+      }
+    ],
+    "image_1_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1698786509/website-fer/press/wsk2ectfel5znwl71bp6.jpg"
+  }
+}
