@@ -1,6 +1,5 @@
 import type { Metadata } from "next"
 import Image from 'next/image'
-import { getData, getDataWithTag } from "@/lib/getData"
 import parse from 'html-react-parser'
 import { getRemoteOrLocalData } from "@/lib/getRemoteOrLocalData"
 

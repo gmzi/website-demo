@@ -1,9 +1,6 @@
-// /server/about 
-
 import { NextResponse } from 'next/server';
 import { updateBio } from '../../../lib/updateBio'
-import { navItems } from '@/lib/navItems';
-import { getData } from '@/lib/getData';
+import { getData } from '../../../lib/getData';
 
 const DATA_API_KEY = process.env.DATA_API_KEY
 const BASE_URL = process.env.BASE_URL;
