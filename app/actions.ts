@@ -91,7 +91,7 @@ function parseRichTextInput(formData: FormData) {
   return inputData;
 }
 
-async function handleInputDataWithNewImageFiles(inputData: any, folderName: string) {
+async function handleInputDataWithNewImageFilesOLD(inputData: any, folderName: string) {
   const imageFiles: {
     [key: string]: string | File | undefined;
   } = {};
@@ -118,6 +118,45 @@ async function handleInputDataWithNewImageFiles(inputData: any, folderName: stri
       delete inputData[`image_${fileNumber}_file`];
     }
   }
+  return inputData;
+}
+
+async function handleInputDataWithNewImageFiles(inputData: any, folderName: string) {
+  // store image files in a separate object:
+  const imageFiles: {
+    [key: string]: string | File | undefined;
+  } = {};
+
+  for (const key in inputData) {
+    if (key.includes("image_") && key.includes("_file")) {
+      // @ts-ignore
+      imageFiles[key] = inputData[key];
+    }
+  }
+
+  // upload new image files to cloudinary, 
+  // move old images to trash folder,
+  // remove file from inputData object:
+  for (const key in imageFiles) {
+    const imageFile = imageFiles[key];
+    const [, fileNumber] = key.split('_');
+    // @ts-ignore
+    if (imageFile?.size > 0) {
+      const oldImageUrl = inputData[`image_${fileNumber}_url`];
+      if (oldImageUrl?.length > 0){
+        const trashOldImageUrl = await moveToTrash(oldImageUrl);
+      }
+      const imageMetadata = await uploadToCloudinary(imageFile, folderName);
+      // @ts-ignore
+      inputData[`image_${fileNumber}_url`] = imageMetadata.secure_url;
+      // @ts-ignore
+      delete inputData[`image_${fileNumber}_file`];
+    } else {
+      // @ts-ignore
+      delete inputData[`image_${fileNumber}_file`];
+    }
+  }
+
   return inputData;
 }
 
@@ -441,13 +480,13 @@ export async function editShow(prevState: any, formData: FormData) {
     const inputDataWithNewImages = await handleInputDataWithNewImageFiles(inputData, "shows");
 
     // mutate inputData to delete images removed by client:
-    const updatedData = await deleteImagesAndUpdateObject(parsedImagesToDelete, inputDataWithNewImages)
+    // const updatedData = await deleteImagesAndUpdateObject(parsedImagesToDelete, inputDataWithNewImages)
 
     const data = {
       document: "shows",
       entry: "content",
       itemLocator: "content.id",
-      newContent: updatedData,
+      newContent: inputDataWithNewImages,
     }
     
     const updated = await updateItem(
