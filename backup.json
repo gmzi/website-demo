@@ -1,228 +1,174 @@
 {
   "document": "backup",
-  "date": "2023-11-10T16:58:19.530Z",
+  "date": "2023-11-10T17:26:35.253Z",
   "about": {
-    "_id": "654d63d51ab3c6b4f8ed34ce",
+    "_id": "654d6720fbf412d74129d5e8",
     "name": "about",
     "content_html": {
-      "id": "qoxs0",
-      "content": "<p><strong>Soy dramaturgo, director, docente y actor. Estudié en la Escuela Nacional de Arte Dramático. </strong>En <strong>Dramaturgia</strong> me formé con <strong>Javier Daulte</strong> y con <strong>Ricardo Monti</strong>, dos referentes fundamentales en mi vida.</p><p><strong>Me dedico a contar historias</strong> y ese viaje es mi preferido. La cosa empieza con una imagen interna y finaliza con la concreción de la misma en proyecto teatral o fílmico. <strong>Me apasiona esta profesión en todas sus formas</strong>, ya sea en el desarrollo de los proyectos propios, como así también acompañando a otras personas en sus búsquedas creativas. De ahí deviene esta otra forma de pasión que es la docencia.</p>"
+      "id": "roz02",
+      "content": "<p>Born Thomas Lanier Williams III on March 26, 1911. He is best known for his contributions to American theater in the mid-20th century, creating iconic characters and exploring complex themes in his works.</p><p>Williams' most famous plays include \"A Streetcar Named Desire,\" which features the iconic line, \"Stella! Hey, Stella!\" This play tells the story of Blanche DuBois, a fading Southern belle, who moves in with her sister Stella and her husband Stanley, leading to a dramatic clash of personalities and a descent into madness.</p><p>\"The Glass Menagerie\" showcases another memorable line, \"Memory takes a lot of poetic license. It omits some details; others are exaggerated, according to the emotional value of the articles it touches.\" This semi-autobiographical play delves into the fragile world of the Wingfield family, exploring the illusions they create to escape their mundane lives.</p><p>\"Cat on a Hot Tin Roof\" famously features the line, \"Mendacity is a system that we live in.\" This powerful drama revolves around a dysfunctional Southern family gathering to celebrate the patriarch's birthday. The play delves into themes of greed, deception, and the destructive power of family secrets.</p><p>Tennessee Williams' distinctive writing style, characterized by poetic language and emotionally charged dialogues, has left an indelible mark on the world of theater and literature. His works continue to captivate audiences and provide profound insights into the human experience through the art of storytelling.</p>"
     },
     "image_1_url": {
-      "id": "qoxs0",
+      "id": "roz02",
       "content": "https://res.cloudinary.com/imagesgmzi/image/upload/v1699395709/website-fer/about/vmnt4qojun3l6ycrmfzf.jpg"
     }
   },
   "bio": {
-    "_id": "654aaa274b4b76e27031e540",
+    "_id": "654d679efbf412d74129d5ee",
     "name": "bio",
     "content_html_1": {
-      "id": "6umc6",
-      "content": "<p>Text here</p>"
+      "id": "9ejjo",
+      "content": "<ol><li><p><strong>Early Life in Mississippi:</strong> Tennessee Williams was born in Columbus, Mississippi, on March 26, 1911, as Thomas Lanier Williams III. He spent his formative years in the American South, which would later influence much of his work.</p></li><li><p><strong>St. Louis, Missouri:</strong> Williams moved to St. Louis, Missouri, in 1918 after his family experienced financial difficulties. This city played a significant role in his life, and it's where he attended high school and began to explore his passion for writing.</p></li><li><p><strong>University of Missouri and Writing Career:</strong> Williams attended the University of Missouri, where he studied journalism. It was during his time there that he adopted the name \"Tennessee\" as a tribute to his Southern roots. He also began to develop his writing skills and embarked on his writing career.</p></li><li><p><strong>New Orleans, Louisiana:</strong> In the late 1930s, Williams moved to New Orleans, Louisiana, where he continued to write and refine his craft. The vibrant and diverse culture of the city had a profound influence on his work, as seen in some of his plays set in the South.</p></li><li><p><strong>Success on Broadway:</strong> Tennessee Williams achieved fame and recognition with his breakthrough play, \"The Glass Menagerie,\" which premiered on Broadway in 1945. The play's success marked the beginning of his celebrated career as a playwright.</p></li></ol>"
     },
     "content_html_2": {
-      "id": "6umc6",
-      "content": "<p>text here</p>"
+      "id": "9ejjo",
+      "content": "<ol><li><p><strong>Key West, Florida:</strong> Williams spent several years living in Key West, Florida, where he found inspiration for some of his works. The warm climate and relaxed atmosphere of the island community provided a backdrop for his creativity.</p></li><li><p><strong>New York City:</strong> New York City became a central hub for Tennessee Williams' career. He continued to write and stage numerous successful plays on Broadway, including \"A Streetcar Named Desire\" and \"Cat on a Hot Tin Roof.\"</p></li><li><p><strong>Travel and International Recognition:</strong> Williams' plays were also well-received internationally, earning him recognition as one of America's foremost playwrights. He traveled extensively, enjoying success in various countries and becoming a global literary figure.</p></li><li><p><strong>Later Years in New Orleans:</strong> In his later years, Tennessee Williams returned to New Orleans, where he lived until his passing. Despite personal challenges, he continued to write and contribute to the world of theater until his death on February 25, 1983.</p></li></ol>"
     },
-    "image_1_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1699466239/website-fer/bio/rlx5h7arcccefvhkd0ij.jpg",
-    "image_2_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1697579608/website-fer/bio/w65phhxvey7krrslxhnj.jpg",
-    "image_3_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1698261181/website-fer/bio/ch25r7k442aekgrxefrt.jpg",
-    "image_4_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1698261181/website-fer/bio/wasc4rcta2rr5d7loxc4.jpg",
-    "image_5_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1697648732/website-fer/bio/nucz9usf3wwneralzeuc.jpg",
-    "image_6_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1698261182/website-fer/bio/qrsqhudx6093fqb4vde8.jpg",
-    "image_7_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1698689616/website-fer/bio/nhllyh0wvx6tyintzj0n.webp"
+    "image_1_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1699573300/website-fer/bio/w5nnthl0vanxfoxuw034.jpg",
+    "image_2_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1699573301/website-fer/bio/jezelgkt95jzxpexmsw4.jpg",
+    "image_3_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1699573301/website-fer/bio/t26ztczsuqc1bzvrucfv.jpg",
+    "image_4_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1699573302/website-fer/bio/tmsbpbccuorc9haqah8t.jpg",
+    "image_5_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1699573303/website-fer/bio/e7dkdzavdkynvmqdogb7.jpg",
+    "image_6_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1699573303/website-fer/bio/pdokxyofde0qflf7uhzb.jpg",
+    "image_7_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1699573304/website-fer/bio/pp2eo9sqbgovwzzpepvj.jpg"
   },
   "shows": {
-    "_id": "654aaa474b4b76e27031e541",
+    "_id": "654d67c2fbf412d74129d5f0",
     "name": "shows",
     "content": [
       {
-        "id": "o2pyn00qzkvkd7v55jwp-myID",
-        "title": "test-show",
-        "slug": "test-show",
-        "opening_date": "2024",
-        "theatre": "test-theatre",
-        "sinopsis": "<p>test sinopsis</p>",
+        "id": "nvuaif9sd6g3pdptq9hw",
+        "title": "A Streetcar Named Desire",
+        "slug": "a-streetcar-named-desire",
+        "opening_date": "1947",
+        "theatre": "",
+        "sinopsis": "<p><span>A troubled woman named Blanche DuBois, who moves in with her sister, Stella, and her brother-in-law, Stanley, in a cramped apartment in New Orleans. Blanche is a fading belle with a mysterious past, while Stanley is a rough and aggressive working-class man. As the play unfolds, the tension between Blanche and Stanley intensifies, leading to a dramatic and tragic confrontation. The play explores themes of desire, mental instability, social class, and the clash between old and new America. Blanche's descent into madness and the unraveling of her secrets form the core of the story.</span></p>",
         "cast": [
           {
-            "name": "test name",
-            "role": "test role"
+            "name": "Stanley Kowalski",
+            "role": "Marlon Brando"
+          },
+          {
+            "name": "Blanche DuBois",
+            "role": "Jessica Tandy"
+          },
+          {
+            "name": "Stella Kowalski",
+            "role": "Kim Hunter"
+          },
+          {
+            "name": "Harold \"Mitch\" Mitchell",
+            "role": "Karl Malden"
           }
         ],
         "creative": [
           {
-            "name": "test creative name",
-            "role": "test creative role"
+            "name": "Tennessee Williams",
+            "role": "Playwright"
+          },
+          {
+            "name": "Elia Kazan",
+            "role": "Director"
+          },
+          {
+            "name": "Jo Mielziner",
+            "role": "Set Designer"
+          },
+          {
+            "name": "Lucinda Ballard",
+            "role": "Costume Designer"
           }
         ],
         "musicians": [],
         "dancers": [],
-        "image_1_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1697474895/website-fer/shows/dkmex9kupyadr0ovevob.jpg",
+        "image_1_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1699573634/website-fer/shows/cinbfmx50b9oa4dnuzsf.jpg",
         "image_2_url": "",
         "image_3_url": ""
       },
       {
-        "id": "ofdssyn00qzkvkd7v55jwp-myID",
-        "title": "HELLO",
-        "slug": "hello",
-        "opening_date": "2024",
-        "theatre": "test-theatre",
-        "sinopsis": "<p>test sinopsis</p>",
-        "cast": [
-          {
-            "name": "test name",
-            "role": ""
-          }
-        ],
-        "creative": [
-          {
-            "name": "test creative name",
-            "role": ""
-          }
-        ],
-        "musicians": [],
-        "dancers": [],
-        "image_1_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1697474895/website-fer/shows/dkmex9kupyadr0ovevob.jpg",
-        "image_2_url": "",
-        "image_3_url": ""
-      },
-      {
-        "id": "5b897j8yv9ytlswkslrk",
-        "title": "La Payanca",
-        "slug": "la-payanca",
-        "opening_date": "2018",
+        "id": "6egv9bei9qscr7k7r9za",
+        "title": "The Rose Tattoo",
+        "slug": "the-rose-tattoo",
+        "opening_date": "1951",
         "theatre": "",
-        "sinopsis": "<p><span>Es la historia de Jam, un chico del interior, que vuelve a su pueblo con motivo de la inauguración de nuevo taller de la fábrica familiar. </span></p><p><span>La empresa está en manos de su mamá y su tío Claudio, hermano de su padre muerto y actual esposo de su madre, Gertrudis. Previo a la inauguración se encontrarán en la casa de descanso familiar en la isla y a esta reunión, está invitada Ofelia, antiguo amor de Jam. Es de la mano de Ofelia que Jam tiene una visión de su padre en el río, quien le dice que en realidad no murió ahogado sino que fue asesinado por su propio hermano Claudio.</span></p><p><span>Jam, a partir de esa revelación fantasmagórica, intentara junto a Ofelia, develar la verdad y tomar venganza.</span></p>",
+        "sinopsis": "<p><span>Serafina Delle Rose, a passionate and grieving Italian-American widow living on the Gulf Coast. Serafina becomes consumed by her love for her late husband, Rosario, and the memory of their marriage. When she discovers a secret about Rosario's infidelity, she embarks on a journey of self-discovery and emotional healing. The play explores themes of love, loss, desire, and the transformative power of human connection.</span></p>",
         "cast": [
           {
-            "name": "Sofía Gala Castiglione",
-            "role": "OFELIA"
+            "name": "Serafina Delle Rose",
+            "role": "Anna Magnani"
           },
           {
-            "name": "Alejandro Paker",
-            "role": "CLAUDIO"
+            "name": "Rosa Delle Rose",
+            "role": "Maureen Stapleton"
           },
           {
-            "name": "Santiago Pedrero",
-            "role": "JAM"
+            "name": "Alvaro Mangiacavallo",
+            "role": "Burt Lancaster"
           },
           {
-            "name": "Estela Garelli",
-            "role": "GERTRUDIS"
+            "name": "Salvatore",
+            "role": "Ben Cooper"
+          },
+          {
+            "name": "Estelle Hohengarten",
+            "role": "Phyllis Love"
+          },
+          {
+            "name": "Miss Yorke",
+            "role": "Florence Sundstrom"
+          },
+          {
+            "name": "Salesman",
+            "role": "Joseph Wiseman"
+          },
+          {
+            "name": "Assunta",
+            "role": "Mimi Aguglia"
+          },
+          {
+            "name": "Flora",
+            "role": "Dolly Halt"
+          },
+          {
+            "name": "Mariella",
+            "role": "Dorothy Estler"
+          },
+          {
+            "name": "Violetta",
+            "role": "Maria Valento"
           }
         ],
         "creative": [
           {
-            "name": "Espacio e iluminación",
-            "role": "Fernando Ferrer"
+            "name": "Tennessee Williams",
+            "role": "Playwright"
           },
           {
-            "name": "Gráfica",
-            "role": "Juan Francisco Reato"
+            "name": "Daniel Mann",
+            "role": "Director"
           },
           {
-            "name": "Foto",
-            "role": "Romina Giorno"
+            "name": "Boris Aronson",
+            "role": "Set Designer"
           },
           {
-            "name": "Escenografía",
-            "role": "Fernando Ferrer - Romina Giorno"
-          },
-          {
-            "name": "Musicalización",
-            "role": "Mauro Di Benedetto"
-          },
-          {
-            "name": "Dirección de Arte",
-            "role": "Romina Giorno"
-          },
-          {
-            "name": "Vestuario",
-            "role": "Romina Santorsola"
-          },
-          {
-            "name": "Musicalización",
-            "role": "Mauro Di Benedetto"
-          },
-          {
-            "name": "Producción Ejecutiva",
-            "role": "Laura Quevedo"
-          },
-          {
-            "name": "Producción",
-            "role": "Antonio Di Benedetto"
-          },
-          {
-            "name": "Prensa y Difusión",
-            "role": "Noe Cardaci - Maxi Cardaci"
-          },
-          {
-            "name": "Asistencia de Producción y Dirección",
-            "role": "Max Ruíz"
-          },
-          {
-            "name": "Dramaturgia y Dirección",
-            "role": "Fernando Ferrer"
+            "name": "Patricia Zipprodt",
+            "role": "Costume Designer"
           }
         ],
         "musicians": [],
         "dancers": [],
-        "image_1_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1697649331/website-fer/shows/k7j1yixzysowtlypmxc0.webp",
-        "image_2_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1697649331/website-fer/shows/fytmcv1kvoxsrcfqiq3j.webp",
-        "image_3_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1697649332/website-fer/shows/ls1d2j7424hrikitdrjw.png"
-      },
-      {
-        "id": "5wl9dg8k77qweit8zf3p",
-        "title": "Title",
-        "slug": "title",
-        "opening_date": "2012",
-        "theatre": "",
-        "sinopsis": "<p>dfsdfsd</p>",
-        "cast": [
-          {
-            "name": "fdsfsdfds",
-            "role": ""
-          },
-          {
-            "name": "fdsf",
-            "role": ""
-          },
-          {
-            "name": "fdsf",
-            "role": ""
-          }
-        ],
-        "creative": [
-          {
-            "name": "fdfdsf",
-            "role": ""
-          },
-          {
-            "name": "fds",
-            "role": ""
-          },
-          {
-            "name": "fsd",
-            "role": ""
-          },
-          {
-            "name": "fsd",
-            "role": ""
-          }
-        ],
-        "musicians": [],
-        "dancers": [],
-        "image_1_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1699584302/website-demo/shows/as5c1jqysdri33mf0dk9.jpg",
+        "image_1_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1699573984/website-fer/shows/j3qzvctrq3qm0kzpmmvj.jpg",
         "image_2_url": "",
         "image_3_url": ""
       }
     ]
   },
   "courses": {
-    "_id": "654aafe38d00dca7a7b2ee33",
+    "_id": "654d674cfbf412d74129d5ea",
     "name": "courses",
     "content_html": "<p>EDIT Las clases son prácticas y la idea es que ya desde el primer encuentro comiences a concretar tu obra. De mi parte, me voy a ocupar de brindarte las herramientas necesarias y acompañarte para desarrollar tu propia dramaturgia.<br />Para las tres modalidades del curso, partiremos de una imagen como disparador para desarrollar nuestra historia. Esa primera foto o visualización que surge sin saber por qué, será nuestro motor fundamental para recorrer el camino.</p>",
-    "image_1_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1698246770/website-fer/bio/ql786e1bbrgeedmtxsa9.webp",
+    "image_1_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1698446754/website-fer/courses/lfpfaw722sd29ilmbzgs.jpg",
     "image_2_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1697579608/website-fer/bio/w65phhxvey7krrslxhnj.jpg",
     "image_3_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1697580003/website-fer/bio/i3obdhobc62sx6xjtte8.jpg",
     "image_4_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1698424994/website-fer/courses/ps1qzarli4bitz5naxtv.jpg",
@@ -301,11 +247,11 @@
     "goals_acting": [],
     "FAQ": "<p><strong>¿Qué necesitás para iniciar el curso?</strong></p><p><span>Ganas</span>. Los talleres están destinados tanto para aquellos que nunca escribieron como para los que tienen experiencia.</p><p><strong>¿Cómo es?</strong></p><p>Las clases pueden ser particulares o grupales. En ambos casos los procesos son individuales y personalizados. Podrás elegir la modalidad que creas más conveniente según tu personalidad, posibilidad o gustos.</p><p><span>CLASES INDIVIDUALES</span>: 1 hora de duración (PRESENCIAL | ONLINE).</p><p><span>CLASES GRUPALES</span>: 2 horas de duración. (PRESENCIAL | ONLINE).</p><p>Días y horarios a convenir.</p><p><strong>¿Dónde es?</strong></p><p>En el lugar que a vos te quede mejor. El taller puede ser presencial (zona barrio de Congreso en Capital Federal) u online a través de video conferencias. De esta manera podrás participar del curso desde cualquier parte del mundo.</p><p><strong>¿Cuándo comenzamos?</strong></p><p>En el momento que tomes la decisión de arrancar. Me escribís (ver formulario de contacto),<br />tenemos una charla -sin cargo- en la que te explico los lineamientos generales del curso para que conozcas cómo es la metodología de trabajo, me consultás y preguntás todo lo que necesites y, si te gusta, le damos para adelante.</p><p><strong>¿Cuántas clases son?</strong></p><p>Para quien lo necesite por una cuestión de ordenamiento personal suelo estipular, sobre todo en las clases on line, un marco absolutamente referencial y arbitrario de 12 clases. Al término del cual analizamos como continuamos el trabajo de creación.</p><p><br /><strong>Escritura Creativa</strong></p><p>Destinado a toda persona con inquietudes sensibles y con ganas de divertirse escribiendo.</p><p>Si bien la raíz es común a los otros cursos que dicto y es eminentemente práctico, esta instancia de escritura es la mas abierta de todas puesto que no tiene como objetivo llegar a “ la obra ” sino que mas bien está centrado en la exploración del camino creador y muy acotado a la necesidad particular de cada participante, mas allá de la práctica artística puntual.</p> <p><strong>EDIT </strong>Desde hace ya un tiempo doy cursos online que me dio la posibilidad de llevar el taller a cualquier rincón del mundo con las mismas satisfacciones y resultados obtenidos en las prácticas presenciales. Destaco en esos casos la enriquecedora experiencia de compartir relatos y vivencias con personas de distintos países. Cada uno con su idiosincrasia, cultura y visión particular pero con el denominador común de transitar el camino de la dramaturgia.</p><p></p><p><span>Las clases <strong>ON LINE</strong> las damos por <strong>Zoom</strong>, una plataforma gratuita y muy confiable que nos permite realizar videoconferencias con varias personas a la vez y que nos brinda todo lo necesario para llevar adelante el encuentro de la mejor manera.</span><br /><span>También las podremos realizar por <strong>Skype</strong>, en caso que estén más familiarizados con esa aplicación.</span></p><p><br /><span><strong>Clases individuales: </strong>Duración, 1 hora. </span><br /><span><strong>Clases grupales (Hasta 6 personas): </strong>2 horas de duración. </span></p><p>* Para esta modalidad usamos <strong>Zoom</strong> o <strong>Skype</strong>.</p><p>* Duración: <strong>1 hora</strong> (clases individuales) || <strong>2 horas</strong> (clases grupales, grupos de hasta 6 personas)</p><p></p>",
     "contact": {
-      "whatsapp": "12345678911"
+      "whatsapp": "+5491161578367"
     }
   },
   "tours": {
-    "_id": "654ab0268d00dca7a7b2ee36",
+    "_id": "654d6765fbf412d74129d5eb",
     "name": "tours",
     "content": [
       {
@@ -452,7 +398,7 @@
     "image_1_url": "asded--https://res.cloudinary.com/imagesgmzi/image/upload/v1698856172/website-fer/tours/mlvpw3hymu7nbu4xg7tf.jpg"
   },
   "press": {
-    "_id": "654ab0108d00dca7a7b2ee35",
+    "_id": "654d6779fbf412d74129d5ec",
     "name": "press",
     "written_press": [
       {

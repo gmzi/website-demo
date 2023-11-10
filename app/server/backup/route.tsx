@@ -1,6 +1,7 @@
+//http://localhost:3000/server/backup
+
 import { NextResponse } from 'next/server';
-import { updateBio } from '../../../lib/updateBio'
-import { getData } from '../../../lib/getData';
+import { getDataFromProd } from '@/lib/mongo';
 
 const DATA_API_KEY = process.env.DATA_API_KEY
 const BASE_URL = process.env.BASE_URL;
@@ -10,17 +11,16 @@ const isProd = process.env.NODE_ENV === 'production';
 
 export async function GET() {
     try {
-        if (isProd) {
-            return NextResponse.json({ message: `backup is not available in production` })
+        if (isProd){
+            return NextResponse.json({ message: `backup not allowed in prod` });
         }
-        
         const currentDate = new Date();
-        const about = await getData("about");
-        const bio = await getData("bio");
-        const shows = await getData("shows");
-        const courses = await getData("courses");
-        const tours = await getData("tours");
-        const press = await getData("press");
+        const about = await getDataFromProd("about");
+        const bio = await getDataFromProd("bio");
+        const shows = await getDataFromProd("shows");
+        const courses = await getDataFromProd("courses");
+        const tours = await getDataFromProd("tours");
+        const press = await getDataFromProd("press");
 
         const data = {
             document: "backup",
@@ -42,10 +42,10 @@ export async function GET() {
             if (err) {
                 console.error("An error occurred while writing JSON Object to File.", err);
             } else {
-                console.log("JSON file has been saved.");
+                console.log("a JSON file with data from prod database has been saved.");
             }
         });
-        return NextResponse.json({ message: `backup successfull at ${currentDate}` });
+        return NextResponse.json({ message: `backup successfull at ${currentDate}. Find backup file in local root folder`});
     } catch (e) {
         console.log(e)
         return NextResponse.json({ error: `${e}` })
