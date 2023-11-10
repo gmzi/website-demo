@@ -99,10 +99,10 @@ export function ShowsList({ shows }: ShowsListProps) {
                     <div className="card-container">
                         <div className="card">
                             <div className="card-head">
-                                <h5>Agregar nueva obra</h5>
+                                <h5>Create new show</h5>
                             </div>
                             <div className="card-image">
-                                <button onClick={handleCreate}>agregar nueva obra</button>
+                                <button onClick={handleCreate}>Create new show</button>
                             </div>
                         </div>
                     </div>
@@ -126,7 +126,7 @@ export function ShowsList({ shows }: ShowsListProps) {
                             />
                         </div>
                         <div className="card-buttons">
-                            <button onClick={handleClick} tabIndex={i}>Editar</button>
+                            <button onClick={handleClick} tabIndex={i}>Edit</button>
                             <Delete document="shows" entry="content" section="shows" id={show.id} />
                         </div>
                     </div>

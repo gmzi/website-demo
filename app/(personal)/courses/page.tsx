@@ -11,7 +11,7 @@ import type { Course, Goals, Logistics, Testimonial, Data } from '@/types'
 import { getRemoteOrLocalData } from "@/lib/getRemoteOrLocalData"
 
 export const metadata: Metadata = {
-    title: 'Cursos',
+    title: 'courses',
     description: 'cursos dictados por Tennesee Williams',
 }
 
@@ -56,7 +56,7 @@ export default async function CoursesPage() {
 
     return (
         <section className='courses'>
-            <h1>Cursos</h1>
+            <h1>courses</h1>
             <div className="heroContainer">
                 <div className="hero-img-container">
                     <Image
@@ -81,7 +81,7 @@ export default async function CoursesPage() {
             <ImageGrid images={grid_1} />
 
             <div className="cards-and-goals">
-                <h2>Mis cursos de actuación:</h2>
+                <h2>Mis courses de actuación:</h2>
                 <div className='courseCards-container'>
                     {availableCourses_acting.map((course: Course, i: number) => (
                         <div className="courseCard" key={`course-${i}`}>{parse(course.name)}</div>
@@ -99,7 +99,7 @@ export default async function CoursesPage() {
             </div>
 
             <div className="cards-and-goals">
-                <h2>Mis cursos de dramaturgia:</h2>
+                <h2>Mis courses de dramaturgia:</h2>
                 <div className='courseCards-container'>
                     {availableCourses_writing.map((course: Course, i: number) => (
                         <div className="courseCard" key={`course-${i}`}>{parse(course.name)}</div>

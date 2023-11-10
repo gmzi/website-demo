@@ -26,7 +26,7 @@ export default async function Bio() {
     
     return (
         <section className="">
-            <h1>Editar - Bio</h1>
+            <h1>Edit - Bio</h1>
             <EditBio contentHtml_1={html_1} contentHtml_2={html_2} imageUrls={imageURLS}/>
         </section>
     )

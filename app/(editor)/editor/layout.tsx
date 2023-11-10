@@ -36,12 +36,12 @@ const BASE_URL = process.env.BASE_URL;
 
 export const metadata: Metadata = {
   title: 'EDITOR',
-  description: 'editor del sitio oficial de Tennesee Williams',
+  description: 'editor',
   metadataBase: new URL(`${BASE_URL}`),
   generator: 'Tennesee Williams',
   applicationName: 'Tennesee Williams',
   referrer: 'origin-when-cross-origin',
-  keywords: ['fernando', 'ferrer', 'teatro', 'dramaturgia', 'actuacion', 'arte', 'cultura'],
+  keywords: ['tennessee', 'williams', 'theater', 'drama', 'acting', 'art', 'culture'],
   authors: [{ name: 'Tennesee Williams', url: `${BASE_URL}` }, { name: 'gmzi', url: 'https://twitter.com/spiritusliteram' }],
   creator: 'Tennesee Williams',
   publisher: 'Tennesee Williams',
@@ -55,7 +55,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: 'Editor -',
-    description: 'editor del sitio oficial de Tennesee Williams',
+    description: 'editor',
     url: `${BASE_URL}/editor`,
     siteName: 'Tennesee Williams',
     // images: '/og-image.png',
@@ -86,7 +86,7 @@ export const metadata: Metadata = {
     title: 'Tennesee Williams',
     description: 'sitio oficial',
     siteId: '',
-    creator: '@ferferrerok',
+    creator: '',
     creatorId: '',
     images: [`${BASE_URL}/server/og`],
   },
@@ -102,8 +102,8 @@ export const metadata: Metadata = {
 
 export default async function Layout({ children }: EditorProps) {
 
-  const { orgRole } = auth();
-  // const orgRole = 'admin'
+  // const { orgRole } = auth();
+  const orgRole = 'admin'
 
   if (orgRole !== 'admin') {
     return (

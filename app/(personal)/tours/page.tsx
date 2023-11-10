@@ -29,7 +29,7 @@ export default async function ToursPage() {
 
     return (
         <section className="tours">
-            <h1>Giras</h1>
+            <h1>Tours</h1>
             <div className="imgContainer">
                 <Image
                     className="defaultImgStyle"

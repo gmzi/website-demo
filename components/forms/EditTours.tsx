@@ -59,7 +59,7 @@ export function HeroImage({ imageUrl }: ImageProp) {
     return (
         <div className="heroContainer editor-group">
             <form action={formAction}>
-                <h2>Editar imagen</h2>
+                <h2>Edit imagen</h2>
                 {/* <ImageEdit imageUrl={imageUrl} /> */}
                 <ImageInputWithIDAndDefaultValue id={1} defaultValue={imageUrl} className="" />
                 <EditButton />
@@ -106,7 +106,7 @@ export function ToursList({ tours }: { tours: Tour[] }) {
             <ul className="years-list">
                 {openCreator ? <CreateTour handleCreateCancel={handleCreateCancel} /> : (
                     <li className="editor-group">
-                        <h2>Agregar nueva gira</h2>
+                        <h2>Create new gira</h2>
                         <button onClick={handleCreate}>Agregar una nueva gira</button>
                     </li>
                 )}
@@ -137,7 +137,7 @@ export function ToursList({ tours }: { tours: Tour[] }) {
 
                                         }
                                         <div className='card-buttons'>
-                                            <button onClick={handleClick} id={item.id}>Editar</button>
+                                            <button onClick={handleClick} id={item.id}>Edit</button>
                                             <Delete document="tours" entry={`content`} section="tours" id={item.id} />
                                         </div>
                                     </li>
@@ -151,7 +151,7 @@ export function ToursList({ tours }: { tours: Tour[] }) {
 
     return (
         <div className="showsList">
-            <h1>Giras</h1>
+            <h1>Tours</h1>
             {openEditor !== false ? <EditTour tours={tours} id={openEditor} handleCancel={handleCancel} /> : toursList}
         </div>
     )
@@ -170,7 +170,7 @@ export function EditTour({ tours, id, handleCancel }: { tours: Tour[], id: strin
 
     return (
         <form action={formAction} className='form-shows'>
-            <h2>EDITAR Gira</h2>
+            <h2>Edit Gira</h2>
             <div className="show-card">
                 <input type="hidden" name="id" value={tour.id} />
 

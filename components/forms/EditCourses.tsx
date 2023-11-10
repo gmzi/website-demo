@@ -307,7 +307,7 @@ export function AvailableCourses({ title, courses, entry }: { title: string, cou
     //     <div key={`course-${course.name}`}>
     //         <h3>{course.name}</h3>
     //         {parse(course.description)}
-    //         <button onClick={handleClick} tabIndex={i}>Editar</button>
+    //         <button onClick={handleClick} tabIndex={i}>Edit</button>
     //         <Delete document="courses" entry={entry} section="courses" id={course.id} />
     //     </div>
     // ));
@@ -321,7 +321,7 @@ export function AvailableCourses({ title, courses, entry }: { title: string, cou
                         {parse(course.name)}
                         {/* <p>{parse(course.description)}</p> */}
                         <div>
-                            <button onClick={handleClick} tabIndex={i}>Editar</button>
+                            <button onClick={handleClick} tabIndex={i}>Edit</button>
                             <Delete document="courses" entry={entry} section="courses" id={course.id} />
                         </div>
                     </div>
@@ -453,7 +453,7 @@ export function CourseReviews({ reviews }: ReviewsProps) {
                 {parse(review.content)}
                 <cite>{review.author}</cite>
                 <div>
-                    <button onClick={handleClick} tabIndex={i}>Editar</button>
+                    <button onClick={handleClick} tabIndex={i}>Edit</button>
                     <Delete document="courses" entry="reviews" section="reviews" id={review.id} />
                 </div>
             </blockquote>
@@ -465,7 +465,7 @@ export function CourseReviews({ reviews }: ReviewsProps) {
             {openEditor !== false ? <EditCourseReview reviews={reviews} index={openEditor} handleCancel={handleCancel} /> : reviewsList}
             {openCreator ? (<CreateCourseReview handleCreateCancel={handleCreateCancel} />) : (
                 <div className="review">
-                    <h3>Agregar nueva reseña</h3>
+                    <h3>Create new reseña</h3>
                     <button onClick={handleCreate}>agregar reseña</button>
                 </div>
             )}
@@ -527,7 +527,7 @@ export function Testimonials({ testimonials }: TestimonialsProps) {
                 <div key={`card-${i}`} className="testimonialCard">
                     <h3>{testimonial.author}</h3>
                     {parse(testimonial.content)}
-                    <button key={`btn-testimonials-${i}`} onClick={handleClick} tabIndex={i}>Editar</button>
+                    <button key={`btn-testimonials-${i}`} onClick={handleClick} tabIndex={i}>Edit</button>
                     <Delete document="courses" entry="testimonials" section="courses" id={testimonial.id} />
                 </div>
             ))}

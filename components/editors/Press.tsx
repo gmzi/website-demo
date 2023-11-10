@@ -26,7 +26,7 @@ export default async function Press() {
 
     return (
         <section>
-            <h1>Editar prensa</h1>
+            <h1>Edit press</h1>
             <HeroImage imageUrl={image_1_url}/>
             <PressArticles articles={written_articles} />
             <PressVideos pressVideos={video_articles} />

@@ -21,7 +21,7 @@ export default async function Test(){
 
     return (
         <>
-            <h1>Editar - Inicio</h1>
+            <h1>Edit - About</h1>
             <EditTest contentHtml={contentHtml} imageUrl={imageUrl}/>
         </>
     )

@@ -79,7 +79,7 @@ export function HeroImage({ imageUrl }: ImageProp) {
     return (
         <div className="heroContainer editor-group">
             <form action={formAction}>
-                <h2>Editar imagen</h2>
+                <h2>Edit imagen</h2>
                 {/* <ImageEdit imageUrl={imageUrl} /> */}
                 <ImageInputWithIDAndDefaultValue id={1} defaultValue={imageUrl} className="" />
                 <EditButton />
@@ -123,7 +123,7 @@ export function PressArticles({ articles }: PressArticlesProps) {
             <li>
                 {openCreator ? (<CreatePressArticle handleCreateCancel={handleCreateCancel} />) : (
                     <blockquote className="review">
-                        <h5>Agregar nueva crítica</h5>
+                        <h5>Create new crítica</h5>
                         <button onClick={handleCreate}>agregar un nueva crítica</button>
                     </blockquote>
                 )}
@@ -138,7 +138,7 @@ export function PressArticles({ articles }: PressArticlesProps) {
                             <div className="media-organization">{article.media_organization}</div>
                         </cite>
                         <div className="btnContainer">
-                            <div><button onClick={handleClick} tabIndex={i}>Editar</button></div>
+                            <div><button onClick={handleClick} tabIndex={i}>Edit</button></div>
                             <div><Delete document="press" entry="written_press" section="press" id={article.id} /></div>
                         </div>
                     </blockquote>
@@ -296,7 +296,7 @@ export function PressVideos({ pressVideos }: PressVideosProps) {
                         <span>{pressVideo.description}</span>
                     </div>
                     <div className="btnContainer">
-                        <button onClick={handleClick} tabIndex={i}>Editar</button>
+                        <button onClick={handleClick} tabIndex={i}>Edit</button>
                         <Delete document="press" entry="video_press" section="press" id={pressVideo.id} />
                     </div>
                 </li>

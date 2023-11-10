@@ -906,7 +906,7 @@ export async function editAbout(prevState: any, formData: FormData) {
     revalidatePath('/(personal)/', 'page');
     revalidatePath('/(editor)/editor', 'page');
 
-    return { message: `Pagina de inicio editada!!!` }
+    return { message: `Pagina de About editada!!!` }
 
   } catch (e) {
     console.error(e);

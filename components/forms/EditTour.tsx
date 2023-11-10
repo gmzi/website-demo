@@ -28,7 +28,7 @@ export function EditTour({ tour }: {tour: Tour}) {
 
     return (
         <form action={formAction}>
-            <h2>EDITAR Gira</h2>
+            <h2>Edit Gira</h2>
             <input type="hidden" name="id" value={tour.id} />
 
             <label htmlFor="show_title">Espectáculo:</label>

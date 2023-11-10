@@ -58,7 +58,7 @@ export function EditBio({ contentHtml_1, contentHtml_2, imageUrls }: BioProps) {
 
     return (
         // <form action={formAction}>
-        //     <h2>EDITAR Bio</h2>
+        //     <h2>Edit Bio</h2>
         //     <RichText contentHtml={contentHtml} />
         //     <ImagesEdit imageUrls={imageUrls} />
         //     <EditButton />

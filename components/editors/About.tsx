@@ -18,7 +18,7 @@ export default async function About(){
 
     return (
         <>
-            <h1>Editar - Inicio</h1>
+            <h1>Edit - About</h1>
             <EditAbout contentHtml={contentHtml} imageUrl={imageUrl}/>
         </>
     )

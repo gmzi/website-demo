@@ -9,7 +9,7 @@ export default async function Metadata() {
     
     return (
         <div>
-            <h2>Editar metadata</h2>
+            <h2>Edit metadata</h2>
             <h2>Metadata editor goes here</h2>
         </div>
     )

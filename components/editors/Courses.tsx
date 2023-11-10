@@ -60,7 +60,7 @@ export default async function Courses() {
     
     return (
         <section className="courses">
-            <h1>Editar cursos</h1>
+            <h1>Edit courses</h1>
 
             <HeroImage imageUrl={image1Url}/>
 
@@ -68,14 +68,14 @@ export default async function Courses() {
             
 
             {/* <Link href={`/contact`} target="_blank">
-                <button className="btnWhatsapp">Editar numero de contacto</button>
+                <button className="btnWhatsapp">Edit numero de contacto</button>
             </Link> */}
         
             <EditImageGrid_A images={grid_A}/>
 
-            <AvailableCourses title="Mis cursos de actuación:" courses={availableCourses_acting} entry="available_courses_acting"/>
+            <AvailableCourses title="Mis courses de actuación:" courses={availableCourses_acting} entry="available_courses_acting"/>
 
-            <AvailableCourses title="Mis cursos de dramaturgia:" courses={availableCourses_writing} entry="available_courses_writing"/>
+            <AvailableCourses title="Mis courses de dramaturgia:" courses={availableCourses_writing} entry="available_courses_writing"/>
 
             <EditFAQ contentHtml={FAQ}/>
 

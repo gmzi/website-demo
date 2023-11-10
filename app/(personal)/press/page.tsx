@@ -29,7 +29,7 @@ export default async function PressPage() {
 
     return (
         <section className="press">
-            <h1>Prensa</h1>
+            <h1>press</h1>
             <div className="imgContainer">
                 <Image
                     className="defaultImgStyle"

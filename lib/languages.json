@@ -24,7 +24,7 @@
             "by": "por",
             "visits": "Visitas",
             "download": "Descargar",
-            "edit": "Editar",
+            "edit": "Edit",
             "delete": "Eliminar",
             "deletingPost": "eliminando post...",
             "failedToDelete": "no se pudo eliminar",
@@ -70,7 +70,7 @@
             "youHaveUnpublished": "Tienes cambios sin publicar, seguro que quieres salir de esta página?"
         },
         "editPost": {
-            "editPost": "Editar Post",
+            "editPost": "Edit Post",
             "refreshIndex": "Refrescar Index",
             "refresh": "Refrescar para volver a la version guardada",
             "noModifications": "no hay cambios",
@@ -85,7 +85,7 @@
         },
         "layout": {
             "comment": "comentar",
-            "home": "inicio"
+            "home": "About"
         },
         "posts": {
             "notes": "Notas"
@@ -121,10 +121,10 @@
             "failedPublishing": "Error al intentar publicar, por favor edita tu archivo e intenta de nuevo",
             "here": "aqui",
             "title": "título",
-            "home": "inicio"
+            "home": "About"
         },
         "previewPost": {
-            "refreshIndex": "refrescar página de inicio",
+            "refreshIndex": "refrescar página de About",
             "preview": "Borrador",
             "thisIs": "este es el texto de tu post",
             "thisIsMeta": "esta es la metadata",

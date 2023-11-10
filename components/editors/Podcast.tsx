@@ -13,7 +13,7 @@ export default async function Podcast(){
 
     return (
         <section className="editor-group">
-            <h1>Editar - Podcast</h1>
+            <h1>Edit - Podcast</h1>
             <TextEditor contentHtml={contentHtml} document={documentName} section={sectionName}/>
             <EditLinks spotify_url={spotify_url} apple_url={apple_url} document={documentName} section={sectionName}/>
         </section>

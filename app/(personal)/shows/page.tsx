@@ -24,7 +24,7 @@ export default async function ShowsPage() {
 
     return (
         <section className="shows">
-            <h1>Obras</h1>
+            <h1>Shows</h1>
             <div className="shows-previews-container">
                 {shows.map((show: Show, index: number) => (
                     <ShowDisplay key={`show-${show.title}-${index}`} show={show} />

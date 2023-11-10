@@ -13,11 +13,11 @@ export default async function EditorMainPage() {
     <section>
       <div className="editor-group">
         <div className={e.selector}>
-          <h1>Estas son las secciones para editar:</h1>
+          <h1>Sections available to edit:</h1>
           <ul>
             <li>
               <Link href="/editor/about">
-                <span className={e.cmsLink}>inicio</span>
+                <span className={e.cmsLink}>about</span>
               </Link>
             </li>
             <li>
@@ -27,27 +27,22 @@ export default async function EditorMainPage() {
             </li>
             <li>
               <Link href="/editor/shows">
-                <span className={e.cmsLink}>obras</span>
+                <span className={e.cmsLink}>shows</span>
               </Link>
             </li>
             <li>
               <Link href="/editor/courses">
-                <span className={e.cmsLink}>cursos</span>
-              </Link>
-            </li>
-            <li>
-              <Link href="/editor/podcast">
-                <span className={e.cmsLink}>podcast</span>
+                <span className={e.cmsLink}>courses</span>
               </Link>
             </li>
             <li>
               <Link href="/editor/tours">
-                <span className={e.cmsLink}>giras</span>
+                <span className={e.cmsLink}>tours</span>
               </Link>
             </li>
             <li>
               <Link href="/editor/press">
-                <span className={e.cmsLink}>prensa</span>
+                <span className={e.cmsLink}>press</span>
               </Link>
             </li>
           </ul>
