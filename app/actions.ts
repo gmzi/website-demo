@@ -16,7 +16,7 @@ import { updateInput } from '@/lib/updateInput';
 import { updateAbout } from '@/lib/updateAbout';
 import { updateBio } from '@/lib/updateBio';
 import {updateTest, updateItem} from '@/lib/mongo';
-import { pushToArray } from '@/lib/mongodb';
+import { pushToArray, pushToArrayCapped } from '@/lib/mongodb';
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 const DATA_API_KEY = process.env.NEXT_PUBLIC_DATA_API_KEY || '';
@@ -380,7 +380,8 @@ export async function createShow(prevState: any, formData: FormData) {
       content: updatedInputData
     }
 
-    const saved = await pushToArray(data.document, data.entry, data.content);
+    // const saved = await pushToArray(data.document, data.entry, data.content);
+    const saved = await pushToArrayCapped(data.document, data.entry, data.content);
 
     revalidatePath(`/(personal)/shows`, 'page');
     revalidatePath(`/(personal)/shows/[slug]`, 'page');
