@@ -5,8 +5,15 @@ import { getData } from '../../../lib/getData';
 const DATA_API_KEY = process.env.DATA_API_KEY
 const BASE_URL = process.env.BASE_URL;
 
+const isProd = process.env.NODE_ENV === 'production';
+
+
 export async function GET() {
     try {
+        if (isProd) {
+            return NextResponse.json({ message: `backup is not available in production` })
+        }
+        
         const currentDate = new Date();
         const about = await getData("about");
         const bio = await getData("bio");
