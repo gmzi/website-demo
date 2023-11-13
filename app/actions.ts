@@ -1140,13 +1140,6 @@ export async function editBio(prevState: any, formData: FormData) {
       document: "bio",
       content_html_1: {id: ID, content: updatedInputData.contentHtml_1},
       content_html_2: {id: ID, content: updatedInputData.contentHtml_2},
-      // image_1_url: updatedInputData.image_1_url,
-      // image_2_url: updatedInputData.image_2_url,
-      // image_3_url: updatedInputData.image_3_url,
-      // image_4_url: updatedInputData.image_4_url,
-      // image_5_url: updatedInputData.image_5_url,
-      // image_6_url: updatedInputData.image_6_url,
-      // image_7_url: updatedInputData.image_7_url
       image_1_url: {id: ID, content: updatedInputData.image_1_url},
       image_2_url: {id: ID, content: updatedInputData.image_2_url},
       image_3_url: {id: ID, content: updatedInputData.image_3_url},
