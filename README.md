@@ -9,16 +9,15 @@ This is Next.js 13 App dir website that regenerates on-demand. Content is manage
 - [MongoDB](https://www.mongodb.com/) is the database. 
 - [Zod](https://github.com/colinhacks/zod) for form validation. 
 
-## Workflow
-Website's author logs in -> chooses a section to edit -> performs CRUD operations inherent to the section. On form submission, a server action is triggered and performs these actions: 
+### Workflow
+Website's author logs in -> chooses a section to edit -> performs CRUD operations inherent to the section. 
+On form submission, a server action is triggered and performs these actions: 
 - input validation
 - If there's an image, upload it to Cloudinary, get hosted image url. 
 - Save image url and text content to MongoDB.
-- Return success/error message to the user. 
+- Return success/error message to the user.
 
-![graphic](https://www.tldraw.com/s/v2_c_DjX3w5J4jvD--NdxxiT5x?viewport=-492%2C28%2C2215%2C1457&page=page%3AfPRc6lCUrX0zwp2LhXN7A)
-
-## Usage
+### Usage
 
 1. Clone repo. 
 2. Create `.env.local` file, copy variables from `.env.example`.
@@ -26,7 +25,7 @@ Website's author logs in -> chooses a section to edit -> performs CRUD operation
 4. `npm run dev` to run local dev server in `http://localhost:3000/` with local data pulled from `local.json`. 
 
 
-## Contribute
+### Contribute
 Please clone, fork, contribute in any way you find interesting. I've listed Issues I haven't had the time to fix yet, please feel free to tackle any of them or create new ones. 
 
 
