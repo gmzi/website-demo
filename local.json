@@ -1,55 +1,55 @@
 {
   "document": "backup",
-  "date": "2023-11-13T16:44:23.994Z",
+  "date": "2023-11-13T21:11:15.308Z",
   "about": {
     "_id": "654d6720fbf412d74129d5e8",
     "name": "about",
     "content_html": {
-      "id": "roz02",
+      "id": "hhw3r",
       "content": "<p>Born Thomas Lanier Williams III on March 26, 1911. He is best known for his contributions to American theater in the mid-20th century, creating iconic characters and exploring complex themes in his works.</p><p>Williams' most famous plays include \"A Streetcar Named Desire,\" which features the iconic line, \"Stella! Hey, Stella!\" This play tells the story of Blanche DuBois, a fading Southern belle, who moves in with her sister Stella and her husband Stanley, leading to a dramatic clash of personalities and a descent into madness.</p><p>\"The Glass Menagerie\" showcases another memorable line, \"Memory takes a lot of poetic license. It omits some details; others are exaggerated, according to the emotional value of the articles it touches.\" This semi-autobiographical play delves into the fragile world of the Wingfield family, exploring the illusions they create to escape their mundane lives.</p><p>\"Cat on a Hot Tin Roof\" famously features the line, \"Mendacity is a system that we live in.\" This powerful drama revolves around a dysfunctional Southern family gathering to celebrate the patriarch's birthday. The play delves into themes of greed, deception, and the destructive power of family secrets.</p><p>Tennessee Williams' distinctive writing style, characterized by poetic language and emotionally charged dialogues, has left an indelible mark on the world of theater and literature. His works continue to captivate audiences and provide profound insights into the human experience through the art of storytelling.</p>"
     },
     "image_1_url": {
-      "id": "roz02",
-      "content": "https://res.cloudinary.com/imagesgmzi/image/upload/v1699395709/website-fer/about/vmnt4qojun3l6ycrmfzf.jpg"
+      "id": "hhw3r",
+      "content": "https://res.cloudinary.com/imagesgmzi/image/upload/v1699908364/website-demo/about/inuzoryxrzu7ghtrb1k6.jpg"
     }
   },
   "bio": {
     "_id": "6552524e13c83f0402c87bbc",
     "name": "bio",
     "content_html_1": {
-      "id": "7rrn1",
+      "id": "vsuhg",
       "content": "<p>Text here</p>"
     },
     "content_html_2": {
-      "id": "7rrn1",
+      "id": "vsuhg",
       "content": "<p>text here</p>"
     },
     "image_1_url": {
-      "id": "7rrn1",
-      "content": "https://res.cloudinary.com/imagesgmzi/image/upload/v1699888538/website-demo/bio/bui1bckkj0ndmhpvt94b.jpg"
+      "id": "vsuhg",
+      "content": "https://res.cloudinary.com/imagesgmzi/image/upload/v1699908972/website-demo/bio/thyj4gxrrvxxglpg99aq.jpg"
     },
     "image_2_url": {
-      "id": "7rrn1",
-      "content": "https://res.cloudinary.com/imagesgmzi/image/upload/v1699888538/website-demo/bio/bui1bckkj0ndmhpvt94b.jpg"
+      "id": "vsuhg",
+      "content": ""
     },
     "image_3_url": {
-      "id": "7rrn1",
-      "content": "https://res.cloudinary.com/imagesgmzi/image/upload/v1699888538/website-demo/bio/bui1bckkj0ndmhpvt94b.jpg"
+      "id": "vsuhg",
+      "content": ""
     },
     "image_4_url": {
-      "id": "7rrn1",
-      "content": "https://res.cloudinary.com/imagesgmzi/image/upload/v1699888538/website-demo/bio/bui1bckkj0ndmhpvt94b.jpg"
+      "id": "vsuhg",
+      "content": ""
     },
     "image_5_url": {
-      "id": "7rrn1",
-      "content": "https://res.cloudinary.com/imagesgmzi/image/upload/v1699888538/website-demo/bio/bui1bckkj0ndmhpvt94b.jpg"
+      "id": "vsuhg",
+      "content": ""
     },
     "image_6_url": {
-      "id": "7rrn1",
-      "content": "https://res.cloudinary.com/imagesgmzi/image/upload/v1699888538/website-demo/bio/bui1bckkj0ndmhpvt94b.jpg"
+      "id": "vsuhg",
+      "content": ""
     },
     "image_7_url": {
-      "id": "7rrn1",
+      "id": "vsuhg",
       "content": ""
     }
   },
@@ -58,12 +58,12 @@
     "name": "shows",
     "content": [
       {
-        "id": "6egv9bei9qscr7k7r9za",
+        "id": "izpt4ev0rcmbbxoxr2pp",
         "title": "The Rose Tattoo",
         "slug": "the-rose-tattoo",
         "opening_date": "1951",
         "theatre": "",
-        "sinopsis": "<p><span>Serafina Delle Rose, a passionate and grieving Italian-American widow living on the Gulf Coast. Serafina becomes consumed by her love for her late husband, Rosario, and the memory of their marriage. When she discovers a secret about Rosario's infidelity, she embarks on a journey of self-discovery and emotional healing. The play explores themes of love, loss, desire, and the transformative power of human connection.</span></p>",
+        "sinopsis": "<p><span>Serafina Delle Rose is a passionate and grieving Italian-American widow living on the Gulf Coast. Serafina becomes consumed by her love for her late husband, Rosario, and the memory of their marriage. When she discovers a secret about Rosario's infidelity, she embarks on a journey of self-discovery and emotional healing. The play explores themes of love, loss, desire, and the transformative power of human connection.</span></p>",
         "cast": [
           {
             "name": "Serafina Delle Rose",
@@ -130,32 +130,56 @@
         ],
         "musicians": [],
         "dancers": [],
-        "image_1_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1699573984/website-fer/shows/j3qzvctrq3qm0kzpmmvj.jpg",
+        "image_1_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1699908681/website-demo/shows/xnevot0sovkxxrra5wtj.jpg",
         "image_2_url": "",
         "image_3_url": ""
       },
       {
-        "id": "m2prbh67hrg17ywq80oc",
-        "title": "test",
-        "slug": "test",
-        "opening_date": "1981",
+        "id": "d3cfm30ajlrrnj0pbfye",
+        "title": "A Streetcar Named Desire",
+        "slug": "a-streetcar-named-desire",
+        "opening_date": "1947",
         "theatre": "",
-        "sinopsis": "<p>test</p>",
+        "sinopsis": "<p><span>Blanche DuBois moves in with her sister, Stella, and her brother-in-law, Stanley, in a cramped apartment in New Orleans. Blanche is a fading Southern belle with a mysterious past, while Stanley is a rough and aggressive working-class man. As the play unfolds, the tension between Blanche and Stanley intensifies, leading to a dramatic and tragic confrontation. The play explores themes of desire, mental instability, social class, and the clash between old and new America. Blanche's descent into madness and the unraveling of her secrets form the core of the story.</span></p>",
         "cast": [
           {
-            "name": "test",
-            "role": ""
+            "name": "Stanley Kowalski",
+            "role": "Marlon Brando"
+          },
+          {
+            "name": "Blanche DuBois",
+            "role": "Jessica Tandy"
+          },
+          {
+            "name": "Stella Kowalski",
+            "role": "Kim Hunter"
+          },
+          {
+            "name": "Harold \"Mitch\" Mitchell",
+            "role": "Karl Malden"
           }
         ],
         "creative": [
           {
-            "name": "test",
-            "role": ""
+            "name": "Tennessee Williams",
+            "role": "Playwright"
+          },
+          {
+            "name": "Elia Kazan",
+            "role": "Director"
+          },
+          {
+            "name": "Jo Mielziner",
+            "role": "Set Designer"
+          },
+          {
+            "name": "Lucinda Ballard",
+            "role": "Costume Designer"
           }
         ],
         "musicians": [],
         "dancers": [],
-        "image_1_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1699644456/website-fer/shows/ls3jghsekbszup4nnsv9.jpg",
+        "image_1_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1699908814/website-demo/shows/msaglceq7plnk1vkgq4h.jpg",
         "image_2_url": "",
         "image_3_url": ""
       }

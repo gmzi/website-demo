@@ -1,5 +1,4 @@
 import ShowCard from "@/components/ShowCard";
-import ShowsGallery from "@/components/ShowsGallery";
 import type { Show } from "@/types";
 import { Metadata, ResolvingMetadata } from 'next'
 import { getRemoteOrLocalData } from "@/lib/getRemoteOrLocalData";

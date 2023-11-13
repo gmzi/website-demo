@@ -38,14 +38,14 @@ export async function GET() {
         // Using Node.js's fs module to write the file
         const fs = require('fs');
 
-        fs.writeFile('backup.json', jsonData, 'utf8', (err: any) => {
+        fs.writeFile('local.json', jsonData, 'utf8', (err: any) => {
             if (err) {
                 console.error("An error occurred while writing JSON Object to File.", err);
             } else {
-                console.log("a JSON file with data from prod database has been saved.");
+                console.log("local.json file with data from prod database has been saved.");
             }
         });
-        return NextResponse.json({ message: `backup successfull at ${currentDate}. Find backup file in local root folder`});
+        return NextResponse.json({ message: `backup successfull at ${currentDate}. Find local.json in root folder`});
     } catch (e) {
         console.log(e)
         return NextResponse.json({ error: `${e}` })

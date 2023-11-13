@@ -102,8 +102,9 @@ export const metadata: Metadata = {
 
 export default async function Layout({ children }: EditorProps) {
 
-  const { orgRole } = auth();
-  // const orgRole = 'admin'
+  // const { orgRole } = auth();
+  // replace this line with the above one once Clerk is set up:
+  const orgRole = 'admin'
 
   if (orgRole !== 'admin') {
     return (

@@ -2,7 +2,6 @@
 
 import { revalidatePath, revalidateTag } from 'next/cache'
 import { z } from 'zod'
-import { send } from '@emailjs/browser';
 import createAlphaNumericString from '@/lib/createAlphanumericString';
 import { uploadToCloudinary } from './cloudinary';
 import { moveToTrash } from './cloudinary';
