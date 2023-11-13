@@ -39,8 +39,7 @@ export async function uploadToCloudinary(imageFile, folderName) {
 }
 
 export async function moveToTrash(imageUrl){
-  console.log(imageUrl)
-  return true
+  return {message: "todo"}
 }
 
 // export async function moveToTrash(imageUrl) {
@@ -55,24 +54,16 @@ export async function moveToTrash(imageUrl){
 //     // const imagePublicID = imageID.replace(/\..+$/, '');
 
 //     const imagePublicID = extractPublicID(imageUrl);
-//     const trashDestination = `${IMAGE_MAIN_FOLDER}/trash/${imagePublicID.replace(`${IMAGE_MAIN_FOLDER}/`, "")}`;
-//     // example from : 'website-demo/about/i4ey8istvgaphyohjupc';
-//     // example to : 'website-demo/trash/about/i4ey8istvgaphyohjupc'
 
-//     // const moved = await cloudinary.uploader.rename(imagePublicID, trashDestination)
-//     const newFolder = `${IMAGE_MAIN_FOLDER}/trash`
-//     await cloudinary.uploader.rename(imagePublicID, trashDestination, (error, result) => {
-//       if (error) {
-//         console.error('Error moving image:', error);
-//         return { status: 404, message: 'failed deleting image', error: JSON.stringify(error) }
-//       } else {
-//         console.log('Image moved successfully:', result);
-//         return { status: 200, message: 'image moved to trash'};
-//       }
-//     });
-//     return { status: 200, message: 'image moved to trash' };
+//     const trashDestination = `${IMAGE_MAIN_FOLDER}/trash/${imagePublicID.replace(`${IMAGE_MAIN_FOLDER}/`, "")}`;
+//     // example from : 'website-fer/about/i4ey8istvgaphyohjupc';
+//     // example to : 'website-fer/trash/about/i4ey8istvgaphyohjupc'
+
+//     const moved = cloudinary.uploader.rename(imagePublicID, trashDestination)
+
+//     return { message: 'image moved to trash', recoveryUrl: moved?.secure_url };
 //   } catch (e) {
 //     console.error(e)
-//     return { status: 500, message: 'failed deleting image', error: JSON.stringify(e) }
+//     return {message: 'failed deleting image', error: JSON.stringify(e) }
 //   }
 // }

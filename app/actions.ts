@@ -143,9 +143,9 @@ async function handleInputDataWithNewImageFiles(inputData: any, folderName: stri
     // @ts-ignore
     if (imageFile?.size > 0) {
       const oldImageUrl = inputData[`image_${fileNumber}_url`];
-      if (oldImageUrl?.length > 0){
-        const trashOldImageUrl = await moveToTrash(oldImageUrl);
-      }
+      // if (oldImageUrl?.length > 0){
+      //   const trashOldImageUrl = await moveToTrash(oldImageUrl);
+      // }
       const imageMetadata = await uploadToCloudinary(imageFile, folderName);
       // @ts-ignore
       inputData[`image_${fileNumber}_url`] = imageMetadata.secure_url;
@@ -509,6 +509,7 @@ export async function editShow(prevState: any, formData: FormData) {
 
 // ------------------------------------------------------------
 // ------------------------------------------------------------
+// EDIT
 // ------------------------------------------------------------
 // ------------------------------------------------------------
 
@@ -1018,27 +1019,30 @@ export async function editBio(prevState: any, formData: FormData) {
     // mutate inputData to load new images:
     const updatedInputData = await handleInputDataWithNewImageFiles(inputData, "bio");
 
-    const removeUrls = {
-      removeImage_2_Url,
-      removeImage_3_Url,
-      removeImage_4_Url,
-      removeImage_5_Url,
-      removeImage_6_Url,
-      removeImage_7_Url
-    }
+    // const removeUrls = {
+    //   removeImage_2_Url,
+    //   removeImage_3_Url,
+    //   removeImage_4_Url,
+    //   removeImage_5_Url,
+    //   removeImage_6_Url,
+    //   removeImage_7_Url
+    // }
 
-    for (const key in removeUrls){
-      //@ts-ignore
-      const urlToRemove = removeUrls[key];
-      const [, fileNumber] = key.split('_');
-      if (urlToRemove){
-        console.log(`removing image: ${fileNumber} with url: ${urlToRemove}`);
-        const trashRemovedImage = await moveToTrash(urlToRemove);
-        updatedInputData[`image_${fileNumber}_url`] = '';
-      }
-    }
+    // for (const key in removeUrls){
+    //   const urlToRemove = removeUrls[key];
+    //   const [, fileNumber] = key.split('_');
+    //   if (urlToRemove){
+    //     console.log(`removing image: ${fileNumber} with url: ${urlToRemove}`);
+    //     const trashRemovedImage = await moveToTrash(urlToRemove);
+    //     updatedInputData[`image_${fileNumber}_url`] = '';
+    //   }
+    // }
 
     const ID = createAlphaNumericString(5);
+
+    console.log(updatedInputData);
+
+    return {message: "hi"};
 
     const data = {
       document: "bio",
@@ -1052,6 +1056,8 @@ export async function editBio(prevState: any, formData: FormData) {
       image_6_url: {id: ID, content: updatedInputData.image_6_url},
       image_7_url: {id: ID, content: updatedInputData.image_7_url}
     }
+
+    console.log(data);
 
     const updated = await updateBio(
       data.document, 
