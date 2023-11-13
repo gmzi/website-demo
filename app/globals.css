@@ -305,6 +305,10 @@ section {
   color: #c13584;
 }
 
+.github:hover {
+  color: #333; 
+}
+
 .youtube:hover {
   color: #ff0000;
 }

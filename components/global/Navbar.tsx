@@ -5,13 +5,13 @@ import { usePathname } from 'next/navigation';
 import { navItems } from '@/lib/navItems';
 import { editorNaviItems } from '@/lib/navItems';
 import {
-  Circle,
+  InstagramIcon,
+  TwitterIcon,
+  YoutubeIcon,
+  FacebookIcon,
+  Github,
   Globe
 } from '../shared/icons';
-import { InstagramIcon } from '../shared/icons';
-import { TwitterIcon } from '../shared/icons';
-import { YoutubeIcon } from '../shared/icons';
-import { FacebookIcon } from '../shared/icons';
 import { SignIn, UserButton, SignOutButton } from "@clerk/nextjs";
 import e from '@/app/(editor)/editor/editor.module.css'
 
@@ -40,7 +40,15 @@ export function Navbar() {
             Tennessee Williams
           </Link>
         </div>
+        <div className="navbar-header">
+          <Link href="/editor">
+            editor
+          </Link>
+        </div>
         <div className="social-icons">
+          <Link href="https://github.com/gmzi/website-demo" className="github">
+            <Github />
+          </Link>
           <Link href="https://www.instagram.com" className="instagram">
             <InstagramIcon />
           </Link>
@@ -106,11 +114,11 @@ export function EditorNavbar({ orgRole }: { orgRole: string }) {
           </div>
         </div>
       </nav>
-    ) 
+    )
   }
-    
+
   return (
-  
+
     <nav className={e.navbar}>
       <div className="navbar-top">
         <div className="navbar-header">
