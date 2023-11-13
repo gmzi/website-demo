@@ -59,13 +59,13 @@ export async function moveToTrash(imageUrl) {
     await cloudinary.uploader.rename(imagePublicID, trashDestination, (error, result) => {
       if (error) {
         console.error('Error moving image:', error);
-        return { status: 404, message: 'failed deleting image', error: JSON.stringify(e) }
+        return { status: 404, message: 'failed deleting image', error: JSON.stringify(error) }
       } else {
         console.log('Image moved successfully:', result);
-        return { status: 200, message: 'image moved to trash', recoveryUrl: moved?.secure_url };
+        return { status: 200, message: 'image moved to trash'};
       }
     });
-    return { status: 200, message: 'image moved to trash', recoveryUrl: moved?.secure_url };
+    return { status: 200, message: 'image moved to trash' };
   } catch (e) {
     console.error(e)
     return { status: 500, message: 'failed deleting image', error: JSON.stringify(e) }

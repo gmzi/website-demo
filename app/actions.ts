@@ -1037,7 +1037,7 @@ export async function editBio(prevState: any, formData: FormData) {
         updatedInputData[`image_${fileNumber}_url`] = '';
       }
     }
-    
+
     const ID = createAlphaNumericString(5);
 
     const data = {
