@@ -1,6 +1,6 @@
 {
   "document": "backup",
-  "date": "2023-11-10T17:26:35.253Z",
+  "date": "2023-11-13T16:44:23.994Z",
   "about": {
     "_id": "654d6720fbf412d74129d5e8",
     "name": "about",
@@ -14,77 +14,49 @@
     }
   },
   "bio": {
-    "_id": "654d679efbf412d74129d5ee",
+    "_id": "6552524e13c83f0402c87bbc",
     "name": "bio",
     "content_html_1": {
-      "id": "9ejjo",
-      "content": "<ol><li><p><strong>Early Life in Mississippi:</strong> Tennessee Williams was born in Columbus, Mississippi, on March 26, 1911, as Thomas Lanier Williams III. He spent his formative years in the American South, which would later influence much of his work.</p></li><li><p><strong>St. Louis, Missouri:</strong> Williams moved to St. Louis, Missouri, in 1918 after his family experienced financial difficulties. This city played a significant role in his life, and it's where he attended high school and began to explore his passion for writing.</p></li><li><p><strong>University of Missouri and Writing Career:</strong> Williams attended the University of Missouri, where he studied journalism. It was during his time there that he adopted the name \"Tennessee\" as a tribute to his Southern roots. He also began to develop his writing skills and embarked on his writing career.</p></li><li><p><strong>New Orleans, Louisiana:</strong> In the late 1930s, Williams moved to New Orleans, Louisiana, where he continued to write and refine his craft. The vibrant and diverse culture of the city had a profound influence on his work, as seen in some of his plays set in the South.</p></li><li><p><strong>Success on Broadway:</strong> Tennessee Williams achieved fame and recognition with his breakthrough play, \"The Glass Menagerie,\" which premiered on Broadway in 1945. The play's success marked the beginning of his celebrated career as a playwright.</p></li></ol>"
+      "id": "7rrn1",
+      "content": "<p>Text here</p>"
     },
     "content_html_2": {
-      "id": "9ejjo",
-      "content": "<ol><li><p><strong>Key West, Florida:</strong> Williams spent several years living in Key West, Florida, where he found inspiration for some of his works. The warm climate and relaxed atmosphere of the island community provided a backdrop for his creativity.</p></li><li><p><strong>New York City:</strong> New York City became a central hub for Tennessee Williams' career. He continued to write and stage numerous successful plays on Broadway, including \"A Streetcar Named Desire\" and \"Cat on a Hot Tin Roof.\"</p></li><li><p><strong>Travel and International Recognition:</strong> Williams' plays were also well-received internationally, earning him recognition as one of America's foremost playwrights. He traveled extensively, enjoying success in various countries and becoming a global literary figure.</p></li><li><p><strong>Later Years in New Orleans:</strong> In his later years, Tennessee Williams returned to New Orleans, where he lived until his passing. Despite personal challenges, he continued to write and contribute to the world of theater until his death on February 25, 1983.</p></li></ol>"
+      "id": "7rrn1",
+      "content": "<p>text here</p>"
     },
-    "image_1_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1699573300/website-fer/bio/w5nnthl0vanxfoxuw034.jpg",
-    "image_2_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1699573301/website-fer/bio/jezelgkt95jzxpexmsw4.jpg",
-    "image_3_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1699573301/website-fer/bio/t26ztczsuqc1bzvrucfv.jpg",
-    "image_4_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1699573302/website-fer/bio/tmsbpbccuorc9haqah8t.jpg",
-    "image_5_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1699573303/website-fer/bio/e7dkdzavdkynvmqdogb7.jpg",
-    "image_6_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1699573303/website-fer/bio/pdokxyofde0qflf7uhzb.jpg",
-    "image_7_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1699573304/website-fer/bio/pp2eo9sqbgovwzzpepvj.jpg"
+    "image_1_url": {
+      "id": "7rrn1",
+      "content": "https://res.cloudinary.com/imagesgmzi/image/upload/v1699888538/website-demo/bio/bui1bckkj0ndmhpvt94b.jpg"
+    },
+    "image_2_url": {
+      "id": "7rrn1",
+      "content": "https://res.cloudinary.com/imagesgmzi/image/upload/v1699888538/website-demo/bio/bui1bckkj0ndmhpvt94b.jpg"
+    },
+    "image_3_url": {
+      "id": "7rrn1",
+      "content": "https://res.cloudinary.com/imagesgmzi/image/upload/v1699888538/website-demo/bio/bui1bckkj0ndmhpvt94b.jpg"
+    },
+    "image_4_url": {
+      "id": "7rrn1",
+      "content": "https://res.cloudinary.com/imagesgmzi/image/upload/v1699888538/website-demo/bio/bui1bckkj0ndmhpvt94b.jpg"
+    },
+    "image_5_url": {
+      "id": "7rrn1",
+      "content": "https://res.cloudinary.com/imagesgmzi/image/upload/v1699888538/website-demo/bio/bui1bckkj0ndmhpvt94b.jpg"
+    },
+    "image_6_url": {
+      "id": "7rrn1",
+      "content": "https://res.cloudinary.com/imagesgmzi/image/upload/v1699888538/website-demo/bio/bui1bckkj0ndmhpvt94b.jpg"
+    },
+    "image_7_url": {
+      "id": "7rrn1",
+      "content": ""
+    }
   },
   "shows": {
     "_id": "654d67c2fbf412d74129d5f0",
     "name": "shows",
     "content": [
-      {
-        "id": "nvuaif9sd6g3pdptq9hw",
-        "title": "A Streetcar Named Desire",
-        "slug": "a-streetcar-named-desire",
-        "opening_date": "1947",
-        "theatre": "",
-        "sinopsis": "<p><span>A troubled woman named Blanche DuBois, who moves in with her sister, Stella, and her brother-in-law, Stanley, in a cramped apartment in New Orleans. Blanche is a fading belle with a mysterious past, while Stanley is a rough and aggressive working-class man. As the play unfolds, the tension between Blanche and Stanley intensifies, leading to a dramatic and tragic confrontation. The play explores themes of desire, mental instability, social class, and the clash between old and new America. Blanche's descent into madness and the unraveling of her secrets form the core of the story.</span></p>",
-        "cast": [
-          {
-            "name": "Stanley Kowalski",
-            "role": "Marlon Brando"
-          },
-          {
-            "name": "Blanche DuBois",
-            "role": "Jessica Tandy"
-          },
-          {
-            "name": "Stella Kowalski",
-            "role": "Kim Hunter"
-          },
-          {
-            "name": "Harold \"Mitch\" Mitchell",
-            "role": "Karl Malden"
-          }
-        ],
-        "creative": [
-          {
-            "name": "Tennessee Williams",
-            "role": "Playwright"
-          },
-          {
-            "name": "Elia Kazan",
-            "role": "Director"
-          },
-          {
-            "name": "Jo Mielziner",
-            "role": "Set Designer"
-          },
-          {
-            "name": "Lucinda Ballard",
-            "role": "Costume Designer"
-          }
-        ],
-        "musicians": [],
-        "dancers": [],
-        "image_1_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1699573634/website-fer/shows/cinbfmx50b9oa4dnuzsf.jpg",
-        "image_2_url": "",
-        "image_3_url": ""
-      },
       {
         "id": "6egv9bei9qscr7k7r9za",
         "title": "The Rose Tattoo",
@@ -159,6 +131,31 @@
         "musicians": [],
         "dancers": [],
         "image_1_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1699573984/website-fer/shows/j3qzvctrq3qm0kzpmmvj.jpg",
+        "image_2_url": "",
+        "image_3_url": ""
+      },
+      {
+        "id": "m2prbh67hrg17ywq80oc",
+        "title": "test",
+        "slug": "test",
+        "opening_date": "1981",
+        "theatre": "",
+        "sinopsis": "<p>test</p>",
+        "cast": [
+          {
+            "name": "test",
+            "role": ""
+          }
+        ],
+        "creative": [
+          {
+            "name": "test",
+            "role": ""
+          }
+        ],
+        "musicians": [],
+        "dancers": [],
+        "image_1_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1699644456/website-fer/shows/ls3jghsekbszup4nnsv9.jpg",
         "image_2_url": "",
         "image_3_url": ""
       }

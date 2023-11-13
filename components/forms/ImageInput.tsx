@@ -100,7 +100,7 @@ export function ImageInputWithID({ id }: { id: number }) {
                 />
             ) : (
                 <div className="placeholder-wrapper">
-                    <Upload/>
+                    <Upload />
                 </div>
             )}
         </div>
@@ -159,7 +159,7 @@ export function ImageInputWithIDAndDefaultValue({ id, defaultValue, className }:
     )
 }
 
-export function ImageInputWithIndexAndDefaultValueAndDeleteButton({ idx, defaultValue, handleDeleteImage }: { idx: number, defaultValue: string, handleDeleteImage: (url: string, index: number) => void  }) {
+export function ImageInputWithIndexAndDefaultValueAndDeleteButton({ idx, defaultValue, handleDeleteImage }: { idx: number, defaultValue: string, handleDeleteImage: (url: string, index: number) => void }) {
     const [imageFile, setImageFile] = useState(null);
     const [previewImageUrl, setPreviewImageUrl] = useState<string | null>(defaultValue);
     const [imageUrl, setImageUrl] = useState(defaultValue)
@@ -187,7 +187,7 @@ export function ImageInputWithIndexAndDefaultValueAndDeleteButton({ idx, default
         return;
     }
 
-    function handleDelete(){
+    function handleDelete() {
         setImageFile(null);
         setPreviewImageUrl(null);
         setImageUrl('');
@@ -232,6 +232,7 @@ export function ImageInputWithIndexAndDefaultValueAndDeleteButton({ idx, default
 export function ImageGridInput({ id, defaultValue, className }: { id: number, defaultValue: string, className: string }) {
     const [imageFile, setImageFile] = useState(null);
     const [previewImageUrl, setPreviewImageUrl] = useState<string | null>(defaultValue);
+    const [toRemove, setToRemove] = useState<string>('');
 
     function handleImageChange(e: React.FormEvent<HTMLInputElement>): void {
         // @ts-ignore
@@ -253,20 +254,20 @@ export function ImageGridInput({ id, defaultValue, className }: { id: number, de
         return;
     }
 
-    return (
-        <div className={e.gridUnit}>
-            <input type="hidden" name={`image_${id}_url`} value={defaultValue} />
+    function removeImage(): void {
+        setToRemove(previewImageUrl ?? '');
+        setImageFile(null);
+        setPreviewImageUrl(null);
+        URL.revokeObjectURL(previewImageUrl ?? ''); // Revoke the created URL to free up memory
+    }
 
-            <label htmlFor={`new_image_${id}_file`}>Cambiar/agregar imagen:</label>
-            <input
-                type="file"
-                id={`new_image_${id}_file`}
-                name={`new_image_${id}_file`}
-                accept="image/*"
-                onChange={handleImageChange}
-            />
-            {previewImageUrl &&
-            <div className="">
+    return (
+        <div className={e.gridItem}>
+            <input type="hidden" name={`image_${id}_url`} value={defaultValue} />
+            <input type="hidden" name={`remove_image_${id}_url`} value={toRemove} />
+
+            {previewImageUrl ? (
+                <div>
                     <Image
                         className={className}
                         src={previewImageUrl}
@@ -275,8 +276,31 @@ export function ImageGridInput({ id, defaultValue, className }: { id: number, de
                         height={0}
                         sizes="100vw"
                     />
-            </div>
-            }
+                    <div className="btnContainer">
+                        <label htmlFor={`new_image_${id}_file`} className={e.changeLabel}>Change</label>
+                        <input
+                            type="file"
+                            id={`new_image_${id}_file`}
+                            name={`new_image_${id}_file`}
+                            accept="image/*"
+                            onChange={handleImageChange}
+                        />
+                        <button type="button" onClick={removeImage} className="btnDelete">Remove</button>
+                    </div>
+                </div>
+            ) : (
+                <div className={e.placeholderWrapper}>
+                    <Upload />
+                    <label htmlFor={`new_image_${id}_file`} className={e.changeLabel}>Change</label>
+                    <input
+                        type="file"
+                        id={`new_image_${id}_file`}
+                        name={`new_image_${id}_file`}
+                        accept="image/*"
+                        onChange={handleImageChange}
+                    />
+                </div>
+            )}
         </div>
     )
 }

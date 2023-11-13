@@ -129,7 +129,7 @@ export default async function Layout({ children }: EditorProps) {
   }
 
   return (
-    <html lang="es">
+    <html lang="en">
       <body>
         <ClerkProvider allowedRedirectOrigins={[`${BASE_URL}/editor`]}>
           <header>

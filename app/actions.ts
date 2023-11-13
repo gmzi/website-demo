@@ -958,13 +958,22 @@ export async function editTest(prevState: any, formData: FormData) {
 
 export async function editBio(prevState: any, formData: FormData) {
   try {
+    // hero image, not optional:
     const newImage_1_File = formData.get('new_image_1_file') as File;
+    // image grid images, optional:
     const newImage_2_File = formData.get('new_image_2_file') as File;
     const newImage_3_File = formData.get('new_image_3_file') as File;
     const newImage_4_File = formData.get('new_image_4_file') as File;
     const newImage_5_File = formData.get('new_image_5_file') as File;
     const newImage_6_File = formData.get('new_image_6_file') as File;
     const newImage_7_File = formData.get('new_image_7_file') as File;
+
+    const removeImage_2_Url = formData.get('remove_image_2_url');
+    const removeImage_3_Url = formData.get('remove_image_3_url');
+    const removeImage_4_Url = formData.get('remove_image_4_url');
+    const removeImage_5_Url = formData.get('remove_image_5_url');
+    const removeImage_6_Url = formData.get('remove_image_6_url');
+    const removeImage_7_Url = formData.get('remove_image_7_url');
 
     const bioSchema = z.object({
       contentHtml_1: z.string(),
@@ -1006,23 +1015,42 @@ export async function editBio(prevState: any, formData: FormData) {
       image_7_url: formData.get('image_7_url'),
     })
 
-
     // mutate inputData to load new images:
     const updatedInputData = await handleInputDataWithNewImageFiles(inputData, "bio");
 
+    const removeUrls = {
+      removeImage_2_Url,
+      removeImage_3_Url,
+      removeImage_4_Url,
+      removeImage_5_Url,
+      removeImage_6_Url,
+      removeImage_7_Url
+    }
+
+    for (const key in removeUrls){
+      //@ts-ignore
+      const urlToRemove = removeUrls[key];
+      const [, fileNumber] = key.split('_');
+      if (urlToRemove){
+        console.log(`removing image: ${fileNumber} with url: ${urlToRemove}`);
+        const trashRemovedImage = await moveToTrash(urlToRemove);
+        updatedInputData[`image_${fileNumber}_url`] = '';
+      }
+    }
+    
     const ID = createAlphaNumericString(5);
 
     const data = {
       document: "bio",
       content_html_1: {id: ID, content: updatedInputData.contentHtml_1},
       content_html_2: {id: ID, content: updatedInputData.contentHtml_2},
-      image_1_url: updatedInputData.image_1_url,
-      image_2_url: updatedInputData.image_2_url,
-      image_3_url: updatedInputData.image_3_url,
-      image_4_url: updatedInputData.image_4_url,
-      image_5_url: updatedInputData.image_5_url,
-      image_6_url: updatedInputData.image_6_url,
-      image_7_url: updatedInputData.image_7_url
+      image_1_url: {id: ID, content: updatedInputData.image_1_url},
+      image_2_url: {id: ID, content: updatedInputData.image_2_url},
+      image_3_url: {id: ID, content: updatedInputData.image_3_url},
+      image_4_url: {id: ID, content: updatedInputData.image_4_url},
+      image_5_url: {id: ID, content: updatedInputData.image_5_url},
+      image_6_url: {id: ID, content: updatedInputData.image_6_url},
+      image_7_url: {id: ID, content: updatedInputData.image_7_url}
     }
 
     const updated = await updateBio(

@@ -61,8 +61,6 @@ export default async function ShowRoute({params}: {params: {slug: string}}) {
     return (
         <section>
             <ShowCard show={show}/>
-            <hr/>
-            <ShowsGallery shows={filteredShows}/>
         </section>
     )
 }
