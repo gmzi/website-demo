@@ -47,7 +47,7 @@ export function EditAbout({ contentHtml, imageUrl }: AboutProps) {
                 <form action={formAction} id="myForm-about" className="editor-about">
                     {/* <ImageEdit imageUrl={imageUrl} /> */}
                     <ImageInputWithIDAndDefaultValue id={1} defaultValue={imageUrl} className="bio-hero-image" />
-                    <label htmlFor="editor_content" style={{ display: "none" }}>Texto:</label>
+                    <label htmlFor="editor_content" style={{ display: "none" }}>Text:</label>
                     <RichText contentHtml={contentHtml} />
                     <EditButton />
                     <p

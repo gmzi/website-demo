@@ -135,7 +135,7 @@ export function ImageInputWithIDAndDefaultValue({ id, defaultValue, className }:
         <div>
             <input type="hidden" name={`image_${id}_url`} value={defaultValue} />
 
-            <label htmlFor={`new_image_${id}_file`}>Cambiar/agregar imagen:</label>
+            <label htmlFor={`new_image_${id}_file`}>add / change:</label>
             <input
                 type="file"
                 id={`new_image_${id}_file`}
@@ -198,7 +198,7 @@ export function ImageInputWithIndexAndDefaultValueAndDeleteButton({ idx, default
         <>
             <input type="hidden" name={`image_${idx}_url`} id={`image_${idx}_url`} value={imageUrl} />
 
-            <label htmlFor={`new_image_${idx}_file`}>Cambiar/agregar imagen:</label>
+            <label htmlFor={`new_image_${idx}_file`}>add / change</label>
             <input
                 type="file"
                 id={`new_image_${idx}_file`}

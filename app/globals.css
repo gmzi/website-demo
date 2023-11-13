@@ -74,15 +74,29 @@
   --color-sbumitInput-border: 1px solid rgba(2, 103, 2, 0.974);
   --box-shadow-hover: 0 4px 8px rgba(0, 0, 0, 0.12);
   --main-background: #abbaab;
-  --main-background-webkit: -webkit-linear-gradient(to bottom,#ffffff,#abbaab 50%,#ffffff);
-  --main-background-standard: linear-gradient(to bottom,#ffffff,#abbaab 50%,#ffffff);
+  --main-background-webkit: -webkit-linear-gradient(
+    to bottom,
+    #ffffff,
+    #abbaab 50%,
+    #ffffff
+  );
+  --main-background-standard: linear-gradient(
+    to bottom,
+    #ffffff,
+    #abbaab 50%,
+    #ffffff
+  );
   --section-background-color: rgba(255, 255, 255, 0.887);
   --section-box-shadow: 0px 1px 1px 1px rgb(226, 226, 226);
   --navbar-background-color: rgba(255, 255, 255, 0.734);
   /* --------------------------------------------------- */
-  --editor-main-background:linear-gradient(to bottom, #343449, #3b4a5a 50%, #343449);
+  --editor-main-background: linear-gradient(
+    to bottom,
+    #343449,
+    #3b4a5a 50%,
+    #343449
+  );
   --editor-link: #b4c0d0;
-
 }
 
 /* Color for dark theme */
@@ -175,7 +189,12 @@
     --section-box-shadow: 0px 1px 1px 1px rgba(55, 55, 55, 0.624);
     --navbar-background-color: rgba(48, 48, 50, 0.863);
     /* ------------------------------------------- */
-    --editor-main-background: linear-gradient(to bottom, #1f1f2b, #2a2938 50%, #1f1f2b);
+    --editor-main-background: linear-gradient(
+      to bottom,
+      #1f1f2b,
+      #2a2938 50%,
+      #1f1f2b
+    );
     --editor-link: #3b4b5afa;
   }
 }
@@ -405,7 +424,7 @@ section h2 {
 }
 
 .heroContainer {
-  margin: .1em;
+  margin: 0.1em;
   padding: 1em;
 }
 
@@ -486,7 +505,6 @@ p {
   height: auto;
 }
 
-
 /* -------------------------------------------------------------------------- */
 /* CONTACT FORM */
 .contact-form {
@@ -546,11 +564,10 @@ p {
 
 .years-list {
   list-style: none;
-  margin: 2em .5em;
+  margin: 2em 0.5em;
   /* margin: 1em;
   padding: 0em 1em; */
 }
-
 
 .years-list h2,
 .show-item {
@@ -563,7 +580,7 @@ p {
 }
 
 .tours-list li {
-  padding: .1em 3em;
+  padding: 0.1em 3em;
   margin-bottom: 1em;
 }
 
@@ -743,7 +760,7 @@ p {
 .contact-items .emoji,
 .contact-items .text,
 .contact-items .link {
-  margin-right: .5em;
+  margin-right: 0.5em;
 }
 
 .review {
@@ -1487,8 +1504,27 @@ button:active,
   color: var(--primary-color);
 }
 
+.editor-menu-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 0.5em;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border-bottom: var(--color-border);
+}
+
+.editor-menu-bar button {
+  margin: 1px;
+}
+
 .rich-text-editor {
   box-shadow: var(--color-box-shadow);
+  border: 1px solid #d1d1d1;
+  border-radius: 5px;
+  overflow: hidden;
+  margin: 1.5em 0;
+  padding: 1em;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
 
 .rich-text-editor:hover,
@@ -1575,7 +1611,7 @@ textarea,
 @media (min-width: 508px) {
   .form-shows .show-credits label,
   .form-shows .show-credits input,
-  .form-bio label, 
+  .form-bio label,
   .form-bio input {
     display: inline-block;
     text-align: left;
@@ -1629,7 +1665,7 @@ svg.lucide.lucide-file-up {
 
 .showsList button {
   display: block;
-  margin: .2em auto;
+  margin: 0.2em auto;
 }
 
 .card-container {
@@ -1742,7 +1778,7 @@ svg.lucide.lucide-file-up {
   position: relative;
   margin: 0 auto;
   text-align: center;
-  width: 80%; 
+  width: 80%;
   height: auto;
   clip: auto;
   overflow: visible;
@@ -1751,10 +1787,10 @@ svg.lucide.lucide-file-up {
   color: #28a745;
   background-color: #dff0d8; /* Optional: Use a light green background for the message */
   border-color: #d4edda; /* Optional: Set a border color that complements the background */
-  padding: .75rem 1.25rem; /* Add some padding to make the message stand out */
+  padding: 0.75rem 1.25rem; /* Add some padding to make the message stand out */
   border: 1px solid transparent; /* Define a border; make it transparent if you don't want it to stand out too much */
-  border-radius: .25rem; /* Optional: Round the corners */
-  display: none; 
+  border-radius: 0.25rem; /* Optional: Round the corners */
+  display: none;
 }
 
 /* You may want to add a specific class or modifier when the message should be visible */
@@ -1762,4 +1798,3 @@ svg.lucide.lucide-file-up {
   visibility: visible; /* Make the element visible */
   display: block;
 }
-

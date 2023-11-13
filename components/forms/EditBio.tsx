@@ -101,7 +101,7 @@ export function EditBio({
                     </div>
                 </div>
                 <EditButton />
-                <button onClick={handleCancel}>Cancelar</button>
+                <button onClick={handleCancel}>Cancel</button>
                 <p
                         aria-live="polite"
                         className={`sr-only ${state?.message ? 'visible' : ''}`}

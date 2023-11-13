@@ -159,10 +159,10 @@ export function Edit({ articles, index, handleCancel }: EditProps) {
             <input type="hidden" name="slug" value={item.slug} />
             <input type="hidden" name={`delete_image_urls`} id={`delete_image_urls`} value={JSON.stringify(deleteImages)} />
             <div className="show-card">
-                <label htmlFor="title">Título del espectáculo:</label>
+                <label htmlFor="title">Title:</label>
                 <input type="text" id="title" name="title" className="show-title" defaultValue={item.title} required />
 
-                <label htmlFor="opening_date">Fecha de estreno:</label>
+                <label htmlFor="opening_date">Premiere date:</label>
                 <input type="text" id="opening_date" name="opening_date" className="show-year" defaultValue={item.opening_date} />
                 <h3>Poster</h3>
                 <ImageInputWithIDAndDefaultValue id={1} defaultValue={item.image_1_url} className="preview-default" />
@@ -171,28 +171,28 @@ export function Edit({ articles, index, handleCancel }: EditProps) {
                     <label htmlFor="editor_content">Sinopsis:</label>
                     <RichText contentHtml={item.sinopsis} />
                 </div>
-                <h2 className="show-credits-title">CREDITOS</h2>
+                <h2 className="show-credits-title">CREDITS</h2>
                 <div className="show-credits-container">
                     <div className="show-credits">
                         <h3>CON</h3>
                         <EditTeam labelContent='' inputName='cast' required={true} membersArray={item.cast} />
                     </div>
                     <div className="show-credits">
-                        <h3>Bailarines</h3>
+                        <h3>Dancers</h3>
                         <EditTeam labelContent='' inputName='dancers' required={false} membersArray={item.dancers} />
                     </div>
                     <div className='show-credits'>
-                        <h3>Musicos</h3>
+                        <h3>Musicians</h3>
                         <EditTeam labelContent='' inputName='musicians' required={false} membersArray={item.musicians} />
                     </div>
                     <div className='show-credits'>
-                        <h3>Equipo creativo</h3>
+                        <h3>Creative Team</h3>
                         <EditTeam labelContent='' inputName='creative' required={false} membersArray={item.creative} />
                     </div>
                 </div>
                 <div className="buttonsContainer">
                     <EditButton />
-                    <button onClick={handleCancel}>Cancelar</button>
+                    <button onClick={handleCancel}>Cancel</button>
                 </div>
                 <p
                     aria-live="polite"
@@ -205,7 +205,7 @@ export function Edit({ articles, index, handleCancel }: EditProps) {
                 <div style={{ display: 'none' }}>
                     <ImageInputWithIndexAndDefaultValueAndDeleteButton idx={2} defaultValue={item.image_2_url} handleDeleteImage={handleDeleteImage} />
                     <ImageInputWithIndexAndDefaultValueAndDeleteButton idx={3} defaultValue={item.image_3_url} handleDeleteImage={handleDeleteImage} />
-                    <label htmlFor="theatre">Sala:</label>
+                    <label htmlFor="theatre">Theater:</label>
                     <input type="text" id="theatre" name="theatre" className="show-card__theatre create" defaultValue={item.theatre} />
                 </div>
             </div>
@@ -227,12 +227,12 @@ export function CreateShow({ handleCreateCancel }: { handleCreateCancel: () => v
 
     return (
         <form action={formAction} id="myForm" className="form-shows">
-            <h2>Agregar nuevo show</h2>
+            <h2>Add new show</h2>
             <div className="show-card">
-                <label htmlFor="title">Título del espectáculo:</label>
+                <label htmlFor="title">Títule:</label>
                 <input type="text" id="title" name="title" className="show-title" required />
 
-                <label htmlFor="opening_date">Año de estreno:</label>
+                <label htmlFor="opening_date">Year:</label>
                 <input type="text" id="opening_date" name="opening_date" className="show-year" />
 
                 {/* <ImageInputWithIndexAndDefaultValue idx={1} defaultValue={item.image_1_url} /> */}
@@ -242,32 +242,32 @@ export function CreateShow({ handleCreateCancel }: { handleCreateCancel: () => v
                     <label htmlFor="editor_content">Sinopsis:</label>
                     <RichText contentHtml={''} />
                 </div>
-                <h2 className="show-credits-title">CREDITOS</h2>
+                <h2 className="show-credits-title">CREDITS</h2>
                 <div className="show-credits-container">
                     <div className="show-credits">
-                        <h3>CON</h3>
+                        <h3>WITH</h3>
                         {/* <EditTeam labelContent='' inputName='cast' required={true} membersArray={item.cast} /> */}
                         <AddTeam labelContent='' inputName='cast' required={true} />
                     </div>
                     <div className="show-credits">
-                        <h3>Bailarines</h3>
+                        <h3>Dancers</h3>
                         {/* <EditTeam labelContent='' inputName='dancers' required={false} membersArray={item.dancers} /> */}
                         <AddTeam labelContent='' inputName='dancers' required={false} />
                     </div>
                     <div className='show-credits'>
-                        <h3>Musicos</h3>
+                        <h3>Musicians</h3>
                         {/* <EditTeam labelContent='' inputName='musicians' required={false} membersArray={item.musicians} />*/}
                         <AddTeam labelContent='' inputName='musicians' required={false} />
                     </div>
                     <div className='show-credits'>
-                        <h3>Equipo creativo</h3>
+                        <h3>Creative Team</h3>
                         {/* <EditTeam labelContent='' inputName='creative' required={false} membersArray={item.creative} /> */}
                         <AddTeam labelContent='' inputName='creative' required={false} />
                     </div>
                 </div>
                 <div className="buttonsContainer">
                     <SubmitButton />
-                    <button onClick={handleCreateCancel}>Cancelar</button>
+                    <button onClick={handleCreateCancel}>Cancel</button>
                 </div>
                 <p
                     aria-live="polite"
@@ -389,9 +389,9 @@ export function EditTeam({ labelContent, inputName, required, membersArray }: { 
             )}
             <input type="hidden" id={inputName} name={inputName} value={JSON.stringify(parsedTeam)} />
             {/* <input type="text" id={inputName} name={inputName} onChange={handleInputChange}/> */}
-            <label htmlFor='clientInput'>Agregar miembros</label>
+            <label htmlFor='clientInput'>Add members</label>
             <input type="text" id='clientInput' name='clientInput' onChange={handleInputChange} />
-            {team ? (<button type="button" onClick={handleWholeTeam}>agregar</button>) : <button disabled type="button" onClick={handleWholeTeam}>agregar</button>}
+            {team ? (<button type="button" onClick={handleWholeTeam}>add</button>) : <button disabled type="button" onClick={handleWholeTeam}>add</button>}
         </div>
     )
 }

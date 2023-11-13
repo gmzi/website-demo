@@ -138,7 +138,7 @@ export default async function Layout({ children }: EditorProps) {
           </header>
           {/* <main className={e.editorMain}> */}
           <main>
-            {children}
+              {children}
           </main>
           <Footer />
         </ClerkProvider>
