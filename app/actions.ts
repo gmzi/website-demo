@@ -957,7 +957,7 @@ export async function editTest(prevState: any, formData: FormData) {
   }
 }
 
-export async function editBio(prevState: any, formData: FormData) {
+export async function editBioNO(prevState: any, formData: FormData) {
   try {
     // hero image, not optional:
     const newImage_1_File = formData.get('new_image_1_file') as File;
@@ -1040,10 +1040,6 @@ export async function editBio(prevState: any, formData: FormData) {
 
     const ID = createAlphaNumericString(5);
 
-    console.log(updatedInputData);
-
-    return {message: "hi"};
-
     const data = {
       document: "bio",
       content_html_1: {id: ID, content: updatedInputData.contentHtml_1},
@@ -1057,7 +1053,108 @@ export async function editBio(prevState: any, formData: FormData) {
       image_7_url: {id: ID, content: updatedInputData.image_7_url}
     }
 
-    console.log(data);
+
+    const updated = await updateBio(
+      data.document, 
+      data.content_html_1,
+      data.content_html_2, 
+      data.image_1_url, 
+      data.image_2_url,
+      data.image_3_url,
+      data.image_4_url, 
+      data.image_5_url, 
+      data.image_6_url,
+      data.image_7_url
+      )
+
+      
+    revalidatePath('/(editor)/editor', 'page');
+
+    revalidatePath(`/(personal)/bio`, 'page');
+
+    return { message: `Bio has been updated!!!` }
+
+  } catch (e) {
+    console.error(e);
+    return { message: `${e}` }
+  }
+}
+
+export async function editBio(prevState: any, formData: FormData) {
+  try {
+    const newImage_1_File = formData.get('new_image_1_file') as File;
+    const newImage_2_File = formData.get('new_image_2_file') as File;
+    const newImage_3_File = formData.get('new_image_3_file') as File;
+    const newImage_4_File = formData.get('new_image_4_file') as File;
+    const newImage_5_File = formData.get('new_image_5_file') as File;
+    const newImage_6_File = formData.get('new_image_6_file') as File;
+    const newImage_7_File = formData.get('new_image_7_file') as File;
+
+    const bioSchema = z.object({
+      contentHtml_1: z.string(),
+      contentHtml_2: z.string(),
+      image_1_file: imageSchema,
+      image_2_file: imageSchema,
+      image_3_file: imageSchema,
+      image_4_file: imageSchema,
+      image_5_file: imageSchema,
+      image_6_file: imageSchema,
+      image_7_file: imageSchema,
+      image_1_url: z.string(),
+      image_2_url: z.string(),
+      image_3_url: z.string(),
+      image_4_url: z.string(),
+      image_5_url: z.string(),
+      image_6_url: z.string(),
+      image_7_url: z.string(),
+    })
+
+    const inputData: {
+      [key: string]: string | File | undefined;
+    } = bioSchema.parse({
+      contentHtml_1: formData.get('editor_content_1'),
+      contentHtml_2: formData.get('editor_content_2'),
+      image_1_file: newImage_1_File.size > 0 ? newImage_1_File : undefined,
+      image_2_file: newImage_2_File.size > 0 ? newImage_2_File : undefined,
+      image_3_file: newImage_3_File.size > 0 ? newImage_3_File : undefined,
+      image_4_file: newImage_4_File.size > 0 ? newImage_4_File : undefined,
+      image_5_file: newImage_5_File.size > 0 ? newImage_5_File : undefined,
+      image_6_file: newImage_6_File.size > 0 ? newImage_6_File : undefined,
+      image_7_file: newImage_7_File.size > 0 ? newImage_7_File : undefined,
+      image_1_url: formData.get('image_1_url'),
+      image_2_url: formData.get('image_2_url'),
+      image_3_url: formData.get('image_3_url'),
+      image_4_url: formData.get('image_4_url'),
+      image_5_url: formData.get('image_5_url'),
+      image_6_url: formData.get('image_6_url'),
+      image_7_url: formData.get('image_7_url'),
+    })
+
+
+    // mutate inputData to load new images:
+    const updatedInputData = await handleInputDataWithNewImageFiles(inputData, "bio");
+
+    const ID = createAlphaNumericString(5);
+
+    const data = {
+      document: "bio",
+      content_html_1: {id: ID, content: updatedInputData.contentHtml_1},
+      content_html_2: {id: ID, content: updatedInputData.contentHtml_2},
+      // image_1_url: updatedInputData.image_1_url,
+      // image_2_url: updatedInputData.image_2_url,
+      // image_3_url: updatedInputData.image_3_url,
+      // image_4_url: updatedInputData.image_4_url,
+      // image_5_url: updatedInputData.image_5_url,
+      // image_6_url: updatedInputData.image_6_url,
+      // image_7_url: updatedInputData.image_7_url
+      image_1_url: {id: ID, content: updatedInputData.image_1_url},
+      image_2_url: {id: ID, content: updatedInputData.image_2_url},
+      image_3_url: {id: ID, content: updatedInputData.image_3_url},
+      image_4_url: {id: ID, content: updatedInputData.image_4_url},
+      image_5_url: {id: ID, content: updatedInputData.image_5_url},
+      image_6_url: {id: ID, content: updatedInputData.image_6_url},
+      image_7_url: {id: ID, content: updatedInputData.image_7_url}
+    }
 
     const updated = await updateBio(
       data.document, 
