@@ -1,6 +1,6 @@
 {
   "document": "backup",
-  "date": "2023-11-14T20:17:11.906Z",
+  "date": "2023-11-14T22:23:58.188Z",
   "about": {
     "_id": "654d6720fbf412d74129d5e8",
     "name": "about",
@@ -100,7 +100,7 @@
         "slug": "a-streetcar-named-desire",
         "opening_date": "1947",
         "theatre": "",
-        "sinopsis": "<p><span>Blanche DuBois moves in with her sister, Stella, and her brother-in-law, Stanley, in a cramped apartment in New Orleans. Blanche is a fading Southern belle with a mysterious past, while Stanley is a rough and aggressive working-class man. As the play unfolds, the tension between Blanche and Stanley intensifies, leading to a dramatic and tragic confrontation. The play explores themes of desire, mental instability, social class, and the clash between old and new America. Blanche's descent into madness and the unraveling of her secrets form the core of the story.</span></p>",
+        "sinopsis": "<p>Blanche DuBois moves in with her sister, Stella, and her brother-in-law, Stanley, in a cramped apartment in New Orleans. Blanche is a fading Southern belle with a mysterious past, while Stanley is a rough and aggressive working-class man. As the play unfolds, the tension between Blanche and Stanley intensifies, leading to a dramatic and tragic confrontation. The play explores themes of desire, mental instability, social class, and the clash between old and new America. Blanche's descent into madness and the unraveling of her secrets form the core of the story.</p>",
         "cast": [
           {
             "name": "Stanley Kowalski",
