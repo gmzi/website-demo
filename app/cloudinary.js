@@ -50,6 +50,11 @@ export async function moveToTrash(imageUrl) {
       return match ? match[1] : null;
     }
 
+    if (!imageUrl){
+      console.log('no image url provided')
+      return {message: 'no image url provided'}
+    }
+
     // const imageID = imageUrl.match(`${IMAGE_MAIN_FOLDER}.+`)[0]
     // const imagePublicID = imageID.replace(/\..+$/, '');
 

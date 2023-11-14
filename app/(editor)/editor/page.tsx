@@ -21,11 +21,6 @@ export default async function EditorMainPage() {
               </Link>
             </li>
             <li>
-              <Link href="/editor/bio">
-                <span className={e.cmsLink}>bio</span>
-              </Link>
-            </li>
-            <li>
               <Link href="/editor/shows">
                 <span className={e.cmsLink}>shows</span>
               </Link>

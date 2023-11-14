@@ -4,7 +4,6 @@
 import { notFound } from 'next/navigation';
 import { editorPaths } from '@/lib/navItems';
 import About from '@/components/editors/About';
-import Bio from '@/components/editors/Bio'
 import Shows from "@/components/editors/Shows";
 import Test from '@/components/editors/Test';
 
@@ -32,8 +31,6 @@ export default async function EditorPage({ params }: { params: { index: string }
 
   {/* @ts-expect-error Server Component */}
   if (index === 'about') return <About/>
-  {/* @ts-expect-error Server Component */}
-  if (index === 'bio') return <Bio/>
   {/* @ts-expect-error Server Component */}
   if (index === 'shows') return <Shows/>
 }

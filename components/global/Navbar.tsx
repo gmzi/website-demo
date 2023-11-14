@@ -17,17 +17,6 @@ import e from '@/app/(editor)/editor/editor.module.css'
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
-function Logo() {
-  return (
-    <Link aria-label="John Done" href="/">
-      <div className={'logoContainer'}>
-        <span className={'logoTitle'}>
-          <span>John Done</span>
-        </span>
-      </div>
-    </Link>
-  )
-}
 
 export function Navbar() {
   let pathname = usePathname() || '/';
@@ -68,7 +57,7 @@ export function Navbar() {
         <ul className="navbar-menu">
           {Object.entries(navItems).map(([path, { name }]) => {
             const isActive = path === pathname;
-            if (path !== '/') {
+            // if (path !== '/') {
               return (
                 <Link
                   key={path}
@@ -80,7 +69,7 @@ export function Navbar() {
                   )}
                 </Link>
               )
-            }
+            // }
           })}
         </ul>
       </div>

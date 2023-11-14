@@ -230,7 +230,7 @@ export function ImageInputWithIndexAndDefaultValueAndDeleteButton({ idx, default
 }
 
 export function ImageGridInput({ id, defaultValue, className }: { id: number, defaultValue: string, className: string }) {
-    const [imageFile, setImageFile] = useState(null);
+    const [imageFile, setImageFile] = useState<string | number | readonly string[] | undefined>(undefined);
     const [previewImageUrl, setPreviewImageUrl] = useState<string | null>(defaultValue);
     const [toRemove, setToRemove] = useState<string>('');
 
@@ -239,7 +239,7 @@ export function ImageGridInput({ id, defaultValue, className }: { id: number, de
         const selectedFile = e.target?.files[0];
 
         if (!selectedFile) {
-            setImageFile(null)
+            setImageFile(undefined)
             return;
         }
 
@@ -256,7 +256,7 @@ export function ImageGridInput({ id, defaultValue, className }: { id: number, de
 
     function removeImage(): void {
         setToRemove(previewImageUrl ?? '');
-        setImageFile(null);
+        setImageFile(undefined);
         setPreviewImageUrl(null);
         URL.revokeObjectURL(previewImageUrl ?? ''); // Revoke the created URL to free up memory
     }
@@ -264,9 +264,20 @@ export function ImageGridInput({ id, defaultValue, className }: { id: number, de
     return (
         <div className={e.gridItem}>
             <input type="hidden" name={`image_${id}_url`} value={defaultValue} />
+            <input type="hidden" name={`new_image_${id}_file`} value={imageFile} />
             <input type="hidden" name={`remove_image_${id}_url`} value={toRemove} />
 
-            {previewImageUrl ? (
+            <h3>{id}</h3>
+            <label htmlFor={`new_image_${id}_file`} className={e.changeLabel}>Change</label>
+            <input
+                type="file"
+                id={`new_image_${id}_file`}
+                name={`new_image_${id}_file`}
+                accept="image/*"
+                onChange={handleImageChange}
+            />
+
+            {previewImageUrl &&
                 <div>
                     <Image
                         className={className}
@@ -277,30 +288,10 @@ export function ImageGridInput({ id, defaultValue, className }: { id: number, de
                         sizes="100vw"
                     />
                     <div className="btnContainer">
-                        <label htmlFor={`new_image_${id}_file`} className={e.changeLabel}>Change</label>
-                        <input
-                            type="file"
-                            id={`new_image_${id}_file`}
-                            name={`new_image_${id}_file`}
-                            accept="image/*"
-                            onChange={handleImageChange}
-                        />
                         <button type="button" onClick={removeImage} className="btnDelete">Remove</button>
                     </div>
                 </div>
-            ) : (
-                <div className={e.placeholderWrapper}>
-                    <Upload />
-                    <label htmlFor={`new_image_${id}_file`} className={e.changeLabel}>Change</label>
-                    <input
-                        type="file"
-                        id={`new_image_${id}_file`}
-                        name={`new_image_${id}_file`}
-                        accept="image/*"
-                        onChange={handleImageChange}
-                    />
-                </div>
-            )}
+            }
         </div>
     )
 }

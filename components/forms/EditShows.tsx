@@ -2,33 +2,19 @@
 
 // @ts-expect-error
 import { useFormState, useFormStatus } from 'react-dom'
-import { ChangeEvent, ChangeEventHandler, useEffect } from 'react'
-import type { About } from '@/types'
-import { editPressArticle, createPressArticle, editAvailableCourse, createCourse, createSection, createCourseReview, editCourseReview, editTestimonial, createTestimonial, editCourseLogistics, editPressHeroImage, createPressVideo, editPressVideo, editShow, createShow } from '@/app/actions'
-import { ImageEdit } from './ImageEdit'
+import { ChangeEvent } from 'react'
+import { editShow, createShow } from '@/app/actions'
 import { parseNameAndRole } from '@/lib/parseNameAndRole'
 import { ImageInputWithID, ImageInputWithIDAndDefaultValue, ImageInputWithIndexAndDefaultValueAndDeleteButton } from './ImageInput'
-import { ImagesEdit } from './ImageEdit'
 import { RichText } from './text-editor/RichText'
-import { IframeForm, IframeEdit } from './IframeForm'
-import type { Show, NameAndRole, WrittenPressArticle, VideoPressArticle, Course, Goals, Testimonial, Data, Review } from '@/types'
-import parse from 'html-react-parser'
-import HTMLReactParser from 'html-react-parser'
+import type { Show, NameAndRole } from '@/types'
 import { useState } from 'react'
-import Link from 'next/link'
 import { Delete } from './Delete'
 import Image from 'next/image'
-import { set } from 'zod'
 
 
 interface ShowsListProps {
     shows: Show[];
-}
-
-interface EditPressVideoProps {
-    pressVideos: VideoPressArticle[];
-    index: number;
-    handleCancel: () => void;
 }
 
 interface EditProps {
