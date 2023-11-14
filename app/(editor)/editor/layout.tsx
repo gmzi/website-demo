@@ -103,14 +103,16 @@ export default async function Layout({ children }: EditorProps) {
   // replace this line with the above one once Clerk is set up:
   const orgRole = 'admin'
 
+  // Uncomment `<ClerkProvider.../> and buttons to enable auth.
+
   if (orgRole !== 'admin') {
     return (
       <html>
         <body>
-          <ClerkProvider allowedRedirectOrigins={[`${BASE_URL}/editor`]}>
+          {/* <ClerkProvider allowedRedirectOrigins={[`${BASE_URL}/editor`]}> */}
             <header>
-              <UserButton afterSignOutUrl="/editor" />
-              <SignOutButton />
+              {/* <UserButton afterSignOutUrl="/editor" />
+              <SignOutButton /> */}
             </header>
             <main>
               <section>
@@ -120,7 +122,7 @@ export default async function Layout({ children }: EditorProps) {
                 </div>
               </section>
             </main>
-          </ClerkProvider>
+          {/* </ClerkProvider> */}
         </body>
       </html>
     )
@@ -129,7 +131,7 @@ export default async function Layout({ children }: EditorProps) {
   return (
     <html lang="en">
       <body>
-        <ClerkProvider allowedRedirectOrigins={[`${BASE_URL}/editor`]}>
+        {/* <ClerkProvider allowedRedirectOrigins={[`${BASE_URL}/editor`]}> */}
           <header>
             {orgRole && <EditorNavbar orgRole={orgRole} />}
           </header>
@@ -137,7 +139,7 @@ export default async function Layout({ children }: EditorProps) {
               {children}
           </main>
           <Footer />
-        </ClerkProvider>
+        {/* </ClerkProvider> */}
       </body>
     </html>
   )

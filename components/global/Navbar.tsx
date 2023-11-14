@@ -106,8 +106,9 @@ export function EditorNavbar({ orgRole }: { orgRole: string }) {
     )
   }
 
-  return (
 
+  // UNCOMMENT BUTTONS TO ENABLE AUTH.
+  return (
     <nav className={e.navbar}>
       <div className="navbar-top">
         <div className="navbar-header">
@@ -117,8 +118,9 @@ export function EditorNavbar({ orgRole }: { orgRole: string }) {
         </div>
         {orgRole &&
           <div className="userButtons">
-            <UserButton afterSignOutUrl="/editor" />
-            <SignOutButton />
+            {/* <UserButton afterSignOutUrl="/editor" />
+            <SignOutButton /> */}
+            <button>Sign out</button>
           </div>
         }
         <div className="social-icons">

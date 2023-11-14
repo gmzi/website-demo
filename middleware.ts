@@ -6,6 +6,8 @@ publicRoutesArray.push('/(personal)/(.*)');
 publicRoutesArray.push('/shows(.*)');
 publicRoutesArray.push('/server(.*)');
 publicRoutesArray.push('/api(.*)');
+// remove path below to enable auth:
+publicRoutesArray.push('/editor(.*)');
  
 export default authMiddleware({
   ignoredRoutes: publicRoutesArray,
@@ -13,6 +15,5 @@ export default authMiddleware({
 });
  
 export const config = {
-  // matcher: ["/((?!.*\\..*|_next).*)", "/", "/(api|trpc)(.*)"],
   matcher: ['/editor(.*)'],
 };
