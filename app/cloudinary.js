@@ -38,32 +38,32 @@ export async function uploadToCloudinary(imageFile, folderName) {
   }
 }
 
-export async function moveToTrash(imageUrl){
-  return {message: "todo"}
-}
-
-// export async function moveToTrash(imageUrl) {
-//   try {
-//     function extractPublicID(url) {
-//       const regex = /\/upload\/(?:v\d+\/)?(.+?)(?:\.\w+)?$/;
-//       const match = url.match(regex);
-//       return match ? match[1] : null;
-//     }
-
-//     // const imageID = imageUrl.match(`${IMAGE_MAIN_FOLDER}.+`)[0]
-//     // const imagePublicID = imageID.replace(/\..+$/, '');
-
-//     const imagePublicID = extractPublicID(imageUrl);
-
-//     const trashDestination = `${IMAGE_MAIN_FOLDER}/trash/${imagePublicID.replace(`${IMAGE_MAIN_FOLDER}/`, "")}`;
-//     // example from : 'website-fer/about/i4ey8istvgaphyohjupc';
-//     // example to : 'website-fer/trash/about/i4ey8istvgaphyohjupc'
-
-//     const moved = cloudinary.uploader.rename(imagePublicID, trashDestination)
-
-//     return { message: 'image moved to trash', recoveryUrl: moved?.secure_url };
-//   } catch (e) {
-//     console.error(e)
-//     return {message: 'failed deleting image', error: JSON.stringify(e) }
-//   }
+// export async function moveToTrash(imageUrl){
+//   return {message: "todo"}
 // }
+
+export async function moveToTrash(imageUrl) {
+  try {
+    function extractPublicID(url) {
+      const regex = /\/upload\/(?:v\d+\/)?(.+?)(?:\.\w+)?$/;
+      const match = url.match(regex);
+      return match ? match[1] : null;
+    }
+
+    // const imageID = imageUrl.match(`${IMAGE_MAIN_FOLDER}.+`)[0]
+    // const imagePublicID = imageID.replace(/\..+$/, '');
+
+    const imagePublicID = extractPublicID(imageUrl);
+
+    const trashDestination = `${IMAGE_MAIN_FOLDER}/trash/${imagePublicID.replace(`${IMAGE_MAIN_FOLDER}/`, "")}`;
+    // example from : 'website-fer/about/i4ey8istvgaphyohjupc';
+    // example to : 'website-fer/trash/about/i4ey8istvgaphyohjupc'
+
+    const moved = cloudinary.uploader.rename(imagePublicID, trashDestination)
+
+    return { message: 'image moved to trash', recoveryUrl: moved?.secure_url };
+  } catch (e) {
+    console.error(e)
+    return {message: 'failed deleting image', error: JSON.stringify(e) }
+  }
+}

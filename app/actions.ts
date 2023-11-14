@@ -142,9 +142,9 @@ async function handleInputDataWithNewImageFiles(inputData: any, folderName: stri
     // @ts-ignore
     if (imageFile?.size > 0) {
       const oldImageUrl = inputData[`image_${fileNumber}_url`];
-      // if (oldImageUrl?.length > 0){
-      //   const trashOldImageUrl = await moveToTrash(oldImageUrl);
-      // }
+      if (oldImageUrl?.length > 0){
+        const trashOldImageUrl = await moveToTrash(oldImageUrl);
+      }
       const imageMetadata = await uploadToCloudinary(imageFile, folderName);
       // @ts-ignore
       inputData[`image_${fileNumber}_url`] = imageMetadata.secure_url;

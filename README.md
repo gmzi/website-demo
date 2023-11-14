@@ -1,8 +1,8 @@
 # What is this? 
-This is Next.js 13 App dir website that regenerates on-demand. Content is managed by a built in CMS. 
+This is a Next.js 14 website that uses App dir and regenerates on-demand. Content is managed by a built in CMS. 
 
 ## Stack and tools:
-- [Next.js](https://nextjs.org) 13 with App directory and server functions.
+- [Next.js](https://nextjs.org) 14 with App directory and server functions.
 - [clerk](https://clerk.com) manages authentication. 
 - [tiptap](https://tiptap.dev) for a rich text editor.
 - [Cloudinary](https://cloudinary.com) hosts images. 
@@ -26,7 +26,7 @@ On form submission, a server action is triggered and performs these actions:
 
 
 ### Contribute
-Please clone, fork, contribute in any way you find interesting. I've listed Issues I haven't had the time to fix yet, please feel free to tackle any of them or create new ones. 
+Please clone, fork, contribute in any way you deem interesting. I've listed some Issues, please feel free to tackle any of them or create new ones. 
 
 
 

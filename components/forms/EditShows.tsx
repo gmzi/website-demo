@@ -229,7 +229,7 @@ export function CreateShow({ handleCreateCancel }: { handleCreateCancel: () => v
         <form action={formAction} id="myForm" className="form-shows">
             <h2>Add new show</h2>
             <div className="show-card">
-                <label htmlFor="title">Títule:</label>
+                <label htmlFor="title">Title:</label>
                 <input type="text" id="title" name="title" className="show-title" required />
 
                 <label htmlFor="opening_date">Year:</label>

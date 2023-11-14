@@ -28,9 +28,9 @@ const ShowCard: React.FC<ShowCardProps> = ({ show }) => {
             <div className="show-sinopsis">
                 {parsedSinopsis}
             </div>
-            <h2 className="show-credits-title">CREDITOS</h2>
+            <h2 className="show-credits-title">CREDITS</h2>
             <div className="show-credits">
-                <h3>CON</h3>
+                <h3>WITH</h3>
                 <ul>
                     {cast.map((member, index) => (
                         <li key={`creative-team-${index}`}>
@@ -41,7 +41,7 @@ const ShowCard: React.FC<ShowCardProps> = ({ show }) => {
                 </ul>
             </div>
             <div className="show-credits">
-                {dancers.length ? <h3>Bailarines</h3> : null}
+                {dancers.length ? <h3>Dancers</h3> : null}
                 <ul>
                     {dancers.map((member, index) => (
                         <li key={`dancers-team-${index}`}>
@@ -52,7 +52,7 @@ const ShowCard: React.FC<ShowCardProps> = ({ show }) => {
                 </ul>
             </div>
             <div className="show-credits">
-                {musicians.length ? <h3>Músicos</h3> : null}
+                {musicians.length ? <h3>Musicians</h3> : null}
                 <ul>
                     {musicians.map((member, index) => (
                         <li key={`musicians-team-${index}`}>
@@ -63,7 +63,7 @@ const ShowCard: React.FC<ShowCardProps> = ({ show }) => {
                 </ul>
             </div>
             <div className="show-credits">
-                <h3>Equipo creativo</h3>
+                <h3>Creative Team</h3>
                 <ul>
                     {creative.map((member, index) => (
                         <li key={`creative-team-${index}`}>

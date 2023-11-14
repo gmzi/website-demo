@@ -14,7 +14,6 @@ export default async function Shows() {
         <section className="">
             <h1>Edit Shows</h1>
             <ShowsList shows={showsList} />
-            {/* <CreateShow/> */}
         </section>
             
     )

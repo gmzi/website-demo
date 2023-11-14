@@ -97,6 +97,8 @@
     #343449
   );
   --editor-link: #b4c0d0;
+  --github-hover: #a58e8e;
+
 }
 
 /* Color for dark theme */
@@ -196,6 +198,7 @@
       #1f1f2b
     );
     --editor-link: #3b4b5afa;
+    --github-hover: #a58e8e;
   }
 }
 
@@ -306,7 +309,7 @@ section {
 }
 
 .github:hover {
-  color: #333; 
+  color: var(--github-hover);
 }
 
 .youtube:hover {
