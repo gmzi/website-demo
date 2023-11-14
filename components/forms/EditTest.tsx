@@ -3,10 +3,8 @@
 // @ts-expect-error
 import { useFormState, useFormStatus } from 'react-dom'
 // import type { About } from '@/types'
-import { editAbout, editTest } from '@/app/actions'
-import { ImageEdit } from './ImageEdit'
+import { editTest } from '@/app/actions'
 import { RichText } from './text-editor/RichText'
-import { useState } from 'react'
 import { ImageInputWithIDAndDefaultValue } from './ImageInput'
 
 
