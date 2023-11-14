@@ -1,14 +1,8 @@
-import { UserButton, SignOutButton } from "@clerk/nextjs";
-import { auth } from '@clerk/nextjs';
 import Link from "next/link";
-import { enableAuthIfProd } from '@/lib/EnableAuthIfProd';
-import About from "@/components/editors/About";
 import e from '@/app/(editor)/editor/editor.module.css'
 
 export default async function EditorMainPage() {
-
-
-
+  
   return (
     <section>
       <div className="editor-group">

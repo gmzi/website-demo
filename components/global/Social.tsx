@@ -1,6 +1,4 @@
 import { SocialData } from "@/types";
-import { getMetadata } from "@/lib/getMetadata";
-import { getData } from "@/lib/getData";
 import { getRemoteOrLocalData } from "@/lib/getRemoteOrLocalData";
 import {
     FacebookIcon,

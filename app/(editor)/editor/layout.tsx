@@ -1,16 +1,13 @@
 import '../../globals.css'
-import { Metadata, ResolvingMetadata } from 'next'
+import { Metadata } from 'next'
 import {
-  Space_Mono,
   Inter,
   Lusitana,
 } from 'next/font/google';
-import { SignIn, UserButton, SignOutButton } from "@clerk/nextjs";
+import { UserButton, SignOutButton } from "@clerk/nextjs";
 import { auth } from '@clerk/nextjs';
-import { enableAuthIfProd } from '@/lib/EnableAuthIfProd';
 import { EditorNavbar } from "@/components/global/Navbar";
 import { ClerkProvider } from '@clerk/nextjs';
-import e from '@/app/(editor)/editor/editor.module.css'
 import { Footer } from "@/components/global/Footer";
 
 interface EditorProps {
@@ -136,7 +133,6 @@ export default async function Layout({ children }: EditorProps) {
           <header>
             {orgRole && <EditorNavbar orgRole={orgRole} />}
           </header>
-          {/* <main className={e.editorMain}> */}
           <main>
               {children}
           </main>

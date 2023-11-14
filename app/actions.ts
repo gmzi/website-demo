@@ -1,21 +1,19 @@
 'use server'
 
-import { revalidatePath, revalidateTag } from 'next/cache'
+import { revalidatePath} from 'next/cache'
 import { z } from 'zod'
 import createAlphaNumericString from '@/lib/createAlphanumericString';
 import { uploadToCloudinary } from './cloudinary';
 import { moveToTrash } from './cloudinary';
-import { transformYouTubeUrl } from '@/lib/transformYouTubeUrl'
 import { makeSlug } from '@/lib/makeSlug';
 import { parseNameAndRole } from '@/lib/parseNameAndRole'
 import { Show } from '@/types';
-// import { redirect } from 'next/dist/server/api-utils';
-import { redirect } from 'next/navigation';
-import { updateInput } from '@/lib/updateInput';
-import { updateAbout } from '@/lib/updateAbout';
-import { updateBio } from '@/lib/updateBio';
-import { updateTest, updateItem, pullItem } from '@/lib/mongo';
-import { pushToArray, pushToArrayCapped } from '@/lib/mongodb';
+import { updateTest, 
+  updateItem, 
+  pullItem, 
+  pushToArrayCapped,
+  updateAbout
+} from '@/lib/mongo';
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 const DATA_API_KEY = process.env.NEXT_PUBLIC_DATA_API_KEY || '';
@@ -65,33 +63,6 @@ async function handleInputDataWithNewImageFiles(inputData: any, folderName: stri
   }
 
   return inputData;
-}
-
-export async function saveHtmlContent(contentHtml: string, document: string) {
-  try {
-    const content = {
-      content_html: contentHtml,
-      document: document
-    }
-    const saved = await fetch(`${BASE_URL}/server/text`, {
-      method: 'PATCH',
-      headers: {
-        'Content-Type': 'application/json',
-        'API-Key': DATA_API_KEY
-      },
-      referrerPolicy: 'no-referrer',
-      body: JSON.stringify(content)
-    })
-
-    revalidatePath('/(personal)/podcast', 'page');
-    revalidatePath('/(editor)/editor', 'page');
-
-    return { message: `Content saved` }
-
-  } catch (e) {
-    console.log(e);
-    return { message: `${e}` }
-  }
 }
 
 const nameAndRoleSchema = z.array(
