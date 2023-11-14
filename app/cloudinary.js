@@ -56,8 +56,8 @@ export async function moveToTrash(imageUrl) {
     const imagePublicID = extractPublicID(imageUrl);
 
     const trashDestination = `${IMAGE_MAIN_FOLDER}/trash/${imagePublicID.replace(`${IMAGE_MAIN_FOLDER}/`, "")}`;
-    // example from : 'website-fer/about/i4ey8istvgaphyohjupc';
-    // example to : 'website-fer/trash/about/i4ey8istvgaphyohjupc'
+    // example from : 'website-demo/about/i4ey8istvgaphyohjupc'
+    // example to : 'website-demo/trash/about/i4ey8istvgaphyohjupc'
 
     const moved = cloudinary.uploader.rename(imagePublicID, trashDestination)
 

@@ -14,7 +14,7 @@ import { redirect } from 'next/navigation';
 import { updateInput } from '@/lib/updateInput';
 import { updateAbout } from '@/lib/updateAbout';
 import { updateBio } from '@/lib/updateBio';
-import {updateTest, updateItem} from '@/lib/mongo';
+import { updateTest, updateItem, pullItem } from '@/lib/mongo';
 import { pushToArray, pushToArrayCapped } from '@/lib/mongodb';
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
@@ -142,7 +142,7 @@ async function handleInputDataWithNewImageFiles(inputData: any, folderName: stri
     // @ts-ignore
     if (imageFile?.size > 0) {
       const oldImageUrl = inputData[`image_${fileNumber}_url`];
-      if (oldImageUrl?.length > 0){
+      if (oldImageUrl?.length > 0) {
         const trashOldImageUrl = await moveToTrash(oldImageUrl);
       }
       const imageMetadata = await uploadToCloudinary(imageFile, folderName);
@@ -174,7 +174,7 @@ export async function saveHtmlContent(contentHtml: string, document: string) {
       referrerPolicy: 'no-referrer',
       body: JSON.stringify(content)
     })
-    
+
     revalidatePath('/(personal)/podcast', 'page');
     revalidatePath('/(editor)/editor', 'page');
 
@@ -487,9 +487,9 @@ export async function editShow(prevState: any, formData: FormData) {
       itemLocator: "content.id",
       newContent: inputDataWithNewImages,
     }
-    
+
     const updated = await updateItem(
-      data.document, 
+      data.document,
       data.entry,
       data.itemLocator,
       data.newContent
@@ -643,41 +643,39 @@ async function deleteImagesAndUpdateObject(imagesArray: { url: string, index: nu
 }
 
 export async function deleteItem(prevState: any, formData: FormData) {
-
-  const schema = z.object({
-    id: z.string(),
-    document: z.string(),
-    entry: z.string(),
-  })
-
-  const inputData = schema.parse({
-    id: formData.get('id'),
-    document: formData.get('document'),
-    entry: formData.get('entry'),
-  })
-
-  const data = {
-    document: inputData.document,
-    entry: inputData.entry,
-    keyName: "id",
-    valueName: inputData.id,
-  }
   try {
-    const deleted = await fetch(`${BASE_URL}/server/remove`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      referrerPolicy: 'no-referrer',
-      body: JSON.stringify(data)
-    });
+    const schema = z.object({
+      id: z.string(),
+      document: z.string(),
+      entry: z.string(),
+    })
+
+    const inputData = schema.parse({
+      id: formData.get('id'),
+      document: formData.get('document'),
+      entry: formData.get('entry'),
+    })
+
+    const data = {
+      document: inputData.document,
+      entry: inputData.entry,
+      keyName: "id",
+      valueName: inputData.id,
+    }
+    
+    const deleted = await pullItem(
+      data.document, 
+      data.entry, 
+      data.keyName, 
+      data.valueName
+      )
 
     revalidatePath(`/(personal)/${inputData.document}`, 'page')
 
-    if (inputData.document === 'shows'){
+    if (inputData.document === 'shows') {
       revalidatePath('/(personal)/shows/[slug]', 'page')
     }
-    
+
     revalidatePath('/(editor)/editor', 'page');
 
     return { message: `Item deleted` }
@@ -888,10 +886,10 @@ export async function editAbout(prevState: any, formData: FormData) {
     })
 
     const inputData = aboutSchema.parse({
-        contentHtml: formData.get('editor_content'),
-        image_1_file: newImage_1_File.size > 0 ? newImage_1_File : undefined,
-        image_1_url: formData.get('image_1_url')
-      })
+      contentHtml: formData.get('editor_content'),
+      image_1_file: newImage_1_File.size > 0 ? newImage_1_File : undefined,
+      image_1_url: formData.get('image_1_url')
+    })
 
     const updatedInputData = await handleInputDataWithNewImageFiles(inputData, "about");
 
@@ -899,8 +897,8 @@ export async function editAbout(prevState: any, formData: FormData) {
 
     const data = {
       document: "about",
-      content_html: {id: ID, content: updatedInputData.contentHtml},
-      image_1_url: {id: ID, content: updatedInputData.image_1_url}
+      content_html: { id: ID, content: updatedInputData.contentHtml },
+      image_1_url: { id: ID, content: updatedInputData.image_1_url }
     }
 
     const updated = await updateAbout(data.document, data.content_html, data.image_1_url);
@@ -928,10 +926,10 @@ export async function editTest(prevState: any, formData: FormData) {
     })
 
     const inputData = aboutSchema.parse({
-        contentHtml: formData.get('editor_content'),
-        image_1_file: newImage_1_File.size > 0 ? newImage_1_File : undefined,
-        image_1_url: formData.get('image_1_url')
-      })
+      contentHtml: formData.get('editor_content'),
+      image_1_file: newImage_1_File.size > 0 ? newImage_1_File : undefined,
+      image_1_url: formData.get('image_1_url')
+    })
 
     const updatedInputData = await handleInputDataWithNewImageFiles(inputData, "test");
 
@@ -939,8 +937,8 @@ export async function editTest(prevState: any, formData: FormData) {
 
     const data = {
       document: "test",
-      content_html: {id: ID, content: updatedInputData.contentHtml},
-      image_1_url: {id: ID, content: updatedInputData.image_1_url}
+      content_html: { id: ID, content: updatedInputData.contentHtml },
+      image_1_url: { id: ID, content: updatedInputData.image_1_url }
     }
 
     const updated = await updateTest(data.document, data.content_html, data.image_1_url);
@@ -1041,32 +1039,32 @@ export async function editBioNO(prevState: any, formData: FormData) {
 
     const data = {
       document: "bio",
-      content_html_1: {id: ID, content: updatedInputData.contentHtml_1},
-      content_html_2: {id: ID, content: updatedInputData.contentHtml_2},
-      image_1_url: {id: ID, content: updatedInputData.image_1_url},
-      image_2_url: {id: ID, content: updatedInputData.image_2_url},
-      image_3_url: {id: ID, content: updatedInputData.image_3_url},
-      image_4_url: {id: ID, content: updatedInputData.image_4_url},
-      image_5_url: {id: ID, content: updatedInputData.image_5_url},
-      image_6_url: {id: ID, content: updatedInputData.image_6_url},
-      image_7_url: {id: ID, content: updatedInputData.image_7_url}
+      content_html_1: { id: ID, content: updatedInputData.contentHtml_1 },
+      content_html_2: { id: ID, content: updatedInputData.contentHtml_2 },
+      image_1_url: { id: ID, content: updatedInputData.image_1_url },
+      image_2_url: { id: ID, content: updatedInputData.image_2_url },
+      image_3_url: { id: ID, content: updatedInputData.image_3_url },
+      image_4_url: { id: ID, content: updatedInputData.image_4_url },
+      image_5_url: { id: ID, content: updatedInputData.image_5_url },
+      image_6_url: { id: ID, content: updatedInputData.image_6_url },
+      image_7_url: { id: ID, content: updatedInputData.image_7_url }
     }
 
 
     const updated = await updateBio(
-      data.document, 
+      data.document,
       data.content_html_1,
-      data.content_html_2, 
-      data.image_1_url, 
+      data.content_html_2,
+      data.image_1_url,
       data.image_2_url,
       data.image_3_url,
-      data.image_4_url, 
-      data.image_5_url, 
+      data.image_4_url,
+      data.image_5_url,
       data.image_6_url,
       data.image_7_url
-      )
+    )
 
-      
+
     revalidatePath('/(editor)/editor', 'page');
 
     revalidatePath(`/(personal)/bio`, 'page');
@@ -1137,31 +1135,31 @@ export async function editBio(prevState: any, formData: FormData) {
 
     const data = {
       document: "bio",
-      content_html_1: {id: ID, content: updatedInputData.contentHtml_1},
-      content_html_2: {id: ID, content: updatedInputData.contentHtml_2},
-      image_1_url: {id: ID, content: updatedInputData.image_1_url},
-      image_2_url: {id: ID, content: updatedInputData.image_2_url},
-      image_3_url: {id: ID, content: updatedInputData.image_3_url},
-      image_4_url: {id: ID, content: updatedInputData.image_4_url},
-      image_5_url: {id: ID, content: updatedInputData.image_5_url},
-      image_6_url: {id: ID, content: updatedInputData.image_6_url},
-      image_7_url: {id: ID, content: updatedInputData.image_7_url}
+      content_html_1: { id: ID, content: updatedInputData.contentHtml_1 },
+      content_html_2: { id: ID, content: updatedInputData.contentHtml_2 },
+      image_1_url: { id: ID, content: updatedInputData.image_1_url },
+      image_2_url: { id: ID, content: updatedInputData.image_2_url },
+      image_3_url: { id: ID, content: updatedInputData.image_3_url },
+      image_4_url: { id: ID, content: updatedInputData.image_4_url },
+      image_5_url: { id: ID, content: updatedInputData.image_5_url },
+      image_6_url: { id: ID, content: updatedInputData.image_6_url },
+      image_7_url: { id: ID, content: updatedInputData.image_7_url }
     }
 
     const updated = await updateBio(
-      data.document, 
+      data.document,
       data.content_html_1,
-      data.content_html_2, 
-      data.image_1_url, 
+      data.content_html_2,
+      data.image_1_url,
       data.image_2_url,
       data.image_3_url,
-      data.image_4_url, 
-      data.image_5_url, 
+      data.image_4_url,
+      data.image_5_url,
       data.image_6_url,
       data.image_7_url
-      )
+    )
 
-      
+
     revalidatePath('/(editor)/editor', 'page');
 
     revalidatePath(`/(personal)/bio`, 'page');
