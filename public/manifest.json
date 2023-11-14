@@ -1,20 +1,60 @@
 {
     "name": "Tennesee Williams",
-    "short_name": "fer ferrer",
+    "short_name": "Tennesee",
     "start_url": "/editor",
     "display": "standalone",
     "background_color": "#90cdf4",
     "orientation": "portrait-primary",
-    "description": "sitio oficial de Tennesee Williams",
+    "description": "website about Tennesee Williams",
     "icons": [
+        {
+          "src": "icons/icon-40.png",
+          "sizes": "40x40",
+          "type": "image/png"
+        },
+        {
+          "src": "icons/icon-48.png",
+          "sizes": "48x48",
+          "type": "image/png"
+        },
+        {
+          "src": "icons/icon-58.png",
+          "sizes": "58x58",
+          "type": "image/png"
+        },
+        {
+          "src": "icons/icon-60.png",
+          "sizes": "60x60",
+          "type": "image/png"
+        },
         {
           "src": "icons/icon-72.png",
           "sizes": "72x72",
           "type": "image/png"
         },
         {
+          "src": "icons/icon-76.png",
+          "sizes": "76x76",
+          "type": "image/png"
+        },
+        {
+          "src": "icons/icon-80.png",
+          "sizes": "80x80",
+          "type": "image/png"
+        },
+        {
+          "src": "icons/icon-87.png",
+          "sizes": "87x87",
+          "type": "image/png"
+        },
+        {
           "src": "icons/icon-96.png",
           "sizes": "96x96",
+          "type": "image/png"
+        },
+        {
+          "src": "icons/icon-120.png",
+          "sizes": "120x120",
           "type": "image/png"
         },
         {

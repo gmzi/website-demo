@@ -16,21 +16,13 @@ export async function GET() {
         }
         const currentDate = new Date();
         const about = await getDataFromProd("about");
-        const bio = await getDataFromProd("bio");
         const shows = await getDataFromProd("shows");
-        const courses = await getDataFromProd("courses");
-        const tours = await getDataFromProd("tours");
-        const press = await getDataFromProd("press");
 
         const data = {
             document: "backup",
             date: currentDate,
             about: about,
-            bio: bio,
-            shows: shows,
-            courses: courses,
-            tours: tours,
-            press: press
+            shows: shows
         }
 
         const jsonData = JSON.stringify(data, null, 2); // 'null' and '2' for pretty printing
