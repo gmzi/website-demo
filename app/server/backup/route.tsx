@@ -25,9 +25,8 @@ export async function GET() {
             shows: shows
         }
 
-        const jsonData = JSON.stringify(data, null, 2); // 'null' and '2' for pretty printing
+        const jsonData = JSON.stringify(data, null, 2);
 
-        // Using Node.js's fs module to write the file
         const fs = require('fs');
 
         fs.writeFile('local.json', jsonData, 'utf8', (err: any) => {

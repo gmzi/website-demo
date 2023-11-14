@@ -55,7 +55,7 @@ async function handleInputDataWithNewImageFiles(inputData: any, folderName: stri
       // @ts-ignore
       delete inputData[`image_${fileNumber}_file`];
       // move old image to trash:
-      const trashOldImage = moveToTrash(oldImageUrl);
+      // const trashOldImage = moveToTrash(oldImageUrl);
     } else {
       // @ts-ignore
       delete inputData[`image_${fileNumber}_file`];
