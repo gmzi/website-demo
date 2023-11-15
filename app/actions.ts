@@ -327,10 +327,9 @@ export async function editAbout(prevState: any, formData: FormData) {
     const updated = await updateAbout(data.document, data.content_html, data.image_1_url);
 
     revalidatePath('/(personal)/', 'page');
-    revalidatePath('/(editor)/editor', 'page');
+    revalidatePath('/(editor)/editor/[index]', 'page');
 
-    // return { message: `About updated!!!` }
-    return { message: `${updated}` }
+    return { message: `About updated!!!` }
 
   } catch (e) {
     console.error(e);

@@ -39,13 +39,11 @@ async function testAbout() {
 
 export function EditAbout({ contentHtml, imageUrl }: AboutProps) {
     const [state, formAction] = useFormState(editAbout, initialState)
-    // const [state, formAction] = useFormState(testAbout, initialState)
 
     return (
         <>
             <div className="editor-group">
                 <form action={formAction} id="myForm-about" className="editor-about">
-                    {/* <ImageEdit imageUrl={imageUrl} /> */}
                     <ImageInputWithIDAndDefaultValue id={1} defaultValue={imageUrl} className="bio-hero-image" />
                     <label htmlFor="editor_content" style={{ display: "none" }}>Text:</label>
                     <RichText contentHtml={contentHtml} />
