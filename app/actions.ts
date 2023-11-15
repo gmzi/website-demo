@@ -170,7 +170,8 @@ export async function createShow(prevState: any, formData: FormData) {
 
     revalidatePath(`/(personal)/shows`, 'page');
     revalidatePath(`/(personal)/shows/[slug]`, 'page');
-    revalidatePath('/(editor)/editor', 'page');
+    // revalidatePath('/(editor)/editor', 'page');
+    revalidatePath('/(editor)/editor/[index]', 'page');
 
     return { message: `show added!!!` }
 
@@ -244,7 +245,8 @@ export async function editShow(prevState: any, formData: FormData) {
 
     revalidatePath(`/(personal)/shows`, 'page');
     revalidatePath(`/(personal)/shows/[slug]`, 'page');
-    revalidatePath('/(editor)/editor', 'page');
+    // revalidatePath('/(editor)/editor', 'page');
+    revalidatePath('/(editor)/editor/[index]', 'page');
 
     return { message: `show updated!!!` }
   } catch (e) {
@@ -287,7 +289,8 @@ export async function deleteItem(prevState: any, formData: FormData) {
       revalidatePath('/(personal)/shows/[slug]', 'page')
     }
 
-    revalidatePath('/(editor)/editor', 'page');
+    // revalidatePath('/(editor)/editor', 'page');
+    revalidatePath('/(editor)/editor/[index]', 'page');
 
     return { message: `Item deleted` }
 
@@ -367,7 +370,8 @@ export async function editTest(prevState: any, formData: FormData) {
     const updated = await updateTest(data.document, data.content_html, data.image_1_url);
 
     revalidatePath('/(personal)/test', 'page');
-    revalidatePath('/(editor)/editor', 'page');
+    // revalidatePath('/(editor)/editor', 'page');
+    revalidatePath('/(editor)/editor/[index]', 'page');
 
     return { message: `Test edit: ${JSON.stringify(updated)}` }
 
