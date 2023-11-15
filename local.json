@@ -1,16 +1,16 @@
 {
   "document": "backup",
-  "date": "2023-11-14T22:23:58.188Z",
+  "date": "2023-11-15T14:48:37.019Z",
   "about": {
     "_id": "654d6720fbf412d74129d5e8",
     "name": "about",
     "content_html": {
-      "id": "7hu1s",
+      "id": "g1b7b",
       "content": "<p>Born Thomas Lanier Williams III on March 26, 1911. He is best known for his contributions to American theater in the mid-20th century, creating iconic characters and exploring complex themes in his works.</p><p>Williams' most famous plays include \"A Streetcar Named Desire,\" which features the iconic line, \"Stella! Hey, Stella!\" This play tells the story of Blanche DuBois, a fading Southern belle, who moves in with her sister Stella and her husband Stanley, leading to a dramatic clash of personalities and a descent into madness.</p><p>\"The Glass Menagerie\" showcases another memorable line, \"Memory takes a lot of poetic license. It omits some details; others are exaggerated, according to the emotional value of the articles it touches.\" This semi-autobiographical play delves into the fragile world of the Wingfield family, exploring the illusions they create to escape their mundane lives.</p><p>\"Cat on a Hot Tin Roof\" famously features the line, \"Mendacity is a system that we live in.\" This powerful drama revolves around a dysfunctional Southern family gathering to celebrate the patriarch's birthday. The play delves into themes of greed, deception, and the destructive power of family secrets.</p><p>Tennessee Williams' distinctive writing style, characterized by poetic language and emotionally charged dialogues, has left an indelible mark on the world of theater and literature. His works continue to captivate audiences and provide profound insights into the human experience through the art of storytelling.</p>"
     },
     "image_1_url": {
-      "id": "7hu1s",
-      "content": "https://res.cloudinary.com/imagesgmzi/image/upload/v1699908364/website-demo/about/inuzoryxrzu7ghtrb1k6.jpg"
+      "id": "g1b7b",
+      "content": "https://res.cloudinary.com/imagesgmzi/image/upload/v1700002484/website-demo/about/hr9lsoyjaetv1qo9tmya.jpg"
     }
   },
   "shows": {
@@ -139,7 +139,7 @@
         ],
         "musicians": [],
         "dancers": [],
-        "image_1_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1699908814/website-demo/shows/msaglceq7plnk1vkgq4h.jpg",
+        "image_1_url": "https://res.cloudinary.com/imagesgmzi/image/upload/v1700059488/website-demo/shows/ilz0hdqmwgmkpibwixhj.webp",
         "image_2_url": "",
         "image_3_url": ""
       }
