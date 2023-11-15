@@ -29,11 +29,11 @@ export function Navbar() {
             Tennessee Williams
           </Link>
         </div>
-        <div className="navbar-header">
+        {/* <div className="navbar-header">
           <Link href="/editor">
             editor
           </Link>
-        </div>
+        </div> */}
         <div className="social-icons">
           <Link href="https://github.com/gmzi/website-demo" className="github">
             <Github />
@@ -41,13 +41,13 @@ export function Navbar() {
           <Link href="https://www.instagram.com" className="instagram">
             <InstagramIcon />
           </Link>
-          <Link href="https://www.facebook.com" className="facebook">
+          {/* <Link href="https://www.facebook.com" className="facebook">
             <FacebookIcon />
-          </Link>
-          <Link href="https://www.youtube.com" className="youtube">
+          </Link> */}
+          {/* <Link href="https://www.youtube.com" className="youtube">
             <YoutubeIcon />
-          </Link>
-          <Link href="https://twitter.com" className="twitter">
+          </Link> */}
+          <Link href="https://twitter.com/spiritusliteram" className="twitter">
             <TwitterIcon />
           </Link>
         </div>
@@ -58,20 +58,25 @@ export function Navbar() {
           {Object.entries(navItems).map(([path, { name }]) => {
             const isActive = path === pathname;
             // if (path !== '/') {
-              return (
-                <Link
-                  key={path}
-                  href={path}>
-                  {isActive ? (
-                    <li className={'active'}>{name}</li>
-                  ) : (
-                    <li>{name}</li>
-                  )}
-                </Link>
-              )
+            return (
+              <Link
+                key={path}
+                href={path}>
+                {isActive ? (
+                  <li className={'active'}>{name}</li>
+                ) : (
+                  <li>{name}</li>
+                )}
+              </Link>
+            )
             // }
           })}
         </ul>
+        <div className="navbar-header">
+          <Link href="/editor">
+            editor
+          </Link>
+        </div>
       </div>
     </nav>
   )

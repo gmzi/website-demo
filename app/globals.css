@@ -287,6 +287,11 @@ section {
   font-weight: bold;
 }
 
+.editor-link {
+  font-weight: bold;
+  font-size: large;
+}
+
 .social-icons {
   display: flex;
   gap: 1em;
@@ -345,7 +350,7 @@ section {
     font-size: small;
   }
   .navbar-bottom {
-    justify-content: left;
+    /* justify-content: left; */
     font-size: 1.15em;
   }
 }
