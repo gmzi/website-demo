@@ -10,7 +10,7 @@ export function Footer() {
           <Circle/>
         </div>
       </Link>
-      <p><Link href="https://github.com/gmzi">gmzi</Link></p>
+      <p><Link href="https://github.com">|----|</Link></p>
     </footer>
   )
 }
