@@ -36,3 +36,5 @@ next-env.d.ts
 
 # syntax 
 syntax.tsx
+
+local-backup.json

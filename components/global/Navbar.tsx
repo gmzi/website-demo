@@ -35,21 +35,21 @@ export function Navbar() {
           </Link>
         </div> */}
         <div className="social-icons">
-          <Link href="https://github.com/gmzi/website-demo" className="github">
+          <Link href="https://github.com/" className="github">
             <Github />
           </Link>
-          <Link href="https://www.instagram.com" className="instagram">
+          {/* <Link href="https://www.instagram.com" className="instagram">
             <InstagramIcon />
-          </Link>
+          </Link> */}
           {/* <Link href="https://www.facebook.com" className="facebook">
             <FacebookIcon />
           </Link> */}
           {/* <Link href="https://www.youtube.com" className="youtube">
             <YoutubeIcon />
           </Link> */}
-          <Link href="https://twitter.com/spiritusliteram" className="twitter">
+          {/* <Link href="https://twitter.com" className="twitter">
             <TwitterIcon />
-          </Link>
+          </Link> */}
         </div>
       </div>
       <div className="separator"></div>
