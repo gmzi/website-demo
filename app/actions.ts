@@ -12,7 +12,8 @@ import { updateTest,
   updateItem, 
   pullItem, 
   pushToArrayCapped,
-  updateAbout
+  updateAbout,
+  pushToArray
 } from '@/lib/mongo';
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
@@ -165,8 +166,8 @@ export async function createShow(prevState: any, formData: FormData) {
       content: updatedInputData
     }
 
-    // const saved = await pushToArray(data.document, data.entry, data.content);
-    const saved = await pushToArrayCapped(data.document, data.entry, data.content);
+    const saved = await pushToArray(data.document, data.entry, data.content);
+    // const saved = await pushToArrayCapped(data.document, data.entry, data.content);
 
     revalidatePath(`/(personal)/shows`, 'page');
     revalidatePath(`/(personal)/shows/[slug]`, 'page');
