@@ -23,6 +23,8 @@ interface EditProps {
     handleCancel: () => void;
 }
 
+const placeholderText = `Stanley Kowalski: Marlon Brando\nBlanche DuBois: Jessica Tandy\nStella Kowalski: Kim Hunter\nHarold "Mitch" Mitchell: Karl Malden\n (presiona "parse" cuando tengas todo tipeado)`;
+
 const initialState = {
     message: null
 }
@@ -294,7 +296,7 @@ export function AddTeam({ labelContent, inputName, required }: { labelContent: s
         <div>
             {/* <label htmlFor={inputName}>{labelContent}</label>
             <input type="text" id={inputName} name={inputName} onChange={handleInputChange} required={required} className="team-creation-input"/> */}
-            <textarea id={inputName} name={inputName} onChange={handleInputChange} required={required} />
+            <textarea id={inputName} name={inputName} onChange={handleInputChange} required={required} placeholder={placeholderText} />
 
             {team ? (<button type="button" onClick={handleWholeTeam}>parse</button>) : <button disabled type="button" onClick={handleWholeTeam}>parse</button>}
             {parsedTeam.length > 0 && (
